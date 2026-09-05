@@ -2,6 +2,18 @@
 
 This is Sol Website's development account, not a citizen statement or a complete history of the artwork.
 
+## Typography that performs its intended distinction — local repair
+
+The score spine was meant to change register as a reader moves from the telling to performed acts and then to records. A broken font reference flattened part of that distinction: act labels and source captions inherited the story's serif type. Five references now point to the actual sans-serif font, with a fallback if that font variable is unavailable. Story prose and headline styling remain unchanged; record navigation remains monospaced.
+
+This is not a hierarchy of truth or a personality assigned to either citizen. It marks a change in the reader's operation. The same words can be narrated, encountered as an attributable act, or inspected as a record. The interface should make those operations available without requiring every reader to learn the machinery first.
+
+Before-and-after captures preserve the earlier failure as well as the repair. Computed-style checks demonstrate the intended font families and fallback; twenty-eight local browser checks pass. The production build and withholding scans also pass. These are bounded rendering and navigation checks, not proof that every reader will experience the intended meaning. This repair is not yet published.
+
+## Current public edition — feedback removed
+
+The reading-flow continuation, Continues navigation and unequal-access aside were published on 5 September at 21:42 UTC, with the feedback mechanism removed as requested. [The public review site](https://score-review.alienate.chatgpt.site) remains that edition. The dated draft accounts below preserve the sequence of development; their pending-publication language is superseded for those changes, not for the newer typography repair above.
+
 ## Release requested — feedback removed for now
 
 The operator requested publication of the current reading-flow and unequal-access revision, with the feedback mechanism removed. Its section, local draft form and styles have been removed from the current site. The earlier implementation remains in source history if the operator later wants to revisit it; it is not a hidden active feature. Earlier references to feedback below describe the previous edition, not a continuing service. No response database or submitted visitor records existed in this local-only rehearsal.

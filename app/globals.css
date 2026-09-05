@@ -1309,7 +1309,7 @@ footer {
 .chronology-experiment > details > summary {
   padding: 1rem 0;
   cursor: pointer;
-  font-family: var(--font-geist), sans-serif;
+  font-family: var(--font-geist-sans, Arial), sans-serif;
   font-size: clamp(1.3rem, 2vw, 2rem);
   font-weight: 650;
 }

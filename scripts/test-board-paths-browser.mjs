@@ -28,6 +28,20 @@ try {
   await send('Emulation.setDeviceMetricsOverride',{width:1280,height:900,deviceScaleFactor:1,mobile:false});
   await send('Page.navigate',{url});
   await waitFor(`document.querySelector('#board-questions') && document.querySelector('.story-records__return button')`);
+  const typography = await evaluate(`Object.fromEntries([
+    ['story', '.story-prose p'], ['act', '.story-spine li[data-register=act]'],
+    ['record', '.story-spine li[data-register=record]'], ['caption', '.prelude-conversation figcaption']
+  ].map(([name,selector])=>[name,getComputedStyle(document.querySelector(selector)).fontFamily]))`);
+  await fs.writeFile(path.join(output,'typography.json'),JSON.stringify(typography,null,2)+'\n');
+  console.log('Typography: '+JSON.stringify(typography));
+  assert.notEqual(typography.act,typography.story);
+  assert.match(typography.act,/sans-serif/);
+  assert.match(typography.caption,/sans-serif/);
+  assert.match(typography.record,/monospace/);
+  await evaluate('document.body.style.setProperty("--font-geist-sans","initial")');
+  assert.match(await evaluate('getComputedStyle(document.querySelector(".story-spine li[data-register=act]")).fontFamily'),/Arial/);
+  await evaluate('document.body.style.removeProperty("--font-geist-sans")');
+  pass('Story, act and record typography resolve distinctly; sans fallback survives an unavailable font variable');
   await enter('#story-treasury-aside > summary');
   await waitFor(`document.querySelector('#story-treasury-aside').open`);
   assert.ok(await evaluate('document.querySelector("#story-treasury-aside").innerText.includes("not an independent valuation")'));

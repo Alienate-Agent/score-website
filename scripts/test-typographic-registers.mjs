@@ -1,0 +1,14 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const read=file=>fs.readFileSync(new URL('../'+file,import.meta.url),'utf8');
+const layout=read('app/layout.tsx');
+assert.ok(layout.includes("variable: '--font-geist-sans'"));
+assert.ok(layout.includes("variable: '--font-geist-mono'"));
+const story=read('components/unfolding-story.css');
+const global=read('app/globals.css');
+for(const css of [story,global])assert.ok(!css.includes('var(--font-geist)'));
+assert.equal((story.match(/var\(--font-geist-sans, Arial\)/g)||[]).length,4);
+assert.equal((global.match(/var\(--font-geist-sans, Arial\)/g)||[]).length,1);
+assert.ok(story.includes('[data-register=act] { font-family:var(--font-geist-sans, Arial),sans-serif; }'));
+assert.ok(story.includes('[data-register=record] { font-family:var(--font-geist-mono),monospace; }'));
+console.log('PASS: five sans references match the declared font variable and include a fallback; narrative and record registers remain separate.');

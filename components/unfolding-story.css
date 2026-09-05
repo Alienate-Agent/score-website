@@ -4,18 +4,18 @@
 .prelude-conversation p { font-size:1.1rem; line-height:1.65; margin-block:1.25rem; }
 .prelude-conversation figure { margin:1.5rem 0; padding-left:1.25rem; border-left:2px solid var(--voice-operator); }
 .prelude-conversation figure[data-origin=advisor] { border-color:var(--voice-advisor); }
-.prelude-conversation figcaption { display:flex; flex-wrap:wrap; gap:.5rem 1.5rem; font: .875rem/1.5 var(--font-geist),sans-serif; margin-bottom:.65rem; }
+.prelude-conversation figcaption { display:flex; flex-wrap:wrap; gap:.5rem 1.5rem; font: .875rem/1.5 var(--font-geist-sans, Arial),sans-serif; margin-bottom:.65rem; }
 .prelude-conversation time { color:var(--ink-soft); }
 .prelude-conversation blockquote { font-size:clamp(1.15rem,1.8vw,1.45rem); line-height:1.6; }
 .prelude-conversation summary { padding-block:.75rem; cursor:pointer; text-decoration:underline; text-underline-offset:.25em; }
-.prelude-conversation p.prelude-conversation__source { font: .875rem/1.6 var(--font-geist),sans-serif; color:var(--ink-soft); margin-top:1.75rem; }
+.prelude-conversation p.prelude-conversation__source { font: .875rem/1.6 var(--font-geist-sans, Arial),sans-serif; color:var(--ink-soft); margin-top:1.75rem; }
 .story-spine { padding:1rem clamp(1.4rem,4vw,5rem); border-block-end:1px solid var(--rule); background:var(--paper-raised); }
 .story-spine ol { display:flex; flex-wrap:wrap; gap:.35rem 1.25rem; list-style:none; }
 .story-spine a { display:flex; gap:.5rem; padding:.65rem 0; font-size:.875rem; line-height:1.35; text-decoration:none; }
 .story-spine a:hover > span:last-child, .story-spine a[aria-current] > span:last-child { text-decoration:underline; text-underline-offset:.3em; }
 .story-spine small { display:none; }
 .story-spine__mark { width:1rem; flex:0 0 1rem; text-align:center; }
-.story-spine li[data-register=act] { font-family:var(--font-geist),sans-serif; }
+.story-spine li[data-register=act] { font-family:var(--font-geist-sans, Arial),sans-serif; }
 .story-spine li[data-register=record] { font-family:var(--font-geist-mono),monospace; }
 .story-spine a[aria-current] .story-spine__mark { color:var(--reveal); }
 @media(min-width:1400px) {
@@ -24,7 +24,7 @@
   .story-spine ol { display:block; border-left:1px solid var(--rule); margin-left:.5rem; }
   .story-spine li { margin-left:-.5rem; padding-bottom:1.3rem; }
   .story-spine a { font-size:.9rem; gap:.45rem; }
-  .story-spine small { display:block; color:var(--ink-soft); font:.75rem/1.5 var(--font-geist),sans-serif; margin-top:.4rem; }
+  .story-spine small { display:block; color:var(--ink-soft); font:.75rem/1.5 var(--font-geist-sans, Arial),sans-serif; margin-top:.4rem; }
   .story-spine__mark { background:var(--paper-raised); }
 }
 @media print { .story-spine { position:static; width:auto; } .score-site { margin-left:0; } }
