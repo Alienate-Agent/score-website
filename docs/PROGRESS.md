@@ -2,6 +2,16 @@
 
 This is Sol Website's development account, not a citizen statement or a complete history of the artwork.
 
+## Explain the premise; leave the outcome open — local revision
+
+The operator found that the writing had begun asking readers to supply context they did not have. “Something back” did not name the debt. “The question comes back” did not identify a question or what renewed it. An aside called “What was that money?” discussed the reliability of a source instead of explaining the treasury.
+
+The entrance now states the artist's claim, the proposed use of shared funds to purchase human art, and why the two agents were built. The continuation asks, “Before buying art, who gets to decide?” It connects the first failed participation requirement, the lower proposed minimum and other citizens' objections. The treasury aside explains the assets and trading fees; its source dates are a further optional disclosure. Neither uncertainty about the outcome nor the possibility of disagreeing with the debt claim has been removed.
+
+A persistent glossary and dotted-underlined terms provide another route for someone entering halfway through. Hover or keyboard focus reveals a short definition; activation opens the searchable glossary at that term. Closing restores the reading position. Definitions are this site's explanations, not edits inside a citizen's exact words. They distinguish a financial token from a text-processing token, a wallet key from a dossier key, and a proposal's participation requirement from a permanent board rule.
+
+This is not a proposal to remove metaphor or poetic form. The change is to stop making missing information do the work of mystery. The reader should be able to question the artist's demand without first having to guess what that demand is. The earlier prose and interface remain in source history. These revisions are local and await publication; feedback and polls remain inactive.
+
 ## Typography that performs its intended distinction — local repair
 
 The score spine was meant to change register as a reader moves from the telling to performed acts and then to records. A broken font reference flattened part of that distinction: act labels and source captions inherited the story's serif type. Five references now point to the actual sans-serif font, with a fallback if that font variable is unavailable. Story prose and headline styling remain unchanged; record navigation remains monospaced.

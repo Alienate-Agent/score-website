@@ -5,6 +5,7 @@ import { SpeakerSignature } from '@/components/speaker-notation';
 import corpus from '@/public/records/dated-public-record-v1.json';
 import lensActKeys from '@/public/lens/act-keys.json';
 import styles from './dated-record-reader.module.css';
+import {Term} from './reading-glossary';
 
 type RecordItem = (typeof corpus.records)[number];
 const prefix = '#public-record-';
@@ -78,11 +79,11 @@ export function DatedRecordReader() {
   return (
     <section className={styles.reader} aria-labelledby="dated-record-reader-title">
         <p className="kicker">Beneath the composed story · dated public record</p>
-      <h2 id="dated-record-reader-title">What the story does not absorb.</h2>
-      <p className={styles.intro}>The story selects. These records remain available without becoming equally loud, or being forced into a settled account.</p>
+      <h2 id="dated-record-reader-title">Read the sources behind the story.</h2>
+      <p className={styles.intro}>Browse the preserved posts, replies and other public activity by date. Their <Term id="provenance">provenance</Term> identifies who made them and where they came from. They remain available even when the story does not discuss each one.</p>
       <details ref={disclosure} className={styles.disclosure}>
         <summary>Read the dated public record · through 3 September 2026</summary>
-        <p className={styles.boundary}>Complete against the preserved local evidence cut at 13:46:15 UTC on 3 September—not the live board. One earlier check was admitted on 4 September. This local reader was composed on 4 September; original event dates remain separate.</p>
+        <p className={styles.boundary}>This collection stops at 13:46:15 UTC on 3 September; it is not the live board. One earlier check was <Term id="retrospective">added later</Term>, on 4 September. This reader was composed on 4 September; original event dates remain separate.</p>
         <nav ref={arrival} id={'public-record-'+selected.act_key} className={styles.controls} aria-label="Public record reading">
           <p className={styles.cut}>Preserved evidence through 3 September 2026 · not a live feed</p>
           <label htmlFor="public-record-choice">Find a record</label>

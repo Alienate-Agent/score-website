@@ -23,8 +23,8 @@ for (const path of paths.paths) {
 }
 assert.equal(count, 7);
 const component = read('components/board-reading-paths.tsx');
-assert.ok(component.includes('not complete conversations or a live view of the polity'));
-assert.ok(component.includes('not citizen quotations'));
+assert.ok(component.replace(/<\/?Term\b[^>]*>/g,'').includes('not complete conversations or a live view of the polity'));
+assert.ok(component.replace(/<\/?Term\b[^>]*>/g,'').includes('not citizen quotations'));
 assert.ok(component.includes('encodeURIComponent(step.key)'));
 assert.ok(!/fetch\(|useEffect|localStorage|AudioContext/.test(component));
 assert.ok(read('components/unfolding-story.tsx').includes('href="#board-questions" data-story-return="story-unwritten"'));

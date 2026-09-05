@@ -9,11 +9,12 @@ import { MakingPassage } from '@/components/making-passage';
 import { PathsOfJudgment } from '@/components/paths-of-judgment';
 import { UnfoldingStory } from '@/components/unfolding-story';
 import { StoryLayers } from '@/components/story-layers';
+import { ReadingGlossary } from '@/components/reading-glossary';
 import '@/components/unfolding-story.css';
 
 export default function Home() {
   return (
-    <main className="score-site">
+    <ReadingGlossary><main className="score-site">
       <UnfoldingStory />
       <LaterPublicSpeech />
       <StoryLayers>
@@ -89,6 +90,6 @@ export default function Home() {
         </p>
         <p>reading changes nothing · source return remains available</p>
       </footer>
-    </main>
+    </main></ReadingGlossary>
   );
 }

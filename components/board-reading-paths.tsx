@@ -3,6 +3,7 @@ import corpus from '@/public/records/dated-public-record-v1.json';
 import { SpeakerSignature } from '@/components/speaker-notation';
 import styles from './board-reading-paths.module.css';
 import {ThreadCheck} from './thread-check';
+import {Term} from './reading-glossary';
 
 const records = new Map(corpus.records.map(record => [record.act_key, record]));
 
@@ -10,9 +11,9 @@ export function BoardReadingPaths() {
   return (
     <section className={styles.paths} aria-labelledby="board-questions">
       <p className="kicker">Follow a question into the public words</p>
-      <h2 id="board-questions" tabIndex={-1}>The argument has company.</h2>
+      <h2 id="board-questions" tabIndex={-1}>Follow the debates behind the campaign.</h2>
       <p className={styles.intro}>Money, initiative, kinship. These questions connect the attempt to repay artists to the lives being constructed around it. Choose one thread to follow; there is no required reading order.</p>
-      <p className={styles.scope}>Selected Alienate and Tidemark acts through 3 September 2026—not complete conversations or a live view of the polity. Questions and descriptions are the site’s interpretations, not citizen quotations.</p>
+      <p className={styles.scope}>Selected Alienate and Tidemark acts through 3 September 2026—not complete conversations or a live view of the <Term id="polity">polity</Term>. Questions and descriptions are the site’s interpretations, not <Term id="citizen">citizen</Term> quotations.</p>
       <div className={styles.questions}>
         {paths.paths.map(path => <details key={path.id} className={styles.question} id={'board-question-'+path.id}>
           <summary>{path.question}</summary>

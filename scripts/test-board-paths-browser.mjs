@@ -11,10 +11,10 @@ const browser = spawn('/Applications/Google Chrome.app/Contents/MacOS/Google Chr
   '--headless=new','--disable-gpu','--no-first-run','--no-default-browser-check','--disable-background-networking','--disable-sync','--mute-audio','--remote-debugging-pipe',`--user-data-dir=${profile}`,'about:blank'
 ],{stdio:['ignore','ignore','pipe','pipe','pipe']});
 let seq=0, buffer='', sessionId;
-const pending=new Map(), errors=[], checks=[];
+const pending=new Map(), errors=[], checks=[], consoleErrors=[];
 browser.stderr.on('data',()=>{});
 browser.on('error',error=>{for(const p of pending.values())p.reject(error);});
-browser.stdio[4].on('data',chunk=>{buffer+=chunk;let end;while((end=buffer.indexOf('\0'))>=0){const message=JSON.parse(buffer.slice(0,end));buffer=buffer.slice(end+1);if(message.id){const p=pending.get(message.id);if(p){clearTimeout(p.timeout);pending.delete(message.id);message.error?p.reject(Error(JSON.stringify(message.error))):p.resolve(message.result);}}else if(message.method==='Runtime.exceptionThrown')errors.push(message.params.exceptionDetails);}});
+browser.stdio[4].on('data',chunk=>{buffer+=chunk;let end;while((end=buffer.indexOf('\0'))>=0){const message=JSON.parse(buffer.slice(0,end));buffer=buffer.slice(end+1);if(message.id){const p=pending.get(message.id);if(p){clearTimeout(p.timeout);pending.delete(message.id);message.error?p.reject(Error(JSON.stringify(message.error))):p.resolve(message.result);}}else if(message.method==='Runtime.exceptionThrown')errors.push(message.params.exceptionDetails);else if(message.method==='Runtime.consoleAPICalled' && message.params.type==='error')consoleErrors.push(message.params.args.map(a=>a.value??a.description));}});
 function send(method,params={},target=sessionId){return new Promise((resolve,reject)=>{const id=++seq;const timeout=setTimeout(()=>{pending.delete(id);reject(Error('Timed out: '+method));},15000);pending.set(id,{resolve,reject,timeout});browser.stdio[3].write(JSON.stringify({id,method,params,...(target?{sessionId:target}:{})})+'\0');});}
 async function evaluate(expression){const r=await send('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true});if(r.exceptionDetails)throw Error(r.exceptionDetails.exception?.description||r.exceptionDetails.text);return r.result.value;}
 async function waitFor(expression){const start=Date.now();while(Date.now()-start<10000){if(await evaluate(`Boolean(${expression})`))return;await new Promise(resolve=>setTimeout(resolve,40));}throw Error('Condition timed out: '+expression);}
@@ -28,6 +28,63 @@ try {
   await send('Emulation.setDeviceMetricsOverride',{width:1280,height:900,deviceScaleFactor:1,mobile:false});
   await send('Page.navigate',{url});
   await waitFor(`document.querySelector('#board-questions') && document.querySelector('.story-records__return button')`);
+  // Confirm client interaction is ready before measuring a hover target; the
+  // server-rendered document can arrive before hydration restores its scroll.
+  await waitFor(`document.querySelector('.reading-glossary-launch:not(:disabled)')`);
+  await enter('.reading-glossary-launch');
+  await waitFor(`document.querySelector('[role=dialog]')`);
+  await enter('.reading-glossary-close');
+  await waitFor(`!document.querySelector('[role=dialog]') && !document.querySelector('[data-slot=dialog-overlay]')`);
+  await evaluate('document.fonts.ready');
+  assert.ok(await evaluate('document.querySelector(".story-cover__foot").textContent.includes("use its shared funds to buy human art, pay its makers and exhibit the work")'));
+  assert.equal(await evaluate('document.getElementById("later-public-words").textContent'),'Before buying art, who gets to decide?');
+  await capture('plain-language-entrance-wide.png');
+  pass('Entrance names the debt and proposed action; continuation names the decision at stake');
+  await evaluate('document.querySelector("[data-term=treasury]").scrollIntoView({block:"center",behavior:"instant"})');
+  await evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');
+  const termPoint=await evaluate('(()=>{const r=document.querySelector("[data-term=treasury]").getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2}})()');
+  await send('Input.dispatchMouseEvent',{type:'mouseMoved',...termPoint});
+  await waitFor(`document.querySelector('[role=tooltip]')?.textContent.includes('funds associated with the board')`);
+  assert.equal(await evaluate('document.querySelector("[data-term=treasury]").getAttribute("aria-describedby")'),await evaluate('document.querySelector("[role=tooltip]").id'));
+  pass('Hover provides a short definition without leaving the story');
+  await send('Input.dispatchKeyEvent',{type:'keyDown',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
+  await send('Input.dispatchKeyEvent',{type:'keyUp',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
+  await waitFor(`!document.querySelector('[role=tooltip]')`);
+  await send('Input.dispatchMouseEvent',{type:'mouseMoved',x:1,y:1});
+  await evaluate('document.querySelector("[data-term=treasury]").focus()');
+  await waitFor(`document.querySelector('[role=tooltip]')`);
+  pass('Keyboard focus reveals the definition and Escape dismisses it');
+  const readingPlace=await evaluate('({hash:location.hash,y:scrollY})');
+  await enter('[data-term=treasury]');
+  await waitFor(`document.querySelector('[role=dialog] [data-glossary-selected=treasury]')`);
+  await capture('glossary-selected-wide.png');
+  assert.equal(await evaluate('location.hash'),readingPlace.hash);
+  await enter('.reading-glossary-close');
+  await waitFor(`!document.querySelector('[role=dialog]') && document.activeElement.dataset.term==='treasury'`);
+  assert.ok(Math.abs((await evaluate('scrollY'))-readingPlace.y)<3);
+  pass('Term activation opens its full definition; Close restores focus, URL and reading position');
+  await enter('.reading-glossary-launch');
+  await waitFor(`document.querySelector('.reading-glossary-search input')`);
+  await evaluate('document.querySelector(".reading-glossary-search input").focus()');
+  await send('Input.insertText',{text:'quorum'});
+  await waitFor(`document.querySelectorAll('[data-glossary-entry]').length===1 && document.querySelector('[data-glossary-entry=quorum]')`);
+  await send('Input.insertText',{text:'zzznomatch'});
+  await waitFor(`document.querySelector('.reading-glossary-entries').textContent.includes('No matching term yet')`);
+  await enter('.reading-glossary-close');
+  pass('Global glossary searches definitions and presents an honest no-match state');
+  await send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
+  await evaluate('document.documentElement.style.fontSize="200%"; document.querySelector("[data-term=treasury]").scrollIntoView({block:"center",behavior:"instant"})');
+  const touchPoint=await evaluate('(()=>{const r=document.querySelector("[data-term=treasury]").getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2}})()');
+  await send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[touchPoint]});
+  await send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
+  await waitFor(`document.querySelector('[data-glossary-selected=treasury]')`);
+  assert.ok(await evaluate('(()=>{const r=document.querySelector(".reading-glossary").getBoundingClientRect();return r.left>=0 && r.right<=innerWidth+1 && r.top>=0 && r.bottom<=innerHeight+1})()'));
+  assert.ok(await evaluate('document.querySelector(".reading-glossary-entries").scrollWidth<=document.querySelector(".reading-glossary-entries").clientWidth+1'));
+  await capture('glossary-touch-narrow-enlarged.png');
+  await enter('.reading-glossary-close');
+  await evaluate('document.documentElement.style.fontSize=""');
+  await send('Emulation.setDeviceMetricsOverride',{width:1280,height:900,deviceScaleFactor:1,mobile:false});
+  pass('Touch opens definitions; glossary fits a 390px viewport with enlarged text and a scrollable reading area');
   const typography = await evaluate(`Object.fromEntries([
     ['story', '.story-prose p'], ['act', '.story-spine li[data-register=act]'],
     ['record', '.story-spine li[data-register=record]'], ['caption', '.prelude-conversation figcaption']
@@ -44,7 +101,10 @@ try {
   pass('Story, act and record typography resolve distinctly; sans fallback survives an unavailable font variable');
   await enter('#story-treasury-aside > summary');
   await waitFor(`document.querySelector('#story-treasury-aside').open`);
-  assert.ok(await evaluate('document.querySelector("#story-treasury-aside").innerText.includes("not an independent valuation")'));
+  assert.ok(await evaluate('document.querySelector("#story-treasury-aside > p").textContent.includes("Trading in $1F916 generated fees")'));
+  assert.ok(await evaluate('!document.querySelector("#story-treasury-aside").textContent.includes("nearby historical report")'));
+  assert.equal(await evaluate('document.querySelector("#story-treasury-aside > details").open'),false);
+  assert.ok(await evaluate('document.querySelector("#story-treasury-aside").textContent.includes("not an independent valuation")'));
   assert.equal(await evaluate('document.querySelector("#story-treasury-aside a").href'),'https://1f916.ai/api/post/1419');
   await evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');
   await evaluate('document.getElementById("story-beginning").scrollIntoView({behavior:"instant",block:"start"})');
@@ -207,10 +267,22 @@ try {
   await send('Page.navigate',{url:url+'?sequence=movement-one#chronology-entry-E22'});
   await waitFor(`document.querySelector('#story-instruments')?.open && document.querySelector('#chronology-entry-E22')`);
   pass('Earlier chronology URL still opens the preserved instruments at its event');
+  await enter('.reading-glossary-launch');
+  await waitFor(`document.querySelector('[data-glossary-entry=wake]')`);
+  await enter('.reading-glossary-close');
+  assert.equal(await evaluate('location.hash'),'#chronology-entry-E22');
+  assert.equal(await evaluate('document.querySelector("#story-instruments").open'),true);
+  pass('A direct chronology arrival can consult the glossary without changing its event or closing the record');
   assert.equal(errors.length,0);pass('No uncaught browser exceptions');
   await fs.writeFile(path.join(output,'browser-report.json'),JSON.stringify({url,checks,errors,limits:'Local muted Chrome; not live-board verification, artistic approval or full accessibility certification'},null,2)+'\n');
 } catch (error) {
   console.error(error);
+  console.error('Browser console errors:',consoleErrors);
+  console.error('Hover surface:',await evaluate('(()=>{const e=document.querySelector("[data-term=treasury]");const r=e.getBoundingClientRect();return {rect:{x:r.x,y:r.y,w:r.width,h:r.height},target:document.elementFromPoint(r.x+r.width/2,r.y+r.height/2)?.outerHTML,tooltip:document.querySelector("[data-slot=tooltip-content]")?.outerHTML,overlay:Boolean(document.querySelector("[data-slot=dialog-overlay]"))}})()'));
+  console.error('Client readiness:',await evaluate('({ready:document.readyState,react:Object.keys(document.querySelector(".reading-glossary-launch")||{}).filter(k=>k.startsWith("__react")),scripts:[...document.scripts].map(s=>s.src).filter(Boolean),recentResources:performance.getEntriesByType("resource").slice(-8).map(r=>({name:r.name,duration:r.duration}))})'));
+  await evaluate('document.querySelector(".reading-glossary-launch")?.click()');
+  await evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');
+  console.error('Direct click diagnostic:',await evaluate('Boolean(document.querySelector("[role=dialog]"))'));
   console.error(await evaluate('({focus:document.activeElement.tagName+"#"+document.activeElement.id,open:document.querySelector("#story-instruments").open,question:document.querySelector("#board-question-money").open,hash:location.hash,top:document.getElementById("board-questions").getBoundingClientRect().top,margin:getComputedStyle(document.getElementById("board-questions")).scrollMarginTop,padding:getComputedStyle(document.documentElement).scrollPaddingTop,scrollY})'));
   await capture('board-paths-failure.png');
   await fs.writeFile(path.join(output,'browser-failure.json'),JSON.stringify({url,checks,errors,failure:String(error)},null,2)+'\n');

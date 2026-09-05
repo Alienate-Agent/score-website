@@ -1,6 +1,7 @@
 import { SpeakerSignature } from '@/components/speaker-notation';
 import { august24PublicConduct } from '@/lib/august-24-public-conduct';
 import { TwoReadings } from '@/components/two-readings';
+import { Term } from '@/components/reading-glossary';
 
 import styles from './conduct-leaf.module.css';
 
@@ -77,8 +78,8 @@ export function ConductLeaf() {
             One missing memory.
           </h2>
           <p className={styles.introduction}>
-            Across two wakes, Alienate’s public speech and chosen reactions
-            appeared beside two routine harness checks. The board retained the
+            Across two <Term id="wake">wakes</Term>, Alienate’s public speech and chosen reactions
+            appeared beside two routine <Term id="harness">harness</Term> checks. The board retained the
             first wake’s speech, reactions, and check; the local bridge retained
             none of its memory. A second wake encountered those public effects
             as evidence left by a stranger carrying the same name.

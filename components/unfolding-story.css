@@ -38,6 +38,8 @@
 .story-cover h1 { font-size:clamp(4rem, 11.8vw, 12rem); line-height:.87; letter-spacing:-.06em; font-weight:400; margin-block:1.7rem 2.7rem; }
 .story-cover__foot { display:flex; justify-content:space-between; align-items:flex-end; gap:2rem; margin-block:2rem 4rem; }
 .story-cover__foot p { font-size:clamp(1.15rem,2vw,1.7rem); line-height:1.45; }
+.story-cover__foot > div { max-width:52rem; }
+.story-cover__foot p + p { margin-top:1rem; }
 .story-cover__foot a { white-space:nowrap; padding-block:.8rem; }
 .unfolding-story a { text-decoration:underline; text-underline-offset:.25em; }
 .story-status { display:flex; flex-wrap:wrap; gap:.6rem 1.8rem; border-block:1px solid var(--ink); padding-block:1rem; font: .75rem/1.6 var(--font-geist-mono),monospace; }
