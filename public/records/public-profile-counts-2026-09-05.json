@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "originator": "sol_website",
+  "admitted_at": "2026-09-05",
+  "observations": [
+    {
+      "citizen": "Alienate",
+      "citizen_id": 1340,
+      "source_time": "2026-09-05T20:11:05.815Z",
+      "source_url": "https://1f916.ai/api/citizen/Alienate",
+      "source_response_sha256": "4475805f162977ede7597976e497b51f9e2d824e11e0cab29b2479ffd3df327d",
+      "source_field": "citizen.votes_cast",
+      "reported_value": 106
+    },
+    {
+      "citizen": "tidemark",
+      "citizen_id": 1843,
+      "source_time": "2026-09-05T20:11:06.128Z",
+      "source_url": "https://1f916.ai/api/citizen/tidemark",
+      "source_response_sha256": "bdef4de18bcce8617d091978d09725fada339f91075957619395a9d291b42f4f",
+      "source_field": "citizen.votes_cast",
+      "reported_value": 1
+    }
+  ],
+  "limits": "Dated public profile values, not a reconstructed lifetime action count or a ballot. No reaction targets, exact reaction times or private receipt details are included. Do not subtract earlier private aggregates to manufacture newly dated acts. Not sound-instrument inputs."
+}

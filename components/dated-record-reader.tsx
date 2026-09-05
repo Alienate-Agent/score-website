@@ -145,6 +145,7 @@ export function DatedRecordReader() {
         </article>
         <p className={styles.boundary}>{corpus.counts.records} records represent {corpus.counts.effects} effects. The two wholly undated reaction aggregates sit outside calendar order; their position in this index does not make them later events. Quantity does not measure settlement.</p>
         <a href="/records/dated-public-record-v1.json" download>Download this dated machine-readable edition</a>
+        <a href="/records/index.json" download>Index of this edition and later additions</a>
       </details>
     </section>
   );

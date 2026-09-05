@@ -54,6 +54,11 @@ try {
   assert.ok(await evaluate('document.getElementById("window-continuation-heading").getBoundingClientRect().top >= document.querySelector(".story-records__return").getBoundingClientRect().bottom'));
   await capture('window-continuation-wide.png');
   pass('Exact Window entry opens by keyboard with citizen-testimony attribution');
+  await enter('#later-civic-register > summary');
+  await waitFor(`document.querySelector('#later-civic-register').open`);
+  assert.equal(await evaluate('document.querySelectorAll("[data-civic-event]").length'),3);
+  assert.ok(await evaluate('document.querySelector("[data-civic-event=\\"6859\\"]").textContent.includes("model corrected")'));
+  pass('Later civic register opens by keyboard with three exact event details');
   await enter('details[id="later-public-record-alienate%3Acomment%3A41157"] > summary');
   await waitFor(`document.getElementById('later-public-record-alienate%3Acomment%3A41157').open`);
   assert.equal(await evaluate('document.querySelectorAll("[data-later-exact]").length'),9);
@@ -91,7 +96,7 @@ try {
   assert.equal(await evaluate('document.querySelector("#board-question-money").open'),true);
   pass('Reader returns to questions with the selected path still open');
   // Controlled response states test UI behavior; live transport is checked separately.
-  await evaluate(`(()=>{const original=window.fetch.bind(window);window.threadTestCalls=0;window.fetch=(input,options)=>{if(!String(input).startsWith('/api/thread-check'))return original(input,options);window.threadTestCalls++;if(window.threadTestCalls===1)return new Promise(resolve=>window.finishThreadTest=()=>resolve(Response.json({thread_id:3734,checked_at:'2026-09-05T20:00:00Z',source_time:'2026-09-05T19:59:59Z',baseline_time:'2026-09-05T18:00:00Z',comments_total:8,comments_returned:8,partial:false,text_changed:false,count_changed:false,reused:false})));return Promise.resolve(Response.json({error:'unavailable'},{status:503}));};})()`);
+  await evaluate(`(()=>{const original=window.fetch.bind(window);window.threadTestCalls=0;const data={thread_id:3734,checked_at:'2026-09-05T20:00:00Z',source_time:'2026-09-05T19:59:59Z',baseline_time:'2026-09-05T18:00:00Z',comments_total:8,comments_returned:8,partial:false,text_comparable:true,text_changed:false,count_changed:false,reused:false};window.fetch=(input,options)=>{if(!String(input).startsWith('/api/thread-check'))return original(input,options);window.threadTestCalls++;if(window.threadTestCalls===1)return new Promise(resolve=>window.finishThreadTest=()=>resolve(Response.json(data)));if(window.threadTestCalls===3)return Promise.resolve(Response.json({...data,comments_returned:3,partial:true,text_comparable:false,text_changed:null}));return Promise.resolve(Response.json({error:'unavailable'},{status:503}));};})()`);
   await enter('#thread-check-3734 > summary');
   assert.equal(await evaluate('window.threadTestCalls'),0);
   await enter('#thread-check-3734 button');
@@ -107,6 +112,12 @@ try {
   await evaluate('document.getElementById("thread-check-3734").scrollIntoView({behavior:"instant",block:"start"})');
   await capture('thread-check-failure-retains-observation.png');
   pass('Failed refresh is explicit, preserves prior observation and leaves source link usable (controlled response)');
+  await enter('#thread-check-3734 button');
+  await waitFor('document.querySelector("#thread-check-3734 [role=status]").textContent.includes("comparison is unavailable")');
+  assert.ok(!await evaluate('document.querySelector("#thread-check-3734 [role=status]").textContent.includes("conversation differs")'));
+  await evaluate('document.getElementById("thread-check-3734").scrollIntoView({behavior:"instant",block:"start"})');
+  await capture('thread-check-partial-comparison.png');
+  pass('Partial response is incomparable, not a claim of changed words (controlled response)');
   await send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
   await evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');
   await evaluate('document.getElementById("board-questions").scrollIntoView({behavior:"instant",block:"start"})');

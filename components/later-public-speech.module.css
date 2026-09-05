@@ -13,7 +13,7 @@
 .exact { white-space: pre-wrap; overflow-wrap: anywhere; max-width: 68ch; font: 1.15rem/1.7 var(--font-source-serif,Georgia),serif; }
 .links { display: flex; gap: .5rem 2rem; flex-wrap: wrap; margin: 1rem 0; }
 .later a { display: inline-block; text-decoration: underline; text-underline-offset: .25rem; padding-block: .7rem; }
-.receipt { max-width: 48rem; padding-block: 1rem; line-height: 1.55; color: var(--ink-soft); }
+.receipt { max-width: 48rem; padding-block: 1rem; line-height: 1.55; color: var(--ink-soft); overflow-wrap: anywhere; }
 .receipt summary { cursor: pointer; min-height: 44px; }
 .receipt p { margin: 1rem 0; }
 .receipt code { overflow-wrap: anywhere; }

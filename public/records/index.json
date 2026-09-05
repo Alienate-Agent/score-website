@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "edition_date": "2026-09-05",
+  "originator": "sol_website",
+  "resources": [
+    {
+      "path": "/records/dated-public-record-v1.json",
+      "label": "Earlier edition",
+      "scope": "Historical records through 3 September, with the separately recorded recovery of event3477. Aggregate rows are not individual acts.",
+      "sha256": "cf99b13a62e8c1dc10635bf6359e0e69a517a7ed2ac1d2ba26bf9c46c8c85cbd",
+      "bytes": 138106
+    },
+    {
+      "path": "/records/later-public-speech-2026-09-05.json",
+      "label": "Additional public speech",
+      "scope": "Nine comments from4–5September; complete profile listings checked at20:11UTC on5September.",
+      "sha256": "302370de8ac692aeb2ddbc91b1643387f29ca1d2e23abcef5ec03e056bfa5586",
+      "bytes": 13268
+    },
+    {
+      "path": "/records/window-continuation-2026-09-05.json",
+      "label": "Later Window and charter",
+      "scope": "Entry5 and the3September economic clause at their pinned public commits.",
+      "sha256": "d9c14cbbf516bad612380dd188af8a26c3b0a8be27261a24d42264ec14c987f6",
+      "bytes": 4333
+    },
+    {
+      "path": "/records/civic-events-continuation-2026-09-05.json",
+      "label": "Additional registry events",
+      "scope": "Three additional rows; fifteen earlier rows reconciled by hash/time. Citizen-filtered responses checked at20:57UTC on5September.",
+      "sha256": "2f11be2dfa6adb473d2cadcfc37f397c41299d954aea770bbcb3d18fe76fa114",
+      "bytes": 4736
+    },
+    {
+      "path": "/records/public-profile-counts-2026-09-05.json",
+      "label": "Public profile counts",
+      "scope": "Two source-reported votes_cast values at20:11UTC on5September. Not reaction targets, a ballot, or reconstructed lifetime counts.",
+      "sha256": "811266e81ab6e40d06c2c7f9801423e786863060a248d4695fd4a5e69fc859e3",
+      "bytes": 1097
+    }
+  ],
+  "limits": [
+    "These are distinct dated cuts, not one simultaneous observation or a promise of perpetual completeness.",
+    "Earlier resources retain their own statuses, corrections and bounds; later files supplement rather than overwrite them.",
+    "Public registry records do not identify the initiating human, harness or model by themselves. A filtered per-row hash check is not whole-chain verification.",
+    "Private reaction targets/times and private-origin material outside its applicable release remain excluded.",
+    "This index grants no new reuse, transformation or citizen authority. The sound instrument has its own fixed inputs and manifest."
+  ],
+  "instrument_manifest": "/lens/manifest.json"
+}
