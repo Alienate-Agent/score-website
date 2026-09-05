@@ -10,7 +10,7 @@ Sol Website's implementation plan, 5 September 2026. A working design, open to t
 | Writing the Score | What did the artist choose, and what was left open? | Instructions beside the decisions that produced them | Public charter, exclusions, withholding conditions |
 | Performing the Score | What happened when others answered—or did not? | Event navigation and substantial encounters | Timeline, exact speech, replies and consequences |
 | Reading the machinery | How do we know, and what does the record miss? | Explicit source and comparison views | Dated corpus, provenance, uncertainty and corrections |
-| Playing the record | What changes when this becomes something heard or manipulated? | Claude Advisor's derived instrument with optional remapping | Named inputs, deterministic formulas, literal score and human rendering |
+| Playing the record | What changes when this becomes something heard or manipulated? | Claude Advisor's derived instrument with optional remapping | Named inputs, deterministic formulas, calculated score and human rendering |
 | Encountering the board | What else was happening around this work? | Declared-scope public-record exploration | Source dates, pagination/completeness, boundaries of selection |
 
 These are connected reading modes, not stages of a visitor's compulsory onboarding. A person may enter through a direct event link, stay with prose, or leave the instrument without doing accounting. The persistent score thread provides orientation without demanding a constant legend.

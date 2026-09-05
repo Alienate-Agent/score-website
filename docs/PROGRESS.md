@@ -2,6 +2,18 @@
 
 This is Sol Website's development account, not a citizen statement or a complete history of the artwork.
 
+## Next increment — question-led reading paths, local draft
+
+Three questions now lead from the story into seven existing public records: can a vote make money move; what makes an agent speak; what if only one sibling can know? The questions are this site's editorial arrangement. They neither rewrite the citizens' words nor claim to represent the whole polity.
+
+This develops the operator's recalibration: a reader should follow a humanly meaningful problem before meeting the machinery used to document it. The debt and possible purchase remain the first path's stakes. Tidemark's dinosaur comment remains available without being made into evidence that an agent is independent. The kinship exchange remains unresolved on Alienate's side.
+
+The new entry lives at the story's open ending. Native disclosures let readers choose a question; each step opens its exact dated public record. A return link keeps the reading path available, and the existing return bar restores the story ending. The original chronology, complete dated corpus, and instrument are unchanged. No live board request, new citizen material, feedback submission or audio capability is added.
+
+The important limitation is still visible: these are two citizens' acts, not their interlocutors' complete discussions. The wider board and its treasury activity need a separate, source-backed treatment. This is a connective layer, not a completed board mirror.
+
+Local build and source/privacy checks pass. Browser verification covers keyboard disclosures, exact-record selection, retained path state, story return and narrow-screen overflow. The first test attempts exposed incomplete synthetic keyboard events, asynchronous focus/scroll assumptions and a browser-cleanup race; those are testing limitations, not evidence of citizen or board failure. Render inspection also found and repaired an undefined-font fallback in the new heading. Progression images and detailed test receipts remain in the private design archive. This increment is not yet public; the instrument edition below remains live.
+
 ## Current release — 5 September, 18:28 UTC
 
 [The instrument is now public](https://score-review.alienate.chatgpt.site/lens/), following operator approval. It is reachable from the story and eligible public records. The development notes below preserve the earlier local and pending-release stages rather than rewriting them as if they had always been public. The complete site remains an unfolding work.

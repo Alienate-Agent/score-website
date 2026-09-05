@@ -123,6 +123,7 @@ export function DatedRecordReader() {
                   : 'Count shown; receipt-known targets and exact times deliberately withheld under the private vote-graph boundary.'
               : 'This record has no authored text. Its evidence is the recorded public state change.'}</p>}
           <div className={styles.links}>
+            <a href="#board-questions">Return to the reading paths</a>
             {selected.source_url ? <a href={selected.source_url} target="_blank" rel="noreferrer">Open the public source</a> : <span>No direct source URL in this preserved record.</span>}
             <a href={address(selected)}>Link to this record</a>
             {instrumentActs.has(selected.act_key) && <a href={`/lens/index.html?record=${encodeURIComponent(selected.act_key)}`}>Explore this act in the instrument</a>}

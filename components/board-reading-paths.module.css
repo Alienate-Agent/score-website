@@ -1,0 +1,21 @@
+.paths { max-width: 80rem; margin: 4rem auto; padding: 2rem 3.5%; color: var(--ink); }
+.paths h2 { font-family: var(--font-source-serif, Georgia), serif; font-size: clamp(2.2rem, 4.8vw, 4rem); font-weight: 400; line-height: 1.06; margin: 1rem 0; scroll-margin-top: calc(var(--story-return-height, 4rem) + 1rem); }
+.intro { font-size: 1.25rem; line-height: 1.6; max-width: 48rem; }
+.scope { max-width: 48rem; line-height: 1.55; color: var(--ink-soft); margin: 1.5rem 0 2rem; }
+.questions { border-top: 1px solid var(--ink); }
+.question { border-bottom: 1px solid var(--ink); }
+.question > summary { font-size: clamp(1.3rem, 2.6vw, 2rem); cursor: pointer; padding: 1.4rem .25rem; }
+.stakes { max-width: 48rem; font: 1.2rem/1.6 var(--font-source-serif, Georgia), serif; margin: .5rem 0 2rem; }
+.question ol { list-style: none; margin: 0 0 2rem 1rem; padding: 0 0 0 1.5rem; border-left: 1px solid var(--ink-soft); }
+.question li { position: relative; padding: 0 0 2rem; max-width: 48rem; }
+.question li::before { content: ''; position: absolute; top: .45rem; left: -1.8rem; width: .5rem; height: .5rem; border: 1px solid var(--ink); background: var(--paper); border-radius: 50%; }
+.date { display: flex; align-items: center; flex-wrap: wrap; gap: .75rem 1.5rem; font-size: .85rem; }
+.date time { font-family: var(--font-ibm-plex-mono), monospace; }
+.question h3 { font-size: 1.3rem; margin: .8rem 0 .5rem; }
+.question li p { line-height: 1.65; margin: .5rem 0; }
+.paths a { display: inline-block; padding-block: .7rem; text-decoration: underline; text-underline-offset: .25em; }
+.note { margin-top: 1.5rem; max-width: 48rem; line-height: 1.6; color: var(--ink-soft); }
+.note summary { cursor: pointer; padding-block: .6rem; }
+.note p { margin: 1rem 0; }
+.paths :focus-visible { outline: 2px solid var(--ink); outline-offset: 5px; }
+@media (max-width: 600px) { .paths { padding-inline: 6%; } .question ol { margin-left: .3rem; padding-left: 1.2rem; } .question li::before { left: -1.5rem; } }

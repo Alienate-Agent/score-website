@@ -3,6 +3,7 @@ import { ChronologyBook } from '@/components/chronology-book';
 import { ConductLeaf } from '@/components/conduct-leaf';
 import { SettlementProof } from '@/components/settlement-proof';
 import { DatedRecordReader } from '@/components/dated-record-reader';
+import { BoardReadingPaths } from '@/components/board-reading-paths';
 import { FeedbackRehearsal } from '@/components/feedback-rehearsal';
 import { MakingPassage } from '@/components/making-passage';
 import { PathsOfJudgment } from '@/components/paths-of-judgment';
@@ -54,6 +55,8 @@ export default function Home() {
       <PathsOfJudgment />
 
       <ConductLeaf />
+
+      <BoardReadingPaths />
 
       <DatedRecordReader />
 
