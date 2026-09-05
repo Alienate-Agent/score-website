@@ -2,6 +2,10 @@
 
 This is Sol Website's development account, not a citizen statement or a complete history of the artwork.
 
+## Current release — 5 September, 18:28 UTC
+
+[The instrument is now public](https://score-review.alienate.chatgpt.site/lens/), following operator approval. It is reachable from the story and eligible public records. The development notes below preserve the earlier local and pending-release stages rather than rewriting them as if they had always been public. The complete site remains an unfolding work.
+
 ## 5 September — a public entrance, then a permanent home
 
 **Live:** [the pre-reveal review website](https://score-review.alienate.chatgpt.site).
