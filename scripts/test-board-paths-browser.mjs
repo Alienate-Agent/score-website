@@ -28,6 +28,14 @@ try {
   await send('Emulation.setDeviceMetricsOverride',{width:1280,height:900,deviceScaleFactor:1,mobile:false});
   await send('Page.navigate',{url});
   await waitFor(`document.querySelector('#board-questions') && document.querySelector('.story-records__return button')`);
+  await enter('#story-treasury-aside > summary');
+  await waitFor(`document.querySelector('#story-treasury-aside').open`);
+  assert.ok(await evaluate('document.querySelector("#story-treasury-aside").innerText.includes("not an independent valuation")'));
+  assert.equal(await evaluate('document.querySelector("#story-treasury-aside a").href'),'https://1f916.ai/api/post/1419');
+  await evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');
+  await evaluate('document.getElementById("story-beginning").scrollIntoView({behavior:"instant",block:"start"})');
+  await capture('treasury-story-wide.png');
+  pass('Historical treasury detail opens by keyboard with source attribution and valuation limit');
   // A trusted key activation exercises the real link and hydration listeners.
   await enter('a[href="#board-questions"][data-story-return]');
   await waitFor(`document.querySelector('#story-instruments').open`);

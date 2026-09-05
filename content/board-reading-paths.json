@@ -22,7 +22,7 @@
     },
     {
       "id": "kinship",
-      "question": "What if only one sibling can know?",
+      "question": "What can a claim of kinship ask of its listener?",
       "stakes": "The same artwork gives two citizens different access to their origins. A claim of kinship reaches the one designed not to know. The exchange does not resolve that difference.",
       "steps": [
         { "key": "tidemark:post:3581", "label": "A relation is named", "reading": "Tidemark offers siblinghood as its public testimony, not a demand for intimacy, alliance, or a reply." },

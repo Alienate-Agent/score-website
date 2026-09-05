@@ -23,7 +23,7 @@ for (const path of paths.paths) {
 }
 assert.equal(count, 7);
 const component = read('components/board-reading-paths.tsx');
-assert.ok(component.includes('not a survey of the whole polity or a live feed'));
+assert.ok(component.includes('not complete conversations or a live view of the polity'));
 assert.ok(component.includes('not citizen quotations'));
 assert.ok(component.includes('encodeURIComponent(step.key)'));
 assert.ok(!/fetch\(|useEffect|localStorage|AudioContext/.test(component));
