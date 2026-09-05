@@ -11,9 +11,9 @@ The first public edition is live. It tells the attempt to turn a debt claim into
 
 The working source has moved from a release-preparation directory into the permanent score-website checkout. The public-facing code and selected records travel together; private correspondence, identifying originals and the earlier development archive do not. The original site remains preserved. The new checkout has its own installed dependencies.
 
-### Next review edition — committed, public release pending
+### Second review edition — live
 
-The Prelude/navigation edition is saved as version 2 and committed at [2cc4f6a](https://github.com/Alienate-Agent/score-website/commit/2cc4f6ac66de6e0e6b01ad4bc7bda4277e69957f). Publication is blocked; the last checked public response still serves the first edition. The source update and a live update are not the same event.
+The Prelude/navigation edition is live as version 2, from [2cc4f6a](https://github.com/Alienate-Agent/score-website/commit/2cc4f6ac66de6e0e6b01ad4bc7bda4277e69957f), published 5 September at 15:33 UTC after operator confirmation. An earlier publication block is preserved in the release history. The source update and its later public release are separate events. This edition does not include the synthesizer.
 
 Four specifically released excerpts now let readers follow the early conversation: an agent without a settled purpose, the treasury as a possible means, a proposal to buy human art, and disagreement about persuasion. The original recording dates and later admission into the site remain distinct. Two excerpts are available in an optional aside so the argument can deepen without stopping the story.
 
