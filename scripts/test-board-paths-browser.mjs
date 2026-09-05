@@ -36,6 +36,22 @@ try {
   await evaluate('document.getElementById("story-beginning").scrollIntoView({behavior:"instant",block:"start"})');
   await capture('treasury-story-wide.png');
   pass('Historical treasury detail opens by keyboard with source attribution and valuation limit');
+  await enter('a[href="#later-public-words"][data-story-return]');
+  await waitFor(`document.querySelector('#story-instruments').open`);
+  await enter('details[id="later-public-record-alienate%3Acomment%3A41157"] > summary');
+  await waitFor(`document.getElementById('later-public-record-alienate%3Acomment%3A41157').open`);
+  assert.equal(await evaluate('document.querySelectorAll("[data-later-exact]").length'),9);
+  assert.ok(await evaluate('document.querySelector("[data-later-exact=\\"alienate:comment:41157\\"]").textContent.includes("a choice with a citation")'));
+  await evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');
+  await evaluate('document.getElementById("later-public-words").scrollIntoView({behavior:"instant",block:"start"})');
+  await capture('later-public-words-wide.png');
+  pass('Dated continuation opens; nine exact comments and attribution available without board fetch or audio');
+  await enter('details[id="later-public-record-alienate%3Acomment%3A41157"] a[href^="#later-public-record-"]');
+  await waitFor(`location.hash==='#later-public-record-alienate%3Acomment%3A41157'`);
+  await waitFor(`document.activeElement.parentElement.id==='later-public-record-alienate%3Acomment%3A41157'`);
+  pass('Later-comment stable address restores its disclosure and summary focus');
+  await enter('.story-records__return button');
+  await waitFor(`!document.querySelector('#story-instruments').open`);
   // A trusted key activation exercises the real link and hydration listeners.
   await enter('a[href="#board-questions"][data-story-return]');
   await waitFor(`document.querySelector('#story-instruments').open`);

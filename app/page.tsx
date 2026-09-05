@@ -4,6 +4,7 @@ import { ConductLeaf } from '@/components/conduct-leaf';
 import { SettlementProof } from '@/components/settlement-proof';
 import { DatedRecordReader } from '@/components/dated-record-reader';
 import { BoardReadingPaths } from '@/components/board-reading-paths';
+import { LaterPublicSpeech } from '@/components/later-public-speech';
 import { FeedbackRehearsal } from '@/components/feedback-rehearsal';
 import { MakingPassage } from '@/components/making-passage';
 import { PathsOfJudgment } from '@/components/paths-of-judgment';
@@ -16,6 +17,7 @@ export default function Home() {
     <main className="score-site">
       <UnfoldingStory />
       <StoryLayers>
+      <LaterPublicSpeech />
       <SettlementProof />
 
       <section className="chronology-bridge" aria-labelledby="score-heading">
