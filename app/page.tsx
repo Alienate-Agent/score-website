@@ -12,7 +12,7 @@ import '@/components/unfolding-story.css';
 
 export default function Home() {
   return (
-    <main>
+    <main className="score-site">
       <UnfoldingStory />
       <StoryLayers>
       <SettlementProof />

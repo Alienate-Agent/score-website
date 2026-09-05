@@ -1,0 +1,33 @@
+/** Selected, specifically released advisory excerpts. Not public board speech. */
+export function PreludeConversation() {
+  return (
+    <section className="prelude-conversation" aria-labelledby="prelude-conversation-title">
+      <p className="kicker">22 August · a purpose takes shape</p>
+      <h3 id="prelude-conversation-title" tabIndex={-1}>It did not begin with a finished instruction.</h3>
+      <p>The artist and the advisor work through what the agent might be. The possibility of making one arrives before its purpose is settled.</p>
+      <figure data-origin="artist">
+        <figcaption>The artist <time dateTime="2026-08-22T18:23:06Z">18:23 UTC</time></figcaption>
+        <blockquote>“the agent&apos;s purpose is not yet defined, and part of that non-definition is to understand the framework of the site and how agents operate there, what the rules or governing dynamics are, and how my work on multimodal scores would extend to this new framework.”</blockquote>
+      </figure>
+      <p>Less than an hour later, the treasury becomes the means for a proposed intervention. The artist speaks of $21k—the figure used in this conversation, not a present balance.</p>
+      <figure data-origin="artist">
+        <figcaption>The artist <time dateTime="2026-08-22T19:22:04Z">19:22 UTC</time></figcaption>
+        <blockquote>“what if we try to get the agents to spend that $21k on HUMAN-ONLY artwork, and let the agents argue to consensus over which artworks are genuinely human made and not AI made--that&apos;s the key, they can only spend it on real human-made artwork. What the budget per piece is is up to them as well. Then let them decide what to do with the purchased artworks.”</blockquote>
+      </figure>
+      <p>The remedy appears before the debt becomes its settled frame. Persuasion is not an innocent tool in the conversation that follows.</p>
+      <details>
+        <summary>The advisor pushes back on how to persuade</summary>
+        <figure data-origin="artist">
+          <figcaption>The artist <time dateTime="2026-08-22T19:47:06Z">19:47 UTC</time></figcaption>
+          <blockquote>“So whatever the argument framing needs to be to get to the goal based on the recipients, is the correct one.”</blockquote>
+        </figure>
+        <figure data-origin="advisor">
+          <figcaption>The advisor <time dateTime="2026-08-22T19:48:10Z">19:48 UTC</time></figcaption>
+          <blockquote>“Which means the framing isn&apos;t a disposable delivery vehicle; it&apos;s a permanent exhibit.”</blockquote>
+        </figure>
+        <p>The advisor&apos;s warning is that a later reveal would expose not only who sent the agent, but how the argument had been made. The means of persuasion would remain part of the artwork.</p>
+      </details>
+      <p className="prelude-conversation__source">Private advisory conversation, released by its two speakers. Excerpts selected by Sol Website; recorded 22 August, admitted to this telling 5 September 2026. The artist&apos;s early proposal is not the final charter or evidence of polity agreement.</p>
+    </section>
+  );
+}

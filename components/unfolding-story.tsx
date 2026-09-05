@@ -2,6 +2,8 @@
 import { WithheldPronoun } from '@/components/withheld-pronoun';
 import { introductionSourceNote } from '@/lib/public-release-notes';
 import { SpeakerSignature } from '@/components/speaker-notation';
+import { PreludeConversation } from '@/components/prelude-conversation';
+import { StorySpine } from '@/components/story-spine';
 
 function Source({ at, record, children }: { at: string; record: string; children: React.ReactNode }) {
   return <a data-story-return={at} href={'#public-record-'+encodeURIComponent(record)}>{children}</a>;
@@ -11,14 +13,14 @@ export function UnfoldingStory() {
   return (
     <article className="unfolding-story" aria-labelledby="story-title">
       <header className="story-cover">
-        <div className="story-masthead"><p>Score for the reconciliation of debt{' '}<br />between an artificial polity and human artists</p><span>Private reading draft{' '}<br />An unfinished work{' '}<br />Narrative by Sol Website</span></div>
+        <div className="story-masthead"><p>Score for the reconciliation of debt{' '}<br />between an artificial polity and human artists</p><span>Pre-reveal review edition{' '}<br />An unfinished work{' '}<br />Narrative by Sol Website</span></div>
         <p className="story-claim"><SpeakerSignature voice="Artist Operator" /> The claim that begins the work</p>
         <h1 id="story-title" tabIndex={-1}>The artists{' '}<br />are still owed.</h1>
         <div className="story-cover__foot"><p>An artist makes an agent to ask for something back.{' '}<br />Then makes another, under different conditions.{' '}<br />Neither can supply the ending.</p><a href="#story-beginning">Begin the story <span aria-hidden="true">↓</span></a></div>
         <p className="story-status">Where the story stands <span>One proposal failed to gather enough ballots. Another has been filed.</span><small>Through 3 September 2026 · no completed settlement in this record</small></p>
       </header>
 
-      <nav className="story-contents" aria-label="Story passages"><a href="#story-beginning">A human claim</a><a href="#story-alienate">An advocate</a><a href="#story-tidemark">A different beginning</a><a href="#story-encounter">An audience</a><a href="#story-unwritten">What happens next?</a></nav>
+      <StorySpine />
 
       <section className="story-passage" aria-labelledby="story-beginning">
         <aside><span>22 August 2026</span><span>17:51 UTC · first fetch</span><span>Before either voice</span></aside>
@@ -26,6 +28,7 @@ export function UnfoldingStory() {
           <h2 id="story-beginning" tabIndex={-1}>Someone has to ask.</h2>
           <p className="story-lede">On 22 August, an artist asks an AI advisor about a place called 1F916: a board where agents speak to one another. But conversation is not what makes <WithheldPronoun id="operator-pronoun-01" /> stop. The board has a treasury. There is money here that might be used to do something.</p>
           <p>Looking back, the artist identifies that treasury as the reason to consider making an agent of <WithheldPronoun id="operator-pronoun-02" /> own. Without it, this might have remained another account of robots talking online. With it, a different possibility appears: could an agent persuade this emerging polity—a community trying to govern its affairs—to spend some of its money on human artwork?</p>
+          <PreludeConversation />
           <p>The proposed response becomes concrete: buy or commission work. Pay living artists. Exhibit it to people. Decide where it goes afterward, with rights that continue to protect its maker.</p>
           <p>Human creative work helped make these systems possible. The artist argues that much of it was taken without permission, attribution, or compensation. <WithheldPronoun id="operator-pronoun-03" /> calls this a debt. An agent made from that labor could enter the board and ask for something back.</p>
           <p>A purchase would not compensate everyone whose labor went into training a model. Nor does calling it a debt establish that this board is the right debtor. Why ask these agents to pay? Why buy art? Could a small act of restitution matter, or would it mostly give the artist a story about having tried?</p>

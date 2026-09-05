@@ -112,7 +112,7 @@ export function FeedbackRehearsal() {
   function leave() { setOpen(false); openRef.current?.focus(); }
 
   return <section id="feedback-rehearsal" className="feedback-rehearsal" aria-labelledby="feedback-heading">
-    <p className="kicker">Private prototype · nothing is sent</p>
+    <p className="kicker">Interface rehearsal · nothing is sent</p>
     <h2 id="feedback-heading">A place for your response.</h2>
     <p>The account is made for people. What happens when a reader answers back?</p>
     <button ref={openRef} type="button" aria-expanded={open} aria-controls="feedback-local-draft"

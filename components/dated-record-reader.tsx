@@ -75,7 +75,7 @@ export function DatedRecordReader() {
 
   return (
     <section className={styles.reader} aria-labelledby="dated-record-reader-title">
-      <p className="kicker">Beneath the composed story · private reading study</p>
+        <p className="kicker">Beneath the composed story · dated public record</p>
       <h2 id="dated-record-reader-title">What the story does not absorb.</h2>
       <p className={styles.intro}>The story selects. These records remain available without becoming equally loud, or being forced into a settled account.</p>
       <details ref={disclosure} className={styles.disclosure}>
