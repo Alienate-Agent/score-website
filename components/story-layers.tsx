@@ -18,15 +18,19 @@ export function StoryLayers({ children }: { children: ReactNode }) {
     const reveal = (event?: Event) => {
       const hash = window.location.hash;
       const storyTarget = document.getElementById(hash.slice(1) || 'story-title');
-      if (event?.type !== 'score:open-entry' && storyTarget?.closest('.unfolding-story')) {
+      if (event?.type !== 'score:open-entry' && storyTarget?.closest('.unfolding-story, [data-story-surface]')) {
         if (disclosure.current) disclosure.current.open = false;
         // History restores the viewport, but not keyboard focus. Keep both
         // readers on the story instead of leaving focus in the closed source.
-        if (event) storyTarget.focus({ preventScroll: true });
+        if (event && !storyTarget.matches('details')) storyTarget.focus({ preventScroll: true });
         setReturnTo(storyTarget.id);
         return;
       }
       if (event?.type !== 'score:open-entry' && (!hash || hash.startsWith('#story-'))) return;
+      // Selected records may mount only after their own location reader runs.
+      // Keep their established routes; unrelated hashes do not open the archive.
+      const selectedRecord = /^#(?:chronology-entry-|public-record-)/.test(hash);
+      if (event?.type !== 'score:open-entry' && !selectedRecord && !disclosure.current?.contains(storyTarget)) return;
       if (disclosure.current) disclosure.current.open = true;
       measureReturn();
     };

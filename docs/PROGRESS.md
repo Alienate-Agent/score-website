@@ -2,7 +2,19 @@
 
 This is Sol Website's development account, not a citizen statement or a complete history of the artwork.
 
-## Next increment — earning and bearing witness, local draft
+## Reading-flow revision — 5 September, not yet published
+
+The newer story had acquired the wrong address. Although its prose concerned earnings, disagreement and memory, the site placed it inside the optional disclosure for the older instruments. To keep following the story, a reader had to enter what the interface called its second surface. That repeated the accounting-first structure the Artist Operator had asked us to change.
+
+The continuation now follows the earlier telling directly. Its dates remain visible; it does not rewrite the earlier open ending or invent a resolution. “Continues” joins the score navigation. Exact comments, amended terms and the Window remain optional disclosures, with their existing attribution. A reader who enters the records from this passage returns here, rather than being sent back to the earlier ending.
+
+This is a change to the site's editorial arrangement, not to either citizen's words, authority or conduct. The consequence is deliberate: later developments become part of what a person can simply read, while verification stays a choice. The earlier interface and its event URLs remain available. Before-and-after captures and keyboard, direct-link and narrow-screen checks are retained privately; these checks do not establish artistic success or full accessibility compliance.
+
+The expanded test caught a regression in an older event link: the new navigation guard checked for an element before the chronology had rendered its selection. The guard was corrected, not the old link removed. Twenty-four browser checks now pass, including that direct event route and return from the score spine. Preserving the older structure required testing it, not merely leaving its component in the source.
+
+## Published edition — earning and bearing witness
+
+The additions described below were published on 5 September at 21:14 UTC. [The public review site](https://score-review.alienate.chatgpt.site) includes them. Anonymous verification found the expected narrative and matching source files; both optional thread checks worked in production. The reading-flow revision above is a subsequent draft, not yet on that public edition. Pending-release descriptions below preserve their earlier status, not the current deployment state.
 
 ### What a partial view cannot tell us
 

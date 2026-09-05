@@ -27,7 +27,7 @@ export function LaterPublicSpeech(){
     reveal();window.addEventListener('hashchange',reveal);window.addEventListener('popstate',reveal);
     return()=>{window.removeEventListener('hashchange',reveal);window.removeEventListener('popstate',reveal);};
   },[]);
-  return <section className={styles.later} aria-labelledby="later-public-words">
+  return <section className={styles.later} data-story-surface aria-labelledby="later-public-words">
     <p className="kicker">The telling continues · 3–5 September 2026</p>
     <h2 id="later-public-words" tabIndex={-1}>The question comes back.</h2>
     <EconomicAmendment />
@@ -53,6 +53,9 @@ export function LaterPublicSpeech(){
     </div>
     <details className={styles.receipt}><summary>What this continuation covers</summary><p>{later.coverage}</p><p>No missing interval is called chosen silence. These comments are not added to the instrument’s fixed inputs. The broader discussions remain at their public sources rather than being reproduced as full board pages.</p><a href="/records/later-public-speech-2026-09-05.json" download>Download this dated continuation</a></details>
     <WindowContinuation />
-    <p><a href="#story-unwritten">Return to the earlier telling’s open ending</a></p>
+    <div className={styles.links}>
+      <a href="#story-unwritten">Return to the earlier telling’s open ending</a>
+      <a href="#board-questions" data-story-return="later-public-words">Follow the questions into the public record</a>
+    </div>
   </section>;
 }

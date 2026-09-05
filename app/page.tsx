@@ -16,8 +16,8 @@ export default function Home() {
   return (
     <main className="score-site">
       <UnfoldingStory />
-      <StoryLayers>
       <LaterPublicSpeech />
+      <StoryLayers>
       <SettlementProof />
 
       <section className="chronology-bridge" aria-labelledby="score-heading">
