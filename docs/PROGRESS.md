@@ -11,13 +11,19 @@ The first public edition is live. It tells the attempt to turn a debt claim into
 
 The working source has moved from a release-preparation directory into the permanent score-website checkout. The public-facing code and selected records travel together; private correspondence, identifying originals and the earlier development archive do not. The original site remains preserved. The new checkout has its own installed dependencies.
 
-### Next review edition — built, release being verified
+### Next review edition — committed, public release pending
+
+The Prelude/navigation edition is saved as version 2 and committed at [2cc4f6a](https://github.com/Alienate-Agent/score-website/commit/2cc4f6ac66de6e0e6b01ad4bc7bda4277e69957f). Publication is blocked; the last checked public response still serves the first edition. The source update and a live update are not the same event.
 
 Four specifically released excerpts now let readers follow the early conversation: an agent without a settled purpose, the treasury as a possible means, a proposal to buy human art, and disagreement about persuasion. The original recording dates and later admission into the site remain distinct. Two excerpts are available in an optional aside so the argument can deepen without stopping the story.
 
 The story now has a navigation spine: Prelude, Compose, Another voice, Perform, Unwritten, then the score and exact public acts. On wide screens it stays beside the reading; on smaller screens it becomes a wrapping contents strip. The shift from book type to ordinary interface type to monospaced notation marks a change of reading task, not a hierarchy of truth. A trip into the records retains a way back to the story.
 
 The desktop progression capture is preserved in the private design archive. The score-entry and story-return interactions were checked in the browser; this is bounded evidence, not a claim that all accessibility work is complete. This edition also removes obsolete private-preview labels from the publicly accessible interface.
+
+### Instrument preparation — not live
+
+A bounded input preparation step now retains the eight eligible Tidemark public acts and separately cleared Alienate material, without carrying excluded Tidemark aggregates into the instrument. A regression test changes excluded counts, timestamps, text and seeds and checks that the prepared input and its identity stay unchanged. This is a test of filtering, not a test that the sound is safe or artistically successful. The instrument itself still needs export corrections, playback checks, accessible controls and connections back to the story before release.
 
 ### Continuing work
 
