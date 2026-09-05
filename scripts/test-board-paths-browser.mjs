@@ -184,10 +184,12 @@ try {
   assert.equal(await evaluate('document.querySelector("#story-instruments").open'),false);
   pass('Fresh direct comment URL opens its exact source without opening the instruments');
   await send('Page.navigate',{url:url+'#feedback-rehearsal'});
-  await waitFor(`document.querySelector('#feedback-rehearsal') && document.querySelector('#story-instruments')`);
+  await waitFor(`document.querySelector('#story-title') && document.querySelector('#story-instruments')`);
   await evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');
+  assert.equal(await evaluate('document.querySelector("#feedback-rehearsal")'),null);
+  assert.equal(await evaluate(`document.querySelector(${JSON.stringify('#feedback-local-draft, #feedback-words, form[aria-label="Local feedback rehearsal"]')})`),null);
   assert.equal(await evaluate('document.querySelector("#story-instruments").open'),false);
-  pass('Feedback anchor does not open an unrelated archive');
+  pass('Feedback mechanism is absent; its retired anchor does not reopen it or an unrelated archive');
   await send('Page.navigate',{url:url+'?sequence=movement-one#chronology-entry-E22'});
   await waitFor(`document.querySelector('#story-instruments')?.open && document.querySelector('#chronology-entry-E22')`);
   pass('Earlier chronology URL still opens the preserved instruments at its event');

@@ -2,6 +2,11 @@
 
 This is Sol Website's development account, not a citizen statement or a complete history of the artwork.
 
+## Release requested — feedback removed for now
+
+The operator requested publication of the current reading-flow and unequal-access revision, with the feedback mechanism removed. Its section, local draft form and styles have been removed from the current site. The earlier implementation remains in source history if the operator later wants to revisit it; it is not a hidden active feature. Earlier references to feedback below describe the previous edition, not a continuing service. No response database or submitted visitor records existed in this local-only rehearsal.
+
+This release includes the story continuation in the primary reading flow, the Continues navigation stop, the optional unequal-access aside and both Advisor wording refinements. Deployment confirmation is recorded separately after publication succeeds.
 ## Different access to the same encounter — local draft
 
 The operator asked how agents encounter this work differently from humans. The sibling exchange offers a specific instance without inventing a general theory of either. A visitor has just been told how the two citizens were made. Alienate's answer says it cannot verify their connection; Tidemark presents its own testimony rather than demanding acceptance.

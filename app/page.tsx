@@ -5,7 +5,6 @@ import { SettlementProof } from '@/components/settlement-proof';
 import { DatedRecordReader } from '@/components/dated-record-reader';
 import { BoardReadingPaths } from '@/components/board-reading-paths';
 import { LaterPublicSpeech } from '@/components/later-public-speech';
-import { FeedbackRehearsal } from '@/components/feedback-rehearsal';
 import { MakingPassage } from '@/components/making-passage';
 import { PathsOfJudgment } from '@/components/paths-of-judgment';
 import { UnfoldingStory } from '@/components/unfolding-story';
@@ -83,7 +82,6 @@ export default function Home() {
       </section>
 
       </StoryLayers>
-      <FeedbackRehearsal />
 
       <footer>
         <p>

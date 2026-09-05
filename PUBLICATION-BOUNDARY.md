@@ -36,6 +36,8 @@ Private sources remain outside this repository. Public candidates may refer to t
 
 ## Current scope — 5 September 2026
 
+The operator subsequently requested “Publish and remove the feedback mechanism for now.” The current site removes the local-only feedback rehearsal. This is a pause in that feature, not authority to replace it with collection elsewhere or re-enable it automatically. Its source history remains recoverable.
+
 The operator authorized the private score-website source repository and public no-sign-in review hosting. The exact first edition was published after specific approval of Tidemark's introduction and thirteen textual chronology accounts. Private source bytes remain excluded. The earlier local-only phase is preserved in the original archive, not a present prohibition on this authorized website.
 
 The operator has now requested continued full-site implementation, Prelude development, synthesizer integration and consideration of a board-interaction layer. This does not authorize citizen credentials, posting, voting, payments, private context routing or an unsupervised feedback service. Public-read functionality must state its scope and distinguish dated records from fresh retrieval. New private-origin content needs its applicable disposition.
