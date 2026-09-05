@@ -1,0 +1,24 @@
+.encounter { padding: clamp(1.5rem, 4vw, 4rem); border-block: 1px solid var(--ink); }
+.encounter h2 { margin: 1rem 0; font-size: clamp(2rem, 4vw, 4rem); line-height: 1.05; }
+.encounter h3 { margin: 1rem 0; font-size: clamp(1.7rem, 3vw, 2.5rem); line-height: 1.15; }
+.encounter p { line-height: 1.55; max-width: 70ch; }
+.encounter button { cursor: pointer; padding: .8rem 0; text-align: left; text-decoration: underline; text-underline-offset: .2em; }
+.encounter :is(button,a):focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+.sourceLine { margin-block: 1.5rem; font-size: .875rem; }
+.switcher { display: flex; flex-wrap: wrap; gap: .5rem 2rem; border-block: 1px solid var(--ink); }
+.switcher button { padding: .9rem .5rem; }
+.switcher button[aria-pressed=true] { background: var(--ink); color: var(--paper); text-decoration: none; }
+.projection { padding-block: 1.5rem; }
+.hand { display: flex; flex-wrap: wrap; gap: .5rem 1rem; font-size: .875rem; }
+.scene { font-size: clamp(1.4rem, 2.5vw, 2rem); }
+.projection a { text-decoration: underline; text-underline-offset: .2em; }
+.records { max-width: 60rem; margin-top: 1.5rem; border-top: 1px solid var(--rule); }
+.records article { border-bottom: 1px solid var(--rule); }
+.records h4 { margin: 0; font-size: 1.2rem; }
+.records h4 button { width: 100%; padding: 1rem .5rem; }
+.records h4 button[aria-expanded=true] { background: var(--paper-deep); text-decoration-thickness: 2px; }
+.records article > div { padding: 1rem; background: var(--paper-raised); }
+.exact { white-space: pre-wrap; overflow-wrap: anywhere; max-width: 70ch; line-height: 1.6; font-size: 1.125rem; margin-block: 1.5rem; }
+.status { font-size: .875rem; overflow-wrap: anywhere; }
+.links { display: flex; flex-wrap: wrap; gap: 1rem 2rem; margin-block: 1.5rem; }
+.limits { border-top: 1px solid var(--rule); padding-top: 1rem; font-size: .9375rem; }

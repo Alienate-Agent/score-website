@@ -1,0 +1,436 @@
+.leaf {
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.leafHeader {
+  display: grid;
+  grid-template-columns: minmax(8rem, 0.38fr) minmax(0, 1.62fr);
+  border-bottom: 1px solid var(--ink);
+}
+
+.leafHeader > * {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.folio,
+.voice,
+.countLine,
+.measureHeader,
+.comment header,
+.comment summary,
+.fullComment footer,
+.reaction,
+.interruption,
+.sealCheck,
+.refusals,
+.leafFooter {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+.folio {
+  display: flex;
+  min-height: 14rem;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid var(--ink);
+  padding: clamp(1rem, 2vw, 2rem);
+  text-transform: uppercase;
+}
+
+.folio p,
+.folio time {
+  margin: 0;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.5;
+}
+
+.folio time {
+  color: var(--reveal);
+}
+
+.titleBlock {
+  padding: clamp(2rem, 5vw, 5rem);
+}
+
+.voice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.titleBlock h2 {
+  max-width: 11ch;
+  margin: clamp(2rem, 5vh, 4rem) 0 0;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-size: clamp(3.6rem, 7.5vw, 8.5rem);
+  font-weight: 850;
+  letter-spacing: -0.07em;
+  line-height: 0.82;
+  text-transform: uppercase;
+}
+
+.introduction {
+  max-width: 52rem;
+  margin: clamp(2rem, 4vh, 3.5rem) 0 0 auto;
+  font-size: clamp(1.15rem, 1.7vw, 1.75rem);
+  line-height: 1.4;
+}
+
+.countLine {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--ink);
+}
+
+.countLine div {
+  display: flex;
+  min-width: 0;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  border-right: 1px solid var(--ink);
+  padding: 0.85rem clamp(0.8rem, 1.4vw, 1.4rem);
+}
+
+.countLine div:last-child {
+  border-right: 0;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.countLine dt,
+.countLine dd {
+  margin: 0;
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.countLine dd {
+  font-size: 1.25rem;
+  font-weight: 850;
+}
+
+.measures {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.measure {
+  min-width: 0;
+}
+
+.measure + .measure {
+  border-left: 1px solid var(--ink);
+}
+
+.lost {
+  background: var(--paper-deep);
+}
+
+.returned {
+  background: var(--paper-raised);
+}
+
+.measureHeader {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  border-bottom: 1px solid var(--ink);
+  padding: clamp(1rem, 2vw, 2rem);
+}
+
+.measureHeader > p {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin: 0;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.measureHeader > p span {
+  color: var(--reveal);
+  font-weight: 800;
+}
+
+.measureHeader > strong {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: start;
+  margin-top: clamp(2rem, 4vh, 3rem);
+  font-size: clamp(2.25rem, 4vw, 4.5rem);
+  font-weight: 850;
+  letter-spacing: -0.08em;
+  line-height: 0.75;
+}
+
+.measureHeader > div {
+  grid-column: 1;
+  grid-row: 2;
+  margin-top: clamp(2rem, 4vh, 3rem);
+}
+
+.measureHeader > p {
+  grid-column: 1 / -1;
+}
+
+.measureHeader h3 {
+  max-width: 13ch;
+  margin: 0;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-size: clamp(2rem, 3.5vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 0.92;
+}
+
+.measureHeader > div p {
+  margin: 1rem 0 0;
+  font-family: var(--font-human);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.speechList {
+  display: grid;
+}
+
+.comment {
+  border-bottom: 1px solid var(--ink);
+}
+
+.comment header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px dotted var(--rule);
+  padding: 0.8rem clamp(1rem, 2vw, 2rem);
+  color: var(--ink-soft);
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.comment blockquote {
+  margin: 0;
+  padding: 0.45rem clamp(1rem, 2vw, 2rem) clamp(1.5rem, 3vw, 3rem);
+  font-size: clamp(1.25rem, 2vw, 2rem);
+  line-height: 1.2;
+}
+
+.calloutLabel {
+  margin: 0;
+  padding: clamp(1.25rem, 2.4vw, 2.4rem) clamp(1rem, 2vw, 2rem) 0;
+  color: var(--ink-soft);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.6875rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.comment details {
+  border-top: 1px dotted var(--rule);
+}
+
+.comment summary {
+  padding: 0.9rem clamp(1rem, 2vw, 2rem);
+  font-size: 0.6875rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.fullComment {
+  border-top: 1px solid var(--ink);
+  padding: clamp(1rem, 2vw, 2rem);
+  background: var(--paper);
+}
+
+.fullComment p {
+  max-width: 43rem;
+  margin: 0 0 1em;
+  font-size: 0.97rem;
+  line-height: 1.55;
+}
+
+.fullComment footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.7rem;
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  padding-top: 0.8rem;
+  color: var(--ink-soft);
+  font-size: 0.55rem;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.fullComment a {
+  color: currentColor;
+  text-underline-offset: 0.2rem;
+}
+
+.reaction,
+.interruption,
+.sealCheck,
+.refusals {
+  border-bottom: 1px solid var(--ink);
+  padding: clamp(1rem, 2vw, 2rem);
+}
+
+.reaction > span,
+.interruption > span,
+.sealCheck > span,
+.refusals > span {
+  display: block;
+  color: var(--reveal);
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.reaction > strong,
+.sealCheck > strong {
+  display: block;
+  margin-top: 1.5rem;
+  font-family: var(--font-human);
+  font-size: clamp(1.25rem, 2vw, 2rem);
+  line-height: 1.2;
+}
+
+.reaction p,
+.interruption p {
+  max-width: 39rem;
+  margin: 1rem 0 0;
+  font-family: var(--font-human);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.interruption {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.interruption time,
+.sealCheck time {
+  display: block;
+  margin-top: 0.6rem;
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+}
+
+.refusals ol {
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.refusals li {
+  display: grid;
+  grid-template-columns: minmax(5rem, 0.65fr) minmax(0, 1fr) auto;
+  gap: 0.8rem;
+  border-top: 1px dotted var(--rule);
+  padding: 0.65rem 0;
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.leafFooter {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--ink);
+}
+
+.leafFooter p {
+  margin: 0;
+  padding: 1rem clamp(1rem, 2vw, 2rem);
+  font-size: 0.62rem;
+  letter-spacing: 0.05em;
+  line-height: 1.55;
+  text-transform: uppercase;
+}
+
+.leafFooter p + p {
+  border-left: 1px solid var(--ink);
+}
+
+@media (max-width: 800px) {
+  .leafHeader,
+  .measures,
+  .leafFooter {
+    grid-template-columns: 1fr;
+  }
+
+  .folio {
+    min-height: auto;
+    flex-direction: row;
+    border-right: 0;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .titleBlock {
+    padding: 2rem 1rem;
+  }
+
+  .titleBlock h2 {
+    font-size: clamp(3.25rem, 16vw, 5rem);
+  }
+
+  .introduction {
+    margin-left: 0;
+  }
+
+  .countLine {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .countLine div:nth-child(2) {
+    border-right: 0;
+  }
+
+  .countLine div:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .measure + .measure {
+    border-top: 1px solid var(--ink);
+    border-left: 0;
+  }
+
+  .leafFooter p + p {
+    border-top: 1px solid var(--ink);
+    border-left: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .comment details {
+    scroll-behavior: auto;
+  }
+}
