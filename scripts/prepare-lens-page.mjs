@@ -39,6 +39,22 @@ const intro = `<nav class="site-return"><a href="/#story-unwritten">← Return t
 once('<body> <main>', '<body> <main>' + intro);
 once('</style>', `.lens-intro{max-width:78ch;margin:2rem auto 3rem;font:1rem/1.65 system-ui,sans-serif}.lens-intro h1{font:normal clamp(2rem,5vw,4rem)/1.05 Georgia,serif}.lens-intro p{margin:1rem 0}.lens-intro summary{cursor:pointer}.site-return{display:flex;flex-wrap:wrap;gap:1rem;font:1rem/1.5 system-ui,sans-serif}.site-return a,.lens-intro a{color:inherit;text-decoration:underline}#inspect-record{max-width:100%;font-size:1rem}#level-note{margin-left:1rem}.transport{position:sticky;top:0;z-index:20;background:#e9e3d6;padding:.75rem}.transport button{min-height:44px}.k{font-size:max(.75rem,12px)}a:focus-visible,button:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:3px solid #b8321c;outline-offset:3px}@media(max-width:650px){main{padding:16px}.transport{flex-wrap:wrap}.lens-intro{margin-top:1rem}.ctl{overflow-wrap:anywhere}}\n</style>`);
 once('../lib/lens-synth.js', './lens-synth.js');
+once('<title>E17 · The instrument’s face</title>', '<title>The instrument — Score</title>');
+once('</style>', '#strip,#facestrip{overflow:hidden}\n</style>');
+once('<p>Playback adaptation by Sol Website.', '<details><summary>Whose choices am I hearing?</summary><p>Playback adaptation by Sol Website.');
+once('<details><summary>Inputs, limits and this edition</summary>', '');
+once('</style>', `.site-return{padding:1rem}.lens-intro{margin:1rem auto 1.5rem;padding:0 1rem}.lens-intro h1{white-space:normal;font-size:clamp(2rem,3.8vw,3rem);margin:0}.lens-intro p{margin:.65rem 0}.lens-intro details{margin:.75rem 0}.stage-scroll{overflow-x:auto}.transport{scroll-margin-top:1rem}#face h1{white-space:normal}#face .val,#face .ctlbox>.k,details.drawer summary,details.notes summary{font-size:14px}#face .val{line-height:1.45}.sw{min-height:28px}.sw:focus-visible{outline:3px solid var(--red);outline-offset:4px}details.notes{position:static;margin:1rem auto;max-width:76ch;padding:1rem;font-size:1rem}.lens-intro label{display:inline-block}.stage-scroll:focus-visible{outline:3px solid var(--red)}@media(max-width:650px){#stage{min-width:680px}.site-return{padding:0 0 1rem}.lens-intro{padding:0}.transport #facestrip{min-width:100%;}.transport button{font-size:14px}.lens-intro select{width:100%}}
+</style>`);
+// Bring playback before the stage without substituting another visual instrument.
+const stageStart=html.indexOf(' <svg id="stage"');
+const stageEnd=html.indexOf('</svg>',stageStart)+6;
+const stageMarkup=html.slice(stageStart,stageEnd);
+if(stageStart<0||stageEnd<6)throw Error('Stage boundary absent');
+html=html.slice(0,stageStart)+html.slice(stageEnd);
+const transportStart=html.indexOf('<div class="transport">');
+const transportEnd=html.indexOf('</div></div></div>',transportStart)+18;
+if(transportStart<0||transportEnd<18)throw Error('Transport boundary absent');
+html=html.slice(0,transportEnd)+'<div class="stage-scroll" tabindex="0" aria-label="Instrument stage; scroll sideways on narrow screens">'+stageMarkup+'</div>'+html.slice(transportEnd);
 once('const HEAR=[20,20000]', `let readyCount=0, listeningLevel=0.08, listeningGain=null;
 const ready=()=>{readyCount++; if(readyCount===2){document.getElementById('load-status').textContent='Fixed inputs ready. Nothing plays until you choose Play.';document.querySelectorAll('#play,#fplay,#dl').forEach(b=>b.disabled=false);}};
 const failed=()=>{document.getElementById('load-status').textContent='A fixed input file did not load. Playback is unavailable; this is not silence chosen by a citizen. Reload to try loading the files again.';};
@@ -74,6 +90,9 @@ once('<option value="hour">one note per hour', '<option value="hour" selected>on
 once('function play(from){stop();', "function play(from){if(readyCount!==2){failed();return;}stop();");
 once('limiter.connect(A.out); A.out.connect(ctx.destination);', `const clip=ctx.createWaveShaper();clip.curve=new Float32Array([-1,1]);limiter.connect(clip);clip.connect(A.out);listeningGain=ctx.createGain();listeningGain.gain.value=listeningLevel;A.out.connect(listeningGain);listeningGain.connect(ctx.destination);`);
 once('function stop(){if(sched)', 'function stop(){listeningGain=null;if(sched)');
+once('let ctx=null,raf=null,sched=null,startAt=0,offset=0,A={};', 'let ctx=null,raf=null,sched=null,endTimer=null,startAt=0,offset=0,A={};');
+once('function stop(){listeningGain=null;', 'function stop(){if(endTimer){clearTimeout(endTimer);endTimer=null;}listeningGain=null;');
+once('setTimeout(stop,3000);', 'endTimer=setTimeout(stop,3000);');
 html = html.replaceAll('f:n.hf,t:at', 'f:playbackHz(n.hf),t:at').replaceAll('glideTo:n.hglide||null', 'glideTo:n.hglide?playbackHz(n.hglide):null')
   .replaceAll('f:b.hf,t:', 'f:playbackHz(b.hf),t:').replaceAll('f:b.f,t:', 'f:playbackHz(b.f),t:')
   .replaceAll('x.firstId,x.centre,', 'x.firstId,playbackHz(x.centre),');
@@ -92,6 +111,12 @@ inspector.addEventListener('change',inspect);
 const requested=new URLSearchParams(location.search).get('record');if(requested){if(dated.some(r=>r.key===requested)){inspector.value=requested;inspect();}else document.getElementById('load-status').textContent='That act is not included in this dated instrument.';}
 window.E14={scoreDocument,get selectedStart(){return selectedStart;},get OPT()`);
 once("$('#fplay').onclick=()=>E.play(0)", "$('#fplay').onclick=()=>E.play(E.selectedStart)");
+once('get selectedStart(){return selectedStart;}', "get selectedStart(){return REC.find(rc=>rc.r.key===inspector.value)?.at??0;},get playing(){return !!ctx&&ctx.state==='running';}");
+once("const fk=document.activeElement?.dataset?.k;", "const fk=document.activeElement?.dataset?.k, fw=document.activeElement?.dataset?.w;");
+once("if(fk){const el=document.querySelector(`.knob[data-k=${fk}]`); el?.focus(); $('#sr-live').textContent=el?.getAttribute('aria-valuetext')||'';}", "if(fk||fw){const el=document.querySelector(fk?`.knob[data-k=${fk}]`:`.sw[data-w=${fw}]`);el?.focus();$('#sr-live').textContent=el?.getAttribute('aria-valuetext')||((el?.getAttribute('aria-label')||'')+': '+(el?.getAttribute('aria-checked')==='true'?'on':'off'));}");
+once('role="switch" aria-checked="${O[w.id]===w.on}"', 'role="switch" aria-label="${w.title}" aria-checked="${O[w.id]===w.on}"');
+once("$('#facehead').style.left=(t/T*100)+'%';", "if(E.playing){$('#facehead').style.left=(t/T*100)+'%';$('#facestrip').setAttribute('aria-valuenow',Math.min(100,Math.max(0,t/T*100)).toFixed(1));}");
+once("e.currentTarget.setAttribute('aria-valuenow',seekPct);", "E.stop();e.currentTarget.setAttribute('aria-valuenow',seekPct);");
 // No archival claim of non-authorship is silently carried into this edition.
 const notesStart = html.indexOf('<p><b>Two versions, one score.</b>');
 const notesEnd = html.indexOf('</p>', notesStart);
@@ -120,7 +145,7 @@ const files={'index.html':html,'lens-synth.js':lib,'source-inputs.json':JSON.str
 for(const [name,bytes]of Object.entries(files))fs.writeFileSync(path.join(out,name),bytes);
 const receipt={derivative:'score-lens-playback-v1',mapping_lineage:lineage,accessibility_package:packageHash,input_sha256:data.provenance.input_sha256,
  controls:['mapping pitch/sentence pitch/duration/gain/pan','pitch/time windows','temper','role registers','scale','grid','dynamics','provenance seating','bass per-post/per-hour','comment percussion','chord voicing','tonic','quantization','seat register and stereo position','inspection','play/stop/seek','listening level'],
- changes:['Eligible inputs only, prepared before computation','Authored mapping and actual generator in score export','Comments included in calculated export','Exports bind mapping and listening settings','No automatic playback; explicit stop and Escape/page-hide stop','60–4000 Hz initial and final output-frequency folding','Digital clamp and listening-level control after compressor','Delay node supports declared echo duration','Shorter scheduling horizon; per-hour bass initially','Keyboard UI from package c','Source inspection and story returns'],
+ changes:['Eligible inputs only, prepared before computation','Authored mapping and actual generator in score export','Comments included in calculated export','Exports bind mapping and listening settings','No automatic playback; explicit stop and Escape/page-hide stop','60–4000 Hz initial and final output-frequency folding','Digital clamp and listening-level control after compressor','Delay node supports declared echo duration','Shorter scheduling horizon; per-hour bass initially','Keyboard UI from package c; named switches retain focus','Keyboard seek indicator persists while stopped','Selected-act start follows current time mapping','Cancelled old end timer cannot stop a new performance','Source inspection and story returns','Responsive heading and scrollable stage; playback before stage; attribution details one gesture away'],
  files:Object.entries(files).map(([name,bytes])=>({path:name,sha256:hash(bytes),bytes:Buffer.byteLength(bytes)}))};
 fs.writeFileSync(path.join(out,'manifest.json'),JSON.stringify(receipt,null,2)+'\n');
 console.log({files:receipt.files.length,rows:data.records.length,inputHash:data.provenance.input_sha256});

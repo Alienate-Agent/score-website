@@ -33,6 +33,14 @@ Two concrete playback defects were corrected: the conservative pitch setting was
 
 The production build, privacy scans, source-body comparisons and engine tests pass. The engine tests execute its calculation and scheduling code with audio/DOM doubles; they do not establish actual browser acoustics, keyboard usability or artistic success. The local instrument route responds successfully. Its browser preview handoff is queued while the task is in the background; no new instrument screenshot or interactive browser test is claimed. Public deployment has not happened.
 
+### Browser review — repairs and a release candidate
+
+The next pass used a separate, muted browser—not the operator's signed-in browser or desktop speakers. It caught a keyboard switch that worked but lost focus, a clipped narrow-screen headline, and a playback cursor whose visual preview was overwritten while stopped. These were repaired. A selected act's start now follows changes to the time mapping, and an old performance's delayed ending cannot cut off a newly started one.
+
+The instrument's Play/Stop controls now come before its stage. On a narrow screen the stage can be explored sideways without shrinking its notation to illegibility or widening the entire page. Attribution and the distinction between source, mapping and listener remain available; extended framing folds behind “Whose choices am I hearing?” The mechanism is accessible because someone wants to try it, not because someone has first finished reading its conditions.
+
+Fifteen bounded browser checks now pass, including keyboard changes, source return, real audio-context start/stop and a deliberately missing input that disables playback rather than masquerading as citizen silence. Wide and narrow before-and-after captures are preserved privately. The browser was muted: this is interaction evidence, not a listening judgment or an all-device accessibility certificate. The tested addition is a release candidate; public confirmation is pending and the live site remains the Prelude edition.
+
 ### Continuing work
 
 - Further Prelude development as additional evidence or operator edits arrive.

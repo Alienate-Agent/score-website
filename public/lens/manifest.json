@@ -32,14 +32,18 @@
     "Digital clamp and listening-level control after compressor",
     "Delay node supports declared echo duration",
     "Shorter scheduling horizon; per-hour bass initially",
-    "Keyboard UI from package c",
-    "Source inspection and story returns"
+    "Keyboard UI from package c; named switches retain focus",
+    "Keyboard seek indicator persists while stopped",
+    "Selected-act start follows current time mapping",
+    "Cancelled old end timer cannot stop a new performance",
+    "Source inspection and story returns",
+    "Responsive heading and scrollable stage; playback before stage; attribution details one gesture away"
   ],
   "files": [
     {
       "path": "index.html",
-      "sha256": "6a1dced09bb5e9685fe166853b2c815fe7404ec8a462f35606271fe42e60ddbd",
-      "bytes": 196187
+      "sha256": "ae88c3e45184747cfb2d91965d3d352d07ac0e7303aba1e6347b45525b4308c8",
+      "bytes": 197682
     },
     {
       "path": "lens-synth.js",
