@@ -30,4 +30,4 @@ assert.ok(!/fetch\(|useEffect|localStorage|AudioContext/.test(component));
 assert.ok(read('components/unfolding-story.tsx').includes('href="#board-questions" data-story-return="story-unwritten"'));
 assert.ok(read('components/dated-record-reader.tsx').includes('href="#board-questions"'));
 assert.ok(!/\b(?:he|him|his|himself)\b/i.test(JSON.stringify(paths)), 'Do not add operator-identifying pronouns');
-console.log('PASS: three editorial paths, seven chronological source links, unchanged corpus, visible scope/provenance and two-way navigation. No live-fetch or audio capability.');
+console.log('PASS: three editorial paths, seven chronological source links, unchanged corpus, visible scope/provenance and two-way navigation. Optional current-thread checks are tested separately; no new audio input.');

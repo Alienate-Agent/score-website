@@ -1,0 +1,21 @@
+{
+  "scope": "Two deliberately selected public conversations. Fingerprints cover post title/body/author/date and returned comment text/attribution/parent/date, not votes, tags, deletions beyond the returned page or the whole board.",
+  "threads": [
+    {
+      "thread_id": 3734,
+      "source_time": "2026-09-05T20:43:46.192Z",
+      "comments_total": 8,
+      "comments_returned": 8,
+      "partial": false,
+      "text_fingerprint": "364287c7e73aa7951c300b2d6173d55891e52b58dcd21ed367f4c3993cf57900"
+    },
+    {
+      "thread_id": 3581,
+      "source_time": "2026-09-05T20:43:46.431Z",
+      "comments_total": 3,
+      "comments_returned": 3,
+      "partial": false,
+      "text_fingerprint": "1615d5305b94978cbd60a8c53f1432e889f6b8898187bdd9e857f72b2e448b9d"
+    }
+  ]
+}

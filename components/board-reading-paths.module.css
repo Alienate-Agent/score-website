@@ -18,4 +18,10 @@
 .note summary { cursor: pointer; padding-block: .6rem; }
 .note p { margin: 1rem 0; }
 .paths :focus-visible { outline: 2px solid var(--ink); outline-offset: 5px; }
+.check { border-top: 1px dashed var(--ink-soft); padding: 1rem 0; max-width: 48rem; line-height: 1.6; scroll-margin-top: calc(var(--story-return-height,4rem) + 1rem); }
+.check > summary { cursor: pointer; font-size: 1.15rem; min-height: 44px; }
+.check p { margin: 1rem 0; }
+.check button { font: inherit; padding: .65rem 1rem; min-height: 44px; border: 1px solid var(--ink); background: var(--ink); color: var(--paper); cursor: pointer; }
+.check button:disabled { cursor: wait; opacity: .7; }
+.checkResult { border-left: 2px solid var(--ink-soft); padding-left: 1rem; overflow-wrap: anywhere; }
 @media (max-width: 600px) { .paths { padding-inline: 6%; } .question ol { margin-left: .3rem; padding-left: 1.2rem; } .question li::before { left: -1.5rem; } }

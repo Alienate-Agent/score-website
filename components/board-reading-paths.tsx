@@ -2,6 +2,7 @@ import paths from '@/content/board-reading-paths.json';
 import corpus from '@/public/records/dated-public-record-v1.json';
 import { SpeakerSignature } from '@/components/speaker-notation';
 import styles from './board-reading-paths.module.css';
+import {ThreadCheck} from './thread-check';
 
 const records = new Map(corpus.records.map(record => [record.act_key, record]));
 
@@ -31,6 +32,10 @@ export function BoardReadingPaths() {
         </details>)}
       </div>
       <p><a href="#paths-of-judgment">For a closer reading of how statements relate and change, enter Paths of judgment.</a></p>
+      <div aria-label="Optional current board checks">
+        <ThreadCheck id={3734} label="The revised decision rule" />
+        <ThreadCheck id={3581} label="The sibling announcement" />
+      </div>
       <details className={styles.note}>
         <summary>Where this selection begins and ends</summary>
         <p>{paths.authorship}. Original dates are shown in UTC; this arrangement was made later. The linked reader preserves the exact admitted words and a link to each public source. A live source may have changed since this edition’s evidence cut at 13:46:15 UTC on 3 September.</p>

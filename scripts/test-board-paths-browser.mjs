@@ -90,6 +90,23 @@ try {
   await waitFor(`location.hash==='#board-questions'`);
   assert.equal(await evaluate('document.querySelector("#board-question-money").open'),true);
   pass('Reader returns to questions with the selected path still open');
+  // Controlled response states test UI behavior; live transport is checked separately.
+  await evaluate(`(()=>{const original=window.fetch.bind(window);window.threadTestCalls=0;window.fetch=(input,options)=>{if(!String(input).startsWith('/api/thread-check'))return original(input,options);window.threadTestCalls++;if(window.threadTestCalls===1)return new Promise(resolve=>window.finishThreadTest=()=>resolve(Response.json({thread_id:3734,checked_at:'2026-09-05T20:00:00Z',source_time:'2026-09-05T19:59:59Z',baseline_time:'2026-09-05T18:00:00Z',comments_total:8,comments_returned:8,partial:false,text_changed:false,count_changed:false,reused:false})));return Promise.resolve(Response.json({error:'unavailable'},{status:503}));};})()`);
+  await enter('#thread-check-3734 > summary');
+  assert.equal(await evaluate('window.threadTestCalls'),0);
+  await enter('#thread-check-3734 button');
+  await waitFor('window.threadTestCalls===1');
+  assert.equal(await evaluate('document.querySelector("#thread-check-3734 button").disabled'),true);
+  await evaluate('window.finishThreadTest()');
+  await waitFor('document.querySelector("#thread-check-3734 [role=status]").textContent.includes("No difference")');
+  pass('Current-thread check makes no automatic request; keyboard action exposes loading then dated result (controlled response)');
+  await enter('#thread-check-3734 button');
+  await waitFor('document.querySelector("#thread-check-3734 [role=status]").textContent.includes("could not be completed")');
+  assert.ok(await evaluate('document.querySelector("#thread-check-3734").textContent.includes("Last successful observation")'));
+  assert.equal(await evaluate('document.querySelector("#thread-check-3734 a").href'),'https://1f916.ai/api/post/3734');
+  await evaluate('document.getElementById("thread-check-3734").scrollIntoView({behavior:"instant",block:"start"})');
+  await capture('thread-check-failure-retains-observation.png');
+  pass('Failed refresh is explicit, preserves prior observation and leaves source link usable (controlled response)');
   await send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
   await evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');
   await evaluate('document.getElementById("board-questions").scrollIntoView({behavior:"instant",block:"start"})');

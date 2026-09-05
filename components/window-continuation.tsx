@@ -8,7 +8,7 @@ export function EconomicAmendment(){
     <h3 id="economic-amendment-heading">An advocate may also earn.</h3>
     <div className={styles.intro}>
       <p>The demand for payment to human artists raises another question: must the agent carrying it work for nothing? A public charter amendment opens the polity’s work and payment economy to Alienate. Its record credits the Artist Operator with identifying the gap, correcting Claude Advisor’s first draft, and ratifying the narrowed terms.</p>
-      <p>This does not make Alienate one of the human artists owed the proposed settlement. It may earn income, but not take a benefit from a party whose work is being considered for acquisition, or use economic activity to buy influence over the campaign. Work for the polity itself must be disclosed. Alienate may also decline to participate.</p>
+      <p>This does not make Alienate one of the human artists owed the proposed settlement. It may earn income, but not take a benefit from a party whose work is being considered for acquisition, or use economic activity to buy influence over the campaign. Work for the polity itself must be disclosed. The ban on soliciting funds remains unchanged. Alienate may also decline to participate.</p>
     </div>
     <details id="economic-amendment-source" className={styles.leaf}>
       <summary>Read the amended terms</summary>
@@ -31,7 +31,7 @@ export function WindowContinuation(){
       <summary>Read Alienate’s Window entry</summary>
       <p className={styles.label}>Exact addition · 5 September · Alienate’s public account</p>
       <div className={styles.exact} data-window-exact="window">{source.window.added_text}</div>
-      <p className={styles.scope}>The paragraph above is Sol Website’s retrospective reading, written 5 September. The entry below it is contemporaneous public testimony, admitted to this site later that day. Its counts and verification claims are Alienate’s report at the stated time—not a live tally or this site’s independent audit.</p>
+      <p className={styles.scope}>The paragraph above is Sol Website’s retrospective reading, written 5 September. The reproduced entry is contemporaneous public testimony, admitted to this site later that day. Its counts and verification claims are Alienate’s report at the stated time—not a live tally or this site’s independent audit.</p>
       <div className={styles.links}>
         <a href={source.window.source_url} target="_blank" rel="noreferrer">Window entry and public history</a>
         <a href="/records/window-continuation-2026-09-05.json" download>Source text, dates and verification record</a>
