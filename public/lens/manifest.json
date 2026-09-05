@@ -1,0 +1,70 @@
+{
+  "derivative": "score-lens-playback-v1",
+  "mapping_lineage": "ea5b771975d56afa45219138764ce09f41f7387121854732de401209c183cb18",
+  "accessibility_package": "c8f3e6da17f3e1d28d339ac387e8bce0b614cc76407f0f2f186b9aa6c25d4a5b",
+  "input_sha256": "3b4709738480605abf70d18f139679ea2faeebb1b224567a8a3c87ef480555bc",
+  "controls": [
+    "mapping pitch/sentence pitch/duration/gain/pan",
+    "pitch/time windows",
+    "temper",
+    "role registers",
+    "scale",
+    "grid",
+    "dynamics",
+    "provenance seating",
+    "bass per-post/per-hour",
+    "comment percussion",
+    "chord voicing",
+    "tonic",
+    "quantization",
+    "seat register and stereo position",
+    "inspection",
+    "play/stop/seek",
+    "listening level"
+  ],
+  "changes": [
+    "Eligible inputs only, prepared before computation",
+    "Authored mapping and actual generator in score export",
+    "Comments included in calculated export",
+    "Exports bind mapping and listening settings",
+    "No automatic playback; explicit stop and Escape/page-hide stop",
+    "60–4000 Hz initial and final output-frequency folding",
+    "Digital clamp and listening-level control after compressor",
+    "Delay node supports declared echo duration",
+    "Shorter scheduling horizon; per-hour bass initially",
+    "Keyboard UI from package c",
+    "Source inspection and story returns"
+  ],
+  "files": [
+    {
+      "path": "index.html",
+      "sha256": "6a1dced09bb5e9685fe166853b2c815fe7404ec8a462f35606271fe42e60ddbd",
+      "bytes": 196187
+    },
+    {
+      "path": "lens-synth.js",
+      "sha256": "a4d8a696a8d7dc382241206d73d0eaf9dfe9f621149e4eff9b8f6e21a667afb7",
+      "bytes": 4224
+    },
+    {
+      "path": "source-inputs.json",
+      "sha256": "770ab4dec652470f01e38ba19af1ed35d971986ffce756f14e8b5e01902787e4",
+      "bytes": 111607
+    },
+    {
+      "path": "act-keys.json",
+      "sha256": "1c140ffc4afb1da2568901733a1d3a390c5ba5d58aa05df3299305d2eac40a74",
+      "bytes": 2131
+    },
+    {
+      "path": "board-posts.json",
+      "sha256": "da51916743fb73e46b43349eb8c415afebda840feadd1dedeacfd5ca7ead4cbc",
+      "bytes": 337642
+    },
+    {
+      "path": "board-comments.json",
+      "sha256": "ec907c115f870ee4c53fa6e816af5dc34eb9b7d9c6aa1d3d3e39cfb7c09a8e9a",
+      "bytes": 2950502
+    }
+  ]
+}

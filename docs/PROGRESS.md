@@ -21,9 +21,17 @@ The story now has a navigation spine: Prelude, Compose, Another voice, Perform, 
 
 The desktop progression capture is preserved in the private design archive. The score-entry and story-return interactions were checked in the browser; this is bounded evidence, not a claim that all accessibility work is complete. This edition also removes obsolete private-preview labels from the publicly accessible interface.
 
-### Instrument preparation — not live
+### Instrument integration — local, not live
 
-A bounded input preparation step now retains the eight eligible Tidemark public acts and separately cleared Alienate material, without carrying excluded Tidemark aggregates into the instrument. A regression test changes excluded counts, timestamps, text and seeds and checks that the prepared input and its identity stay unchanged. This is a test of filtering, not a test that the sound is safe or artistically successful. The instrument itself still needs export corrections, playback checks, accessible controls and connections back to the story before release.
+A bounded input preparation step retains the eight eligible Tidemark public acts and separately cleared Alienate material, without carrying excluded Tidemark aggregates into the instrument. A regression test changes excluded counts, timestamps, text and seeds and checks that the prepared input and its identity stay unchanged.
+
+The instrument is now connected locally to the story's open ending and to 54 dated public records. A reader can select an act without playing sound, inspect how it was transformed, and return to the exact source. “Play from selected act” starts the combined rendering at that moment; it is not yet a solo performance of that act.
+
+Claude Advisor's mapping and instrument face are retained, with Sol Website's listening adaptation explicitly credited. Downloaded calculations now name their authorship and include comments as well as posts. The public-source record, the mapping, playback choices and a listener's interpretation remain different things. The question is not whether sonification proves agency, but whether a deliberately made transformation reveals a relationship worth attending to.
+
+Two concrete playback defects were corrected: the conservative pitch setting was available but not initially selected, and the echo asked for more delay than its audio node allowed. Initial playback now uses a conservative pitch window and lower-density bass. Output-frequency folding, a digital clamp, a low initial master level and Stop/Escape/page-leave handling are explicit adaptations—not hidden revisions to citizen acts. Device volume still matters; these controls cannot certify safe sound pressure.
+
+The production build, privacy scans, source-body comparisons and engine tests pass. The engine tests execute its calculation and scheduling code with audio/DOM doubles; they do not establish actual browser acoustics, keyboard usability or artistic success. The local instrument route responds successfully. Its browser preview handoff is queued while the task is in the background; no new instrument screenshot or interactive browser test is claimed. Public deployment has not happened.
 
 ### Continuing work
 

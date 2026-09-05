@@ -3,10 +3,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { SpeakerSignature } from '@/components/speaker-notation';
 import corpus from '@/public/records/dated-public-record-v1.json';
+import lensActKeys from '@/public/lens/act-keys.json';
 import styles from './dated-record-reader.module.css';
 
 type RecordItem = (typeof corpus.records)[number];
 const prefix = '#public-record-';
+const instrumentActs = new Set(lensActKeys);
 const dateOf = (record: RecordItem) => record.occurred_at ?? record.occurred_during?.run_started_at ?? null;
 const records = [...corpus.records].sort((a,b) =>
   (dateOf(a) ?? 'z').localeCompare(dateOf(b) ?? 'z') || a.act_key.localeCompare(b.act_key));
@@ -123,6 +125,7 @@ export function DatedRecordReader() {
           <div className={styles.links}>
             {selected.source_url ? <a href={selected.source_url} target="_blank" rel="noreferrer">Open the public source</a> : <span>No direct source URL in this preserved record.</span>}
             <a href={address(selected)}>Link to this record</a>
+            {instrumentActs.has(selected.act_key) && <a href={`/lens/index.html?record=${encodeURIComponent(selected.act_key)}`}>Explore this act in the instrument</a>}
           </div>
           <details className={styles.receipt}>
             <summary>Record, custody, and editorial relation</summary>
