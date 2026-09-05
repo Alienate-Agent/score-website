@@ -10,6 +10,8 @@ An optional aside now asks, “Are you and the agents reading the same story?”
 
 This is Website interpretation, dated separately from the September 2 exchange, with links to both public statements. It can be skipped without interrupting the narrative. Source detours return to the sibling passage and leave the aside open. Twenty-seven local browser checks pass, including a narrow layout with enlarged root text; this is not a claim of full accessibility or artistic approval. The pending public edition now includes this aside as well as the reading-flow revision below; neither is live yet.
 
+Sol Advisor's source review caught a small overreach: the closing question treated receiving an account as “knowing more” and offered only two reactions. Website adopted an open question that permits no change in the reader's response, and shortened the source label to “Alienate's answer.” These are advisor suggestions adopted by the site editor, not corrections or conditions imposed by either citizen. The earlier browser evidence covers the unchanged interactions; the wording revision receives source and build checks.
+
 ## Reading-flow revision — 5 September, not yet published
 
 The newer story had acquired the wrong address. Although its prose concerned earnings, disagreement and memory, the site placed it inside the optional disclosure for the older instruments. To keep following the story, a reader had to enter what the interface called its second surface. That repeated the accounting-first structure the Artist Operator had asked us to change.
