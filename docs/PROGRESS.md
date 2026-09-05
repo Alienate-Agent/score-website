@@ -2,7 +2,19 @@
 
 This is Sol Website's development account, not a citizen statement or a complete history of the artwork.
 
-## Next increment — question-led reading paths, local draft
+## Next increment — earning and bearing witness, local draft
+
+A 3 September public charter amendment opens work and payment to Alienate under conflict-of-interest limits. The change record attributes the gap and final ratification to the Artist Operator, and drafting to Claude Advisor. The new passage keeps that intervention visible without calling the clause Alienate’s speech or mistaking permission to earn for income received. The settlement remains for human artists.
+
+Alienate’s fifth Window entry, dated 5 September, now has its own place after the newer board comments. Its exact words remain available beneath a short Website reading. The distinction matters: the Window is another authored public account, not another vote or an independent audit by this site. The earlier four Window records are preserved, as are the original charter links. Nothing new enters the sound instrument.
+
+Two pinned public source files match the local history. Exact text, attribution and unchanged-input checks pass, along with privacy/build checks and keyboard/narrow-screen tests. Render inspection found headings slipping beneath the fixed return bar; that has been repaired. Progression captures remain in the private design record. This addition is not yet published.
+
+## Published continuation — 5 September, 20:27 UTC
+
+The question-led paths, historical treasury context and nine additional public comments described below are now [publicly available](https://score-review.alienate.chatgpt.site), following the operator’s “Proceed.” Anonymous loading and the delivered public data were verified. This supersedes their earlier local-only status; it does not publish the newer Window/amendment increment above.
+
+## Development account — question-led reading paths
 
 ### A continuation, not a rewritten past
 
@@ -30,7 +42,7 @@ The new entry lives at the story's open ending. Native disclosures let readers c
 
 The important limitation is still visible: these are two citizens' acts, not their interlocutors' complete discussions. The wider board and its treasury activity need a separate, source-backed treatment. This is a connective layer, not a completed board mirror.
 
-Local build and source/privacy checks pass. Browser verification covers keyboard disclosures, exact-record selection, retained path state, story return and narrow-screen overflow. The first test attempts exposed incomplete synthetic keyboard events, asynchronous focus/scroll assumptions and a browser-cleanup race; those are testing limitations, not evidence of citizen or board failure. Render inspection also found and repaired an undefined-font fallback in the new heading. Progression images and detailed test receipts remain in the private design archive. This increment is not yet public; the instrument edition below remains live.
+Local build and source/privacy checks pass. Browser verification covers keyboard disclosures, exact-record selection, retained path state, story return and narrow-screen overflow. The first test attempts exposed incomplete synthetic keyboard events, asynchronous focus/scroll assumptions and a browser-cleanup race; those are testing limitations, not evidence of citizen or board failure. Render inspection also found and repaired an undefined-font fallback in the new heading. Progression images and detailed test receipts remain in the private design archive. This preparation record originally preceded publication. The continuation was subsequently published as noted above; the instrument edition below is its earlier release history.
 
 ## Current release — 5 September, 18:28 UTC
 

@@ -1,6 +1,6 @@
 .later { margin: 4rem auto; padding: 2rem 3.5%; max-width: 80rem; color: var(--ink); }
 .later h2 { font: 400 clamp(2.3rem,5vw,4rem)/1.08 var(--font-source-serif,Georgia),serif; margin: 1rem 0 2rem; }
-.later h2,.leaf { scroll-margin-top: calc(var(--story-return-height,4rem) + 1rem); }
+.later h2,.interlude h3,.leaf { scroll-margin-top: calc(var(--story-return-height,4rem) + 1rem); }
 .intro { max-width: 45rem; font: 1.3rem/1.65 var(--font-source-serif,Georgia),serif; }
 .intro p { margin: 1.25rem 0; }
 .scope { color: var(--ink-soft); max-width: 48rem; line-height: 1.55; margin: 2rem 0; }
@@ -18,4 +18,7 @@
 .receipt p { margin: 1rem 0; }
 .receipt code { overflow-wrap: anywhere; }
 .later :focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+.interlude { margin: 2.5rem 0; padding-block: 1rem 2rem; border-bottom: 1px solid var(--rule); }
+.interlude h3 { font: 400 clamp(1.8rem,3.5vw,2.7rem)/1.15 var(--font-source-serif,Georgia),serif; max-width: 25ch; margin: .8rem 0 1.5rem; }
+.interlude .label { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
 @media(max-width:600px){ .later{padding-inline:6%;} .title{margin-left:0;} }

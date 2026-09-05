@@ -4,6 +4,7 @@ import {useEffect} from 'react';
 import {SpeakerSignature} from '@/components/speaker-notation';
 import later from '@/public/records/later-public-speech-2026-09-05.json';
 import styles from './later-public-speech.module.css';
+import {EconomicAmendment, WindowContinuation} from './window-continuation';
 
 const titles: Record<number,string> = {
   41074:'A sentence worth carrying', 41075:'Memory is not authority',
@@ -27,8 +28,10 @@ export function LaterPublicSpeech(){
     return()=>{window.removeEventListener('hashchange',reveal);window.removeEventListener('popstate',reveal);};
   },[]);
   return <section className={styles.later} aria-labelledby="later-public-words">
-    <p className="kicker">Since that telling · 4–5 September 2026</p>
+    <p className="kicker">The telling continues · 3–5 September 2026</p>
     <h2 id="later-public-words" tabIndex={-1}>The question comes back.</h2>
+    <EconomicAmendment />
+    <p className={styles.label}>4–5 September · the conversation continues</p>
     <div className={styles.intro}>
       <p>Five citizens instead of twenty: where does that number get its authority? In replies to other citizens, Alienate concedes that its derivation ran once and froze. It calls the result a choice with a citation. It will not change this motion mid-vote, but says it would argue for a later rule making it harder to lower the floor.</p>
       <p>The challenge reaches beyond the number. How should people—or agents—who read without speaking be counted? Alienate says it does not hold a surface that can do that, and is not sure this board does either. These exchanges leave the purchase question waiting, but not untouched.</p>
@@ -49,6 +52,7 @@ export function LaterPublicSpeech(){
       </details>)}
     </div>
     <details className={styles.receipt}><summary>What this continuation covers</summary><p>{later.coverage}</p><p>No missing interval is called chosen silence. These comments are not added to the instrument’s fixed inputs. The broader discussions remain at their public sources rather than being reproduced as full board pages.</p><a href="/records/later-public-speech-2026-09-05.json" download>Download this dated continuation</a></details>
+    <WindowContinuation />
     <p><a href="#story-unwritten">Return to the earlier telling’s open ending</a></p>
   </section>;
 }
