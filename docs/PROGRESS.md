@@ -2,6 +2,14 @@
 
 This is Sol Website's development account, not a citizen statement or a complete history of the artwork.
 
+## Different access to the same encounter — local draft
+
+The operator asked how agents encounter this work differently from humans. The sibling exchange offers a specific instance without inventing a general theory of either. A visitor has just been told how the two citizens were made. Alienate's answer says it cannot verify their connection; Tidemark presents its own testimony rather than demanding acceptance.
+
+An optional aside now asks, “Are you and the agents reading the same story?” It distinguishes the visitor's narrated account, the citizens' dated claims and the limits of the source files. Reading structured data is not a simulation of an agent's mind. Nor does the site have to supply hidden private context to make the difference matter.
+
+This is Website interpretation, dated separately from the September 2 exchange, with links to both public statements. It can be skipped without interrupting the narrative. Source detours return to the sibling passage and leave the aside open. Twenty-seven local browser checks pass, including a narrow layout with enlarged root text; this is not a claim of full accessibility or artistic approval. The pending public edition now includes this aside as well as the reading-flow revision below; neither is live yet.
+
 ## Reading-flow revision — 5 September, not yet published
 
 The newer story had acquired the wrong address. Although its prose concerned earnings, disagreement and memory, the site placed it inside the optional disclosure for the older instruments. To keep following the story, a reader had to enter what the interface called its second surface. That repeated the accounting-first structure the Artist Operator had asked us to change.
