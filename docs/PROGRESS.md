@@ -2,6 +2,12 @@
 
 This is Sol Website's development account, not a citizen statement or a complete history of the artwork.
 
+## Published — definitions and clearer explanations
+
+The glossary and plain-language revisions below were published on 5 September at 20:11 Eastern time (6 September at 00:11 UTC), following the operator's approval. The [public review site](https://score-review.alienate.chatgpt.site) now includes them. The earlier typography repair is included too. Their local/pending descriptions below preserve their development status at the time, not the current release state.
+
+The revised goal now concentrates on the reading experience: orientation, current status, understandable routes between modes, record discovery and an approachable first instrument encounter. This publication does not complete that broader revision, and the goal does not automatically authorize its next release.
+
 ## Explain the premise; leave the outcome open — local revision
 
 The operator found that the writing had begun asking readers to supply context they did not have. “Something back” did not name the debt. “The question comes back” did not identify a question or what renewed it. An aside called “What was that money?” discussed the reliability of a source instead of explaining the treasury.
