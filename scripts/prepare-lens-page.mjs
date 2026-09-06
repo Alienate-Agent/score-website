@@ -3,6 +3,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import vm from 'node:vm';
 import { extractData, filterInputs, lineage } from './prepare-lens-inputs.mjs';
+import { firstEncounter } from './lens-first-encounter.mjs';
 
 // A generated playback derivative; the original package remains untouched.
 const packageHash = 'c8f3e6da17f3e1d28d339ac387e8bce0b614cc76407f0f2f186b9aa6c25d4a5b';
@@ -131,19 +132,24 @@ html = html.replaceAll('nothing chosen','authored mapping').replaceAll('Nothing 
   .replaceAll('inputs dataset v3 sha256', 'eligible input sha256')
   .replaceAll('The whole record', 'The dated record');
 
+html=firstEncounter(html);
 let lib = fs.readFileSync(path.join(root,'lib/lens-synth.js'),'utf8');
 if(!lib.includes('ctx.createDelay(2.0)'))throw Error('Unexpected delay implementation');
 lib = lib.replace('ctx.createDelay(2.0)', 'ctx.createDelay(Math.max(2,delayS))');
 // Validate syntax without executing audio or DOM code.
 new vm.Script(lib);
+new vm.Script(fs.readFileSync(new URL('./lens-first-encounter.js',import.meta.url),'utf8'));
 for(const match of html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)) if(match[1].trim())new vm.Script(match[1]);
 fs.mkdirSync(out,{recursive:true});
 const files={'index.html':html,'lens-synth.js':lib,'source-inputs.json':JSON.stringify(data,null,2)+'\n',
+ 'first-encounter.js':fs.readFileSync(new URL('./lens-first-encounter.js',import.meta.url)),
+ 'first-encounter.css':fs.readFileSync(new URL('./lens-first-encounter.css',import.meta.url)),
  'act-keys.json':JSON.stringify(data.records.filter(r=>r.at&&r.obj!=='vote_or_karma_count').map(r=>r.key),null,2)+'\n',
  'board-posts.json':fs.readFileSync(path.join(root,'e14-the-whole-record/board-posts.json')),
  'board-comments.json':fs.readFileSync(path.join(root,'e14-the-whole-record/board-comments.json'))};
 for(const [name,bytes]of Object.entries(files))fs.writeFileSync(path.join(out,name),bytes);
-const receipt={derivative:'score-lens-playback-v1',mapping_lineage:lineage,accessibility_package:packageHash,input_sha256:data.provenance.input_sha256,
+const receipt={derivative:'score-lens-playback-v2',mapping_lineage:lineage,accessibility_package:packageHash,input_sha256:data.provenance.input_sha256,
+ first_encounter:{controls:['choose eligible act','inspect complete source and calculated notes','wide/narrow existing pitch window','individual-act play/stop'],scope:'Only selected act notes; no contextual bass, percussion, aggregate wash or interruption clicks; existing note, filter and echo mapping retained; no subsequent act. Full composition remains available separately.',export:'Complete calculation with last playback scope separately recorded'},
  controls:['mapping pitch/sentence pitch/duration/gain/pan','pitch/time windows','temper','role registers','scale','grid','dynamics','provenance seating','bass per-post/per-hour','comment percussion','chord voicing','tonic','quantization','seat register and stereo position','inspection','play/stop/seek','listening level'],
  changes:['Eligible inputs only, prepared before computation','Authored mapping and actual generator in score export','Comments included in calculated export','Exports bind mapping and listening settings','No automatic playback; explicit stop and Escape/page-hide stop','60–4000 Hz initial and final output-frequency folding','Digital clamp and listening-level control after compressor','Delay node supports declared echo duration','Shorter scheduling horizon; per-hour bass initially','Keyboard UI from package c; named switches retain focus','Keyboard seek indicator persists while stopped','Selected-act start follows current time mapping','Cancelled old end timer cannot stop a new performance','Source inspection and story returns','Responsive heading and scrollable stage; playback before stage; attribution details one gesture away'],
  files:Object.entries(files).map(([name,bytes])=>({path:name,sha256:hash(bytes),bytes:Buffer.byteLength(bytes)}))};

@@ -1,8 +1,18 @@
 {
-  "derivative": "score-lens-playback-v1",
+  "derivative": "score-lens-playback-v2",
   "mapping_lineage": "ea5b771975d56afa45219138764ce09f41f7387121854732de401209c183cb18",
   "accessibility_package": "c8f3e6da17f3e1d28d339ac387e8bce0b614cc76407f0f2f186b9aa6c25d4a5b",
   "input_sha256": "3b4709738480605abf70d18f139679ea2faeebb1b224567a8a3c87ef480555bc",
+  "first_encounter": {
+    "controls": [
+      "choose eligible act",
+      "inspect complete source and calculated notes",
+      "wide/narrow existing pitch window",
+      "individual-act play/stop"
+    ],
+    "scope": "Only selected act notes; no contextual bass, percussion, aggregate wash or interruption clicks; existing note, filter and echo mapping retained; no subsequent act. Full composition remains available separately.",
+    "export": "Complete calculation with last playback scope separately recorded"
+  },
   "controls": [
     "mapping pitch/sentence pitch/duration/gain/pan",
     "pitch/time windows",
@@ -42,8 +52,8 @@
   "files": [
     {
       "path": "index.html",
-      "sha256": "ae88c3e45184747cfb2d91965d3d352d07ac0e7303aba1e6347b45525b4308c8",
-      "bytes": 197682
+      "sha256": "df143557445e47a2c7eebd63f0558f80e1398cd2845c1f2ff1b7155bb118fb1d",
+      "bytes": 200854
     },
     {
       "path": "lens-synth.js",
@@ -54,6 +64,16 @@
       "path": "source-inputs.json",
       "sha256": "770ab4dec652470f01e38ba19af1ed35d971986ffce756f14e8b5e01902787e4",
       "bytes": 111607
+    },
+    {
+      "path": "first-encounter.js",
+      "sha256": "85132d017f6d9354be305e97a32c79bb4dac383f4b93e5263236922c17c567f2",
+      "bytes": 5602
+    },
+    {
+      "path": "first-encounter.css",
+      "sha256": "ea13d5c3356227d5a6e653a41e4079b20d1204ed3b874c95fa8fd379d08d755f",
+      "bytes": 1888
     },
     {
       "path": "act-keys.json",

@@ -27,6 +27,6 @@ assert.ok(spine.includes('aria-label="Chapters in the story"'));
 assert.ok(!spine.includes("register: 'record'"));
 for(const [path,hash] of [
   ['public/records/dated-public-record-v1.json','cf99b13a62e8c1dc10635bf6359e0e69a517a7ed2ac1d2ba26bf9c46c8c85cbd'],
-  ['public/lens/manifest.json','f5f2dff96c81f262019766bd0c69a0fcdfd0ff261daaffe8beea2d97d2b58f00'],
+  ['public/lens/manifest.json','85572cf0cad2caba624d186f0d725e23bb41785577813c24141c3494031663f8'],
 ]) assert.equal(createHash('sha256').update(read(path)).digest('hex'),hash,path);
 console.log('PASS: entrance roles, dated status, reading modes, first-use redaction, preserved historical cutoff, archive placement and immutable source/instrument identities. Browser reading/focus checks remain separate.');

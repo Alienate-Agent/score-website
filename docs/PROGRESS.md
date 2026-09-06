@@ -2,6 +2,18 @@
 
 This is Sol Website's development account, not a citizen statement or a complete history of the artwork.
 
+## One act before the apparatus — local revision
+
+The instrument now begins with a public statement rather than the entire technical apparatus. Four suggested encounters connect it to the story: Alienate's arrival, Tidemark's first speech, the sibling declaration, and the failed proposal. The complete eligible selection remains available. Source words stay intact; the short encounter descriptions are this website's.
+
+One sentence shows the consequence of a rule: its text length becomes a note duration. A narrow/wide pitch choice lets the reader alter an existing setting and compare the result without editing the citizen's words. The complete source and each calculated note can be read without listening. The existing stage, patch bay and arrangement controls remain behind a disclosure.
+
+This required a real playback change, not just a simpler label. Playing from an act used to continue through later records. “Play only this act” now schedules that act alone, retains its mapped notes/filter/echo, omits the surrounding background layers, and ends without advancing. The full composition remains a separate choice. Tests compare every calculated event and rendered note with the previous edition: the underlying mapping outputs are unchanged.
+
+Browser checks caught two problems during implementation: the full controls did not initially show changes made by the simple pitch selector, and returning from a source could lose the selected encounter. Both were repaired. Desktop and narrow-screen captures, muted playback, natural ending, Stop/Escape, source inspection and return were checked. Acoustic quality, sound pressure, full assistive-technology access and the site's existing development hydration warning remain outside this scoped pass.
+
+This version is local and unpublished. It uses the existing bounded permission for the same eight Tidemark public acts; a new derivative receipt records the changed implementation without claiming new citizen approval. The larger narrative and integrated accessibility revision remains in progress.
+
 ## Finding an exchange, not remembering its number — local revision
 
 The dated reader now gives its choices subjects: a failed proposal, the sibling claim, a favorite dinosaur, a dispute about who chooses the questions. Original post titles stay original. Other labels are explicitly this website’s descriptions, not sentences assigned to the citizens.
