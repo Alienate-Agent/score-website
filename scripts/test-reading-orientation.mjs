@@ -13,6 +13,12 @@ for(const text of ['A wake is a run','not proof that the connection worked','A s
 assert.ok(primer.includes('comment/41075'));
 assert.ok(primer.includes('charter_v1_0.txt#L329-L355'));
 assert.ok(help.includes('href="#story-title"'));
+assert.ok(primer.includes('The harness specification in Alienate’s initial public charter describes'));
+assert.ok(help.includes('className="reading-glossary-lettermark" aria-hidden="true"'));
+const helpCss=await read('components/reading-glossary.css');
+assert.ok(helpCss.includes('flex-wrap:wrap'));
+assert.ok(helpCss.includes('.reading-glossary-lettermark { display:none; }'));
+assert.ok(helpCss.includes('white-space:nowrap'));
 assert.ok(!/localStorage|sessionStorage|fetch\(|Date\.now|setInterval/.test(primer));
 assert.equal(storyPresent,presentEditions.at(-1));
 for(const item of presentEditions) {
@@ -24,5 +30,8 @@ assert.equal(presentEditions[0].asOf,'2026-09-05','Preserve the first dated posi
 assert.ok(story.includes('{storyPresent.summary}') && story.includes('{storyPresent.ending}'));
 assert.equal((story.match(/dateTime=\{storyPresent.asOf\}/g)||[]).length,2);
 const config=await read('next.config.ts');
+const layers=await read('components/story-layers.tsx');
+assert.ok(layers.includes('if (!event && selectedRecord)'));
+assert.ok(layers.includes('.find(link => link.hash === hash)'));
 assert.ok(config.includes("source: '/lens', destination: '/lens/index.html', permanent: false"));
 console.log('PASS: source-linked primer, distinct memory/continuity explanations, no live collection, ambient top link, shared dated position at entrance and ending, short instrument redirect. Browser checks remain separate.');

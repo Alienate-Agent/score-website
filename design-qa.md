@@ -1,4 +1,42 @@
-# Integrated reading revision — work in progress
+# Integrated reading revision — final local verification
+
+6 September2026, Sol Website. Focused revision of the existing design, not a new visual direction or public release. This assessment is the implementer's; no new unfamiliar-human study is claimed.
+
+## Comparison and findings
+
+Source visual truth: `../site-publication/visual-history/2026-09-06-integrated-reading/score-before-desktop.png`; final `score-final-desktop-matched.png`, both1280×720CSS/pixels, Voice/whole-field/E22. Opened together. Final view is approximately12px lower, so no pixel-perfect alignment claim. Same type families, columns, navigation order, notation shapes, paper and ink. The kicker changes intentionally from a stale private-proposal label to visual-score identification; Back to top is new. Selected speaker marks now invert to paper on ink. Prior post-fix captures with much larger scroll differences remain evidence, not the aligned comparison.
+
+At390×844 with a temporary32px root font, source `score-large-text-mobile.png` exposed P2 top-strip crowding: Back to top broke into several lines. Intermediate `score-large-text-mobile-fixed.png` kept words together but wrapped the controls into two rows. Final `score-large-text-mobile-final.png` keeps both full labels in one row, measured79.79px rather than164px, with no horizontal page overflow. Original/intermediate/final captures were inspected together or in the recorded sequence. Decorative Aa is omitted at narrow width, not the Glossary label. No text-size reduction; padding and wrapping repaired. The transient selected-mark color in immediately captured interaction frames is not its settled color; computed settled foreground238/233/220 on25/24/20 confirms contrast.
+
+Earlier Tidemark chapter before/after1280×900 and mobile context/primer comparisons remain applicable: clearer dated subsections, inline sources and optional context intentionally alter copy density without replacing the book composition. No new image assets or substitute drawings. Full-size screenshots make the changed controls legible; no crop is needed for those comparisons.
+
+## Fidelity surfaces
+
+- Typography: existing serif narrative and sans-serif/monospaced tools retained. New primer is an intentional explanatory sans-serif register. Enlarged text wraps rather than clipping. Deep instrument pixel-sized technical labels do not scale with the root-font test; native zoom/assistive-technology testing remains a stated limitation.
+- Spacing: desktop composition retained; narrow reading-help controls remain in their measured top strip. The larger-type repair returns more height to reading. Source-return offsets use measured control heights.
+- Colors: no new palette or speaker identity; selected-score contrast repaired.20 opaque source pairs pass, minimum4.796:1. This is not a certification of every transient/transparent color state.
+- Assets: existing notation and instrument art retained; no substitute imagery. No instrument mapping/input/asset change in this final pass.
+- Copy: charter memory clause now identified as a harness specification. Source/advisor/operator/citizen roles remain distinct. Exact approved introduction and dated public bodies unchanged.
+
+## Behavior and limits
+
+Final desktop P2 repair: Back to top in the left margin overlapped source text. `source-top-link-overlap-desktop.png` and `source-top-link-clear-desktop.png` were opened together, same1280×720 source32752/focus/scroll. The control now sits above the existing glossary in the right margin (observed left1152px), clear of the source column. Type, copy, page geometry and source body otherwise match. Narrow screens retain the top strip. This final comparison is a genuine before/after, not the earlier misnamed mobile capture; its filename was corrected when the observed width was1280px.
+
+Keyboard E22 selection and Next moves to E48·1 with heading focus/hash restored. Score marks have descriptive names and routed-part descriptions; the selected passage supplies textual meaning beyond the glyphs. Instrument inspection at390px/32px displays exact source, note durations/pitches and rest values without sound; pitch Home changes the shared control, Enter remaps a patch connection, arrow/Enter moves a stage seat with a textual announcement. No page overflow in these checked states. Acoustic quality, full screen-reader behavior and native browser zoom are not certified.
+
+One P2 initial-arrival edge case was found: a source opened before page initialization could return to the Prelude. The initial selected-source path now finds its explicitly linked narrative context. Direct-source32752 returns to `story-tidemark-first-words` in both development and the rebuilt production preview. Ordinary chapter→source→return also passes. Unmapped sources retain the ordinary fallback; no fabricated browsing history or storage is introduced.
+
+Production warning/error log checked after representative story/source journeys was empty. Temporary doubled-root styles removed;16px production confirmed. TypeScript, focused source/route tests, fixed-record/chronology checks, exact private-origin excerpt checks and build privacy scans pass. Missing test arguments and an incorrectly scoped shell PATH were corrected and rerun; not application failures. Earlier general lint findings remain, no full-lint-green claim.
+
+No remaining actionable P0/P1/P2 in the focused revision's tested scope. P3 follow-up: long native selector labels; full assistive-technology/native-zoom/device/audible experience review; continued artistic judgment of book-to-apparatus transition.
+
+final result: passed
+
+Next: operator review of the local reading experience and separate publication decision. Full objective audit and concise review brief are recorded outside the publication repository.
+
+---
+
+# Historical integrated reading revision — work in progress
 
 6 September2026, sol_website. Current additions: clearer Tidemark sequence/inline sources, optional board primer, dated present shared by entrance/ending, top link, selected-score contrast and instrument short-route repair. No public release or full-goal acceptance.
 

@@ -30,6 +30,14 @@ export function StoryLayers({ children }: { children: ReactNode }) {
       // Selected records may mount only after their own location reader runs.
       // Keep their established routes; unrelated hashes do not open the archive.
       const selectedRecord = /^#(?:chronology-entry-|public-record-)/.test(hash);
+      // A direct source URL, or a link followed before hydration, has no
+      // captured click origin. Offer its first explicit narrative context
+      // rather than pretending that the reader started at the Prelude.
+      if (!event && selectedRecord) {
+        const citation = [...document.querySelectorAll<HTMLAnchorElement>('a[data-story-return]')]
+          .find(link => link.hash === hash);
+        if (citation?.dataset.storyReturn) setReturnTo(citation.dataset.storyReturn);
+      }
       if (event?.type !== 'score:open-entry' && !selectedRecord && !disclosure.current?.contains(storyTarget)) return;
       if (disclosure.current) disclosure.current.open = true;
       // Older introductions are preserved behind their own disclosure, but

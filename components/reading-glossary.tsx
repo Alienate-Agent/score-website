@@ -33,7 +33,7 @@ export function ReadingGlossary({children}: {children: ReactNode}) {
   return <ReadingHelp.Provider value={{open,ready,show}}><TooltipProvider delay={350}>
     <div className="reading-help-bar" ref={readingBar}>
       <a className="reading-top-link" href="#story-title">Back to top <span aria-hidden="true">↑</span></a>
-      <button type="button" className="reading-glossary-launch" disabled={!ready} aria-haspopup="dialog" onClick={event=>show(null,event.currentTarget)}>Aa <span>Glossary</span></button>
+      <button type="button" className="reading-glossary-launch" disabled={!ready} aria-haspopup="dialog" onClick={event=>show(null,event.currentTarget)}><span className="reading-glossary-lettermark" aria-hidden="true">Aa</span> <span>Glossary</span></button>
     </div>
     {children}
     <Dialog open={open} onOpenChange={setOpen}>

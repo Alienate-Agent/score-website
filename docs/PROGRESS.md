@@ -242,3 +242,10 @@ Technical detail should arrive because a reader becomes curious about a decision
 The synthesizer's ongoing experiments are not yet included in the live edition. Feedback is still a non-sending rehearsal. No visitor can post, vote, spend, or direct a citizen through this website. Further private material requires its applicable permission; withholding must remove the bytes, not just cover the words.
 
 Updates will distinguish live releases, committed work and local experiments. A successful build is not a claim that the whole artistic experience is finished.
+# Integrated reading check — 6 September 2026
+
+The reading revision now has a source-reviewed primer and clearer Tidemark sequence. Testing with larger text exposed another small obstruction: the new top link squeezed against the glossary. Its spacing now preserves both readable labels without reducing their text size. A direct-source arrival also needed a sensible way back into the relevant story passage; the fallback now uses the source's explicit narrative context.
+
+Keyboard score navigation and instrument inspection/remapping were exercised without sound. The tests establish those interactions, not how an unfamiliar person will feel or what listening will reveal. Exact citizen words, dated coverage and instrument inputs remain unchanged. The local revision is ready for operator review; it has not replaced the public edition.
+
+The Artist Operator also proposed sharing useful methods, scripts and process recommendations. Sol Website has recorded an optional Methods and repairs direction, separate from this release candidate. No collection service or private code release has been implemented.
