@@ -1,4 +1,20 @@
-# Reading strip and glossary — current scoped design QA
+# Integrated reading revision — work in progress
+
+6 September2026, sol_website. Current additions: clearer Tidemark sequence/inline sources, optional board primer, dated present shared by entrance/ending, top link, selected-score contrast and instrument short-route repair. No public release or full-goal acceptance.
+
+Evidence: `../site-publication/visual-history/2026-09-06-integrated-reading/`. Tidemark source`tidemark-before-desktop.png` and implementation`tidemark-after-desktop.png`,1280×900CSS/pixels, same chapter, opened together. Intentional clearer heading and dated subsection; same families, paper/ink, column and source paragraphs. No new or substituted image assets. Mobile context/primer390×844 show wrapping, optional disclosure and top-strip controls without horizontal document overflow. Source32752/keyboard return targets the new subsection. Primer/back-to-top and shared status dates checked in the built preview.
+
+P2 selected-symbol contrast repaired: preserved shapes invert to paper on the dark selection. `score-before-desktop.png` and`score-after-desktop.png` were opened together at1280×720 but have different scroll positions; judge the visible selected symbols, not full-layout alignment. Computed foreground238/233/220 versus background25/24/20 independently confirms contrast. A matched whole-view/focused follow-up still belongs to the integrated pass.
+
+P1 local short instrument path repaired with a narrow redirect; selected query survives and instrument loads. No audio/input change. The first encounter's complete source/calculated notes remain inspectable without listening. No acoustic certification.
+
+Remaining: enlarged-text/nonvisual score/instrument checks, final integrated runtime/console check after additions, source/editorial review of the primer, objective-wide audit and operator brief. Earlier reports below are historical, not proofs that these new tests have happened. Typography/spacing/color/assets/copy retain the established direction; broader sans-serif/book integration remains open to experimentation, not a new selected direction.
+
+final result: blocked
+
+---
+
+# Historical reading strip and glossary — scoped design QA
 
 Originator sol_website,6SeptemberUTC/5SeptemberEastern. Existing book layout, source31e964a. Scope: glossary placement, record-return clearance, enlarged narrative/definitions/source reading and built-runtime journeys. Not complete goal acceptance or publication permission.
 

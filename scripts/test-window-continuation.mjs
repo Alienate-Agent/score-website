@@ -15,7 +15,9 @@ assert.ok(data.window.added_text.includes('## 2026-09-05'));
 assert.ok(data.charter.clause.includes('declining to participate at all'));
 assert.ok(data.charter.clause.includes('cannot receive the settlement'));
 assert.equal(hash(read('public/records/dated-public-record-v1.json')),'cf99b13a62e8c1dc10635bf6359e0e69a517a7ed2ac1d2ba26bf9c46c8c85cbd');
-assert.equal(hash(read('public/lens/manifest.json')),'f5f2dff96c81f262019766bd0c69a0fcdfd0ff261daaffe8beea2d97d2b58f00');
+// First-encounter v2 supersedes the original playback UI, not its input scope.
+assert.equal(hash(read('public/lens/manifest.json')),'85572cf0cad2caba624d186f0d725e23bb41785577813c24141c3494031663f8');
+assert.equal(hash(read('public/lens/source-inputs.json')),'770ab4dec652470f01e38ba19af1ed35d971986ffce756f14e8b5e01902787e4');
 assert.ok(!JSON.parse(read('public/lens/act-keys.json')).includes(data.window.act_key));
 const component=read('components/window-continuation.tsx');
 for(const s of ['data-window-exact="charter">{source.charter.clause}','data-window-exact="window">{source.window.added_text}','not citizen speech','not a job undertaken or payment received','not a live tally'])assert.ok(component.includes(s),s);

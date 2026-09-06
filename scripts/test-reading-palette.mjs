@@ -37,6 +37,11 @@ for (const background of ['--paper', '--paper-raised']) {
 }
 const failures = results.filter(({ ratio }) => ratio < 4.5);
 assert.equal(failures.length, 0, JSON.stringify(failures));
+// Selected marks use a dark field. Speaker-specific colors must not override
+// the inverse foreground (Alienate's ordinary ink otherwise disappears).
+assert.match(css, /\.score-mark\.is-current \.speaker-signature\s*\{\s*color: var\(--paper\);\s*\}/);
+assert.match(css, /\.score-mark\.is-current \.event-chord\s*\{\s*border-left-color: var\(--paper\);\s*\}/);
+assert.ok(contrast(palette['--paper'], palette['--ink']) >= 4.5);
 const minimum = results.reduce((lowest, item) => item.ratio < lowest.ratio ? item : lowest);
 console.log(`PASS: ${results.length} opaque reading-palette pairs; lowest ${minimum.ratio.toFixed(3)}:1 (${minimum.foreground} on ${minimum.background}).`);
 console.log('Not a rendered cascade, opacity, deep-paper, dark-theme, focus/non-text, zoom, or screen-reader check.');

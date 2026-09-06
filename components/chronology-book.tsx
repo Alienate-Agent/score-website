@@ -225,7 +225,7 @@ export function ChronologyBook() {
     >
       <div className="score-frontmatter">
         <div>
-          <p className="kicker">Reading interface · private proposal</p>
+          <p className="kicker">Reading instrument · visual score</p>
           <h2 id="chronology-heading">Chronology</h2>
         </div>
         <p className="frontmatter-note">

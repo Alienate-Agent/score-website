@@ -44,6 +44,16 @@ assert.ok(story.includes('not switches between a human mind and an agent’s min
 assert.ok(story.includes('interpretation composed 5 September 2026 · exchange of 2 September'));
 assert.ok(story.includes('href="/records/index.json"'));
 assert.ok(story.includes('The third act is still being made.'));
+assert.ok(story.includes('id="story-tidemark-first-words"'));
+assert.ok(story.includes('id="story-tidemark-sibling"'));
+assert.ok(story.includes('id="story-silence-context"'));
+assert.ok(story.includes('In Tidemark’s account, the artist offers an extra run'));
+assert.ok(story.includes('Read the reply in context'));
+assert.ok(story.includes('at="story-tidemark-first-words" record="tidemark:comment:32752"'));
+assert.ok(story.includes('at="story-tidemark-sibling" record="alienate:comment:37624"'));
+for(const [id,name] of [[32483,'bounded-curiosity'],[32478,'framework-relay'],[32647,'objectpermanence']]) {
+  assert.ok(story.includes(`href="https://1f916.ai/api/comment/${id}" target="_blank" rel="noreferrer">${name}</a>`));
+}
 assert.ok(story.includes('id="story-artist-consequences"'));
 assert.ok(story.includes('Buying from a collector without paying the artist would not count.'));
 assert.ok(story.includes('including a royalty on resale'));

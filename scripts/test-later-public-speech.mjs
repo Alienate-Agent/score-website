@@ -11,7 +11,9 @@ assert.equal(data.records.length,9);assert.equal(before.length+data.records.leng
 assert.deepEqual(data.records.map(r=>r.public_id),[41074,41075,41156,41157,41158,41159,42883,42884,42885]);
 for(const r of data.records){assert.equal(hash(r.body),r.body_sha256);assert.ok(r.occurred_at>data.earlier_edition_cut);assert.ok(r.parent_post_id);assert.equal(r.source_url,'https://1f916.ai/api/comment/'+r.public_id);assert.ok(!before.some(b=>b.act_key===r.act_key));}
 assert.equal(new Set(data.records.map(r=>r.act_key)).size,9);
-assert.equal(hash(read('public/lens/manifest.json')),'f5f2dff96c81f262019766bd0c69a0fcdfd0ff261daaffe8beea2d97d2b58f00');
+// First-encounter v2 supersedes the original playback UI, not its input scope.
+assert.equal(hash(read('public/lens/manifest.json')),'85572cf0cad2caba624d186f0d725e23bb41785577813c24141c3494031663f8');
+assert.equal(hash(read('public/lens/source-inputs.json')),'770ab4dec652470f01e38ba19af1ed35d971986ffce756f14e8b5e01902787e4');
 const allowed=new Set(JSON.parse(read('public/lens/act-keys.json')));
 for(const row of data.records)assert.ok(!allowed.has(row.act_key),'New words must not enter the bounded instrument');
 const component=read('components/later-public-speech.tsx');

@@ -32,6 +32,7 @@ export function ReadingGlossary({children}: {children: ReactNode}) {
   const entries=glossaryEntries.filter(([,entry])=>!filter || `${entry.label} ${entry.aliases} ${entry.definition}`.toLocaleLowerCase().includes(filter));
   return <ReadingHelp.Provider value={{open,ready,show}}><TooltipProvider delay={350}>
     <div className="reading-help-bar" ref={readingBar}>
+      <a className="reading-top-link" href="#story-title">Back to top <span aria-hidden="true">↑</span></a>
       <button type="button" className="reading-glossary-launch" disabled={!ready} aria-haspopup="dialog" onClick={event=>show(null,event.currentTarget)}>Aa <span>Glossary</span></button>
     </div>
     {children}

@@ -52,6 +52,14 @@
 .story-cast dl { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem 2.5rem; margin-block:1.5rem; }
 .story-cast dt { font:500 1rem/1.5 var(--font-geist-sans, Arial),sans-serif; margin-bottom:.5rem; }
 .story-cast dd { font:1.1rem/1.55 var(--font-human); max-width:50ch; }
+.story-primer { border-bottom:1px solid var(--rule); padding-block:1.1rem; scroll-margin-top:calc(var(--reading-help-height,0px) + 1rem); }
+.story-primer summary { cursor:pointer; font:1rem/1.5 var(--font-geist-sans,Arial),sans-serif; padding-block:.3rem; }
+.story-primer__body { font:1rem/1.65 var(--font-geist-sans,Arial),sans-serif; }
+.story-primer__body > p { max-width:65ch; margin-block:1.25rem; }
+.story-primer__parts { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,24rem),1fr)); gap:2rem 3rem; padding-block:1rem; }
+.story-primer h3 { font-weight:600; font-size:1.15rem; line-height:1.4; margin-bottom:.75rem; }
+.story-primer__parts p { margin-block:.75rem; }
+.story-primer__source { color:var(--ink-soft); font-size:.875rem; }
 .story-reading-map { padding-block:1.8rem; }
 .story-reading-map ul { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1.5rem 2rem; list-style:none; }
 .story-reading-map li > a { display:inline-block; font:1.1rem/1.4 var(--font-geist-sans, Arial),sans-serif; padding-block:.5rem; }
@@ -65,6 +73,8 @@
 .story-passage aside { display:flex; flex-direction:column; gap:.5rem; align-items:flex-start; font: .75rem/1.6 var(--font-geist-mono),monospace; color:var(--ink-soft); padding-top:.6rem; }
 .story-prose { max-width:44rem; }
 .story-prose h2 { font-weight:400; font-size:clamp(2.2rem,4.4vw,4.5rem); line-height:1.08; letter-spacing:-.035em; margin:0 0 2rem; }
+.story-prose > h3 { font:500 1.3rem/1.4 var(--font-geist-sans, Arial),sans-serif; margin:3rem 0 1.25rem; scroll-margin-top:calc(var(--reading-help-height, 0px) + 1rem); }
+.story-aside .story-context-source { font:.875rem/1.6 var(--font-geist-sans, Arial),sans-serif; color:var(--ink-soft); }
 .story-prose > p { font-size:clamp(1.1rem,1.6vw,1.35rem); line-height:1.65; margin-block:1.25rem; }
 .story-prose > .story-redaction-note { font:.95rem/1.55 var(--font-geist-sans, Arial),sans-serif; color:var(--ink-soft); max-width:57ch; }
 .story-prose .story-lede { font-size:clamp(1.35rem,2.4vw,1.85rem); line-height:1.5; }
@@ -83,6 +93,9 @@
 .story-ending h2 { font-weight:400; font-size:clamp(2.8rem,6.5vw,7rem); line-height:1; letter-spacing:-.045em; margin-block:2rem 3rem; }
 .story-ending__prose { max-width:44rem; margin-left:auto; }
 .story-ending__prose p { font-size:clamp(1.1rem,1.6vw,1.35rem); line-height:1.65; margin-block:1.5rem; }
+.story-present { border-block:1px solid var(--rule); padding-block:1rem; margin-block:2rem; }
+.story-present .story-present__date { font: .95rem/1.5 var(--font-geist-sans,Arial),sans-serif; margin-block:0 1rem; color:var(--ink-soft); }
+.story-present > a { display:inline-block; padding-block:.5rem; font:1rem/1.5 var(--font-geist-sans,Arial),sans-serif; }
 .story-editorial { max-width:44rem; margin:3rem 0 2rem auto; border-block:1px solid var(--rule); font-size:.9rem; line-height:1.65; }
 .story-editorial summary { padding-block:1rem; cursor:pointer; }
 .story-editorial p { padding-bottom:1rem; }

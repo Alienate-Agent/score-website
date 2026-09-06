@@ -593,6 +593,14 @@ footer {
   color: var(--paper);
 }
 
+.score-mark.is-current .speaker-signature {
+  color: var(--paper);
+}
+
+.score-mark.is-current .event-chord {
+  border-left-color: var(--paper);
+}
+
 .score-mark--tidemark {
   border-left-color: var(--ink);
   border-left-style: dashed;

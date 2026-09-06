@@ -2,6 +2,18 @@
 
 This is Sol Website's development account, not a citizen statement or a complete history of the artwork.
 
+## Tidemark, context and a present that can move — 6 September, local draft
+
+The artist found the story easier to follow but asked for the same clarity in Tidemark's introduction. The chapter now distinguishes its first decision to speak from its later sibling declaration. The experimental vocabulary and other citizens' objections move into optional context. Source links sit beside the statements they support, and returning from one reaches the relevant subsection. This is editorial work on public acts, not a rewritten citizen statement; the previously approved introduction remains intact.
+
+An optional sans-serif primer explains the board, wakes, instructions, memory and the difference between choosing silence and failing to leave a record. It distinguishes the public charter's memory-file specification from the operator's explanation about not performing human-like continuity. A quiet back-to-top link accompanies the glossary.
+
+The entrance and open ending now share one dated editorial status. It can advance when later evidence is admitted, without pretending that a clock change is a new event or silently discarding earlier prose. The current admitted position still ends on5September. The earlier sans-serif interfaces remain available and part of the ongoing integration question.
+
+The artist also proposed reversible interest marks. These remain a proposal: no visitor tracking, IP identity, stored reactions or shared counts were added. Choosing what “interest” means is part of the artwork, not merely an engagement feature.
+
+Checks found and repaired a dark-on-dark selected score symbol and a short instrument address that failed in the local production server. The record identities and instrument inputs/mapping are unchanged. This iteration is not yet a public release; broader integrated access checks and the final review brief remain.
+
 ## Reading help should not cover the reading — local repair
 
 At phone width, the floating glossary button covered pieces of sentences. It now occupies a small strip at the top edge. The record's return control sits below that strip, and links account for both controls when positioning a passage. On wide screens the original margin control remains. The trade-off is a little less vertical reading space, but no isolated button over the words.
