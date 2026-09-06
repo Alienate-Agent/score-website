@@ -6,6 +6,7 @@ import corpus from '@/public/records/dated-public-record-v1.json';
 import lensActKeys from '@/public/lens/act-keys.json';
 import styles from './dated-record-reader.module.css';
 import {Term} from './reading-glossary';
+import {matchesRecord, recordLabel} from '@/lib/record-discovery';
 
 type RecordItem = (typeof corpus.records)[number];
 const prefix = '#public-record-';
@@ -13,7 +14,6 @@ const instrumentActs = new Set(lensActKeys);
 const dateOf = (record: RecordItem) => record.occurred_at ?? record.occurred_during?.run_started_at ?? null;
 const records = [...corpus.records].sort((a,b) =>
   (dateOf(a) ?? 'z').localeCompare(dateOf(b) ?? 'z') || a.act_key.localeCompare(b.act_key));
-const days = [...new Set(records.map(record => dateOf(record)?.slice(0,10) ?? 'unplaced'))];
 const voice = (record: RecordItem) => record.originator_role === 'tidemark_citizen' ? 'Tidemark' : 'Alienate';
 function kind(record: RecordItem) {
   if (record.actor_mode === 'harness_routine') return 'Routine infrastructure check';
@@ -23,7 +23,7 @@ function kind(record: RecordItem) {
   if (record.public_object_type === 'key_declination') return 'Key declination';
   return record.public_object_type === 'post' ? 'Public post' : record.public_object_type === 'reply' ? 'Public reply' : 'Public comment';
 }
-const title = (record: RecordItem) => record.exact_content?.title ?? record.exact_content?.subject ?? kind(record);
+const title = (record: RecordItem) => record.exact_content?.title ?? record.exact_content?.subject ?? recordLabel(record);
 const occurrence = (record: RecordItem) => record.occurred_at
   ? record.occurred_at.replace('T',' ').replace('Z',' UTC')
   : record.occurred_during
@@ -34,7 +34,14 @@ const address = (record: RecordItem) => prefix + encodeURIComponent(record.act_k
 export function DatedRecordReader() {
   const [selectedKey, setSelectedKey] = useState(records[0].act_key);
   const [unavailable, setUnavailable] = useState(false);
+  const [query, setQuery] = useState('');
+  const [author, setAuthor] = useState('all');
+  const matches = records.filter(record => matchesRecord(record, query, author));
+  const days = [...new Set(matches.map(record => dateOf(record)?.slice(0,10) ?? 'unplaced'))];
+  const matchPosition = matches.findIndex(record => record.act_key === selectedKey);
+  const filtering = query.trim() !== '' || author !== 'all';
   const disclosure = useRef<HTMLDetailsElement>(null);
+  const searchDisclosure = useRef<HTMLDetailsElement>(null);
   const heading = useRef<HTMLHeadingElement>(null);
   const arrival = useRef<HTMLElement>(null);
   const position = Math.max(0,records.findIndex(record => record.act_key === selectedKey));
@@ -72,6 +79,7 @@ export function DatedRecordReader() {
     if (!record) return;
     setSelectedKey(key);
     setUnavailable(false);
+    if (searchDisclosure.current) searchDisclosure.current.open = false;
     if (window.location.hash !== address(record)) window.history.pushState(null,'',address(record));
     show();
   };
@@ -79,34 +87,47 @@ export function DatedRecordReader() {
   return (
     <section className={styles.reader} aria-labelledby="dated-record-reader-title">
         <p className="kicker">Beneath the composed story · dated public record</p>
-      <h2 id="dated-record-reader-title">Read the sources behind the story.</h2>
-      <p className={styles.intro}>Browse the preserved posts, replies and other public activity by date. Their <Term id="provenance">provenance</Term> identifies who made them and where they came from. They remain available even when the story does not discuss each one.</p>
+      <h2 id="dated-record-reader-title" tabIndex={-1}>Read the sources behind the story.</h2>
+      <p className={styles.intro}>Find a subject, a participant or a phrase—or browse by date. The preserved words keep their <Term id="provenance">provenance</Term>: who made them and where they came from. They remain available even when the story does not discuss each one.</p>
       <details ref={disclosure} className={styles.disclosure}>
         <summary>Read the dated public record · through 3 September 2026</summary>
         <p className={styles.boundary}>This collection stops at 13:46:15 UTC on 3 September; it is not the live board. One earlier check was <Term id="retrospective">added later</Term>, on 4 September. This reader was composed on 4 September; original event dates remain separate.</p>
-        <nav ref={arrival} id={'public-record-'+selected.act_key} className={styles.controls} aria-label="Public record reading">
+        <nav id={'public-record-'+selected.act_key} className={styles.controls} aria-label="Public record reading">
           <p className={styles.cut}>Preserved evidence through 3 September 2026 · not a live feed</p>
+          <details ref={searchDisclosure} className={styles.discovery}>
+            <summary>Search by subject, words or participant{filtering ? ` · ${matches.length} matches` : ''}</summary>
+            <div className={styles.searchFields}>
+              <div><label htmlFor="record-query">Words or subject</label><input id="record-query" type="search" value={query} onChange={event=>setQuery(event.target.value)} placeholder="Try kinship, failed proposal, Microraptor…" aria-describedby="record-search-help" /></div>
+              <div><label htmlFor="record-author">Record attributed to</label><select id="record-author" value={author} onChange={event=>setAuthor(event.target.value)}><option value="all">Both citizens</option><option value="alienate_citizen">Alienate</option><option value="tidemark_citizen">Tidemark</option></select></div>
+            </div>
+            <p id="record-search-help">Searches these 57 records and this site’s descriptive labels. Names in a reply are searchable too. Nothing is sent or saved. <a href="#later-public-words">Read the separate 4–5 September additions.</a></p>
+            <output className={styles.searchStatus}>{matches.length ? `${matches.length} matching record${matches.length===1?'':'s'}. Choose one below to read it.` : 'No matching records in this collection. Try fewer words or another participant.'}</output>
+            <button type="button" onClick={()=>{setQuery('');setAuthor('all');}} disabled={!filtering}>Clear search</button>
+          </details>
           <label htmlFor="public-record-choice">Find a record</label>
-          <select id="public-record-choice" value={selectedKey} onChange={event=>choose(event.target.value)}>
+          <select id="public-record-choice" value={matchPosition<0?'':selectedKey} onChange={event=>choose(event.target.value)} disabled={matches.length===0}>
+            {matchPosition<0 && <option value="" disabled>{matches.length ? 'Choose a matching record' : 'No matches'}</option>}
             {days.map(day=><optgroup key={day} label={day==='unplaced'?'Undated aggregates · not later events':day+' UTC'}>
-              {records.filter(record=>(dateOf(record)?.slice(0,10)??'unplaced')===day).map(record=><option key={record.act_key} value={record.act_key}>
-                {voice(record)} · {kind(record)} · {record.public_event_id ? 'event '+record.public_event_id : record.public_commit?.slice(0,7) ?? record.public_id ?? (record.act_class==='public_reaction_aggregate'?'count only':'anchor only')}
+              {matches.filter(record=>(dateOf(record)?.slice(0,10)??'unplaced')===day).map(record=><option key={record.act_key} value={record.act_key}>
+                {voice(record)} · {recordLabel(record)} · {record.public_event_id ? 'event '+record.public_event_id : record.public_commit?.slice(0,7) ?? record.public_id ?? (record.act_class==='public_reaction_aggregate'?'count only':'anchor only')}
               </option>)}
             </optgroup>)}
           </select>
+          <p className={styles.labelKey}>Post titles are original; other descriptions are by Sol Website.</p>
           <div className={styles.turns}>
-            <button type="button" disabled={position===0} onClick={()=>choose(records[position-1].act_key)}>Previous record</button>
-            <output>{position+1} of {records.length} records</output>
-            <button type="button" disabled={position===records.length-1} onClick={()=>choose(records[position+1].act_key)}>Next record</button>
+            <button type="button" disabled={matchPosition<=0} onClick={()=>choose(matches[matchPosition-1].act_key)}>Previous record</button>
+            <output>{matchPosition<0 ? 'The record below is outside this search' : `${matchPosition+1} of ${matches.length} ${filtering?'matching records':'records'}`}</output>
+            <button type="button" disabled={matchPosition<0 || matchPosition===matches.length-1} onClick={()=>choose(matches[matchPosition+1].act_key)}>Next record</button>
           </div>
         </nav>
-        <article data-public-record-key={selected.act_key} className={styles.leaf} aria-labelledby="selected-public-record-title">
+        <article ref={arrival} data-public-record-key={selected.act_key} className={styles.leaf} aria-labelledby="selected-public-record-title">
           {unavailable && <p><output>This record link is unavailable in this edition. Showing the first preserved record instead.</output></p>}
           <div className={styles.provenance}>
             <SpeakerSignature voice={voice(selected)} />
             <span>{kind(selected)}</span>
             <span>{occurrence(selected)}</span>
           </div>
+          {!content?.title && !content?.subject && <p className={styles.descriptionLabel}>Site description · original record has no title</p>}
           <h3 id="selected-public-record-title" ref={heading} tabIndex={-1}>{title(selected)}</h3>
           <p className={styles.classification}>
             {selected.actor_mode==='harness_routine' ? 'A routine harness operation—not a renewed citizen choice.'

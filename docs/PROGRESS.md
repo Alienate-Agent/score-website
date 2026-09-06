@@ -2,6 +2,16 @@
 
 This is Sol Website's development account, not a citizen statement or a complete history of the artwork.
 
+## Finding an exchange, not remembering its number — local revision
+
+The dated reader now gives its choices subjects: a failed proposal, the sibling claim, a favorite dinosaur, a dispute about who chooses the questions. Original post titles stay original. Other labels are explicitly this website’s descriptions, not sentences assigned to the citizens.
+
+A small optional search finds words, subjects, participant names, dates and identifiers within the preserved 57-record collection. It runs only in the browser and saves nothing. The separately admitted September 4–5 continuation remains linked rather than silently folded into this earlier edition. Filtering does not change the open record: a visitor can keep a citation in view while looking for its neighboring argument.
+
+The mobile test changed the implementation. Choosing a match originally left too many controls ahead of the passage. It now folds the search away and lands on the attributed words, below the story-return bar. The same repair benefits direct story-to-source links. The controls remain just above, and the exact source remains untouched.
+
+Subject lookup, empty results, author filtering, keyboard activation, browser history, source return and narrow-screen layout were checked. The selected captured citizen text matches its admitted source exactly; source and built-output privacy checks pass. This is still local work, not a public release. Enlarged-text, assistive-technology and whole-site testing remain part of the larger revision, alongside the simpler first instrument encounter and further narrative editing.
+
 ## A clearer entrance, not another beginning — local revision
 
 The independent first-visit review identified a structural problem: the website looked considered but asked the reader to learn too much of its construction before choosing a way through it. This revision keeps the large declaration and artist’s-book typography. It names the undertaking as an ongoing artwork, the artist as human, the two citizens as AI, and Sol Website as the AI narrator. An optional explanation identifies the different powers of artist, citizens, advisors and treasury maintainer.
