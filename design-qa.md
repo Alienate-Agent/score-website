@@ -1,4 +1,42 @@
-# Artist-consequence narrative — current scoped design QA
+# Reading strip and glossary — current scoped design QA
+
+Originator sol_website,6SeptemberUTC/5SeptemberEastern. Existing book layout, source31e964a. Scope: glossary placement, record-return clearance, enlarged narrative/definitions/source reading and built-runtime journeys. Not complete goal acceptance or publication permission.
+
+## Evidence and comparison
+
+Bundle`../site-publication/visual-history/2026-09-05-reading-access/`. Source`before-mobile.png` and implementation`after-mobile-final.png` opened together, same encounter route390×844CSS/pixels. Production`production-mobile.png` confirms the built result. Desktop source`../site-publication/visual-history/2026-09-05-artist-consequences/after-desktop.png` and implementation`production-desktop.png` opened together, same Compose chapter1280×900CSS/pixels. No density conversion or image editing. New source control state in`source-mobile.png`; focused larger-type views in`large-type-mobile.png`,`large-type-glossary.png`,`large-type-source-mobile.png`. Full-size captures make these controls readable; no further crop needed.
+
+## Findings and fixes
+
+- P2 fixed: bottom-right glossary covered mobile sentences. At widths≤1200px it is now a top-edge strip, consuming53px at the tested default type. Its measured height offsets the source return bar and anchor scrolling. Verified source return begins at53px and its heading is below both controls. Above1200px no strip height; original margin control retained.
+- P1 fixed in the encountered development state: hot-updated UI lost glossary provider identity. Shared context separated from UI/style module. Reload/style restoration and production journeys succeeded. Earlier error logs retained; this does not identify every historic hydration warning as the same cause.
+- Expected trade-off: less vertical space, more at enlarged type. The repair replaces an isolated obstruction with a consistent reading edge. No new branding/navigation destination or design direction.
+
+## Required surfaces
+
+Typography: existing font families/sizes retained. A temporary local200% root-font test (computed32px) exercised narrative, glossary and source at390px. No horizontal clipping; long headings/metadata wrap and require more scrolling. Test override removed; production16px checked. This is not native browser zoom or a screen-reader certificate.
+
+Spacing/layout: matched desktop remains unchanged. Mobile strip and return align at the page edge; native dialog fits358×812 in390×844 at enlarged type.53px default strip and95.79px enlarged strip are measured, not hard-coded. Both source controls remain available. No horizontal document overflow in tested states.
+
+Colors/tokens: same paper/ink/borders/focus accents.20 source-level palette pairs pass; minimum4.796:1. Actual opacity/cascade/notation contrast not certified by that test.
+
+Images/assets: none added or substituted. Existing notation/sonic visuals unchanged.
+
+Copy: two Sol Advisor source refinements adopted; no citizen quotation, approved introduction, permissions or corpus change. Strip retains the existing glossary label and definitions.
+
+## Interaction/runtime
+
+Keyboard open/search/Escape/focus restoration; Tab from initial glossary to Begin, Enter into Prelude; inline selected definition; source selection, direct-hash reload and return. Production warning/error log empty for these journeys. Initial unmatched Close× selector corrected to its actual accessible name Close; no application error inferred. TypeScript/glossary/story/entrance/source-verifiers/build/privacy pass. Existing glossary lint findings remain, not reported green.
+
+No remaining P0/P1/P2 in this tested repair scope. Larger integrated notation/instrument access, actual assistive-technology/audible quality and full completion audit remain separate. The prior narrower QA below is historical evidence, not a claim these later checks had already happened.
+
+final result: passed
+
+Next: complete the integrated visual-score/instrument access checks and release brief.
+
+---
+
+# Historical artist-consequence narrative QA
 
 Originator sol_website. 5 September Eastern / 6 September UTC. Scope: copy additions and consolidation inside the established book layout, not full-site accessibility acceptance. Source3463290; same theme, routes and assets. No public release.
 

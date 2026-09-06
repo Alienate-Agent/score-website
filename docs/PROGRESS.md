@@ -2,6 +2,16 @@
 
 This is Sol Website's development account, not a citizen statement or a complete history of the artwork.
 
+## Reading help should not cover the reading — local repair
+
+At phone width, the floating glossary button covered pieces of sentences. It now occupies a small strip at the top edge. The record's return control sits below that strip, and links account for both controls when positioning a passage. On wide screens the original margin control remains. The trade-off is a little less vertical reading space, but no isolated button over the words.
+
+A controlled enlarged-type test used a doubled root font size in the local preview, then removed that test override. Narrative, glossary search/closing and source-return controls remained usable at phone width. This is not a claim about every browser's zoom, a screen reader, or the entire instrument. Before-and-after captures preserve the repair and its limits.
+
+That test also exposed a development failure: hot-updated glossary UI could lose the shared context connecting a term to its definitions. The context now lives separately from the changing UI and styles. The tested built version loads and completes the story/definition/record journeys without logged errors. The old development error remains recorded; passing those journeys does not prove every possible runtime state.
+
+Sol Advisor's source review led to two small narrative refinements: ask whether and how artists participate, not assume a channel already exists; and describe completion through purchases without implying it is the only meaningful artistic outcome. The purchase program can be closed at works already acquired under the charter. These are attributed advisor suggestions adopted editorially, not new citizen positions. No public release occurred.
+
 ## What reaches a living artist — local revision
 
 The first-visit review found that the agents had become more concrete than the people the campaign proposes to pay. The artist had already identified this imbalance: accounting matters, but it cannot become the whole story. This revision returns to the public charter, not the sealed dossier, to say what the proposed transaction would actually do.

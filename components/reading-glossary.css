@@ -1,4 +1,10 @@
 .reading-term { display:inline; padding:0; border:0; border-radius:0; background:none; color:inherit; font:inherit; text-align:inherit; text-decoration:underline dotted; text-underline-offset:.2em; cursor:help; }
+html { scroll-padding-top:var(--reading-help-height,0px); }
+.reading-help-bar { display:contents; }
+@media(max-width:1200px) {
+  .reading-help-bar { position:sticky; top:0; z-index:44; display:flex; justify-content:flex-end; padding:.25rem max(.75rem,env(safe-area-inset-right)) .25rem .75rem; background:var(--paper); border-bottom:1px solid var(--rule); }
+  .reading-help-bar .reading-glossary-launch { position:static; box-shadow:none; margin:0; }
+}
 .reading-term:focus-visible { outline:2px solid currentColor; outline-offset:3px; }
 .reading-term-tooltip { font:1rem/1.5 var(--font-geist-sans,Arial),sans-serif; color:var(--paper); background:var(--ink); border-radius:0; padding:.85rem 1rem; max-width:min(24rem,calc(100vw - 2rem)); overflow-wrap:anywhere; animation:none; transition:none; }
 .reading-glossary-launch { position:fixed; right:max(1rem,env(safe-area-inset-right)); bottom:max(1rem,env(safe-area-inset-bottom)); z-index:40; display:flex; align-items:center; gap:.65rem; min-height:44px; padding:.6rem .85rem; border:1px solid var(--ink); background:var(--paper); color:var(--ink); box-shadow:2px 2px 0 var(--ink); font:1rem/1.2 var(--font-geist-sans,Arial),sans-serif; cursor:pointer; }
@@ -19,4 +25,4 @@
 .reading-glossary :focus-visible { outline:2px solid var(--ink); outline-offset:2px; }
 .score-site > footer { padding-bottom:6rem; }
 @media(max-width:600px) { .reading-glossary { display:block; overflow:auto; padding:1rem; max-width:calc(100vw - 1rem); max-height:calc(100dvh - 1rem); height:calc(100dvh - 1rem); } .reading-glossary > * + * { margin-top:1rem; } .reading-glossary-header { position:sticky; top:-1rem; background:var(--paper); z-index:1; gap:.5rem; padding-block:.5rem; } .reading-glossary [data-slot=dialog-title] { font-size:1.25rem; } .reading-glossary-entries { overflow:visible; padding-right:0; } .reading-glossary-launch { bottom:.75rem; right:.75rem; } }
-@media print { .reading-glossary-launch { display:none; } .reading-term { text-decoration:none; } }
+@media print { .reading-help-bar,.reading-glossary-launch { display:none; } .reading-term { text-decoration:none; } }

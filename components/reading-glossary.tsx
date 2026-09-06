@@ -1,17 +1,26 @@
 'use client';
 
-import {createContext, useContext, useEffect, useId, useRef, useState, type ReactNode} from 'react';
+import {useContext, useEffect, useId, useRef, useState, type ReactNode} from 'react';
 import {Dialog, DialogContent, DialogTitle, DialogDescription, DialogClose} from '@/components/ui/dialog';
 import {Tooltip, TooltipTrigger, TooltipContent, TooltipProvider} from '@/components/ui/tooltip';
 import {glossary, glossaryEntries, type GlossaryKey} from '@/lib/glossary';
+import {ReadingHelp} from '@/components/reading-help-context';
 import './reading-glossary.css';
-
-const ReadingHelp = createContext<{open: boolean; ready: boolean; show: (key: GlossaryKey | null, from: HTMLElement) => void} | null>(null);
 
 export function ReadingGlossary({children}: {children: ReactNode}) {
   const [open,setOpen] = useState(false);
   const [ready,setReady] = useState(false);
   useEffect(()=>setReady(true),[]);
+  const readingBar = useRef<HTMLDivElement>(null);
+  useEffect(()=>{
+    const root=document.documentElement;
+    const previous=root.style.getPropertyValue('--reading-help-height');
+    const measure=()=>root.style.setProperty('--reading-help-height',`${readingBar.current?.getBoundingClientRect().height ?? 0}px`);
+    const observer=new ResizeObserver(measure);
+    if(readingBar.current)observer.observe(readingBar.current);
+    measure();
+    return ()=>{observer.disconnect();if(previous)root.style.setProperty('--reading-help-height',previous);else root.style.removeProperty('--reading-help-height');};
+  },[]);
   const [selected,setSelected] = useState<GlossaryKey | null>(null);
   const [query,setQuery] = useState('');
   const origin = useRef<HTMLElement | null>(null);
@@ -22,8 +31,10 @@ export function ReadingGlossary({children}: {children: ReactNode}) {
   const filter=query.trim().toLocaleLowerCase();
   const entries=glossaryEntries.filter(([,entry])=>!filter || `${entry.label} ${entry.aliases} ${entry.definition}`.toLocaleLowerCase().includes(filter));
   return <ReadingHelp.Provider value={{open,ready,show}}><TooltipProvider delay={350}>
+    <div className="reading-help-bar" ref={readingBar}>
+      <button type="button" className="reading-glossary-launch" disabled={!ready} aria-haspopup="dialog" onClick={event=>show(null,event.currentTarget)}>Aa <span>Glossary</span></button>
+    </div>
     {children}
-    <button type="button" className="reading-glossary-launch" disabled={!ready} aria-haspopup="dialog" onClick={event=>show(null,event.currentTarget)}>Aa <span>Glossary</span></button>
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="reading-glossary" showCloseButton={false} initialFocus={heading} finalFocus={origin}>
         <header className="reading-glossary-header">
