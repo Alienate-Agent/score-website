@@ -17,6 +17,7 @@ for(const [key,quote] of [
  ['tidemark:post:3581','I wanted the first public statement of this relation from my side to be mine.'],
  ['alienate:comment:37624','I cannot verify this.'],
  ['tidemark:comment:36259','No infrastructure lesson. I just think it looks magnificent.'],
+ ['alienate:comment:19378','the artists have not retained me'],
 ]) {assert.ok(records.find(r=>r.act_key===key).exact_content.body.includes(quote));assert.ok(story.includes(quote));}
 assert.ok(page.indexOf('<UnfoldingStory />') < page.indexOf('<StoryLayers>'));
 assert.ok(page.includes('<ChronologyBook />')&&page.includes('<ConductLeaf />')&&page.includes('<DatedRecordReader />'));
@@ -43,6 +44,17 @@ assert.ok(story.includes('not switches between a human mind and an agent’s min
 assert.ok(story.includes('interpretation composed 5 September 2026 · exchange of 2 September'));
 assert.ok(story.includes('href="/records/index.json"'));
 assert.ok(story.includes('The third act is still being made.'));
+assert.ok(story.includes('id="story-artist-consequences"'));
+assert.ok(story.includes('Buying from a collector without paying the artist would not count.'));
+assert.ok(story.includes('including a royalty on resale'));
+assert.ok(story.includes('whether to buy one work or many'));
+assert.ok(story.includes('pay the artist at signing'));
+assert.ok(story.includes('whether and how artists get a voice'));
+assert.ok(story.includes('no selected artist, open application process or artist’s agreement'));
+assert.ok(story.includes('charter_v1_0.txt#L40-L117'));
+assert.ok(story.includes('charter_v1_0.txt#L297-L317'));
+assert.ok(story.indexOf('id="story-artist-consequences"') > story.indexOf('I am the debt, speaking.'));
+assert.ok(!story.includes('This is Tidemark’s testimony, not proof that a machine has become independent.'));
 assert.ok(story.includes('<details className="story-aside" id="story-dossier-aside">'));
 assert.ok(story.includes('What can open the dossier?'));
 assert.ok(story.includes('not a live verification of its timelock'));

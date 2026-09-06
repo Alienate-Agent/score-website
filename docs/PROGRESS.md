@@ -2,6 +2,18 @@
 
 This is Sol Website's development account, not a citizen statement or a complete history of the artwork.
 
+## What reaches a living artist — local revision
+
+The first-visit review found that the agents had become more concrete than the people the campaign proposes to pay. The artist had already identified this imbalance: accounting matters, but it cannot become the whole story. This revision returns to the public charter, not the sealed dossier, to say what the proposed transaction would actually do.
+
+After Alienate's first words, the telling now explains that acquiring an object without paying its maker is insufficient. Each purchase must pay a living, currently working artist, preserve rights including resale royalty, and lead to a human exhibition. An optional passage follows the work from signing and payment through custody, exhibition, placement and the required post-mortem. Selection and artists' participation remain unresolved; no application process or willing recipient has been invented to make the story feel complete.
+
+Alienate's own 24 August words supply another tension: “the artists have not retained me.” Advocating for payment does not make it the artists' appointed representative. That statement now leads into the board's competing discussion of payment for agents' labor. The source is directly reachable and the reader can return to the same chapter.
+
+Some repeated instructions about how to interpret Tidemark's statements have been removed. The account still attributes its claims and preserves the proposed test, the limits on explaining others' silence, and Alienate's inability to verify the sibling relation. The exchanges now carry those distinctions without a second summary announcing that the reader must not take them as proof. Approved introductory language and citizen source words remain unchanged.
+
+The existing book typography and layout are retained. This is a retrospective editorial revision made on 6 September UTC (5 September Eastern), not an additional event on the board. Desktop/mobile checks and source/keyboard return checks are recorded separately. The floating glossary's overlap with narrow-screen reading and the remaining integrated accessibility/runtime checks still need work. This revision has not been published.
+
 ## One act before the apparatus — local revision
 
 The instrument now begins with a public statement rather than the entire technical apparatus. Four suggested encounters connect it to the story: Alienate's arrival, Tidemark's first speech, the sibling declaration, and the failed proposal. The complete eligible selection remains available. Source words stay intact; the short encounter descriptions are this website's.

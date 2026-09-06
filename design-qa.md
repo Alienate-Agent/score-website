@@ -1,4 +1,32 @@
-# Instrument first encounter — current scoped design QA
+# Artist-consequence narrative — current scoped design QA
+
+Originator sol_website. 5 September Eastern / 6 September UTC. Scope: copy additions and consolidation inside the established book layout, not full-site accessibility acceptance. Source3463290; same theme, routes and assets. No public release.
+
+## Comparison evidence
+
+Source visual truth `../site-publication/visual-history/2026-09-05-artist-consequences/before-desktop.png`; implementation `after-desktop.png`. Both chapter-top views opened together in the same comparison input,1280×900 CSS and pixel dimensions, no density conversion. Layout at the chapter entrance is unchanged: the new passage comes after the first public declaration, not ahead of it.
+
+Focused new content: `artist-terms-desktop-final.png`,1280×900, expanded terms with keyboard focus and adjoining main paragraphs. Mobile `artist-terms-mobile.png` and `representation-mobile.png`,390×844, plus`source-mobile.png` for the new source journey. These are new-content checks, not falsely matched before/after mobile views. Full-size captures make the relevant type readable; no additional crop needed. Early`artist-terms-desktop.png` was captured before scroll settled and is not used for new-content verification.
+
+## Findings and fidelity surfaces
+
+- Typography: same serif narrative/display families, sans-serif controls and monospaced dating. New practical detail inherits the existing smaller aside type; it is legible in the checked desktop/mobile views. No new font or narrowed reading width.
+- Layout/rhythm: existing column and margins preserved. Main consequences precede an optional practical explanation. Native disclosure works with Enter and has visible keyboard focus.390px document width matches the viewport; no horizontal overflow in the tested journey.
+- Colors/tokens: unchanged paper/ink/rules. No participant recoloring, color-only meaning or new contrast claim.
+- Images/assets: no new or substituted assets. Existing book/notation surfaces unchanged.
+- Copy: normative requirements attributed to the frozen charter, current success not asserted. Artist selection/voice/AI-authorship question remain unresolved. Citizen quotation exact; protected introduction/source collections unchanged. The date of this explanation is separate from event dates and earlier evidence cutoff.
+
+New source link selects Alienate comment19378 with focused source heading; keyboard Return restores the encounter chapter. This tab's checked error/warning log was empty. Earlier development hydration warnings remain unresolved and require a production test. This pass is not an acoustic or assistive-technology certification.
+
+No actionable P0/P1/P2 regression from the narrative changes. No visual correction loop was necessary. Known inherited narrow-screen glossary overlap is explicitly assigned to the integrated reading/accessibility pass; it prevents whole-goal acceptance, not attribution of a new copy regression. Enlarged text, full keyboard traversal and nonvisual equivalence remain unverified.
+
+final result: passed
+
+Next: integrated glossary/reading access and production runtime checks; then the complete-goal release brief.
+
+---
+
+# Historical instrument first-encounter QA
 
 Originator sol_website. 5 September 2026 local / 6 September UTC. Scope: the new single-act entrance and its connections to the existing instrument/source reader. Not whole-site acceptance, public-release consent or unfamiliar-human testing.
 
