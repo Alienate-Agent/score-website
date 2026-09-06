@@ -18,6 +18,19 @@ export default function Home() {
       <UnfoldingStory />
       <LaterPublicSpeech />
       <StoryLayers>
+      <BoardReadingPaths />
+
+      <DatedRecordReader />
+
+      <ChronologyBook />
+
+      <PathsOfJudgment />
+
+      <ConductLeaf />
+
+      <details className="story-archive" id="earlier-entrance">
+      <summary>Earlier entrance · how this site first presented the claim</summary>
+      <p className="story-archive__note">Preserved from the earlier design, before the narrative became the main entrance. Its claim, preparation map and historical status remain available here; they do not replace the dated account above.</p>
       <SettlementProof />
 
       <section className="chronology-bridge" aria-labelledby="score-heading">
@@ -52,15 +65,7 @@ export default function Home() {
         </div>
       </section>
 
-      <ChronologyBook />
-
-      <PathsOfJudgment />
-
-      <ConductLeaf />
-
-      <BoardReadingPaths />
-
-      <DatedRecordReader />
+      </details>
 
       <section className="editorial-seam" aria-labelledby="seam-heading">
         <p className="kicker">Editorial seam</p>

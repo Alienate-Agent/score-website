@@ -87,7 +87,7 @@ try {
   pass('Touch opens definitions; glossary fits a 390px viewport with enlarged text and a scrollable reading area');
   const typography = await evaluate(`Object.fromEntries([
     ['story', '.story-prose p'], ['act', '.story-spine li[data-register=act]'],
-    ['record', '.story-spine li[data-register=record]'], ['caption', '.prelude-conversation figcaption']
+    ['record', '.chronology-shell .kicker'], ['caption', '.prelude-conversation figcaption']
   ].map(([name,selector])=>[name,getComputedStyle(document.querySelector(selector)).fontFamily]))`);
   await fs.writeFile(path.join(output,'typography.json'),JSON.stringify(typography,null,2)+'\n');
   console.log('Typography: '+JSON.stringify(typography));
@@ -248,11 +248,11 @@ try {
   await waitFor(`document.querySelector('.story-spine a[href="#later-public-words"]').getAttribute('aria-current')==='location'`);
   await capture('continuation-spine-wide.png');
   pass('Wide score spine recognizes the continuation as narrative and keeps its navigation available');
-  await enter('.story-spine a[href="#dated-record-reader-title"]');
+  await enter('[data-story-return="later-public-words"]');
   await waitFor(`document.querySelector('#story-instruments').open`);
   await enter('.story-records__return button');
   await waitFor(`document.activeElement.id==='later-public-words' && !document.querySelector('#story-instruments').open`);
-  pass('Score-spine record detour remembers the newer narrative position');
+  pass('Continuation record detour remembers the newer narrative position after chapter navigation');
   await send('Page.navigate',{url:url+'#later-public-record-alienate%3Acomment%3A41157'});
   await waitFor(`document.getElementById('later-public-record-alienate%3Acomment%3A41157')?.open && document.activeElement.parentElement.id==='later-public-record-alienate%3Acomment%3A41157'`);
   assert.equal(await evaluate('document.querySelector("#story-instruments").open'),false);

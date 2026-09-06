@@ -32,7 +32,18 @@ export function StoryLayers({ children }: { children: ReactNode }) {
       const selectedRecord = /^#(?:chronology-entry-|public-record-)/.test(hash);
       if (event?.type !== 'score:open-entry' && !selectedRecord && !disclosure.current?.contains(storyTarget)) return;
       if (disclosure.current) disclosure.current.open = true;
+      // Older introductions are preserved behind their own disclosure, but
+      // their exact anchors must remain usable from existing links/history.
+      let ancestor: Element | null = storyTarget;
+      while (ancestor && disclosure.current?.contains(ancestor)) {
+        if (ancestor instanceof HTMLDetailsElement) ancestor.open = true;
+        ancestor = ancestor.parentElement;
+      }
       measureReturn();
+      if (storyTarget && !selectedRecord && event?.type !== 'score:open-entry') {
+        storyTarget.scrollIntoView({ block: 'start', behavior: 'instant' });
+        if (!storyTarget.matches('details')) storyTarget.focus({ preventScroll: true });
+      }
     };
     const remember = (event: MouseEvent) => {
       const link = (event.target as Element).closest<HTMLAnchorElement>('a[data-story-return]');
@@ -61,8 +72,8 @@ export function StoryLayers({ children }: { children: ReactNode }) {
 
   return (
     <details ref={disclosure} className="story-records" id="story-instruments">
-      <summary><span>The story has a second surface.</span><small>Enter the score, public words, decisions, and making of this site</small></summary>
-      <div ref={returnBar} className="story-records__return"><button type="button" onClick={resume}>Return to the story</button><span>The earlier reading instruments · preserved, still usable</span></div>
+      <summary><span>Public words, visual score and archive.</span><small>Follow a question, inspect a source, or explore how events have been arranged</small></summary>
+      <div ref={returnBar} className="story-records__return"><button type="button" onClick={resume}>Return to the story</button><span>Public records and reading instruments</span></div>
       {children}
       <button className="story-records__end" type="button" onClick={resume}>Close this surface and return to the story</button>
     </details>

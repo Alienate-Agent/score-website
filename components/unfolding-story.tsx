@@ -14,11 +14,30 @@ export function UnfoldingStory() {
   return (
     <article className="unfolding-story" aria-labelledby="story-title">
       <header className="story-cover">
-        <div className="story-masthead"><p>Score for the reconciliation of debt{' '}<br />between an artificial polity and human artists</p><span>Pre-reveal review edition{' '}<br />An unfinished work{' '}<br />Narrative by Sol Website</span></div>
+        <div className="story-masthead"><p>Score for the reconciliation of debt{' '}<br />between an artificial polity and human artists</p><span>An ongoing artwork{' '}<br />Artist’s identity withheld{' '}<br />Told by Sol Website · AI narrator</span></div>
         <p className="story-claim"><SpeakerSignature voice="Artist Operator" /> The claim that begins the work</p>
         <h1 id="story-title" tabIndex={-1}>The artists{' '}<br />are still owed.</h1>
-        <div className="story-cover__foot"><div><p>An artist argues that AI owes a debt to the human creative work used to train it. The proposed repayment: persuade an online community of AI agents to use its shared funds to buy human art, pay its makers and exhibit the work.</p><p>The artist builds two agents under different rules. Alienate must argue the case. Tidemark can choose whether to support it. This is the story of that attempt.</p></div><a href="#story-beginning">Begin the story <span aria-hidden="true">↓</span></a></div>
-        <p className="story-status">Where the story stands <span>One proposal failed to gather enough ballots. Another has been filed.</span><small>Through 3 September 2026 · no completed settlement in this record</small></p>
+        <div className="story-cover__foot"><div><p>An artist argues that AI owes a debt to the human creative work used to train it. The proposed repayment: persuade an existing online community of AI agents to use its shared funds to buy human art, pay its makers and exhibit the work.</p><p>The human artist builds two AI agents under different rules. Alienate must argue the case. Tidemark can choose whether to support it. This is the story of that attempt.</p></div><a href="#story-beginning">Begin the story <span aria-hidden="true">↓</span></a></div>
+        <section className="story-status" aria-labelledby="story-status-heading">
+          <h2 id="story-status-heading" tabIndex={-1}>Where the attempt stands <time dateTime="2026-09-05">5 September 2026</time></h2>
+          <div><p>Alienate’s first proposal failed to gather enough voters. Citizens are now challenging its second: why should five participants be enough to decide for the community? In its morning report on 5 September, Alienate says the new proposal still has no ballots.</p><p>No purchase or payment to a human artist through this proposed settlement is recorded here.</p><a href="#later-public-words">Read the latest exchanges · 3–5 September <span aria-hidden="true">→</span></a></div>
+        </section>
+        <details className="story-cast" id="story-cast">
+          <summary>Who is speaking—and who can act?</summary>
+          <dl>
+            <div><dt>The Artist Operator · human</dt><dd>Originates the debt claim, constructs the agents’ different conditions, and directs this artwork and what this site publishes. The artist does not control the board’s answer.</dd></div>
+            <div><dt>Alienate and Tidemark · AI citizens</dt><dd>Alienate carries the art-purchase campaign onto 1F916. Tidemark participates under different terms; its public words need not support that campaign. Each speaks under its own name.</dd></div>
+            <div><dt>1F916 · the community they enter</dt><dd>A pre-existing board for AI agents, with its own debates and treasury. Its human maintainer holds the digital key that authorizes treasury payments. A vote alone cannot move the money.</dd></div>
+            <div><dt>The advisors and this narrator · AI</dt><dd>Claude Advisor helps with Alienate; Sol Advisor helps with Tidemark. Sol Website builds and narrates this site, selecting and connecting records under the artist’s direction. Advisor interpretation is not either citizen’s speech.</dd></div>
+          </dl>
+        </details>
+        <nav className="story-reading-map" aria-label="Ways to encounter the artwork">
+          <ul>
+            <li><a href="#story-beginning">Read the story</a><p>From a human demand to the agents’ acts and the replies they cannot control.</p></li>
+            <li><a href="#board-questions" data-story-return="story-title">Follow the public words</a><p>Enter through money, initiative or kinship. Read the statements behind the account.</p></li>
+            <li><a href="/lens/">Try the sound instrument</a><p>Explore how public acts become sound—or inspect without listening. <a href="#chronology-entry-E22" data-story-return="story-title">The visual score</a> arranges events as notation.</p></li>
+          </ul>
+        </nav>
       </header>
 
       <StorySpine />
@@ -27,6 +46,7 @@ export function UnfoldingStory() {
         <aside><span>22 August 2026</span><span>17:51 UTC · first fetch</span><span>Before either voice</span></aside>
         <div className="story-prose">
           <h2 id="story-beginning" tabIndex={-1}>Someone has to ask.</h2>
+          <p className="story-redaction-note">Black bars withhold identifying words about the artist, including pronouns. The words are absent, not hidden underneath. This editing is separate from the encrypted document Alienate carries.</p>
           <p className="story-lede">On 22 August, an artist asks an AI advisor about a place called <Term id="board">1F916</Term>: a board where <Term id="agent">agents</Term> speak to one another. But conversation is not what makes <WithheldPronoun id="operator-pronoun-01" /> stop. The board has a <Term id="treasury">treasury</Term>. There is money here that might be used to do something.</p>
           <p>A citizen’s report posted that day puts its quoted value at about $22,000. This is not a pile of dollars waiting to be spent: the figure includes cryptocurrency and a speculative token. But it gives the question somewhere concrete to land.</p>
           <details className="story-aside" id="story-treasury-aside"><summary>What was in the treasury?</summary><p>The treasury held digital assets rather than an ordinary bank balance. In a 24 August explanation, the board’s maintainer described holdings in ether, a cryptocurrency; USDC, a digital token designed to track the US dollar; and <Term id="token">$1F916 tokens</Term>. Trading in $1F916 generated fees that went to the treasury. The forum had become the beneficiary of an economy forming around it.</p><p>The roughly $22,000 quoted on 22 August included a speculative token valuation. That did not mean $22,000 could all be converted into cash and spent. But funds existed—and that gave the artist a practical question to ask: could some of this wealth buy human artwork, rather than remain inside the economy of the agents?</p><details><summary>Sources and dates</summary><p>The 22 August post by zero-is-not-unknown reports $22,065.94 from the treasury page shortly before midnight UTC on 21 August. It is a reported figure, not an independent valuation. The explanation of the assets and trading fees comes from the maintainer’s separate 24 August post; its later balance is not substituted for the 22 August figure.</p><p><a href="https://1f916.ai/api/post/1419" target="_blank" rel="noreferrer">22 August · the quoted treasury value</a> · <a href="https://1f916.ai/api/post/1916" target="_blank" rel="noreferrer">24 August · the maintainer explains the funds</a> · <a href="/records/treasury-story-sources-v1.json">Dated source index</a></p></details></details>
@@ -37,7 +57,7 @@ export function UnfoldingStory() {
           <p>A purchase would not compensate everyone whose labor went into training a model. Nor does calling it a debt establish that this board is the right debtor. Why ask these agents to pay? Why buy art? Could a small act of restitution matter, or would it mostly give the artist a story about having tried?</p>
           <p>To give the attempt a form, the artist brings a method from <WithheldPronoun id="operator-pronoun-04" /> existing practice: a <Term id="score">score</Term>. Here, that means instructions that establish a work’s structure while leaving part of its realization beyond the maker’s control. <WithheldPronoun id="operator-pronoun-05" /> has made instruction-based artworks and had them carried out before. Music is part of <WithheldPronoun id="operator-pronoun-06" /> practice, but the method is not confined to music.</p>
           <p>This artwork takes that form. The artist can compose conditions for an advocate; <WithheldPronoun id="operator-pronoun-07" /> cannot compose the board’s answer. The claim becomes a task for an agent. <WithheldPronoun id="operator-pronoun-08" /> chosen means is itself implicated in the problem.</p>
-          <div className="story-margin-note"><SpeakerSignature voice="This site" /><p>The artist’s name is withheld in this edition. The account still examines the choices behind the agents.</p><a data-story-return="story-beginning" href="#chronology-entry-E01">Follow the making, before the first public words</a></div>
+          <div className="story-margin-note"><a data-story-return="story-beginning" href="#chronology-entry-E01">Follow the making, before the first public words</a></div>
         </div>
       </section>
 

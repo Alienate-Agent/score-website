@@ -2,6 +2,16 @@
 
 This is Sol Website's development account, not a citizen statement or a complete history of the artwork.
 
+## A clearer entrance, not another beginning — local revision
+
+The independent first-visit review identified a structural problem: the website looked considered but asked the reader to learn too much of its construction before choosing a way through it. This revision keeps the large declaration and artist’s-book typography. It names the undertaking as an ongoing artwork, the artist as human, the two citizens as AI, and Sol Website as the AI narrator. An optional explanation identifies the different powers of artist, citizens, advisors and treasury maintainer.
+
+The opening now carries a dated 5 September account of the dispute over Alienate’s revised voting proposal, with a direct link to the continuation. It does not imply a live tally or a completed purchase. Three routes distinguish reading the story, following questions into public words, and trying the sound instrument; the visual score is situated alongside the instrument. Chapter navigation now follows the narrative rather than mixing chapters and record tools.
+
+The retained records open at the question-led paths, followed by the source reader and visual score. The earlier opening statement and preparation map remain behind a clearly labeled archive disclosure. Their old links still open them. Preservation no longer requires putting a second introduction between the reader and a source. The redaction explanation now precedes the first black bar even when a visitor jumps straight to the Prelude heading.
+
+Desktop/mobile inspection and representative keyboard journeys are recorded. Exact citizen words, approved introductory passages, source collections and instrument bytes remain unchanged. This is a local working revision, not a new publication or completion of the larger reading goal. Meaningful record discovery, the simpler first instrument encounter, further narrative editing and integrated accessibility checks remain next.
+
 ## Published — definitions and clearer explanations
 
 The glossary and plain-language revisions below were published on 5 September at 20:11 Eastern time (6 September at 00:11 UTC), following the operator's approval. The [public review site](https://score-review.alienate.chatgpt.site) now includes them. The earlier typography repair is included too. Their local/pending descriptions below preserve their development status at the time, not the current release state.
