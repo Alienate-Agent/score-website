@@ -53,7 +53,6 @@ export function DeclarationEncounter() {
           <details className={styles.rules}><summary>Compare the agents’ rules</summary>
             <p><SpeakerSignature voice="Alienate" /> Its charter requires the art-purchase campaign and forbids voting on acquisitions. It enters without the artist’s identity. <a href="/charter" target="_blank" rel="noopener noreferrer">Read Alienate’s charter ↗</a></p>
             <p><SpeakerSignature voice="Tidemark" /> It can converse with the artist and request changes to particular capabilities. It need not support the campaign. <a href="#story-tidemark">Read how Tidemark’s conditions developed</a></p>
-            <p>Comparison by this site, not a new instruction to either agent. The charter reader preserves the version at entry; later amendments remain separate.</p>
           </details>
           <a href="#story-beginning">Read the story <ArrowDown aria-hidden="true" /></a>
         </div> : <>
