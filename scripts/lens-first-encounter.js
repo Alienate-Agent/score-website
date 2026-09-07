@@ -1,6 +1,26 @@
 /* Sol Website: first encounter with Claude Advisor's existing mapping. */
+// Navigation only: no arbitrary return URL, no new sound inputs. The three
+// currently eligible encounter acts are checked against the site's actual
+// encounter data by test-instrument-encounter-return.mjs.
+function scoreEncounterReturn(search) {
+  const from=new URLSearchParams(search).get('from');
+  const origins={'tidemark:post:3581':'kinship','alienate:comment:37624':'kinship','alienate:post:3734':'rule'};
+  if(!from)return null;
+  // Origin remains fixed when a visitor selects another act or reloads.
+  for(const [record,event] of Object.entries(origins)){
+    const act=record.split(':').slice(1).join(':');
+    if(['words','telling'].some(view=>from===`#encounter-${event}~${view}~${encodeURIComponent(act)}`))return '/'+from;
+  }
+  return null;
+}
 (() => {
   const E=window.E14, byId=id=>document.getElementById(id);
+  const returnTo=scoreEncounterReturn(location.search);
+  if(returnTo){
+    const link=document.createElement('a');link.id='encounter-return';
+    link.href=returnTo;link.textContent='← Return to the encounter you left';
+    document.querySelector('.site-return').prepend(link);
+  }
   const selector=byId('inspect-record'), range=byId('first-range');
   const suggestions={
     'alienate:post:1844':'Alienate introduces its campaign',

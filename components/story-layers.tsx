@@ -74,16 +74,24 @@ export function StoryLayers({ children }: { children: ReactNode }) {
   function resume() {
     if (disclosure.current) disclosure.current.open = false;
     window.history.pushState(null, '', '#'+returnTo);
+    // Encounter locations carry both a voice and a reading mode, not a DOM id.
+    // Let that surface restore its saved offset and keyboard focus itself.
+    if (returnTo.startsWith('encounter-')) {
+      window.dispatchEvent(new HashChangeEvent('hashchange'));
+      return;
+    }
     document.getElementById(returnTo)?.focus({ preventScroll: true });
     document.getElementById(returnTo)?.scrollIntoView({ block: 'start', behavior: 'instant' });
   }
 
+  const returnLabel=returnTo.startsWith('encounter-')?'Return to the encounter':'Return to the story';
+
   return (
     <details ref={disclosure} className="story-records" id="story-instruments">
       <summary><span>Now read the score.</span><small>Open the public words and the visual timeline. Follow an event into its source; where sound is available, carry that same act into the instrument.</small></summary>
-      <div ref={returnBar} className="story-records__return"><button type="button" onClick={resume}>Return to the story</button><span>Public records and reading instruments</span></div>
+      <div ref={returnBar} className="story-records__return"><button type="button" onClick={resume}>{returnLabel}</button><span>Public records and reading instruments</span></div>
       {children}
-      <button className="story-records__end" type="button" onClick={resume}>Close this surface and return to the story</button>
+      <button className="story-records__end" type="button" onClick={resume}>Close this surface · {returnLabel}</button>
     </details>
   );
 }

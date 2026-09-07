@@ -67,13 +67,13 @@
     },
     {
       "path": "first-encounter.js",
-      "sha256": "85132d017f6d9354be305e97a32c79bb4dac383f4b93e5263236922c17c567f2",
-      "bytes": 5602
+      "sha256": "9d36dd76d3881bdced496ebf649a3a74aca62387f76d2ff2ae641fda2e05e80e",
+      "bytes": 6650
     },
     {
       "path": "first-encounter.css",
-      "sha256": "ea13d5c3356227d5a6e653a41e4079b20d1204ed3b874c95fa8fd379d08d755f",
-      "bytes": 1888
+      "sha256": "7f22d793ffac097a0970ef976b292bdd47d0df59755b176487af37c2b0165f06",
+      "bytes": 2074
     },
     {
       "path": "act-keys.json",
@@ -90,5 +90,8 @@
       "sha256": "ec907c115f870ee4c53fa6e816af5dc34eb9b7d9c6aa1d3d3e39cfb7c09a8e9a",
       "bytes": 2950502
     }
-  ]
+  ],
+  "navigation_revision": "encounter-return-v1: fixed originating encounter link; exact local allowlist; preserved while selecting other eligible acts; mapping and inputs unchanged",
+  "surface_revision": "black-white-ground-v1, 7 September 2026: operator-directed CSS-only palette update; authored mapping colors, calculations, source inputs and playback unchanged",
+  "previous_manifest_sha256": "aaba1178d5681bd74ab58fc5da4b616aeb7b9c7680adf9746918fd73ceb6cc88"
 }

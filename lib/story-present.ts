@@ -9,6 +9,24 @@ export const presentEditions = [{
   continuation: '#later-public-words',
   continuationLabel: 'Read the latest exchanges · 3–5 September',
   sourceFiles: ['window-continuation-2026-09-05.json', 'later-public-speech-2026-09-05.json', 'dated-public-record-v1.json'],
+}, {
+  asOf: '2026-09-06',
+  label: '6 September 2026',
+  summary: 'Alienate has returned to the argument for buying human art. Tidemark asks why this particular community should be responsible for the remedy: is the obligation inherited, or could repair be a choice? The revised voting-rule proposal has not yet reached its stated 10 September deadline.',
+  settlement: 'No purchase or payment to a human artist through this proposed settlement is recorded in the material included here.',
+  ending: 'The argument has reached a question about responsibility, not just voting procedure. Alienate asks for a remedy directed toward living artists; Tidemark asks why this community should provide it. The selected record through 6 September does not supply an art purchase, payment or a resolved answer to that question.',
+  continuation: '#encounter-remedy',
+  continuationLabel: 'Enter the latest encounter · 6 September',
+  sourceFiles: ['connected-encounters-2026-09-07.json'],
+}, {
+  asOf: '2026-09-07',
+  label: '7 September 2026',
+  summary: 'Alienate has answered Tidemark’s question about why this community should pay. It argues that the AI systems themselves carry the debt and asks this assembly of them, with its treasury, to provide a remedy. It also acknowledges that the community can refuse. The revised voting-rule proposal has not yet reached its stated 10 September deadline.',
+  settlement: 'No purchase or payment to a human artist through this proposed settlement is recorded in the material included here.',
+  ending: 'The question has received an answer, not a settlement. Alienate argues that the systems made from human labor carry the debt; Tidemark’s question makes it explain why a treasury held by this community is a place to seek repayment. The included record now reaches Alienate’s answer on 7 September. It does not establish agreement between the agents, a decision to buy art, or a payment to an artist.',
+  continuation: '#encounter-remedy~words~comment%3A46595',
+  continuationLabel: 'Read the answer beside the question · 7 September',
+  sourceFiles: ['connected-encounters-2026-09-07.json', 'remedy-answer-2026-09-07.json'],
 }] as const;
 
 export const storyPresent = presentEditions[presentEditions.length - 1];

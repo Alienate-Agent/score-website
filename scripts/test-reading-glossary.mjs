@@ -23,7 +23,7 @@ assert.ok(css.includes('.reading-help-bar .reading-glossary-launch { position:st
 assert.ok(!css.includes('font-size:200%'), 'Temporary type test must not ship');
 assert.ok(read('components/unfolding-story.css').includes('top:var(--reading-help-height,0px)'));
 assert.ok(!/fetch\(|localStorage|sessionStorage|sendBeacon|dangerouslySetInnerHTML/.test(help));
-const story=read('components/unfolding-story.tsx');
+const story=read('components/unfolding-story.tsx')+read('components/declaration-encounter.tsx');
 assert.ok(!story.includes('An artist makes an agent to ask for something back.'));
 assert.ok(story.includes('use its shared funds to buy human art, pay its makers and exhibit the work'));
 const continuation=read('components/later-public-speech.tsx');

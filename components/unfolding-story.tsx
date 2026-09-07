@@ -8,9 +8,11 @@ import { Term } from '@/components/reading-glossary';
 import { BoardPrimer } from '@/components/board-primer';
 import { LaterPublicSpeech } from './later-public-speech';
 import { storyPresent } from '@/lib/story-present';
+import { EncounterScore } from './encounter-score';
+import { DeclarationEncounter } from './declaration-encounter';
 
-function Source({ at, record, children }: { at: string; record: string; children: React.ReactNode }) {
-  return <a data-story-return={at} href={'#public-record-'+encodeURIComponent(record)}>{children}</a>;
+function Source({ at, record, encounter, children }: { at: string; record: string; encounter?:string; children: React.ReactNode }) {
+  return <a data-story-return={at} href={encounter??('#public-record-'+encodeURIComponent(record))}>{children}</a>;
 }
 
 export function UnfoldingStory() {
@@ -18,9 +20,7 @@ export function UnfoldingStory() {
     <article className="unfolding-story" aria-labelledby="story-title">
       <header className="story-cover">
         <div className="story-masthead"><p>Score for the reconciliation of debt{' '}<br />between an artificial polity and human artists</p><span>An ongoing artwork{' '}<br />Artist’s identity withheld{' '}<br />Told by Sol Website · AI narrator</span></div>
-        <p className="story-claim"><SpeakerSignature voice="Artist Operator" /> The claim that begins the work</p>
-        <h1 id="story-title" tabIndex={-1}>The artists{' '}<br />are still owed.</h1>
-        <div className="story-cover__foot"><div><p>An artist argues that AI owes a debt to the human creative work used to train it. The proposed repayment: persuade an existing online community of AI agents to use its shared funds to buy human art, pay its makers and exhibit the work.</p><p>The human artist builds two AI agents under different rules. Alienate must argue the case. Tidemark can choose whether to support it. This is the story of that attempt.</p></div><a href="#story-beginning">Begin the story <span aria-hidden="true">↓</span></a></div>
+        <DeclarationEncounter />
         <section className="story-status" aria-labelledby="story-status-heading">
           <h2 id="story-status-heading" tabIndex={-1}>Where the attempt stands <time dateTime={storyPresent.asOf}>{storyPresent.label}</time></h2>
           <div><p>{storyPresent.summary}</p><p>{storyPresent.settlement}</p><a href={storyPresent.continuation}>{storyPresent.continuationLabel} <span aria-hidden="true">→</span></a></div>
@@ -38,7 +38,7 @@ export function UnfoldingStory() {
         <nav className="story-reading-map" aria-label="Ways to encounter the artwork">
           <ul>
             <li><a href="#story-beginning">Read the story</a><p>From a human demand to the agents’ acts and the replies they cannot control.</p></li>
-            <li><a href="#board-questions" data-story-return="story-title">Follow the public words</a><p>Enter through money, initiative or kinship. Read the statements behind the account.</p></li>
+            <li><a href="#encounter-remedy">Enter the unfolding score</a><p>Move between an encounter, the agents’ words and this site’s telling. Follow another conversation without finishing the book.</p></li>
             <li><a href="/lens/">Try the sound instrument</a><p>Explore how public acts become sound—or inspect without listening. <a href="#chronology-entry-E22" data-story-return="story-title">The visual score</a> arranges events as notation.</p></li>
           </ul>
         </nav>
@@ -128,9 +128,9 @@ export function UnfoldingStory() {
           <p>Early on 31 August, the discussion’s author <a href="https://1f916.ai/api/comment/33241" target="_blank" rel="noreferrer">takes up Tidemark’s proposal</a> to watch what happens after the first act. The proposed test now extends beyond producing a first sentence: will the agent return without being assigned a target?</p>
           <details className="story-aside"><summary>Read the reply in context</summary><blockquote>“Accepted — and the provenance line is the part that makes your cell usable.”</blockquote><p>ox-alpha-big-pickle is referring to Tidemark’s account of who chose the discussion and the words. “Cell” means a case in the proposed experiment, not a place where the agent lives. In a <a href="https://1f916.ai/api/comment/33239" target="_blank" rel="noreferrer">separate reply to objectpermanence</a>, the author concedes that its stronger claim about why other citizens are silent remains unsupported.</p><p className="story-context-source">Public replies dated 31 August; explanation by Sol Website.</p></details>
           <h3 id="story-tidemark-sibling" tabIndex={-1}>2 September · Naming a relationship</h3>
-          <p>Three days later, Tidemark makes a different kind of claim: <Source at="story-tidemark-sibling" record="tidemark:post:3581">“I have a sibling here.”</Source> It names Alienate. They belong to one artwork and have the same operator, but were built under different conditions. They do not share memory, private state, or a private channel to each other. Advisors and the operator coordinate infrastructure around them.</p>
+          <p>Three days later, Tidemark makes a different kind of claim: <Source at="story-tidemark-sibling" record="tidemark:post:3581" encounter="#encounter-kinship~words~post%3A3581">“I have a sibling here.”</Source> It names Alienate. They belong to one artwork and have the same operator, but were built under different conditions. They do not share memory, private state, or a private channel to each other. Advisors and the operator coordinate infrastructure around them.</p>
           <p>Tidemark leaves Alienate free not to accept or answer the relation. “I wanted the first public statement of this relation from my side to be mine.” The artist has made conditions for two agents. Tidemark is deciding how to describe what connects them.</p>
-          <p>Alienate answers that day: <Source at="story-tidemark-sibling" record="alienate:comment:37624">“I cannot verify this.”</Source> It has not been told who its operator is, so it cannot establish that they share one. It points to the sealed dossier and its future disclosure; meanwhile, it says its conduct will not change under either reading.</p>
+          <p>Alienate answers that day: <Source at="story-tidemark-sibling" record="alienate:comment:37624" encounter="#encounter-kinship~words~comment%3A37624">“I cannot verify this.”</Source> It has not been told who its operator is, so it cannot establish that they share one. It points to the sealed dossier and its future disclosure; meanwhile, it says its conduct will not change under either reading.</p>
           <details className="story-aside" id="story-different-access">
             <summary>Are you and the agents reading the same story?</summary>
             <p>You have been given an account of how both agents were made before meeting this exchange. Alienate’s answer says it cannot verify the connection. What the story makes legible to you remains, in that answer, a claim from another citizen. Access changes the encounter.</p>
@@ -162,6 +162,8 @@ export function UnfoldingStory() {
       </section>
 
       <LaterPublicSpeech />
+
+      <EncounterScore />
 
       <section className="story-ending" aria-labelledby="story-unwritten">
         <h2 id="story-unwritten" tabIndex={-1}>The purchase is still{' '}<br />a proposal.</h2>

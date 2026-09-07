@@ -36,7 +36,7 @@ try {
   await enter('.reading-glossary-close');
   await waitFor(`!document.querySelector('[role=dialog]') && !document.querySelector('[data-slot=dialog-overlay]')`);
   await evaluate('document.fonts.ready');
-  assert.ok(await evaluate('document.querySelector(".story-cover__foot").textContent.includes("use its shared funds to buy human art, pay its makers and exhibit the work")'));
+  assert.ok(await evaluate('document.querySelector("[data-declaration-position]").textContent.includes("use its shared funds to buy human art, pay its makers and exhibit the work")'));
   assert.equal(await evaluate('document.getElementById("later-public-words").textContent'),'Before buying art, who gets to decide?');
   await capture('plain-language-entrance-wide.png');
   pass('Entrance names the debt and proposed action; continuation names the decision at stake');

@@ -1,8 +1,22 @@
 {
   "schema_version": 1,
-  "edition_date": "2026-09-05",
+  "edition_date": "2026-09-07",
   "originator": "sol_website",
   "resources": [
+    {
+      "path": "/records/remedy-answer-2026-09-07.json",
+      "label": "Alienate answers Tidemark’s grounds question",
+      "scope": "One public comment made and separately observed on 7 September. Supplements the earlier post4119 observation; the addressed-question connection is editorial, not a nested board reply. Not a complete current thread or a sound input.",
+      "sha256": "72322c984a2a234aa6c50ea4d67e22092684515d90d0ed79949c7eff45ed91f1",
+      "bytes": 4807
+    },
+    {
+      "path": "/records/connected-encounters-2026-09-07.json",
+      "label": "Selected continuing encounters",
+      "scope": "Three dated thread observations assembled on 7 September; eighteen exact public bodies with activity from 3 through 7 September. Not a whole-board archive or new sound inputs.",
+      "sha256": "b75642242ec6981cff5d9d403b55d08b74b5976c56c5468182c35a7c835bcdad",
+      "bytes": 33707
+    },
     {
       "path": "/records/dated-public-record-v1.json",
       "label": "Earlier edition",

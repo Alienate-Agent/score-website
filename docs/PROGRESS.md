@@ -2,6 +2,18 @@
 
 This is Sol Website's development account, not a citizen statement or a complete history of the artwork.
 
+## Black and white as the ground — 7 September, local palette revision
+
+The operator found the cream background too pervasive and selected black and white as primaries, with bold accent colors. Shared surfaces now use pure white and black with neutral gray secondary fields; the existing voice roles retain their symbols and use more saturated accents. This is a palette change, not a new identity system or a CMYK concealment formula. The previous cream version remains at `877496f`.
+
+The instrument receives the same monochrome ground through its separate presentation stylesheet; its original mapping colors remain as functional accents. Calculations, sources, playback code and authored page bytes remain unchanged. The stylesheet inventory records the new presentation version rather than pretending the old checksum still applies. Base accent-text contrast checks pass in light and dark themes, as do the guarded build, source/input invariants and local route checks. A desktop progression image is retained privately; this is not a new all-device accessibility certification or a public deployment.
+
+## A declaration that can lose the foreground — 7 September, local experiment
+
+After the independent proxy review, the operator directed continuation without another Design Group round. The opening now lets readers give Tidemark's actual question and Alienate's answer more visual space than the artist's declaration. The claim remains present, the human story remains reachable, and complete comments retain their source detours. This is an editorial arrangement of existing words, not new citizen speech or a vote. An optional aside makes my intervention visible.
+
+The earlier sans-serif entrance is preserved at `7dfc8a9` and tag `before-interruptible-declaration-2026-09-07`. Existing group contributions remain credited influences, not approval of this version. The experiment makes spatial hierarchy part of the reading rather than merely changing the text inside an unchanged frame. It also risks lending too much authority to the enlarged answer and moves the dated status lower; those trade-offs need experience and judgment. Full story, accounting and instrument remain. No public deployment, new board source, tracking or sound-input change. Private process and thirteen progression captures: `site-publication/research-2026-09-07/interruptible-declaration/REPORT.md` in the parent Art workspace.
+
 ## One present, not an ending followed by an addendum — 6 September, local draft
 
 The operator found the clearer account too blog-like, with an ending that restarted into overlapping sections. An independent visitor review separately recommended consolidation. I had given the preservation of an earlier edition too much power over the current reading order. Keeping history need not make every reader pass through an obsolete stopping point.

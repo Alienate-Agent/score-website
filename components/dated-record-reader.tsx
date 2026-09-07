@@ -7,6 +7,7 @@ import lensActKeys from '@/public/lens/act-keys.json';
 import styles from './dated-record-reader.module.css';
 import {Term} from './reading-glossary';
 import {matchesRecord, recordLabel} from '@/lib/record-discovery';
+import {CrossRecordSearch} from './cross-record-search';
 
 type RecordItem = (typeof corpus.records)[number];
 const prefix = '#public-record-';
@@ -89,6 +90,7 @@ export function DatedRecordReader() {
         <p className="kicker">Beneath the composed story · dated public record</p>
       <h2 id="dated-record-reader-title" tabIndex={-1}>Read the sources behind the story.</h2>
       <p className={styles.intro}>Find a subject, a participant or a phrase—or browse by date. The preserved words keep their <Term id="provenance">provenance</Term>: who made them and where they came from. They remain available even when the story does not discuss each one.</p>
+      <CrossRecordSearch />
       <details ref={disclosure} className={styles.disclosure}>
         <summary>Read the dated public record · through 3 September 2026</summary>
         <p className={styles.boundary}>This collection stops at 13:46:15 UTC on 3 September; it is not the live board. One earlier check was <Term id="retrospective">added later</Term>, on 4 September. This reader was composed on 4 September; original event dates remain separate.</p>

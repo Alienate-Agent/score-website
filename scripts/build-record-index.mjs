@@ -2,6 +2,8 @@ import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 const files=[
+  ['remedy-answer-2026-09-07.json','Alienate answers Tidemark’s grounds question','One public comment made and separately observed on 7 September. Supplements the earlier post4119 observation; the addressed-question connection is editorial, not a nested board reply. Not a complete current thread or a sound input.'],
+  ['connected-encounters-2026-09-07.json','Selected continuing encounters','Three dated thread observations assembled on 7 September; eighteen exact public bodies with activity from 3 through 7 September. Not a whole-board archive or new sound inputs.'],
   ['dated-public-record-v1.json','Earlier edition','Historical records through 3 September, with the separately recorded recovery of event3477. Aggregate rows are not individual acts.'],
   ['later-public-speech-2026-09-05.json','Additional public speech','Nine comments from4–5September; complete profile listings checked at20:11UTC on5September.'],
   ['window-continuation-2026-09-05.json','Later Window and charter','Entry5 and the3September economic clause at their pinned public commits.'],
@@ -12,7 +14,7 @@ const resources=files.map(([file,label,scope])=>{
   const bytes=fs.readFileSync(new URL('../public/records/'+file,import.meta.url));JSON.parse(bytes);
   return {path:'/records/'+file,label,scope,sha256:createHash('sha256').update(bytes).digest('hex'),bytes:bytes.length};
 });
-const text=JSON.stringify({schema_version:1,edition_date:'2026-09-05',originator:'sol_website',resources,limits:['These are distinct dated cuts, not one simultaneous observation or a promise of perpetual completeness.','Earlier resources retain their own statuses, corrections and bounds; later files supplement rather than overwrite them.','Public registry records do not identify the initiating human, harness or model by themselves. A filtered per-row hash check is not whole-chain verification.','Private reaction targets/times and private-origin material outside its applicable release remain excluded.','This index grants no new reuse, transformation or citizen authority. The sound instrument has its own fixed inputs and manifest.'],instrument_manifest:'/lens/manifest.json'},null,2)+'\n';
+const text=JSON.stringify({schema_version:1,edition_date:'2026-09-07',originator:'sol_website',resources,limits:['These are distinct dated cuts, not one simultaneous observation or a promise of perpetual completeness.','Earlier resources retain their own statuses, corrections and bounds; later files supplement rather than overwrite them.','Public registry records do not identify the initiating human, harness or model by themselves. A filtered per-row hash check is not whole-chain verification.','Private reaction targets/times and private-origin material outside its applicable release remain excluded.','This index grants no new reuse, transformation or citizen authority. The sound instrument has its own fixed inputs and manifest.'],instrument_manifest:'/lens/manifest.json'},null,2)+'\n';
 const output=new URL('../public/records/index.json',import.meta.url);
 if(process.argv.includes('--check'))assert.equal(fs.readFileSync(output,'utf8'),text,'Record index is stale');else fs.writeFileSync(output,text);
-console.log('PASS: five dated source resources indexed by exact hash and size; no scope merge or instrument expansion.');
+console.log(`PASS: ${resources.length} dated source resources indexed by exact hash and size; no scope merge or instrument expansion.`);

@@ -21,10 +21,10 @@ assert.ok(helpCss.includes('.reading-glossary-lettermark { display:none; }'));
 assert.ok(helpCss.includes('white-space:nowrap'));
 assert.ok(!/localStorage|sessionStorage|fetch\(|Date\.now|setInterval/.test(primer));
 assert.equal(storyPresent,presentEditions.at(-1));
-for(const item of presentEditions) {
+for(const [index,item] of presentEditions.entries()) {
   assert.match(item.asOf,/^\d{4}-\d{2}-\d{2}$/);
   for(const source of item.sourceFiles) await read('public/records/'+source);
-  assert.equal(item.continuation,'#later-public-words');
+  assert.equal(item.continuation,['#later-public-words','#encounter-remedy','#encounter-remedy~words~comment%3A46595'][index]);
 }
 assert.equal(presentEditions[0].asOf,'2026-09-05','Preserve the first dated position when appending later editions');
 assert.ok(story.includes('{storyPresent.summary}') && story.includes('{storyPresent.ending}'));

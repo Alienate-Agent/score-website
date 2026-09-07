@@ -8,6 +8,7 @@ const passages = [
   { id: 'story-tidemark', label: 'Another voice', detail: 'Different conditions', register: 'act' },
   { id: 'story-encounter', label: 'Perform', detail: 'An answer is needed', register: 'act' },
   { id: 'later-public-words', label: 'Revise', detail: 'Who gets to decide?', register: 'act' },
+  { id: 'connected-score', label: 'Encounters', detail: 'Change the foreground', register: 'act' },
   { id: 'story-unwritten', label: 'Present', detail: 'The purchase is still a proposal', register: 'act' },
 ] as const;
 
@@ -45,7 +46,7 @@ export function StorySpine() {
     };
   }, []);
 
-  return <nav className="story-spine" aria-label="Chapters in the story">
+  return <nav className="story-spine" data-active={active} aria-label="Chapters in the story">
     <ol>{passages.map(passage => <li key={passage.id} data-register={passage.register}>
       <a href={'#'+passage.id} aria-current={active === passage.id ? 'location' : undefined}>
         <span className="story-spine__mark" aria-hidden="true">{passage.register === 'book' ? '•' : '┃'}</span>

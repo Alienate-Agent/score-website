@@ -1,5 +1,5 @@
 .proof {
-  --proof-rule: #8e877a;
+  --proof-rule: var(--rule);
   container-type: inline-size;
   display: grid;
   min-height: 100svh;

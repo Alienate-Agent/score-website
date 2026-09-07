@@ -1,4 +1,135 @@
-# Ending integration — local review, 6 September 2026
+# Interruptible declaration — 7 September 2026
+
+final result: passed
+
+Bounded scope: first working claim/question/answer composition, not whole-goal completion, artistic acceptance, public release or Design Group endorsement. Operator directed continuation without the group following the independent proxy review. The preserved entrance and earlier sans-serif continuation inform the implementation; this intentionally changes their layout rather than claiming pixel fidelity to a complete Figma family.
+
+Evidence directory: `../site-publication/research-2026-09-07/interruptible-declaration/`. Source/implementation comparisons opened together:03/10 at1280×900,05/13 at390×844,01/12 at1280×900. Last pair uses old heading versus new composition arrival, an intentional anchor difference. Full-resolution type and controls are legible; no smaller crop was needed.09 verifies final320px answer ordering.11 verifies final desktop answer.06/07 filenames predate the last phone-order correction and are not final-build evidence.
+
+Five surfaces: existing sans/serif/mono fonts take contrasting roles without truncating excerpts; grid allocation changes with reader choice and stacks deliberately on phones; paper/ink and existing speaker tokens remain; existing SpeakerSignature and Lucide icons reused, no invented image assets; exact existing excerpts preserve both question alternatives and expose their complete sources. The site-authored juxtaposition is separately named. No source body, instrument input or citizen authority changed.
+
+P2 findings repaired and visually rechecked: desktop fixed controls overlapped the separate-conversation link; final margin reserves their space. Phone answer action was below intervening material; it now lives within the enlarged question. Final answer stacks answer→question→claim. No remaining actionable P0/P1/P2 observed in this bounded pass. Artistic risks remain: inversion can over-authorize the answer; the dated status is lower; mobile loses simultaneity. These are documented for human judgment, not certified away.
+
+Keyboard activation, browser Back and fragment reload preserve tested emphasis. Complete-answer detour restores focus and link top494.0625px; full-question detour from claim restores claim and initiating link. A return-control locator initially used link instead of button; actual button succeeded. Empty warning/error snapshot. TypeScript, focused tests/glossary, guarded build/privacy checks and final actual local route/asset checks passed. Updated headless browser-script selector was not run as a separate suite. No full screen-reader, acoustic or all-device claim. Detailed human process and limitations: `REPORT.md` in the evidence directory. Earlier reviews below remain historical.
+
+# Mobile encounter choice — 7 September 2026
+
+final result: passed
+
+Bounded scope: explicit phone choice field and existing record return; not whole-goal completion, publication, or selection of a complete design family.
+
+Source visual truth: `../site-publication/research-2026-09-07/whole-journey/11-phone-answer-return.png`. Implementation: `../site-publication/research-2026-09-07/mobile-choice/11-phone390-story-return.png`. Opened together in one comparison input, both390×844 CSS/pixels, no resampling. Same answer46595, story return present, disclosures closed. Full-resolution text and navigation are legible, so no smaller crop was needed. Additional open-state07, narrow320px08–10, desktop1280px12 and tablet900px13 were captured;09/10/12/13 visually inspected directly.
+
+Finding addressed: unselected phone subjects were visually absent. The explicit Other encounters field exposes all four complete titles and the wider record. This intentionally adds one opening action and temporary overlay; it does not silently collapse on scrolling. Earlier strip remains in the preserved source and wide layout. No actionable P0/P1/P2 found in the post-change matched comparison. This does not certify every site journey.
+
+Five surfaces: existing Geist sans/mono hierarchy retained, no source wrapping/truncation change; compact strip is approximately6px shorter in the matched phone pair, with full-width panel below; existing paper/ink/speaker tokens and selected inversion retained; existing EventChord and Lucide assets reused, no invented decorative assets; source bodies and question alternatives unchanged, new labels describe their actual destinations. At320px with story return, the toggle wraps legibly rather than overflowing. Desktop and tablet keep four titled choices.
+
+Native Return/Tab/Escape and pointer open/close preserve answer top757.09375px. Native choice44950→46595 and wider-record return restore the exact answer and heading focus. Initial locator-keyboard automation differed by362.5px;02 preserves it, while native tests do not reproduce it. Deeper cause unproven; no workaround added. Focus/selection observations are settled-state reads, not immediate animation-frame claims. Console warning/error snapshot empty. TypeScript, focused lint, six source/navigation tests and local actual-byte/route checks pass. Screen-reader, wider zoom/device, acoustic and complete whole-site checks remain outside this pass.
+
+Human process/evidence index: `../site-publication/research-2026-09-07/mobile-choice/REPORT.md`. No new data, authority or sound input. Earlier reviews below are historical.
+
+# Declaration entrance and narrative detours — 7 September 2026
+
+final result: passed
+
+Scope: restored sans-serif entrance, two story-to-encounter citations and persistent narrative return. Not whole-goal completion or acceptance of a complete design family. Existing prototype and additional sans-serif continuation are the source targets; no source quotations changed.
+
+Source visual truth: `../site-publication/research-2026-09-07/whole-journey/02-entrance-top.png` and `../site-publication/research-2026-09-07/portfolio/families/earlier-sans-serif-continuation-v2.png`. Implementation09 and16 in whole-journey. Old/new cover02/09 opened together at1280×800 CSS/pixels; no resampling. Continuation/current16 also opened together, explicitly a six-area1448×1086 concept versus one1280×800 working viewport, not pixel fidelity. The cover captures use the same heading-focus state. Fresh phone390×844 capture10 and tablet900×800 capture15 show responsive first entry.
+
+Five surfaces: existing Geist sans at800 weight replaces the large serif declaration; tighter tracking and capitals intentionally echo the continuation, while narrative serif remains. Cover explanation stays complete, two functional choices flank it on desktop and stack on phone. Existing paper/ink, source colors and rules remain; no palette/security change. No new image assets, CSS illustrations or substituted artwork; existing Lucide return icon and speaker notation reused. Approximate concept copy is not imported. Source identities and complete original bodies are tested against their preserved archive records.
+
+P2 repair: return was above the arrival viewport in06. Persistent strip placement in07 keeps it visible without reducing the source passage;06/07 opened together at1280×800. Phone11 confirms44px return width and no clipping. Full-resolution comparisons expose changed type, navigation, spacing and labels; no smaller crop was required. No horizontal overflow observed at390/900/1280px.
+
+Keyboard phone tests: cover→answer46595→cover restores link position796.9453125px and focus; sibling quotation→post3581→quotation restores231.9609375px and focus; second quotation→comment37624→another-mind encounter→return retains second-quotation focus. Begin-story focuses its heading. Glossary `cy-pres` and Escape retain the selected answer. Captured warning/error list empty. TypeScript, focused lint, source/adapters/reading/instrument tests and local route/asset checks pass; source/output privacy scans pass. No acoustic or complete accessibility claim.
+
+No remaining P0/P1/P2 in this bounded change. The broader mobile-subject discovery issue raised by Sol Advisor and Claude remains open, not certified away: the current compact field hides unselected titles visually. Exact story-origin memory also does not survive a page reload or separate instrument visit; existing instrument exact-act return remains. Whole-journey report documents these limits, test corrections and rejected captures. Prior reports below are historical.
+
+# Horizontal encounter score — 7 September 2026
+
+final result: passed
+
+Scope: horizontal locator replacing the existing left list, its responsive layout and tested connections; not whole-goal completion, public release or acceptance of an entire Figma family. Product Design's existing-target workflow grounds the change in the preserved implementation, established speaker notation and the operator/group's score-navigation proposals.
+
+Source visual truth: `../site-publication/research-2026-09-07/horizontal-locator/01-before-desktop.png`. Final implementation:10-desktop-final.png in that directory. Both1280×800 CSS/pixels, opened together in one comparison input, no resampling. Fresh arrivals intentionally differ: old masthead/list versus current persistent locator. Compare type, column proportions, tokens, content and navigation relationship, not absolute vertical pixels. No claim of matching Claude's later Round131 sketch, which has not yet been visually inspected.
+
+Five surfaces: Geist sans/mono retained; no clipped original words, larger main column and optional margin; four equal encounter positions replace the full left column; existing paper/ink and speaker tokens with paper-on-ink selection; existing EventChord/SpeakerSignature and Lucide arrows reused, no new decorative image or substitute illustration; all source bodies and question excerpt unchanged. The new guide distinguishes categories from counts/agreement and reading order from elapsed time. Full-resolution comparison makes these details legible; no smaller crop required.
+
+P2 iteration:03-mobile-before-alignment-fix shows a caption fragment behind the help bar. Removed the extra20px arrival offset.07-mobile-aligned-answer shows clean adjacency;09-tablet confirms the measured53px help offset rather than the former phone-only estimate. No overflow at390 or900px. Phone unselected titles are hidden visually but retained in accessible link names; full selected title and optional legend remain available. This is an intentional compact-navigation tradeoff, not a screen-reader certification.
+
+Keyboard encounter switching and phone question/answer reading return passed (article top−645.5234375px before/after). Rule41157→E22·3→same comment/focus passed. Sibling3581→instrument→Narrow variation→same act passed without audio. Glossary cy-pres search/Escape returned to same answer and Glossary focus. Captured warning/error log empty. Tests/build/private source+output scans pass; no whole-repository lint claim. Report/evidence index: `../site-publication/research-2026-09-07/horizontal-locator/REPORT.md`.
+
+No remaining actionable P0/P1/P2 in this bounded iteration. Open design comparison: four simultaneous positions versus Claude's immediate-neighbour line. P3: mobile discovery of unselected titles, existing excerpt arrow on a separate line. Wider text scaling, screen readers, touch hardware, acoustic output and complete end-to-end site acceptance remain unverified. Earlier reviews below are historical.
+
+# Addressed words remain present — 7 September 2026
+
+final result: passed
+
+Bounded scope: the new exact-question excerpt above the answer, not whole-goal completion or the entirety of Claude's sketch. Source visual: existing `../site-publication/research-2026-09-07/addressed-words/02-before-aligned-desktop.png`; current rendering03 in the same directory. Opened together in one comparison input. Both1280×800 CSS/pixels; no resampling. Arrival offsets differ64px, so only component proportions, typography, column width and state composition are compared, not absolute vertical placement. Intended addition responds to Claude Round130 and its94:29 sketch: an attributed piece of the addressed act stays above the reply. Website chose the complete two-alternative sentence rather than the opening sentence; this is not a full-sketch fidelity claim.
+
+Five surfaces: existing Geist sans/mono hierarchy and legible16px excerpt retained; the smaller question precedes the larger answer, with the full question and narrator optional. Paper/ink and existing speaker-color tokens unchanged. Existing speaker and arrow icons reused, no image asset or substitute illustration. The excerpt is an exact contiguous source substring with both alternatives, clearly labeled. No fresh source, new citizen words or sound input. Full-view comparison exposes all changed detail; no smaller crop needed.
+
+Mobile390×844 fresh arrival05 shows complete two-alternative excerpt and beginning of answer with no overflow. Keyboard excerpt→full question focuses heading, and keyboard pair return restores measured293.3828125px. Direct visible-coordinate pointer pair returns to−120.1171875px exactly. Locator-click automation shifted357.5px, unlike direct pointer and keyboard; recorded as an automation-path discrepancy, not hidden or overgeneralized. No UI workaround added. Report preserves failed observations06/07 beside direct-pointer08. Current console warning/error list empty. Broader browsers, history combinations and text scaling remain unverified.
+
+No actionable P0/P1/P2 issue observed in this bounded new cue after direct-pointer checking. P3: the return arrow wraps to its own short line; clearer inline affordance may follow the larger locator design. This pass does not certify the entire long story or Figma family set. Detailed process and verification limitations: `../site-publication/research-2026-09-07/addressed-words/REPORT.md`.
+
+# Earlier question/answer increment — 7 September 2026
+
+final result: passed
+
+Scope: bounded extension of the existing encounter, not whole-site acceptance or a faithful reconstruction of every operation in Claude's Figma sketch. Implementation and narration: Sol Website. Reply-first/optional-context proposal: Claude Advisor Round129; review of this rendering is pending.
+
+Source visual truth for preservation comparison: `../site-publication/research-2026-09-07/reply-connection/01-before.png`. Final same-question state: `12-final-question-default.png` in that folder. Both827×998 CSS/pixels, no resampling, opened together in one comparison input. The source is the existing working interface; intentional additions are a dated two-way question/answer connection and closed-by-default interpretation. Typeface, source width, wrapping, speaker notation and controls stay consistent; the new connection moves the body down approximately100px. This is deliberate hierarchy, not unexplained drift.
+
+Desktop1487×1058: `05-final-answer-hydrated.png` and `06-question-open-desktop.png`. Narrow390×844: `07-question-mobile.png`, `08-answer-mobile-reading.png`, `09-search-return-mobile.png`, `11-glossary-final-mobile.png`. These are responsive/interaction checks, not a claim of pixel fidelity to separate mobile mockups. Full-resolution labels and body are readable, so no smaller crop was needed.
+
+Five surfaces: existing sans-serif/mono hierarchy and exact body wrapping retained; no horizontal overflow in tested widths; paper/ink and established speaker colors retained; no new raster assets, substitute illustrations or new symbol system; full question and answer remain exact source bodies, with site interpretation separately labeled. Reply navigation stays below the mobile help bar. No formal all-state contrast certificate is claimed.
+
+Behavior: keyboard question/answer switching focuses the encounter heading; switching from a scrolled answer to the question and back restores the measured article position exactly in the tested run. The complete question opens optionally in the desktop margin. Record search finds46595, opens it and preserves query/focus through browser Back. Glossary finds unaccented cy-pres and closes back to the same answer. Current captured console warning/error list empty. Other history sequences, acoustic output and the complete site journey remain outside this increment's verification.
+
+Comparison history: the intermediate answer had the narrator already open (`03-answer-desktop-painted.png`); the final closes that interpretation and allows the addressed question to open instead. First enlarged capture was partly unpainted, and another captured the cover before deep-link hydration: both rejected as final-state evidence, preserved in the private report. The first new-term search used the still-mounted previous build; an explicit reload produced the verified definition. No blank/stale capture is used to certify the final result.
+
+No remaining P0/P1/P2 finding in this bounded addition. Follow-up: horizontal score locator, stronger change in foreground hierarchy, and historically evidenced agent-view cut remain design work—not completed features. Prior review below remains historical.
+
+# Earlier connected-encounter review — 7 September 2026
+
+final result: passed
+
+Scope: the new encounter surface and its tested source/score/sound connections. This is not whole-goal acceptance, public release, independent-human research or an accessibility certificate. Broader discovery and explicit instrument-return work remain in the private iteration report.
+
+## Comparison evidence
+
+Source visual truth: `../site-publication/research-2026-09-07/visual-studies/crossings-source-target.png`. Final implementation: `../site-publication/research-2026-09-07/encounter-desktop-verified.png`. Both were opened in the same comparison input at 1487×1058 pixels, matching 1487×1058 CSS viewport, without density resampling. State: remedy encounter, original words, full Tidemark comment44750, disclosures closed. The source is a design study, not evidence of citizen speech or approved attribution.
+
+Intentional differences: omit the mock's misleading Alienate signature above Tidemark's words; retain the exact original single-paragraph body rather than the mock's invented paragraph breaks; use the established teal Tidemark and violet site signatures; preserve the working global Glossary position; put precise dates in optional sources. The selected encounter rail and full-word foreground follow the source's hierarchy. No actual source truncation is accepted to match the mock.
+
+Responsive evidence: `encounter-mobile-final.png`,390×844 CSS/pixels. No separate mobile mock exists, so this is a responsive reading check, not a pixel-match claim. Main words precede interpretation; document width390, no horizontal overflow in tested word/telling states. All relevant labels and prose are readable in the full-resolution images; no additional crop was needed to judge these typographic/spacing changes.
+
+## Five fidelity surfaces
+
+- Typography: existing Geist sans-serif for the encounter, approximately50px heading and22px desktop body, with a monospaced date/register layer. Source study's sans-serif hierarchy retained, not its erroneous attribution. Exact paragraphs wrap without clipping; narrow heading wraps deliberately.
+- Spacing/layout:18% encounter rail, flexible main column,25% interpretation margin. The older chapter rail yields while this surface is active. At narrow widths the sidebar follows the main text. Footer reserves the global control margin so its present link stays clear.
+- Color/tokens: existing paper, ink, rule and speaker tokens; black underline indicates selected state, not operator authorship. No new speaker palette. Formal contrast of every new cascade/state was not remeasured in this pass.
+- Assets: no new images or approximated illustrations. Existing speaker notation and Lucide navigation icons are reused; the source is a typographic interface study. No raster decoration substituted with code drawings.
+- Copy: complete original public words remain separately attributable. Site interpretation is labeled retrospective; actual reply relations are distinguished from editorial cross-thread connections. Original/capture/composition/inclusion dates remain distinct. Sound is offered only for already eligible acts.
+
+## Comparison history and corrections
+
+- P2 dual rails/space allocation: `encounter-desktop-before.png` showed the new layout squeezed beside the historical chapter navigation. `encounter-desktop-after.png` shows expanded composition and the older rail yielding. Voice selection moved into surrounding context so it does not dominate first reading.
+- P2 stacked controls: the intermediate high stacking layer hid Glossary. Removing that layer exposed a footer overlap in `encounter-desktop-final.png`. A reserved footer margin clears it in `encounter-desktop-final-clear.png` and final `encounter-desktop-verified.png`; both were compared with the source. Semantic fieldset replacement retained the final visual layout and accessible group name.
+- P1 invalid connection: kinship pointed to nonexistent E52 and reached a default entry. Removed the invented score association; the actual preserved post3581 is linked instead. Every declared score anchor is now checked against the chronology. Revised-rule link selects E22·3 in the browser.
+- P2 source return: generic section return lost selected-act URL and focus. Exact encounter location is now retained and the encounter restores its own position/focus. Post3581 and E22·3 keyboard returns tested, restoring the corresponding act and `encounter-heading`.
+- P1 delivery: a running preview rebuilt in place returned empty200 instrument HTML and404 new application chunks. Disk files remained intact; a fresh process restored delivery. Procedure and actual-byte smoke test added. This is not a claim that the framework's watcher itself was repaired. Final server served four checked assets byte-exactly with correct types.
+- Withdrawn glossary finding: automated fixed-button targeting moved the page before activation. A normal visible click/search/Escape in the fresh build returned y19171 and heading top203.6875px exactly, with focus back on Glossary. The unnecessary workaround is absent. During-build missing-module behavior remains separately recorded, not misdiagnosed as chosen UI behavior.
+
+## Tested interactions / remaining limits
+
+Desktop and390px mobile: original/telling switching; complete parent4119; another citizen45088 via context selector; browser history/remembered encounter selection; kinship source and keyboard return; revised-rule score and keyboard return; glossary search/Escape; eligible3581 into sound, selected correctly, and browser Back restoring that act. No playback occurred in this pass. Final checked warning/error log empty after a fresh load, not an all-session clean claim.
+
+No remaining actionable P0/P1/P2 within this focused surface's compared state and tested connections. The full goal remains incomplete: newer material is not in the historical collection's search, the instrument's generic return is not origin-aware, and a continuous whole-experience reading/accessibility pass remains. P3: native long voice-option labels, wider device/zoom/screen-reader and acoustic review. Existing source/instrument bytes and approved introduction/13 entries verify unchanged; guarded build, TypeScript and focused lint/tests pass.
+
+---
+
+# Historical ending integration — local review, 6 September 2026
 
 final result: passed
 
@@ -239,3 +370,21 @@ No remaining P0/P1/P2 finding in the tested record-discovery change. This does n
 final result: passed
 
 Next: simplify the first instrument encounter; carry console and accessibility limitations into the integrated release check.
+
+## 7 September — cross-collection discovery increment
+
+Later same-day navigation closeout is appended below; the original scope statement remains historical.
+
+This extends, not replaces, the narrower historical reader above. Seventy-eight distinct record versions are searchable across earlier records, later comments and selected encounters; identical bodies retain their observation links and changed bodies remain separate. No new sound inputs or live-board completeness claim. Source editions remain intact.
+
+Local browser checks at1487×1058 and390×844: query/speaker filtering, no-match recovery, keyboard expansion8→16, newer44750/44950 and older36259 source paths,41157 alternate-observation link, Back restoring query/filter/result focus. Mobile page width390px, no observed horizontal overflow. Existing Geist sans-serif used for the working search surface; source prose unchanged. Final44750 test used keystrokes and verified both one visible result and retained query after Back. Tool field replacement/count helpers were intermittently stale; direct DOM and keystrokes supplied the confirming evidence. No new test-tab error logs. Not a full screen-reader or200%-text audit.
+
+Screenshots outside the public checkout: `../site-publication/research-2026-09-07/cross-search-desktop.png`, `cross-search-mobile.png`, `cross-search-mobile-final.png`. Final image follows native-output accessibility markup. Unit tests exercise actual component adapters; historical-record/connected-encounter tests, TypeScript, focused lint and publication scans pass. Static bytes/MIME and instrument transport checked before final search-only semantic-markup build. The overall connected experience and explicit instrument return remain unfinished; no publication authorized by these tests.
+
+## 7 September — exact encounter return from the instrument
+
+Explicit return implemented for the existing eligible encounter acts. Browser keyboard test: sibling post 3581 → instrument → choose introductory post 1844 → reload → return restores original 3581 encounter and heading focus. Mobile 390×844 repeats entry/return, visible return control and no page overflow. Screenshot: `../site-publication/research-2026-09-07/instrument-encounter-return-mobile.png`. Test against actual encounter data covers six act/view origins; unsafe/unknown destinations rejected. Engine/input/style byte equality, engine regression, focused project lint, served assets and route checks pass. No autoplay, input or mapping change. Build/privacy checks passed for this product revision. This closes the explicit-return gap, not full instrument accessibility, acoustic or whole-site QA. Local only; publication separate.
+
+## 7 September — visual-score connection in the margin
+
+Existing proposal→E22·3 route promoted from Dates and sources into the encounter margin. Desktop1487×1058 and mobile390×844 keyboard journeys confirm exact chronology entry, contextual “Return to the encounter,” retained telling mode/comment41157, closed archive and heading focus on return. No page overflow at either tested width. Screenshot outside checkout: `../site-publication/research-2026-09-07/encounter-score-connection-desktop.png`. Saved full viewport inspection caught a run-together speaker label/button; button gets its own line. Mobile margin follows the main reading; long-passage distance is an open design consideration, not claimed solved. Connected-encounter and instrument-return tests, focused lint, TypeScript and completed build/privacy checks pass. Narrative/source/score bodies and sound inputs unchanged. No publication or final-family selection.

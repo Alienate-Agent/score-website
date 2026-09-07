@@ -1,22 +1,28 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
+import {presentEditions,storyPresent} from '../lib/story-present.ts';
 const read = name => fs.readFileSync(new URL('../'+name, import.meta.url), 'utf8');
 const story = read('components/unfolding-story.tsx');
 const page = read('app/page.tsx');
 const layers = read('components/story-layers.tsx');
 const spine = read('components/story-spine.tsx');
-const cover = story.slice(story.indexOf('<header'), story.indexOf('</header>'));
-const present = read('lib/story-present.ts');
+const cover = story.slice(story.indexOf('<header'), story.indexOf('</header>')) + read('components/declaration-encounter.tsx');
 for (const text of ['An ongoing artwork', 'AI narrator', 'human artist', 'existing online community', 'buy human art, pay its makers and exhibit the work', 'Who is speaking—and who can act?', 'human maintainer', 'Advisor interpretation is not either citizen’s speech']) assert.ok(cover.includes(text),text);
 assert.ok(cover.includes('<time dateTime={storyPresent.asOf}>'));
-assert.ok(present.includes("asOf: '2026-09-05'"));
-assert.ok(present.includes('In its morning report on 5 September, Alienate says'));
+assert.equal(presentEditions[0].asOf,'2026-09-05','Keep the historical first edition');
+assert.equal(storyPresent,presentEditions.at(-1),'The entrance uses the latest admitted edition');
+assert.equal(storyPresent.asOf,'2026-09-07');
+assert.ok(storyPresent.summary.includes('Alienate has answered Tidemark’s question'));
 assert.ok(!cover.includes('Through 3 September 2026'));
 assert.ok(cover.includes('href={storyPresent.continuation}'));
-assert.ok(present.includes("continuation: '#later-public-words'"));
+assert.equal(storyPresent.continuation,'#encounter-remedy~words~comment%3A46595');
+assert.ok(cover.includes('Follow the human undertaking'));
+assert.ok(cover.includes('Let the question in'));
+assert.ok(cover.includes('Let the answer in'));
+assert.ok(cover.includes('data-story-return="story-title"'));
 assert.ok(story.includes('{storyPresent.ending}'));
-for (const href of ['#story-beginning','#board-questions','/lens/','#chronology-entry-E22']) assert.ok(cover.includes('href="'+href+'"'),href);
+for (const href of ['#story-beginning','#encounter-remedy','/lens/','#chronology-entry-E22']) assert.ok(cover.includes('href="'+href+'"'),href);
 assert.ok(story.includes('17:51 UTC · first fetch'));
 assert.ok(story.indexOf('Black bars withhold') < story.indexOf('<WithheldPronoun id='));
 assert.equal((story.match(/<WithheldPronoun id=/g)||[]).length,12);
@@ -32,6 +38,8 @@ assert.ok(spine.includes('aria-label="Chapters in the story"'));
 assert.ok(!spine.includes("register: 'record'"));
 for(const [path,hash] of [
   ['public/records/dated-public-record-v1.json','cf99b13a62e8c1dc10635bf6359e0e69a517a7ed2ac1d2ba26bf9c46c8c85cbd'],
-  ['public/lens/manifest.json','85572cf0cad2caba624d186f0d725e23bb41785577813c24141c3494031663f8'],
+  // Operator-directed monochrome surface successor; engine/input invariants
+  // retain their original byte comparisons in test-instrument-encounter-return.mjs.
+  ['public/lens/manifest.json','fc91c9b7597b4aac63929e1404e6739a41598d12ed12b60e82a226d82df2e04f'],
 ]) assert.equal(createHash('sha256').update(read(path)).digest('hex'),hash,path);
 console.log('PASS: entrance roles, dated status, reading modes, first-use redaction, preserved historical cutoff, archive placement and immutable source/instrument identities. Browser reading/focus checks remain separate.');

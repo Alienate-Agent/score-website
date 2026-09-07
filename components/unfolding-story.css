@@ -26,6 +26,8 @@
   .story-spine a { font-size:.9rem; gap:.45rem; }
   .story-spine small { display:block; color:var(--ink-soft); font:.75rem/1.5 var(--font-geist-sans, Arial),sans-serif; margin-top:.4rem; }
   .story-spine__mark { background:var(--paper-raised); }
+  /* The encounter rail takes over the same navigational role, not a second column. */
+  .story-spine[data-active="connected-score"] { visibility:hidden; }
 }
 @media print { .story-spine { position:static; width:auto; } .score-site { margin-left:0; } }
 .withheld-pronoun { display:inline-block; white-space:nowrap; vertical-align:baseline; font-size:.8em; line-height:1; color:#111; background:#111; border:1px solid #111; }
@@ -35,12 +37,14 @@
 .story-masthead { display:flex; justify-content:space-between; gap:2rem; font: .75rem/1.6 var(--font-geist-mono),monospace; }
 .story-masthead > span { text-align:right; color:var(--ink-soft); }
 .story-claim { display:flex; flex-wrap:wrap; gap:.6rem 1rem; align-items:center; margin-top:clamp(2rem,4vw,4rem); font-size:.875rem; }
-.story-cover h1 { font-size:clamp(4rem, 11.8vw, 12rem); line-height:.87; letter-spacing:-.06em; font-weight:400; margin-block:1.7rem 2.7rem; }
+.story-cover h1 { font-family:var(--font-geist-sans,Arial),sans-serif; font-size:clamp(3.3rem, 9.5vw, 10rem); line-height:.92; letter-spacing:-.065em; font-weight:800; text-transform:uppercase; margin-block:1.7rem 2.2rem; }
 .story-cover__foot { display:flex; justify-content:space-between; align-items:flex-end; gap:2rem; margin-block:2rem 4rem; }
-.story-cover__foot p { font-size:clamp(1.15rem,2vw,1.7rem); line-height:1.45; }
+.story-cover__foot p { font:400 clamp(1.1rem,1.5vw,1.3rem)/1.55 var(--font-geist-sans,Arial),sans-serif; }
 .story-cover__foot > div { max-width:52rem; }
 .story-cover__foot p + p { margin-top:1rem; }
-.story-cover__foot a { white-space:nowrap; padding-block:.8rem; }
+.story-cover__foot nav { display:flex; flex-direction:column; gap:.5rem; flex-shrink:0; font:500 .95rem/1.4 var(--font-geist-sans,Arial),sans-serif; }
+.story-cover__foot a { padding-block:.8rem; min-height:44px; }
+.story-cover__foot nav a:first-child { background:var(--ink); color:var(--paper); padding:.85rem 1.1rem; text-decoration:none; }
 .unfolding-story a { text-decoration:underline; text-underline-offset:.25em; }
 .story-status { display:grid; grid-template-columns:minmax(10rem,1fr) minmax(0,3fr); gap:1rem 2rem; border-block:1px solid var(--ink); padding-block:1.4rem; }
 .story-status h2 { font:1rem/1.5 var(--font-geist-sans, Arial),sans-serif; letter-spacing:0; font-weight:500; margin:0; }

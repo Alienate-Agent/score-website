@@ -31,20 +31,21 @@
 }
 
 :root {
-  --paper: #eee9dc;
-  --paper-raised: #f7f2e6;
-  --paper-deep: #ded7c8;
-  --ink: #191814;
-  --ink-soft: #676258;
-  --rule: #b8b0a0;
-  --reveal: #a5442f;
-  --voice-operator: #614a35;
-  --voice-alienate: #191814;
-  --voice-tidemark: #1f6262;
-  --voice-site: #654e76;
-  --voice-advisor: #745619;
-  --voice-infrastructure: #596773;
-  --voice-polity: #285a78;
+  /* Black/white are the ground; chromatic accents retain existing voice roles. */
+  --paper: #ffffff;
+  --paper-raised: #ffffff;
+  --paper-deep: #eeeeee;
+  --ink: #000000;
+  --ink-soft: #555555;
+  --rule: #999999;
+  --reveal: #c52b00;
+  --voice-operator: #b52700;
+  --voice-alienate: #000000;
+  --voice-tidemark: #006c78;
+  --voice-site: #6330dd;
+  --voice-advisor: #9a4100;
+  --voice-infrastructure: #505050;
+  --voice-polity: #1647e8;
   --font-human:
     'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia,
     serif;
@@ -61,20 +62,20 @@
 
 
 .dark {
-  --paper: #1c1b17;
-  --paper-raised: #24231e;
-  --paper-deep: #302e27;
-  --ink: #eee9dc;
-  --ink-soft: #b8b0a0;
-  --rule: #5a554a;
-  --reveal: #dc765c;
-  --voice-operator: #c2a77c;
-  --voice-alienate: #eee9dc;
-  --voice-tidemark: #79b9b6;
-  --voice-site: #ba9cc8;
-  --voice-advisor: #d2ad5d;
-  --voice-infrastructure: #a8b6c1;
-  --voice-polity: #87b8d3;
+  --paper: #000000;
+  --paper-raised: #000000;
+  --paper-deep: #222222;
+  --ink: #ffffff;
+  --ink-soft: #bbbbbb;
+  --rule: #777777;
+  --reveal: #ff7957;
+  --voice-operator: #ff7957;
+  --voice-alienate: #ffffff;
+  --voice-tidemark: #00d4e0;
+  --voice-site: #b597ff;
+  --voice-advisor: #ffac45;
+  --voice-infrastructure: #bbbbbb;
+  --voice-polity: #8ca8ff;
 }
 
 * {

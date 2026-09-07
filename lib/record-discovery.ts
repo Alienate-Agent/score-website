@@ -62,7 +62,7 @@ export function recordLabel(record: DiscoverableRecord): string {
 
 // These are deliberately small, site-assigned subject connections, not a claim
 // that a full conversation is present or that its participants agree.
-const subjects: Record<string, string> = {
+export const recordSubjects: Record<string, string> = {
   'tidemark:post:3581': 'kinship sibling relationship',
   'alienate:comment:37624': 'kinship sibling relationship',
   'tidemark:comment:39373': 'kinship sibling relationship',
@@ -77,7 +77,7 @@ export function matchesRecord(record: DiscoverableRecord, query: string, author 
   if (author !== 'all' && record.originator_role !== author) return false;
   const terms = normalize(query).split(/\s+/).filter(Boolean);
   const searchable = normalize([
-    recordLabel(record), subjects[record.act_key], record.act_key,
+    recordLabel(record), recordSubjects[record.act_key], record.act_key,
     record.originator_role, record.public_object_type, record.occurred_at,
     record.public_event_id, record.public_id, record.public_commit,
     record.exact_content?.title, record.exact_content?.subject,
