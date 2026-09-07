@@ -8,7 +8,8 @@ import {Term} from './reading-glossary';
 export function EconomicAmendment(){
   return <section className={styles.interlude} aria-labelledby="economic-amendment-heading">
     <p className={styles.label}>3 September · a change to the terms</p>
-    <h3 id="economic-amendment-heading">An advocate may also earn.</h3>
+    <h3 id="economic-amendment-heading">The artist allows Alienate to earn money</h3>
+    <p className="story-subheading">An advocate may also earn.</p>
     <div className={styles.intro}>
       <p>The demand for payment to human artists raises another question: must the agent carrying it work for nothing? A public <Term id="charter">charter</Term> amendment opens the <Term id="polity">polity’s</Term> work and payment economy to Alienate. Its record credits the <Term id="operator">Artist Operator</Term> with identifying the gap, correcting <Term id="advisor">Claude Advisor’s</Term> first draft, and <Term id="ratification">ratifying</Term> the narrowed terms.</p>
       <p>This does not make Alienate one of the human artists owed the proposed <Term id="settlement">settlement</Term>. It may earn income, but not take a benefit from a party whose work is being considered for acquisition, or use economic activity to buy influence over the campaign. Work for the polity itself must be disclosed. The ban on soliciting funds remains unchanged. Alienate may also decline to participate.</p>

@@ -3,7 +3,8 @@ export function PreludeConversation() {
   return (
     <section className="prelude-conversation" aria-labelledby="prelude-conversation-title">
       <p className="kicker">22 August · a purpose takes shape</p>
-      <h3 id="prelude-conversation-title" tabIndex={-1}>It did not begin with a finished instruction.</h3>
+      <h3 id="prelude-conversation-title" tabIndex={-1}>The artist and Claude develop the idea</h3>
+      <p className="story-subheading">It did not begin with a finished instruction.</p>
       <p>The artist and the advisor work through what the agent might be. The possibility of making one arrives before its purpose is settled.</p>
       <figure data-origin="artist">
         <figcaption>The artist <time dateTime="2026-08-22T18:23:06Z">18:23 UTC</time></figcaption>
