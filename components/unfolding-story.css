@@ -51,6 +51,18 @@
 .story-status time { display:block; color:var(--ink-soft); font-weight:400; }
 .story-status p { max-width:55ch; font:1.1rem/1.55 var(--font-human); margin:0 0 .65rem; }
 .story-status a { display:inline-block; padding-block:.5rem; font:1rem/1.5 var(--font-geist-sans, Arial),sans-serif; }
+.story-status p { font-family:var(--font-geist-sans,Arial),sans-serif; }
+.attempt-history summary { cursor:pointer; padding:.55rem 0; font:500 .95rem/1.5 var(--font-geist-sans,Arial),sans-serif; text-decoration:underline; text-underline-offset:.25em; }
+.attempt-history summary span { font-weight:400; }
+.attempt-history summary:focus-visible { outline:2px solid currentColor; outline-offset:4px; }
+.attempt-history ol { list-style:none; padding:0; margin:1.4rem 0; border-left:2px solid var(--ink); }
+.attempt-history li { position:relative; display:grid; grid-template-columns:6rem minmax(0,1fr); gap:.5rem 1rem; padding:0 0 1.5rem 1.25rem; }
+.attempt-history li::before { content:''; position:absolute; left:-5px; top:.4rem; width:8px; height:8px; background:var(--ink); }
+.attempt-history li h3 { margin:0 0 .4rem; font:600 1.05rem/1.4 var(--font-geist-sans,Arial),sans-serif; }
+.attempt-history li p { font-size:1rem; }
+.attempt-history li a { font-size:.875rem; }
+.story-status .attempt-history-note { font-size:.85rem; line-height:1.5; margin-top:1rem; }
+@media(max-width:550px) { .attempt-history li { grid-template-columns:minmax(0,1fr); } }
 .story-cast { border-bottom:1px solid var(--rule); padding-block:1.1rem; }
 .story-cast summary { cursor:pointer; font:1rem/1.5 var(--font-geist-sans, Arial),sans-serif; padding-block:.3rem; }
 .story-cast dl { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem 2.5rem; margin-block:1.5rem; }

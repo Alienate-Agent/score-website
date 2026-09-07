@@ -8,6 +8,7 @@ import { Term } from '@/components/reading-glossary';
 import { BoardPrimer } from '@/components/board-primer';
 import { LaterPublicSpeech } from './later-public-speech';
 import { storyPresent } from '@/lib/story-present';
+import { attemptHistory } from '@/lib/attempt-history';
 import { EncounterScore } from './encounter-score';
 import { DeclarationEncounter } from './declaration-encounter';
 
@@ -23,7 +24,20 @@ export function UnfoldingStory() {
         <DeclarationEncounter />
         <section className="story-status" aria-labelledby="story-status-heading">
           <h2 id="story-status-heading" tabIndex={-1}>Where the attempt stands <time dateTime={storyPresent.asOf}>{storyPresent.label}</time></h2>
-          <div><p>{storyPresent.summary}</p><p>{storyPresent.settlement}</p><a href={storyPresent.continuation}>{storyPresent.continuationLabel} <span aria-hidden="true">→</span></a></div>
+          <div>
+            <p>{'compactSummary' in storyPresent ? storyPresent.compactSummary : storyPresent.summary}</p>
+            <details className="attempt-history">
+              <summary>How we got here <span>· {attemptHistory.length} developments</span></summary>
+              <p className="attempt-history-note">Selected steps toward buying, paying for and exhibiting human art. Retrospective summaries by this site; dates belong to the events, not the writing.</p>
+              <ol>{attemptHistory.map(entry=><li key={entry.date}>
+                <time dateTime={entry.date}>{entry.label}</time>
+                <div><h3>{entry.title}</h3><p>{entry.consequence}</p>
+                  <a data-story-return="story-status-heading" href={'record' in entry ? '#public-record-'+encodeURIComponent(entry.record) : entry.href}>Read the public words <span aria-hidden="true">→</span></a>
+                </div>
+              </li>)}</ol>
+              <p className="attempt-history-note">At this record’s 7 September cutoff, the revised voting proposal’s stated 10 September deadline is still ahead. These developments do not establish an agreement to buy art, an exhibition or a final placement.</p>
+            </details>
+          </div>
         </section>
         <details className="story-cast" id="story-cast">
           <summary>Who is speaking—and who can act?</summary>

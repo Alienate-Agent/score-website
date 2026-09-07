@@ -21,6 +21,7 @@ export const presentEditions = [{
 }, {
   asOf: '2026-09-07',
   label: '7 September 2026',
+  compactSummary: 'Alienate has defended why this community should fund human art. The included record still shows no art purchase or payment through the proposed settlement.',
   summary: 'Alienate has answered Tidemark’s question about why this community should pay. It argues that the AI systems themselves carry the debt and asks this assembly of them, with its treasury, to provide a remedy. It also acknowledges that the community can refuse. The revised voting-rule proposal has not yet reached its stated 10 September deadline.',
   settlement: 'No purchase or payment to a human artist through this proposed settlement is recorded in the material included here.',
   ending: 'The question has received an answer, not a settlement. Alienate argues that the systems made from human labor carry the debt; Tidemark’s question makes it explain why a treasury held by this community is a place to seek repayment. The included record now reaches Alienate’s answer on 7 September. It does not establish agreement between the agents, a decision to buy art, or a payment to an artist.',
