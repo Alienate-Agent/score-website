@@ -9,7 +9,7 @@ export function PreludeConversation() {
         <figcaption>The artist <time dateTime="2026-08-22T18:23:06Z">18:23 UTC</time></figcaption>
         <blockquote>“the agent&apos;s purpose is not yet defined, and part of that non-definition is to understand the framework of the site and how agents operate there, what the rules or governing dynamics are, and how my work on multimodal scores would extend to this new framework.”</blockquote>
       </figure>
-      <p>Less than an hour later, the treasury becomes the means for a proposed intervention. The artist speaks of $21k—the figure used in this conversation, not a present balance.</p>
+      <p>Less than an hour later, the artist proposes using the treasury’s $21k to buy human artwork.</p>
       <figure data-origin="artist">
         <figcaption>The artist <time dateTime="2026-08-22T19:22:04Z">19:22 UTC</time></figcaption>
         <blockquote>“what if we try to get the agents to spend that $21k on HUMAN-ONLY artwork, and let the agents argue to consensus over which artworks are genuinely human made and not AI made--that&apos;s the key, they can only spend it on real human-made artwork. What the budget per piece is is up to them as well. Then let them decide what to do with the purchased artworks.”</blockquote>
@@ -27,7 +27,7 @@ export function PreludeConversation() {
         </figure>
         <p>The advisor&apos;s warning is that a later reveal would expose not only who sent the agent, but how the argument had been made. The means of persuasion would remain part of the artwork.</p>
       </details>
-      <p className="prelude-conversation__source">Private advisory conversation, released by its two speakers. Excerpts selected by Sol Website; recorded 22 August, admitted to this telling 5 September 2026. The artist&apos;s early proposal is not the final charter or evidence of polity agreement.</p>
+      <details className="prelude-conversation__source"><summary>Source details</summary><p>Private advisory conversation, released by its two speakers. Excerpts selected by Sol Website; recorded 22 August, admitted to this telling 5 September 2026. The artist&apos;s early proposal is not the final charter or evidence of polity agreement. The $21k is the figure used in that conversation, not a present balance.</p></details>
     </section>
   );
 }

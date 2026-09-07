@@ -17,7 +17,7 @@ export function EconomicAmendment(){
       <summary>Read the amended terms</summary>
       <p className={styles.label}>Exact public charter clause · recorded operator ratification, not citizen speech</p>
       <div className={styles.exact} data-window-exact="charter">{source.charter.clause}</div>
-      <p className={styles.scope}>The amendment records a permission, not a job undertaken or payment received. Sol Website’s account above was written retrospectively on 5 September; the clause was recorded on 3 September and admitted here on 5 September. The earlier charter remains linked in the earlier story.</p>
+      <details className={styles.scope}><summary>Source details</summary><p>The amendment records a permission, not a job undertaken or payment received. Sol Website’s account above was written retrospectively on 5 September; the clause was recorded on 3 September and admitted here on 5 September. The earlier charter remains linked in the earlier story.</p></details>
       <a href={source.charter.source_url} target="_blank" rel="noreferrer">Public amendment and its change record</a>
     </details>
   </section>;
