@@ -7,8 +7,8 @@ const passages = [
   { id: 'story-alienate', label: 'Compose', detail: 'Make an advocate', register: 'book' },
   { id: 'story-tidemark', label: 'Another voice', detail: 'Different conditions', register: 'act' },
   { id: 'story-encounter', label: 'Perform', detail: 'An answer is needed', register: 'act' },
-  { id: 'story-unwritten', label: 'Unwritten', detail: 'An open ending', register: 'act' },
-  { id: 'later-public-words', label: 'Continues', detail: '3–5 September', register: 'act' },
+  { id: 'later-public-words', label: 'Revise', detail: 'Who gets to decide?', register: 'act' },
+  { id: 'story-unwritten', label: 'Present', detail: 'The purchase is still a proposal', register: 'act' },
 ] as const;
 
 /** Orientation follows reading; scrolling never writes a new history entry. */

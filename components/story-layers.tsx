@@ -80,7 +80,7 @@ export function StoryLayers({ children }: { children: ReactNode }) {
 
   return (
     <details ref={disclosure} className="story-records" id="story-instruments">
-      <summary><span>Public words, visual score and archive.</span><small>Follow a question, inspect a source, or explore how events have been arranged</small></summary>
+      <summary><span>Now read the score.</span><small>Open the public words and the visual timeline. Follow an event into its source; where sound is available, carry that same act into the instrument.</small></summary>
       <div ref={returnBar} className="story-records__return"><button type="button" onClick={resume}>Return to the story</button><span>Public records and reading instruments</span></div>
       {children}
       <button className="story-records__end" type="button" onClick={resume}>Close this surface and return to the story</button>

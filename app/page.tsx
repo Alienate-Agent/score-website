@@ -4,7 +4,7 @@ import { ConductLeaf } from '@/components/conduct-leaf';
 import { SettlementProof } from '@/components/settlement-proof';
 import { DatedRecordReader } from '@/components/dated-record-reader';
 import { BoardReadingPaths } from '@/components/board-reading-paths';
-import { LaterPublicSpeech } from '@/components/later-public-speech';
+import { EarlierStoryEnding } from '@/components/earlier-story-ending';
 import { MakingPassage } from '@/components/making-passage';
 import { PathsOfJudgment } from '@/components/paths-of-judgment';
 import { UnfoldingStory } from '@/components/unfolding-story';
@@ -16,17 +16,18 @@ export default function Home() {
   return (
     <ReadingGlossary><main className="score-site">
       <UnfoldingStory />
-      <LaterPublicSpeech />
       <StoryLayers>
-      <BoardReadingPaths />
+      <ChronologyBook />
 
       <DatedRecordReader />
 
-      <ChronologyBook />
+      <details className="story-archive" id="question-paths"><summary>Follow a question through the public words</summary><BoardReadingPaths /></details>
 
       <PathsOfJudgment />
 
       <ConductLeaf />
+
+      <EarlierStoryEnding />
 
       <details className="story-archive" id="earlier-entrance">
       <summary>Earlier entrance · how this site first presented the claim</summary>

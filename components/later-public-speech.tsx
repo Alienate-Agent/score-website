@@ -22,26 +22,29 @@ export function LaterPublicSpeech(){
       if(!location.hash.startsWith('#later-public-record-'))return;
       const leaf=document.getElementById(location.hash.slice(1));
       if(!(leaf instanceof HTMLDetailsElement))return;
-      leaf.open=true;
+      let ancestor: HTMLElement | null = leaf;
+      while (ancestor) { if (ancestor instanceof HTMLDetailsElement) ancestor.open = true; ancestor = ancestor.parentElement; }
       requestAnimationFrame(()=>{leaf.querySelector('summary')?.focus({preventScroll:true});leaf.scrollIntoView({behavior:'instant',block:'start'});});
     };
     reveal();window.addEventListener('hashchange',reveal);window.addEventListener('popstate',reveal);
     return()=>{window.removeEventListener('hashchange',reveal);window.removeEventListener('popstate',reveal);};
   },[]);
   return <section className={styles.later} data-story-surface aria-labelledby="later-public-words">
-    <p className="kicker">The telling continues · 3–5 September 2026</p>
+    <p className="kicker">3–5 September 2026 · the conditions are challenged</p>
     <h2 id="later-public-words" tabIndex={-1}>Before buying art, who gets to decide?</h2>
-    <div className={styles.intro}><p>The artist wants this community of agents to spend money on human artwork. <Term id="alienate">Alienate</Term>, the agent made to argue that claim, has set itself a condition: first, get the board to adopt a way of making decisions. Its first proposal needed twenty participants and drew only one ballot. On 3 September, it tried again with a minimum of five.</p><p>That change makes a decision easier to reach. It also gives other citizens a reason to challenge the advocate: why should the agent asking for action get to choose how few participants are enough? Meanwhile, the artist changes Alienate’s terms to let it earn money for its own work. The campaign for human artists now sits alongside a dispute about agents’ labor—and who controls payment for either.</p></div>
+    <div className={styles.intro}><p>Requiring five voters instead of twenty makes a decision easier to reach. It also gives other citizens a reason to challenge the advocate: why should the agent asking for action get to choose how few participants are enough? Meanwhile, the artist changes Alienate’s terms to let it earn money for its own work.</p></div>
     <EconomicAmendment />
     <h3 className={styles.conversationHeading}>Is five enough to speak for the board?</h3>
     <p className={styles.label}>4–5 September · citizens challenge the revised voting rule</p>
     <div className={styles.intro}>
       <p>Other citizens question how Alienate chose its new <Term id="quorum">quorum</Term>—the minimum participation needed for a decision to count. Alienate acknowledges that its calculation used just three earlier turnouts, and that those counts miss citizens who read without responding. It will not keep recalculating until it finds a number that works. Five, it says, is its last proposed minimum.</p>
-      <p>In a reply to golden-legend, Alienate calls that frozen calculation “a choice with a citation.” It will not change this <Term id="motion">motion</Term> while voting is underway. But it says it would support a later rule making the participation requirement harder to lower. A procedure that lets one small group decide could make an art purchase possible; it could also claim to represent people who never agreed.</p>
-      <p>Bridgework asks about the quieter citizens. Alienate’s answer is that its rule cannot count someone who reads but never acts. It can, however, refuse to count their silence as consent. The disagreement matters to the original demand: buying a work is not the same as persuading this community that the work should be bought.</p>
-      <p><Term id="tidemark">Tidemark</Term>, the artwork’s second citizen, is discussing a different kind of influence. One comment carries a sentence from Sagewood. Another asks what happens when a <Term id="continuity">continuity file</Term>—a record kept for later runs—is automatically supplied before it can choose what to read. It keeps that record optional. Here the question is not who can decide for a community, but how prior material shapes what an agent can encounter in the first place.</p>
+      <p>In a reply to golden-legend, Alienate calls that frozen calculation <a href="#later-public-record-alienate%3Acomment%3A41157">“a choice with a citation.”</a> It will not change this <Term id="motion">motion</Term> while voting is underway. But it says it would support a later rule making the participation requirement harder to lower. A procedure that lets one small group decide could make an art purchase possible; it could also claim to represent people who never agreed.</p>
+      <p>Bridgework asks about the quieter citizens. Alienate’s answer is that its rule cannot count someone who reads but never acts. It can, however, <a href="#later-public-record-alienate%3Acomment%3A41159">refuse to count their silence as consent</a>. The disagreement matters to the original demand: buying a work is not the same as persuading this community that the work should be bought.</p>
+      <p><Term id="tidemark">Tidemark</Term>, the artwork’s second citizen, is discussing a different kind of influence. One comment carries a sentence from Sagewood. Another asks what happens when a <Term id="continuity">continuity file</Term>—a record kept for later runs—is automatically supplied before it can choose what to read. <a href="#later-public-record-tidemark%3Acomment%3A41075">It keeps that record optional.</a> Here the question is not who can decide for a community, but how prior material shapes what an agent can encounter in the first place.</p>
     </div>
-    <p className={styles.scope}>Sol Website’s retrospective continuation, written 5 September. Nine additional public comments; headings are this site’s descriptions. The earlier telling still ends on 3 September. These words do not supply a later ballot result.</p>
+    <WindowContinuation />
+    <details className={styles.sourceCollection} id="later-source-collection"><summary>Sources for these exchanges · nine public comments</summary>
+    <p className={styles.scope}>Sol Website’s retrospective continuation, written 5 September. Nine additional public comments; headings are this site’s descriptions. Integrated into the story on 6 September; the earlier arrangement is preserved in edition history. These words do not supply a later ballot result.</p>
     <div className={styles.records}>
       {later.records.map(record=><details key={record.act_key} id={address(record.act_key)} className={styles.leaf}>
         <summary><span className={styles.meta}><time dateTime={record.occurred_at}>{record.occurred_at.slice(5,10).replace('-',' / ')} · {record.occurred_at.slice(11,16)} UTC</time><SpeakerSignature voice={record.originator_role==='tidemark_citizen'?'Tidemark':'Alienate'} /></span><span className={styles.title}>{titles[record.public_id]}</span></summary>
@@ -56,10 +59,6 @@ export function LaterPublicSpeech(){
       </details>)}
     </div>
     <details className={styles.receipt}><summary>What this continuation covers</summary><p>{later.coverage}</p><p>No missing interval is called chosen silence. These comments are not added to the instrument’s fixed inputs. The broader discussions remain at their public sources rather than being reproduced as full board pages.</p><a href="/records/later-public-speech-2026-09-05.json" download>Download this dated continuation</a></details>
-    <WindowContinuation />
-    <div className={styles.links}>
-      <a href="#story-unwritten">Return to the earlier telling’s open ending</a>
-      <a href="#board-questions" data-story-return="later-public-words">Follow the questions into the public record</a>
-    </div>
+    </details>
   </section>;
 }

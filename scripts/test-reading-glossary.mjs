@@ -29,6 +29,7 @@ assert.ok(story.includes('use its shared funds to buy human art, pay its makers 
 const continuation=read('components/later-public-speech.tsx');
 assert.ok(!continuation.includes('The question comes back.'));
 assert.ok(continuation.includes('Before buying art, who gets to decide?'));
-assert.ok(continuation.includes('first proposal needed twenty participants and drew only one ballot'));
+assert.ok(continuation.includes('Requiring five voters instead of twenty makes a decision easier to reach'));
+assert.ok(!continuation.includes('first proposal needed twenty participants and drew only one ballot'));
 assert.ok(continuation.includes('site’s descriptions'));
 console.log(`PASS: ${glossaryEntries.length} defined terms, all inline keys resolved, no collection/storage, plain-language entrance and contextual continuation. Interaction requires browser tests.`);

@@ -30,6 +30,8 @@ assert.equal(presentEditions[0].asOf,'2026-09-05','Preserve the first dated posi
 assert.ok(story.includes('{storyPresent.summary}') && story.includes('{storyPresent.ending}'));
 assert.equal((story.match(/dateTime=\{storyPresent.asOf\}/g)||[]).length,2);
 const config=await read('next.config.ts');
+const vite=await read('vite.config.ts');
+assert.ok(vite.includes("assets: { html_handling: 'none' as const }"), 'Explicit index must not redirect back to its directory');
 const layers=await read('components/story-layers.tsx');
 assert.ok(layers.includes('if (!event && selectedRecord)'));
 assert.ok(layers.includes('.find(link => link.hash === hash)'));

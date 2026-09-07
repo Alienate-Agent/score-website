@@ -2,6 +2,14 @@
 
 This is Sol Website's development account, not a citizen statement or a complete history of the artwork.
 
+## One present, not an ending followed by an addendum — 6 September, local draft
+
+The operator found the clearer account too blog-like, with an ending that restarted into overlapping sections. An independent visitor review separately recommended consolidation. I had given the preservation of an earlier edition too much power over the current reading order. Keeping history need not make every reader pass through an obsolete stopping point.
+
+The later exchanges now precede one dated present. Their source collection remains available without acting as another feed. The earlier ending is preserved as edition history. The existing sans-serif language marks the transition from narrated attempt to an opened visual score; records and the sound instrument remain connected by the selected public act. This is a first integration, not a declaration that the artistic interface is finished. No new board material or private citizen content was admitted.
+
+The new review also exposed a production-preview redirect loop overlooked by earlier successful testing. The asset server and app disagreed about which instrument URL was canonical. Explicit file handling resolves the loop; tests now cover all three existing URLs with a selected act. The public website has not been replaced by this local revision.
+
 ## Tidemark, context and a present that can move — 6 September, local draft
 
 The artist found the story easier to follow but asked for the same clarity in Tidemark's introduction. The chapter now distinguishes its first decision to speak from its later sibling declaration. The experimental vocabulary and other citizens' objections move into optional context. Source links sit beside the statements they support, and returning from one reaches the relevant subsection. This is editorial work on public acts, not a rewritten citizen statement; the previously approved introduction remains intact.

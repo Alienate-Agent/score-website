@@ -1,3 +1,27 @@
+# Ending integration — local review, 6 September 2026
+
+final result: passed
+
+Implementer QA of the authorized consolidation, not artistic finality or publication approval.
+
+## Evidence and comparison
+
+Source visual truth: ../reviews/score-ending-assessment-2026-09-06/01-open-ending.png and02-story-restarts.png. Implementations in that folder's integrated/ directory:06-present-final-dated.png and04-revision-chapter.png. Both pairs were opened together at827×998CSS/pixels, equal density, from their chapter links. The changed heading, narrower chapter and reordered narrative are intentional revisions, not fidelity failures. The final chapter subsequently clarified its first phrase to name five versus twenty voters.
+
+Typography: book narrative retained; existing sans-serif marks the current stopping point and score entrance. Spacing: shorter closure, one present after later events, source feed collapsed. Colors: existing paper/ink/speaker tokens retained;20pair source contrast check passes. Imagery/icons: no new or substituted assets; existing notation retained. Copy: repeated setup/qualification reduced; protected introduction and exact source bodies unchanged. Full-view captures expose the relevant text/spacing without an additional cropped-region comparison.
+
+## Corrections and checks
+
+- P2: date above the anchored closing heading was missed on direct entry. Moved below;06-present-final-dated.png confirms it.05-present-final.png was a stale-server capture, not final evidence.01-present.png captured the cover at1280×720 and was rejected as an ending comparison.
+- P1: browser reproduced instrument redirect loop. The asset server canonicalized index.html to a directory while the app redirected back. Explicit HTML handling now retains index.html. Final standard built preview passes GET /lens, /lens/ and /lens/index.html, retaining selected-record query. Browser cover and selected-record journeys pass.
+-390×844:07-present-mobile.png has readable wrapping and measured document width390, no horizontal overflow. Existing long native-select label truncation remains P3; complete instrument selection title appears below it.
+- Archive link opens its parent layer and preserved ending; return resumes the current ending. Context link41157 opens both collection and exact comment and focuses its summary. Record3581 carries into sound and returns to that source, then the sibling story subsection.
+-09-instrument-mobile-ready.png replaces08-instrument-mobile.png, which showed loading. Fixed inputs ready, nothing playing, recent warning/error logs empty. No acoustic claim.
+
+Build source/output privacy scans, TypeScript, reading/chronology tests and exact two-paragraph/thirteen-entry scope passed. Reader validator initially stopped without its required source path; rerun with the pinned candidate passed57records/140effects,35speech bodies,4Window additions and6negative controls. No full screen-reader, enlarged-text or acoustic retest. Source and instrument bytes remain unchanged. Further artistic integration and instrument-copy refinement remain follow-up work, not completed claims.
+
+## Prior iteration record
+
 # Integrated reading revision — final local verification
 
 6 September2026, Sol Website. Focused revision of the existing design, not a new visual direction or public release. This assessment is the implementer's; no new unfamiliar-human study is claimed.

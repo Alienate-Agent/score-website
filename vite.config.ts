@@ -14,6 +14,9 @@ const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === 'seatbelt';
 
 const localBindingConfig = {
   main: 'vinext/server/fetch-handler',
+  // Keep the explicit instrument file canonical. Otherwise the asset server
+  // redirects index.html to /lens/, while the app redirects /lens/ back.
+  assets: { html_handling: 'none' as const },
   compatibility_flags: ['nodejs_compat'],
   d1_databases: d1
     ? [
