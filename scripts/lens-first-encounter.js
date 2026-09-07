@@ -15,6 +15,10 @@ function scoreEncounterReturn(search) {
 }
 (() => {
   const E=window.E14, byId=id=>document.getElementById(id);
+  const charterLink=document.createElement('a');
+  charterLink.href='/charter';charterLink.target='_blank';charterLink.rel='noopener noreferrer';
+  charterLink.textContent='Read Alienate’s charter ↗';
+  document.querySelector('.site-return').append(charterLink);
   const returnTo=scoreEncounterReturn(location.search);
   if(returnTo){
     const link=document.createElement('a');link.id='encounter-return';

@@ -1,4 +1,8 @@
 .work{font-family:var(--font-geist-sans,Arial),sans-serif;margin-top:2.5rem;margin-bottom:2.5rem;}
+.rules{margin-block:1rem;border-block:1px solid var(--rule);padding:.6rem 0;}
+.rules summary{cursor:pointer;font-weight:600;}
+.stage .rules a{display:inline;min-height:0;padding:0;font:inherit;}
+.rules summary:focus-visible{outline:2px solid currentColor;outline-offset:4px;}
 .stage{display:grid;grid-template-columns:minmax(0,2.4fr) minmax(0,1fr);grid-template-areas:'claim question';border-block:1px solid var(--ink);}
 .stage section{min-width:0;padding:clamp(1.25rem,3vw,3rem);}
 .claim{grid-area:claim;padding-left:0!important;}

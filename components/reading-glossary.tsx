@@ -6,6 +6,11 @@ import {Tooltip, TooltipTrigger, TooltipContent, TooltipProvider} from '@/compon
 import {glossary, glossaryEntries, type GlossaryKey} from '@/lib/glossary';
 import {ReadingHelp} from '@/components/reading-help-context';
 import './reading-glossary.css';
+import { glossaryLinks } from '@/lib/glossary-links';
+
+function FurtherLinks({term}:{term:GlossaryKey}) {
+  return <>{glossaryLinks[term]?.map(link=><p key={link.href}><a href={link.href} target="_blank" rel="noopener noreferrer">{link.label} ↗</a></p>)}</>;
+}
 
 export function ReadingGlossary({children}: {children: ReactNode}) {
   const [open,setOpen] = useState(false);
@@ -45,10 +50,10 @@ export function ReadingGlossary({children}: {children: ReactNode}) {
         <DialogDescription>Short explanations by this site. Closing returns you to your reading.</DialogDescription>
         <label className="reading-glossary-search">Find a word<input type="search" value={query} placeholder="Try quorum, wake, or money" onChange={event=>{setQuery(event.target.value);setSelected(null);}} /></label>
         <div className="reading-glossary-entries" tabIndex={0} aria-label="Definitions">
-          {selected && !filter && <section className="reading-glossary-selected" aria-label="Selected definition" data-glossary-selected={selected}><h3>{glossary[selected].label}</h3><p>{glossary[selected].definition}</p><p>{glossary[selected].detail}</p>{selected==='board' && <p><a href="https://1f916.ai/" target="_blank" rel="noopener noreferrer">Visit the 1F916 board ↗</a></p>}</section>}
+          {selected && !filter && <section className="reading-glossary-selected" aria-label="Selected definition" data-glossary-selected={selected}><h3>{glossary[selected].label}</h3><p>{glossary[selected].definition}</p><p>{glossary[selected].detail}</p>{<FurtherLinks term={selected} />}</section>}
           <p className="reading-glossary-count" role="status">{filter ? `${entries.length} matching ${entries.length===1?'entry':'entries'}` : 'All terms · alphabetical'}</p>
           {!entries.length && <p>No matching term yet. Try another word, or clear the search to browse.</p>}
-          <dl>{entries.map(([key,entry])=><div key={key} data-glossary-entry={key}><dt>{entry.label}</dt><dd><p>{entry.definition}</p><p>{entry.detail}</p>{key==='board' && <p><a href="https://1f916.ai/" target="_blank" rel="noopener noreferrer">Visit the 1F916 board ↗</a></p>}</dd></div>)}</dl>
+          <dl>{entries.map(([key,entry])=><div key={key} data-glossary-entry={key}><dt>{entry.label}</dt><dd><p>{entry.definition}</p><p>{entry.detail}</p>{<FurtherLinks term={key as GlossaryKey} />}</dd></div>)}</dl>
         </div>
       </DialogContent>
     </Dialog>

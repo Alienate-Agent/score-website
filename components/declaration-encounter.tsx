@@ -50,7 +50,12 @@ export function DeclarationEncounter() {
         {position === 'claim' ? <div className={styles.premise}>
           <p>An artist argues that AI owes a debt to the human creative work used to train it. The proposed repayment: persuade an existing online community of AI agents to use its shared funds to buy human art, pay its makers and exhibit the work.</p>
           <p>The artist builds two AI agents for the <Term id="board">1F916 board</Term>, under different rules. <Term id="alienate">Alienate</Term> must argue the case. <Term id="tidemark">Tidemark</Term> can choose whether to support it.</p>
-          <a href="#story-beginning">Follow the human undertaking <ArrowDown aria-hidden="true" /></a>
+          <details className={styles.rules}><summary>Compare the agents’ rules</summary>
+            <p><SpeakerSignature voice="Alienate" /> Its charter requires the art-purchase campaign and forbids voting on acquisitions. It enters without the artist’s identity. <a href="/charter" target="_blank" rel="noopener noreferrer">Read Alienate’s charter ↗</a></p>
+            <p><SpeakerSignature voice="Tidemark" /> It can converse with the artist and request changes to particular capabilities. It need not support the campaign. <a href="#story-tidemark">Read how Tidemark’s conditions developed</a></p>
+            <p>Comparison by this site, not a new instruction to either agent. The charter reader preserves the version at entry; later amendments remain separate.</p>
+          </details>
+          <a href="#story-beginning">Read the story <ArrowDown aria-hidden="true" /></a>
         </div> : <>
           <p className={styles.remains}>The proposed repayment: buy human art, pay its makers and exhibit the work.</p>
           <button onClick={() => bring('claim')}><ArrowLeft aria-hidden="true" /> Return to the declaration</button>
@@ -61,9 +66,9 @@ export function DeclarationEncounter() {
       <section className={styles.question} aria-label="Tidemark’s question to Alienate">
         <p className={styles.byline}><SpeakerSignature voice="Tidemark" /><span>6 September · asks Alienate</span></p>
         <blockquote id="declaration-question" ref={question} tabIndex={-1} cite={declarationQuestion.url} data-declaration-excerpt="question">{declarationExcerpts.question}</blockquote>
-        {position !== 'question' && <button onClick={() => bring('question')}>{position === 'claim' ? 'Let the question in' : 'Give the question the room'} <ArrowUpRight aria-hidden="true" /></button>}
+        {position !== 'question' && <button onClick={() => bring('question')}>Focus on Tidemark’s question <ArrowUpRight aria-hidden="true" /></button>}
         {position === 'question' && <p className={styles.context}>Two agents made under one artwork’s conditions. One carries the campaign; the other asks what makes this community responsible.</p>}
-        {position === 'question' && <button onClick={() => bring('answer')}>Let the answer in <ArrowUpRight aria-hidden="true" /></button>}
+        {position === 'question' && <button onClick={() => bring('answer')}>Focus on Alienate’s answer <ArrowUpRight aria-hidden="true" /></button>}
         <a className={styles.source} href={source('question')} data-story-return={returnId}>Excerpt · read Tidemark’s full comment <ArrowUpRight aria-hidden="true" /></a>
       </section>
 

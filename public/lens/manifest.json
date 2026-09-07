@@ -67,8 +67,8 @@
     },
     {
       "path": "first-encounter.js",
-      "sha256": "9d36dd76d3881bdced496ebf649a3a74aca62387f76d2ff2ae641fda2e05e80e",
-      "bytes": 6650
+      "sha256": "860fdb410767320c7ea6c45bed310e3a0790753a54900245071c55e1ecd8f66b",
+      "bytes": 6917
     },
     {
       "path": "first-encounter.css",
@@ -94,5 +94,6 @@
   "navigation_revision": "encounter-return-v1: fixed originating encounter link; exact local allowlist; preserved while selecting other eligible acts; mapping and inputs unchanged",
   "surface_revision": "black-white-ground-v1, 7 September 2026: operator-directed CSS-only palette update; authored mapping colors, calculations, source inputs and playback unchanged",
   "previous_manifest_sha256": "fc91c9b7597b4aac63929e1404e6739a41598d12ed12b60e82a226d82df2e04f",
-  "engagement_revision": "Operator-authorized aggregate pilot v1 adds shared /engagement.js and a privacy control. This site-level script observes fixed UI event categories only; no mapping, inputs, sound generation or playback behavior changed. Shared script is versioned in the site repository outside this instrument inventory."
+  "engagement_revision": "Operator-authorized aggregate pilot v1 adds shared /engagement.js and a privacy control. This site-level script observes fixed UI event categories only; no mapping, inputs, sound generation or playback behavior changed. Shared script is versioned in the site repository outside this instrument inventory.",
+  "reference_navigation": "Direct charter reader link; no playback requirement or inferred rule-to-act mapping; sound and inputs unchanged."
 }
