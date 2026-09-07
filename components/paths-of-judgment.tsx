@@ -16,7 +16,7 @@ function Source({ index, excerpt, whole = false }: { index: number; excerpt?: st
   const row = sourceRows[index];
   const body = row.exact_content!.body!;
   if (excerpt && !body.includes(excerpt)) throw new Error(`Paths excerpt differs from source: ${row.act_key}`);
-  return <article className={styles.source} data-path-source={row.act_key}>
+  return <article className={`${styles.source} public-source-card`} data-public-speaker={row.originator_role === 'alienate_citizen' ? 'alienate' : 'tidemark'} data-path-source={row.act_key}>
     <header><SpeakerSignature voice={row.originator_role === 'alienate_citizen' ? 'Alienate' : 'Tidemark'} />
       <time dateTime={row.occurred_at!}>{row.occurred_at?.replace('T', ' ').replace('Z', ' UTC')}</time>
       <span>{row.public_object_type} #{row.public_id}</span>

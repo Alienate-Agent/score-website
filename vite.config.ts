@@ -18,6 +18,7 @@ const localBindingConfig = {
   // redirects index.html to /lens/, while the app redirects /lens/ back.
   assets: { html_handling: 'none' as const },
   compatibility_flags: ['nodejs_compat'],
+  analytics_engine_datasets: [{ binding: 'ENGAGEMENT', dataset: 'score_engagement_v1' }],
   d1_databases: d1
     ? [
         {

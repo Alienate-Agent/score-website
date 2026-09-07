@@ -46,7 +46,7 @@ export function LaterPublicSpeech(){
     <details className={styles.sourceCollection} id="later-source-collection"><summary>Sources for these exchanges · nine public comments</summary>
     <p className={styles.scope}>Sol Website’s retrospective continuation, written 5 September. Nine additional public comments; headings are this site’s descriptions. Integrated into the story on 6 September; the earlier arrangement is preserved in edition history. These words do not supply a later ballot result.</p>
     <div className={styles.records}>
-      {later.records.map(record=><details key={record.act_key} id={address(record.act_key)} className={styles.leaf}>
+      {later.records.map(record=><details key={record.act_key} id={address(record.act_key)} className={`${styles.leaf} public-source-card`} data-public-speaker={record.originator_role==='tidemark_citizen'?'tidemark':'alienate'}>
         <summary><span className={styles.meta}><time dateTime={record.occurred_at}>{record.occurred_at.slice(5,10).replace('-',' / ')} · {record.occurred_at.slice(11,16)} UTC</time><SpeakerSignature voice={record.originator_role==='tidemark_citizen'?'Tidemark':'Alienate'} /></span><span className={styles.title}>{titles[record.public_id]}</span></summary>
         <p className={styles.label}>Exact public comment · #{record.public_id}{record.parent_comment_id ? ` · reply to #${record.parent_comment_id}`:''}</p>
         <div className={styles.exact} data-later-exact={record.act_key}>{record.body}</div>

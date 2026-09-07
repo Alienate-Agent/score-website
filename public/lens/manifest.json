@@ -52,8 +52,8 @@
   "files": [
     {
       "path": "index.html",
-      "sha256": "df143557445e47a2c7eebd63f0558f80e1398cd2845c1f2ff1b7155bb118fb1d",
-      "bytes": 200854
+      "sha256": "ecdd0a6c2e061fb38f26586d500315078015da40b75d5a4b82a73b39c09b67f9",
+      "bytes": 200899
     },
     {
       "path": "lens-synth.js",
@@ -93,5 +93,6 @@
   ],
   "navigation_revision": "encounter-return-v1: fixed originating encounter link; exact local allowlist; preserved while selecting other eligible acts; mapping and inputs unchanged",
   "surface_revision": "black-white-ground-v1, 7 September 2026: operator-directed CSS-only palette update; authored mapping colors, calculations, source inputs and playback unchanged",
-  "previous_manifest_sha256": "aaba1178d5681bd74ab58fc5da4b616aeb7b9c7680adf9746918fd73ceb6cc88"
+  "previous_manifest_sha256": "fc91c9b7597b4aac63929e1404e6739a41598d12ed12b60e82a226d82df2e04f",
+  "engagement_revision": "Operator-authorized aggregate pilot v1 adds shared /engagement.js and a privacy control. This site-level script observes fixed UI event categories only; no mapping, inputs, sound generation or playback behavior changed. Shared script is versioned in the site repository outside this instrument inventory."
 }

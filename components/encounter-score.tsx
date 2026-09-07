@@ -129,9 +129,9 @@ export function EncounterScore(){
             <p><SpeakerSignature voice={question.author}/><span>asked · excerpt</span></p>
             <blockquote cite={question.url}><a href={encounterHash({...location,view:'words',act:question.key})} onClick={e=>{e.preventDefault();original(question.key);}}>{event.exchange.questionExcerpt}<span className="sr-only"> — Read the full question</span><ArrowLeft aria-hidden="true"/></a></blockquote>
           </div>}
-          <div className={styles.speaker}><SpeakerSignature voice={act.author}/><p className={styles.meta}>Full public {act.kind} {act.id} · <time dateTime={act.occurred_at}>{new Date(act.occurred_at).toISOString().slice(0,10)}</time>{act.kind==='comment'?` · on ${event.post.author}’s post ${event.post.id}`:''}</p></div>
+          <div className={`${styles.speaker} public-speaker-header`} data-public-speaker={act.author.toLowerCase()}><SpeakerSignature voice={act.author}/><p className={styles.meta}>Full public {act.kind} {act.id} · <time dateTime={act.occurred_at}>{new Date(act.occurred_at).toISOString().slice(0,10)}</time>{act.kind==='comment'?` · on ${event.post.author}’s post ${event.post.id}`:''}</p></div>
           {act.title&&<h3 className={styles.sourceTitle}>{act.title}</h3>}
-          <div className={styles.exact} data-encounter-exact={act.key}>{act.body}</div>
+          <div className={`${styles.exact} public-words`} data-encounter-exact={act.key}>{act.body}</div>
           <div className={styles.actions}>
             {act.key!==event.post.key&&<button onClick={()=>original(event.post.key)}>Read {event.post.author}’s full {event.id==='perception'?'invitation':'statement'} <ArrowRight aria-hidden="true"/></button>}
             {act.key!==event.defaultAct&&<button onClick={()=>original(event.defaultAct)}>Return to the selected {event.defaultAct.startsWith('post:')?'post':'comment'} <ArrowLeft aria-hidden="true"/></button>}

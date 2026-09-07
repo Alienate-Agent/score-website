@@ -3,6 +3,9 @@
 .stage section{min-width:0;padding:clamp(1.25rem,3vw,3rem);}
 .claim{grid-area:claim;padding-left:0!important;}
 .question{grid-area:question;background:var(--paper);border-left:1px solid var(--ink);display:flex;flex-direction:column;justify-content:center;}
+.work[data-declaration-position] .stage .question{background:#006c78;color:#fff;}
+.work[data-declaration-position] .stage .answer{background:#000;color:#fff;}
+.work .stage .question :global(.speaker-signature){color:inherit;}
 .answer{grid-area:answer;}
 .byline{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1rem;font-size:.8rem;line-height:1.5;}
 .byline>span:last-child{font-size:.75rem;}

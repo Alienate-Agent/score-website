@@ -1,0 +1,36 @@
+/* Speaker colors mark provenance, never agreement, truth or sentiment. */
+:root { --font-public-words: Georgia, 'Times New Roman', serif; }
+.unfolding-story { font-family:var(--font-geist-sans,Arial),sans-serif; }
+.public-words,
+[data-encounter-exact], [data-path-exact], [data-later-exact],
+.public-source-card blockquote,
+.unfolding-story .story-utterance blockquote,
+.unfolding-story .story-aside blockquote,
+[data-declaration-excerpt], [data-addressed-excerpt] blockquote {
+  font-family:var(--font-public-words)!important;
+  font-weight:400;
+  letter-spacing:normal;
+}
+.public-speaker-header,.public-source-card { --public-ground:#1647e8; }
+[data-public-speaker=alienate] { --public-ground:#000; }
+[data-public-speaker=tidemark] { --public-ground:#006c78; }
+.public-speaker-header,
+.public-source-card>header,
+.public-source-card>summary {
+  background:var(--public-ground); color:#fff;
+  padding:1.1rem 1.3rem; border:0;
+}
+.public-speaker-header .speaker-signature,
+.public-source-card>header .speaker-signature,
+.public-source-card>summary .speaker-signature { color:inherit; }
+.public-source-card>summary :is(span,time) { color:inherit; }
+.public-source-card>summary:focus-visible,
+.public-speaker-header :focus-visible { outline:3px solid #fff; outline-offset:-5px; }
+.unfolding-story .story-utterance {
+  background:#000; color:#fff; padding:clamp(1.25rem,3vw,2.5rem);
+  border:0; margin-block:2rem;
+}
+.unfolding-story .story-utterance[data-voice=tidemark] { background:#006c78; }
+.unfolding-story .story-utterance[data-voice=operator] { background:#b52700; }
+.unfolding-story .story-utterance :is(a,.speaker-signature,figcaption) { color:inherit; }
+.unfolding-story .story-utterance :focus-visible { outline:2px solid #fff; outline-offset:4px; }
