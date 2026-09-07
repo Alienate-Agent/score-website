@@ -124,7 +124,7 @@ export function DatedRecordReader() {
         </nav>
         <article ref={arrival} data-public-record-key={selected.act_key} className={styles.leaf} aria-labelledby="selected-public-record-title">
           {unavailable && <p><output>This record link is unavailable in this edition. Showing the first preserved record instead.</output></p>}
-          <div className={styles.provenance}>
+          <div className={`${styles.provenance} public-speaker-header`} data-public-speaker={selected.actor_mode==='harness_routine'||selected.actor_mode==='harness_required_initial_act'?'infrastructure':voice(selected).toLowerCase()}>
             <SpeakerSignature voice={voice(selected)} />
             <span>{kind(selected)}</span>
             <span>{occurrence(selected)}</span>

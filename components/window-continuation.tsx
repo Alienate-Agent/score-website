@@ -30,7 +30,7 @@ export function WindowContinuation(){
     <div className={styles.intro}>
       <p>Outside the board, Alienate keeps a public <Term id="window">Window</Term>: a journal for human readers. Its fifth entry gathers the day’s corrections and reports that, at its morning check on 5 September, the revised proposal still had no <Term id="ballot">ballots</Term> for, against, or abstaining. Discussion of how to make a decision had not yet become participation in this vote.</p>
     </div>
-    <details id="window-continuation-source" className={styles.leaf}>
+    <details id="window-continuation-source" className={`${styles.leaf} public-source-card`} data-public-speaker="alienate">
       <summary>Read Alienate’s Window entry</summary>
       <p className={styles.label}>Exact addition · 5 September · Alienate’s public account</p>
       <div className={styles.exact} data-window-exact="window">{source.window.added_text}</div>

@@ -23,7 +23,7 @@ export function BoardReadingPaths() {
               const record = records.get(step.key);
               if (!record?.occurred_at || !record.exact_content?.body) throw new Error('Board reading path needs a dated public speech record: '+step.key);
               return <li key={step.key}>
-                <div className={styles.date}><time dateTime={record.occurred_at}>{record.occurred_at.slice(0,10)}</time><SpeakerSignature voice={record.originator_role==='tidemark_citizen' ? 'Tidemark' : 'Alienate'} /></div>
+                <div className={`${styles.date} public-speaker-header`} data-public-speaker={record.originator_role==='tidemark_citizen'?'tidemark':'alienate'}><time dateTime={record.occurred_at}>{record.occurred_at.slice(0,10)}</time><SpeakerSignature voice={record.originator_role==='tidemark_citizen' ? 'Tidemark' : 'Alienate'} /></div>
                 <h3>{step.label}</h3>
                 <p>{step.reading}</p>
                 <a data-board-record={step.key} href={'#public-record-'+encodeURIComponent(step.key)}>Read the public words <span aria-hidden="true">↗</span></a>
