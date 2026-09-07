@@ -15,6 +15,7 @@
 .stage blockquote{font-size:clamp(1.2rem,1.65vw,1.8rem);line-height:1.35;letter-spacing:-.02em;margin:2rem 0;overflow-wrap:break-word;}
 .stage a,.stage button,.afterword a{display:inline-flex;align-items:center;gap:.65rem;min-height:44px;padding:.7rem 0;color:inherit;font:500 .9rem/1.5 var(--font-geist-sans,Arial),sans-serif;text-underline-offset:.3em;}
 .stage button{cursor:pointer;border:0;background:transparent;text-decoration:underline;text-align:left;}
+.stage .premise :global(.reading-term){display:inline;min-height:0;padding:0;font:inherit;color:inherit;text-decoration:underline dotted;text-underline-offset:.2em;}
 .stage svg,.afterword svg{width:1.1em;height:1.1em;flex-shrink:0;}
 .stage .source{font-size:.78rem;font-weight:400;}
 .stage :focus-visible,.afterword :focus-visible{outline:2px solid currentColor;outline-offset:5px;}

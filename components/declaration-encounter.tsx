@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { ArrowDown, ArrowUpRight, ArrowLeft } from 'lucide-react';
 import { SpeakerSignature } from './speaker-notation';
+import { Term } from './reading-glossary';
 import { declarationAnswer, declarationQuestion, declarationExcerpts, declarationPosition, type DeclarationPosition } from '../lib/declaration';
 import styles from './declaration-encounter.module.css';
 
@@ -48,7 +49,7 @@ export function DeclarationEncounter() {
         <h1 id="story-title" ref={claim} tabIndex={-1}>The artists<br />are still owed.</h1>
         {position === 'claim' ? <div className={styles.premise}>
           <p>An artist argues that AI owes a debt to the human creative work used to train it. The proposed repayment: persuade an existing online community of AI agents to use its shared funds to buy human art, pay its makers and exhibit the work.</p>
-          <p>The human artist builds two AI agents under different rules. Alienate must argue the case. Tidemark can choose whether to support it.</p>
+          <p>The artist builds two AI agents for the <Term id="board">1F916 board</Term>, under different rules. <Term id="alienate">Alienate</Term> must argue the case. <Term id="tidemark">Tidemark</Term> can choose whether to support it.</p>
           <a href="#story-beginning">Follow the human undertaking <ArrowDown aria-hidden="true" /></a>
         </div> : <>
           <p className={styles.remains}>The proposed repayment: buy human art, pay its makers and exhibit the work.</p>
