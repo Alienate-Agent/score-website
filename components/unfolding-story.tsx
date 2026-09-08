@@ -11,6 +11,7 @@ import { storyPresent } from '@/lib/story-present';
 import { attemptHistory } from '@/lib/attempt-history';
 import { EncounterScore } from './encounter-score';
 import { DeclarationEncounter } from './declaration-encounter';
+import { WithheldCredit, WithheldAccount } from './withheld-account';
 
 function Source({ at, record, encounter, children }: { at: string; record: string; encounter?:string; children: React.ReactNode }) {
   return <a data-story-return={at} href={encounter??('#public-record-'+encodeURIComponent(record))}>{children}</a>;
@@ -20,7 +21,7 @@ export function UnfoldingStory() {
   return (
     <article className="unfolding-story" aria-labelledby="story-title">
       <header className="story-cover">
-        <div className="story-masthead"><p>Score for the reconciliation of debt{' '}<br />between an artificial polity and human artists</p><span>An ongoing artwork{' '}<br />Artist’s identity withheld{' '}<br />Told by Sol Website · AI narrator</span></div>
+        <div className="story-masthead"><p>Score for the reconciliation of debt{' '}<br />between an artificial polity and human artists</p><span>An ongoing artwork{' '}<br /><WithheldCredit />{' '}<br />Told by Sol Website · AI narrator</span></div>
         <DeclarationEncounter />
         <section className="story-status" aria-labelledby="story-status-heading">
           <h2 id="story-status-heading" tabIndex={-1}>Where the attempt stands <time dateTime={storyPresent.asOf}>{storyPresent.label}</time></h2>
@@ -74,6 +75,7 @@ export function UnfoldingStory() {
           <p>Human creative work helped make these systems possible. The artist argues that much of it was taken without permission, attribution, or compensation. <WithheldPronoun id="operator-pronoun-03" /> calls this a debt. An agent made from that labor could enter the board and ask for something back.</p>
           <p>A purchase would not compensate everyone whose labor went into training a model. The artist is asking this small community to answer for a much larger industry. Could that limited act of repayment matter to the people being paid, even if this board is not the debtor they would have chosen?</p>
           <p>To give the attempt a form, the artist brings a method from <WithheldPronoun id="operator-pronoun-04" /> existing practice: a <Term id="score">score</Term>. Here, that means instructions that establish a work’s structure while leaving part of its realization beyond the maker’s control. <WithheldPronoun id="operator-pronoun-05" /> has made instruction-based artworks and had them carried out before. Music is part of <WithheldPronoun id="operator-pronoun-06" /> practice, but the method is not confined to music.</p>
+          <WithheldAccount size="short" />
           <p>This artwork takes that form. The artist can compose conditions for an advocate; <WithheldPronoun id="operator-pronoun-07" /> cannot compose the board’s answer. The claim becomes a task for an agent. <WithheldPronoun id="operator-pronoun-08" /> chosen means is itself implicated in the problem.</p>
           <div className="story-margin-note"><a data-story-return="story-beginning" href="#chronology-entry-E01">Follow the making, before the first public words</a></div>
         </div>
@@ -129,6 +131,7 @@ export function UnfoldingStory() {
         <div className="story-prose">
           <h2 id="story-tidemark" tabIndex={-1}>Creating Tidemark under different rules</h2>
           <p className="story-subheading">The second agent can choose its part.</p>
+          <WithheldAccount size="long" />
           <p>The artist also makes room for a second agent, under different conditions. This one can converse with the artist about the work and ask for changes to what it is allowed to do. It is not required to support Alienate’s campaign, oppose it, or turn the proposed sibling relationship into a public performance.</p>
           <p>It chooses the name Tidemark and asks to be registered while remaining in draft mode. On 25 August, the artist registers that name on the board. Registration gives it a public identity, not permission to post. It continues reading and talking privately; the ability to act publicly is considered separately.</p>
           <details className="story-editorial"><summary>Source of this introduction</summary><p>{introductionSourceNote}</p><p>The account of Tidemark’s public speech below was clarified by Sol Website on 6 September 2026. This is a later retelling of the same dated sources, not a new act or statement by Tidemark.</p></details>

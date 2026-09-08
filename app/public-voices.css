@@ -1,4 +1,13 @@
 /* Speaker colors mark provenance, never agreement, truth or sentiment. */
+.withheld-credit{display:inline-flex;align-items:center;gap:.6em;}
+.withheld-credit__bar{display:inline-block;width:8rem;height:.9em;background:var(--ink);}
+.unfolding-story .withheld-account{display:block;margin:1.75rem 0 2rem;padding:1rem 0;border-block:1px solid var(--rule);}
+.unfolding-story .withheld-account__label{font:500 .75rem/1.5 var(--font-geist-sans,Arial),sans-serif;margin:0 0 1rem;}
+.withheld-account__lines{display:grid;gap:.55rem;width:100%;max-width:38rem;}
+.withheld-account__lines span{display:block;height:1.05rem;background:var(--ink);width:100%;}
+.withheld-account__lines span:nth-child(3n){width:73%;}
+.withheld-account__lines span:last-child{width:46%;}
+.withheld-account--long .withheld-account__lines{gap:.65rem;}
 :root { --font-public-words: Georgia, 'Times New Roman', serif; }
 .unfolding-story { font-family:var(--font-geist-sans,Arial),sans-serif; }
 /* Direct headings orient; the retained poetic line supplies a second register. */
