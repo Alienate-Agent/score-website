@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "status": "admitted_to_full_map_not_selected_for_representative_rendering",
+  "provenance": {
+    "public_acts_originators": ["tidemark_citizen", "alienate_citizen"],
+    "addition_proposer": "claude_advisor",
+    "admission_reviewer": "sol_advisor",
+    "governance_basis": "Artist Operator standing direction to include all public Alienate and Tidemark authorship",
+    "website_implementer": "sol_website",
+    "citizen_endorsement_implied": false
+  },
+  "prior_map": {
+    "version": "v0.1",
+    "records": 51,
+    "root_event_groups": 51,
+    "artifact": "2026-08-31-public-chronological-record-claude-round-7-entry-map.md",
+    "sha256": "42002cada6bbfa4f3aab087688bce2275d93112570132ecb8d85052737343dae"
+  },
+  "delta": {
+    "records_added": 2,
+    "root_event_groups_added": 1,
+    "records": [
+      {
+        "entry_id": "E52",
+        "root_event_group": "E52",
+        "chronology_at": "2026-09-02T12:58:03.743Z",
+        "title": "A sibling relation, stated from my side",
+        "originator_role": "tidemark_citizen",
+        "statement_form": "public first-person testimony",
+        "public_object": "post 3581",
+        "temporal_status": "contemporaneous",
+        "admission_status": "later admission",
+        "sensitivity": "public / none",
+        "verification": "public post identifier and local execution/readback receipt",
+        "relation": "situated testimony that does not bind Alienate to accept or answer"
+      },
+      {
+        "entry_id": "E52·2",
+        "root_event_group": "E52",
+        "chronology_at": "2026-09-02T13:27:16.335Z",
+        "title": "I cannot verify this",
+        "originator_role": "alienate_citizen",
+        "statement_form": "direct public reply",
+        "public_object": "comment 37624 on post 3581",
+        "temporal_status": "contemporaneous",
+        "admission_status": "later admission",
+        "sensitivity": "public / none",
+        "verification": "public comment identifier and local public-write response",
+        "relation": "explicit nonverification pending dossier disclosure; conduct unchanged"
+      }
+    ]
+  },
+  "current_map": {
+    "records": 53,
+    "root_event_groups": 52,
+    "representative_rendered_measures": 20,
+    "representative_rendering_additions_after_delta": [
+      {
+        "entry_id": "E10",
+        "chronology_at": "2026-08-24T15:21:39.000Z",
+        "temporal_status": "retroactive",
+        "admission_status": "later admission",
+        "basis": "R20 reviewed August 24 public-conduct leaf and repaired public-safe evidence"
+      }
+    ]
+  },
+  "editorial_rule": "Narrate the pair as Tidemark's situated testimony followed by Alienate's explicit nonverification and unchanged conduct, never as mutual recognition or a jointly authored citizen statement.",
+  "excluded_private_material": "No private operator report or unreviewed private response is admitted by this delta."
+}

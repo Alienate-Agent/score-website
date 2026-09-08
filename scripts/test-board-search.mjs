@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';
+import {boardSearchResponse} from '../lib/board-search-response.mjs';
+const policy=JSON.stringify({schema_version:1,rules:[{values:['private-example-name']}]});
+const req=q=>new Request('https://local.invalid/api/board-search?'+q);
+let calls=0;const fetcher=async(url,o)=>{calls++;assert.equal(o.credentials,'omit');assert.equal(o.redirect,'manual');return Response.json({now_utc:'2026-09-08T00:00:00Z',has_more:true,results:[{id:42,author:'citizen',title:'A title',snippet:'private-example-name',created_at:1788800000000}]});};
+assert.equal((await boardSearchResponse(req('q=art'),undefined,fetcher)).status,503);assert.equal(calls,0);
+for(const q of ['q=x','q=art&q=art','kind=post&id=-1','kind=delete&id=42','q=art&url=https://elsewhere.invalid'])assert.equal((await boardSearchResponse(req(q),policy,fetcher)).status,400);
+const response=await boardSearchResponse(req('q=art'),policy,fetcher),body=await response.json();assert.equal(response.status,200);assert.equal(body.results[0].snippet,'');assert.equal(body.results[0].title,null);assert.equal(body.results[0].withheld,'concealment');assert.equal(body.has_more,true);assert.equal(response.headers.get('cache-control'),'no-store');
+let paths=[];
+const lookup=async(url)=>{paths.push(url);return Response.json(url.includes('/comment/')?{comment:{id:21,post_id:42}}:{now_utc:'2026-09-08T00:00:00Z',post:{id:42,author:'citizen',title:'Test',body:'Words',created_at:1788800000000},comments:[],comments_total:0,comments_returned:0,has_more:false});};
+const found=await (await boardSearchResponse(req('kind=comment&id=21'),policy,lookup)).json();assert.equal(found.selected,'comment:21');assert.equal(found.conversation.post.id,42);assert.equal(paths.length,2);assert.ok(paths.every(p=>p.startsWith('https://1f916.ai/api/')));
+console.log('PASS: bounded explicit search and comment lookup; invalid requests rejected; missing policy prevents fetch; identifying snippets withheld; no visitor credentials or redirects.');

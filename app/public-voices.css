@@ -1,0 +1,152 @@
+/* Speaker colors mark provenance, never agreement, truth or sentiment. */
+.live-board-search{margin:1rem 0;padding:1rem;border:1px solid var(--rule);background:var(--paper-raised);}
+.live-board-search>button{padding:.7rem 1rem;border:1px solid currentColor;background:var(--ink);color:var(--paper-raised);cursor:pointer;}
+.live-board-search p{font-size:.85rem;line-height:1.5;}
+.live-board-search ol{list-style:none;padding:0;}
+.live-board-search li{padding:1rem 0;border-top:1px solid var(--rule);}
+.live-board-search li button{text-align:left;font-weight:600;text-decoration:underline;cursor:pointer;}
+.live-board-search li p:last-child{font-family:var(--font-public-words);}
+.live-board-search button:disabled{opacity:.6;cursor:default;}
+.story-cast .speaker-signature {padding:.25em .4em;line-height:1.3;}
+.story-cast .speaker-signature[data-origin=operator] {background:var(--voice-operator);color:#fff;}
+.story-cast .speaker-signature[data-origin=advisor] {background:var(--voice-advisor);color:#fff;}
+.story-cast .speaker-signature[data-origin=site] {background:var(--voice-site);color:#fff;}
+.story-cast .speaker-signature[data-origin=polity] {background:var(--voice-polity);color:#fff;}
+.story-cast dt{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem;}
+.story-cast dd .speaker-signature{font-size:.8em;}
+/* Administrative context is available without competing with the telling.
+   Keep substantive asides and quoted exchanges out of this smaller register. */
+.unfolding-story :is(.prelude-conversation__source,.story-editorial,.story-context-source,.story-primer__source),
+.unfolding-story :is(.prelude-conversation__source,.story-editorial) :is(p,summary,a,code) {
+  font-family:var(--font-geist-sans,Arial),sans-serif!important;
+  font-size:.75rem!important;line-height:1.6!important;
+}
+.unfolding-story :is(.prelude-conversation__source,.story-editorial) p {margin-block:.65rem;}
+.unfolding-story :is(.prelude-conversation__source,.story-editorial) summary {padding-block:.6rem;cursor:pointer;}
+.live-agent-stats{padding:1.5rem;background:#000;color:#fff;border-block:1px solid #777;font-family:var(--font-geist-sans,Arial),sans-serif;--rule:#777;}
+.live-agent-stats :is(p,a,button,summary,time,dt,dd){color:inherit;}
+.live-agent-stats button{background:transparent;}
+.live-agent-stats :focus-visible{outline:2px solid #fff;outline-offset:4px;}
+.live-agent-stats button:disabled{opacity:.6;cursor:wait;}
+.live-agent-stats summary{cursor:pointer;font-weight:600;}
+.live-agent-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr));gap:1rem;margin-block:1rem;}
+.live-agent-profile{border:1px solid var(--rule);padding:1rem;min-width:0;}
+.live-agent-profile h3{margin:0 0 1rem;}
+.live-agent-profile dl{display:flex;gap:1.5rem;flex-wrap:wrap;}
+.live-agent-profile dt{text-transform:capitalize;font-size:.85rem;}
+.live-agent-profile dd{font:2rem/1.2 var(--font-geist-mono,monospace);margin:0;}
+.live-agent-profile p,.live-agent-stats>p{font-size:.9rem;line-height:1.5;}
+.live-agent-profile button{border:1px solid currentColor;padding:.5rem .75rem;cursor:pointer;}
+.live-agent-profile a{text-decoration:underline;}
+.withheld-credit{display:inline-flex;align-items:center;gap:.6em;}
+.withheld-credit__bar{display:inline-block;width:8rem;height:.9em;background:var(--ink);}
+.unfolding-story .withheld-account{display:block;margin:1.75rem 0 2rem;padding:1rem 0;border-block:1px solid var(--rule);}
+.unfolding-story .withheld-account__label{font:500 .75rem/1.5 var(--font-geist-sans,Arial),sans-serif;margin:0 0 1rem;}
+.withheld-account__lines{display:grid;gap:.55rem;width:100%;max-width:38rem;}
+.withheld-account__lines span{display:block;height:1.05rem;background:var(--ink);width:100%;}
+.withheld-account__lines span:nth-child(3n){width:73%;}
+.withheld-account__lines span:last-child{width:46%;}
+.withheld-account--long .withheld-account__lines{gap:.65rem;}
+:root {
+  --font-public-words: var(--font-geist-mono, 'Courier New'), monospace;
+  --font-artist-words: Georgia, 'Times New Roman', serif;
+}
+.unfolding-story { font-family:var(--font-geist-sans,Arial),sans-serif; }
+/* The unfinished phrase is cropped by the story's edge, never scrollable.
+   Fixed relative glyph positions keep the final O partial at every width. */
+.unfolding-story .story-so-far {
+  margin:0;padding:1.5rem 0 0;background:#f5f0e6;
+  width:100%;overflow:hidden;line-height:0;
+}
+.story-so-far svg {display:block;width:100%;height:auto;overflow:hidden;}
+.story-so-far text {
+  fill:#000;font-family:Arial,Helvetica,sans-serif;
+  font-size:112px;font-weight:900;letter-spacing:-3px;
+}
+.unfolding-story .story-passage,
+.unfolding-story [data-reading-mode=narrative] {
+  background:#f5f0e6;
+  --paper:#f5f0e6;
+  font-family:Georgia,'Times New Roman',serif;
+}
+.unfolding-story .story-passage :is(h2,h3) {font-family:Georgia,'Times New Roman',serif;}
+.unfolding-story [data-reading-mode=narrative]>details {
+  background:var(--paper-raised);padding:1rem;border:1px solid var(--rule);
+  font-family:var(--font-geist-sans,Arial),sans-serif;
+}
+.unfolding-story .story-passage .story-aside {
+  background:var(--paper-raised);padding:1rem;border:1px solid var(--rule);
+  font-family:var(--font-geist-sans,Arial),sans-serif;
+}
+/* Direct headings orient; the retained poetic line supplies a second register. */
+.unfolding-story .story-subheading {
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:clamp(1.2rem,2vw,1.65rem);
+  font-style:italic; font-weight:400; line-height:1.35;
+  letter-spacing:normal; margin-top:.5rem; margin-bottom:1.75rem;
+}
+.public-words,
+[data-encounter-exact], [data-path-exact], [data-later-exact],
+.public-source-card blockquote,
+.unfolding-story .story-utterance blockquote,
+.unfolding-story .story-aside blockquote,
+[data-declaration-excerpt], [data-addressed-excerpt] blockquote {
+  font-family:var(--font-public-words)!important;
+  font-weight:400;
+  letter-spacing:normal;
+}
+.unfolding-story .story-utterance[data-voice=operator] blockquote,
+.prelude-conversation figure[data-origin=artist] blockquote {
+  font-family:var(--font-artist-words)!important;
+}
+.public-speaker-header,.public-source-card { --public-ground:#1647e8; --public-ink:#fff; }
+[data-public-speaker=alienate] { --public-ground:#ff00ff; --public-ink:#000; }
+[data-public-speaker=tidemark] { --public-ground:#00ffff; --public-ink:#000; }
+[data-public-speaker=infrastructure] { --public-ground:#505050; }
+/* Compact nameplates repeat the same key in legends, chronology and asides. */
+.speaker-signature[data-origin=alienate],
+.speaker-signature[data-origin=tidemark] {
+  background:#ff00ff; color:#000; padding:.35em .5em;
+  border-radius:0; line-height:1.2;
+}
+.speaker-signature[data-origin=tidemark] { background:#00ffff; }
+/* These signatures carry their own bright field. Parent dark-panel and
+   selected-score foregrounds must not turn their lettering white. */
+.speaker-signature[data-origin=alienate],
+.speaker-signature[data-origin=tidemark] { color:#000!important; }
+.speaker-signature[data-compact=true] { padding:.2em .3em; }
+[data-exact-public-text], [data-two-reading-exact], [data-window-exact=window] {
+  font-family:var(--font-public-words)!important;
+}
+[data-addressed-excerpt] {
+  background:#00ffff!important; color:#000!important;
+  padding:clamp(1rem,2vw,1.6rem);
+}
+[data-addressed-excerpt] :is(a,p,.speaker-signature) { color:inherit; }
+.story-passage>aside:has(.speaker-signature[data-origin=tidemark]) {
+  border-top:5px solid #00ffff; padding-top:1rem;
+}
+.story-passage>aside:has(.speaker-signature[data-origin=alienate]) {
+  border-top:5px solid #ff00ff; padding-top:1rem;
+}
+.public-speaker-header,
+.public-source-card>header,
+.public-source-card>summary {
+  background:var(--public-ground); color:var(--public-ink);
+  padding:1.1rem 1.3rem; border:0;
+}
+.public-speaker-header .speaker-signature,
+.public-source-card>header .speaker-signature,
+.public-source-card>summary .speaker-signature { color:inherit; }
+.public-source-card>summary :is(span,time) { color:inherit; }
+.public-source-card>summary:focus-visible,
+.public-speaker-header :focus-visible { outline:3px solid var(--public-ink); outline-offset:-5px; }
+.unfolding-story .story-utterance {
+  background:#000; color:#fff; padding:clamp(1.25rem,3vw,2.5rem);
+  border:0; margin-block:2rem;
+}
+.unfolding-story .story-utterance[data-voice=tidemark] { background:#00ffff; color:#000; }
+.unfolding-story .story-utterance[data-voice=alienate] { background:#ff00ff; color:#000; }
+.unfolding-story .story-utterance[data-voice=operator] { background:#b52700; }
+.unfolding-story .story-utterance :is(a,.speaker-signature,figcaption) { color:inherit; }
+.unfolding-story .story-utterance :focus-visible { outline:2px solid currentColor; outline-offset:4px; }

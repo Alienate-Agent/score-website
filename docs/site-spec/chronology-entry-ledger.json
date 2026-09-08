@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "status": "append_only_public_entry_identity_ledger",
+  "baseline_commit": "45b30ff",
+  "entry_ids": [
+    "E01",
+    "E09",
+    "E39",
+    "E39·2",
+    "E40",
+    "E41",
+    "E41·2",
+    "E43·1",
+    "E43·2",
+    "E43·3",
+    "E43·4",
+    "E49·1",
+    "E49·2",
+    "E49·3",
+    "E48·1",
+    "E48·2",
+    "E50",
+    "E50·2",
+    "E41·1",
+    "E10",
+    "E22",
+    "E22·2",
+    "E22·3",
+    "E02",
+    "E03",
+    "E05",
+    "E06",
+    "E07",
+    "E08"
+  ],
+  "policy": {
+    "entry_identity_is_stable": true,
+    "new_entries_append_to_this_ledger": true,
+    "retroactive_entries_may_sort_to_an_earlier_chronology_at": true,
+    "retroactive_entries_must_be_visibly_labeled": true,
+    "later_admission_is_independent_of_retroactive_composition": true,
+    "later_entry_forms_may_include": [
+      "event",
+      "commentary",
+      "summary",
+      "contextual bridge",
+      "other named form"
+    ],
+    "operator_curatorial_admission_remains_open": true,
+    "validators_do_not_decide_artistic_merit": true,
+    "deletion_requires_an_explicit_versioned_correction_not_silent_removal": true
+  }
+}

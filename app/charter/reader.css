@@ -1,0 +1,8 @@
+.charter-reader{max-width:76rem;margin:auto;padding:clamp(1rem,4vw,4rem);font-family:var(--font-geist-sans,Arial),sans-serif;line-height:1.65;}
+.charter-reader header{border-top:1rem solid #f0f;padding-block:1.5rem;}
+.charter-reader h1{font-size:clamp(2.5rem,6vw,5rem);line-height:1.05;letter-spacing:-.04em;}
+.charter-reader nav{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;margin-block:1rem;}
+.charter-reader a{color:inherit;text-decoration:underline;text-underline-offset:.2em;}
+.charter-reader a:focus-visible{outline:2px solid currentColor;outline-offset:4px;}
+.charter-reader section{border-top:1px solid var(--rule);padding-block:2rem;scroll-margin-top:1rem;}
+.charter-reader pre{white-space:pre-wrap;overflow-wrap:anywhere;font:1rem/1.7 var(--font-geist-mono,monospace);max-width:80ch;}

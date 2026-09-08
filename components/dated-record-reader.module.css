@@ -1,0 +1,53 @@
+.reader {
+  margin: 3rem auto 5rem;
+  padding: 2rem 3.5%;
+  border-top: 1px solid var(--ink);
+  max-width: 96rem;
+  color: var(--ink);
+}
+.reader h2 { font-family: var(--font-source-serif), Georgia, serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 400; line-height: 1.08; margin: 1rem 0; }
+.intro { max-width: 43rem; font-size: 1.25rem; line-height: 1.5; }
+.disclosure > summary { padding: 1.25rem 0; border-block: 1px solid var(--ink); cursor: pointer; font-size: 1.15rem; }
+.boundary { max-width: 58rem; font-size: 1rem; line-height: 1.55; margin: 1.5rem 0; color: var(--ink-soft); }
+.controls { margin: 2rem 0 1rem; scroll-margin-top: 1rem; }
+.cut { margin-bottom: 1rem; color: var(--ink-soft); font-size: .85rem; }
+.controls label { display: block; margin-bottom: .5rem; }
+.discovery { border-bottom: 1px solid var(--rule); margin-bottom: 1.25rem; padding-bottom: .75rem; }
+.discovery summary { cursor: pointer; min-height: 44px; padding-block: .6rem; }
+.searchFields { display: grid; grid-template-columns: minmax(0,2fr) minmax(0,1fr); gap: 1rem; margin: .75rem 0; }
+.searchFields > div { min-width: 0; }
+.searchFields input { width: 100%; min-height: 3rem; padding: .5rem; border: 1px solid var(--ink); background: var(--paper-raised); color: var(--ink); font: inherit; }
+.discovery p { max-width: 64ch; line-height: 1.5; margin: .75rem 0; }
+.searchStatus { display: block; line-height: 1.5; margin: .75rem 0; }
+.discovery button { cursor: pointer; text-decoration: underline; min-height: 44px; }
+.discovery button:disabled { opacity: .45; cursor: default; }
+.descriptionLabel { color: var(--ink-soft); margin: 1.5rem 0 -1rem; font-size: .85rem; }
+.labelKey { color: var(--ink-soft); font-size: .85rem; line-height: 1.5; margin: .5rem 0 0; }
+.controls select { display: block; width: 100%; max-width: 100%; min-height: 3rem; padding: .5rem; border: 1px solid var(--ink); background: var(--paper-raised); color: var(--ink); font: inherit; }
+.turns { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 1rem; padding: 1rem 0; }
+.turns button { min-height: 44px; padding: .5rem 0; text-align: left; text-decoration: underline; text-underline-offset: .3rem; cursor: pointer; }
+.turns button:last-child { text-align: right; }
+.turns button:disabled { opacity: .45; cursor: default; }
+.turns output { font-size: .85rem; }
+.leaf { border-block: 1px solid var(--ink); background: var(--paper-raised); padding: 2rem clamp(1rem, 4vw, 4rem); scroll-margin-top: calc(var(--story-return-height, 4rem) + 1rem); }
+.provenance { display: flex; gap: 1rem 2rem; flex-wrap: wrap; align-items: center; font-size: .8rem; }
+.leaf h3 { font-family: var(--font-source-serif), Georgia, serif; font-size: clamp(1.75rem, 3vw, 3rem); font-weight: 400; line-height: 1.15; margin: 1.5rem 0; overflow-wrap: anywhere; }
+.classification { max-width: 60ch; color: var(--ink-soft); font-family: var(--font-geist-sans, Arial), sans-serif; font-size: .75rem; line-height: 1.5; border-bottom: 1px solid var(--rule); padding-bottom: .75rem; }
+.exact { white-space: pre-wrap; overflow-wrap: anywhere; max-width: 68ch; font-family: var(--font-source-serif), Georgia, serif; font-size: 1.15rem; line-height: 1.7; margin: 2rem 0; }
+.nonSpeech { max-width: 52ch; font-size: 1.3rem; line-height: 1.6; margin: 2rem 0; }
+.links { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; margin: 2rem 0; }
+.reader a { text-decoration: underline; text-underline-offset: .25rem; overflow-wrap: anywhere; }
+.links a { min-height: 44px; display: inline-flex; align-items: center; }
+.receipt { border-top: 1px solid var(--ink); padding-top: 1rem; }
+.receipt summary { min-height: 44px; cursor: pointer; }
+.receipt dl { display: grid; grid-template-columns: minmax(8rem, 1fr) minmax(0, 3fr); gap: .8rem 2rem; font-size: .85rem; }
+.receipt dd { margin: 0; overflow-wrap: anywhere; }
+.reader :focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+@media (max-width: 600px) {
+  .searchFields { grid-template-columns: 1fr; }
+  .reader { padding: 1.5rem 1rem; }
+  .turns { grid-template-columns: 1fr 1fr; gap: .25rem; }
+  .turns output { grid-column: 1 / -1; grid-row: 1; text-align: center; }
+  .receipt dl { grid-template-columns: 1fr; gap: .3rem; }
+  .receipt dd { margin-bottom: 1rem; }
+}

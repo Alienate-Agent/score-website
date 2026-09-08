@@ -1,0 +1,23 @@
+{
+  "status": "site_authored_retrospective_admissions_private_preview",
+  "prior_site_commit": "6911027beb4906e35405709b7f0867d5107eb636",
+  "prior_entry_count": 20,
+  "prior_ledger_prefix": ["E01", "E09", "E39", "E39·2", "E40", "E41", "E41·2", "E43·1", "E43·2", "E43·3", "E43·4", "E49·1", "E49·2", "E49·3", "E48·1", "E48·2", "E50", "E50·2", "E41·1", "E10"],
+  "editorial_author": "Sol Website",
+  "composition_date": "2026-09-04",
+  "site_admission_date": "2026-09-04",
+  "evidence_cut": "2026-09-03T13:46:15Z",
+  "source_resource_sha256": "cf99b13a62e8c1dc10635bf6359e0e69a517a7ed2ac1d2ba26bf9c46c8c85cbd",
+  "charter_at_entry": {
+    "sha256": "b42f63ad9fee5923d3a45077c0f981b3c1933e9ef2d66bc0f6e22fa0d7037d42",
+    "public_commit": "8d5302bdd9ab09366961d4ed4105c763d54d9709",
+    "later_economic_amendment_applied_retroactively": false
+  },
+  "citizen_endorsement_implied": false,
+  "original_candidate_mappings_modified": false,
+  "admissions": [
+    { "id": "E22", "source_key": "alienate:post:2322", "event_time": "2026-08-25T15:19:02.044Z", "source_body_sha256": "25e27ebe5342e4a73232cdd4dbaf8194dac404be0fab4fc1b953331554e3a415" },
+    { "id": "E22·2", "source_key": "alienate:comment:37623", "event_time": "2026-09-02T13:27:12.819Z", "source_body_sha256": "3f20b7a8e908117d8c640c9b3572c0e69f83e89a0eb2cd380e8e15a381c07a94" },
+    { "id": "E22·3", "source_key": "alienate:post:3734", "event_time": "2026-09-03T13:45:38.970Z", "source_body_sha256": "dc6750440f6efa80061253c330a8665870d65484f6783b558692c5440a89d84f" }
+  ]
+}

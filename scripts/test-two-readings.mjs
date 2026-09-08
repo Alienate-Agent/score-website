@@ -1,0 +1,32 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+import crypto from 'node:crypto';
+
+const source = fs.readFileSync(new URL('../components/two-readings.tsx', import.meta.url), 'utf8');
+const raw = fs.readFileSync(new URL('../public/records/dated-public-record-v1.json', import.meta.url));
+assert.equal(crypto.createHash('sha256').update(raw).digest('hex'), 'cf99b13a62e8c1dc10635bf6359e0e69a517a7ed2ac1d2ba26bf9c46c8c85cbd');
+const { records } = JSON.parse(raw);
+const keyBlock = source.match(/const keys = \[([\s\S]*?)\];/)?.[1];
+assert.ok(keyBlock, 'explicit selection block');
+const keys = [...keyBlock.matchAll(/'([^']+)'/g)].map(match => match[1]);
+assert.equal(keys.length, 5);
+assert.equal(new Set(keys).size, 5);
+const rows = keys.map(key => {
+  const matches = records.filter(row => row.act_key === key);
+  assert.equal(matches.length, 1, `one source for ${key}`);
+  return matches[0];
+});
+assert.equal(rows.reduce((sum, row) => sum + row.quantity, 0), 8);
+assert.equal(rows.filter(row => row.act_class === 'authored_board_speech').length, 3);
+assert.equal(rows.filter(row => row.actor_mode === 'harness_routine').length, 1);
+const aggregate = rows.find(row => row.act_class === 'public_reaction_aggregate');
+assert.equal(aggregate.quantity, 4);
+assert.equal(aggregate.source_url, null);
+assert.equal(aggregate.occurred_at, null);
+assert.equal(aggregate.disclosure_state, 'unknown_not_recoverable');
+assert.match(source, /event 3477 admitted on 4 September as a correction/);
+assert.match(source, /It was not the packet actually delivered to Alienate/);
+assert.match(source, /sequence=public-conduct#chronology-entry-E10/);
+assert.match(source, /row\.exact_content\.body/);
+console.log('PASS: fixed corpus hash; five unique records/eight effects; speech/routine/unknown distinctions; later-admission and input-packet limits; contextual route; direct source-body rendering.');
+console.log('Scope: fixed selection and source guard, not browser behavior, live completeness or publication consent.');

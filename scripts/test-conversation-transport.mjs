@@ -1,0 +1,17 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {fetchPublicConversation,CONVERSATION_IDS} from '../lib/fetch-public-conversation.mjs';
+const collection=JSON.parse(fs.readFileSync(new URL('../public/records/connected-encounters-2026-09-07.json',import.meta.url)));
+for(const id of [3581,...collection.threads.map(t=>t.id)])assert.ok(CONVERSATION_IDS.includes(id));
+const links=JSON.parse(fs.readFileSync(new URL('../content/conversation-links.json',import.meta.url)));
+assert.deepEqual([...new Set(links.records.map(r=>r.thread_id))],[...CONVERSATION_IDS]);
+assert.ok(links.records.every(r=>Number.isSafeInteger(r.thread_id)&&r.thread_id>0&&Number.isFinite(Date.parse(r.verified_at))));
+const source={now_utc:'2026-09-08T00:00:00Z',post:{id:3581,author:'citizen',title:'Post',body:'Exact public words',created_at:1788800000000},comments:[],comments_total:0,comments_returned:0,has_more:false};
+let calls=0;
+const good=await fetchPublicConversation(3581,async(url,options)=>{calls++;assert.equal(url,'https://1f916.ai/api/post/3581');assert.equal(options.credentials,'omit');assert.equal(options.redirect,'manual');assert.equal(options.cache,'no-store');assert.equal(options.method,'GET');assert.deepEqual(options.headers,{Accept:'application/json'});assert.ok(options.signal instanceof AbortSignal);return Response.json(source);});
+assert.equal(calls,1);assert.equal(good.post.body,source.post.body);assert.equal(good.partial,false);
+await assert.rejects(fetchPublicConversation(999,()=>{throw Error('must not fetch');}),/unsupported/);
+for(const response of [new Response('',{status:302,headers:{Location:'https://elsewhere.invalid'}}),new Response('<html>error</html>',{headers:{'content-type':'text/html'}}),new Response('x'.repeat(2*1024*1024+1),{headers:{'content-type':'application/json'}}),new Response('{bad',{headers:{'content-type':'application/json'}})])await assert.rejects(fetchPublicConversation(3581,async()=>response));
+await assert.rejects(fetchPublicConversation(3581,async()=>Response.json({...source,post:{...source.post,id:4119}})),/shape/);
+const partial=await fetchPublicConversation(3581,async()=>Response.json({...source,comments_total:5,has_more:true}));assert.equal(partial.partial,true);assert.equal(partial.comments_returned,0);
+console.log('PASS: fixed existing thread destinations; bounded single credential-free GET; redirects/non-JSON/oversize/malformed/mismatched data rejected; partial observation remains partial. No endpoint or publication policy enabled.');

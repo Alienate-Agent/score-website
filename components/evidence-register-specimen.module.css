@@ -1,0 +1,1039 @@
+.specimen {
+  container-type: inline-size;
+  margin: clamp(2.5rem, 5vw, 5rem) 0;
+  border-top: 3px double var(--ink);
+  border-bottom: 3px double var(--ink);
+  background: color-mix(in srgb, var(--paper-raised) 76%, var(--paper));
+}
+
+.header > *,
+.displaced > *,
+.leafBody > * {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: minmax(18rem, 0.8fr) minmax(24rem, 1.2fr);
+  gap: clamp(2rem, 6vw, 7rem);
+  padding: clamp(2rem, 4vw, 4rem);
+  border-bottom: 1px solid var(--ink);
+}
+
+.header h3 {
+  max-width: 12ch;
+  margin: 0.55rem 0 0;
+  font-size: clamp(2.6rem, 5vw, 5.8rem);
+  font-weight: 400;
+  letter-spacing: -0.055em;
+  line-height: 0.9;
+}
+
+.intro {
+  align-self: end;
+}
+
+.intro p {
+  max-width: 42rem;
+  margin: 0;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  line-height: 1.6;
+}
+
+.proposalToggle {
+  max-width: 100%;
+  white-space: normal !important;
+  height: auto !important;
+  margin-top: 1.5rem;
+  border: 1px solid var(--ink) !important;
+  border-radius: 0 !important;
+  padding: 0.8rem 1rem !important;
+  background: transparent !important;
+  color: var(--ink) !important;
+  font-size: 0.63rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.proposalToggle[aria-pressed='true'] {
+  background: var(--ink) !important;
+  color: var(--paper) !important;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border-bottom: 1px solid var(--ink);
+}
+
+.legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.75rem 1rem;
+  border-right: 1px solid var(--rule);
+  color: var(--ink-soft);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.56rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.legend svg {
+  width: 0.82rem;
+  height: 0.82rem;
+  stroke-width: 1.65;
+}
+
+.timelineViewport {
+  overflow-x: auto;
+  border-bottom: 1px solid var(--ink);
+  scrollbar-color: var(--ink) var(--paper-deep);
+}
+
+.timelineViewport:focus-visible {
+  outline: 2px solid var(--reveal);
+  outline-offset: -2px;
+}
+
+.timelineCanvas {
+  position: relative;
+  min-width: 70rem;
+  padding: 2.5rem 2.5rem 2rem 8rem;
+}
+
+.dayAxis {
+  position: relative;
+  height: 3.8rem;
+  margin-left: 0;
+  border-bottom: 1px solid var(--ink);
+}
+
+.dayAxis span {
+  position: absolute;
+  bottom: 0.5rem;
+  left: var(--day-x);
+  width: 0;
+  height: 0;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.dayAxis span b {
+  display: block;
+  width: max-content;
+  font-weight: 400;
+  line-height: 1.4;
+  transform: translate(-50%, -100%);
+}
+
+.dayAxis span:first-child b {
+  transform: translateY(-100%);
+}
+
+/* The first day is partial; its close midnight label gets another text row.
+   The zero-width parent and guide remain at the exact timestamp. */
+.dayAxis span:nth-child(2) b {
+  transform: translate(-50%, calc(-100% - 1.4rem));
+}
+
+.dayAxis span:last-child b {
+  transform: translate(-100%, -100%);
+}
+
+.dayAxis span::after {
+  position: absolute;
+  top: 0.5rem;
+  bottom: -30rem;
+  left: 0;
+  z-index: 0;
+  border-left: 1px dotted color-mix(in srgb, var(--ink) 28%, transparent);
+  content: '';
+}
+
+.registerLabel {
+  position: absolute;
+  left: -6.8rem;
+  width: 5.8rem;
+  margin: 0;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+.composedRegister,
+.evidenceRegister {
+  position: relative;
+}
+
+.composedRegister {
+  height: calc(var(--measure-rows, 1) * 7rem + 2.5rem);
+  padding-top: 1.6rem;
+}
+
+.measureLine {
+  position: relative;
+  height: calc(var(--measure-rows, 1) * 7rem);
+  border-top: 1px solid var(--ink);
+}
+
+.measureMark {
+  position: absolute;
+  top: calc(var(--measure-row, 0) * 7rem - 0.55rem);
+  left: var(--measure-x);
+  display: grid;
+  width: min(10rem, 18vw);
+  min-width: 7rem;
+  gap: 0.25rem;
+  border: 0;
+  border-left: 2px solid var(--ink);
+  padding: 0.7rem 0.6rem;
+  background: var(--paper-raised);
+  color: var(--ink);
+  cursor: pointer;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  text-align: left;
+  /* The left rule is the event's time anchor; labels extend right of it. */
+  transform: none;
+}
+
+.measureMark span {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.measureMark small {
+  font-size: 0.58rem;
+  line-height: 1.35;
+}
+
+.measureMark em {
+  color: var(--reveal);
+  font-size: 0.5rem;
+  font-style: normal;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.relatedMeasure {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+.proposedMeasure {
+  border-left-style: dashed;
+  outline-color: var(--reveal);
+}
+
+.uncomposedDay {
+  position: absolute;
+  top: 4.65rem;
+  left: var(--day-start);
+  width: calc(var(--day-end) - var(--day-start));
+  margin: 0;
+  border-top: 1px dashed var(--rule-strong);
+  padding-top: 0.45rem;
+  color: var(--ink-soft);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.evidenceRegister {
+  padding-top: 1.6rem;
+}
+
+.foldRule {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.2rem;
+  margin: 0 0 0.65rem;
+  color: var(--ink-soft);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.foldRule strong {
+  color: var(--reveal);
+  font-weight: 700;
+}
+
+.evidenceLine {
+  position: relative;
+  height: var(--evidence-line-height, 10.5rem);
+  min-height: 10.5rem;
+  border-top: 1px solid var(--ink);
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 2rem,
+    color-mix(in srgb, var(--ink) 10%, transparent) 2rem,
+    color-mix(in srgb, var(--ink) 10%, transparent) calc(2rem + 1px)
+  );
+}
+
+.notationLine {
+  min-height: 7rem;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 3rem,
+    color-mix(in srgb, var(--ink) 9%, transparent) 3rem,
+    color-mix(in srgb, var(--ink) 9%, transparent) calc(3rem + 1px)
+  );
+}
+
+.evidenceMark {
+  position: absolute;
+  top: calc(0.6rem + var(--evidence-lane) * 1.85rem);
+  left: var(--evidence-x);
+  z-index: 2;
+  display: grid;
+  width: 1.55rem;
+  height: 1.55rem;
+  place-items: center;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  padding: 0;
+  background: var(--paper-raised);
+  color: var(--ink);
+  cursor: pointer;
+  transform: translateX(-50%);
+}
+
+.notationSingleton {
+  top: var(--notation-y);
+}
+
+.chord {
+  position: absolute;
+  top: var(--notation-y);
+  left: var(--evidence-x);
+  z-index: 3;
+  width: 4.75rem;
+  height: var(--chord-height);
+  margin: 0;
+  border: 0;
+  padding: 0;
+  transform: translateX(-1.375rem);
+}
+
+.foldHinge {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  width: 2.75rem;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--reveal);
+  cursor: pointer;
+}
+
+.foldHinge:focus-visible {
+  outline: 2px solid var(--reveal);
+  outline-offset: 3px;
+}
+
+.stemTop,
+.stemBottom {
+  position: absolute;
+  left: 50%;
+  width: 0;
+  border-left: 2px solid currentColor;
+  transform: translateX(-50%);
+}
+
+.stemTop {
+  top: 0;
+  height: calc(50% - 0.28rem);
+}
+
+.stemBottom {
+  bottom: 0;
+  height: calc(50% - 0.28rem);
+}
+
+.stemTop::after {
+  position: absolute;
+  bottom: -0.31rem;
+  left: -0.08rem;
+  width: 0.52rem;
+  border-top: 2px solid currentColor;
+  content: '';
+  transform: rotate(-38deg);
+  transform-origin: left center;
+}
+
+.chordNote {
+  top: auto;
+  bottom: calc(0.45rem + var(--note-index) * 1.15rem);
+  left: 3rem;
+  z-index: 4;
+  width: 1.38rem;
+  height: 1.38rem;
+  background: var(--paper-raised);
+}
+
+.chordNote::before {
+  pointer-events: none;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  z-index: -1;
+  width: 1.625rem;
+  border-top: 1px solid var(--reveal);
+  content: '';
+}
+
+.chordNote svg {
+  width: 0.67rem;
+  height: 0.67rem;
+}
+
+.chordNote.evidenceMark--civic-act {
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.foldAuthorship {
+  position: absolute;
+  bottom: -1.1rem;
+  left: 1.375rem;
+  display: none;
+  width: max-content;
+  color: var(--reveal);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transform: translateX(-50%);
+}
+
+.openChord .foldAuthorship,
+.chord:focus-within .foldAuthorship {
+  display: block;
+}
+
+.voicing {
+  margin-top: 1.25rem;
+  border: 1px solid var(--ink);
+  background: color-mix(in srgb, var(--paper-raised) 82%, var(--paper));
+}
+
+.voicing header {
+  display: flex;
+  gap: 1rem;
+  align-items: start;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--ink);
+  padding: 1rem;
+}
+
+.voicing header p,
+.voicing > p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.53rem;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.voicing header p {
+  color: var(--reveal);
+}
+
+.voicing h4 {
+  margin: 0.2rem 0 0;
+  font-family: var(--font-source-serif), ui-serif, Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.voicing header button {
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  padding: 0.65rem 0.8rem;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.53rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.voicing ol {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.voicing li + li {
+  border-top: 1px solid var(--rule);
+}
+
+.voicing li button {
+  display: grid;
+  grid-template-columns: 1.5rem minmax(9rem, 0.8fr) minmax(12rem, 1.2fr);
+  gap: 0.8rem;
+  align-items: center;
+  width: 100%;
+  min-height: 2.75rem;
+  border: 0;
+  padding: 0.75rem 1rem;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  text-align: left;
+}
+
+.voicing li button:hover,
+.voicing li button:focus-visible,
+.voicing .selectedVoicing {
+  background: color-mix(in srgb, var(--reveal) 9%, transparent);
+  outline: none;
+}
+
+.voicing li svg {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.voicing li button > span {
+  min-width: 0;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.55rem;
+  line-height: 1.45;
+}
+
+.voicing li button > span:nth-child(2) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.7rem;
+  align-items: center;
+}
+
+.voicing li strong {
+  font-weight: 700;
+}
+
+.voicing > p {
+  border-top: 1px solid var(--ink);
+  padding: 0.75rem 1rem;
+}
+
+.expandedControl {
+  border-bottom: 1px solid var(--ink);
+  background: var(--paper-deep);
+}
+
+.expandedControl > summary {
+  cursor: pointer;
+  padding: 1rem clamp(1.25rem, 3vw, 3rem);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.expandedControl > p {
+  max-width: 52rem;
+  margin: 0;
+  padding: 0 clamp(1.25rem, 3vw, 3rem) 1rem;
+  color: var(--ink-soft);
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+.controlCanvas {
+  min-width: 70rem;
+  border-top: 1px solid var(--ink);
+  padding-top: 1rem;
+}
+
+.evidenceMark::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+  width: max(1px, var(--evidence-width));
+  border-top: 2px solid currentColor;
+  content: '';
+  transform: translate(-50%, -50%);
+}
+
+.evidenceMark svg {
+  width: 0.78rem;
+  height: 0.78rem;
+  stroke-width: 1.7;
+}
+
+.evidenceMark--speech {
+  border-radius: 0;
+}
+
+.evidenceMark--window {
+  border-style: double;
+  border-width: 3px;
+  border-radius: 0;
+}
+
+.evidenceMark--required-seal {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.evidenceMark--routine-check {
+  border-style: dashed;
+}
+
+.evidenceMark--civic-act {
+  border-radius: 0;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.evidenceMark--civic-act svg {
+  transform: rotate(-45deg);
+}
+
+.evidenceMark--reaction {
+  width: 2rem;
+  border-width: 2px;
+}
+
+.selectedMark {
+  outline: 3px solid var(--reveal);
+  outline-offset: 3px;
+}
+
+.assignedMark {
+  box-shadow:
+    0 0 0 2px var(--paper-raised),
+    0 0 0 3px var(--ink);
+}
+
+.proposedMark {
+  border-color: var(--reveal);
+  border-style: dashed;
+  color: var(--reveal);
+}
+
+.tidemarkBoundary {
+  margin: 0;
+  border-bottom: 1px solid var(--ink);
+  padding: 0.9rem clamp(1.25rem, 3vw, 3rem);
+  color: var(--ink-soft);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.displaced {
+  display: grid;
+  grid-template-columns: minmax(16rem, 0.8fr) minmax(22rem, 1.2fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  border-bottom: 1px solid var(--ink);
+  padding: clamp(2rem, 4vw, 4rem);
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.displacedHeading > p,
+.operatorBoundary {
+  margin: 0;
+  color: color-mix(in srgb, var(--paper) 62%, transparent);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.57rem;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.displacedHeading h4 {
+  max-width: 18ch;
+  margin: 0.8rem 0 1rem;
+  font-size: clamp(1.6rem, 3vw, 3.2rem);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.displacedMarks {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.displacedMark {
+  display: grid;
+  grid-template-columns: minmax(7rem, 0.7fr) 4rem minmax(12rem, 1.3fr);
+  gap: 1rem;
+  align-items: center;
+  border: 1px solid color-mix(in srgb, var(--paper) 55%, transparent);
+  padding: 1rem;
+  background: transparent;
+  color: var(--paper);
+  cursor: pointer;
+  text-align: left;
+}
+
+.displacedMark strong {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.displacedMark > span:last-child {
+  color: color-mix(in srgb, var(--paper) 74%, transparent);
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.displaced .selectedMark {
+  outline-color: var(--paper);
+}
+
+.operatorBoundary {
+  grid-column: 2;
+}
+
+.evidenceLeaf {
+  margin: 0;
+  background: var(--paper-raised);
+}
+
+.leafHeader {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid var(--ink);
+}
+
+.leafHeader > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1rem;
+  align-items: center;
+  padding: 1rem clamp(1.25rem, 3vw, 3rem);
+}
+
+.leafHeader > div + div {
+  justify-content: flex-end;
+  border-left: 1px solid var(--ink);
+}
+
+.leafHeader p,
+.leafHeader span {
+  margin: 0;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.leafBody {
+  display: grid;
+  grid-template-columns: minmax(16rem, 0.7fr) minmax(24rem, 1.3fr);
+  min-height: 21rem;
+}
+
+.leafSummary {
+  border-right: 1px solid var(--ink);
+  padding: clamp(1.5rem, 3vw, 3rem);
+}
+
+.leafSummary > p:first-child,
+.expressionHeading,
+.privacyStatement > p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.leafSummary h4 {
+  margin: 0.7rem 0 2rem;
+  font-size: clamp(1.8rem, 3vw, 3.8rem);
+  font-weight: 400;
+  letter-spacing: -0.045em;
+  line-height: 0.95;
+}
+
+.leafSummary dl {
+  margin: 0;
+  border-top: 1px solid var(--ink);
+}
+
+.leafSummary dl div {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 0.8rem;
+  border-bottom: 1px solid var(--rule);
+  padding: 0.65rem 0;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.58rem;
+  line-height: 1.4;
+}
+
+.leafSummary dt {
+  color: var(--ink-soft);
+}
+
+.leafSummary dd {
+  margin: 0;
+}
+
+.relationState,
+.unmapped {
+  margin-top: 1.2rem;
+  border-left: 3px solid var(--reveal);
+  padding-left: 0.8rem;
+}
+
+.relationState p,
+.unmapped {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.relationState ul {
+  margin: 0.65rem 0 0;
+  padding-left: 1rem;
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.expression,
+.nonSpeechRecord,
+.privacyStatement {
+  min-width: 0;
+  padding: clamp(1.5rem, 3vw, 3rem);
+}
+
+.expressionHeading {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 0.8rem;
+}
+
+.expressionHeading p {
+  margin: 0;
+}
+
+.expressionHeading a,
+.nonSpeechRecord a {
+  display: inline-flex;
+  gap: 0.35rem;
+  align-items: center;
+  color: inherit;
+  text-underline-offset: 0.2rem;
+}
+
+.expressionHeading svg,
+.nonSpeechRecord svg {
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.expression h4 {
+  max-width: 34ch;
+  margin: 1.5rem 0 0;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.exactText {
+  max-height: 18rem;
+  overflow-y: auto;
+  margin-top: 1.5rem;
+  padding-right: 1rem;
+  font-family: var(--font-source-serif), ui-serif, Georgia, serif;
+  font-size: 1rem;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.digest {
+  margin: 1.5rem 0 0;
+  color: var(--ink-soft);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.55rem;
+  overflow-wrap: anywhere;
+}
+
+.nonSpeechRecord p {
+  max-width: 35rem;
+  margin: 0 0 1.5rem;
+  font-size: 1.15rem;
+  line-height: 1.55;
+}
+
+.nonSpeechRecord dl {
+  margin: 0 0 1.5rem;
+  border-top: 1px solid var(--ink);
+  padding-top: 0.75rem;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.58rem;
+}
+
+.nonSpeechRecord dd {
+  margin: 0.4rem 0 0;
+  overflow-wrap: anywhere;
+}
+
+.privacyStatement {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+}
+
+.privacyStatement strong {
+  max-width: 28ch;
+  font-size: clamp(1.5rem, 3vw, 3rem);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.privacyStatement span {
+  max-width: 36rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.leafFooter {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  border-top: 1px solid var(--ink);
+  padding: 0.8rem clamp(1.25rem, 3vw, 3rem);
+  color: var(--ink-soft);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.proposalFixture {
+  border-top: 1px solid var(--ink);
+  padding: 1rem clamp(1.25rem, 3vw, 3rem);
+}
+
+.proposalFixture summary {
+  cursor: pointer;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.proposalFixture p {
+  max-width: 52rem;
+  margin: 1rem 0;
+  color: var(--ink-soft);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+@container (max-width: 60rem) {
+  .header,
+  .displaced,
+  .leafBody {
+    grid-template-columns: 1fr;
+  }
+
+  .header {
+    gap: 2rem;
+  }
+
+  .legend span {
+    width: 50%;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .timelineCanvas {
+    min-width: 58rem;
+    padding-left: 6.7rem;
+  }
+
+  .registerLabel {
+    left: -5.8rem;
+    width: 4.8rem;
+  }
+
+  .measureMark {
+    width: 7rem;
+  }
+
+  .displaced {
+    gap: 2rem;
+  }
+
+  .operatorBoundary {
+    grid-column: 1;
+  }
+
+  .displacedMark {
+    grid-template-columns: 1fr 3rem;
+  }
+
+  .displacedMark > span:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .leafHeader {
+    grid-template-columns: 1fr;
+  }
+
+  .leafHeader > div + div {
+    justify-content: flex-start;
+    border-top: 1px solid var(--ink);
+    border-left: 0;
+  }
+
+  .leafSummary {
+    border-right: 0;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .expressionHeading {
+    display: grid;
+  }
+
+  .voicing li button {
+    grid-template-columns: 1.4rem 1fr;
+  }
+
+  .voicing li button > span:last-child {
+    grid-column: 2;
+  }
+}

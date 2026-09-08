@@ -1,0 +1,24 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import { build } from 'esbuild';
+
+const bundled = await build({entryPoints:['lib/declaration.ts'],bundle:true,platform:'node',format:'esm',write:false});
+const {declarationQuestion, declarationAnswer, declarationExcerpts, declarationPosition} = await import('data:text/javascript;base64,'+Buffer.from(bundled.outputFiles[0].text).toString('base64'));
+assert.equal(declarationQuestion.id,44750);
+assert.equal(declarationAnswer.id,46595);
+assert.ok(declarationQuestion.body.includes(declarationExcerpts.question));
+assert.ok(declarationAnswer.body.includes(declarationExcerpts.answer));
+assert.ok(declarationExcerpts.question.includes('inherit an obligation'));
+assert.ok(declarationExcerpts.question.includes('choose to undertake a repair'));
+assert.equal(declarationPosition('#declaration-question'),'question');
+assert.equal(declarationPosition('#declaration-answer'),'answer');
+assert.equal(declarationPosition('#story-title'),'claim');
+assert.equal(declarationPosition('#encounter-remedy~words~comment%3A46595'),null);
+const component=fs.readFileSync('components/declaration-encounter.tsx','utf8');
+assert.ok(component.includes('Tidemark addressed Alienate—not this headline'));
+assert.ok(component.includes('Excerpt · read Tidemark’s full comment'));
+assert.ok(component.includes('Excerpt · read Alienate’s full answer'));
+assert.ok(component.includes('Elsewhere, Tidemark imagines another mind'));
+assert.ok(component.includes("next !== position"),'Same-position source return must not schedule a competing scroll');
+assert.ok(!/fetch\(|localStorage|sessionStorage|AudioContext/.test(component));
+console.log('PASS: exact existing excerpts, both question alternatives, separate source identities, valid positions, named editorial intervention, no new data/audio/persistence. Browser composition and return checks are separate.');

@@ -1,0 +1,29 @@
+.later { margin:0; padding:clamp(3rem,6vw,6rem) clamp(1.4rem,4vw,5rem); padding-left:clamp(1.4rem,25%,25rem); color:var(--ink); }
+.later h2 { font: 400 clamp(2.3rem,5vw,4rem)/1.08 var(--font-source-serif,Georgia),serif; margin: 1rem 0 2rem; }
+.later h2,.interlude h3,.leaf { scroll-margin-top: calc(var(--story-return-height,4rem) + 1rem); }
+.intro { max-width:44rem; font:clamp(1.1rem,1.6vw,1.35rem)/1.65 var(--font-source-serif,Georgia),serif; }
+.intro p { margin: 1.25rem 0; }
+.conversationHeading { font:400 clamp(1.8rem,3.5vw,2.7rem)/1.15 Georgia,serif; max-width:28ch; margin:2rem 0 1rem; }
+.scope { color: var(--ink-soft); max-width: 48rem; font:.75rem/1.6 var(--font-geist-sans,Arial),sans-serif!important; margin: 1rem 0; }
+.scope :is(p,summary,a,code) {font:inherit!important;}
+.scope summary {padding-block:.6rem;cursor:pointer;}
+.records { border-top: 1px solid var(--ink); }
+.leaf { border-bottom: 1px solid var(--rule); }
+.leaf > summary { cursor: pointer; padding: 1.25rem 0; }
+.meta { display: inline-flex; flex-wrap: wrap; gap: .5rem 1.5rem; align-items: center; font-size: .9rem; }
+.title { display: block; font-size: clamp(1.2rem,2.5vw,1.65rem); margin: .6rem 0 0 1.1rem; }
+.label { margin: 1rem 0; font-size: .9rem; color: var(--ink-soft); }
+.exact { white-space: pre-wrap; overflow-wrap: anywhere; max-width: 68ch; font: 1.15rem/1.7 var(--font-source-serif,Georgia),serif; }
+.links { display: flex; gap: .5rem 2rem; flex-wrap: wrap; margin: 1rem 0; }
+.later a { display: inline-block; text-decoration: underline; text-underline-offset: .25rem; padding-block: .7rem; }
+.receipt { max-width: 48rem; padding-block: 1rem; line-height: 1.55; color: var(--ink-soft); overflow-wrap: anywhere; }
+.receipt summary { cursor: pointer; min-height: 44px; }
+.receipt p { margin: 1rem 0; }
+.receipt code { overflow-wrap: anywhere; }
+.later :focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+.interlude { margin: 2.5rem 0; padding-block: 1rem 2rem; border-bottom: 1px solid var(--rule); }
+.interlude h3 { font: 400 clamp(1.8rem,3.5vw,2.7rem)/1.15 var(--font-source-serif,Georgia),serif; max-width: 25ch; margin: .8rem 0 1.5rem; }
+.interlude .label { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; }
+.sourceCollection { border-block:1px solid var(--rule); margin-block:2rem; max-width:48rem; }
+.sourceCollection > summary { cursor:pointer; padding:1rem 0; font:1rem/1.5 var(--font-geist-sans,Arial),sans-serif; }
+@media(max-width:700px){ .later{padding-inline:clamp(1.4rem,4vw,5rem);} .title{margin-left:0;} }

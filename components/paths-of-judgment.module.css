@@ -1,0 +1,27 @@
+.paths { padding: clamp(1.5rem, 4vw, 4rem); border-block: 1px solid var(--ink); }
+.paths h2 { font-size: clamp(2rem, 4vw, 4rem); line-height: 1.1; margin-block: 1rem; }
+.paths h3 { font-size: clamp(1.75rem, 3vw, 2.75rem); line-height: 1.15; max-width: 32ch; margin-block: 2rem 1rem; }
+.paths p { max-width: 70ch; line-height: 1.6; margin-block: 1rem; }
+.paths button,.paths summary { cursor: pointer; padding-block: .8rem; text-align: left; }
+.paths button,.paths a { text-decoration: underline; text-underline-offset: .2em; }
+.paths :is(button,summary,a):focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+.paths h3:focus { outline: 2px solid var(--ink); outline-offset: 4px; }
+.caption { font-size: .875rem; }
+.rule { max-width: 70ch; margin-block: 1rem; }
+.choices { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; border-block: 1px solid var(--ink); margin-block: 1.5rem; }
+.choices button { padding: .8rem .5rem; }
+.choices button[aria-pressed=true] { background: var(--ink); color: var(--paper); text-decoration: none; }
+.source { padding: clamp(1rem, 2vw, 2rem); background: var(--paper-raised); border-block: 1px solid var(--rule); margin-block: 1.5rem; min-width: 0; }
+.source header { display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; font-size: .875rem; }
+.source blockquote { font-size: clamp(1.4rem, 2.5vw, 2rem); line-height: 1.45; margin-block: 1rem; }
+.exact { white-space: pre-wrap; overflow-wrap: anywhere; max-width: 72ch; line-height: 1.6; margin-block: 1.5rem; }
+.links { display: flex; flex-wrap: wrap; gap: .75rem 1.5rem; margin-top: 1rem; }
+.relation { padding: 1rem 0; max-width: 70ch; }
+.relation h4 { color: var(--voice-site); font-size: 1.125rem; }
+.relation p { font-size: 1rem; }
+.exchange { display: grid; grid-template-columns: repeat(auto-fit,minmax(min(100%,25rem),1fr)); gap: 1.5rem; align-items: start; }
+.limit { padding-block: 1rem; border-top: 1px solid var(--rule); }
+.exit { border-top: 1px solid var(--rule); margin-top: 2rem; padding-top: 1rem; }
+.exit button { font-size: 1.25rem; }
+.elsewhere { max-width: 65rem; }
+.return { display: block; margin-top: 2rem; }

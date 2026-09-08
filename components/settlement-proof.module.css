@@ -1,0 +1,880 @@
+.proof {
+  --proof-rule: var(--rule);
+  container-type: inline-size;
+  display: grid;
+  min-height: 100svh;
+  grid-template-rows: auto auto 1fr;
+  border-bottom: 1px solid var(--ink);
+  background: var(--paper);
+  color: var(--ink);
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+.header {
+  display: grid;
+  grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+  min-height: 5.25rem;
+  border-bottom: 1px solid var(--ink);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  text-transform: uppercase;
+}
+
+.identity {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: space-between;
+  gap: 0.45rem 1rem;
+  padding: 1rem clamp(1rem, 2vw, 2rem);
+  border-right: 1px solid var(--ink);
+}
+
+.identity p,
+.identity span {
+  margin: 0;
+  font-size: 0.75rem;
+  letter-spacing: 0.11em;
+  line-height: 1.45;
+}
+
+.identity p {
+  font-weight: 750;
+}
+
+.identity span {
+  color: var(--ink-soft);
+}
+
+.stageNav {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.stageNav button {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-height: 5.2rem;
+  border: 0;
+  border-right: 1px solid var(--ink);
+  border-radius: 0;
+  padding: 0.85rem 1rem;
+  background: transparent;
+  color: var(--ink-soft);
+  font: inherit;
+  font-size: 0.875rem;
+  letter-spacing: 0.09em;
+  text-align: left;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.stageNav button:last-child {
+  border-right: 0;
+}
+
+.stageNav button[aria-pressed='true'] {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.stageNav button span {
+  color: var(--reveal);
+  font-weight: 800;
+}
+
+.stageNav button .stageName {
+  display: flex;
+  flex-wrap: wrap;
+  min-width: 0;
+  align-items: center;
+  gap: 0.55rem;
+  color: inherit;
+  font-weight: inherit;
+}
+
+.stageNav button .stageName :global(.speaker-signature) {
+  color: inherit;
+}
+
+.stage {
+  display: block;
+  min-height: 0;
+  overflow: visible;
+}
+
+.panel {
+  position: relative;
+  display: none;
+  min-width: 0;
+  min-height: 100%;
+  overflow: visible;
+  background: var(--paper-raised);
+}
+
+.panel[data-active='true'] {
+  display: block;
+}
+
+.panel h1,
+.panel h2 {
+  scroll-margin-top: 7rem;
+}
+
+.panelInner {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  padding: clamp(2rem, 4vw, 4.5rem) clamp(1.35rem, 3vw, 3.5rem);
+}
+
+.speaker,
+.qualifier,
+.unsettled span,
+.settlement summary,
+.witness,
+.actMeta,
+.nonclaims,
+.sourceFailure,
+.truthSpine,
+.dialogHead p,
+.dialogMeta,
+.dialogFooter {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+.speaker,
+.qualifier {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 750;
+  letter-spacing: 0.16em;
+  line-height: 1.45;
+  text-transform: uppercase;
+}
+
+.speaker {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.speaker > span:last-child {
+  color: var(--ink-soft);
+}
+
+.speaker::after {
+  display: block;
+  width: 2rem;
+  margin-top: 0.75rem;
+  border-top: 1px solid currentColor;
+  content: '';
+}
+
+.claimPanel h1 {
+  max-width: 8.5ch;
+  margin: clamp(2rem, 5vh, 4.25rem) 0 0;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-size: clamp(4.4rem, min(8.6vw, 12vh), 9.5rem);
+  font-weight: 850;
+  letter-spacing: -0.075em;
+  line-height: 0.79;
+  text-transform: uppercase;
+}
+
+.unsettled {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  margin: clamp(1.5rem, 3vh, 2.5rem) 0 1.5rem;
+  border-top: 1px solid var(--ink);
+  padding-top: 1rem;
+  color: var(--reveal);
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.claimSequence {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-left: 1px solid var(--ink);
+}
+
+.debtDefinition {
+  display: grid;
+  grid-template-columns: minmax(13rem, 0.62fr) minmax(0, 1.38fr);
+  border-top: 1px solid var(--ink);
+  border-right: 1px solid var(--ink);
+  border-left: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.debtDefinitionHead {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  border-right: 1px solid color-mix(in srgb, var(--paper) 35%, transparent);
+  padding: clamp(0.9rem, 1.5vw, 1.35rem);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  text-transform: uppercase;
+}
+
+.debtDefinitionHead p {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0;
+  color: var(--paper);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  line-height: 1.45;
+}
+
+.debtDefinitionHead :global(.speaker-signature) {
+  color: var(--paper);
+}
+
+.debtDefinitionHead a {
+  align-self: flex-start;
+  color: color-mix(in srgb, var(--paper) 76%, transparent);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  line-height: 1.45;
+  text-underline-offset: 0.2rem;
+}
+
+.debtDefinition blockquote {
+  margin: 0;
+  padding: clamp(1.2rem, 2vw, 2rem);
+  font-size: clamp(1.2rem, 2.25vw, 2.2rem);
+  letter-spacing: -0.03em;
+  line-height: 1.16;
+}
+
+.debtBoundary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-right: 1px solid var(--ink);
+  border-left: 1px solid var(--ink);
+  color: var(--ink-soft);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+  line-height: 1.45;
+}
+
+.debtBoundary p {
+  margin: 0;
+  border-top: 1px solid var(--proof-rule);
+  border-bottom: 1px solid var(--proof-rule);
+  padding: 0.72rem 0.8rem;
+}
+
+.debtBoundary p + p {
+  border-left: 1px solid var(--proof-rule);
+}
+
+.debtBoundary span {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--reveal);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.debtBoundary strong {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: var(--reveal);
+  font-size: clamp(0.96rem, 1.25vw, 1.12rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.3;
+}
+
+.claimMovement {
+  min-width: 0;
+  border-right: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: clamp(0.85rem, 1.4vw, 1.35rem);
+}
+
+.claimMovement h2 {
+  margin: 0;
+  color: var(--reveal);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.claimMovement blockquote {
+  margin: 1rem 0 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.unsettled span {
+  color: var(--ink-soft);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.settlement {
+  border-top: 1px solid var(--ink);
+}
+
+.settlement summary {
+  padding: 1rem 0;
+  font-size: 0.875rem;
+  font-weight: 750;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.termList {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  border-top: 1px solid var(--proof-rule);
+  border-left: 1px solid var(--proof-rule);
+}
+
+.term {
+  min-width: 0;
+  border-right: 1px solid var(--proof-rule);
+  border-bottom: 1px solid var(--proof-rule);
+  padding: 0.75rem;
+}
+
+.termNumber {
+  color: var(--reveal);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  font-weight: 750;
+}
+
+.term h2 {
+  margin: 0.55rem 0 0;
+  font-size: 1rem;
+  font-weight: 650;
+  line-height: 1.15;
+}
+
+.witness,
+.evidence {
+  margin: 0.7rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+.witness {
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.evidence {
+  color: var(--ink-soft);
+}
+
+.primaryAction,
+.secondaryAction,
+.dialogClose,
+.dialogFooter button {
+  display: inline-flex;
+  min-height: 2.9rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  padding: 0.78rem 1rem;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.875rem;
+  font-weight: 750;
+  letter-spacing: 0.09em;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.primaryAction {
+  margin-top: 1.5rem;
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.secondaryAction,
+.dialogClose,
+.dialogFooter button {
+  background: transparent;
+  color: var(--ink);
+}
+
+.actPanel {
+  background: var(--paper-deep);
+}
+
+.actPanel .panelInner,
+.interpretationPanel .panelInner {
+  padding-top: clamp(2.5rem, 5vw, 5rem);
+}
+
+.actPanel h2,
+.interpretationPanel h2 {
+  margin: clamp(2rem, 8vh, 7.5rem) 0 0;
+  font-size: clamp(2rem, 3.6vw, 4.6rem);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+}
+
+.actMeta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: auto 0 0;
+  border-top: 1px solid var(--ink);
+}
+
+.actMeta div {
+  border-right: 1px solid var(--proof-rule);
+  border-bottom: 1px solid var(--proof-rule);
+  padding: 0.75rem 0.75rem 0.75rem 0;
+}
+
+.actMeta div:nth-child(2n) {
+  border-right: 0;
+  padding-left: 0.75rem;
+}
+
+.actMeta dt,
+.actMeta dd {
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.actMeta dt {
+  margin-bottom: 0.25rem;
+  color: var(--reveal);
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.actActions,
+.interpretationActions {
+  display: grid;
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+.actActions .primaryAction,
+.interpretationActions .primaryAction {
+  margin-top: 0;
+}
+
+.qualifier {
+  align-self: flex-start;
+  margin-top: 2rem;
+  border: 1px solid var(--reveal);
+  padding: 0.35rem 0.5rem;
+  color: var(--reveal);
+}
+
+.interpretationPanel h2 {
+  margin-top: clamp(1.5rem, 5vh, 4rem);
+}
+
+.interpretationCopy {
+  margin: 1.5rem 0 0;
+  color: var(--ink-soft);
+  font-size: clamp(1rem, 1.35vw, 1.22rem);
+  line-height: 1.55;
+}
+
+.nonclaims {
+  margin: auto 0 0;
+  border-top: 1px solid var(--ink);
+  padding-top: 1rem;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  line-height: 1.55;
+  text-transform: uppercase;
+}
+
+.nonclaims p {
+  margin: 0 0 0.55rem;
+  color: var(--reveal);
+  font-weight: 750;
+}
+
+.nonclaims ul {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.sourceFailure {
+  margin-top: 1rem;
+  border-top: 1px solid var(--proof-rule);
+  padding-top: 0.75rem;
+  color: var(--ink-soft);
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.sourceFailure summary {
+  cursor: pointer;
+}
+
+.sourceFailure p {
+  margin-bottom: 0;
+}
+
+.truthSpine {
+  position: sticky;
+  z-index: 20;
+  top: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr));
+  min-height: 4.2rem;
+  border-bottom: 1px solid var(--ink);
+  background: color-mix(in srgb, var(--paper) 96%, transparent);
+  backdrop-filter: blur(10px);
+}
+
+.truthSpine p {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.3rem;
+  justify-content: center;
+  margin: 0;
+  border-right: 1px solid var(--proof-rule);
+  padding: 0.62rem clamp(0.65rem, 1.2vw, 1.1rem);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+/* Reflow against text-relative space, including enlarged root text. A
+   multi-row status belongs in document flow, not over the reader's text. */
+@container (max-width: 65rem) {
+  .truthSpine {
+    position: relative;
+  }
+}
+
+.truthSpine p:last-child {
+  border-right: 0;
+}
+
+.truthSpine span {
+  color: var(--ink-soft);
+  font-size: 0.75rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.truthSpine strong,
+.truthSpine small {
+  font: inherit;
+}
+
+.truthSpine strong {
+  color: var(--reveal);
+  font-weight: 750;
+}
+
+.truthSpine small {
+  color: var(--ink-soft);
+  font-size: 0.75rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.truthSpine a {
+  color: inherit;
+  text-underline-offset: 0.18rem;
+}
+
+.truthSpine :global(.speaker-signature) {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.truthSpine .nonclaim span {
+  color: var(--reveal);
+}
+
+.actDialog {
+  margin: auto;
+  width: min(66rem, calc(100vw - 2rem));
+  max-height: calc(100svh - 2rem);
+  border: 1px solid var(--ink);
+  padding: 0;
+  background: var(--paper-raised);
+  color: var(--ink);
+  box-shadow: 0 1rem 3rem rgb(25 24 20 / 22%);
+}
+
+.actDialog::backdrop {
+  background: rgb(25 24 20 / 76%);
+}
+
+.dialogHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2rem;
+  border-bottom: 1px solid var(--ink);
+  padding: 1.5rem;
+}
+
+.dialogHead > .dialogClose {
+  order: 1;
+}
+
+.dialogHead p,
+.dialogHead h2 {
+  margin: 0;
+}
+
+.dialogHead p {
+  color: var(--reveal);
+  font-size: 0.75rem;
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.dialogHead h2 {
+  max-width: 24ch;
+  margin-top: 0.55rem;
+  font-size: clamp(1.9rem, 4vw, 3.75rem);
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
+}
+
+.dialogMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 2rem;
+  border-bottom: 1px solid var(--ink);
+  padding: 0.85rem 1.5rem;
+  color: var(--ink-soft);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.actBody {
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: clamp(2rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4rem);
+}
+
+.actBody p {
+  margin: 0 0 1.4rem;
+  font-size: clamp(1.02rem, 1.5vw, 1.23rem);
+  line-height: 1.62;
+  white-space: pre-line;
+}
+
+.actBody pre {
+  overflow-x: auto;
+  margin: 1.75rem 0;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+  padding: 1rem 0;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.dialogFooter {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 1px solid var(--ink);
+  padding: 1rem 1.5rem;
+  background: var(--paper-raised);
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.dialogFooter a {
+  color: var(--ink);
+}
+
+@media (max-width: 1040px) {
+  .proof {
+    height: auto;
+    min-height: 100svh;
+  }
+
+  .header {
+    grid-template-columns: 1fr;
+  }
+
+  .identity {
+    border-right: 0;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .panel {
+    min-height: min(48rem, calc(100svh - 12rem));
+  }
+}
+
+@media (max-width: 700px) {
+  .identity {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
+  .stageNav button {
+    min-height: 4.4rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    padding: 0.65rem;
+  }
+
+  .stageNav button .stageName :global(.speaker-signature) {
+    display: none;
+  }
+
+  .panelInner {
+    padding: 2.75rem 1rem 2rem;
+  }
+
+  .claimPanel h1 {
+    font-size: clamp(3.25rem, 17vw, 5rem);
+  }
+
+  .unsettled {
+    grid-template-columns: 1fr;
+    margin-top: 4rem;
+  }
+
+  .claimSequence {
+    grid-template-columns: 1fr;
+  }
+
+  .debtDefinition {
+    grid-template-columns: 1fr;
+  }
+
+  .debtDefinitionHead {
+    border-right: 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--paper) 35%, transparent);
+  }
+
+  .debtBoundary {
+    grid-template-columns: 1fr;
+  }
+
+  .debtBoundary p + p {
+    border-top: 0;
+    border-left: 0;
+  }
+
+  .termList {
+    grid-template-columns: 1fr;
+  }
+
+  .term {
+    display: grid;
+    grid-template-columns: 2.25rem 1fr;
+    gap: 0.5rem;
+  }
+
+  .termNumber {
+    grid-row: 1 / 4;
+  }
+
+  .term h2,
+  .term p {
+    grid-column: 2;
+  }
+
+  .actMeta {
+    grid-template-columns: 1fr;
+  }
+
+  .actMeta div,
+  .actMeta div:nth-child(2n) {
+    border-right: 0;
+    padding-left: 0;
+  }
+
+  .truthSpine {
+    position: relative;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 100%;
+    overflow: visible;
+  }
+
+  .truthSpine p {
+    min-height: 3.65rem;
+    border-bottom: 1px solid var(--proof-rule);
+  }
+
+  .truthSpine p:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .truthSpine p:nth-last-child(-n + 2) {
+    border-bottom: 0;
+  }
+
+  .dialogHead,
+  .dialogFooter {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .dialogFooter {
+    position: static;
+  }
+
+  .dialogHead,
+  .dialogMeta,
+  .actBody,
+  .dialogFooter {
+    padding-inline: min(1.5rem, 5vw);
+    overflow-wrap: anywhere;
+  }
+
+  .dialogClose {
+    align-self: flex-start;
+  }
+
+  .dialogHead > .dialogClose {
+    order: 0;
+  }
+}

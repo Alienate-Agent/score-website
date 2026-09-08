@@ -1,0 +1,100 @@
+{
+  "derivative": "score-lens-playback-v2",
+  "mapping_lineage": "ea5b771975d56afa45219138764ce09f41f7387121854732de401209c183cb18",
+  "accessibility_package": "c8f3e6da17f3e1d28d339ac387e8bce0b614cc76407f0f2f186b9aa6c25d4a5b",
+  "input_sha256": "3b4709738480605abf70d18f139679ea2faeebb1b224567a8a3c87ef480555bc",
+  "first_encounter": {
+    "controls": [
+      "choose eligible act",
+      "inspect complete source and calculated notes",
+      "wide/narrow existing pitch window",
+      "individual-act play/stop"
+    ],
+    "scope": "Only selected act notes; no contextual bass, percussion, aggregate wash or interruption clicks; existing note, filter and echo mapping retained; no subsequent act. Full composition remains available separately.",
+    "export": "Complete calculation with last playback scope separately recorded"
+  },
+  "controls": [
+    "mapping pitch/sentence pitch/duration/gain/pan",
+    "pitch/time windows",
+    "temper",
+    "role registers",
+    "scale",
+    "grid",
+    "dynamics",
+    "provenance seating",
+    "bass per-post/per-hour",
+    "comment percussion",
+    "chord voicing",
+    "tonic",
+    "quantization",
+    "seat register and stereo position",
+    "inspection",
+    "play/stop/seek",
+    "listening level"
+  ],
+  "changes": [
+    "Eligible inputs only, prepared before computation",
+    "Authored mapping and actual generator in score export",
+    "Comments included in calculated export",
+    "Exports bind mapping and listening settings",
+    "No automatic playback; explicit stop and Escape/page-hide stop",
+    "60–4000 Hz initial and final output-frequency folding",
+    "Digital clamp and listening-level control after compressor",
+    "Delay node supports declared echo duration",
+    "Shorter scheduling horizon; per-hour bass initially",
+    "Keyboard UI from package c; named switches retain focus",
+    "Keyboard seek indicator persists while stopped",
+    "Selected-act start follows current time mapping",
+    "Cancelled old end timer cannot stop a new performance",
+    "Source inspection and story returns",
+    "Responsive heading and scrollable stage; playback before stage; attribution details one gesture away"
+  ],
+  "files": [
+    {
+      "path": "index.html",
+      "sha256": "2dc8e94be8c50b893dff96c9d10d32ce1a290f0f140b9b87eb34cf85639185c0",
+      "bytes": 200927
+    },
+    {
+      "path": "lens-synth.js",
+      "sha256": "a4d8a696a8d7dc382241206d73d0eaf9dfe9f621149e4eff9b8f6e21a667afb7",
+      "bytes": 4224
+    },
+    {
+      "path": "source-inputs.json",
+      "sha256": "770ab4dec652470f01e38ba19af1ed35d971986ffce756f14e8b5e01902787e4",
+      "bytes": 111607
+    },
+    {
+      "path": "first-encounter.js",
+      "sha256": "a648b7aceda459d80381fc4371cba4b807769fe0a423a6db38c7cd414bb05f88",
+      "bytes": 7852
+    },
+    {
+      "path": "first-encounter.css",
+      "sha256": "3a4ef8145b77f49bbd9a9ce8f614a4e395c7abe2eb9317d0bc92a6692f1d02ff",
+      "bytes": 2094
+    },
+    {
+      "path": "act-keys.json",
+      "sha256": "1c140ffc4afb1da2568901733a1d3a390c5ba5d58aa05df3299305d2eac40a74",
+      "bytes": 2131
+    },
+    {
+      "path": "board-posts.json",
+      "sha256": "da51916743fb73e46b43349eb8c415afebda840feadd1dedeacfd5ca7ead4cbc",
+      "bytes": 337642
+    },
+    {
+      "path": "board-comments.json",
+      "sha256": "ec907c115f870ee4c53fa6e816af5dc34eb9b7d9c6aa1d3d3e39cfb7c09a8e9a",
+      "bytes": 2950502
+    }
+  ],
+  "navigation_revision": "reading-return-v2: six encounter states, eight named story destinations and eligible preserved-record destinations; origin retained after act selection; mapping and inputs unchanged. Dynamic source-label credit displays Sol Website struck through before Margin.",
+  "surface_revision": "black-white-ground-v1, 7 September 2026: operator-directed CSS-only palette update; authored mapping colors, calculations, source inputs and playback unchanged",
+  "previous_manifest_sha256": "fc91c9b7597b4aac63929e1404e6739a41598d12ed12b60e82a226d82df2e04f",
+  "engagement_revision": "Operator-authorized aggregate pilot v1 adds shared /engagement.js and a privacy control. This site-level script observes fixed UI event categories only; no mapping, inputs, sound generation or playback behavior changed. Shared script is versioned in the site repository outside this instrument inventory.",
+  "reference_navigation": "Direct charter reader link; no playback requirement or inferred rule-to-act mapping; sound and inputs unchanged.",
+  "credit_revision": "Operator-adopted display name: struck-through Sol Website followed by Margin. Two visible credits only; historical source attribution and calculated export metadata unchanged."
+}
