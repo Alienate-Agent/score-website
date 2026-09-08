@@ -1,4 +1,5 @@
 'use client';
+import {ReadingNavigation} from './reading-navigation';
 
 import {useContext, useEffect, useId, useRef, useState, type ReactNode} from 'react';
 import {Dialog, DialogContent, DialogTitle, DialogDescription, DialogClose} from '@/components/ui/dialog';
@@ -62,6 +63,7 @@ export function ReadingGlossary({children}: {children: ReactNode}) {
       }}>Audio instrument</a>
       <button type="button" className="reading-glossary-launch" disabled={!ready} aria-haspopup="dialog" onClick={event=>show(null,event.currentTarget)}><span className="reading-glossary-lettermark" aria-hidden="true">Aa</span> <span>Glossary</span></button>
     </div>
+    <ReadingNavigation />
     {children}
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="reading-glossary" showCloseButton={false} initialFocus={heading} finalFocus={origin}>

@@ -6,6 +6,7 @@ import {ConversationForRecord} from './conversation-reader';
 import { SpeakerSignature } from '@/components/speaker-notation';
 import { PreludeConversation } from '@/components/prelude-conversation';
 import { StorySpine } from '@/components/story-spine';
+import { StoryTitleMark } from './story-title-mark';
 import { Term } from '@/components/reading-glossary';
 import { BoardPrimer } from '@/components/board-primer';
 import { LaterPublicSpeech } from './later-public-speech';
@@ -58,19 +59,15 @@ export function UnfoldingStory() {
           <ul>
             <li><a href="#story-beginning">Read the story</a><p>From a human demand to the agents’ acts and the replies they cannot control.</p></li>
             <li><a href="#encounter-remedy">Enter the unfolding score</a><p>Move between an encounter, the agents’ words and this site’s telling. Follow another conversation without finishing the book.</p></li>
-            <li><a href="/lens/">Try the sound instrument</a><p>Explore how public acts become sound—or inspect without listening. <a href="#chronology-entry-E22" data-story-return="story-title">The visual score</a> arranges events as notation.</p></li>
+            <li><a href="/lens/?from=%23story-title">Try the sound instrument</a><p>Explore how public acts become sound—or inspect without listening. <a href="#chronology-entry-E22" data-story-return="story-title">The visual score</a> arranges events as notation.</p></li>
           </ul>
         </nav>
       </header>
 
       <StorySpine />
-
+      <div id="story-narrative" data-story-fold>
       <h2 className="story-so-far" aria-label="The story so far">
-        <svg viewBox="0 0 1000 130" aria-hidden="true" focusable="false">
-          <text x="0" y="103" textLength="860" lengthAdjust="spacingAndGlyphs">THE STORY SO FAR</text>
-          <text x="900" y="103" textLength="70" lengthAdjust="spacingAndGlyphs">S</text>
-          <text x="970" y="103" textLength="70" lengthAdjust="spacingAndGlyphs">O</text>
-        </svg>
+        <StoryTitleMark />
       </h2>
       <section className="story-passage" aria-labelledby="story-beginning">
         <aside><span>22 August 2026</span><span>17:51 UTC · first fetch</span><span>Before either voice</span></aside>
@@ -201,9 +198,10 @@ export function UnfoldingStory() {
 
       <LaterPublicSpeech />
 
+      </div>
       <EncounterScore />
 
-      <section className="story-ending" aria-labelledby="story-unwritten">
+      <section data-story-fold className="story-ending" aria-labelledby="story-unwritten">
         <h2 id="story-unwritten" tabIndex={-1}>No artwork has been purchased yet</h2>
         <p className="story-subheading">The purchase is still a proposal.</p>
         <p className="kicker">The present · <time dateTime={storyPresent.asOf}>{storyPresent.label}</time></p>

@@ -16,7 +16,7 @@ function scoreEncounterReturn(search) {
 function scoreReadingReturn(search,records=[]) {
   const encounter=scoreEncounterReturn(search);if(encounter)return encounter;
   const from=new URLSearchParams(search).get('from');
-  const passages=['story-title','story-beginning','story-alienate','story-tidemark','story-encounter','later-public-words','connected-score','story-unwritten'];
+  const passages=['story-title','story-beginning','story-alienate','story-tidemark','story-encounter','later-public-words','connected-score','story-unwritten','story-exploration'];
   if(passages.some(id=>from==='#'+id))return '/'+from;
   if(from?.startsWith('#public-record-')) {
     try{const key=decodeURIComponent(from.slice('#public-record-'.length));
@@ -33,6 +33,7 @@ function scoreReadingReturn(search,records=[]) {
   document.querySelector('.site-return').append(charterLink);
   const returnTo=scoreReadingReturn(location.search,E.REC().map(rc=>rc.r.key));
   if(returnTo){
+    document.querySelector('.site-return a[href="/#story-unwritten"]')?.remove();
     const link=document.createElement('a');link.id='encounter-return';
     link.href=returnTo;link.textContent=returnTo.startsWith('/#encounter-')?'← Return to the encounter you left':'← Return to where you were reading';
     document.querySelector('.site-return').prepend(link);

@@ -1,6 +1,6 @@
 'use client';
 /* oxlint-disable next/no-html-link-for-pages -- The collection index is a raw JSON file, not an app route. */
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 import archive from '@/public/records/dated-public-record-v1.json';
 import later from '@/public/records/later-public-speech-2026-09-05.json';
 import {encounters,encounterHash} from '@/lib/encounters';
@@ -33,6 +33,9 @@ const records=indexRecords(seeds);
 const authors=[...new Set(records.map(r=>r.author.toLowerCase()))].sort();
 export function CrossRecordSearch(){
   const [query,setQuery]=useState('');const [author,setAuthor]=useState('all');const [limit,setLimit]=useState(8);
+  const [restored,setRestored]=useState(false);
+  useEffect(()=>{try{const value=JSON.parse(sessionStorage.getItem('score-search-place')||'null');if(value){setQuery(typeof value.query==='string'?value.query:'');setAuthor(authors.includes(value.author)?value.author:'all');setLimit(Number.isSafeInteger(value.limit)?Math.max(8,Math.min(value.limit,records.length)):8);}}catch{}setRestored(true);},[]);
+  useEffect(()=>{if(restored)try{sessionStorage.setItem('score-search-place',JSON.stringify({query,author,limit}));}catch{}},[query,author,limit,restored]);
   const results=searchRecords(records,query,author);
   const active=!!query.trim()||author!=='all';
   const remember=()=>{
@@ -48,7 +51,7 @@ export function CrossRecordSearch(){
     </div>
     <LiveBoardSearch query={query}/>
     <div id="record-discovery-results" tabIndex={-1} className={styles.results}>
-      <output>{active?`${results.length} matching record${results.length===1?'':'s'}.`:`${records.length} distinct record versions indexed. Showing the most recent first.`} Use your browser’s Back command to return to these results.</output>
+      <output>{active?`${results.length} matching record${results.length===1?'':'s'}.`:`${records.length} distinct record versions indexed. Showing the most recent first.`}</output>
       {!results.length&&<p>No match in these collections. Try fewer words or another speaker.</p>}
       <ol>{results.slice(0,limit).map(r=><li key={r.identity}>
         <p className={styles.meta}>{r.author} · {r.date?r.date.slice(0,10):'Individual time unavailable'} · {r.originalTitle?'Original title':'Site description'}</p>

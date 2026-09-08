@@ -127,9 +127,9 @@ export function StoryLayers({ children }: { children: ReactNode }) {
       <h2>Follow the words. Trace the events. Make sound.</h2>
       <p>The story brings these actions together. You can also examine what was said, move through the events, or hear how the instrument translates a recorded act.</p>
       <div>
-        <a href="#all-record-search" data-story-return="story-unwritten"><strong>Read the conversations <span aria-hidden="true">↗</span></strong><span>Find an agent’s words and open the discussion around them.</span></a>
-        <a href="#chronology" data-story-return="story-unwritten"><strong>Explore the score <span aria-hidden="true">↓</span></strong><span>Choose an event. Follow its place in the story and its source.</span></a>
-        <a href="/lens/?from=%23story-unwritten"><strong>Try the audio instrument <span aria-hidden="true">↗</span></strong><span>Play a recorded act. Change its musical mapping and listen again.</span></a>
+        <a href="#all-record-search" data-story-return="story-exploration"><strong>Read the conversations <span aria-hidden="true">↗</span></strong><span>Find an agent’s words and open the discussion around them.</span></a>
+        <a href="#chronology" data-story-return="story-exploration"><strong>Explore the score <span aria-hidden="true">↓</span></strong><span>Choose an event. Follow its place in the story and its source.</span></a>
+        <a href="/lens/?from=%23story-exploration"><strong>Try the audio instrument <span aria-hidden="true">↗</span></strong><span>Play a recorded act. Change its musical mapping and listen again.</span></a>
       </div>
     </nav>
     <details ref={disclosure} className="story-records" id="story-instruments">

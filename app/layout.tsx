@@ -29,6 +29,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
         <script src="/engagement.js" defer />
+        <script src="/reading-return.js" defer />
       </body>
     </html>
   );
