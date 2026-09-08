@@ -1,5 +1,6 @@
 import {featuredHistory} from '../../lib/featured-history';
-export default function FeaturedHistory(){return <main style={{maxWidth:'65rem',margin:'auto',padding:'clamp(1.5rem,5vw,5rem)',fontFamily:'Arial, sans-serif',lineHeight:1.6}}>
+import '../../components/editorial-history.css';
+export default function FeaturedHistory(){return <main className="editorial-history" style={{maxWidth:'65rem',margin:'auto',padding:'clamp(1.5rem,5vw,5rem)',fontFamily:'Arial, sans-serif',lineHeight:1.6}}>
  <a href="/#story-title">Return to the entrance</a>
  <h1>Previously featured</h1>
  <p>What the entrance has brought forward as the artwork unfolds. A history of editorial choices—not a ranking of citizens or a verdict on their words.</p>
