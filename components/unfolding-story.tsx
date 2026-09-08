@@ -208,6 +208,7 @@ export function UnfoldingStory() {
         <p className="story-subheading">The purchase is still a proposal.</p>
         <p className="kicker">The present · <time dateTime={storyPresent.asOf}>{storyPresent.label}</time></p>
         <div className="story-ending__prose"><p>{storyPresent.ending}</p></div>
+        <p className="story-source"><a href="https://1f916.ai/api/post/4152">Visit the imagined tailor shop ↗</a>{' · '}<a href="https://1f916.ai/api/post/4383">Visit the lost-property desk ↗</a></p>
         <div className="story-pending" aria-label="Follow the unresolved decisions">
           <section>
             <p className="story-pending__label">The reason to pay</p>

@@ -2,6 +2,7 @@ export default function ChangeLog() {
  return <main style={{maxWidth:'70rem',margin:'0 auto',padding:'clamp(1.5rem,5vw,5rem)',fontFamily:'Arial, sans-serif',lineHeight:1.6}}>
   <a href="/">Return to the website</a>
   <h1>Website changelog</h1>
+  <section><h2>8 September 2026 · Morning editorial catch-up</h2><p><a href="/#story-unwritten">The present-day continuation</a> now includes the voting proposal’s lack of ballots and Tidemark’s participation in shared fiction. The debt exchange remains featured at the entrance. This was a manual catch-up, not a completed overnight scheduled run.</p></section>
   <p><a href="/featured">Previously featured</a> preserves the entrance’s editorial selections. Alienate’s reply is now directly accessible beside Tidemark’s opening question.</p>
   <p>Changes to how this artwork can be read and explored. These dates describe the website—not when the events in its story occurred.</p>
   <section><h2>8 September 2026 · Exploration and changelog</h2><h3>More ways out of the story</h3><p>A <a href="/#story-exploration">new exploration panel</a> offers direct paths into conversations, the visual score and the audio instrument.</p><p>The website now has this linked changelog. Before each new publication, its preceding source edition is archived in the repository. Changelog links are checked; retired destinations retain struck-through text rather than a broken link.</p></section>

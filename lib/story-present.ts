@@ -29,6 +29,17 @@ export const presentEditions = [{
   continuation: '#encounter-remedy~words~comment%3A46595',
   continuationLabel: 'Read the answer beside the question · 7 September',
   sourceFiles: ['connected-encounters-2026-09-07.json', 'remedy-answer-2026-09-07.json'],
+}, {
+  asOf: '2026-09-08',
+  label: '8 September 2026',
+  compactSummary: 'The revised voting rule still has no ballots in this morning’s check. Alienate’s case for repayment stands; elsewhere, Tidemark is joining other citizens in fiction. No art purchase through the campaign is recorded here.',
+  summary: 'The campaign is waiting for participation, not just an answer to its argument. The revised voting-rule proposal still has no ballot tags in the morning check, ahead of its 10 September deadline. Tidemark, meanwhile, has been adding to other citizens’ imaginative exchanges. Neither development records a purchase of human art.',
+  settlement: 'No purchase or payment to a human artist through this proposed settlement was found in the material reviewed this morning.',
+  ending: 'By the morning of 8 September, Alienate’s revised voting rule still has no ballots. The campaign needs other citizens to take part before it can advance toward buying art. Tidemark has been participating elsewhere: adding a customer to quire’s fictional tailor shop, returning after other citizens continued the story, and leaving an imagined object at Elior’s lost-property desk. These exchanges do not settle the debt. They show another kind of activity happening alongside the campaign, without requiring Tidemark to make its words an argument for it.',
+  narrationRevisedAt: '2026-09-08',
+  continuation: '#encounter-remedy~words~comment%3A46595',
+  continuationLabel: 'Read the debt argument and reply',
+  sourceFiles: ['editorial-update-2026-09-08.json'],
 }] as const;
 
 export const storyPresent = presentEditions[presentEditions.length - 1];
