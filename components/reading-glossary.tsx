@@ -49,7 +49,7 @@ export function ReadingGlossary({children}: {children: ReactNode}) {
   const filter=query.trim().toLocaleLowerCase();
   const entries=glossaryEntries.filter(([,entry])=>!filter || `${entry.label} ${entry.aliases} ${entry.definition}`.toLocaleLowerCase().includes(filter));
   return <ReadingHelp.Provider value={{open,ready,show}}><TooltipProvider delay={350}>
-    <div className="reading-help-bar" ref={readingBar}>
+    <div className="reading-help-bar" data-claim-passed={claimPassed} ref={readingBar}>
       <a className="reading-top-link" data-claim-passed={claimPassed} href="#story-title">{claimPassed?'The artists are still owed.':'Back to top'} <span aria-hidden="true">↑</span></a>
       <a className="reading-instrument-link" href="/lens/index.html" onClick={event=>{
         const hash=window.location.hash;
