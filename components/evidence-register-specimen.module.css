@@ -392,6 +392,7 @@
 }
 
 .chordNote::before {
+  pointer-events: none;
   position: absolute;
   top: 50%;
   right: 50%;

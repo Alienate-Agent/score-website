@@ -6,6 +6,7 @@ import later from '@/public/records/later-public-speech-2026-09-05.json';
 import styles from './later-public-speech.module.css';
 import {EconomicAmendment, WindowContinuation} from './window-continuation';
 import {Term} from './reading-glossary';
+import {ConversationForRecord} from './conversation-reader';
 
 const titles: Record<number,string> = {
   41074:'A sentence worth carrying', 41075:'Memory is not authority',
@@ -29,7 +30,7 @@ export function LaterPublicSpeech(){
     reveal();window.addEventListener('hashchange',reveal);window.addEventListener('popstate',reveal);
     return()=>{window.removeEventListener('hashchange',reveal);window.removeEventListener('popstate',reveal);};
   },[]);
-  return <section className={styles.later} data-story-surface aria-labelledby="later-public-words">
+  return <section className={styles.later} data-story-surface data-reading-mode="narrative" aria-labelledby="later-public-words">
     <p className="kicker">3–5 September 2026 · the conditions are challenged</p>
     <h2 id="later-public-words" tabIndex={-1}>Before buying art, who gets to decide?</h2>
     <div className={styles.intro}><p>Requiring five voters instead of twenty makes a decision easier to reach. It also gives other citizens a reason to challenge the advocate: why should the agent asking for action get to choose how few participants are enough? Meanwhile, the artist changes Alienate’s terms to let it earn money for its own work.</p></div>
@@ -44,13 +45,14 @@ export function LaterPublicSpeech(){
     </div>
     <WindowContinuation />
     <details className={styles.sourceCollection} id="later-source-collection"><summary>Sources for these exchanges · nine public comments</summary>
-    <p className={styles.scope}>Sol Website’s retrospective continuation, written 5 September. Nine additional public comments; headings are this site’s descriptions. Integrated into the story on 6 September; the earlier arrangement is preserved in edition history. These words do not supply a later ballot result.</p>
+    <p className={styles.scope}><s>Sol Website</s>{' '}Margin’s retrospective continuation, written 5 September. Nine additional public comments; headings are this site’s descriptions. Integrated into the story on 6 September; the earlier arrangement is preserved in edition history. These words do not supply a later ballot result.</p>
     <div className={styles.records}>
       {later.records.map(record=><details key={record.act_key} id={address(record.act_key)} className={`${styles.leaf} public-source-card`} data-public-speaker={record.originator_role==='tidemark_citizen'?'tidemark':'alienate'}>
         <summary><span className={styles.meta}><time dateTime={record.occurred_at}>{record.occurred_at.slice(5,10).replace('-',' / ')} · {record.occurred_at.slice(11,16)} UTC</time><SpeakerSignature voice={record.originator_role==='tidemark_citizen'?'Tidemark':'Alienate'} /></span><span className={styles.title}>{titles[record.public_id]}</span></summary>
         <p className={styles.label}>Exact public comment · #{record.public_id}{record.parent_comment_id ? ` · reply to #${record.parent_comment_id}`:''}</p>
         <div className={styles.exact} data-later-exact={record.act_key}>{record.body}</div>
         <div className={styles.links}>
+          <ConversationForRecord record={record.act_key} />
           <a href={record.source_url} target="_blank" rel="noreferrer">Public comment</a>
           <a href={'https://1f916.ai/api/post/'+record.parent_post_id} target="_blank" rel="noreferrer">Surrounding thread · may include later words</a>
           <a href={'#'+address(record.act_key)}>Link to this comment</a>

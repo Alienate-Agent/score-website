@@ -1,6 +1,6 @@
 'use client';
 
-import { type CSSProperties, useMemo, useState } from 'react';
+import { type CSSProperties, useMemo, useState, useRef } from 'react';
 import {
   CircleDot,
   ExternalLink,
@@ -455,7 +455,7 @@ function EvidenceExpression({ record }: { record: EvidenceRecord }) {
       </div>
       {content.title ? <h4>{content.title}</h4> : null}
       {content.subject ? <h4>{content.subject}</h4> : null}
-      <div className={styles.exactText}>{text}</div>
+      <div className={`${styles.exactText} public-words`}>{text}</div>
       {digest ? (
         <p className={styles.digest}>
           SHA-256 {digest} · {bytes} bytes
@@ -521,6 +521,18 @@ export function EvidenceRegisterSpecimen() {
     data.records.find((record) => record.act_key === 'alienate:post:1844') ??
     data.records[0];
   const [selectedKey, setSelectedKey] = useState(initial?.act_key ?? '');
+  const leafRef = useRef<HTMLElement>(null);
+  const returnMark = useRef<HTMLElement | null>(null);
+  function reveal(target:HTMLElement|null){
+    if(!target)return;
+    window.scrollTo({top:Math.max(0,window.scrollY+target.getBoundingClientRect().top-150),behavior:'instant'});
+    target.focus({preventScroll:true});
+  }
+  function selectRecord(key:string){
+    returnMark.current=document.activeElement instanceof HTMLElement?document.activeElement:null;
+    setSelectedKey(key);
+    requestAnimationFrame(()=>reveal(leafRef.current));
+  }
   const [showProposals, setShowProposals] = useState(false);
   const [openChordId, setOpenChordId] = useState<string | null>(null);
   const selected =
@@ -621,7 +633,8 @@ export function EvidenceRegisterSpecimen() {
                           (isAssignedToCurrentMeasure(record) ||
                             (showProposals && isProposed(record))),
                       );
-                      if (linked) setSelectedKey(linked.act_key);
+                      if (linked) selectRecord(linked.act_key);
+                      else window.location.hash=`chronology-entry-${encodeURIComponent(measure.id)}`;
                     }}
                     aria-label={`${measure.id}, ${measure.title}${proposed ? ', proposed unverified relation shown' : related ? ', site-assigned relation shown' : ''}`}
                   >
@@ -697,7 +710,7 @@ export function EvidenceRegisterSpecimen() {
                       }
                       aria-pressed={selectedMark}
                       aria-label={recordAriaLabel(record, showProposals)}
-                      onClick={() => setSelectedKey(record.act_key)}
+                      onClick={() => selectRecord(record.act_key)}
                     >
                       <Icon aria-hidden="true" />
                       <span className="sr-only">{objectLabel(record)}</span>
@@ -724,11 +737,12 @@ export function EvidenceRegisterSpecimen() {
                       aria-expanded={open}
                       aria-controls={`voicing-${group.id}`}
                       aria-label={`${open ? 'Fold' : 'Unfold'} ${group.records.length} time-proximate public evidence records; time grouping only; fold authored by this site`}
-                      onClick={() =>
+                      onClick={() => {
                         setOpenChordId((current) =>
                           current === group.id ? null : group.id,
-                        )
-                      }
+                        );
+                        if(!open)requestAnimationFrame(()=>reveal(document.getElementById(`voicing-${group.id}`)));
+                      }}
                     >
                       <span className={styles.stemTop} aria-hidden="true" />
                       <span className={styles.stemBottom} aria-hidden="true" />
@@ -754,7 +768,7 @@ export function EvidenceRegisterSpecimen() {
                           }
                           aria-pressed={selectedMark}
                           aria-label={recordAriaLabel(record, showProposals)}
-                          onClick={() => setSelectedKey(record.act_key)}
+                          onClick={() => selectRecord(record.act_key)}
                         >
                           <Icon aria-hidden="true" />
                           <span className="sr-only">{objectLabel(record)}</span>
@@ -776,6 +790,7 @@ export function EvidenceRegisterSpecimen() {
         <section
           className={styles.voicing}
           id={`voicing-${openChord.id}`}
+          tabIndex={-1}
           aria-label={`Unfolded evidence, ${openChord.records.length} records in chronological order`}
         >
           <header>
@@ -783,7 +798,10 @@ export function EvidenceRegisterSpecimen() {
               <p>Time fold · this site</p>
               <h4>{openChord.records.length} records, sounded separately.</h4>
             </div>
-            <button type="button" onClick={() => setOpenChordId(null)}>
+            <button type="button" onClick={() => {
+              const hinge=[...document.querySelectorAll<HTMLElement>('[data-fold-toggle]')].find(el=>el.dataset.foldToggle===openChord.id);
+              setOpenChordId(null);requestAnimationFrame(()=>reveal(hinge??null));
+            }}>
               Fold evidence
             </button>
           </header>
@@ -801,7 +819,7 @@ export function EvidenceRegisterSpecimen() {
                         : ''
                     }
                     aria-pressed={selectedKey === record.act_key}
-                    onClick={() => setSelectedKey(record.act_key)}
+                    onClick={() => selectRecord(record.act_key)}
                   >
                     <Icon aria-hidden="true" />
                     <span>
@@ -877,7 +895,7 @@ export function EvidenceRegisterSpecimen() {
                       style={evidenceStyle(position, lane, intervalWidth)}
                       aria-pressed={selectedMark}
                       aria-label={recordAriaLabel(record, showProposals)}
-                      onClick={() => setSelectedKey(record.act_key)}
+                      onClick={() => selectRecord(record.act_key)}
                     >
                       <Icon aria-hidden="true" />
                       <span className="sr-only">{objectLabel(record)}</span>
@@ -900,13 +918,13 @@ export function EvidenceRegisterSpecimen() {
         aria-labelledby="displaced-evidence-title"
       >
         <div className={styles.displacedHeading}>
-          <p>Global evidence-cut records · not inside this specimen window</p>
+          <p>Historical snapshot · 3 September 2026</p>
           <h4 id="displaced-evidence-title">
-            Counted / not placed · outside the calendar line
+            Reactions recorded by this date
           </h4>
           <p>
-            Included in the evidence cut spanning 23 Aug–3 Sep; occurrence time
-            not publicly placeable.
+            Reactions made by each agent in the preserved record through
+            3 September. These are not live totals or votes on an art purchase.
           </p>
         </div>
         <div className={styles.displacedMarks}>
@@ -919,27 +937,32 @@ export function EvidenceRegisterSpecimen() {
                 type="button"
                 className={`${styles.displacedMark} ${selectedMark ? styles.selectedMark : ''}`}
                 aria-pressed={selectedMark}
-                onClick={() => setSelectedKey(record.act_key)}
+                onClick={() => selectRecord(record.act_key)}
                 aria-label={`${voiceFor(record)}, ${record.quantity} reaction${record.quantity === 1 ? '' : 's'}, not publicly placeable, ${disclosureState(record)}`}
               >
                 <SpeakerSignature voice={voiceFor(record)} />
                 <strong>{record.quantity}</strong>
                 <span>
                   {isTidemark
-                    ? 'target and exact time withheld pending platform-privacy verification'
-                    : 'platform reaction graph private in this evidence record'}
+                    ? 'recorded reaction · individual target not shown'
+                    : 'recorded reactions · individual targets not shown'}
                 </span>
               </button>
             );
           })}
         </div>
-        <p className={styles.operatorBoundary}>
-          Artist Operator publication decision: count may be shown; private
-          sources may not be published.
-        </p>
+        <details className={styles.operatorBoundary}>
+          <summary>Snapshot details</summary>
+          <p>Preserved evidence through 3 September 2026, 13:46 UTC.
+            Individual reaction times are not placed on this timeline.
+            Counts may be shown; private sources and targets remain withheld.
+            The historical record marked Tidemark’s platform-privacy verification
+            unresolved; this is not a current verification status.</p>
+        </details>
       </section>
 
-      <article className={styles.evidenceLeaf} aria-live="polite">
+      <article ref={leafRef} tabIndex={-1} className={styles.evidenceLeaf} aria-label="Selected public-evidence record">
+        <button type="button" disabled={!returnMark.current} onClick={()=>reveal(returnMark.current)}>Return to the selected score mark ↑</button>
         <header className={styles.leafHeader}>
           <div>
             <p>Selected public-evidence record</p>

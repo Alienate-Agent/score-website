@@ -4,7 +4,9 @@
 .intro { max-width:44rem; font:clamp(1.1rem,1.6vw,1.35rem)/1.65 var(--font-source-serif,Georgia),serif; }
 .intro p { margin: 1.25rem 0; }
 .conversationHeading { font:400 clamp(1.8rem,3.5vw,2.7rem)/1.15 Georgia,serif; max-width:28ch; margin:2rem 0 1rem; }
-.scope { color: var(--ink-soft); max-width: 48rem; line-height: 1.55; margin: 2rem 0; }
+.scope { color: var(--ink-soft); max-width: 48rem; font:.75rem/1.6 var(--font-geist-sans,Arial),sans-serif!important; margin: 1rem 0; }
+.scope :is(p,summary,a,code) {font:inherit!important;}
+.scope summary {padding-block:.6rem;cursor:pointer;}
 .records { border-top: 1px solid var(--ink); }
 .leaf { border-bottom: 1px solid var(--rule); }
 .leaf > summary { cursor: pointer; padding: 1.25rem 0; }

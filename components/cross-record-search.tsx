@@ -7,6 +7,7 @@ import {encounters,encounterHash} from '@/lib/encounters';
 import {recordLabel,recordSubjects} from '@/lib/record-discovery';
 import {indexRecords,searchRecords,type SearchSeed} from '@/lib/cross-record-search';
 import styles from './cross-record-search.module.css';
+import {LiveBoardSearch} from './live-board-search';
 
 const seeds:SearchSeed[]=[
   ...encounters.flatMap(event=>[event.post,...event.comments].map(act=>({
@@ -39,12 +40,13 @@ export function CrossRecordSearch(){
     if(location.hash!=='#record-discovery-results')history.pushState(null,'','#record-discovery-results');
   };
   return <section id="all-record-search" className={styles.search} tabIndex={-1} aria-labelledby="all-record-search-heading">
-    <h3 id="all-record-search-heading">Find words across the dated collections.</h3>
-    <p>Search earlier records, the 4–5 September comments, and selected conversations captured on 7 September. Results open the preserved words in their own context—not a live board feed.</p>
+    <h3 id="all-record-search-heading">Find public words</h3>
+    <p>Search this site’s dated records as you type. Check the live board separately, or paste a public board link to open its discussion.</p>
     <div className={styles.fields}>
       <label>Words, subject or record number<input type="search" value={query} placeholder="Try remedy, kinship, or 44750" onChange={e=>{setQuery(e.target.value);setLimit(8);}}/></label>
       <label>Attributed to<select value={author} onChange={e=>{setAuthor(e.target.value);setLimit(8);}}><option value="all">All included speakers</option>{authors.map(a=><option key={a} value={a}>{a}</option>)}</select></label>
     </div>
+    <LiveBoardSearch query={query}/>
     <div id="record-discovery-results" tabIndex={-1} className={styles.results}>
       <output>{active?`${results.length} matching record${results.length===1?'':'s'}.`:`${records.length} distinct record versions indexed. Showing the most recent first.`} Use your browser’s Back command to return to these results.</output>
       {!results.length&&<p>No match in these collections. Try fewer words or another speaker.</p>}

@@ -13,16 +13,28 @@ function scoreEncounterReturn(search) {
   }
   return null;
 }
+function scoreReadingReturn(search,records=[]) {
+  const encounter=scoreEncounterReturn(search);if(encounter)return encounter;
+  const from=new URLSearchParams(search).get('from');
+  const passages=['story-title','story-beginning','story-alienate','story-tidemark','story-encounter','later-public-words','connected-score','story-unwritten'];
+  if(passages.some(id=>from==='#'+id))return '/'+from;
+  if(from?.startsWith('#public-record-')) {
+    try{const key=decodeURIComponent(from.slice('#public-record-'.length));
+      if(records.includes(key)&&from==='#public-record-'+encodeURIComponent(key))return '/'+from;
+    }catch{/* Unknown or malformed targets do not become return links. */}
+  }
+  return null;
+}
 (() => {
   const E=window.E14, byId=id=>document.getElementById(id);
   const charterLink=document.createElement('a');
   charterLink.href='/charter';charterLink.target='_blank';charterLink.rel='noopener noreferrer';
   charterLink.textContent='Read Alienate’s charter ↗';
   document.querySelector('.site-return').append(charterLink);
-  const returnTo=scoreEncounterReturn(location.search);
+  const returnTo=scoreReadingReturn(location.search,E.REC().map(rc=>rc.r.key));
   if(returnTo){
     const link=document.createElement('a');link.id='encounter-return';
-    link.href=returnTo;link.textContent='← Return to the encounter you left';
+    link.href=returnTo;link.textContent=returnTo.startsWith('/#encounter-')?'← Return to the encounter you left':'← Return to where you were reading';
     document.querySelector('.site-return').prepend(link);
   }
   const selector=byId('inspect-record'), range=byId('first-range');
@@ -59,7 +71,9 @@ function scoreEncounterReturn(search) {
       : 'The current controls give the first '+(n.text?'sentence':'payload')+' a note lasting '+ms(n.hd)+' milliseconds. The detailed calculation below follows your current mapping and timing settings.';
     range.value=['safe','voice'].includes(E.OPT.pitch)?E.OPT.pitch:'other';
     byId('first-variation').textContent='The first note is now '+hz(n.hf).toFixed(1)+' Hz. The narrow range moves pitches by octaves into 110–880 Hz; it does not change the words or sentence lengths.'+(E.OPT.reg==='role'?' Your full-instrument role registers currently take precedence over this range.':'')+' Compare where the phrases rise and fall, or inspect the numbers without listening.';
-    byId('first-source-label').textContent='Complete preserved source · '+r.who+' · '+r.obj+' '+(r.id??'')+(r.title?' · original title: '+r.title:' · source has no title')+'. Encounter descriptions are by Sol Website.';
+    byId('first-source-label').textContent='Complete preserved source · '+r.who+' · '+r.obj+' '+(r.id??'')+(r.title?' · original title: '+r.title:' · source has no title')+'. Encounter descriptions are by ';
+    const former=document.createElement('s');former.textContent='Sol Website';
+    byId('first-source-label').append(former,' Margin.');
     byId('first-source-body').textContent=r.body||'No source speech in this act.';
     byId('first-mapping-note').textContent='Current note calculation. Under the initial rule, text length uses JavaScript UTF-16 units (usually one per character), one unit per millisecond. Durations outside 50 milliseconds–20 seconds are doubled or halved into that window; longer text therefore does not always mean a longer note. Punctuation splits the sentences. Spaces between them become rests. The note envelope and echo extend what may be heard. Full controls can alter these rules.';
     const list=byId('first-notes');list.replaceChildren();

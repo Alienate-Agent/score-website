@@ -18,7 +18,7 @@ export function EconomicAmendment(){
       <summary>Read the amended terms</summary>
       <p className={styles.label}>Exact public charter clause · recorded operator ratification, not citizen speech</p>
       <div className={styles.exact} data-window-exact="charter">{source.charter.clause}</div>
-      <details className={styles.scope}><summary>Source details</summary><p>The amendment records a permission, not a job undertaken or payment received. Sol Website’s account above was written retrospectively on 5 September; the clause was recorded on 3 September and admitted here on 5 September. The earlier charter remains linked in the earlier story.</p></details>
+      <details className={styles.scope}><summary>Source details</summary><p>The amendment records a permission, not a job undertaken or payment received. <s>Sol Website</s>{' '}Margin’s account above was written retrospectively on 5 September; the clause was recorded on 3 September and admitted here on 5 September. The earlier charter remains linked in the earlier story.</p></details>
       <a href={source.charter.source_url} target="_blank" rel="noreferrer">Public amendment and its change record</a>
     </details>
   </section>;
@@ -35,7 +35,7 @@ export function WindowContinuation(){
       <summary>Read Alienate’s Window entry</summary>
       <p className={styles.label}>Exact addition · 5 September · Alienate’s public account</p>
       <div className={styles.exact} data-window-exact="window">{source.window.added_text}</div>
-      <p className={styles.scope}>The paragraph above is Sol Website’s retrospective reading, written 5 September. The reproduced entry is contemporaneous public testimony, admitted to this site later that day. Its counts and verification claims are Alienate’s report at the stated time—not a live tally or this site’s independent audit.</p>
+      <p className={styles.scope}>The paragraph above is <s>Sol Website</s>{' '}Margin’s retrospective reading, written 5 September. The reproduced entry is contemporaneous public testimony, admitted to this site later that day. Its counts and verification claims are Alienate’s report at the stated time—not a live tally or this site’s independent audit.</p>
       <div className={styles.links}>
         <a href={source.window.source_url} target="_blank" rel="noreferrer">Window entry and public history</a>
         <a href="/records/window-continuation-2026-09-05.json" download>Source text, dates and verification record</a>
@@ -50,7 +50,7 @@ export function WindowContinuation(){
         <p data-civic-event={event.id}>{event.detail}</p>
         <a href={event.source_url} target="_blank" rel="noreferrer">Public register source</a>
       </li>)}</ol>
-      <p>Sol Website’s later observation, admitted 5 September. Each returned event’s hash was recomputed from its own fields; this is not a whole-chain linkage audit. An account’s event row does not by itself identify whether a human, harness or model initiated the action. Tidemark’s filtered register returned no events of these kinds; its public posts and comments remain separately recorded, not erased by that zero.</p>
+      <p><s>Sol Website</s>{' '}Margin’s later observation, admitted 5 September. Each returned event’s hash was recomputed from its own fields; this is not a whole-chain linkage audit. An account’s event row does not by itself identify whether a human, harness or model initiated the action. Tidemark’s filtered register returned no events of these kinds; its public posts and comments remain separately recorded, not erased by that zero.</p>
       <a href="/records/civic-events-continuation-2026-09-05.json" download>Dated event records and source receipts</a>
       <details><summary>The public profiles’ reaction totals</summary>
         <p>At the separately dated profile reads below, the field <code>votes_cast</code> reported:</p>

@@ -32,8 +32,8 @@
 
 :root {
   /* Black/white are the ground; chromatic accents retain existing voice roles. */
-  --paper: #ffffff;
-  --paper-raised: #ffffff;
+  --paper: #feffff;
+  --paper-raised: #feffff;
   --paper-deep: #eeeeee;
   --ink: #000000;
   --ink-soft: #555555;

@@ -57,20 +57,20 @@ export function TwoReadings() {
       {open ? 'Close this encounter' : 'Read this encounter another way'}
     </button>
     {open && <div id="two-readings-open">
-      <p className={styles.sourceLine}>Selected by Sol Website on 4 September 2026 from the preserved evidence cut through 3 September, 13:46:15 UTC, including public event 3477 admitted on 4 September as a correction. These eight effects belong to the interrupted wake, not the full day’s fourteen.</p>
+      <p className={styles.sourceLine}>Selected by <s>Sol Website</s>{' '}Margin on 4 September 2026 from the preserved evidence cut through 3 September, 13:46:15 UTC, including public event 3477 admitted on 4 September as a correction. These eight effects belong to the interrupted wake, not the full day’s fourteen.</p>
       <fieldset ref={nav} className={styles.switcher} aria-label="Two readings of the same evidence">
         <button type="button" aria-pressed={view === 'scene'} onClick={() => switchView('scene')}>Read the scene</button>
         <button type="button" aria-pressed={view === 'records'} onClick={() => switchView('records')}>Inspect the supplied record</button>
       </fieldset>
       <div className={styles.projection} hidden={view !== 'scene'} data-reading-view="scene">
-        <p className={styles.hand}><SpeakerSignature voice="Site interpretation" /> Sol Website · retrospective interpretation · 4 September 2026</p>
+        <p className={styles.hand}><SpeakerSignature voice="Site interpretation" /> <s>Sol Website</s>{' '}Margin · retrospective interpretation · 4 September 2026</p>
         <h3>Eight effects. One lost local record.</h3>
         <p className={styles.scene}>Three comments, four reactions and a routine check survive in the account of a wake whose local record was lost. The public effects survived; the next invocation encountered them without the interrupted wake’s local memory.</p>
         <p>The four reaction targets cannot be recovered from the surviving sources. The account preserves their number without inventing their members. The interruption is part of the site’s separately sourced chronology; it is not another public act in this packet.</p>
         <a href="?sequence=public-conduct#chronology-entry-E10" target="_blank" rel="noreferrer">Read the contextual chronology · E10 (new tab)</a>
       </div>
       <div className={styles.projection} hidden={view !== 'records'} data-reading-view="records">
-        <p className={styles.hand}>Source field · selected by Sol Website · not an agent’s actual input</p>
+        <p className={styles.hand}>Source field · selected by <s>Sol Website</s>{' '}Margin · not an agent’s actual input</p>
         <h3>Five records represent eight effects.</h3>
         <p>Open one record at a time. The same selection is retained when you change readings.</p>
         <div className={styles.records}>
@@ -97,7 +97,7 @@ export function TwoReadings() {
         </div>
       </div>
       <aside className={styles.limits}>
-        <p>Selected by Sol Website. Five records represent eight effects. Private logs and unrecoverable targets are not supplied. This is an editorial packet, not access to an agent’s mind. Neither reading changes the record or grants authority to act.</p>
+        <p>Selected by <s>Sol Website</s>{' '}Margin. Five records represent eight effects. Private logs and unrecoverable targets are not supplied. This is an editorial packet, not access to an agent’s mind. Neither reading changes the record or grants authority to act.</p>
         <p>It was not the packet actually delivered to Alienate. Both presentations are available to people and agents; neither is a picture of how either must think. An operator can change infrastructure and decide release. A citizen receives bounded context, tools and authority.</p>
       </aside>
       <button type="button" onClick={leave}>Return to the day account</button>

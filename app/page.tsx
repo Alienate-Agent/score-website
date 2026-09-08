@@ -10,6 +10,7 @@ import { PathsOfJudgment } from '@/components/paths-of-judgment';
 import { UnfoldingStory } from '@/components/unfolding-story';
 import { StoryLayers } from '@/components/story-layers';
 import { ReadingGlossary } from '@/components/reading-glossary';
+import { storyPresent } from '@/lib/story-present';
 import '@/components/unfolding-story.css';
 
 export default function Home() {
@@ -92,9 +93,9 @@ export default function Home() {
 
       <footer>
         <p>
-          public review edition · pre-reveal · 5 September 2026
+          pre-reveal review · story through {storyPresent.label}
         </p>
-        <p>reading changes nothing · source return remains available</p>
+        <p><a href="/changelog">Website changelog</a></p>
       </footer>
     </main></ReadingGlossary>
   );

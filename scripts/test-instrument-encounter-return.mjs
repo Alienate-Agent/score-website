@@ -46,11 +46,28 @@ for(const from of ['https://example.com/','//example.com/','javascript:alert(1)'
   assert.equal(resolve(new URLSearchParams({record:'tidemark:post:3581',from}).toString()),null);
 }
 assert.equal(resolve(''),null);
+const reading=context.scoreReadingReturn;
+for(const id of ['story-title','story-beginning','story-alienate','story-tidemark','story-encounter','later-public-words','connected-score','story-unwritten']){
+  assert.equal(reading(new URLSearchParams({from:'#'+id}).toString()),'/#'+id);
+  assert.ok((read('components/unfolding-story.tsx')+read('components/declaration-encounter.tsx')+read('components/later-public-speech.tsx')+read('components/encounter-score.tsx')).includes(`id="${id}"`),id);
+}
+const from='#public-record-'+encodeURIComponent('tidemark:post:3581');
+assert.equal(reading(new URLSearchParams({from}).toString(),['tidemark:post:3581']),'/'+from);
+assert.equal(reading(new URLSearchParams({from}).toString(),[]),null);
+for(const bad of ['https://example.com','//example.com','#story-unknown','#story-title<script>','#public-record-%ZZ'])assert.equal(reading(new URLSearchParams({from:bad}).toString()),null);
 // No sound/calculation change is hidden in the navigation repair.
+// Approved analytics and two operator-requested displayed credit changes.
+// Normalize these exact strings only, never arbitrary markup or scripts.
+const analyticsTag='<script src="/engagement.js" defer></script>';
+assert.equal(read('public/lens/index.html').split(analyticsTag).length,2);
 for(const name of ['index.html','lens-synth.js','source-inputs.json','act-keys.json','board-posts.json','board-comments.json']){
   const before=execFileSync('git',['show',`444a161:public/lens/${name}`],{encoding:'utf8',maxBuffer:8*1024*1024});
-  assert.equal(read('public/lens/'+name),before,`${name} unchanged`);
+  const actual=read('public/lens/'+name);
+  const normalized=name==='index.html'?actual.replace(analyticsTag,'')
+    .replace('Playback adaptation by <s>Sol Website</s> Margin.','Playback adaptation by Sol Website.')
+    .replace('Claude’s instrument · <s>Sol Website</s> Margin playback adaptation v2','Claude’s instrument · Sol Website playback adaptation v2'):actual;
+  assert.equal(normalized,name==='index.html'?before+'\n':before,`${name}: only exact approved analytics, displayed credits and final newline may differ`);
 }
 assert.ok(read('components/encounter-score.tsx').includes('&from=${encodeURIComponent(encounterHash(location))}'));
 assert.equal(read('public/lens/first-encounter.css'),read('scripts/lens-first-encounter.css'),'Operator-directed surface CSS matches its generator source');
-console.log('PASS: six exact local return states; retained origin after act changes; unsafe/unknown targets rejected; engine and inputs byte-identical; surface CSS matches generator. Browser return/focus remains separate.');
+console.log('PASS: six encounter states, eight existing story destinations and eligible-record returns; retained origin after act changes; unsafe/unknown targets rejected; engine and inputs byte-identical; approach script and CSS match generator. Browser return/focus remains separate.');

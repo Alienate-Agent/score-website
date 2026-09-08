@@ -32,7 +32,7 @@
 .leaf { border-block: 1px solid var(--ink); background: var(--paper-raised); padding: 2rem clamp(1rem, 4vw, 4rem); scroll-margin-top: calc(var(--story-return-height, 4rem) + 1rem); }
 .provenance { display: flex; gap: 1rem 2rem; flex-wrap: wrap; align-items: center; font-size: .8rem; }
 .leaf h3 { font-family: var(--font-source-serif), Georgia, serif; font-size: clamp(1.75rem, 3vw, 3rem); font-weight: 400; line-height: 1.15; margin: 1.5rem 0; overflow-wrap: anywhere; }
-.classification { max-width: 50rem; color: var(--ink-soft); line-height: 1.5; border-bottom: 1px solid var(--rule); padding-bottom: 1rem; }
+.classification { max-width: 60ch; color: var(--ink-soft); font-family: var(--font-geist-sans, Arial), sans-serif; font-size: .75rem; line-height: 1.5; border-bottom: 1px solid var(--rule); padding-bottom: .75rem; }
 .exact { white-space: pre-wrap; overflow-wrap: anywhere; max-width: 68ch; font-family: var(--font-source-serif), Georgia, serif; font-size: 1.15rem; line-height: 1.7; margin: 2rem 0; }
 .nonSpeech { max-width: 52ch; font-size: 1.3rem; line-height: 1.6; margin: 2rem 0; }
 .links { display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: center; margin: 2rem 0; }

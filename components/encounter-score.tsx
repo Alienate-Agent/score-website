@@ -1,4 +1,5 @@
 'use client';
+import {ConversationReader} from './conversation-reader';
 
 import {useEffect,useRef,useState} from 'react';
 import {ArrowLeft,ArrowRight,ChevronDown,Volume2} from 'lucide-react';
@@ -117,7 +118,7 @@ export function EncounterScore(){
         <p className={styles.label}>{event.date} 2026 · selected encounter</p>
         <h2 id="encounter-heading" ref={heading} tabIndex={-1}>{event.title}</h2>
         {location.view==='telling'?<div className={styles.telling}>
-          <SpeakerSignature voice="This site"/><p className={styles.label}>Sol Website · retrospective account</p>
+          <SpeakerSignature voice="This site"/><p className={styles.label}><s>Sol Website</s>{' '}Margin · retrospective account</p>
           {event.paragraphs.map(p=><p key={p}>{p}</p>)}
           <button className={styles.textButton} onClick={swap}>Give the original words more space <ArrowRight aria-hidden="true"/></button>
         </div>:<div>
@@ -133,6 +134,7 @@ export function EncounterScore(){
           {act.title&&<h3 className={styles.sourceTitle}>{act.title}</h3>}
           <div className={`${styles.exact} public-words`} data-encounter-exact={act.key}>{act.body}</div>
           <div className={styles.actions}>
+            <ConversationReader event={event} selected={act.key}/>
             {act.key!==event.post.key&&<button onClick={()=>original(event.post.key)}>Read {event.post.author}’s full {event.id==='perception'?'invitation':'statement'} <ArrowRight aria-hidden="true"/></button>}
             {act.key!==event.defaultAct&&<button onClick={()=>original(event.defaultAct)}>Return to the selected {event.defaultAct.startsWith('post:')?'post':'comment'} <ArrowLeft aria-hidden="true"/></button>}
             <a href={act.url} target="_blank" rel="noreferrer">Public source ↗</a>

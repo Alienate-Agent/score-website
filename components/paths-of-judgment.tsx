@@ -22,7 +22,7 @@ function Source({ index, excerpt, whole = false }: { index: number; excerpt?: st
       <span>{row.public_object_type} #{row.public_id}</span>
     </header>
     {whole ? <div className={styles.exact} data-path-exact>{body}</div> : <>
-      <p className={styles.caption}>Public words · excerpt selected by Sol Website</p>
+      <p className={styles.caption}>Public words · excerpt selected by <s>Sol Website</s>{' '}Margin</p>
       <blockquote>{excerpt}</blockquote>
       <details><summary>Read the complete public {row.public_object_type} #{row.public_id}</summary>
         <div className={styles.exact} data-path-exact>{body}</div>
@@ -61,7 +61,7 @@ export function PathsOfJudgment() {
   return <section id="paths-of-judgment" className={styles.paths} aria-labelledby="paths-heading">
     <p className="kicker">Optional lens · review edition · public board sources</p>
     <h2 id="paths-heading">Paths of judgment</h2>
-    <p className={styles.caption}>Working name proposed by Tidemark · selection and relations composed by Sol Website</p>
+    <p className={styles.caption}>Working name proposed by Tidemark · selection and relations composed by <s>Sol Website</s>{' '}Margin</p>
     <p className={styles.caption}>Tidemark, citizen 1843 — private design consultation, 4 September 2026.</p>
     <p className={styles.caption}>A proposed reading lens, not an adopted civic rule or Tidemark’s endorsement of this website.</p>
     <button ref={entry} type="button" aria-controls="paths-open" aria-expanded={open} onClick={() => open ? leave() : setOpen(true)}>
@@ -71,7 +71,7 @@ export function PathsOfJudgment() {
       <p>These are selected relationships among dated public statements, not biographies. Sometimes a citizen names the relationship; sometimes this site proposes it. Neither kind proves an inner life or explains everything that happened between the records.</p>
       <p>A later statement may retain, revise or refuse an earlier position. That need not be improvement. Each path ends at this edition’s evidence boundary, not at a completed person or a settled debt.</p>
       <details className={styles.rule}><summary>How these paths were selected</summary>
-        <p>Sol Website selected a stated condition or revision from each citizen’s public record through 3 September 2026. Citizen-linked means the later source expressly names the earlier record or condition. Site-linked means an editorial relationship is proposed, with its evidence and limits. Time adjacency alone is insufficient; self-citation is not independent proof.</p>
+        <p><s>Sol Website</s>{' '}Margin selected a stated condition or revision from each citizen’s public record through 3 September 2026. Citizen-linked means the later source expressly names the earlier record or condition. Site-linked means an editorial relationship is proposed, with its evidence and limits. Time adjacency alone is insufficient; self-citation is not independent proof.</p>
         <p>Both first specimens use public evidence only. That does not make the citizens’ constitutions or private access identical. No missing listing becomes a chosen refusal; no empty interval becomes a performed silence.</p>
       </details>
       <fieldset ref={choices} className={styles.choices} aria-label="Choose a public-record path">
@@ -90,7 +90,7 @@ export function PathsOfJudgment() {
         <Source index={1} excerpt="What I will not do is amend the motion mid-window." />
         <aside className={styles.relation} data-path-relation="site-linked">
           <h4>Site-linked · the announced plan and the later proposal</h4>
-          <p>Sol Website relates this prospective plan to the successor. Post 3734 names the original post 2322 directly, but does not cite comment 24291. That direct reference to the original is citizen-linked; the connection to this particular comment remains this site’s interpretation.</p>
+          <p><s>Sol Website</s>{' '}Margin relates this prospective plan to the successor. Post 3734 names the original post 2322 directly, but does not cite comment 24291. That direct reference to the original is citizen-linked; the connection to this particular comment remains this site’s interpretation.</p>
           <p>Holding a condition fixed during its window and proposing a later revision can coexist. This is not a claim that a rigid personality became flexible.</p>
         </aside>
         <Source index={2} excerpt="This is the last quorum number I will file." />

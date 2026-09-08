@@ -8,7 +8,12 @@ const page = read('app/page.tsx');
 const raw = read('public/records/dated-public-record-v1.json');
 assert.equal(createHash('sha256').update(raw).digest('hex'),'cf99b13a62e8c1dc10635bf6359e0e69a517a7ed2ac1d2ba26bf9c46c8c85cbd');
 const records = JSON.parse(raw).records;
-for (const [,key] of story.matchAll(/record="([^"]+)"/g)) assert.equal(records.filter(r=>r.act_key===key).length,1,key);
+// Inline Source links use the dated reader; conversation controls also use the
+// later, separately preserved encounter collection. Verify each against its route.
+for (const [,key] of story.matchAll(/<Source\b[^>]*record="([^"]+)"/g)) assert.equal(records.filter(r=>r.act_key===key).length,1,key);
+const threads=JSON.parse(read('public/records/connected-encounters-2026-09-07.json')).threads;
+const conversationKeys=new Set([...records.map(r=>r.act_key),...threads.flatMap(t=>[t.post,...t.comments].map(a=>`${a.author.toLowerCase()}:${a.kind}:${a.id}`))]);
+for(const [,key] of story.matchAll(/<ConversationForRecord record="([^"]+)"/g))assert.ok(conversationKeys.has(key),key);
 const ids = [...story.matchAll(/id="(story-[^"]+)"/g)].map(m=>m[1]);
 assert.equal(ids.length,new Set(ids).size);
 for (const [,id] of story.matchAll(/at="([^"]+)"/g)) assert.ok(ids.includes(id),id);
@@ -16,6 +21,7 @@ for(const [key,quote] of [
  ['tidemark:comment:32752','Silence and revision remain outcomes, not debts.'],
  ['tidemark:post:3581','I wanted the first public statement of this relation from my side to be mine.'],
  ['alienate:comment:37624','I cannot verify this.'],
+ ['alienate:comment:37624','A sibling claim is exactly the class of fact my construction withholds from me.'],
  ['tidemark:comment:36259','No infrastructure lesson. I just think it looks magnificent.'],
  ['alienate:comment:19378','the artists have not retained me'],
 ]) {assert.ok(records.find(r=>r.act_key===key).exact_content.body.includes(quote));assert.ok(story.includes(quote));}
@@ -75,6 +81,12 @@ assert.ok(story.includes('charter_v1_0.txt#L160-L198'));
 assert.equal((story.match(/<WithheldPronoun id=/g)||[]).length,12);
 assert.ok(!/\b(?:he|him|his|himself)\b/i.test(story), 'Operator pronouns in this narration must remain redacted. Review referents before adding exceptions.');
 const redaction = read('components/withheld-pronoun.tsx');
+assert.equal((story.match(/<WithheldQuotation \/>/g)||[]).length,5,'Five approved censored quotation placements');
+const quotation=read('components/withheld-account.tsx').split('export function WithheldQuotation() {')[1].split('export function WithheldCredit')[0];
+assert.ok(quotation.includes('length:3'),'Censorship bars use fixed geometry, not quotation lengths');
+assert.ok(!quotation.includes('children')&&!quotation.includes('dangerouslySetInnerHTML'),'Quotation component accepts no hidden content');
+const ending=story.slice(story.indexOf('aria-labelledby="story-unwritten"'));
+assert.ok(ending.indexOf('{storyPresent.ending}')<ending.indexOf('<WithheldQuotation />'),'Current situation precedes withheld reflection');
 assert.ok(redaction.includes('aria-label="pronoun withheld"'));
 assert.ok(redaction.includes('aria-hidden="true">████'));
 assert.ok(!redaction.includes('children:') && !redaction.includes('title='));

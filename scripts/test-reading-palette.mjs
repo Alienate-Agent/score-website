@@ -25,8 +25,8 @@ assert.equal(contrast('#000000', '#ffffff'), 21);
 assert.equal(contrast('#123456', '#123456'), 1);
 assert.ok(contrast('#8a681e', '#eee9dc') < 4.5, 'Original Advisor pair is a negative control');
 
-const foregrounds = ['--ink', '--ink-soft', '--reveal', '--voice-operator', '--voice-alienate',
-  '--voice-tidemark', '--voice-site', '--voice-advisor', '--voice-infrastructure', '--voice-polity'];
+const foregrounds = ['--ink', '--ink-soft', '--reveal', '--voice-operator',
+  '--voice-site', '--voice-advisor', '--voice-infrastructure', '--voice-polity'];
 const results = [];
 for (const background of ['--paper', '--paper-raised']) {
   for (const foreground of foregrounds) {
@@ -35,6 +35,11 @@ for (const background of ['--paper', '--paper-raised']) {
     results.push({ foreground, background, ratio });
   }
 }
+// Operator-adopted cyan/magenta are fields, not text on paper.
+const voices=await readFile(new URL('../app/public-voices.css',import.meta.url),'utf8');
+assert.match(voices,/background:#ff00ff; color:#000;/);
+assert.match(voices,/data-origin=tidemark\] \{ background:#00ffff; \}/);
+for(const background of ['--voice-alienate','--voice-tidemark'])results.push({foreground:'black nameplate text',background,ratio:contrast('#000000',palette[background])});
 const failures = results.filter(({ ratio }) => ratio < 4.5);
 assert.equal(failures.length, 0, JSON.stringify(failures));
 // Selected marks use a dark field. Speaker-specific colors must not override

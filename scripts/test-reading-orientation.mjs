@@ -27,7 +27,7 @@ for(const [index,item] of presentEditions.entries()) {
   assert.equal(item.continuation,['#later-public-words','#encounter-remedy','#encounter-remedy~words~comment%3A46595'][index]);
 }
 assert.equal(presentEditions[0].asOf,'2026-09-05','Preserve the first dated position when appending later editions');
-assert.ok(story.includes('{storyPresent.summary}') && story.includes('{storyPresent.ending}'));
+assert.ok(story.includes('storyPresent.compactSummary : storyPresent.summary') && story.includes('{storyPresent.ending}'));
 assert.equal((story.match(/dateTime=\{storyPresent.asOf\}/g)||[]).length,2);
 const config=await read('next.config.ts');
 const vite=await read('vite.config.ts');

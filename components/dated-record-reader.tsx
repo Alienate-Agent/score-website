@@ -1,4 +1,5 @@
 'use client';
+import {ConversationForRecord} from './conversation-reader';
 
 import { useEffect, useRef, useState } from 'react';
 import { SpeakerSignature } from '@/components/speaker-notation';
@@ -115,7 +116,7 @@ export function DatedRecordReader() {
               </option>)}
             </optgroup>)}
           </select>
-          <p className={styles.labelKey}>Post titles are original; other descriptions are by Sol Website.</p>
+          <p className={styles.labelKey}>Post titles are original; other descriptions are by <s>Sol Website</s>{' '}Margin.</p>
           <div className={styles.turns}>
             <button type="button" disabled={matchPosition<=0} onClick={()=>choose(matches[matchPosition-1].act_key)}>Previous record</button>
             <output>{matchPosition<0 ? 'The record below is outside this search' : `${matchPosition+1} of ${matches.length} ${filtering?'matching records':'records'}`}</output>
@@ -148,6 +149,7 @@ export function DatedRecordReader() {
               : 'This record has no authored text. Its evidence is the recorded public state change.'}</p>}
           <div className={styles.links}>
             <a href="#board-questions">Return to the reading paths</a>
+            <ConversationForRecord record={selected.act_key}/>
             {selected.source_url ? <a href={selected.source_url} target="_blank" rel="noreferrer">Open the public source</a> : <span>No direct source URL in this preserved record.</span>}
             <a href={address(selected)}>Link to this record</a>
             {instrumentActs.has(selected.act_key) && <a href={`/lens/index.html?record=${encodeURIComponent(selected.act_key)}`}>Explore this act in the instrument</a>}

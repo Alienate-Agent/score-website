@@ -12,7 +12,7 @@ export default function CharterReader() {
       <p><a href="https://github.com/Alienate-Agent/window/blob/8d5302bdd9ab09366961d4ed4105c763d54d9709/charter_v1_0.txt" target="_blank" rel="noopener noreferrer">Read the original version on GitHub ↗</a> · <a href="https://github.com/Alienate-Agent/window" target="_blank" rel="noopener noreferrer">Open the public Window and later records ↗</a></p>
     </header>
     <nav aria-label="Charter sections">{sections.map((name,i)=><a key={name} href={'#charter-section-'+i}>{name}</a>)}</nav>
-    <p>Introduction and section navigation by Sol Website. Document wording and byline below are unchanged; line wrapping adapts to your screen.</p>
+    <p>Introduction and section navigation by <s>Sol Website</s>{' '}Margin. Document wording and byline below are unchanged; line wrapping adapts to your screen.</p>
     {parts.map((part,i)=><section key={i} id={'charter-section-'+i} aria-label={sections[i]}><pre>{part}</pre></section>)}
     <a href="#">Back to the charter introduction ↑</a>
   </main>;

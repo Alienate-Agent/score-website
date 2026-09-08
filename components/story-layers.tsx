@@ -20,9 +20,19 @@ export function StoryLayers({ children }: { children: ReactNode }) {
       const storyTarget = document.getElementById(hash.slice(1) || 'story-title');
       if (event?.type !== 'score:open-entry' && storyTarget?.closest('.unfolding-story, [data-story-surface]')) {
         if (disclosure.current) disclosure.current.open = false;
+        // A reference can point at the disclosure itself, or a passage inside
+        // one. Reveal the destination without opening unrelated story asides.
+        let enclosing: Element | null = storyTarget;
+        while (enclosing && enclosing.closest('.unfolding-story, [data-story-surface]')) {
+          if (enclosing instanceof HTMLDetailsElement) enclosing.open = true;
+          enclosing = enclosing.parentElement;
+        }
         // History restores the viewport, but not keyboard focus. Keep both
         // readers on the story instead of leaving focus in the closed source.
-        if (event && !storyTarget.matches('details')) storyTarget.focus({ preventScroll: true });
+        if (storyTarget instanceof HTMLDetailsElement) {
+          storyTarget.querySelector('summary')?.focus({ preventScroll: true });
+          storyTarget.scrollIntoView({block:'start',behavior:'instant'});
+        } else if (event) storyTarget.focus({ preventScroll: true });
         setReturnTo(storyTarget.id);
         return;
       }
@@ -58,12 +68,36 @@ export function StoryLayers({ children }: { children: ReactNode }) {
       if (link?.dataset.storyReturn) setReturnTo(link.dataset.storyReturn);
     };
     reveal();
+    // Direct search arrivals can precede font loading and the compact claim's
+    // second toolbar row. Realign once after these initial layout changes;
+    // never pull a reader back after they have started navigating themselves.
+    let cancelled=false;
+    const cancelArrival=()=>{cancelled=true;};
+    window.addEventListener('wheel',cancelArrival,{passive:true});
+    window.addEventListener('touchstart',cancelArrival,{passive:true});
+    window.addEventListener('keydown',cancelArrival);
+    const initialHash=window.location.hash;
+    let arrivalFrame=0;
+    void document.fonts.ready.then(()=>{
+      arrivalFrame=requestAnimationFrame(()=>{
+        arrivalFrame=requestAnimationFrame(()=>{
+          if(cancelled||window.location.hash!==initialHash||!['#all-record-search','#record-discovery-results'].includes(initialHash))return;
+          measureReturn();
+          document.getElementById(initialHash.slice(1))?.scrollIntoView({block:'start',behavior:'instant'});
+        });
+      });
+    });
     document.addEventListener('click', remember);
     window.addEventListener('hashchange', reveal);
     window.addEventListener('popstate', reveal);
     window.addEventListener('score:open-entry', reveal);
     return () => {
       observer.disconnect();
+      cancelled=true;
+      cancelAnimationFrame(arrivalFrame);
+      window.removeEventListener('wheel',cancelArrival);
+      window.removeEventListener('touchstart',cancelArrival);
+      window.removeEventListener('keydown',cancelArrival);
       document.removeEventListener('click', remember);
       window.removeEventListener('hashchange', reveal);
       window.removeEventListener('popstate', reveal);
@@ -80,6 +114,7 @@ export function StoryLayers({ children }: { children: ReactNode }) {
       window.dispatchEvent(new HashChangeEvent('hashchange'));
       return;
     }
+    window.dispatchEvent(new HashChangeEvent('hashchange'));
     document.getElementById(returnTo)?.focus({ preventScroll: true });
     document.getElementById(returnTo)?.scrollIntoView({ block: 'start', behavior: 'instant' });
   }
@@ -87,11 +122,22 @@ export function StoryLayers({ children }: { children: ReactNode }) {
   const returnLabel=returnTo.startsWith('encounter-')?'Return to the encounter':'Return to the story';
 
   return (
+    <>
+    <nav className="story-layer-choices" id="story-exploration" data-story-surface tabIndex={-1} aria-label="Explore beyond the story">
+      <h2>Follow the words. Trace the events. Make sound.</h2>
+      <p>The story brings these actions together. You can also examine what was said, move through the events, or hear how the instrument translates a recorded act.</p>
+      <div>
+        <a href="#all-record-search" data-story-return="story-unwritten"><strong>Read the conversations <span aria-hidden="true">↗</span></strong><span>Find an agent’s words and open the discussion around them.</span></a>
+        <a href="#chronology" data-story-return="story-unwritten"><strong>Explore the score <span aria-hidden="true">↓</span></strong><span>Choose an event. Follow its place in the story and its source.</span></a>
+        <a href="/lens/?from=%23story-unwritten"><strong>Try the audio instrument <span aria-hidden="true">↗</span></strong><span>Play a recorded act. Change its musical mapping and listen again.</span></a>
+      </div>
+    </nav>
     <details ref={disclosure} className="story-records" id="story-instruments">
-      <summary><span>Now read the score.</span><small>Open the public words and the visual timeline. Follow an event into its source; where sound is available, carry that same act into the instrument.</small></summary>
+      <summary><span>Score and public records</span><small>Open the timeline and collected words below.</small></summary>
       <div ref={returnBar} className="story-records__return"><button type="button" onClick={resume}>{returnLabel}</button><span>Public records and reading instruments</span></div>
       {children}
       <button className="story-records__end" type="button" onClick={resume}>Close this surface · {returnLabel}</button>
     </details>
+    </>
   );
 }

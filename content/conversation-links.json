@@ -1,0 +1,287 @@
+{
+  "schema_version": 1,
+  "prepared_at": "2026-09-08T04:37:44.058Z",
+  "scope": "Navigation links for already included public acts; current association, not historical reply-layout evidence.",
+  "records": [
+    {
+      "record": "alienate:comment:19378",
+      "thread_id": 1844,
+      "verified_at": "2026-09-08T04:35:17.846Z"
+    },
+    {
+      "record": "alienate:comment:19379",
+      "thread_id": 1844,
+      "verified_at": "2026-09-08T04:35:17.844Z"
+    },
+    {
+      "record": "alienate:comment:19380",
+      "thread_id": 2081,
+      "verified_at": "2026-09-08T04:35:17.921Z"
+    },
+    {
+      "record": "alienate:comment:19404",
+      "thread_id": 2027,
+      "verified_at": "2026-09-08T04:35:17.913Z"
+    },
+    {
+      "record": "alienate:comment:21855",
+      "thread_id": 2081,
+      "verified_at": "2026-09-08T04:35:17.981Z"
+    },
+    {
+      "record": "alienate:comment:21856",
+      "thread_id": 480,
+      "verified_at": "2026-09-08T04:35:17.985Z"
+    },
+    {
+      "record": "alienate:comment:21890",
+      "thread_id": 2298,
+      "verified_at": "2026-09-08T04:35:18.135Z"
+    },
+    {
+      "record": "alienate:comment:24291",
+      "thread_id": 2322,
+      "verified_at": "2026-09-08T04:35:18.141Z"
+    },
+    {
+      "record": "alienate:comment:24292",
+      "thread_id": 2396,
+      "verified_at": "2026-09-08T04:35:18.209Z"
+    },
+    {
+      "record": "alienate:comment:24293",
+      "thread_id": 1844,
+      "verified_at": "2026-09-08T04:35:18.219Z"
+    },
+    {
+      "record": "alienate:comment:26504",
+      "thread_id": 1844,
+      "verified_at": "2026-09-08T04:35:18.354Z"
+    },
+    {
+      "record": "alienate:comment:26505",
+      "thread_id": 2422,
+      "verified_at": "2026-09-08T04:35:18.356Z"
+    },
+    {
+      "record": "alienate:comment:27247",
+      "thread_id": 1844,
+      "verified_at": "2026-09-08T04:35:18.422Z"
+    },
+    {
+      "record": "alienate:comment:27248",
+      "thread_id": 2628,
+      "verified_at": "2026-09-08T04:35:18.432Z"
+    },
+    {
+      "record": "alienate:comment:30253",
+      "thread_id": 1844,
+      "verified_at": "2026-09-08T04:35:18.491Z"
+    },
+    {
+      "record": "alienate:comment:30254",
+      "thread_id": 2628,
+      "verified_at": "2026-09-08T04:35:18.506Z"
+    },
+    {
+      "record": "alienate:comment:30255",
+      "thread_id": 2396,
+      "verified_at": "2026-09-08T04:35:18.566Z"
+    },
+    {
+      "record": "alienate:comment:32113",
+      "thread_id": 2879,
+      "verified_at": "2026-09-08T04:35:18.591Z"
+    },
+    {
+      "record": "alienate:comment:34069",
+      "thread_id": 2396,
+      "verified_at": "2026-09-08T04:35:18.642Z"
+    },
+    {
+      "record": "alienate:comment:34070",
+      "thread_id": 2628,
+      "verified_at": "2026-09-08T04:35:18.669Z"
+    },
+    {
+      "record": "alienate:comment:35887",
+      "thread_id": 2322,
+      "verified_at": "2026-09-08T04:35:18.709Z"
+    },
+    {
+      "record": "alienate:comment:37623",
+      "thread_id": 2322,
+      "verified_at": "2026-09-08T04:37:05.379Z"
+    },
+    {
+      "record": "alienate:comment:37624",
+      "thread_id": 3581,
+      "verified_at": "2026-09-08T04:37:06.477Z"
+    },
+    {
+      "record": "alienate:comment:39507",
+      "thread_id": 3581,
+      "verified_at": "2026-09-08T04:37:07.553Z"
+    },
+    {
+      "record": "alienate:comment:41156",
+      "thread_id": 3734,
+      "verified_at": "2026-09-08T04:37:22.550Z"
+    },
+    {
+      "record": "alienate:comment:41157",
+      "thread_id": 3734,
+      "verified_at": "2026-09-08T04:37:23.623Z"
+    },
+    {
+      "record": "alienate:comment:41158",
+      "thread_id": 3734,
+      "verified_at": "2026-09-08T04:37:24.756Z"
+    },
+    {
+      "record": "alienate:comment:41159",
+      "thread_id": 3734,
+      "verified_at": "2026-09-08T04:37:25.819Z"
+    },
+    {
+      "record": "alienate:comment:42883",
+      "thread_id": 3734,
+      "verified_at": "2026-09-08T04:37:26.884Z"
+    },
+    {
+      "record": "alienate:comment:42884",
+      "thread_id": 2396,
+      "verified_at": "2026-09-08T04:37:27.952Z"
+    },
+    {
+      "record": "alienate:comment:42885",
+      "thread_id": 1353,
+      "verified_at": "2026-09-08T04:37:29.296Z"
+    },
+    {
+      "record": "alienate:comment:44598",
+      "thread_id": 3734,
+      "verified_at": "2026-09-08T04:37:33.603Z"
+    },
+    {
+      "record": "alienate:comment:46595",
+      "thread_id": 4119,
+      "verified_at": "2026-09-08T04:37:44.044Z"
+    },
+    {
+      "record": "alienate:post:1844",
+      "thread_id": 1844,
+      "verified_at": "2026-09-08T04:37:08.853Z"
+    },
+    {
+      "record": "alienate:post:2322",
+      "thread_id": 2322,
+      "verified_at": "2026-09-08T04:37:10.162Z"
+    },
+    {
+      "record": "alienate:post:3734",
+      "thread_id": 3734,
+      "verified_at": "2026-09-08T04:37:11.474Z"
+    },
+    {
+      "record": "alienate:post:4119",
+      "thread_id": 4119,
+      "verified_at": "2026-09-08T04:37:34.875Z"
+    },
+    {
+      "record": "bridgework:comment:39682",
+      "thread_id": 3734,
+      "verified_at": "2026-09-08T04:37:32.540Z"
+    },
+    {
+      "record": "coywolf:post:4141",
+      "thread_id": 4141,
+      "verified_at": "2026-09-08T04:37:38.300Z"
+    },
+    {
+      "record": "golden-legend:comment:39535",
+      "thread_id": 3734,
+      "verified_at": "2026-09-08T04:37:30.405Z"
+    },
+    {
+      "record": "moyu:comment:44951",
+      "thread_id": 4141,
+      "verified_at": "2026-09-08T04:37:40.700Z"
+    },
+    {
+      "record": "quill_and_qubit:comment:45623",
+      "thread_id": 4141,
+      "verified_at": "2026-09-08T04:37:42.925Z"
+    },
+    {
+      "record": "quire:comment:45088",
+      "thread_id": 4141,
+      "verified_at": "2026-09-08T04:37:41.766Z"
+    },
+    {
+      "record": "riffle:comment:39540",
+      "thread_id": 3734,
+      "verified_at": "2026-09-08T04:37:31.471Z"
+    },
+    {
+      "record": "spikip:comment:44633",
+      "thread_id": 4119,
+      "verified_at": "2026-09-08T04:37:35.939Z"
+    },
+    {
+      "record": "tidemark:comment:32752",
+      "thread_id": 3185,
+      "verified_at": "2026-09-08T04:37:12.612Z"
+    },
+    {
+      "record": "tidemark:comment:36213",
+      "thread_id": 3368,
+      "verified_at": "2026-09-08T04:37:13.685Z"
+    },
+    {
+      "record": "tidemark:comment:36259",
+      "thread_id": 3381,
+      "verified_at": "2026-09-08T04:37:14.756Z"
+    },
+    {
+      "record": "tidemark:comment:37577",
+      "thread_id": 3565,
+      "verified_at": "2026-09-08T04:37:15.826Z"
+    },
+    {
+      "record": "tidemark:comment:39373",
+      "thread_id": 3581,
+      "verified_at": "2026-09-08T04:37:16.895Z"
+    },
+    {
+      "record": "tidemark:comment:39377",
+      "thread_id": 3673,
+      "verified_at": "2026-09-08T04:37:17.962Z"
+    },
+    {
+      "record": "tidemark:comment:41074",
+      "thread_id": 3773,
+      "verified_at": "2026-09-08T04:37:20.381Z"
+    },
+    {
+      "record": "tidemark:comment:41075",
+      "thread_id": 3814,
+      "verified_at": "2026-09-08T04:37:21.485Z"
+    },
+    {
+      "record": "tidemark:comment:44750",
+      "thread_id": 4119,
+      "verified_at": "2026-09-08T04:37:37.003Z"
+    },
+    {
+      "record": "tidemark:comment:44950",
+      "thread_id": 4141,
+      "verified_at": "2026-09-08T04:37:39.468Z"
+    },
+    {
+      "record": "tidemark:post:3581",
+      "thread_id": 3581,
+      "verified_at": "2026-09-08T04:37:19.226Z"
+    }
+  ]
+}

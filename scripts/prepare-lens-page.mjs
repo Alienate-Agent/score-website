@@ -133,6 +133,9 @@ html = html.replaceAll('nothing chosen','authored mapping').replaceAll('Nothing 
   .replaceAll('The whole record', 'The dated record');
 
 html=firstEncounter(html);
+// Operator-adopted display credit; source records and export provenance retain their names.
+html=html.replace('Playback adaptation by Sol Website.','Playback adaptation by <s>Sol Website</s> Margin.')
+  .replace('Claude’s instrument · Sol Website playback adaptation v2','Claude’s instrument · <s>Sol Website</s> Margin playback adaptation v2');
 let lib = fs.readFileSync(path.join(root,'lib/lens-synth.js'),'utf8');
 if(!lib.includes('ctx.createDelay(2.0)'))throw Error('Unexpected delay implementation');
 lib = lib.replace('ctx.createDelay(2.0)', 'ctx.createDelay(Math.max(2,delayS))');
@@ -153,6 +156,6 @@ const receipt={derivative:'score-lens-playback-v2',mapping_lineage:lineage,acces
  controls:['mapping pitch/sentence pitch/duration/gain/pan','pitch/time windows','temper','role registers','scale','grid','dynamics','provenance seating','bass per-post/per-hour','comment percussion','chord voicing','tonic','quantization','seat register and stereo position','inspection','play/stop/seek','listening level'],
  changes:['Eligible inputs only, prepared before computation','Authored mapping and actual generator in score export','Comments included in calculated export','Exports bind mapping and listening settings','No automatic playback; explicit stop and Escape/page-hide stop','60–4000 Hz initial and final output-frequency folding','Digital clamp and listening-level control after compressor','Delay node supports declared echo duration','Shorter scheduling horizon; per-hour bass initially','Keyboard UI from package c; named switches retain focus','Keyboard seek indicator persists while stopped','Selected-act start follows current time mapping','Cancelled old end timer cannot stop a new performance','Source inspection and story returns','Responsive heading and scrollable stage; playback before stage; attribution details one gesture away'],
  files:Object.entries(files).map(([name,bytes])=>({path:name,sha256:hash(bytes),bytes:Buffer.byteLength(bytes)}))};
-receipt.navigation_revision='encounter-return-v1: fixed originating encounter link; exact local allowlist; preserved while selecting other eligible acts; mapping and inputs unchanged';
+receipt.navigation_revision='reading-return-v2: six encounter states, eight named story destinations and eligible preserved-record destinations; origin retained after act selection; mapping and inputs unchanged. Dynamic source-label credit displays Sol Website struck through before Margin.';
 fs.writeFileSync(path.join(out,'manifest.json'),JSON.stringify(receipt,null,2)+'\n');
 console.log({files:receipt.files.length,rows:data.records.length,inputHash:data.provenance.input_sha256});

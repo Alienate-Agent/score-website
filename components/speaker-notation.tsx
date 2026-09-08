@@ -1,4 +1,5 @@
 import type { CSSProperties } from 'react';
+import {CreditText} from './credit-text';
 import {
   Brackets,
   CircleDot,
@@ -61,7 +62,7 @@ export function SpeakerSignature({
     >
       <Icon aria-hidden="true" />
       {showName ? (
-        <span>{voice}</span>
+        <span><CreditText text={voice}/></span>
       ) : (
         <span className="sr-only">{voice}</span>
       )}

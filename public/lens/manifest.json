@@ -52,8 +52,8 @@
   "files": [
     {
       "path": "index.html",
-      "sha256": "ecdd0a6c2e061fb38f26586d500315078015da40b75d5a4b82a73b39c09b67f9",
-      "bytes": 200899
+      "sha256": "2dc8e94be8c50b893dff96c9d10d32ce1a290f0f140b9b87eb34cf85639185c0",
+      "bytes": 200927
     },
     {
       "path": "lens-synth.js",
@@ -67,13 +67,13 @@
     },
     {
       "path": "first-encounter.js",
-      "sha256": "860fdb410767320c7ea6c45bed310e3a0790753a54900245071c55e1ecd8f66b",
-      "bytes": 6917
+      "sha256": "a648b7aceda459d80381fc4371cba4b807769fe0a423a6db38c7cd414bb05f88",
+      "bytes": 7852
     },
     {
       "path": "first-encounter.css",
-      "sha256": "7f22d793ffac097a0970ef976b292bdd47d0df59755b176487af37c2b0165f06",
-      "bytes": 2074
+      "sha256": "3a4ef8145b77f49bbd9a9ce8f614a4e395c7abe2eb9317d0bc92a6692f1d02ff",
+      "bytes": 2094
     },
     {
       "path": "act-keys.json",
@@ -91,9 +91,10 @@
       "bytes": 2950502
     }
   ],
-  "navigation_revision": "encounter-return-v1: fixed originating encounter link; exact local allowlist; preserved while selecting other eligible acts; mapping and inputs unchanged",
+  "navigation_revision": "reading-return-v2: six encounter states, eight named story destinations and eligible preserved-record destinations; origin retained after act selection; mapping and inputs unchanged. Dynamic source-label credit displays Sol Website struck through before Margin.",
   "surface_revision": "black-white-ground-v1, 7 September 2026: operator-directed CSS-only palette update; authored mapping colors, calculations, source inputs and playback unchanged",
   "previous_manifest_sha256": "fc91c9b7597b4aac63929e1404e6739a41598d12ed12b60e82a226d82df2e04f",
   "engagement_revision": "Operator-authorized aggregate pilot v1 adds shared /engagement.js and a privacy control. This site-level script observes fixed UI event categories only; no mapping, inputs, sound generation or playback behavior changed. Shared script is versioned in the site repository outside this instrument inventory.",
-  "reference_navigation": "Direct charter reader link; no playback requirement or inferred rule-to-act mapping; sound and inputs unchanged."
+  "reference_navigation": "Direct charter reader link; no playback requirement or inferred rule-to-act mapping; sound and inputs unchanged.",
+  "credit_revision": "Operator-adopted display name: struck-through Sol Website followed by Margin. Two visible credits only; historical source attribution and calculated export metadata unchanged."
 }

@@ -28,7 +28,7 @@ export function PreludeConversation() {
         </figure>
         <p>The advisor&apos;s warning is that a later reveal would expose not only who sent the agent, but how the argument had been made. The means of persuasion would remain part of the artwork.</p>
       </details>
-      <details className="prelude-conversation__source"><summary>Source details</summary><p>Private advisory conversation, released by its two speakers. Excerpts selected by Sol Website; recorded 22 August, admitted to this telling 5 September 2026. The artist&apos;s early proposal is not the final charter or evidence of polity agreement. The $21k is the figure used in that conversation, not a present balance.</p></details>
+      <details className="prelude-conversation__source"><summary>Source details</summary><p>Private advisory conversation, released by its two speakers. Excerpts selected by <s>Sol Website</s>{' '}Margin; recorded 22 August, admitted to this telling 5 September 2026. The artist&apos;s early proposal is not the final charter or evidence of polity agreement. The $21k is the figure used in that conversation, not a present balance.</p></details>
     </section>
   );
 }

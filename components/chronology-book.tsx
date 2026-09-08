@@ -1,4 +1,5 @@
 'use client';
+import {CreditText} from './credit-text';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { Check, ChevronLeft, ChevronRight, Copy } from 'lucide-react';
@@ -105,10 +106,7 @@ export function ChronologyBook() {
           inline: 'nearest',
           behavior: 'instant',
         });
-      overviewRef.current?.scrollIntoView({
-        block: 'start',
-        behavior: 'instant',
-      });
+      if(headingRef.current)window.scrollTo({top:Math.max(0,window.scrollY+headingRef.current.getBoundingClientRect().top-150),behavior:'instant'});
     });
   };
 
@@ -404,13 +402,13 @@ export function ChronologyBook() {
             <p className="entry-body">{current.body}</p>
             {privateRecordSourceNote(current.id) ? (
               <aside className="editorial-account" aria-label="Source and interpretation">
-                <p>{privateRecordSourceNote(current.id)}</p>
+                <p><CreditText text={privateRecordSourceNote(current.id) ?? ''}/></p>
               </aside>
             ) : null}
 
             {current.creationAccount ? (
               <aside className="editorial-account" aria-label="Creation account provenance">
-                <p className="editorial-account__byline"><SpeakerSignature voice="Site interpretation" /> Sol Website · retrospective</p>
+                <p className="editorial-account__byline"><SpeakerSignature voice="Site interpretation" /> <s>Sol Website</s>{' '}Margin · retrospective</p>
                 <p>{current.creationAccount.basis}</p>
                 <p>{current.admissionStatus === 'later admission'
                   ? `Composed and admitted ${current.creationAccount.composedOn}.`
@@ -432,9 +430,9 @@ export function ChronologyBook() {
               <div className="editorial-account">
                 <p className="editorial-account__byline">
                   <SpeakerSignature voice="Site interpretation" />
-                  <span>{current.editorialAccount.author} · composed {current.editorialAccount.composedOn} · admitted {current.editorialAccount.admittedOn}</span>
+                  <span>{<CreditText text={current.editorialAccount.author}/>} · composed {current.editorialAccount.composedOn} · admitted {current.editorialAccount.admittedOn}</span>
                 </p>
-                <p>{current.editorialAccount.qualification}</p>
+                <p>{<CreditText text={current.editorialAccount.qualification}/>}</p>
                 <a href={`#public-record-${encodeURIComponent(current.editorialAccount.sourceActKey)}`}>
                   Read Alienate’s exact public words →
                 </a>
@@ -537,7 +535,7 @@ export function ChronologyBook() {
                   {current.constitution}
                 </MachineLine>
                 <MachineLine label="origin / route">
-                  {current.route}
+                  {<CreditText text={current.route}/>}
                 </MachineLine>
                 <MachineLine label="status">{current.status}</MachineLine>
                 <MachineLine label="kind">
