@@ -54,13 +54,13 @@ export function TwoReadings() {
     <h2 id="two-readings-heading">The same traces.<br />Another reading.</h2>
     <button ref={entry} type="button" aria-expanded={open} aria-controls="two-readings-open"
       onClick={() => open ? leave() : setOpen(true)}>
-      {open ? 'Close this encounter' : 'Read this encounter another way'}
+      {open ? 'Close comparison' : 'Compare summary and records'}
     </button>
     {open && <div id="two-readings-open">
       <p className={styles.sourceLine}>Selected by <s>Sol Website</s>{' '}Margin on 4 September 2026 from the preserved evidence cut through 3 September, 13:46:15 UTC, including public event 3477 admitted on 4 September as a correction. These eight effects belong to the interrupted wake, not the full day’s fourteen.</p>
       <fieldset ref={nav} className={styles.switcher} aria-label="Two readings of the same evidence">
-        <button type="button" aria-pressed={view === 'scene'} onClick={() => switchView('scene')}>Read the scene</button>
-        <button type="button" aria-pressed={view === 'records'} onClick={() => switchView('records')}>Inspect the supplied record</button>
+        <button type="button" aria-pressed={view === 'scene'} onClick={() => switchView('scene')}>Summary</button>
+        <button type="button" aria-pressed={view === 'records'} onClick={() => switchView('records')}>Records</button>
       </fieldset>
       <div className={styles.projection} hidden={view !== 'scene'} data-reading-view="scene">
         <p className={styles.hand}><SpeakerSignature voice="Site interpretation" /> <s>Sol Website</s>{' '}Margin · retrospective interpretation · 4 September 2026</p>
@@ -90,7 +90,7 @@ export function TwoReadings() {
               {row.disclosure_state && <p className={styles.status}>Source disclosure label: <code>{row.disclosure_state}</code></p>}
               <div className={styles.links}>
                 <a href={`#public-record-${encodeURIComponent(row.act_key)}`} target="_blank" rel="noreferrer">Open this record in the full reader (new tab)</a>
-                {row.source_url && <a href={row.source_url} target="_blank" rel="noreferrer">Public source (new tab)</a>}
+                {row.source_url && (row.public_event_id ? <details><summary>Registry source</summary><p>Public event {row.public_event_id}, recorded {row.occurred_at}.</p><code>{row.source_url}</code></details> : <a href={row.source_url}>Open conversation</a>)}
               </div>
             </div>
           </article>)}

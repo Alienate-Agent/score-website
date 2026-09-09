@@ -1,4 +1,4 @@
-.paths { padding: clamp(1.5rem, 4vw, 4rem); border-block: 1px solid var(--ink); }
+.paths { padding: clamp(1.5rem, 4vw, 4rem); border-block: 1px solid var(--ink); font-family:var(--font-geist-sans,Arial),sans-serif; background:var(--paper-raised); }
 .paths h2 { font-size: clamp(2rem, 4vw, 4rem); line-height: 1.1; margin-block: 1rem; }
 .paths h3 { font-size: clamp(1.75rem, 3vw, 2.75rem); line-height: 1.15; max-width: 32ch; margin-block: 2rem 1rem; }
 .paths p { max-width: 70ch; line-height: 1.6; margin-block: 1rem; }
@@ -7,7 +7,7 @@
 .paths :is(button,summary,a):focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
 .paths h3:focus { outline: 2px solid var(--ink); outline-offset: 4px; }
 .caption { font-size: .875rem; }
-.rule { max-width: 70ch; margin-block: 1rem; }
+.rule { max-width: 70ch; margin-block: 1rem; font-size:.8rem; }
 .choices { display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; border-block: 1px solid var(--ink); margin-block: 1.5rem; }
 .choices button { padding: .8rem .5rem; }
 .choices button[aria-pressed=true] { background: var(--ink); color: var(--paper); text-decoration: none; }

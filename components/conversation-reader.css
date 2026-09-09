@@ -23,4 +23,9 @@
 .conversation-reader article>a{text-decoration:underline;}
 .conversation-reader__limit{padding:1rem;}
 .conversation-reader :focus-visible{outline:2px solid currentColor;outline-offset:3px;}
+.board-reader-wait{border-radius:0;background:#fffffe;color:#000;font-family:var(--font-geist-sans,Arial),sans-serif;}
+.board-reader-wait button{min-height:44px;text-decoration:underline;cursor:pointer;}
+.board-reader-page{min-height:100dvh;padding:clamp(1.5rem,5vw,5rem);background:#fffffe;color:#000;font:1rem/1.6 var(--font-geist-sans,Arial),sans-serif;}
+.board-reader-page h1{font-size:clamp(2rem,5vw,4rem);margin-block:2rem;}
+.board-reader-page a{text-decoration:underline;display:inline-block;padding-block:.7rem;}
 @media(max-width:600px){.conversation-reader{max-width:100vw;width:100vw;height:100dvh;max-height:100dvh;}.conversation-reader>header{padding:.8rem;}.conversation-reader>nav{padding:.3rem .8rem;gap:.3rem .8rem;}.conversation-reader .public-speaker-header{flex-wrap:wrap;}.conversation-reader blockquote{font-size:.925rem;}}

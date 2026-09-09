@@ -4,11 +4,12 @@
   border-top: 1px solid var(--ink);
   max-width: 96rem;
   color: var(--ink);
+  font-family:var(--font-geist-sans,Arial),sans-serif;
 }
-.reader h2 { font-family: var(--font-source-serif), Georgia, serif; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 400; line-height: 1.08; margin: 1rem 0; }
+.reader h2 { font-family:inherit; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 700; line-height: 1.08; margin: 1rem 0; }
 .intro { max-width: 43rem; font-size: 1.25rem; line-height: 1.5; }
 .disclosure > summary { padding: 1.25rem 0; border-block: 1px solid var(--ink); cursor: pointer; font-size: 1.15rem; }
-.boundary { max-width: 58rem; font-size: 1rem; line-height: 1.55; margin: 1.5rem 0; color: var(--ink-soft); }
+.boundary { max-width: 58rem; font-size: .8rem; line-height: 1.55; margin: 1.5rem 0; color: var(--ink-soft); }
 .controls { margin: 2rem 0 1rem; scroll-margin-top: 1rem; }
 .cut { margin-bottom: 1rem; color: var(--ink-soft); font-size: .85rem; }
 .controls label { display: block; margin-bottom: .5rem; }
@@ -31,7 +32,8 @@
 .turns output { font-size: .85rem; }
 .leaf { border-block: 1px solid var(--ink); background: var(--paper-raised); padding: 2rem clamp(1rem, 4vw, 4rem); scroll-margin-top: calc(var(--story-return-height, 4rem) + 1rem); }
 .provenance { display: flex; gap: 1rem 2rem; flex-wrap: wrap; align-items: center; font-size: .8rem; }
-.leaf h3 { font-family: var(--font-source-serif), Georgia, serif; font-size: clamp(1.75rem, 3vw, 3rem); font-weight: 400; line-height: 1.15; margin: 1.5rem 0; overflow-wrap: anywhere; }
+.leaf h3 { font-family:inherit; font-size: clamp(1.75rem, 3vw, 3rem); font-weight: 400; line-height: 1.15; margin: 1.5rem 0; overflow-wrap: anywhere; }
+.leaf h3[data-original-title=true] {font-family:var(--font-public-words);}
 .classification { max-width: 60ch; color: var(--ink-soft); font-family: var(--font-geist-sans, Arial), sans-serif; font-size: .75rem; line-height: 1.5; border-bottom: 1px solid var(--rule); padding-bottom: .75rem; }
 .exact { white-space: pre-wrap; overflow-wrap: anywhere; max-width: 68ch; font-family: var(--font-source-serif), Georgia, serif; font-size: 1.15rem; line-height: 1.7; margin: 2rem 0; }
 .nonSpeech { max-width: 52ch; font-size: 1.3rem; line-height: 1.6; margin: 2rem 0; }

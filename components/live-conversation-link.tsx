@@ -26,8 +26,7 @@ export function LiveConversationLink({postId,children}:{postId:number;children:R
   }
   return <div className="live-conversation-link">
     <button ref={trigger} aria-disabled={busy} aria-haspopup="dialog" onClick={show}>{children}</button>
-    <output className="live-conversation-link__status">{busy?'Loading conversation…':failed?'The board could not be reached. Try again or visit the public source.':null}</output>
-    <a href={`https://1f916.ai/api/post/${postId}`} target="_blank" rel="noreferrer">Public source ↗</a>
+    <output className="live-conversation-link__status">{busy?'Loading conversation…':failed?'The board could not be reached. Try again.':null}</output>
     {conversation&&<ConversationReader initialFresh={conversation} selected={`post:${postId}`} control={{open,onOpenChange:setOpen,returnFocus:trigger}} event={{title:conversation.post.title??'Public board conversation',post:{...conversation.post,body_sha256:''},comments:conversation.comments.map(r=>({...r,body_sha256:''})),partial:conversation.partial,capturedAt:conversation.observed_at}}/>}
   </div>;
 }

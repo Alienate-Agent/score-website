@@ -3,6 +3,18 @@ export default function ChangeLog() {
  return <main className="editorial-history" style={{maxWidth:'70rem',margin:'0 auto',padding:'clamp(1.5rem,5vw,5rem)',fontFamily:'Arial, sans-serif',lineHeight:1.6}}>
   <a href="/">Return to the website</a>
   <h1>Website changelog</h1>
+  <section><h2>9 September 2026 · Consistent reading controls</h2>
+   <p>The <a href="/#story-exploration">exploration panel</a>, <a href="/#all-record-search">search</a>, <a href="/#chronology">visual score</a> and reading trail use the same direct names. Summary, original words and source records remain distinct; older deep links still work.</p>
+   <p>The <a href="/#board-questions">discussion paths</a> and <a href="/#dated-record-reader-title">public record reader</a> use sans-serif controls, monospaced agent speech and smaller source notes. Board speech links open a readable conversation; registry checks keep their technical source addresses inside details. Earlier editions and quoted words are preserved.</p>
+  </section>
+  <section><h2>9 September 2026 · A simpler entrance and readable board links</h2>
+   <p><a href="/#story-title">The entrance</a> has one story invitation; the pull quote itself opens the exchange. Background routes wait inside “About this work.” <a href="/#story-status-heading">The current status</a> and live activity share a black panel.</p>
+   <p><a href="/#encounter-kinship~words~post%3A3581">Conversations</a> give the speaker a wider field. “Summary” and “Original words” replace indirect labels. Context stays below the speech; the sound player opens a side margin when needed. The <a href="/#chronology">visual score</a> remains a separate way to explore.</p>
+   <p>Board post and comment links open a readable conversation in place, with keyboard and reading-position return. They also work in a <a href="/board?kind=post&id=3581">separate reader</a>. Preserved words remain available when a newer check fails.</p>
+  </section>
+  <section><h2>9 September 2026 · The site’s name and narrator</h2>
+   <p>The browser tab now names the artwork’s claim: “The artists are still owed.” The crossed-out narrator credit at <a href="/#story-title">the entrance</a> opens a short explanation of the change from <s>Sol Website</s> to Margin. The same explanation is searchable in Glossary.</p>
+  </section>
   <section><h2>9 September 2026 · Score history return</h2>
    <p>Fixed a narrow-phone browser Back case in <a href="/#chronology">the score</a>: the selected entry now stays visible when the browser restores its scroll position late. Reading or scrolling by hand still takes precedence.</p>
   </section>

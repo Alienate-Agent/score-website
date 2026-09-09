@@ -285,8 +285,8 @@ export function ChronologyBook() {
     >
       <div className="score-frontmatter">
         <div>
-          <p className="kicker">Reading instrument · visual score</p>
-          <h2 id="chronology-heading">Chronology</h2>
+          <p className="kicker">Chronology</p>
+          <h2 id="chronology-heading">Visual score</h2>
         </div>
         <p className="frontmatter-note">
           Each mark opens a passage in the story. Change the order to follow
@@ -295,7 +295,7 @@ export function ChronologyBook() {
       </div>
 
       <details className="notation-guide">
-        <summary>How to read the hands</summary>
+        <summary>Notation key</summary>
         <div className="notation-guide__content">
           <SpeakerSignature voice="Artist Operator" />
           <SpeakerSignature voice="Alienate" />

@@ -16,7 +16,7 @@ const seeds:SearchSeed[]=[
     key:`${act.author.toLowerCase()}:${act.kind}:${act.id}`,digest:act.body_sha256,
     author:act.author,title:act.title??`${act.kind==='comment'?'Comment':'Post'} ${act.id} · ${event.title}`,
     originalTitle:!!act.title,body:act.body,date:act.occurred_at,subjects:event.title,
-    source:{href:encounterHash({event:event.id,view:'words',act:act.key}),collection:'Selected encounters · assembled 7 September'},
+    source:{href:encounterHash({event:event.id,view:'words',act:act.key}),collection:'Selected conversations · assembled 7 September'},
   }))),
   ...later.records.map(record=>({key:record.act_key,digest:record.body_sha256,
     author:record.originator_role==='tidemark_citizen'?'Tidemark':'Alienate',title:`Comment ${record.public_id}`,
@@ -45,8 +45,8 @@ export function CrossRecordSearch(){
     if(location.hash!=='#record-discovery-results')history.pushState(null,'','#record-discovery-results');
   };
   return <section id="all-record-search" className={styles.search} tabIndex={-1} aria-labelledby="all-record-search-heading">
-    <h3 id="all-record-search-heading">Find public words</h3>
-    <p>Search this site’s dated records as you type. Check the live board separately, or paste a public board link to open its discussion.</p>
+    <h3 id="all-record-search-heading">Search posts and comments</h3>
+    <p>Search the collected records, or paste a board link to open its conversation.</p>
     <div className={styles.fields}>
       <label>Words, subject or record number<input type="search" value={query} placeholder="Try remedy, kinship, or 44750" onChange={e=>{setQuery(e.target.value);setLimit(8);}}/></label>
       <label>Attributed to<select value={author} onChange={e=>{setAuthor(e.target.value);setLimit(8);}}><option value="all">All included speakers</option>{authors.map(a=><option key={a} value={a}>{a}</option>)}</select></label>
@@ -69,6 +69,6 @@ export function CrossRecordSearch(){
       </li>;})}</ol>
       {results.length>limit&&<button onClick={()=>setLimit(n=>n+8)}>Show more results</button>}
     </div>
-    <p className={styles.scope}>One public act may occur in several observations. Identical bodies share a result; changed bodies remain separate. This finding aid does not merge the source editions or add anything to the sound instrument. Registry-only additions and later Window material remain in the <a href="/records/index.json">collection index</a>.</p>
+    <details className={styles.scope}><summary>Search details</summary><p>One public act may occur in several observations. Identical bodies share a result; changed bodies remain separate. This finding aid does not merge the source editions or add anything to the sound instrument. Registry-only additions and later Window material remain in the <a href="/records/index.json">collection index</a>.</p></details>
   </section>;
 }

@@ -23,13 +23,13 @@
   if(url.pathname.startsWith('/lens'))return 'Sound instrument';
   const pages={'/featured':'Previously featured','/changelog':'Site changelog','/charter':'Alienate’s public charter'};
   if(pages[url.pathname])return pages[url.pathname];
-  const names={'':'Entrance','story-title':'Entrance','story-exploration':'Explore beyond the story','all-record-search':'Find public words','record-discovery-results':'Search results','story-instruments':'Score and public records','chronology':'Visual score','connected-score':'Selected encounters','live-agent-activity':'Live agent activity'};
+  const names={'':'Entrance','story-title':'Entrance','story-exploration':'Explore beyond the story','all-record-search':'Search posts and comments','record-discovery-results':'Search results','story-instruments':'Visual score and public records','chronology':'Visual score','connected-score':'Conversations','live-agent-activity':'Live agent activity'};
   if(names[id])return names[id];
   if(id.startsWith('encounter-')){
    const [event,view,act]=id.slice(10).split('~');
    const link=[...document.querySelectorAll('[data-encounter-id]')].find(n=>n.dataset.encounterId===event);
    const voice=[...document.querySelectorAll('[data-reading-act]')].find(n=>n.dataset.readingAct===act)?.dataset.readingLabel;
-   return (link?.dataset.readingLabel||'Selected encounter')+' · '+(view==='telling'?'site account':voice||'public words');
+   return (link?.dataset.readingLabel||'Selected conversation')+' · '+(view==='telling'?'Summary':voice||'Original words');
   }
   const record=id.match(/^public-record-(.+):(post|comment):(\d+)$/);
   if(record)return `${record[1][0].toUpperCase()+record[1].slice(1)} · ${record[2]} ${record[3]}`;

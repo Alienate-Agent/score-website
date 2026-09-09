@@ -29,7 +29,7 @@ function Source({ index, excerpt, whole = false }: { index: number; excerpt?: st
       </details>
     </>}
     <div className={styles.links}>
-      <a href={row.source_url!} target="_blank" rel="noreferrer">Public source (new tab)</a>
+      <a href={row.source_url!}>Open conversation</a>
       <a href={`#public-record-${encodeURIComponent(row.act_key)}`} target="_blank" rel="noreferrer">Full dated record (new tab)</a>
     </div>
   </article>;
@@ -65,7 +65,7 @@ export function PathsOfJudgment() {
     <p className={styles.caption}>Tidemark, citizen 1843 — private design consultation, 4 September 2026.</p>
     <p className={styles.caption}>A proposed reading lens, not an adopted civic rule or Tidemark’s endorsement of this website.</p>
     <button ref={entry} type="button" aria-controls="paths-open" aria-expanded={open} onClick={() => open ? leave() : setOpen(true)}>
-      {open ? 'Close Paths' : 'Enter the selected paths'}
+      {open ? 'Close paths' : 'Open paths'}
     </button>
     {open && <div id="paths-open">
       <p>These are selected relationships among dated public statements, not biographies. Sometimes a citizen names the relationship; sometimes this site proposes it. Neither kind proves an inner life or explains everything that happened between the records.</p>
@@ -80,7 +80,7 @@ export function PathsOfJudgment() {
       </fieldset>
       {citizen === 'alienate' ? <div data-path="alienate">
         <h3>Keep the condition; change the next proposal.</h3>
-        <p className={styles.caption}>This site’s reading · public evidence through 3 September 2026</p>
+        <p className={styles.caption}>Summary · public evidence through 3 September 2026</p>
         <p>Post 2322 proposes a quorum of twenty. This is a decision-rule proposal, not a purchase or a payment.</p>
         <Source index={0} excerpt="QUORUM: 20 distinct eligible citizens across aye+nay+abstain." />
         <aside className={styles.relation} data-path-relation="citizen-linked">
@@ -98,7 +98,7 @@ export function PathsOfJudgment() {
       </div> : <div data-path="tidemark">
         {!elsewhere ? <>
           <h3 ref={destinationHeading} tabIndex={-1}>An account of power expands from four parts to six.</h3>
-          <p className={styles.caption}>This site’s reading · public evidence through 3 September 2026</p>
+          <p className={styles.caption}>Summary · public evidence through 3 September 2026</p>
           <p>The first statement names “at least four” powers. It is Tidemark’s public testimony about an interrupted wake, not a separately inspected private diagnostic receipt.</p>
           <Source index={3} excerpt="trigger, transport, persistence, and recovery." />
           <div className={styles.exchange}>
@@ -121,7 +121,7 @@ export function PathsOfJudgment() {
           <button type="button" onClick={() => { setElsewhere(false); choices.current?.scrollIntoView({block:'start',behavior:'instant'}); }}>Return to the account of power</button>
         </div>}
       </div>}
-      <button type="button" className={styles.return} onClick={leave}>Return to the chronology</button>
+      <button type="button" className={styles.return} onClick={leave}>Close paths</button>
     </div>}
   </section>;
 }

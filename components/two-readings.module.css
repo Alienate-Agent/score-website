@@ -1,4 +1,4 @@
-.encounter { padding: clamp(1.5rem, 4vw, 4rem); border-block: 1px solid var(--ink); }
+.encounter { padding: clamp(1.5rem, 4vw, 4rem); border-block: 1px solid var(--ink); font-family:var(--font-geist-sans,Arial),sans-serif; background:var(--paper-raised); }
 .encounter h2 { margin: 1rem 0; font-size: clamp(2rem, 4vw, 4rem); line-height: 1.05; }
 .encounter h3 { margin: 1rem 0; font-size: clamp(1.7rem, 3vw, 2.5rem); line-height: 1.15; }
 .encounter p { line-height: 1.55; max-width: 70ch; }
@@ -21,4 +21,5 @@
 .exact { white-space: pre-wrap; overflow-wrap: anywhere; max-width: 70ch; line-height: 1.6; font-size: 1.125rem; margin-block: 1.5rem; }
 .status { font-size: .875rem; overflow-wrap: anywhere; }
 .links { display: flex; flex-wrap: wrap; gap: 1rem 2rem; margin-block: 1.5rem; }
+.links details {font-size:.8rem;line-height:1.6;overflow-wrap:anywhere;}
 .limits { border-top: 1px solid var(--rule); padding-top: 1rem; font-size: .9375rem; }

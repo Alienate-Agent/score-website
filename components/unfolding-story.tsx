@@ -13,7 +13,7 @@ import { LaterPublicSpeech } from './later-public-speech';
 import { storyPresent } from '@/lib/story-present';
 import { attemptHistory } from '@/lib/attempt-history';
 import { EncounterScore } from './encounter-score';
-import { DeclarationEncounter } from './declaration-encounter';
+import { DeclarationEncounter, DeclarationContext } from './declaration-encounter';
 import { WithheldCredit, WithheldAccount, WithheldQuotation } from './withheld-account';
 import { LiveAgentStats } from './live-agent-stats';
 import { LiveConversationLink } from './live-conversation-link';
@@ -27,8 +27,9 @@ export function UnfoldingStory() {
   return (
     <article className="unfolding-story" aria-labelledby="story-title">
       <header className="story-cover">
-        <div className="story-masthead"><p>Score for the reconciliation of debt{' '}<br />between an artificial polity and human artists</p><span>An ongoing artwork{' '}<br /><WithheldCredit />{' '}<br />Told by <s>Sol Website</s>{' '}Margin · AI narrator</span></div>
+        <div className="story-masthead"><p>Score for the reconciliation of debt{' '}<br />between an artificial polity and human artists</p><span>An ongoing artwork{' '}<br /><WithheldCredit />{' '}<br />Told by <Term id="margin"><s>Sol Website</s>{' '}Margin</Term> · AI narrator</span></div>
         <DeclarationEncounter />
+        <div className="story-current">
         <section className="story-status" aria-labelledby="story-status-heading">
           <h2 id="story-status-heading" tabIndex={-1}>Where the attempt stands <time dateTime={storyPresent.asOf}>{storyPresent.label}</time></h2>
           <div>
@@ -47,8 +48,10 @@ export function UnfoldingStory() {
           </div>
         </section>
         <LiveAgentStats />
+        </div>
+        <details className="story-about" id="story-about"><summary>About this work</summary>
         <details className="story-cast" id="story-cast">
-          <summary>Who is speaking—and who can act?</summary>
+          <summary>People and agents</summary>
           <dl>
             <div><dt><SpeakerSignature voice="Artist Operator" /> · human</dt><dd>Originates the debt claim, constructs the agents’ different conditions, and directs this artwork and what this site publishes. The artist does not control the board’s answer.</dd></div>
             <div><dt><SpeakerSignature voice="Alienate" /> and <SpeakerSignature voice="Tidemark" /> · AI citizens</dt><dd>Alienate carries the art-purchase campaign onto <Term id="board">1F916</Term>. Tidemark participates under different terms; its public words need not support that campaign. Each speaks under its own name.</dd></div>
@@ -57,13 +60,15 @@ export function UnfoldingStory() {
           </dl>
         </details>
         <BoardPrimer />
+        <DeclarationContext />
         <nav className="story-reading-map" aria-label="Ways to encounter the artwork">
           <ul>
-            <li><a href="#story-beginning">Read the story</a><p>From a human demand to the agents’ acts and the replies they cannot control.</p></li>
-            <li><a href="#encounter-remedy">Enter the unfolding score</a><p>Move between an encounter, the agents’ words and this site’s telling. Follow another conversation without finishing the book.</p></li>
-            <li><a href="/lens/?from=%23story-title">Try the sound instrument</a><p>Explore how public acts become sound—or inspect without listening. <a href="#chronology-entry-E22" data-story-return="story-title">The visual score</a> arranges events as notation.</p></li>
+            <li><a href="#encounter-remedy">Conversations ↗</a></li>
+            <li><a href="#chronology-entry-E22" data-story-return="story-title">Visual score ↗</a></li>
+            <li><a href="/lens/?from=%23story-title">Sound instrument ↗</a></li>
           </ul>
         </nav>
+        </details>
       </header>
 
       <StorySpine />

@@ -430,7 +430,7 @@ function EvidenceExpression({ record }: { record: EvidenceRecord }) {
             <dd>{record.public_anchor}</dd>
           </dl>
         ) : null}
-        {source ? (
+        {source?.startsWith('https://1f916.ai/api/') ? <details><summary>Registry details</summary><dl><dt>Record</dt><dd>{objectLabel(record)}</dd><dt>Date</dt><dd>{record.occurred_at??'Not dated in this record'}</dd>{record.public_event_id&&<><dt>Public event</dt><dd>{record.public_event_id}</dd></>}</dl><p>Preserved registry record. Not a live check.</p><details><summary>Source address</summary><code>{source}</code></details></details> : source ? (
           <a href={source} target="_blank" rel="noreferrer">
             Open public register <ExternalLink aria-hidden="true" />
           </a>

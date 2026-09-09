@@ -16,10 +16,10 @@ export function ReadingNavigation(){
    setEntry(heading?{id:heading.id,text:heading.textContent||''}:null);
    if(!title||title.getBoundingClientRect().top>limit){setSection('');return;}
    const areas=[...document.querySelectorAll<HTMLElement>('[data-story-fold],#connected-score,#story-exploration,#story-instruments')].filter(e=>e.getClientRects().length&&e.getBoundingClientRect().top<=limit+120&&e.getBoundingClientRect().bottom>limit);
-   const area=areas.at(-1);setSection(area?.id==='connected-score'?'ENCOUNTERS':area?.id==='story-instruments'?'SCORE & PUBLIC RECORDS':area?.id==='story-exploration'?'EXPLORE':'THE STORY SO FAR S…');
+   const area=areas.at(-1);setSection(area?.id==='connected-score'?'CONVERSATIONS':area?.id==='story-instruments'?'SCORE & PUBLIC RECORDS':area?.id==='story-exploration'?'EXPLORE':'THE STORY SO FAR S…');
   };
   const schedule=()=>{if(!frame)frame=requestAnimationFrame(update);};
-  const reveal=()=>{let target:Element|null=null;try{target=document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch{}if(target?.closest('[data-story-fold]'))setCollapsed(false);schedule();};
+  const reveal=()=>{let target:Element|null=null;try{target=document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch{}if(target?.closest('[data-story-fold]'))setCollapsed(false);for(let node:Element|null=target;node;node=node.parentElement)if(node instanceof HTMLDetailsElement)node.open=true;schedule();};
   window.addEventListener('hashchange',reveal);window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule);reveal();
   const observer=new ResizeObserver(()=>{document.documentElement.style.setProperty('--reading-navigation-height',`${bar.current?.offsetHeight||0}px`);schedule();});if(bar.current)observer.observe(bar.current);
   return()=>{observer.disconnect();cancelAnimationFrame(initialFrame);cancelAnimationFrame(frame);window.removeEventListener('hashchange',reveal);window.removeEventListener('scroll',schedule);window.removeEventListener('resize',schedule);};

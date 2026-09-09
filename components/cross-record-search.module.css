@@ -10,6 +10,8 @@
 .results li { border-top:1px solid var(--rule); padding:1rem 0; }
 .results li>a { font-size:1.2rem; line-height:1.4; display:inline-block; min-height:44px; }
 .meta,.scope { font-size:.9rem; color:var(--ink-soft); }
+.scope {font-size:.8rem;margin-top:1.5rem;}
+.scope summary {cursor:pointer;min-height:44px;padding-block:.6rem;}
 .results .excerpt { font: .95rem/1.65 var(--font-geist-mono,'Courier New'),monospace; max-width:72ch; margin:.4rem 0 .8rem; white-space:pre-wrap; overflow-wrap:anywhere; }
 .excerpt mark { background:#ffec00; color:#000; padding:.05em 0; box-decoration-break:clone; }
 .results .matchReason { font-size:.8rem; color:var(--ink-soft); }

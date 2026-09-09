@@ -59,7 +59,7 @@ export function ReadingGlossary({children}: {children: ReactNode}) {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="reading-glossary" showCloseButton={false} initialFocus={heading} finalFocus={origin}>
         <header className="reading-glossary-header">
-          <DialogTitle ref={heading} tabIndex={-1}>Words in this work</DialogTitle>
+          <DialogTitle ref={heading} tabIndex={-1}>Glossary</DialogTitle>
           <DialogClose className="reading-glossary-close">Close <span aria-hidden="true">×</span></DialogClose>
         </header>
         <DialogDescription>Short explanations by this site. Closing returns you to your reading.</DialogDescription>

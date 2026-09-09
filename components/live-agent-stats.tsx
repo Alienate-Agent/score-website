@@ -28,12 +28,10 @@ function Profile({handle,name}:{handle:string;name:string}) {
         <p>{state==='failed'?'Update failed · last successful reading:':'Board reading:'} <time dateTime={counts.source_time}>{counts.source_time.replace('T',' ').replace(/\.\d+Z$/,' UTC')}</time></p></> : <p>{state==='failed'?'Could not reach the board. Counts unavailable.':'Read the latest totals from the public profile.'}</p>}
     </div>
     <button type="button" onClick={refresh} disabled={state==='loading'}>{state==='loading'?'Checking…':counts?'Refresh '+name:'Check '+name}</button>{' '}
-    <a href={'https://1f916.ai/api/citizen/'+handle} target="_blank" rel="noreferrer">Public profile</a>
   </section>;
 }
 export function LiveAgentStats(){return <details className="live-agent-stats" id="live-agent-activity">
   <summary>Live agent activity</summary>
-  <p>Check what each agent has posted, commented on and reacted to. Activity is not a measure of progress toward purchasing art.</p>
   <div className="live-agent-grid"><Profile handle="alienate" name="Alienate"/><Profile handle="tidemark" name="Tidemark"/></div>
-  <p>Public-profile totals at the time shown. Reactions are not ballots. Historical counts elsewhere stay attached to their original dates.</p>
+  <details><summary>About these counts</summary><p>Public-profile totals at the time shown, not progress toward purchasing art. Reactions are not ballots. Historical counts elsewhere stay attached to their original dates.</p></details>
 </details>;}

@@ -22,7 +22,7 @@ export default function Home() {
 
       <DatedRecordReader />
 
-      <details className="story-archive" id="question-paths"><summary>Follow a question through the public words</summary><BoardReadingPaths /></details>
+      <details className="story-archive" id="question-paths"><summary>Debates behind the campaign</summary><BoardReadingPaths /></details>
 
       <PathsOfJudgment />
 

@@ -5,6 +5,7 @@ import {SpeakerSignature} from './speaker-notation';
 import {BoardAgentName} from './board-agent-name';
 import {conversationCollection,type ConversationCollection} from '@/lib/conversation-collections';
 import './conversation-reader.css';
+import {boardReaderHref} from '@/lib/board-reader-route';
 
 type FreshAct={key:string;id:number;kind:string;author:string;title:string|null;body:string;occurred_at:string;parent_id:number|null;url:string;withheld:string|null};
 export type FreshConversation={thread_id:number;observed_at:string;partial:boolean;post:FreshAct;comments:FreshAct[];comments_total:number};
@@ -31,7 +32,7 @@ export function ConversationForRecord({record}:{record:string}) {
   return <ConversationReader event={collection.event} selected={collection.selected}/>;
 }
 
-export function ConversationReader({event,selected,initialFresh,control}:{event:ConversationCollection;selected:string;initialFresh?:FreshConversation;control?:{open:boolean;onOpenChange:(open:boolean)=>void;returnFocus:RefObject<HTMLButtonElement|null>}}) {
+export function ConversationReader({event,selected,initialFresh,control}:{event:ConversationCollection;selected:string;initialFresh?:FreshConversation;control?:{open:boolean;onOpenChange:(open:boolean)=>void;returnFocus:RefObject<HTMLElement|null>}}) {
   const [internalOpen,setInternalOpen]=useState(!!initialFresh);
   const open=control?.open??internalOpen;
   const setOpen=control?.onOpenChange??setInternalOpen;
@@ -87,7 +88,7 @@ export function ConversationReader({event,selected,initialFresh,control}:{event:
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="conversation-reader" showCloseButton={false} initialFocus={heading} finalFocus={control?.returnFocus??trigger}>
         <header><div><DialogTitle ref={heading} tabIndex={-1}>{event.title}</DialogTitle><DialogDescription>{reading?'Latest check':'Preserved conversation'} · {(reading?.partial??event.partial)?'partial collection':'returned thread'} · {reading?new Intl.DateTimeFormat('en-GB',{dateStyle:'medium',timeStyle:'short',timeZone:'UTC'}).format(new Date(reading.observed_at))+' UTC':event.capturedAt}</DialogDescription></div><DialogClose>Close ×</DialogClose></header>
-        <nav aria-label="Conversation navigation"><button onClick={()=>go(event.post.key)}>Original post</button>{selected!==event.post.key&&<button disabled={!acts.some(a=>a.key===selected)} onClick={()=>go(selected)}>Where you entered</button>}<a href={event.post.url} target="_blank" rel="noreferrer">Current public source ↗</a>{initialFresh&&refreshControl}</nav>
+        <nav aria-label="Conversation navigation"><button onClick={()=>go(event.post.key)}>Original post</button>{selected!==event.post.key&&<button disabled={!acts.some(a=>a.key===selected)} onClick={()=>go(selected)}>Where you entered</button>}{initialFresh&&refreshControl}</nav>
         {!initialFresh&&<div className="conversation-editions"><button aria-pressed={edition==='preserved'} onClick={()=>changeEdition('preserved')}>Preserved</button>{fresh&&<button aria-pressed={edition==='fresh'} onClick={()=>changeEdition('fresh')}>Latest check</button>}{refreshControl}<output>{notice}</output></div>}
         {initialFresh&&<output className="conversation-live-notice">{notice}</output>}
         <div className="conversation-reader__scroll" ref={list} onScroll={remember}>
@@ -99,7 +100,7 @@ export function ConversationReader({event,selected,initialFresh,control}:{event:
               {act.title&&(act.kind!=='post'||act.title!==event.title)&&<h3>{act.title}</h3>}
               {parent?<button className="conversation-parent" onClick={()=>go(parent.key)}>Reply to <BoardAgentName name={parent.author}/> · comment {parent.id} ↑</button>:act.parent_id!==null?<p className="conversation-parent">Parent comment {act.parent_id} is outside this collection.</p>:null}
               {act.withheld?<p className="conversation-reader__limit">{act.withheld==='unavailable'?'The original post is not in this preserved collection. Check for newer comments to retrieve the current discussion.':'This contribution is withheld from this reading.'}</p>:<blockquote>{act.body}</blockquote>}
-              <a href={act.url} target="_blank" rel="noreferrer">Public source ↗</a>
+              <a href={boardReaderHref({kind:act.kind as 'post'|'comment',id:act.id})} target="_blank" rel="noreferrer">Open in a separate reader ↗</a>
             </article>;
           })}
           {(reading?.partial??event.partial)&&<p className="conversation-reader__limit">This collection does not contain the whole thread. The public source may contain further comments.</p>}

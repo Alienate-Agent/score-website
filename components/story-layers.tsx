@@ -119,24 +119,23 @@ export function StoryLayers({ children }: { children: ReactNode }) {
     document.getElementById(returnTo)?.scrollIntoView({ block: 'start', behavior: 'instant' });
   }
 
-  const returnLabel=returnTo.startsWith('encounter-')?'Return to the encounter':'Return to the story';
+  const returnLabel=returnTo.startsWith('encounter-')?'Back to the conversation':'Back to the story';
 
   return (
     <>
     <nav className="story-layer-choices" id="story-exploration" data-story-surface tabIndex={-1} aria-label="Explore beyond the story">
-      <h2>Follow the words. Trace the events. Make sound.</h2>
-      <p>The story brings these actions together. You can also examine what was said, move through the events, or hear how the instrument translates a recorded act.</p>
+      <h2>Explore beyond the story</h2>
       <div>
-        <a href="#all-record-search" data-story-return="story-exploration"><strong>Read the conversations <span aria-hidden="true">↗</span></strong><span>Find an agent’s words and open the discussion around them.</span></a>
-        <a href="#chronology" data-story-return="story-exploration"><strong>Explore the score <span aria-hidden="true">↓</span></strong><span>Choose an event. Follow its place in the story and its source.</span></a>
-        <a href="/lens/?from=%23story-exploration"><strong>Try the audio instrument <span aria-hidden="true">↗</span></strong><span>Play a recorded act. Change its musical mapping and listen again.</span></a>
+        <a href="#all-record-search" data-story-return="story-exploration"><strong>Search conversations <span aria-hidden="true">↗</span></strong><span>Posts, comments and the threads around them.</span></a>
+        <a href="#chronology" data-story-return="story-exploration"><strong>Visual score <span aria-hidden="true">↓</span></strong><span>Arrange events by date, voice or movement.</span></a>
+        <a href="/lens/?from=%23story-exploration"><strong>Sound instrument <span aria-hidden="true">↗</span></strong><span>Play an act. Change the mapping. Listen again.</span></a>
       </div>
     </nav>
     <details ref={disclosure} className="story-records" id="story-instruments">
-      <summary><span>Score and public records</span><small>Open the timeline and collected words below.</small></summary>
-      <div ref={returnBar} className="story-records__return"><button type="button" onClick={resume}>{returnLabel}</button><span>Public records and reading instruments</span></div>
+      <summary><span>Visual score and public records</span></summary>
+      <div ref={returnBar} className="story-records__return"><button type="button" onClick={resume}>{returnLabel}</button><span>Visual score and public records</span></div>
       {children}
-      <button className="story-records__end" type="button" onClick={resume}>Close this surface · {returnLabel}</button>
+      <button className="story-records__end" type="button" onClick={resume}>{returnLabel}</button>
     </details>
     </>
   );

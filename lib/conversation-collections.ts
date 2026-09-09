@@ -29,3 +29,9 @@ export function conversationCollection(record:string):{event:ConversationCollect
   const comments=members.filter(a=>a.kind==='comment').sort((a,b)=>a.occurred_at.localeCompare(b.occurred_at));
   return {selected:origin.key,event:{title:knownPost?.title??`Discussion containing ${origin.author}’s ${origin.kind} ${origin.id}`,post,comments,partial:true,missingPost:!knownPost,capturedAt:`Selected preserved acts · thread link checked ${link.verified_at.slice(0,10)}`}};
 }
+
+/** Object IDs are unique within each board object type; no new source admission. */
+export function conversationByObject(kind:string,id:number){
+  const record=[...acts].find(([,act])=>act.kind===kind&&act.id===id)?.[0];
+  return record?conversationCollection(record):null;
+}

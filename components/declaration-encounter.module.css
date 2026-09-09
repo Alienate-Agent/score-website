@@ -22,6 +22,10 @@
 .stage .premise :global(.reading-term){display:inline;min-height:0;padding:0;font:inherit;color:inherit;text-decoration:underline dotted;text-underline-offset:.2em;}
 .stage svg,.afterword svg{width:1.1em;height:1.1em;flex-shrink:0;}
 .stage .source{font-size:.78rem;font-weight:400;}
+.stage .quoteLink{display:flex;flex:1;flex-direction:column;align-items:stretch;justify-content:center;padding:0;text-decoration:none;font:inherit;}
+.quoteLink:hover blockquote{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.18em;}
+.replyNote{display:flex;justify-content:space-between;align-items:center;gap:1rem;font:.8rem/1.5 var(--font-geist-sans,Arial),sans-serif;}
+.rules p{max-width:65ch;margin:1rem 0;font:1rem/1.6 var(--font-geist-sans,Arial),sans-serif;}
 .stage :focus-visible,.afterword :focus-visible{outline:2px solid currentColor;outline-offset:5px;}
 .stage blockquote:focus,.stage h1:focus{outline:none;}
 .remains,.context{font-size:1rem;line-height:1.55;max-width:44ch;}

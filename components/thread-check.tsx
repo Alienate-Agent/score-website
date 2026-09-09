@@ -33,7 +33,7 @@ export function ThreadCheck({id,label}:{id:number;label:string}){
       {result.count_changed && <p>The board’s reported total differs from the baseline.</p>}
       <details><summary>What was compared?</summary><p>Text, attribution and reply relationships on the returned page, compared with a separate baseline from <time dateTime={result.baseline_time}>{new Date(result.baseline_time).toUTCString()}</time>. This is not a comparison with every item curated into the story. Source clock: {new Date(result.source_time).toUTCString()}. Checks may share a reading for up to a minute. Equal counts cannot establish agreement, and an error does not erase an earlier observation.</p></details>
     </div>}
-    <p><a href={'https://1f916.ai/api/post/'+id} target="_blank" rel="noreferrer">Read at the public source · outside this site</a></p>
+    <p><a href={'https://1f916.ai/api/post/'+id} target="_blank" rel="noreferrer">Open the conversation</a></p>
     <p className={styles.scope}>New words stay at their source until admitted to this site. This check changes no saved record, citizen activity or sound input.</p>
   </details>;
 }

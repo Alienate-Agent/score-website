@@ -104,6 +104,21 @@
   .locator .allEncounters{display:flex;font-size:.85rem;min-height:52px;}
 }
 /* A compact locator stays nearby; the complete named chooser opens on demand. */
+.layout{grid-template-columns:minmax(0,1fr);}
+.layout .main{padding-right:0;}
+.layout .margin{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem 2rem;border-left:0;border-top:1px solid var(--rule);padding:1rem 0;}
+.margin>[id=encounter-sound-margin]:empty{display:none;}
+.margin .nearby{margin:0;border:0;}
+.margin .scoreConnection{border:0;margin:0;padding:0;}
+.scoreConnection>summary{cursor:pointer;min-height:44px;padding:.6rem 0;}
+.wordField .sourceLead{font-size:clamp(3rem,6.5vw,6.5rem);line-height:1.04;}
+@media(min-width:801px){
+ .layout:has([data-mini-panel]){grid-template-columns:minmax(0,1fr) minmax(240px,27%);}
+ .layout:has([data-mini-panel]) .main{padding-right:2rem;}
+ .layout:has([data-mini-panel]) .margin{display:block;padding:1.5rem 0 1rem 1.5rem;border-left:1px solid var(--rule);border-top:0;}
+ .layout:has([data-mini-panel]) .sourceLead{font-size:clamp(2.5rem,4vw,4.5rem);}
+}
+@media(max-width:650px){.layout .margin{display:block;}.margin .scoreConnection{margin-top:.5rem;}}
 .mobileLocator{display:flex;align-items:center;justify-content:space-between;gap:.5rem;flex:1;min-width:0;}
 .currentMark{display:flex;align-items:center;gap:.65rem;padding:.45rem .7rem;min-width:0;font-size:.9rem;line-height:1.3;}
 .currentMark>span:first-child{flex-shrink:0;}

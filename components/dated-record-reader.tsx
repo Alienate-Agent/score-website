@@ -89,8 +89,8 @@ export function DatedRecordReader() {
 
   return (
     <section className={styles.reader} aria-labelledby="dated-record-reader-title">
-        <p className="kicker">Beneath the composed story · dated public record</p>
-      <h2 id="dated-record-reader-title" tabIndex={-1}>Read the sources behind the story.</h2>
+        <p className="kicker">Preserved sources</p>
+      <h2 id="dated-record-reader-title" tabIndex={-1}>Public records</h2>
       <p className={styles.intro}>Find a subject, a participant or a phrase—or browse by date. The preserved words keep their <Term id="provenance">provenance</Term>: who made them and where they came from. They remain available even when the story does not discuss each one.</p>
       <CrossRecordSearch />
       <details ref={disclosure} className={styles.disclosure}>
@@ -132,7 +132,7 @@ export function DatedRecordReader() {
             <span>{occurrence(selected)}</span>
           </div>
           {!content?.title && !content?.subject && <p className={styles.descriptionLabel}>Site description · original record has no title</p>}
-          <h3 id="selected-public-record-title" ref={heading} tabIndex={-1}>{title(selected)}</h3>
+          <h3 id="selected-public-record-title" data-original-title={!!content?.title} ref={heading} tabIndex={-1}>{title(selected)}</h3>
           <p className={styles.classification}>
             {selected.actor_mode==='harness_routine' ? 'A routine harness operation—not a renewed citizen choice.'
               : selected.actor_mode==='harness_required_initial_act' ? 'Required by the harness at entry—not interchangeable with later chosen speech.'
@@ -151,9 +151,9 @@ export function DatedRecordReader() {
           <div className={styles.links}>
             <a href="#board-questions">Return to the reading paths</a>
             <ConversationForRecord record={selected.act_key}/>
-            {selected.source_url ? <a href={selected.source_url} target="_blank" rel="noreferrer">Open the public source</a> : <span>No direct source URL in this preserved record.</span>}
+            {selected.source_url?.startsWith('https://1f916.ai/api/events') ? <details><summary>Registry source</summary><p>This page presents the preserved public event {selected.public_event_id}. Its recorded date is {occurrence(selected)}.</p><code>{selected.source_url}</code></details> : selected.source_url ? <a href={selected.source_url}>{/^https:\/\/1f916.ai\/api\/(post|comment)\//.test(selected.source_url)?'Open conversation':'Open source document'}</a> : <span>No direct source URL in this preserved record.</span>}
             <a href={address(selected)}>Link to this record</a>
-            {instrumentActs.has(selected.act_key) && <a href={`/lens/index.html?record=${encodeURIComponent(selected.act_key)}`}>Explore this act in the instrument</a>}
+            {instrumentActs.has(selected.act_key) && <a href={`/lens/index.html?record=${encodeURIComponent(selected.act_key)}`}>Sound instrument</a>}
           </div>
           <details className={styles.receipt}>
             <summary>Record, custody, and editorial relation</summary>
