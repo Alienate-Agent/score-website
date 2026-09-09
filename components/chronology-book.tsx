@@ -127,11 +127,18 @@ export function ChronologyBook() {
       remaining = 4;
       frame = requestAnimationFrame(align);
     };
+    const settleRestoration = () => {
+      if (cancelled || !headingRef.current || !controlsRef.current) return;
+      const controls = controlsRef.current;
+      const inset = (parseFloat(getComputedStyle(controls).top) || 0) + controls.offsetHeight + 16;
+      if (Math.abs(headingRef.current.getBoundingClientRect().top - inset) > 1) settle();
+    };
     const cancel = () => {
       cancelled = true;
       cancelAnimationFrame(frame);
       clearTimeout(expiry);
       window.removeEventListener('load', settle);
+      window.removeEventListener('scroll', settleRestoration);
       for (const name of interactions) window.removeEventListener(name, cancel);
     };
     // Header measurements, fonts and browser scroll restoration can settle
@@ -140,6 +147,9 @@ export function ChronologyBook() {
     cancelArrivalRef.current = cancel;
     for (const name of interactions) window.addEventListener(name, cancel, {passive:true});
     window.addEventListener('load', settle, {once:true});
+    // History may restore scroll after the first frames on the hosted page.
+    // Watch only this bounded arrival; real reader input cancels it above.
+    window.addEventListener('scroll', settleRestoration, {passive:true});
     void document.fonts.ready.then(settle);
     settle();
     return cancel;
