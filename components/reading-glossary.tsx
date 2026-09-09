@@ -52,17 +52,8 @@ export function ReadingGlossary({children}: {children: ReactNode}) {
   return <ReadingHelp.Provider value={{open,ready,show}}><TooltipProvider delay={350}>
     <div className="reading-help-bar" data-claim-passed={claimPassed} ref={readingBar}>
       <a className="reading-top-link" data-claim-passed={claimPassed} href="#story-title">{claimPassed?'The artists are still owed.':'Back to top'} <span aria-hidden="true">↑</span></a>
-      <a className="reading-instrument-link" href="/lens/index.html" onClick={event=>{
-        const hash=window.location.hash;
-        const chapter=document.querySelector<HTMLAnchorElement>('.story-spine a[aria-current="location"]')?.getAttribute('href');
-        const target=document.getElementById(hash.slice(1));
-        const section=target?.closest('section')?.getBoundingClientRect();
-        const namedPassageVisible=!!section&&section.top<innerHeight&&section.bottom>(readingBar.current?.offsetHeight??0);
-        const from=/^#(?:encounter-|public-record-)/.test(hash)||namedPassageVisible?hash:claimPassed?(chapter||hash||'#story-title'):'#story-title';
-        event.currentTarget.href='/lens/index.html?from='+encodeURIComponent(from||'#story-title');
-      }}>Audio instrument</a>
-      <button type="button" className="reading-glossary-launch" disabled={!ready} aria-haspopup="dialog" onClick={event=>show(null,event.currentTarget)}><span className="reading-glossary-lettermark" aria-hidden="true">Aa</span> <span>Glossary</span></button>
     </div>
+    <button type="button" className="reading-glossary-launch" disabled={!ready} aria-haspopup="dialog" onClick={event=>show(null,event.currentTarget)}><span className="reading-glossary-lettermark" aria-hidden="true">Aa</span> <span>Glossary</span></button>
     <ReadingNavigation />
     {children}
     <Dialog open={open} onOpenChange={setOpen}>

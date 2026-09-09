@@ -65,6 +65,25 @@
 .context,.details{border-top:1px solid var(--rule);margin-top:2rem;padding-top:1rem;font-size:.95rem;line-height:1.65;}.context summary,.details summary{padding:.6rem 0;cursor:pointer;min-height:44px;}.context ol{list-style:none;padding:0;}.context li{padding:1.2rem 0;border-top:1px solid var(--rule);}.context li p{margin:.3rem 0;}.details code{overflow-wrap:anywhere;}
 .details,.details :is(summary,p,a,code){font:.75rem/1.6 var(--font-geist-sans,Arial),sans-serif!important;}
 .foot{border-top:1px solid var(--rule);padding:1rem 0;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:1rem;font-size:.95rem;}
+/* The selected words occupy the speaker's field; the narrator is an optional margin. */
+.main[data-view=words] h2{font-size:1rem;letter-spacing:0;font-weight:500;margin:.6rem 0 1rem;}
+.main[data-view=words] .views{margin-bottom:.5rem;}
+.wordField{--field:var(--paper);background:var(--field);color:#000;padding:1rem clamp(1rem,2vw,2rem) 1.5rem;}
+.wordField[data-voice=tidemark],.replyStrip[data-voice=tidemark]{--field:var(--voice-tidemark);}
+.wordField[data-voice=alienate],.replyStrip[data-voice=alienate]{--field:var(--voice-alienate);}
+.wordField .speaker{display:flex;align-items:center;justify-content:space-between;gap:.5rem;flex-wrap:wrap;border:0;margin:0 0 .7rem;padding:0;background:none;}
+.wordField .meta{font:.8rem/1.4 var(--font-geist-mono,monospace);margin:0;}
+.wordField .sourceTitle{font:500 .95rem/1.4 var(--font-geist-mono,monospace);margin:.5rem 0;}
+.conversationEntry{font-size:.85rem;margin:.25rem 0;}
+.wordField .sourceLead{font:650 clamp(2rem,4vw,4rem)/1.1 var(--font-geist-mono,monospace);letter-spacing:-.045em;}
+.wordField .exact{max-width:60ch;}
+.wordField .replyStrip{display:grid;grid-template-columns:1fr auto;background:var(--field);border:1px solid #000;padding:1rem;margin:1.5rem 0 0;gap:.6rem;text-decoration:none;}
+.replyStrip>span{font:.8rem/1.4 var(--font-geist-mono,monospace);grid-column:1/-1;}
+.replyStrip strong{font:600 clamp(1.4rem,2vw,2rem)/1.3 var(--font-geist-mono,monospace);}
+.replyStrip svg{align-self:center;}
+.wordField .actions{font-size:.85rem;}
+.wordField .exchange{position:static;background:transparent;}
+.wordField .addressed{border-color:#0008;}
 @media(min-width:1201px){.foot{padding-right:10rem;}}
 @media(min-width:1400px){.score{margin-left:-10rem;position:relative;}}
 @media(max-width:1050px){.locatorWords>span{font-size:.8rem;}.locator a{gap:.5rem;padding-inline:.6rem;}}
@@ -83,4 +102,28 @@
   .choicePanel a{flex-direction:row;gap:1rem;justify-content:flex-start;padding:.8rem 1rem;}
   .choicePanel .locatorWords>span{display:block;font-size:1rem;line-height:1.35;}
   .locator .allEncounters{display:flex;font-size:.85rem;min-height:52px;}
+}
+/* A compact locator stays nearby; the complete named chooser opens on demand. */
+.mobileLocator{display:flex;align-items:center;justify-content:space-between;gap:.5rem;flex:1;min-width:0;}
+.currentMark{display:flex;align-items:center;gap:.65rem;padding:.45rem .7rem;min-width:0;font-size:.9rem;line-height:1.3;}
+.currentMark>span:first-child{flex-shrink:0;}
+.currentMark h2{font:inherit;font-weight:600;line-height:1.3;margin:0;}
+.locator .choiceToggle{display:flex;align-items:center;gap:.5rem;padding:.5rem .7rem;text-decoration:none;font-size:.85rem;min-height:48px;flex-shrink:0;}
+.choiceToggle:focus-visible{outline-offset:-4px;}
+.choiceToggle[aria-expanded=true] svg{transform:rotate(180deg);}
+.choicePanel{display:none;position:absolute;top:100%;left:0;right:0;max-height:min(28rem,calc(100svh - var(--help-offset) - 5rem));overflow-y:auto;overscroll-behavior:contain;background:var(--paper);border:1px solid var(--ink);box-shadow:0 8px 16px #0002;}
+.locator[data-choices-open=true] .choicePanel{display:block;}
+.choicePanel ol{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));}
+.choicePanel li{border-right:0;border-bottom:1px solid var(--rule);}
+.choicePanel a{flex-direction:row;gap:1rem;justify-content:flex-start;padding:.8rem 1rem;}
+.choicePanel .locatorWords>span{display:block;font-size:1rem;line-height:1.35;}
+.locator .allEncounters{display:flex;font-size:.85rem;min-height:48px;}
+@media(max-width:650px){
+ .score{padding-inline:1rem;}
+ .choicePanel ol{display:block;}
+ .currentMark{font-size:.8rem;padding:.4rem;gap:.35rem;}
+ .locator .choiceToggle{font-size:.75rem;padding:.5rem;gap:.3rem;}
+ .wordField{padding:1rem;}
+ .wordField .sourceLead{font-size:2.35rem;}
+ .main[data-view=words] .views{gap:1rem;font-size:.9rem;}
 }

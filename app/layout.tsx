@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import './public-voices.css';
+import {ReadingReturnReady} from '@/components/reading-return-ready';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -28,6 +29,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
+        <ReadingReturnReady />
         <script src="/engagement.js" defer />
         <script src="/reading-return.js" defer />
       </body>

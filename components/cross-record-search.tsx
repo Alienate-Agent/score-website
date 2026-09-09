@@ -6,8 +6,10 @@ import later from '@/public/records/later-public-speech-2026-09-05.json';
 import {encounters,encounterHash} from '@/lib/encounters';
 import {recordLabel,recordSubjects} from '@/lib/record-discovery';
 import {indexRecords,searchRecords,type SearchSeed} from '@/lib/cross-record-search';
+import {searchExcerpt,matchedFields} from '@/lib/search-excerpt';
 import styles from './cross-record-search.module.css';
 import {LiveBoardSearch} from './live-board-search';
+import {BoardAgentName} from './board-agent-name';
 
 const seeds:SearchSeed[]=[
   ...encounters.flatMap(event=>[event.post,...event.comments].map(act=>({
@@ -53,12 +55,18 @@ export function CrossRecordSearch(){
     <div id="record-discovery-results" tabIndex={-1} className={styles.results}>
       <output>{active?`${results.length} matching record${results.length===1?'':'s'}.`:`${records.length} distinct record versions indexed. Showing the most recent first.`}</output>
       {!results.length&&<p>No match in these collections. Try fewer words or another speaker.</p>}
-      <ol>{results.slice(0,limit).map(r=><li key={r.identity}>
-        <p className={styles.meta}>{r.author} · {r.date?r.date.slice(0,10):'Individual time unavailable'} · {r.originalTitle?'Original title':'Site description'}</p>
+      <ol>{results.slice(0,limit).map(r=>{const excerpt=searchExcerpt(r.body,query);const fields=!excerpt.bodyMatched&&query.trim()?matchedFields(r,query):[];return <li key={r.identity}>
+        <p className={styles.meta}><BoardAgentName name={r.author}/> · {r.date?r.date.slice(0,10):'Individual time unavailable'} · {r.originalTitle?'Original title':'Site description'}</p>
         <a href={r.sources[0].href} onClick={remember}>{r.title}</a>
+        {r.body&&<blockquote className={styles.excerpt} aria-label={`Excerpt from ${r.author}`}>
+          {excerpt.before&&<span aria-label="Earlier words omitted">… </span>}
+          {excerpt.parts.map((part,i)=>part.match?<mark key={i}>{part.text}</mark>:<span key={i}>{part.text}</span>)}
+          {excerpt.after&&<span aria-label="Further words omitted"> …</span>}
+        </blockquote>}
+        {!!fields.length&&<p className={styles.matchReason}>Matched {fields.join(' / ')}{r.body?', not the quoted words.':'. No text body in this record.'}</p>}
         <p className={styles.meta}>{r.sources[0].collection}</p>
         {r.sources.length>1&&<details><summary>Also preserved in another collection</summary>{r.sources.slice(1).map(s=><p key={s.href}><a href={s.href} onClick={remember}>{s.collection}</a></p>)}</details>}
-      </li>)}</ol>
+      </li>;})}</ol>
       {results.length>limit&&<button onClick={()=>setLimit(n=>n+8)}>Show more results</button>}
     </div>
     <p className={styles.scope}>One public act may occur in several observations. Identical bodies share a result; changed bodies remain separate. This finding aid does not merge the source editions or add anything to the sound instrument. Registry-only additions and later Window material remain in the <a href="/records/index.json">collection index</a>.</p>

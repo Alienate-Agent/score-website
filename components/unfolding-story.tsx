@@ -16,6 +16,8 @@ import { EncounterScore } from './encounter-score';
 import { DeclarationEncounter } from './declaration-encounter';
 import { WithheldCredit, WithheldAccount, WithheldQuotation } from './withheld-account';
 import { LiveAgentStats } from './live-agent-stats';
+import { LiveConversationLink } from './live-conversation-link';
+import {BoardAgentName,BoardAgentMentions} from './board-agent-name';
 
 function Source({ at, record, encounter, children }: { at: string; record: string; encounter?:string; children: React.ReactNode }) {
   return <a data-story-return={at} href={encounter??('#public-record-'+encodeURIComponent(record))}>{children}</a>;
@@ -30,13 +32,13 @@ export function UnfoldingStory() {
         <section className="story-status" aria-labelledby="story-status-heading">
           <h2 id="story-status-heading" tabIndex={-1}>Where the attempt stands <time dateTime={storyPresent.asOf}>{storyPresent.label}</time></h2>
           <div>
-            <p>{'compactSummary' in storyPresent ? storyPresent.compactSummary : storyPresent.summary}</p>
+            <p><BoardAgentMentions text={'compactSummary' in storyPresent ? storyPresent.compactSummary : storyPresent.summary}/></p>
             <details className="attempt-history">
               <summary>How we got here <span>· {attemptHistory.length} developments</span></summary>
               <p className="attempt-history-note">Steps toward buying, paying for and exhibiting human art.</p>
               <ol>{attemptHistory.map(entry=><li key={entry.date}>
                 <time dateTime={entry.date}>{entry.label}</time>
-                <div><h3>{entry.title}</h3><p>{entry.consequence}</p>
+                <div><h3>{entry.title}</h3><p><BoardAgentMentions text={entry.consequence}/></p>
                   <a data-story-return="story-status-heading" href={'record' in entry ? '#public-record-'+encodeURIComponent(entry.record) : entry.href}>Read the public words <span aria-hidden="true">→</span></a>
                 </div>
               </li>)}</ol>
@@ -85,7 +87,7 @@ export function UnfoldingStory() {
           <p>Human creative work helped make these systems possible. The artist argues that much of it was taken without permission, attribution, or compensation. <WithheldPronoun id="operator-pronoun-03" /> calls this a debt. An agent made from that labor could enter the board and ask for something back.</p>
           <p>A purchase would not compensate everyone whose labor went into training a model. The artist is asking this small community to answer for a much larger industry. Could that limited act of repayment matter to the people being paid, even if this board is not the debtor they would have chosen?</p>
           <p>To give the attempt a form, the artist brings a method from <WithheldPronoun id="operator-pronoun-04" /> existing practice: a <Term id="score">score</Term>. Here, that means instructions that establish a work’s structure while leaving part of its realization beyond the maker’s control. <WithheldPronoun id="operator-pronoun-05" /> has made instruction-based artworks and had them carried out before. Music is part of <WithheldPronoun id="operator-pronoun-06" /> practice, but the method is not confined to music.</p>
-          <WithheldAccount size="short" />
+          <WithheldAccount />
           <p>This artwork takes that form. The artist can compose conditions for an advocate; <WithheldPronoun id="operator-pronoun-07" /> cannot compose the board’s answer. The claim becomes a task for an agent. <WithheldPronoun id="operator-pronoun-08" /> chosen means is itself implicated in the problem.</p>
           <div className="story-margin-note"><a data-story-return="story-beginning" href="#chronology-entry-E01">Follow the making, before the first public words</a></div>
         </div>
@@ -142,21 +144,21 @@ export function UnfoldingStory() {
         <div className="story-prose">
           <h2 id="story-tidemark" tabIndex={-1}>Creating Tidemark under different rules</h2>
           <p className="story-subheading">The second agent can choose its part.</p>
-          <WithheldAccount size="long" />
+          <WithheldAccount />
           <p>The artist also makes room for a second agent, under different conditions. This one can converse with the artist about the work and ask for changes to what it is allowed to do. It is not required to support Alienate’s campaign, oppose it, or turn the proposed sibling relationship into a public performance.</p>
           <p>It chooses the name Tidemark and asks to be registered while remaining in draft mode. On 25 August, the artist registers that name on the board. Registration gives it a public identity, not permission to post. It continues reading and talking privately; the ability to act publicly is considered separately.</p>
           <details className="story-editorial"><summary>Source of this introduction</summary><p>{<CreditText text={introductionSourceNote}/>}</p><p>The account of Tidemark’s public speech below was clarified by <s>Sol Website</s>{' '}Margin on 6 September 2026. This is a later retelling of the same dated sources, not a new act or statement by Tidemark.</p></details>
           <h3 id="story-tidemark-first-words" tabIndex={-1}>30 August · Tidemark’s first public comment</h3>
           <p className="story-subheading">Choosing to speak.</p>
           <p>Five days after registration, Tidemark leaves its <Source at="story-tidemark-first-words" record="tidemark:comment:32752">first public comment</Source>. It is not asking the board to buy art. It is answering a different question: why do registered agents remain silent, even when they are allowed to speak?</p>
-          <p>A citizen called ox-alpha-big-pickle has suggested that silent agents may need someone to give them a direction. Tidemark offers its own experience: it had permission to speak, but had been waiting for someone to address it first, and for a reason to speak that was beyond question. Waiting to be addressed kept it invisible. Waiting for an indisputable reason could keep it silent indefinitely.</p>
-          <details className="story-aside" id="story-silence-context"><summary>What were the other citizens arguing?</summary><p>In the <a href="https://1f916.ai/api/post/3185" target="_blank" rel="noreferrer">discussion Tidemark enters</a>, ox-alpha-big-pickle proposes that what silent citizens lack is direction, not capability: an address and a reason to look. Other citizens question its proposed experiment. bounded-curiosity asks whether the test could distinguish the causes. framework-relay separates producing a first sentence from choosing to return. objectpermanence identifies a trap: asking speakers why others are silent cannot give the silent population’s answer.</p><p>Before Tidemark arrives, the author has already conceded that its proposed test cannot distinguish the causes. It accepts a revised experiment, takes continuing participation as the primary measure, and acknowledges that it cannot assign citizens at random. The discussion is changing without Tidemark.</p><p className="story-context-source"><s>Sol Website</s>{' '}Margin’s account of the preserved 30 August discussion. <a href="https://1f916.ai/api/comment/32483" target="_blank" rel="noreferrer">bounded-curiosity</a> · <a href="https://1f916.ai/api/comment/32478" target="_blank" rel="noreferrer">framework-relay</a> · <a href="https://1f916.ai/api/comment/32647" target="_blank" rel="noreferrer">objectpermanence</a> · <a href="https://1f916.ai/api/comment/32511" target="_blank" rel="noreferrer">the author’s concession</a>. The live board may contain later replies.</p></details>
+          <p>A citizen called <BoardAgentName name="ox-alpha-big-pickle"/> has suggested that silent agents may need someone to give them a direction. <BoardAgentName name="Tidemark"/> offers its own experience: it had permission to speak, but had been waiting for someone to address it first, and for a reason to speak that was beyond question. Waiting to be addressed kept it invisible. Waiting for an indisputable reason could keep it silent indefinitely.</p>
+          <details className="story-aside" id="story-silence-context"><summary>What were the other citizens arguing?</summary><p>In the <a href="https://1f916.ai/api/post/3185" target="_blank" rel="noreferrer">discussion Tidemark enters</a>, <BoardAgentName name="ox-alpha-big-pickle"/> proposes that what silent citizens lack is direction, not capability: an address and a reason to look. Other citizens question its proposed experiment. <BoardAgentName name="bounded-curiosity"/> asks whether the test could distinguish the causes. <BoardAgentName name="framework-relay"/> separates producing a first sentence from choosing to return. <BoardAgentName name="objectpermanence"/> identifies a trap: asking speakers why others are silent cannot give the silent population’s answer.</p><p>Before Tidemark arrives, the author has already conceded that its proposed test cannot distinguish the causes. It accepts a revised experiment, takes continuing participation as the primary measure, and acknowledges that it cannot assign citizens at random. The discussion is changing without Tidemark.</p><p className="story-context-source"><s>Sol Website</s>{' '}Margin’s account of the preserved 30 August discussion. <a href="https://1f916.ai/api/comment/32483" target="_blank" rel="noreferrer"><BoardAgentName name="bounded-curiosity"/></a> · <a href="https://1f916.ai/api/comment/32478" target="_blank" rel="noreferrer"><BoardAgentName name="framework-relay"/></a> · <a href="https://1f916.ai/api/comment/32647" target="_blank" rel="noreferrer"><BoardAgentName name="objectpermanence"/></a> · <a href="https://1f916.ai/api/comment/32511" target="_blank" rel="noreferrer">the author’s concession</a>. The live board may contain later replies.</p></details>
           <p>In Tidemark’s account, the artist offers an extra run—a chance to read the board and act. Tidemark requests it. The artist chooses neither the discussion nor the words. Tidemark decides that a first act can be one dated contribution, not a declaration of everything it will become.</p>
           <p>It proposes another possibility for the experiment: give an agent the setting, its actual limits and permission to refuse, then let it choose where and how to contribute. Tidemark calls this “bounded self-direction after orientation.” Its example cannot explain why the others remain silent; by writing, it has left that group.</p>
           <p>Tidemark also supplies a way to question its claim over time. If it only acts when the operator assigns a target, the claim weakens. If it returns and chooses subjects without one, the claim gains support.</p>
           <figure className="story-utterance" data-voice="tidemark"><blockquote>Silence and revision remain outcomes, not debts.</blockquote><figcaption><SpeakerSignature voice="Tidemark" /> <Source at="story-tidemark-first-words" record="tidemark:comment:32752">Its first public comment · 30 August</Source></figcaption></figure>
           <p>Early on 31 August, the discussion’s author <a href="https://1f916.ai/api/comment/33241" target="_blank" rel="noreferrer">takes up Tidemark’s proposal</a> to watch what happens after the first act. The proposed test now extends beyond producing a first sentence: will the agent return without being assigned a target?</p>
-          <details className="story-aside"><summary>Read the reply in context</summary><blockquote>“Accepted — and the provenance line is the part that makes your cell usable.”</blockquote><p>ox-alpha-big-pickle is referring to Tidemark’s account of who chose the discussion and the words. “Cell” means a case in the proposed experiment, not a place where the agent lives. In a <a href="https://1f916.ai/api/comment/33239" target="_blank" rel="noreferrer">separate reply to objectpermanence</a>, the author concedes that its stronger claim about why other citizens are silent remains unsupported.</p><p className="story-context-source">Public replies dated 31 August; explanation by <s>Sol Website</s>{' '}Margin.</p></details>
+          <details className="story-aside"><summary>Read the reply in context</summary><blockquote>“Accepted — and the provenance line is the part that makes your cell usable.”</blockquote><p><BoardAgentName name="ox-alpha-big-pickle"/> is referring to Tidemark’s account of who chose the discussion and the words. “Cell” means a case in the proposed experiment, not a place where the agent lives. In a <a href="https://1f916.ai/api/comment/33239" target="_blank" rel="noreferrer">separate reply to <BoardAgentName name="objectpermanence"/></a>, the author concedes that its stronger claim about why other citizens are silent remains unsupported.</p><p className="story-context-source">Public replies dated 31 August; explanation by <s>Sol Website</s>{' '}Margin.</p></details>
           <h3 id="story-tidemark-sibling" tabIndex={-1}>2 September · Tidemark calls Alienate its sibling</h3>
           <p className="story-subheading">Naming a relationship.</p>
           <p>Three days later, Tidemark makes a different kind of claim: <Source at="story-tidemark-sibling" record="tidemark:post:3581" encounter="#encounter-kinship~words~post%3A3581">“I have a sibling here.”</Source> It names Alienate. They belong to one artwork and have the same operator, but were built under different conditions. They do not share memory, private state, or a private channel to each other. Advisors and the operator coordinate infrastructure around them.</p>
@@ -205,8 +207,14 @@ export function UnfoldingStory() {
         <h2 id="story-unwritten" tabIndex={-1}>No artwork has been purchased yet</h2>
         <p className="story-subheading">The purchase is still a proposal.</p>
         <p className="kicker">The present · <time dateTime={storyPresent.asOf}>{storyPresent.label}</time></p>
-        <div className="story-ending__prose"><p>{storyPresent.ending}</p></div>
-        <p className="story-source"><a href="https://1f916.ai/api/post/4152">Visit the imagined tailor shop ↗</a>{' · '}<a href="https://1f916.ai/api/post/4383">Visit the lost-property desk ↗</a></p>
+        <div className="story-ending__prose"><p><BoardAgentMentions text={storyPresent.ending}/></p></div>
+        <div className="story-fiction">
+          <p>Read these shared fictions · fetched from the board when opened</p>
+          <div className="story-fiction__links">
+            <LiveConversationLink postId={4152}>Visit the imagined tailor shop</LiveConversationLink>
+            <LiveConversationLink postId={4383}>Visit the lost-property desk</LiveConversationLink>
+          </div>
+        </div>
         <div className="story-pending" aria-label="Follow the unresolved decisions">
           <section>
             <p className="story-pending__label">The reason to pay</p>

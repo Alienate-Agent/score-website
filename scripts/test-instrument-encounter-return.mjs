@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import ts from 'typescript';
 import {execFileSync} from 'node:child_process';
+import {patchEngine} from './lens-patch-engine.mjs';
 
 const read=p=>fs.readFileSync(new URL('../'+p,import.meta.url),'utf8');
 const script=read('public/lens/first-encounter.js');
@@ -60,14 +61,20 @@ for(const bad of ['https://example.com','//example.com','#story-unknown','#story
 // Normalize these exact strings only, never arbitrary markup or scripts.
 const analyticsTag='<script src="/engagement.js" defer></script>';
 assert.equal(read('public/lens/index.html').split(analyticsTag).length,2);
-for(const name of ['index.html','lens-synth.js','source-inputs.json','act-keys.json','board-posts.json','board-comments.json']){
+for(const name of ['lens-synth.js','source-inputs.json','act-keys.json','board-posts.json','board-comments.json']){
   const before=execFileSync('git',['show',`444a161:public/lens/${name}`],{encoding:'utf8',maxBuffer:8*1024*1024});
   const actual=read('public/lens/'+name);
-  const normalized=name==='index.html'?actual.replace(analyticsTag,'')
-    .replace('Playback adaptation by <s>Sol Website</s> Margin.','Playback adaptation by Sol Website.')
-    .replace('Claude’s instrument · <s>Sol Website</s> Margin playback adaptation v2','Claude’s instrument · Sol Website playback adaptation v2'):actual;
-  assert.equal(normalized,name==='index.html'?before+'\n':before,`${name}: only exact approved analytics, displayed credits and final newline may differ`);
+  assert.equal(actual,before,`${name}: unchanged audio library and eligible inputs`);
 }
+// The September 8 first-listening revision changes HTML presentation. Compare
+// ALL inline scripts byte-for-byte to the saved edition, not a permissive regex
+// normalization of the audio code. The external presentation script has its own
+// browser checks; engine scheduling/calculation regressions remain separate.
+const priorHtml=execFileSync('git',['show','14d085d:public/lens/index.html'],{encoding:'utf8',maxBuffer:8*1024*1024});
+const inlineScripts=html=>[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map(m=>m[1]).filter(Boolean);
+assert.deepEqual(inlineScripts(patchEngine(read('public/lens/index.html'),true)),inlineScripts(priorHtml),'Every inline engine/calculation script is unchanged except the exact reversible live-patch and analyser additions');
+for(const [generated,source]of [['patch-console.js','lens-patch-console.js'],['patch-console.css','lens-patch-console.css'],['patch-field.js','lens-patch-field.js']])assert.equal(read('public/lens/'+generated),read('scripts/'+source));
+assert.ok(read('public/lens/index.html').includes('Playback adaptation by <s>Sol Website</s> Margin.'));
 assert.ok(read('components/encounter-score.tsx').includes('&from=${encodeURIComponent(encounterHash(location))}'));
 assert.equal(read('public/lens/first-encounter.css'),read('scripts/lens-first-encounter.css'),'Operator-directed surface CSS matches its generator source');
-console.log('PASS: six encounter states, eight existing story destinations and eligible-record returns; retained origin after act changes; unsafe/unknown targets rejected; engine and inputs byte-identical; approach script and CSS match generator. Browser return/focus remains separate.');
+console.log('PASS: encounter, story and eligible-record returns; retained origin; unsafe/unknown targets rejected; all inline scripts unchanged except exact reversible patch adapter; audio library and inputs unchanged; generated UI files match source. Browser return/focus remains separate.');

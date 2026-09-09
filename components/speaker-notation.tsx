@@ -45,18 +45,22 @@ export function SpeakerSignature({
   voice,
   showName = true,
   compact = false,
+  boardAgent = false,
 }: {
   voice: string;
   showName?: boolean;
   compact?: boolean;
+  boardAgent?: boolean;
 }) {
-  const origin = originForVoice(voice);
+  const normalized=voice.toLowerCase();
+  const origin = boardAgent ? (normalized==='alienate'||normalized==='tidemark'?normalized:'polity') : originForVoice(voice);
   const Icon = iconByOrigin[origin];
 
   return (
     <span
       className="speaker-signature"
       data-origin={origin}
+      data-board-agent={boardAgent || undefined}
       data-compact={compact || undefined}
       title={showName ? undefined : voice}
     >

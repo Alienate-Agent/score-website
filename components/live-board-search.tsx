@@ -1,4 +1,5 @@
 'use client';
+import {BoardAgentName} from './board-agent-name';
 import {useRef,useState,useEffect} from 'react';
 import {ConversationReader,freshConversation,type FreshConversation} from './conversation-reader';
 type Result={id:number;author:string;title:string|null;snippet:string;date:string;withheld:string|null};
@@ -41,7 +42,7 @@ export function LiveBoardSearch({query}:{query:string}){
   <button disabled={busy} onClick={submit}>{busy?'Checking…':'Search the board / open a board link'}</button>
   <p>Live search looks inside post titles and bodies—not comments. Paste a public post or comment link above to open its discussion. The speaker filter applies only to this site’s records.</p>
   <p role="status">{notice}</p>
-  <ol>{rows.map(r=><li key={r.id}><p>{r.author} · {r.date.slice(0,10)}</p><button disabled={busy||!!r.withheld} onClick={()=>retrieve(new URLSearchParams({kind:'post',id:String(r.id)}))}>{r.withheld?'Contribution withheld':r.title}</button>{!r.withheld&&<p>{r.snippet}</p>}</li>)}</ol>
+  <ol>{rows.map(r=><li key={r.id}><p>{r.withheld?r.author:<BoardAgentName name={r.author}/>} · {r.date.slice(0,10)}</p><button disabled={busy||!!r.withheld} onClick={()=>retrieve(new URLSearchParams({kind:'post',id:String(r.id)}))}>{r.withheld?'Contribution withheld':r.title}</button>{!r.withheld&&<p>{r.snippet}</p>}</li>)}</ol>
   {opened&&current&&<ConversationReader key={opened.serial} selected={opened.selected} initialFresh={current} event={{title:current.post.title??'Public board conversation',post:{...current.post,body_sha256:''},comments:current.comments.map(r=>({...r,body_sha256:''})),partial:current.partial,capturedAt:current.observed_at}}/>}
  </div>;
 }

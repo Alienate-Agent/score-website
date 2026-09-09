@@ -4,6 +4,8 @@ import crypto from 'node:crypto';
 import vm from 'node:vm';
 import { extractData, filterInputs, lineage } from './prepare-lens-inputs.mjs';
 import { firstEncounter } from './lens-first-encounter.mjs';
+import { patchEngine } from './lens-patch-engine.mjs';
+import { patchConsole } from './lens-patch-console.mjs';
 
 // A generated playback derivative; the original package remains untouched.
 const packageHash = 'c8f3e6da17f3e1d28d339ac387e8bce0b614cc76407f0f2f186b9aa6c25d4a5b';
@@ -133,20 +135,33 @@ html = html.replaceAll('nothing chosen','authored mapping').replaceAll('Nothing 
   .replaceAll('The whole record', 'The dated record');
 
 html=firstEncounter(html);
+html=patchConsole(patchEngine(html));
 // Operator-adopted display credit; source records and export provenance retain their names.
-html=html.replace('Playback adaptation by Sol Website.','Playback adaptation by <s>Sol Website</s> Margin.')
+html=html.replaceAll('Playback adaptation by Sol Website.','Playback adaptation by <s>Sol Website</s> Margin.')
   .replace('Claude’s instrument · Sol Website playback adaptation v2','Claude’s instrument · <s>Sol Website</s> Margin playback adaptation v2');
+// Preserve the site-level, operator-adopted analytics include on regeneration.
+html=html.replace('</body>','<script src="/engagement.js" defer></script></body>')+'\n';
 let lib = fs.readFileSync(path.join(root,'lib/lens-synth.js'),'utf8');
 if(!lib.includes('ctx.createDelay(2.0)'))throw Error('Unexpected delay implementation');
 lib = lib.replace('ctx.createDelay(2.0)', 'ctx.createDelay(Math.max(2,delayS))');
 // Validate syntax without executing audio or DOM code.
 new vm.Script(lib);
 new vm.Script(fs.readFileSync(new URL('./lens-first-encounter.js',import.meta.url),'utf8'));
+new vm.Script(fs.readFileSync(new URL('./lens-patch-console.js',import.meta.url),'utf8'));
+new vm.Script(fs.readFileSync(new URL('./lens-patch-field.js',import.meta.url),'utf8'));
 for(const match of html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)) if(match[1].trim())new vm.Script(match[1]);
 fs.mkdirSync(out,{recursive:true});
 const files={'index.html':html,'lens-synth.js':lib,'source-inputs.json':JSON.stringify(data,null,2)+'\n',
  'first-encounter.js':fs.readFileSync(new URL('./lens-first-encounter.js',import.meta.url)),
  'first-encounter.css':fs.readFileSync(new URL('./lens-first-encounter.css',import.meta.url)),
+ 'patch-console.js':fs.readFileSync(new URL('./lens-patch-console.js',import.meta.url)),
+ 'patch-console.css':fs.readFileSync(new URL('./lens-patch-console.css',import.meta.url)),
+ 'patch-field.js':fs.readFileSync(new URL('./lens-patch-field.js',import.meta.url)),
+ 'p5.min.js':fs.readFileSync(new URL('./patch-assets/p5.min.js',import.meta.url)),
+ 'p5-LICENSE.txt':fs.readFileSync(new URL('./patch-assets/p5-LICENSE.txt',import.meta.url)),
+ 'patch-jack.png':fs.readFileSync(new URL('./patch-assets/jack.png',import.meta.url)),
+ 'patch-knob.png':fs.readFileSync(new URL('./patch-assets/knob.png',import.meta.url)),
+ 'patch-plug.png':fs.readFileSync(new URL('./patch-assets/plug.png',import.meta.url)),
  'act-keys.json':JSON.stringify(data.records.filter(r=>r.at&&r.obj!=='vote_or_karma_count').map(r=>r.key),null,2)+'\n',
  'board-posts.json':fs.readFileSync(path.join(root,'e14-the-whole-record/board-posts.json')),
  'board-comments.json':fs.readFileSync(path.join(root,'e14-the-whole-record/board-comments.json'))};
@@ -157,5 +172,16 @@ const receipt={derivative:'score-lens-playback-v2',mapping_lineage:lineage,acces
  changes:['Eligible inputs only, prepared before computation','Authored mapping and actual generator in score export','Comments included in calculated export','Exports bind mapping and listening settings','No automatic playback; explicit stop and Escape/page-hide stop','60–4000 Hz initial and final output-frequency folding','Digital clamp and listening-level control after compressor','Delay node supports declared echo duration','Shorter scheduling horizon; per-hour bass initially','Keyboard UI from package c; named switches retain focus','Keyboard seek indicator persists while stopped','Selected-act start follows current time mapping','Cancelled old end timer cannot stop a new performance','Source inspection and story returns','Responsive heading and scrollable stage; playback before stage; attribution details one gesture away'],
  files:Object.entries(files).map(([name,bytes])=>({path:name,sha256:hash(bytes),bytes:Buffer.byteLength(bytes)}))};
 receipt.navigation_revision='reading-return-v2: six encounter states, eight named story destinations and eligible preserved-record destinations; origin retained after act selection; mapping and inputs unchanged. Dynamic source-label credit displays Sol Website struck through before Margin.';
+receipt.surface_revision='black-white-ground-v1, 7 September 2026: operator-directed CSS-only palette update; authored mapping colors, calculations, source inputs and playback unchanged';
+receipt.engagement_revision='Operator-authorized aggregate pilot v1 adds shared /engagement.js and a privacy control. This site-level script observes fixed UI event categories only; no mapping, inputs, sound generation or playback behavior changed. Shared script is versioned in the site repository outside this instrument inventory.';
+receipt.reference_navigation='Direct charter reader link; no playback requirement or inferred rule-to-act mapping; sound and inputs unchanged.';
+receipt.credit_revision='Operator-adopted display name: struck-through Sol Website followed by Margin. Two visible credits only; historical source attribution and calculated export metadata unchanged.';
+receipt.mini_audio_revision='margin-v1: expose read-only AudioContext clock to same-origin mini player; no mapping, input, scheduling, or audio-graph change. Main-site player uses eligible individual-act playback only. Preserve prior analytics, display credits, nine passage returns and duplicate-return removal on regeneration.';
+receipt.first_listening_revision='2026-09-08: selected opening sentence, Play/Stop and one existing pitch-range comparison precede inspection. Speaker-color words and neutral black listening panel; canvas displays existing rendered-note intervals and read-only clock, static under reduced motion. No engine, mapping, eligible-input, audio-graph or scheduling change. Original complete controls and origin return remain.';
+receipt.patch_console_revision='2026-09-08 operator-selected front-panel patcher. Same eight feature choices and five mapping destinations; existing pitch, temperament and quantization controls. Live individual-act changes replace unscheduled notes at the next note boundary, preserving already scheduled notes/echo; performed-note intervals and changes are recorded separately in exports. Stereo analysers tap after listening level without altering the audible path. No additional source, effect or mapping algorithm. Drag/tap/keyboard patches, undo/original, current source sentence and measured note/output monitors; no autoplay.';
+receipt.previous_manifest_sha256='c953242a85fa9d5f595595a25bfca7d07fd4c072472a1def9e0c34016b147dcf';
+receipt.generated_field='2026-09-08: self-hosted p5.js 1.11.11, LGPL-2.1; Margin strand sketch. Read-only current-note and stereo analyser input, no audio generation or new source. Pitch and deterministic sentence seed determine form; measured output bends strands and note transitions leave short traces. Still while stopped; static note updates under reduced motion; suspended offscreen.';
+receipt.transport_and_plugs_revision='2026-09-08 operator correction: visible patch bay starts dry with separately switchable original mapped Echo and an explicit Loop control. Loop uses the same AudioContext and phrase timing, not a delayed restart. One-shot ends after note release; Echo retains the original delay mapping and bounded tail. Full composition and embedded margin reader retain original echo defaults. Current/next pass retained for visualization; export records current pass, loop state and bounded change history with omission count. Either cable end can move while the other stays attached; occupied sound inputs swap, invalid drops cancel; keyboard/tap equivalents preserved. No new source admission or synthesis mapping.';
+receipt.previous_manifest_sha256='3fc1fecfd194257c777cd327e19183a508323b314a22c611dd628651608306f0';
 fs.writeFileSync(path.join(out,'manifest.json'),JSON.stringify(receipt,null,2)+'\n');
 console.log({files:receipt.files.length,rows:data.records.length,inputHash:data.provenance.input_sha256});

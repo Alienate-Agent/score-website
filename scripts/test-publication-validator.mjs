@@ -1,4 +1,4 @@
-import { mkdtemp, mkdir, rm, writeFile } from 'node:fs/promises';
+import { mkdtemp, mkdir, rm, writeFile, readFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { resolve } from 'node:path';
 
@@ -110,7 +110,24 @@ try {
     },
   );
 
-  process.stdout.write('Publication validator tests passed.\n');
+  const vendor=await readFile(new URL('./patch-assets/p5.min.js',import.meta.url),'utf8');
+  await mkdir(resolve(root,'public/lens'),{recursive:true});
+  const vendorPath=resolve(root,'public/lens/p5.min.js');
+  await writeFile(vendorPath,vendor);
+  await validatePublication({root,scanRoot:root,denyListPath});
+  // A single added path invalidates the pinned exception; unknown copies are
+  // not allow-listed by filename or vendor name.
+  await writeFile(vendorPath,vendor+'\n'+windowsSeparator.repeat(2)+'server'+windowsSeparator+'private-share');
+  await validatePublication({root,scanRoot:root,denyListPath}).then(
+    ()=>{throw Error('Changed vendor must not inherit the reviewed regexp exception.');},
+    error=>{if(!error.message.includes('[absolute-windows-unc-path]'))throw error;});
+  await writeFile(vendorPath,vendor);
+  const vendorDenyPath=resolve(privateRoot,'vendor-deny.json');
+  await writeFile(vendorDenyPath,JSON.stringify({schema_version:1,rules:[{id:'synthetic-vendor-deny',values:[vendor.slice(0,20)]}]}));
+  await validatePublication({root,scanRoot:root,denyListPath:vendorDenyPath}).then(
+    ()=>{throw Error('Private terms inside an exact reviewed vendor must still fail.');},
+    error=>{if(!error.message.includes('[synthetic-vendor-deny]'))throw error;});
+  process.stdout.write('Publication validator tests passed, including pinned vendor regexp false positives, changed-vendor rejection and private-rule enforcement.\n');
 } finally {
   await rm(root, { recursive: true, force: true });
   await rm(privateRoot, { recursive: true, force: true });

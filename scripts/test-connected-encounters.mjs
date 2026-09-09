@@ -40,7 +40,8 @@ assert.ok(!keys.includes('alienate:comment:46595'),'The later answer is not a ne
 // must not silently expand when an encounter is added to the site.
 assert.equal(hash(read('public/lens/source-inputs.json')),'770ab4dec652470f01e38ba19af1ed35d971986ffce756f14e8b5e01902787e4');
 const component=read('components/encounter-score.tsx');
-assert.ok(component.includes('data-encounter-exact={act.key}>{act.body}'));
+assert.ok(component.includes('data-encounter-exact={act.key}'));
+assert.ok(component.includes('act.body.slice(0,leadEnd)')&&component.includes('act.body.slice(leadEnd)'), 'Visual lead keeps both contiguous parts of the original body; rendered equality is checked in the browser suite');
 assert.ok(component.includes('Editorial connection by this site; not a reply.'));
 assert.ok(!/localStorage|sessionStorage|fetch\(|AudioContext/.test(component));
 assert.ok(component.includes("window.addEventListener('popstate',read)"));

@@ -1,6 +1,7 @@
 import { readFile, readdir, stat } from 'node:fs/promises';
 import { dirname, relative, resolve, sep } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { createHash } from 'node:crypto';
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const excludedDirectories = new Set([
@@ -115,10 +116,18 @@ async function readDenyList(path, root) {
 
 function inspectText(text, file, privateRules, includeSourceOnlyRules) {
   const hits = [];
+  // Unmodified p5 1.11.11 contains three regexp literals that this broad UNC
+  // heuristic mistakes for paths. Bound this review to exact bytes + offsets.
+  // Every private deny-list rule and other structural rule still applies.
+  const reviewedP5 = ['public/lens/p5.min.js','scripts/patch-assets/p5.min.js'].includes(file)
+    && createHash('sha256').update(text).digest('hex') === '1343f616bf9914da8253faae00201ea5f72772916998bc6add4c2a07e00a662c';
   for (const rule of structuralRules) {
     if (rule.sourceOnly && !includeSourceOnlyRules) continue;
     rule.pattern.lastIndex = 0;
-    if (rule.pattern.test(text)) hits.push({ file, rule: rule.id });
+    const unreviewed = [...text.matchAll(rule.pattern)].some(match =>
+      !(reviewedP5 && rule.id === 'absolute-windows-unc-path'
+        && [163208,163250,673106].includes(match.index)));
+    if (unreviewed) hits.push({ file, rule: rule.id });
   }
   for (const rule of privateRules) {
     const haystack = rule.case_sensitive === true ? text : text.toLowerCase();

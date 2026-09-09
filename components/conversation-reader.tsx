@@ -1,7 +1,8 @@
 'use client';
-import {useEffect,useRef,useState} from 'react';
+import {useEffect,useRef,useState,type RefObject} from 'react';
 import {Dialog,DialogContent,DialogTitle,DialogDescription,DialogClose} from './ui/dialog';
 import {SpeakerSignature} from './speaker-notation';
+import {BoardAgentName} from './board-agent-name';
 import {conversationCollection,type ConversationCollection} from '@/lib/conversation-collections';
 import './conversation-reader.css';
 
@@ -30,8 +31,10 @@ export function ConversationForRecord({record}:{record:string}) {
   return <ConversationReader event={collection.event} selected={collection.selected}/>;
 }
 
-export function ConversationReader({event,selected,initialFresh}:{event:ConversationCollection;selected:string;initialFresh?:FreshConversation}) {
-  const [open,setOpen]=useState(!!initialFresh);
+export function ConversationReader({event,selected,initialFresh,control}:{event:ConversationCollection;selected:string;initialFresh?:FreshConversation;control?:{open:boolean;onOpenChange:(open:boolean)=>void;returnFocus:RefObject<HTMLButtonElement|null>}}) {
+  const [internalOpen,setInternalOpen]=useState(!!initialFresh);
+  const open=control?.open??internalOpen;
+  const setOpen=control?.onOpenChange??setInternalOpen;
   const [fresh,setFresh]=useState<FreshConversation|null>(initialFresh??null);
   const [edition,setEdition]=useState<'preserved'|'fresh'>(initialFresh?'fresh':'preserved');
   const [busy,setBusy]=useState(false);
@@ -78,21 +81,23 @@ export function ConversationReader({event,selected,initialFresh}:{event:Conversa
     const target=[...list.current?.querySelectorAll<HTMLElement>('[data-conversation-act]')??[]].find(el=>el.dataset.conversationAct===key);
     if(target&&list.current){list.current.scrollTop=target.offsetTop;target.focus({preventScroll:true});}
   }
+  const refreshControl=<button disabled={busy} onClick={refresh}>{busy?'Checking…':'Check for newer comments'}</button>;
   return <>
-    <button className="conversation-open" ref={trigger} onClick={()=>setOpen(true)}>{initialFresh?'Reopen fetched conversation':`Open conversation · ${event.comments.length} preserved comments`}</button>
+    {!control&&<button className="conversation-open" ref={trigger} onClick={()=>setOpen(true)}>{initialFresh?'Reopen fetched conversation':`Open conversation · ${event.comments.length} preserved ${event.comments.length===1?'comment':'comments'}`}</button>}
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent className="conversation-reader" showCloseButton={false} initialFocus={heading} finalFocus={trigger}>
+      <DialogContent className="conversation-reader" showCloseButton={false} initialFocus={heading} finalFocus={control?.returnFocus??trigger}>
         <header><div><DialogTitle ref={heading} tabIndex={-1}>{event.title}</DialogTitle><DialogDescription>{reading?'Latest check':'Preserved conversation'} · {(reading?.partial??event.partial)?'partial collection':'returned thread'} · {reading?new Intl.DateTimeFormat('en-GB',{dateStyle:'medium',timeStyle:'short',timeZone:'UTC'}).format(new Date(reading.observed_at))+' UTC':event.capturedAt}</DialogDescription></div><DialogClose>Close ×</DialogClose></header>
-        <nav aria-label="Conversation navigation"><button onClick={()=>go(event.post.key)}>Original post</button><button disabled={!acts.some(a=>a.key===selected)} onClick={()=>go(selected)}>Where you entered</button><a href={event.post.url} target="_blank" rel="noreferrer">Current public source ↗</a></nav>
-        <div className="conversation-editions">{!initialFresh&&<button aria-pressed={edition==='preserved'} onClick={()=>changeEdition('preserved')}>Preserved</button>}{fresh&&<button aria-pressed={edition==='fresh'} onClick={()=>changeEdition('fresh')}>Latest check</button>}<button disabled={busy} onClick={refresh}>{busy?'Checking…':'Check for newer comments'}</button><p role="status">{notice}</p></div>
+        <nav aria-label="Conversation navigation"><button onClick={()=>go(event.post.key)}>Original post</button>{selected!==event.post.key&&<button disabled={!acts.some(a=>a.key===selected)} onClick={()=>go(selected)}>Where you entered</button>}<a href={event.post.url} target="_blank" rel="noreferrer">Current public source ↗</a>{initialFresh&&refreshControl}</nav>
+        {!initialFresh&&<div className="conversation-editions"><button aria-pressed={edition==='preserved'} onClick={()=>changeEdition('preserved')}>Preserved</button>{fresh&&<button aria-pressed={edition==='fresh'} onClick={()=>changeEdition('fresh')}>Latest check</button>}{refreshControl}<output>{notice}</output></div>}
+        {initialFresh&&<output className="conversation-live-notice">{notice}</output>}
         <div className="conversation-reader__scroll" ref={list} onScroll={remember}>
           {!acts.some(a=>a.key===selected)&&<p className="conversation-reader__limit">The comment you entered from was not returned in this check.{!initialFresh?' It remains in the preserved conversation.':''}</p>}
           {acts.map(act=>{
             const parent=act.parent_id===null?null:acts.find(row=>row.kind==='comment'&&row.id===act.parent_id);
             return <article key={act.key} tabIndex={-1} data-conversation-act={act.key} data-entry={act.key===selected}>
-              <div className="public-speaker-header" data-public-speaker={act.author.toLowerCase()}>{act.withheld==='unavailable'?<span>Original post · {act.id}</span>:<><SpeakerSignature voice={act.author}/><span>{act.kind} {act.id} · {act.occurred_at.slice(0,10)}</span></>}</div>
-              {act.title&&<h3>{act.title}</h3>}
-              {parent?<button className="conversation-parent" onClick={()=>go(parent.key)}>Reply to {parent.author} · comment {parent.id} ↑</button>:act.parent_id!==null?<p className="conversation-parent">Parent comment {act.parent_id} is outside this collection.</p>:null}
+              <div className="public-speaker-header" data-public-speaker={act.author.toLowerCase()}>{act.withheld==='unavailable'?<span>Original post · {act.id}</span>:<><SpeakerSignature voice={act.author} boardAgent={!act.withheld}/><span>{act.kind} {act.id} · {act.occurred_at.slice(0,10)}</span></>}</div>
+              {act.title&&(act.kind!=='post'||act.title!==event.title)&&<h3>{act.title}</h3>}
+              {parent?<button className="conversation-parent" onClick={()=>go(parent.key)}>Reply to <BoardAgentName name={parent.author}/> · comment {parent.id} ↑</button>:act.parent_id!==null?<p className="conversation-parent">Parent comment {act.parent_id} is outside this collection.</p>:null}
               {act.withheld?<p className="conversation-reader__limit">{act.withheld==='unavailable'?'The original post is not in this preserved collection. Check for newer comments to retrieve the current discussion.':'This contribution is withheld from this reading.'}</p>:<blockquote>{act.body}</blockquote>}
               <a href={act.url} target="_blank" rel="noreferrer">Public source ↗</a>
             </article>;

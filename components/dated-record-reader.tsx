@@ -9,6 +9,7 @@ import styles from './dated-record-reader.module.css';
 import {Term} from './reading-glossary';
 import {matchesRecord, recordLabel} from '@/lib/record-discovery';
 import {CrossRecordSearch} from './cross-record-search';
+import {MiniAudio} from './mini-audio';
 
 type RecordItem = (typeof corpus.records)[number];
 const prefix = '#public-record-';
@@ -139,7 +140,7 @@ export function DatedRecordReader() {
               : selected.act_class==='public_reaction_aggregate' ? 'Evidence of chosen reactions, not a count of distinct recoverable source objects.'
               : 'Citizen-authored public material. Its presence here does not make the site its speaker or its claims the site’s findings.'}
           </p>
-          {text!=null ? <div className={styles.exact} data-exact-public-text>{text}</div> :
+          {text!=null ? <MiniAudio key={selected.act_key} actKey={selected.act_key} speaker={voice(selected)} from={address(selected)}><div className={styles.exact} data-exact-public-text>{text}</div></MiniAudio> :
             <p className={styles.nonSpeech}>{selected.act_class==='public_reaction_aggregate'
               ? selected.disclosure_state==='unknown_not_recoverable'
                 ? 'The count survives. Targets and individual times are unknown to the surviving sources; no missing members are invented.'

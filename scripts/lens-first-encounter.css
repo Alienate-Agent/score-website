@@ -1,24 +1,48 @@
-/* Website surface revision: monochrome ground; authored mapping colors remain accents. */
-:root{--ink:#000;--paper:#fff;--rule:#999;--grey:#555;--lit:#eee}
-.mod canvas{background:#fff}.sw:not(.is-on){background:#eee}
-#stage{background:#000}
-.lens-intro{width:100%;box-sizing:border-box;max-width:76ch}
-.lens-intro h2{font:normal clamp(1.65rem,3vw,2.2rem)/1.15 Georgia,serif;margin:1.8rem 0 .6rem}
-#inspect-record{display:block;width:100%;box-sizing:border-box;min-height:44px;padding:.4rem;margin:.3rem 0}
-.lens-intro label{display:block}
-#first-act{margin-top:1.2rem;border-top:1px solid var(--line);padding-top:1rem}
+/* Source speech carries its speaker color; black is the instrument ground.
+   This surface does not change the underlying composition. */
+:root{--ink:#000;--paper:#fffffe;--rule:#999;--grey:#555;--lit:#eee}
+.mod canvas{background:#fffffe}.sw:not(.is-on){background:#eee}#stage{background:#000}
+.lens-intro{width:100%;box-sizing:border-box;max-width:1200px;padding:0 24px}
+.sound-introduction{margin:1.5rem 0 1.8rem}.lens-intro .sound-introduction h1{font:800 clamp(1.75rem,3vw,2.75rem)/1.1 system-ui,sans-serif;letter-spacing:-.04em}
+.sound-introduction p{max-width:65ch}
+#first-act{--act-color:#fffffe;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);align-items:stretch}
+#first-act[hidden]{display:none}#first-act[data-speaker=tidemark]{--act-color:#00ffff}#first-act[data-speaker=alienate]{--act-color:#ff00ff}
+.first-words{background:var(--act-color);color:#000;padding:clamp(1.25rem,3vw,2.5rem);min-width:0;display:flex;flex-direction:column;align-items:flex-start}
 #first-attribution,#first-source-label{font:.875rem/1.5 system-ui,sans-serif}
-#first-act h3{font:normal 1.5rem/1.25 Georgia,serif;margin:.5rem 0;white-space:normal}
-#first-sentence{font:normal clamp(1.5rem,3vw,2rem)/1.3 'Courier New',monospace;margin:1.2rem 0;padding:0;overflow-wrap:anywhere}
-#first-range{display:block;max-width:100%;min-height:44px;font:inherit;padding:.4rem;margin:.4rem 0}
-.first-transport{display:flex;gap:.75rem;flex-wrap:wrap;margin:1rem 0 .5rem}
-.first-transport button{font:inherit;min-height:44px;padding:.65rem 1rem;border:1px solid var(--ink)}
-#first-play{background:var(--ink);color:var(--paper)}#first-play:disabled{opacity:.5}
-#first-status{min-height:1.5em}.first-caution{font-size:.875rem}
-#first-source-body{white-space:pre-wrap;overflow-wrap:anywhere;font:1rem/1.6 'Courier New',monospace;margin:1rem 0}
-#first-notes{padding-left:1.5rem}#first-notes li{margin:1rem 0;overflow-wrap:anywhere}
+#first-act-title{font:600 1rem/1.4 system-ui,sans-serif;margin:0;white-space:normal;max-width:42ch}
+#first-sentence{font:normal clamp(1.75rem,3.7vw,3.4rem)/1.18 ui-monospace,Menlo,monospace;letter-spacing:-.045em;margin:2rem 0 1rem;padding:0;overflow-wrap:anywhere}
+.lens-intro .first-excerpt-label{font:.75rem/1.5 system-ui,sans-serif;margin:0 0 1rem}
+#inspect-source{min-height:44px;display:inline-flex;align-items:center;margin-top:auto;font:.875rem/1.5 system-ui,sans-serif}
+.first-listening{background:#000;color:#fffffe;padding:1.25rem 1.5rem;min-width:0;font:1rem/1.5 system-ui,sans-serif}
+.lens-intro .first-listening-label{margin:0 0 .65rem}.first-transport{display:flex;gap:.65rem;flex-wrap:wrap}
+.first-transport button{font:600 1rem/1.3 system-ui,sans-serif;min-height:48px;padding:.7rem 1.1rem;border:1px solid #aaa;color:#fffffe;margin:0}
+#first-play{background:var(--act-color);border-color:var(--act-color);color:#000;flex:1}#first-play:disabled{opacity:.5}
+.lens-intro #first-status{min-height:3em;font:.8rem/1.5 system-ui,sans-serif;color:#ddd;margin:.6rem 0}
+.first-visual{margin:.7rem 0 1rem}.first-visual figcaption{display:flex;justify-content:space-between;font:.75rem/1.5 ui-monospace,monospace;color:#ccc}
+#first-note-map{display:block;width:100%;height:190px}
+.first-listening-controls{border-top:1px solid #555;padding-top:.7rem}
+.lens-intro label{display:block}.first-listening-controls label{font:.875rem/1.5 system-ui,sans-serif;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+#first-range{max-width:100%;min-height:44px;font:inherit;padding:.4rem;color:#fffffe;background:#000;border-color:#999}
+.lens-intro .first-compare{font:.8rem/1.5 system-ui,sans-serif;color:#ccc;margin:.35rem 0 1rem}
+#listen-level{vertical-align:middle;min-height:32px;width:55%;min-width:0;accent-color:var(--act-color)}
+.lens-intro #level-note{display:block;font:.75rem/1.5 system-ui,sans-serif;color:#bbb;margin:.2rem 0}
+.lens-intro .first-caution{font:.75rem/1.5 system-ui,sans-serif;color:#ccc;margin:0 0 .65rem}
+.first-inspection{grid-column:1/-1;border-bottom:1px solid var(--rule);padding:.5rem 0}
+.lens-intro summary{min-height:44px;padding:.6rem 0}
+#first-source-body{white-space:pre-wrap;overflow-wrap:anywhere;font:1rem/1.6 ui-monospace,Menlo,monospace;margin:1rem 0;max-width:80ch}
+#first-notes{padding-left:1.5rem}#first-notes li{margin:1rem 0;overflow-wrap:anywhere}.first-inspection p,.first-inspection li{max-width:80ch}
+#inspect-record{display:block;width:100%;box-sizing:border-box;min-height:44px;padding:.4rem;margin:.3rem 0;font:1rem/1.5 ui-monospace,monospace}
+.sound-authorship{font:.875rem/1.6 system-ui,sans-serif;margin-top:1rem;max-width:85ch}.sound-authorship summary{font:inherit}
 #full-instrument{border-top:2px solid var(--ink);margin-top:2rem;padding-top:1rem}
-#full-instrument>summary{font:normal 1.5rem/1.3 Georgia,serif;cursor:pointer;padding:.75rem 0}
+#full-instrument>summary{font:600 1.25rem/1.3 system-ui,sans-serif;cursor:pointer;padding:.75rem 0;min-height:44px}
 .full-help{max-width:70ch;font:1rem/1.6 system-ui,sans-serif}
-#listen-level{vertical-align:middle;max-width:100%}#level-note{display:block;margin:.25rem 0}
-@media(max-width:650px){.lens-intro h1{font-size:2rem}#first-act h3{font-size:1.3rem}.first-transport{position:sticky;bottom:0;background:var(--paper);padding:.65rem 0;z-index:30}.first-transport button{flex:1}}
+.first-listening :is(button,select,input):focus-visible{outline:3px solid #fffffe;outline-offset:4px}
+.first-words a:focus-visible{outline:3px solid #000;outline-offset:4px}
+@media(max-width:700px){
+ .lens-intro{padding:0}.sound-introduction{margin:1rem 0}
+ #first-act{display:block}.first-words{padding:1.15rem}#first-sentence{font-size:clamp(1.65rem,7vw,2.2rem);margin:1rem 0 .75rem}
+ #first-attribution{font-size:.75rem}#first-act-title{font-size:.875rem}
+ .first-listening{padding:1rem}.first-transport button{padding:.6rem .75rem}
+ #first-note-map{height:140px}.first-visual{margin:.3rem 0 .7rem}
+ .lens-intro #first-status{min-height:3em}
+}

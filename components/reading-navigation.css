@@ -1,9 +1,13 @@
 .reading-navigation{position:sticky;top:var(--reading-help-height,66px);z-index:45;font-family:var(--font-geist-sans,Arial),sans-serif;background:#fffffe;}
 #reading-trail:empty{display:none;}
+.reading-trail-row{display:flex;align-items:stretch;}
+.reading-trail-row #reading-trail{flex:1;min-width:0;}
+.reading-collapse-inline{display:none;}
+html[data-reading-trail=true] .reading-collapse-inline{display:grid;place-items:center;flex:0 0 44px;min-height:44px;border-bottom:1px solid #888;cursor:pointer;}
 #reading-trail{display:flex;align-items:center;gap:.6rem;padding:.45rem 1.2rem;border-bottom:1px solid #888;font-size:.8rem;}
 #reading-trail button{font:inherit;text-decoration:underline;text-underline-offset:.2em;cursor:pointer;min-height:30px;}
 #reading-trail .trail-current{font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-#reading-trail .trail-previous{flex-shrink:0;}
+#reading-trail .trail-previous{flex-shrink:1;min-width:3rem;max-width:42%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 #reading-trail details{position:relative;flex-shrink:0;}#reading-trail summary{cursor:pointer;}
 #reading-trail .trail-earlier{position:absolute;top:100%;left:0;background:#fffffe;border:1px solid;padding:1rem;width:min(26rem,85vw);display:grid;gap:.4rem;max-height:50vh;overflow:auto;}
 .reading-section-bar{display:flex;justify-content:space-between;align-items:center;padding:.35rem 1.2rem;background:#000;color:#fff;gap:1rem;font-weight:800;letter-spacing:-.03em;font-size:1.2rem;}
@@ -17,6 +21,7 @@
 @media(min-width:1400px){html .story-spine{top:calc(var(--reading-help-height,0px) + var(--reading-navigation-height,0px));z-index:44;padding-top:1rem;}}
 html[data-story-collapsed=true] [data-story-fold],html[data-story-collapsed=true] .story-spine{display:none!important;}
 .story-layer-choices,[data-story-fold] [id]{scroll-margin-top:calc(var(--reading-help-height,66px) + var(--reading-navigation-height,0px) + 12px);}
+.story-status,.story-status h2,#all-record-search,#record-discovery-results,#connected-score{scroll-margin-top:calc(var(--reading-help-height,66px) + var(--reading-navigation-height,0px) + 12px);}
 .reading-navigation :focus-visible{outline:2px solid #f0f;outline-offset:3px;}
 html[data-reading-trail=true] .story-records__return{display:none;}
 #connected-score{--help-offset:calc(var(--reading-help-height,0px) + var(--reading-navigation-height,0px));}

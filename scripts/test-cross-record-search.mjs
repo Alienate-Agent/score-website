@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import ts from 'typescript';
 import {indexRecords,searchRecords} from '../lib/cross-record-search.ts';
+import {searchExcerpt,matchedFields} from '../lib/search-excerpt.ts';
 import {recordLabel,recordSubjects} from '../lib/record-discovery.ts';
 const read=p=>fs.readFileSync(new URL('../'+p,import.meta.url),'utf8');
 const json=p=>JSON.parse(read('public/records/'+p));
@@ -50,6 +51,8 @@ const {records}=compile(read('components/cross-record-search.tsx')+'\nexport {re
   if(id.endsWith('/encounters'))return encounterModule;
   if(id.endsWith('/record-discovery'))return {recordLabel,recordSubjects};
   if(id.endsWith('/cross-record-search'))return {indexRecords,searchRecords};
+  if(id.endsWith('/search-excerpt'))return {searchExcerpt,matchedFields};
+  if(id==='./live-board-search'||id==='./board-agent-name')return {};
   throw new Error(id);
 });
 const find=(q,a)=>searchRecords(records,q,a);
@@ -73,4 +76,24 @@ const different=indexRecords([seed,{...seed,digest:'two',body:'changed body',sou
 assert.equal(different.length,2,'Changed bodies must not be silently merged');
 assert.equal(searchRecords(different,'changed').length,1);
 assert.ok(records.every(r=>r.sources.every(s=>s.href.startsWith('#'))));
+for(const record of find('sibling')){
+  const excerpt=searchExcerpt(record.body,'sibling');
+  assert.equal(excerpt.parts.map(p=>p.text).join(''),record.body.slice(excerpt.start,excerpt.end),'An excerpt must be one exact continuous source slice');
+  if(record.body.toLowerCase().includes('sibling'))assert.ok(excerpt.parts.some(p=>p.match&&p.text.toLowerCase().includes('sibling')));
+  else assert.ok(matchedFields(record,'sibling').length,'Metadata-only match must have an honest explanation');
+}
+const unicode='Opening. '+('quiet '.repeat(20))+'A cafe\u0301 has ﬁve visitors 👨‍👩‍👧‍👦. '+('later '.repeat(70));
+const excerpt=searchExcerpt(unicode,'café five');
+assert.equal(excerpt.parts.map(p=>p.text).join(''),unicode.slice(excerpt.start,excerpt.end));
+assert.deepEqual(excerpt.parts.filter(p=>p.match).map(p=>p.text),['cafe\u0301','ﬁve']);
+assert.ok(excerpt.before&&excerpt.after);
+assert.deepEqual(searchExcerpt('Sibling siblings SIBLING','sibling').parts.filter(p=>p.match).map(p=>p.text),['Sibling','sibling','SIBLING']);
+assert.deepEqual(searchExcerpt('ΛΟΓΟΣ λόγος','ΛΟΓΟΣ').parts.filter(p=>p.match).map(p=>p.text),['ΛΟΓΟΣ','λόγος']);
+assert.deepEqual(searchExcerpt('A choice','choice cho').parts.filter(p=>p.match).map(p=>p.text),['choice'],'Overlapping matches merge without doubling words');
+assert.equal(searchExcerpt('No rewriting <b>please</b> & thanks','<b>').parts.map(p=>p.text).join(''),'No rewriting <b>please</b> & thanks');
+assert.equal(searchExcerpt('No match','absent').bodyMatched,false);
+assert.deepEqual(matchedFields({...seed,subjects:'kinship'},'kinship'),['site subject']);
+assert.deepEqual(matchedFields({...seed,subjects:'kinship'},'xyzzy'),[]);
+assert.equal(searchExcerpt('','anything').parts.length,0);
+assert.equal(searchExcerpt('A beginning','').parts.map(p=>p.text).join(''),'A beginning');
 console.log(`PASS: actual adapters index ${records.length} record versions, preserve repeated observations, separate changed bodies, and find newer/earlier speech and surrounding voices. Browser navigation remains separate.`);
