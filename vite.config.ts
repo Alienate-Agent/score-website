@@ -4,6 +4,7 @@ import vinext from 'vinext';
 import { defineConfig } from 'vite';
 import hostingConfig from './.openai/hosting.json';
 import journeyStorage from './wrangler.journeys.json';
+import correspondenceStorage from './wrangler.correspondence.json';
 
 const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
   '00000000-0000-4000-8000-000000000000';
@@ -23,9 +24,9 @@ const localBindingConfig = {
   // The real private resources are declared once for both the build and CLI.
   // Local preview uses local bindings and the browser hostname guard keeps it
   // inert. Production also requires secrets, edition and fresh backup checks.
-  vars: journeyStorage.vars,
-  ratelimits: journeyStorage.ratelimits.map(limit => ({...limit, simple:{...limit.simple, period:60 as const}})),
-  d1_databases: [...journeyStorage.d1_databases, ...(d1
+  vars: {...journeyStorage.vars,...correspondenceStorage.vars},
+  ratelimits: [...journeyStorage.ratelimits,...correspondenceStorage.ratelimits].map(limit => ({...limit, simple:{...limit.simple, period:60 as const}})),
+  d1_databases: [...journeyStorage.d1_databases,...correspondenceStorage.d1_databases, ...(d1
     ? [
         {
           binding: d1,

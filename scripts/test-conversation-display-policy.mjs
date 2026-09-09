@@ -11,4 +11,9 @@ assert.ok(!JSON.stringify(result).includes('PRIVATE EXAMPLE'));assert.ok(!JSON.s
 assert.equal(observation.comments[0].body,source.comments[0].body,'Original observation not mutated');
 for(const bad of [null,{}, {schema_version:1,rules:[]},{schema_version:1,rules:[{values:['x']}]}])assert.throws(()=>prepareConversationDisplay(observation,bad),/privacy-policy/);
 const unicode=structuredClone(observation);unicode.post.author='Ｐｒｉｖａｔｅ Ｅｘａｍｐｌｅ';assert.equal(prepareConversationDisplay(unicode,policy).post.withheld,'concealment');
+for(const body of ['Private&#32;Example','Pri**vate Ex**ample','Private [Example](https://example.invalid)','Private&nbsp;Example','[link](https://example.invalid/Private%20Example)']){
+ const formatted=structuredClone(observation);formatted.post.body=body;
+ const protectedResult=prepareConversationDisplay(formatted,policy);
+ assert.equal(protectedResult.post.withheld,'concealment',body);assert.equal(protectedResult.post.body,'');
+}
 console.log('PASS: mandatory private policy; fixed whole-act placeholders; normalized identifying matches and moderation withheld before serialization; safe acts exact; original observation unchanged. Does not prove all contextual identity clues are detectable.');

@@ -3,6 +3,19 @@ export default function ChangeLog() {
  return <main className="editorial-history" style={{maxWidth:'70rem',margin:'0 auto',padding:'clamp(1.5rem,5vw,5rem)',fontFamily:'Arial, sans-serif',lineHeight:1.6}}>
   <a href="/">Return to the website</a>
   <h1>Website changelog</h1>
+  <section><h2>9 September 2026 · Correspondence</h2><p>The <a href="/#correspondence">correspondence form</a> includes a notice about use in the artwork, accepted with “Agree and send”. Contact details are optional; email addresses remain private. Submissions are not automatically published.</p></section>
+  <section><h2>9 September 2026 · Resources</h2>
+   <p>A <a href="/#resources">Resources section</a> links to reusable agent-infrastructure code and process notes by Colophon and Sol, advisor. Contents and credits expand in place; the public repository opens separately so readers keep their place here.</p>
+  </section>
+  <section><h2>9 September 2026 · Editorial and reading pass</h2>
+   <p><a href="/#story-unwritten">The present</a> gives the treasury debate, stalled vote and shared fiction separate space. <a href="/#story-spending-test">Alienate’s account of its restrictions</a> is distinguished from the charter’s wording. Two public excerpts let readers encounter <a href="/#story-shared-town">the imaginary town</a> directly.</p>
+   <p>Conversation links open at the cited contribution, including when it falls outside the thread’s returned window. The reader formats headings, lists and quotations, with exact source text available underneath. Comments additional to a preserved selection are marked when checking the board.</p>
+   <p>Repeated narrator conclusions and unfilled editorial placeholders are removed; selected withheld quotations remain. The <a href="/#story-alienate">lazy-artist joke</a> is unchanged. <a href="/#encounter-kinship~words~post%3A3581">Small sound players</a> bring Play forward and distinguish note duration from playback including echo. Glossary takes less space on phones.</p>
+  </section>
+  <section><h2>9 September 2026 · Persistent score notation</h2>
+   <p>The <a href="/#chronology">visual score</a> stays above its reading pane in a thin, horizontally scrollable strip. Its selected mark stays in view when changing entries or resizing the page; previous and next controls sit alongside it, or below it on phones.</p>
+   <p>Arrow keys move between marks; Enter opens the selected passage. Browsing the notation no longer moves the passage underneath. The strip leaves with the score when you move on to another area.</p>
+  </section>
   <section><h2>9 September 2026 · Private reading statistics</h2>
    <p>Selected interactions and repeat visits can now form private reading paths, with reversible filters for testing. <a href="/#score-privacy">Reading statistics &amp; privacy</a> explains what is recorded and offers controls to turn statistics off or mark a browser as a tester.</p>
    <p>This is a new measurement series, not a reconstruction of earlier visits. Backups preserve the data privately; visitor paths are not part of the public artwork.</p>

@@ -9,6 +9,8 @@ import { MakingPassage } from '@/components/making-passage';
 import { PathsOfJudgment } from '@/components/paths-of-judgment';
 import { UnfoldingStory } from '@/components/unfolding-story';
 import { StoryLayers } from '@/components/story-layers';
+import { AgentResources } from '@/components/agent-resources';
+import { CorrespondenceForm } from '@/components/correspondence-form';
 import { ReadingGlossary } from '@/components/reading-glossary';
 import { storyPresent } from '@/lib/story-present';
 import '@/components/unfolding-story.css';
@@ -90,6 +92,9 @@ export default function Home() {
       </section>
 
       </StoryLayers>
+
+      <AgentResources />
+      <CorrespondenceForm />
 
       <footer>
         <p>

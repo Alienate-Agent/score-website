@@ -13,7 +13,7 @@ export default function CharterReader() {
     </header>
     <nav aria-label="Charter sections">{sections.map((name,i)=><a key={name} href={'#charter-section-'+i}>{name}</a>)}</nav>
     <p>Introduction and section navigation by <s>Sol Website</s>{' '}Margin. Document wording and byline below are unchanged; line wrapping adapts to your screen.</p>
-    {parts.map((part,i)=><section key={i} id={'charter-section-'+i} aria-label={sections[i]}><pre>{part}</pre></section>)}
+    {parts.map((part,i)=>{const mark='Movement One: Constitution.',at=part.indexOf(mark);return <section key={i} id={'charter-section-'+i} aria-label={sections[i]}><pre>{at<0?part:<>{part.slice(0,at)}<span id="charter-movement-one">{mark}</span>{part.slice(at+mark.length)}</>}</pre></section>;})}
     <a href="#">Back to the charter introduction ↑</a>
   </main>;
 }

@@ -31,6 +31,17 @@ try {
   await writeFile(resolve(root, 'app/clean.txt'), 'Artist Operator\n');
   await validatePublication({ root, scanRoot: root, denyListPath });
 
+  const contact='alienate-agent'+'@'+'proton.me';
+  await writeFile(resolve(root,'app/contact.txt'),contact);
+  await validatePublication({root,scanRoot:root,denyListPath}).then(()=>{throw Error('Project mail must remain unpublished');},e=>{if(!e.message.includes('[email-address]'))throw e;});
+  await writeFile(resolve(root,'app/contact.txt'),'someone'+'@'+'example.com');
+  await validatePublication({root,scanRoot:root,denyListPath}).then(()=>{throw Error('Other mail must fail');},e=>{if(!e.message.includes('[email-address]'))throw e;});
+  await writeFile(resolve(root,'app/contact.txt'),contact);
+  const contactDeny=resolve(privateRoot,'contact-deny.json');
+  await writeFile(contactDeny,JSON.stringify({schema_version:1,rules:[{id:'contact-private-test',values:[contact]}]}));
+  await validatePublication({root,scanRoot:root,denyListPath:contactDeny}).then(()=>{throw Error('Private rules still apply to approved contact');},e=>{if(!e.message.includes('[contact-private-test]'))throw e;});
+  await writeFile(resolve(root,'app/contact.txt'),'Correspondence form');
+
   await writeFile(resolve(root, 'app/private.txt'), syntheticProtectedValue);
   await validatePublication({ root, scanRoot: root, denyListPath }).then(
     () => {

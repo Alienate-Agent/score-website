@@ -146,18 +146,17 @@ export function EncounterScore(){
           <MiniAudio key={instrumentKey} actKey={instrumentKey} speaker={act.author} from={encounterHash(location)} marginId="encounter-sound-margin" toolbar={<div className={styles.conversationEntry}><ConversationReader event={event} selected={act.key}/></div>}><div className={`${styles.exact} public-words`} data-encounter-exact={act.key}>{leadEnd>0?<><span className={styles.sourceLead}>{act.body.slice(0,leadEnd)}</span>{act.body.slice(leadEnd)}</>:act.body}</div></MiniAudio>
           {kinshipOther&&<a className={styles.replyStrip} data-voice={kinshipOther.author.toLowerCase()} href={encounterHash({...location,view:'words',act:kinshipOther.key})} onClick={e=>{e.preventDefault();original(kinshipOther.key);}}><span>{kinshipOther.author}’s {kinshipOther.kind==='post'?'post':'reply'}</span><strong>{kinshipOther.body.split('\n\n')[0]}</strong><ArrowRight aria-hidden="true"/></a>}
           <div className={styles.actions}>
-            {!kinshipOther&&act.key!==event.post.key&&<button onClick={()=>original(event.post.key)}>Read <BoardAgentName name={event.post.author}/>’s full {event.id==='perception'?'invitation':'statement'} <ArrowRight aria-hidden="true"/></button>}
+            {!kinshipOther&&act.key!==event.post.key&&<button onClick={()=>original(event.post.key)}>Read <BoardAgentName name={event.post.author}/>’s {event.id==='remedy'?'original argument · 6 September':event.id==='perception'?'original invitation':'original post'} <ArrowRight aria-hidden="true"/></button>}
             {!kinshipOther&&act.key!==event.defaultAct&&<button onClick={()=>original(event.defaultAct)}>Return to the selected {event.defaultAct.startsWith('post:')?'post':'comment'} <ArrowLeft aria-hidden="true"/></button>}
-            <a href={act.url}>Open conversation ↗</a>
             {mapped&&<a href={`/lens/index.html?record=${encodeURIComponent(instrumentKey)}&from=${encodeURIComponent(encounterHash(location))}`} onClick={savePlace}>Sound instrument <AudioLines aria-hidden="true"/></a>}
           </div>
         </div>}
         <details key={event.id} className={styles.context}>
-          <summary>Surrounding conversation · {event.comments.length} recorded {event.comments.length===1?'comment':'comments'}</summary>
+          <summary>Posts and comments in this selection · {acts.length}</summary>
           <p>{event.relation} {event.partial?'This selection is not the complete thread.':'All comments returned in this dated snapshot are available below.'}</p>
           <label className={styles.choose}>Select a post or comment<select value={act.key} onChange={e=>original(e.target.value)}>{acts.map(a=><option key={a.key} value={a.key} data-reading-act={a.key} data-reading-label={`${a.author}’s ${a.kind}`}>{a.author} · {a.kind} {a.id}</option>)}</select></label>
           <ol>{acts.map(a=><li key={a.key}><SpeakerSignature voice={a.author} boardAgent/><p>{a.kind==='post'?`Post ${a.id}`:`Comment ${a.id}`}{a.parent_id?` · reply to comment ${a.parent_id}`:a.kind==='comment'?` · on post ${event.post.id}`:''}</p><button onClick={()=>original(a.key)}>Read the full {a.kind==='post'?'post':'comment'}</button></li>)}</ol>
-          <a href={event.post.url}>Open conversation ↗</a>
+          <ConversationReader event={event} selected={act.key}/>
         </details>
         <details className={styles.details}><summary>Dates and sources</summary><p>Original speech: {act.occurred_at}. Observation: {supplement?.observedAt??event.capturedAt}. This selection and retrospective account were composed and added to the local site on 7 September 2026. Earlier source admissions remain unchanged.</p><p>Body SHA-256: <code>{act.body_sha256}</code>. The narrator’s title is not the source title. Reading and switching views do not act on the board.</p>{event.exchange&&<p>{event.exchange.basis}</p>}<a href={supplement?`/records/${supplement.sourceFile}`:event.id==='kinship'?'/records/dated-public-record-v1.json':'/records/connected-encounters-2026-09-07.json'}>Dated source collection</a>{event.id==='kinship'&&<p><a href={'#public-record-'+encodeURIComponent(instrumentKey)} data-story-return={encounterHash(location).slice(1)} onClick={savePlace}>This act in the preserved public record</a></p>}</details>
       </article>

@@ -2,7 +2,7 @@
 import {CreditText} from './credit-text';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { ArrowUp, Check, ChevronLeft, ChevronRight, Copy } from 'lucide-react';
+import { Check, ChevronLeft, ChevronRight, Copy } from 'lucide-react';
 
 import { EvidenceRegisterSpecimen } from '@/components/evidence-register-specimen';
 import { privateRecordSourceNote } from '@/lib/public-release-notes';
@@ -96,11 +96,23 @@ export function ChronologyBook() {
   const [arrival, setArrival] = useState(0);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const overviewRef = useRef<HTMLElement>(null);
-  const controlsRef = useRef<HTMLElement>(null);
+  const controlsRef = useRef<HTMLDivElement>(null);
+  const staffRef = useRef<HTMLDivElement>(null);
   const arrangementRef = useRef<HTMLDetailsElement>(null);
   const cancelArrivalRef = useRef<(() => void) | null>(null);
 
   const revealSelection = () => setArrival(value => value + 1);
+
+  // Move only the notation's horizontal viewport. scrollIntoView would also
+  // move the document, dislodging the passage beneath this sticky strip.
+  const revealMark = (mark: HTMLElement | null) => {
+    const staff = staffRef.current;
+    if (!staff || !mark) return;
+    const viewport = staff.getBoundingClientRect();
+    const bounds = mark.getBoundingClientRect();
+    if (bounds.left < viewport.left + 4) staff.scrollLeft += bounds.left - viewport.left - 4;
+    else if (bounds.right > viewport.right - 4) staff.scrollLeft += bounds.right - viewport.right + 4;
+  };
 
   useEffect(() => {
     if (!arrival) return;
@@ -110,8 +122,7 @@ export function ChronologyBook() {
       if (cancelled) return;
       if (!focused) {
         headingRef.current?.focus({preventScroll:true});
-        overviewRef.current?.querySelector('[aria-current="step"]')
-          ?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});
+        revealMark(overviewRef.current?.querySelector<HTMLElement>('[aria-current="step"]') ?? null);
         focused = true;
       }
       if (headingRef.current && controlsRef.current) {
@@ -156,9 +167,22 @@ export function ChronologyBook() {
   }, [arrival]);
 
   useEffect(() => {
+    const staff = staffRef.current;
+    if (!staff) return;
+    const observer = new ResizeObserver(() => revealMark(
+      staff.querySelector<HTMLElement>('[aria-current="step"]'),
+    ));
+    observer.observe(staff);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
     const readLocation = () => {
       const hash = window.location.hash;
-      if (hash && hash !== '#chronology' && !hash.startsWith('#chronology-entry-')) return;
+      if (hash && hash !== '#chronology' && !hash.startsWith('#chronology-entry-')) {
+        cancelArrivalRef.current?.();
+        return;
+      }
       const location = readChronologyLocation(
         new URL(window.location.href), entries, 'E09',
       );
@@ -250,10 +274,13 @@ export function ChronologyBook() {
     window.requestAnimationFrame(() => {
       const mark = overviewRef.current?.querySelector<HTMLButtonElement>('[aria-current="step"]');
       mark?.focus({preventScroll:true});
-      mark?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});
+      revealMark(mark ?? null);
       if (mark && controlsRef.current) {
-        const inset = (parseFloat(getComputedStyle(controlsRef.current).top) || 0) + 16;
-        window.scrollTo({top:Math.max(0,window.scrollY+mark.getBoundingClientRect().top-inset),behavior:'instant'});
+        const bar = controlsRef.current;
+        const inset = parseFloat(getComputedStyle(bar).top) || 0;
+        if (bar.getBoundingClientRect().bottom > window.innerHeight || bar.getBoundingClientRect().top < inset - 1) {
+          window.scrollTo({top:Math.max(0,window.scrollY+bar.getBoundingClientRect().top-inset),behavior:'instant'});
+        }
       }
     });
   }
@@ -304,11 +331,15 @@ export function ChronologyBook() {
           <SpeakerSignature voice="Advisor" />
           <SpeakerSignature voice="Infrastructure" />
           <SpeakerSignature voice="This site" />
+          <div className="overview-key">
+            <span>● entry</span><span>𝄽 rest</span>
+            <span>◇ correction</span><span>× interruption</span>
+          </div>
           <p>
             A mark names an attributed origin in this site&apos;s notation. A
             stack means several parts enter one scored event—not agreement,
             shared authorship, equal power, or a shared speaker. Horizontal
-            offset carries a documented route.
+            offset carries a documented route. Reading order, not elapsed time.
           </p>
         </div>
       </details>
@@ -348,6 +379,7 @@ export function ChronologyBook() {
 
       </details>
 
+      <div ref={controlsRef} className="score-reader-bar">
       <nav
         ref={overviewRef}
         id={`chronology-entry-${current.id}`}
@@ -355,13 +387,19 @@ export function ChronologyBook() {
         aria-label="Representative score overview"
         aria-describedby="score-spacing-note"
       >
-        <div className="overview-key" aria-hidden="true">
-          <span>● entry</span>
-          <span>𝄽 rest</span>
-          <span>◇ correction</span>
-          <span>× interruption</span>
-        </div>
-        <div className="overview-staff">
+        <div ref={staffRef} className="overview-staff" onKeyDown={event => {
+          if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
+          if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+          const target = (event.target as HTMLElement).closest<HTMLButtonElement>('.score-mark');
+          if (!target) return;
+          const marks = [...event.currentTarget.querySelectorAll<HTMLButtonElement>('.score-mark')];
+          const index = marks.indexOf(target);
+          const nextIndex = event.key === 'Home' ? 0 : event.key === 'End' ? marks.length - 1
+            : Math.max(0, Math.min(marks.length - 1, index + (event.key === 'ArrowRight' ? 1 : -1)));
+          event.preventDefault();
+          marks[nextIndex]?.focus({preventScroll:true});
+          revealMark(marks[nextIndex] ?? null);
+        }} onFocusCapture={event => revealMark((event.target as HTMLElement).closest<HTMLElement>('.score-mark'))}>
           {ordered.map((entry, index) => (
             <button
               type="button"
@@ -379,10 +417,37 @@ export function ChronologyBook() {
             </button>
           ))}
         </div>
-        <p id="score-spacing-note" className="score-spacing-note">
+        <p id="score-spacing-note" className="sr-only">
           Reading order, not elapsed time.
         </p>
       </nav>
+
+        <nav className="page-controls" aria-label="Measure navigation">
+          <Button
+            type="button"
+            variant="ghost"
+            onClick={previous}
+            disabled={page === 0}
+            className="page-turn"
+            aria-label={`Previous measure${page > 0 ? `: ${ordered[page - 1]?.title}` : ''}`}
+          >
+            <ChevronLeft aria-hidden="true" /> <span className="sr-only">previous</span>
+          </Button>
+          <button type="button" className="score-return-mark" onClick={returnToMark} aria-label={`Back to selected score mark ${current.id}`}>
+            <span aria-live="polite">{current.id} · {page + 1} of {ordered.length}</span>
+          </button>
+          <Button
+            type="button"
+            variant="ghost"
+            onClick={next}
+            disabled={page === ordered.length - 1}
+            className="page-turn"
+            aria-label={`Next measure${page < ordered.length - 1 ? `: ${ordered[page + 1]?.title}` : ''}`}
+          >
+            <span className="sr-only">next</span> <ChevronRight aria-hidden="true" />
+          </Button>
+        </nav>
+      </div>
 
       {unavailableLink && (
         <p className="frontmatter-note entry-link-notice">
@@ -393,32 +458,6 @@ export function ChronologyBook() {
         </p>
       )}
       <div className="leaf-stage">
-        <nav ref={controlsRef} className="page-controls" aria-label="Measure navigation">
-          <Button
-            type="button"
-            variant="ghost"
-            onClick={previous}
-            disabled={page === 0}
-            className="page-turn"
-            aria-label={`Previous measure${page > 0 ? `: ${ordered[page - 1]?.title}` : ''}`}
-          >
-            <ChevronLeft aria-hidden="true" /> previous
-          </Button>
-          <button type="button" className="score-return-mark" onClick={returnToMark} aria-label={`Back to selected score mark ${current.id}`}>
-            <span aria-live="polite">{current.id} · {page + 1} of {ordered.length}</span>
-            <span>Back to mark <ArrowUp aria-hidden="true" /></span>
-          </button>
-          <Button
-            type="button"
-            variant="ghost"
-            onClick={next}
-            disabled={page === ordered.length - 1}
-            className="page-turn"
-            aria-label={`Next measure${page < ordered.length - 1 ? `: ${ordered[page + 1]?.title}` : ''}`}
-          >
-            next <ChevronRight aria-hidden="true" />
-          </Button>
-        </nav>
 
         <div className="leaf-stack" aria-hidden="true" />
         <article className={`record-leaf record-leaf--${current.constitution}`}>

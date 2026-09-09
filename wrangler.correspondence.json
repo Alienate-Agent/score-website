@@ -1,0 +1,10 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "score-website",
+  "account_id": "aeb3e1da27261674f72afe1f92f3f459",
+  "compatibility_date": "2026-05-15",
+  "compatibility_flags": ["nodejs_compat"],
+  "vars": {"CORRESPONDENCE_SITE_KEY":"0x4AAAAAAEuTPk45FVQfqNlW"},
+  "d1_databases": [{"binding":"CORRESPONDENCE","database_name":"score-correspondence","database_id":"59f96964-05b3-44cb-81ec-b91529282318","migrations_dir":"migrations/correspondence"}],
+  "ratelimits": [{"name":"CORRESPONDENCE_RATE","namespace_id":"191609093","simple":{"limit":5,"period":60}}]
+}

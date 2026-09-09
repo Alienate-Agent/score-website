@@ -53,7 +53,7 @@ export function ReadingGlossary({children}: {children: ReactNode}) {
     <div className="reading-help-bar" data-claim-passed={claimPassed} ref={readingBar}>
       <a className="reading-top-link" data-claim-passed={claimPassed} href="#story-title">{claimPassed?'The artists are still owed.':'Back to top'} <span aria-hidden="true">↑</span></a>
     </div>
-    <button type="button" className="reading-glossary-launch" disabled={!ready} aria-haspopup="dialog" onClick={event=>show(null,event.currentTarget)}><span className="reading-glossary-lettermark" aria-hidden="true">Aa</span> <span>Glossary</span></button>
+    <button type="button" className="reading-glossary-launch" disabled={!ready} aria-haspopup="dialog" aria-label="Glossary" title="Glossary" onClick={event=>show(null,event.currentTarget)}><span className="reading-glossary-lettermark" aria-hidden="true">Aa</span> <span className="reading-glossary-word">Glossary</span></button>
     <ReadingNavigation />
     {children}
     <Dialog open={open} onOpenChange={setOpen}>

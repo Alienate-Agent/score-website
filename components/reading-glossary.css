@@ -23,6 +23,7 @@ html { scroll-padding-top:var(--reading-help-height,0px); }
 }
 .reading-glossary-launch { position:fixed; right:max(1rem,env(safe-area-inset-right)); bottom:max(1rem,env(safe-area-inset-bottom)); z-index:40; display:flex; align-items:center; gap:.65rem; min-height:44px; padding:.6rem .85rem; border:1px solid var(--ink); background:var(--paper); color:var(--ink); box-shadow:2px 2px 0 var(--ink); font:1rem/1.2 var(--font-geist-sans,Arial),sans-serif; cursor:pointer; }
 .reading-glossary-launch:focus-visible { outline:3px solid var(--ink); outline-offset:4px; }
+@media(max-width:600px){.reading-glossary-launch{width:44px;height:44px;padding:.5rem;justify-content:center;}.reading-glossary-launch .reading-glossary-lettermark{display:inline;}.reading-glossary-word{display:none;}}
 .reading-glossary { display:flex; flex-direction:column; gap:1rem; width:46rem; max-width:calc(100vw - 2rem); height:min(48rem,calc(100dvh - 2rem)); max-height:calc(100dvh - 2rem); padding:1.5rem; border:1px solid var(--ink); border-radius:0; background:var(--paper); color:var(--ink); font:1rem/1.55 var(--font-geist-sans,Arial),sans-serif; box-shadow:5px 5px 0 var(--ink); animation:none; transition:none; }
 .reading-glossary-header { display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; }
 .reading-glossary [data-slot=dialog-title] { font:1.8rem/1.15 Georgia,serif; }

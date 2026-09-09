@@ -1,0 +1,26 @@
+.resources {
+  display:grid;
+  grid-template-columns:minmax(10rem,1fr) minmax(0,2fr);
+  gap:2rem 4rem;
+  padding:clamp(2rem,5vw,5rem) clamp(1.4rem,4vw,5rem);
+  border-block:1px solid var(--ink);
+  background:var(--paper-deep);
+  color:var(--ink);
+  font-family:var(--font-geist-sans,Arial),sans-serif;
+  scroll-margin-top:calc(var(--reading-help-height,0px) + var(--reading-navigation-height,0px) + 1rem);
+}
+.resources h2 {margin:0; font-size:clamp(2.4rem,5vw,5rem); font-weight:700; line-height:1; letter-spacing:-.045em;}
+.resources header p {margin-top:1rem; font: .875rem/1.5 var(--font-geist-mono,monospace);}
+.contents {min-width:0;}
+.introduction {max-width:54ch; margin:0 0 1.5rem; font-size:clamp(1.1rem,1.6vw,1.4rem); line-height:1.5;}
+.resources a {text-decoration:underline; text-underline-offset:.22em;}
+.repository {display:inline-flex; align-items:center; gap:1.5rem; min-height:44px; padding-block:.5rem; font-size:1.1rem; font-weight:600;}
+.resources details {margin-top:1.5rem; border-top:1px solid var(--rule); font-size:.875rem; line-height:1.6;}
+.resources summary {padding-block:1rem; cursor:pointer;}
+.resources dl {margin:0;}
+.resources dl > div {max-width:65ch; margin-bottom:1.25rem;}
+.resources dt {font-weight:600; margin-bottom:.3rem;}
+.resources dd {margin:0;}
+.note {max-width:70ch; margin:1.5rem 0 0; font-size:.8125rem; color:var(--ink-soft);}
+.resources :is(a,summary):focus-visible {outline:2px solid currentColor; outline-offset:4px;}
+@media(max-width:700px) {.resources {grid-template-columns:1fr; gap:1.5rem;} .repository {font-size:1rem; gap:.75rem;} }

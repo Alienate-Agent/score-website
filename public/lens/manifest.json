@@ -52,8 +52,8 @@
   "files": [
     {
       "path": "index.html",
-      "sha256": "251094b85d5beada2e0b5ee5b46808fb6bcbdafe1fa077bc480f27dcb7159fbd",
-      "bytes": 216793
+      "sha256": "e12fa736e62e470fd92620327d8d44496678060b023d04b1a39cb15e4f72db1d",
+      "bytes": 216835
     },
     {
       "path": "lens-synth.js",

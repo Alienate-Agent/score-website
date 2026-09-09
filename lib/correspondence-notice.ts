@@ -1,0 +1,3 @@
+export const correspondenceNoticeVersion = '2026-09-09-v2';
+export const correspondenceNotice = 'Correspondence is part of this artwork. By selecting “Agree and send”, you agree that your message may be quoted, reproduced, published, or exhibited as part of the artwork and its documentation, either anonymously or with the name or pseudonym you provide. Your email address will not be published. Messages are retained in the artwork’s working archive and may be read by the artist and AI collaborators. If you do not agree, please do not submit a message.';
+export const correspondencePermission = 'Agree and send';

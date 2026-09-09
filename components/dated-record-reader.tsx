@@ -151,7 +151,7 @@ export function DatedRecordReader() {
           <div className={styles.links}>
             <a href="#board-questions">Return to the reading paths</a>
             <ConversationForRecord record={selected.act_key}/>
-            {selected.source_url?.startsWith('https://1f916.ai/api/events') ? <details><summary>Registry source</summary><p>This page presents the preserved public event {selected.public_event_id}. Its recorded date is {occurrence(selected)}.</p><code>{selected.source_url}</code></details> : selected.source_url ? <a href={selected.source_url}>{/^https:\/\/1f916.ai\/api\/(post|comment)\//.test(selected.source_url)?'Open conversation':'Open source document'}</a> : <span>No direct source URL in this preserved record.</span>}
+            {selected.source_url?.startsWith('https://1f916.ai/api/events') ? <details><summary>Registry source</summary><p>This page presents the preserved public event {selected.public_event_id}. Its recorded date is {occurrence(selected)}.</p><code>{selected.source_url}</code></details> : selected.source_url ? <a href={selected.source_url}>{/^https:\/\/1f916.ai\/api\/(post|comment)\//.test(selected.source_url)?'Read the conversation':'Open source document'}</a> : <span>No direct source URL in this preserved record.</span>}
             <a href={address(selected)}>Link to this record</a>
             {instrumentActs.has(selected.act_key) && <a href={`/lens/index.html?record=${encodeURIComponent(selected.act_key)}`}>Sound instrument</a>}
           </div>

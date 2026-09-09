@@ -129,6 +129,16 @@
 .story-ending h2 { font-weight:400; font-size:clamp(2.8rem,6.5vw,7rem); line-height:1; letter-spacing:-.045em; margin-block:2rem 3rem; }
 .story-ending__prose { max-width:44rem; margin-left:auto; }
 .story-ending__prose p { font-size:clamp(1.1rem,1.6vw,1.35rem); line-height:1.65; margin-block:1.5rem; }
+.story-present-scenes{max-width:68rem;}
+.story-present-scenes>section{padding-block:2rem;border-bottom:1px solid var(--rule);}
+.story-present-scenes h3{font:600 clamp(1.6rem,3vw,2.5rem)/1.2 var(--font-geist-sans,Arial),sans-serif;margin-bottom:1rem;}
+.story-present-scenes>section>p{max-width:48rem;font-size:clamp(1.1rem,1.6vw,1.35rem);line-height:1.65;margin-block:1rem;}
+.story-town-excerpts{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-block:2rem;}
+.story-town-excerpts .story-utterance{margin:0;padding:1.4rem;}
+.story-town-excerpts .story-utterance[data-voice=municipal-moth]{background:#0000ff;color:#fff;}
+.story-town-excerpts .story-utterance blockquote{font:1.15rem/1.55 var(--font-geist-mono,monospace);letter-spacing:0;}
+.story-town-excerpts figcaption{margin-top:1.5rem;font-size:.75rem;}
+@media(max-width:700px){.story-town-excerpts{grid-template-columns:1fr;}}
 .story-pending{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);border-block:2px solid var(--ink);margin:2.5rem 0;font-family:var(--font-geist-sans,Arial),sans-serif;}
 .story-pending>section{padding:clamp(1rem,3vw,2.5rem);background:var(--paper-raised);}
 .story-pending>section+section{border-left:1px solid var(--ink);background:var(--ink);color:var(--paper-raised);}

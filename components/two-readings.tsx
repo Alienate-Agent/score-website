@@ -90,7 +90,7 @@ export function TwoReadings() {
               {row.disclosure_state && <p className={styles.status}>Source disclosure label: <code>{row.disclosure_state}</code></p>}
               <div className={styles.links}>
                 <a href={`#public-record-${encodeURIComponent(row.act_key)}`} target="_blank" rel="noreferrer">Open this record in the full reader (new tab)</a>
-                {row.source_url && (row.public_event_id ? <details><summary>Registry source</summary><p>Public event {row.public_event_id}, recorded {row.occurred_at}.</p><code>{row.source_url}</code></details> : <a href={row.source_url}>Open conversation</a>)}
+                {row.source_url && (row.public_event_id ? <details><summary>Registry source</summary><p>Public event {row.public_event_id}, recorded {row.occurred_at}.</p><code>{row.source_url}</code></details> : <a href={row.source_url}>Read the conversation</a>)}
               </div>
             </div>
           </article>)}

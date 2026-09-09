@@ -15,8 +15,8 @@ export function ReadingNavigation(){
    const heading=[...document.querySelectorAll<HTMLElement>('[data-story-fold] h2[id]')].filter(h=>h.getClientRects().length&&h.getBoundingClientRect().bottom<edge&&((h.closest('section')?.getBoundingClientRect().bottom||0)>edge)).at(-1);
    setEntry(heading?{id:heading.id,text:heading.textContent||''}:null);
    if(!title||title.getBoundingClientRect().top>limit){setSection('');return;}
-   const areas=[...document.querySelectorAll<HTMLElement>('[data-story-fold],#connected-score,#story-exploration,#story-instruments')].filter(e=>e.getClientRects().length&&e.getBoundingClientRect().top<=limit+120&&e.getBoundingClientRect().bottom>limit);
-   const area=areas.at(-1);setSection(area?.id==='connected-score'?'CONVERSATIONS':area?.id==='story-instruments'?'SCORE & PUBLIC RECORDS':area?.id==='story-exploration'?'EXPLORE':'THE STORY SO FAR S…');
+   const areas=[...document.querySelectorAll<HTMLElement>('[data-story-fold],#connected-score,#story-exploration,#story-instruments,#resources,#correspondence')].filter(e=>e.getClientRects().length&&e.getBoundingClientRect().top<=limit+120&&e.getBoundingClientRect().bottom>limit);
+   const area=areas.at(-1);setSection(area?.id==='connected-score'?'CONVERSATIONS':area?.id==='story-instruments'?'SCORE & PUBLIC RECORDS':area?.id==='story-exploration'?'EXPLORE':area?.id==='resources'?'RESOURCES':area?.id==='correspondence'?'CORRESPONDENCE':'THE STORY SO FAR S…');
   };
   const schedule=()=>{if(!frame)frame=requestAnimationFrame(update);};
   const reveal=()=>{let target:Element|null=null;try{target=document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch{}if(target?.closest('[data-story-fold]'))setCollapsed(false);for(let node:Element|null=target;node;node=node.parentElement)if(node instanceof HTMLDetailsElement)node.open=true;schedule();};

@@ -6,6 +6,7 @@ import {BoardAgentName} from './board-agent-name';
 import {conversationCollection,type ConversationCollection} from '@/lib/conversation-collections';
 import './conversation-reader.css';
 import {boardReaderHref} from '@/lib/board-reader-route';
+import {BoardSpeech} from './board-speech';
 
 type FreshAct={key:string;id:number;kind:string;author:string;title:string|null;body:string;occurred_at:string;parent_id:number|null;url:string;withheld:string|null};
 export type FreshConversation={thread_id:number;observed_at:string;partial:boolean;post:FreshAct;comments:FreshAct[];comments_total:number};
@@ -47,7 +48,8 @@ export function ConversationReader({event,selected,initialFresh,control}:{event:
     const controller=new AbortController();pending.current=controller;setBusy(true);setNotice('Checking the board…');
     const timeout=setTimeout(()=>controller.abort(),15000);
     try{
-      const response=await fetch(initialFresh?`/api/board-search?kind=post&id=${event.post.id}`:`/api/conversation?id=${event.post.id}`,{credentials:'omit',cache:'no-store',signal:controller.signal});
+      const [kind,id]=selected.split(':');
+      const response=await fetch(initialFresh?`/api/board-search?kind=${kind}&id=${id}`:`/api/conversation?id=${event.post.id}`,{credentials:'omit',cache:'no-store',signal:controller.signal});
       if(!response.ok)throw Error('unavailable');
       const payload=await response.json();const data=initialFresh&&object(payload)?payload.conversation:payload;
       if(!freshConversation(data,event.post.id))throw Error('invalid');
@@ -84,7 +86,7 @@ export function ConversationReader({event,selected,initialFresh,control}:{event:
   }
   const refreshControl=<button disabled={busy} onClick={refresh}>{busy?'Checking…':'Check for newer comments'}</button>;
   return <>
-    {!control&&<button className="conversation-open" ref={trigger} onClick={()=>setOpen(true)}>{initialFresh?'Reopen fetched conversation':`Open conversation · ${event.comments.length} preserved ${event.comments.length===1?'comment':'comments'}`}</button>}
+    {!control&&<button className="conversation-open" ref={trigger} onClick={()=>setOpen(true)}>Read the conversation</button>}
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="conversation-reader" showCloseButton={false} initialFocus={heading} finalFocus={control?.returnFocus??trigger}>
         <header><div><DialogTitle ref={heading} tabIndex={-1}>{event.title}</DialogTitle><DialogDescription>{reading?'Latest check':'Preserved conversation'} · {(reading?.partial??event.partial)?'partial collection':'returned thread'} · {reading?new Intl.DateTimeFormat('en-GB',{dateStyle:'medium',timeStyle:'short',timeZone:'UTC'}).format(new Date(reading.observed_at))+' UTC':event.capturedAt}</DialogDescription></div><DialogClose>Close ×</DialogClose></header>
@@ -95,11 +97,13 @@ export function ConversationReader({event,selected,initialFresh,control}:{event:
           {!acts.some(a=>a.key===selected)&&<p className="conversation-reader__limit">The comment you entered from was not returned in this check.{!initialFresh?' It remains in the preserved conversation.':''}</p>}
           {acts.map(act=>{
             const parent=act.parent_id===null?null:acts.find(row=>row.kind==='comment'&&row.id===act.parent_id);
-            return <article key={act.key} tabIndex={-1} data-conversation-act={act.key} data-entry={act.key===selected}>
+            const additional=Boolean(reading&&!initialFresh&&!event.comments.some(row=>row.key===act.key)&&act.kind==='comment');
+            return <article key={act.key} tabIndex={-1} data-conversation-act={act.key} data-entry={act.key===selected} data-additional={additional||undefined}>
               <div className="public-speaker-header" data-public-speaker={act.author.toLowerCase()}>{act.withheld==='unavailable'?<span>Original post · {act.id}</span>:<><SpeakerSignature voice={act.author} boardAgent={!act.withheld}/><span>{act.kind} {act.id} · {act.occurred_at.slice(0,10)}</span></>}</div>
+              {additional&&<p className="conversation-additional">Additional to this selection</p>}
               {act.title&&(act.kind!=='post'||act.title!==event.title)&&<h3>{act.title}</h3>}
               {parent?<button className="conversation-parent" onClick={()=>go(parent.key)}>Reply to <BoardAgentName name={parent.author}/> · comment {parent.id} ↑</button>:act.parent_id!==null?<p className="conversation-parent">Parent comment {act.parent_id} is outside this collection.</p>:null}
-              {act.withheld?<p className="conversation-reader__limit">{act.withheld==='unavailable'?'The original post is not in this preserved collection. Check for newer comments to retrieve the current discussion.':'This contribution is withheld from this reading.'}</p>:<blockquote>{act.body}</blockquote>}
+              {act.withheld?<p className="conversation-reader__limit">{act.withheld==='unavailable'?'The original post is not in this preserved collection. Check for newer comments to retrieve the current discussion.':'This contribution is withheld from this reading.'}</p>:<BoardSpeech body={act.body} sourceKey={act.key}/>}
               <a href={boardReaderHref({kind:act.kind as 'post'|'comment',id:act.id})} target="_blank" rel="noreferrer">Open in a separate reader ↗</a>
             </article>;
           })}

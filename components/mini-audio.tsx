@@ -88,7 +88,14 @@ export function MiniAudio({actKey,speaker,from,marginId,toolbar,children}:{actKe
     document.addEventListener('keydown',escape);window.addEventListener('pagehide',stop);document.addEventListener('visibilitychange',hide);
     window.addEventListener('hashchange',leave);window.addEventListener('popstate',leave);document.addEventListener('toggle',collapse,true);
     panel.current?.querySelector<HTMLButtonElement>('[data-mini-close]')?.focus({preventScroll:true});
-    return()=>{document.removeEventListener('keydown',escape);window.removeEventListener('pagehide',stop);document.removeEventListener('visibilitychange',hide);window.removeEventListener('hashchange',leave);window.removeEventListener('popstate',leave);document.removeEventListener('toggle',collapse,true);stop();engine.current=null;};
+    const arrival=requestAnimationFrame(()=>{
+      const controls=panel.current?.querySelector<HTMLElement>('[data-mini-transport]');
+      if(!controls)return;
+      const bounds=controls.getBoundingClientRect();
+      const top=document.querySelector('.reading-help-bar')?.getBoundingClientRect().bottom??0;
+      if(bounds.top<Math.max(0,top)||bounds.bottom>innerHeight-60)controls.scrollIntoView({block:'center',behavior:'instant'});
+    });
+    return()=>{cancelAnimationFrame(arrival);document.removeEventListener('keydown',escape);window.removeEventListener('pagehide',stop);document.removeEventListener('visibilitychange',hide);window.removeEventListener('hashchange',leave);window.removeEventListener('popstate',leave);document.removeEventListener('toggle',collapse,true);stop();engine.current=null;};
   },[open]);
   useEffect(()=>{
     if(!open)return;
@@ -149,6 +156,11 @@ export function MiniAudio({actKey,speaker,from,marginId,toolbar,children}:{actKe
   const status={loading:'Loading this act’s sound…',ready:'Ready to play.',playing:position>noteEnd?'Notes complete · letting the sound finish.':'Playing this act.',stopped:'Stopped.',ended:'This act has ended.',error:'Sound could not load or start. The words are still available.'}[state];
   const player=open&&<aside ref={panel} id={id} className={styles.panel} style={{'--sound-color':color} as CSSProperties} aria-label={`${speaker} · sound of this act`} data-mini-panel data-mini-act={actKey} data-state={state}>
     <header><div><strong>{speaker}</strong><span>Sound of this {actKey.includes(':post:')?'post':'act'}</span></div><button data-mini-close type="button" onClick={()=>close()} aria-label="Close sound and return to the words"><X aria-hidden="true"/></button></header>
+    <div className={styles.transport} data-mini-transport>
+      <button type="button" disabled={state==='loading'||state==='error'||state==='playing'} onClick={play} aria-label={state==='ended'?'Play this act again':'Play this act'}><Play aria-hidden="true"/> {state==='ended'?'Replay':'Play'}</button>
+      <button type="button" disabled={state!=='playing'} onClick={()=>engine.current?.stop()} aria-label="Stop this act"><Square aria-hidden="true"/> Stop</button>
+      <span className={styles.time}>{elapsed.toFixed(1)} / {duration.toFixed(1)} s <span>including echo &amp; release</span></span>
+    </div>
     <div className={styles.visual}>
       <p className={styles.mapLabel}>Pitch → · time ↓ <span>{notes.length?`${noteDuration.toFixed(1)} s of notes`:''}</span></p>
       <svg viewBox="0 0 240 310" aria-labelledby={`${id}-plot-title`} data-note-score>
@@ -157,11 +169,6 @@ export function MiniAudio({actKey,speaker,from,marginId,toolbar,children}:{actKe
         {notes.map((n,i)=><line key={i} data-note={i} x1={x(n.output_hz)-5} x2={x(n.output_hz)+5} y1={y(n.t_s)} y2={y(n.t_s)} className={!reduced&&state==='playing'&&position>=n.t_s&&position<n.t_s+n.duration_s?styles.sounding:styles.note}><title>{`${n.output_hz.toFixed(1)} Hz · ${n.duration_s.toFixed(3)} seconds`}</title></line>)}
         {!reduced&&(state==='playing'||state==='ended')&&<line data-playhead x1="12" x2="228" y1={24+Math.min(1,elapsed/noteDuration)*264} y2={24+Math.min(1,elapsed/noteDuration)*264} className={styles.playhead}/>}
       </svg>
-    </div>
-    <div className={styles.transport}>
-      <button type="button" disabled={state==='loading'||state==='error'||state==='playing'} onClick={play} aria-label={state==='ended'?'Play this act again':'Play this act'}><Play aria-hidden="true"/> {state==='ended'?'Replay':'Play'}</button>
-      <button type="button" disabled={state!=='playing'} onClick={()=>engine.current?.stop()} aria-label="Stop this act"><Square aria-hidden="true"/> Stop</button>
-      <span className={styles.time}>{elapsed.toFixed(1)} / {duration.toFixed(1)} s</span>
     </div>
     <output className={styles.status}>{status}</output>
     <label className={styles.level}>Level <input aria-label="Listening level" type="range" min="0" max="0.15" step="0.01" value={level} onChange={e=>volume(Number(e.target.value))}/><span>{Math.round(level*100)}%</span></label>
