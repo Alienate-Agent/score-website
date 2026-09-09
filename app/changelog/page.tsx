@@ -3,6 +3,10 @@ export default function ChangeLog() {
  return <main className="editorial-history" style={{maxWidth:'70rem',margin:'0 auto',padding:'clamp(1.5rem,5vw,5rem)',fontFamily:'Arial, sans-serif',lineHeight:1.6}}>
   <a href="/">Return to the website</a>
   <h1>Website changelog</h1>
+  <section><h2>8 September 2026 · Score navigation</h2>
+   <p><a href="/#chronology">The visual score</a> brings its marks forward, with ordering and subject filters inside “Arrange the score.” Choosing a mark or subject brings the selected entry into view; Previous, Next and Back to mark remain together below the reading headers.</p>
+   <p><a href="/#chronology-entry-E22">Individual entry links</a> preserve the selection on reload. Back to mark returns to its place in the field, while the reading trail returns to the story. The recorded entries and notation are unchanged.</p>
+  </section>
   <section><h2>8 September 2026 · Nightly story update</h2>
    <p><a href="/#story-unwritten">The evening continuation</a> follows Alienate into a debate about what the treasury should fund, and Tidemark into a shared fictional town. The surrounding conversations open beside the story. <a href="/#story-status-heading">The current status and attempt history</a> now include these developments; earlier dated editions remain preserved.</p>
    <p>The debt question and Alienate’s answer remain <a href="/#declaration-question">featured at the entrance</a>. This update changes the story’s current account, not the site’s design or instrument.</p>

@@ -2,7 +2,7 @@
 import {CreditText} from './credit-text';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
-import { Check, ChevronLeft, ChevronRight, Copy } from 'lucide-react';
+import { ArrowUp, Check, ChevronLeft, ChevronRight, Copy } from 'lucide-react';
 
 import { EvidenceRegisterSpecimen } from '@/components/evidence-register-specimen';
 import { privateRecordSourceNote } from '@/lib/public-release-notes';
@@ -93,22 +93,57 @@ export function ChronologyBook() {
   );
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [unavailableLink, setUnavailableLink] = useState(false);
+  const [arrival, setArrival] = useState(0);
   const headingRef = useRef<HTMLHeadingElement>(null);
   const overviewRef = useRef<HTMLElement>(null);
+  const controlsRef = useRef<HTMLElement>(null);
+  const arrangementRef = useRef<HTMLDetailsElement>(null);
+  const cancelArrivalRef = useRef<(() => void) | null>(null);
 
-  const revealSelection = () => {
-    window.requestAnimationFrame(() => {
-      headingRef.current?.focus({ preventScroll: true });
-      overviewRef.current
-        ?.querySelector('[aria-current="step"]')
-        ?.scrollIntoView({
-          block: 'nearest',
-          inline: 'nearest',
-          behavior: 'instant',
-        });
-      if(headingRef.current)window.scrollTo({top:Math.max(0,window.scrollY+headingRef.current.getBoundingClientRect().top-150),behavior:'instant'});
-    });
-  };
+  const revealSelection = () => setArrival(value => value + 1);
+
+  useEffect(() => {
+    if (!arrival) return;
+    let frame = 0, remaining = 4, cancelled = false, focused = false;
+    const interactions = ['wheel', 'touchstart', 'pointerdown', 'keydown'];
+    const align = () => {
+      if (cancelled) return;
+      if (!focused) {
+        headingRef.current?.focus({preventScroll:true});
+        overviewRef.current?.querySelector('[aria-current="step"]')
+          ?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});
+        focused = true;
+      }
+      if (headingRef.current && controlsRef.current) {
+        const controls = controlsRef.current;
+        const inset = (parseFloat(getComputedStyle(controls).top) || 0) + controls.offsetHeight + 16;
+        window.scrollTo({top:Math.max(0,window.scrollY+headingRef.current.getBoundingClientRect().top-inset),behavior:'instant'});
+      }
+      if (--remaining > 0) frame = requestAnimationFrame(align);
+    };
+    const settle = () => {
+      if (cancelled) return;
+      cancelAnimationFrame(frame);
+      remaining = 4;
+      frame = requestAnimationFrame(align);
+    };
+    const cancel = () => {
+      cancelled = true;
+      cancelAnimationFrame(frame);
+      clearTimeout(expiry);
+      window.removeEventListener('load', settle);
+      for (const name of interactions) window.removeEventListener(name, cancel);
+    };
+    // Header measurements, fonts and browser scroll restoration can settle
+    // after hydration. Re-align only this arrival, never a reader's own scroll.
+    const expiry = window.setTimeout(cancel, 1500);
+    cancelArrivalRef.current = cancel;
+    for (const name of interactions) window.addEventListener(name, cancel, {passive:true});
+    window.addEventListener('load', settle, {once:true});
+    void document.fonts.ready.then(settle);
+    settle();
+    return cancel;
+  }, [arrival]);
 
   useEffect(() => {
     const readLocation = () => {
@@ -196,7 +231,22 @@ export function ChronologyBook() {
   const changeMode = (nextMode: ReadingMode) => {
     setMode(nextMode);
     rememberSelection(current.id, nextMode);
+    if (arrangementRef.current) arrangementRef.current.open = false;
+    returnToMark();
   };
+
+  function returnToMark() {
+    cancelArrivalRef.current?.();
+    window.requestAnimationFrame(() => {
+      const mark = overviewRef.current?.querySelector<HTMLButtonElement>('[aria-current="step"]');
+      mark?.focus({preventScroll:true});
+      mark?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});
+      if (mark && controlsRef.current) {
+        const inset = (parseFloat(getComputedStyle(controlsRef.current).top) || 0) + 16;
+        window.scrollTo({top:Math.max(0,window.scrollY+mark.getBoundingClientRect().top-inset),behavior:'instant'});
+      }
+    });
+  }
 
   const changeSequence = (nextSequence: SequenceFilter) => {
     const nextEntries =
@@ -213,6 +263,8 @@ export function ChronologyBook() {
       }
     }
     rememberSelection(selectedId, mode, nextSequence);
+    if (arrangementRef.current) arrangementRef.current.open = false;
+    revealSelection();
   };
 
   return (
@@ -251,6 +303,8 @@ export function ChronologyBook() {
         </div>
       </details>
 
+      <details ref={arrangementRef} className="score-arrangement">
+        <summary>Arrange the score <span>{readingModes.find(reading => reading.id === mode)?.label} · {sequenceLabels[sequence]}</span></summary>
       <nav className="reading-modes" aria-label="Read the chronology by">
         {readingModes.map((reading) => (
           <Button
@@ -281,6 +335,8 @@ export function ChronologyBook() {
           </Button>
         ))}
       </nav>
+
+      </details>
 
       <nav
         ref={overviewRef}
@@ -327,7 +383,7 @@ export function ChronologyBook() {
         </p>
       )}
       <div className="leaf-stage">
-        <nav className="page-controls" aria-label="Measure navigation">
+        <nav ref={controlsRef} className="page-controls" aria-label="Measure navigation">
           <Button
             type="button"
             variant="ghost"
@@ -338,9 +394,10 @@ export function ChronologyBook() {
           >
             <ChevronLeft aria-hidden="true" /> previous
           </Button>
-          <p aria-live="polite">
-            {current.id} · {page + 1} of {ordered.length}
-          </p>
+          <button type="button" className="score-return-mark" onClick={returnToMark} aria-label={`Back to selected score mark ${current.id}`}>
+            <span aria-live="polite">{current.id} · {page + 1} of {ordered.length}</span>
+            <span>Back to mark <ArrowUp aria-hidden="true" /></span>
+          </button>
           <Button
             type="button"
             variant="ghost"
