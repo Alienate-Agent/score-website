@@ -1,0 +1,19 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "score-website",
+  "account_id": "aeb3e1da27261674f72afe1f92f3f459",
+  "compatibility_date": "2026-05-15",
+  "compatibility_flags": ["nodejs_compat"],
+  "vars": {"JOURNEYS_ENABLED": "1"},
+  "d1_databases": [{
+    "binding": "JOURNEYS",
+    "database_name": "score-visitor-paths",
+    "database_id": "47eaa93f-0b14-43b1-901b-d924a2f4100a",
+    "migrations_dir": "migrations/journeys"
+  }],
+  "r2_buckets": [{"binding": "JOURNEY_ARCHIVE", "bucket_name": "score-visitor-archives"}],
+  "ratelimits": [
+    {"name": "JOURNEY_RATE", "namespace_id": "191609091", "simple": {"limit": 120, "period": 60}},
+    {"name": "JOURNEY_GLOBAL_RATE", "namespace_id": "191609092", "simple": {"limit": 1200, "period": 60}}
+  ]
+}

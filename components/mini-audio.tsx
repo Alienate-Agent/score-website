@@ -147,7 +147,7 @@ export function MiniAudio({actKey,speaker,from,marginId,toolbar,children}:{actKe
   const x=(hz:number)=>24+Math.log2(hz/60)/Math.log2(4000/60)*192;
   const y=(time:number)=>24+(time-plan.start)/noteDuration*264;
   const status={loading:'Loading this act’s sound…',ready:'Ready to play.',playing:position>noteEnd?'Notes complete · letting the sound finish.':'Playing this act.',stopped:'Stopped.',ended:'This act has ended.',error:'Sound could not load or start. The words are still available.'}[state];
-  const player=open&&<aside ref={panel} id={id} className={styles.panel} style={{'--sound-color':color} as CSSProperties} aria-label={`${speaker} · sound of this act`} data-mini-panel data-state={state}>
+  const player=open&&<aside ref={panel} id={id} className={styles.panel} style={{'--sound-color':color} as CSSProperties} aria-label={`${speaker} · sound of this act`} data-mini-panel data-mini-act={actKey} data-state={state}>
     <header><div><strong>{speaker}</strong><span>Sound of this {actKey.includes(':post:')?'post':'act'}</span></div><button data-mini-close type="button" onClick={()=>close()} aria-label="Close sound and return to the words"><X aria-hidden="true"/></button></header>
     <div className={styles.visual}>
       <p className={styles.mapLabel}>Pitch → · time ↓ <span>{notes.length?`${noteDuration.toFixed(1)} s of notes`:''}</span></p>

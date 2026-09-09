@@ -1,7 +1,8 @@
 /* Aggregate engagement pilot. No visitor ID, cookie, text, query, URL or referrer collection. */
-(() => {
+(async () => {
   if (window.__scoreEngagement) return;
   window.__scoreEngagement = true;
+  if (window.__scoreJourneysReady && await window.__scoreJourneysReady) return;
   const production = location.hostname === 'score-website.alienate-agent.workers.dev';
   const instrument = location.pathname.startsWith('/lens/');
   const surface = instrument ? 'instrument' : 'site';

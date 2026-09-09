@@ -32,6 +32,7 @@ export default function RootLayout({
         {children}
         <ReadingReturnReady />
         <BoardReaderLayer />
+        <script src="/journeys.js" defer />
         <script src="/engagement.js" defer />
         <script src="/reading-return.js" defer />
       </body>

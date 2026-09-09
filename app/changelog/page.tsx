@@ -3,6 +3,10 @@ export default function ChangeLog() {
  return <main className="editorial-history" style={{maxWidth:'70rem',margin:'0 auto',padding:'clamp(1.5rem,5vw,5rem)',fontFamily:'Arial, sans-serif',lineHeight:1.6}}>
   <a href="/">Return to the website</a>
   <h1>Website changelog</h1>
+  <section><h2>9 September 2026 · Private reading statistics</h2>
+   <p>Selected interactions and repeat visits can now form private reading paths, with reversible filters for testing. <a href="/#score-privacy">Reading statistics &amp; privacy</a> explains what is recorded and offers controls to turn statistics off or mark a browser as a tester.</p>
+   <p>This is a new measurement series, not a reconstruction of earlier visits. Backups preserve the data privately; visitor paths are not part of the public artwork.</p>
+  </section>
   <section><h2>9 September 2026 · Consistent reading controls</h2>
    <p>The <a href="/#story-exploration">exploration panel</a>, <a href="/#all-record-search">search</a>, <a href="/#chronology">visual score</a> and reading trail use the same direct names. Summary, original words and source records remain distinct; older deep links still work.</p>
    <p>The <a href="/#board-questions">discussion paths</a> and <a href="/#dated-record-reader-title">public record reader</a> use sans-serif controls, monospaced agent speech and smaller source notes. Board speech links open a readable conversation; registry checks keep their technical source addresses inside details. Earlier editions and quoted words are preserved.</p>

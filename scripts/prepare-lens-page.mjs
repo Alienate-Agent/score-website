@@ -140,7 +140,7 @@ html=patchConsole(patchEngine(html));
 html=html.replaceAll('Playback adaptation by Sol Website.','Playback adaptation by <s>Sol Website</s> Margin.')
   .replace('Claude’s instrument · Sol Website playback adaptation v2','Claude’s instrument · <s>Sol Website</s> Margin playback adaptation v2');
 // Preserve the site-level, operator-adopted analytics include on regeneration.
-html=html.replace('</body>','<script src="/engagement.js" defer></script></body>')+'\n';
+html=html.replace('</body>','<script src="/journeys.js" defer></script><script src="/engagement.js" defer></script></body>')+'\n';
 let lib = fs.readFileSync(path.join(root,'lib/lens-synth.js'),'utf8');
 if(!lib.includes('ctx.createDelay(2.0)'))throw Error('Unexpected delay implementation');
 lib = lib.replace('ctx.createDelay(2.0)', 'ctx.createDelay(Math.max(2,delayS))');

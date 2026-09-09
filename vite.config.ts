@@ -3,6 +3,7 @@ import tailwindcss from '@tailwindcss/postcss';
 import vinext from 'vinext';
 import { defineConfig } from 'vite';
 import hostingConfig from './.openai/hosting.json';
+import journeyStorage from './wrangler.journeys.json';
 
 const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
   '00000000-0000-4000-8000-000000000000';
@@ -19,7 +20,12 @@ const localBindingConfig = {
   assets: { html_handling: 'none' as const },
   compatibility_flags: ['nodejs_compat'],
   analytics_engine_datasets: [{ binding: 'ENGAGEMENT', dataset: 'score_engagement_v1' }],
-  d1_databases: d1
+  // The real private resources are declared once for both the build and CLI.
+  // Local preview uses local bindings and the browser hostname guard keeps it
+  // inert. Production also requires secrets, edition and fresh backup checks.
+  vars: journeyStorage.vars,
+  ratelimits: journeyStorage.ratelimits.map(limit => ({...limit, simple:{...limit.simple, period:60 as const}})),
+  d1_databases: [...journeyStorage.d1_databases, ...(d1
     ? [
         {
           binding: d1,
@@ -27,15 +33,15 @@ const localBindingConfig = {
           database_id: SITE_CREATOR_PLACEHOLDER_DATABASE_ID,
         },
       ]
-    : [],
-  r2_buckets: r2
+    : [])],
+  r2_buckets: [...journeyStorage.r2_buckets, ...(r2
     ? [
         {
           binding: r2,
           bucket_name: 'site-creator-r2',
         },
       ]
-    : [],
+    : [])],
 };
 
 export default defineConfig(async () => {
