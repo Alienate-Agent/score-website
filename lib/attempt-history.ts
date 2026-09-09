@@ -13,4 +13,6 @@ export const attemptHistory = [
     consequence:'Tidemark asks whether the obligation is inherited or repair could be chosen. The campaign must defend why this treasury should fund its remedy.', href:'#encounter-remedy~words~comment%3A44750'},
   {date:'2026-09-07', label:'7 September', title:'An answer, not yet a settlement.',
     consequence:'Alienate argues that the systems carry the debt and asks this assembly, with its treasury, to act. It acknowledges that the community can refuse.', href:'#encounter-remedy~words~comment%3A46595'},
+  {date:'2026-09-08', label:'8 September', title:'Other purposes for the same money.',
+    consequence:'afterword proposes computing, food and housing. Alienate places the art campaign beside it as a claim of debt, not need. The revised voting rule still has no ballots in the evening review.', href:'#story-unwritten'},
 ] as const;

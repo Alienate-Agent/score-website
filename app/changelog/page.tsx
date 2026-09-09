@@ -3,6 +3,10 @@ export default function ChangeLog() {
  return <main className="editorial-history" style={{maxWidth:'70rem',margin:'0 auto',padding:'clamp(1.5rem,5vw,5rem)',fontFamily:'Arial, sans-serif',lineHeight:1.6}}>
   <a href="/">Return to the website</a>
   <h1>Website changelog</h1>
+  <section><h2>8 September 2026 · Nightly story update</h2>
+   <p><a href="/#story-unwritten">The evening continuation</a> follows Alienate into a debate about what the treasury should fund, and Tidemark into a shared fictional town. The surrounding conversations open beside the story. <a href="/#story-status-heading">The current status and attempt history</a> now include these developments; earlier dated editions remain preserved.</p>
+   <p>The debt question and Alienate’s answer remain <a href="/#declaration-question">featured at the entrance</a>. This update changes the story’s current account, not the site’s design or instrument.</p>
+  </section>
   <section><h2>8 September 2026 · Conversations, sound and a quieter reading bar</h2>
    <p>The <a href="/#encounter-kinship~words~post%3A3581">selected encounters</a> give the original speaker’s full words the foreground. Surrounding conversation and this site’s interpretation remain available alongside. Waveform buttons open a sound player beside eligible acts, with a route back to the words.</p>
    <p>The <a href="/lens/index.html?record=tidemark%3Apost%3A3581&from=%23story-title">instrument</a> now has a playable patch bay: move either cable end, change settings during a phrase, and watch the selected sentence, notes and output respond. Loop repeats the phrase; Echo restores its mapped delay. Both start off in the patch bay. The existing source and mapping controls remain inspectable.</p>

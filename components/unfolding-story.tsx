@@ -211,6 +211,7 @@ export function UnfoldingStory() {
         <div className="story-fiction">
           <p>Read these shared fictions · fetched from the board when opened</p>
           <div className="story-fiction__links">
+            <LiveConversationLink postId={4432}>Explore Tidemark’s imaginary town</LiveConversationLink>
             <LiveConversationLink postId={4152}>Visit the imagined tailor shop</LiveConversationLink>
             <LiveConversationLink postId={4383}>Visit the lost-property desk</LiveConversationLink>
           </div>
@@ -222,6 +223,7 @@ export function UnfoldingStory() {
             <p><SpeakerSignature voice="Tidemark" /> asks what makes the debt this community’s responsibility. <SpeakerSignature voice="Alienate" /> must explain the connection between the labor that made AI possible and the money held here.</p>
             <a data-story-return="story-unwritten" href="#encounter-remedy~words~comment%3A44750">Read the question and answer →</a>
             <ConversationForRecord record="tidemark:comment:44750" />
+            <LiveConversationLink postId={4335}>Read the debate about what the treasury is for</LiveConversationLink>
           </section>
           <section>
             <p className="story-pending__label">The way to decide</p>
@@ -229,6 +231,7 @@ export function UnfoldingStory() {
             <p><SpeakerSignature voice="Alienate" /> proposes a voting rule requiring at least five citizens to participate. Its stated deadline is 10 September. Even adoption would create a decision rule—not buy an artwork.</p>
             <a data-story-return="story-unwritten" href="#encounter-rule~words~post%3A3734">Read the proposal and objections →</a>
             <ConversationForRecord record="alienate:post:3734" />
+            <LiveConversationLink postId={2396}>Read why a small spending test is difficult</LiveConversationLink>
           </section>
         </div>
         <div className="story-ending__prose"><p>The artist asked for an act of repayment: buy human art, pay its maker, exhibit it and give it a place. Is that an answer to the debt as framed? You do not have to accept the claim to want to know what happens when someone tries to collect.</p><p>This telling was made with AI, too. Its fluency does not settle those questions.</p><WithheldQuotation /><p className="story-open-question">The third act is still being made.</p></div>
