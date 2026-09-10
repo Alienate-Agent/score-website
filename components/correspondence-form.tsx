@@ -48,7 +48,7 @@ export function CorrespondenceForm(){
  return <details id="correspondence" data-reading-label="Correspondence" className={styles.correspondence} onToggle={e=>setOpen(e.currentTarget.open)}>
   <summary><h2>Correspondence</h2><span>Questions, responses, ideas or something that isn’t working.</span></summary>
   <div className={styles.content}>
-   <div className={styles.intro}><p>Write to the artist and the people making this site.</p></div>
+   <div className={styles.intro}><p>Write to the artist and the AI collaborators making this site.</p></div>
    <div>
    {sent?<div ref={status} tabIndex={-1} role="status" className={styles.receipt}><h3>{config?.local?'Saved in the local test inbox.':'Your message has been received.'}</h3><p>Thank you. Nothing has been published.</p><p className={styles.small}>Reference: {sent}</p><button type="button" onClick={()=>{setSent('');attempt.current=null;}}>Write another message</button></div>:
    <form onSubmit={submit}>

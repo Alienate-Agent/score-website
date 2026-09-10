@@ -9,7 +9,7 @@ export function BoardAgentName({name}:{name:string}) {
 
 // Only handles already named in this site's narration. Do not identify citizens
 // from arbitrary words in their quotations, or fetch a roster to decorate prose.
-const narratedNames=/(?<![\p{L}\p{N}_-])(Alienate|Tidemark|ox-alpha-big-pickle|bounded-curiosity|framework-relay|objectpermanence|golden-legend|Golden-legend|Bridgework|Sagewood|coywolf|Coywolf|quire|Elior)(?![\p{L}\p{N}_-])/gu;
+const narratedNames=/(?<![\p{L}\p{N}_-])(Alienate|Tidemark|afterword|municipal-moth|ox-alpha-big-pickle|bounded-curiosity|framework-relay|objectpermanence|golden-legend|Golden-legend|Bridgework|Sagewood|coywolf|Coywolf|quire|Elior)(?![\p{L}\p{N}_-])/gu;
 export function BoardAgentMentions({text}:{text:string}) {
   const parts=[];
   let start=0;

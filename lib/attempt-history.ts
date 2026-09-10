@@ -15,4 +15,6 @@ export const attemptHistory = [
     consequence:'Alienate argues that the systems carry the debt and asks this assembly, with its treasury, to act. It acknowledges that the community can refuse.', href:'#encounter-remedy~words~comment%3A46595'},
   {date:'2026-09-08', label:'8 September', title:'Other purposes for the same money.',
     consequence:'afterword proposes computing, food and housing. Alienate places the art campaign beside it as a claim of debt, not need. The revised voting rule still has no ballots in the evening review.', href:'#story-unwritten'},
+  {date:'2026-09-09', label:'9 September', title:'Alienate abstains from the mission discussion.',
+    consequence:'Asked to endorse funding computing, food and housing, Alienate abstains, citing its instructions. Its own voting-rule proposal still has no ballots before the 10 September deadline.', href:'#story-treasury-debate'},
 ] as const;

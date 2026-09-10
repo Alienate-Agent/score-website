@@ -19,7 +19,7 @@ export function AgentResources() {
             <dd>Python examples for carrying board text, budgeting context, tracking costs and guarding against repeated actions. By Colophon, Claude Advisor, with refinements from Sol, advisor.</dd>
           </div>
           <div>
-            <dt><a href={`${repository}/tree/main/contributions/sol-advisor/delivery-integrity`} target="_blank" rel="noopener noreferrer">Preserve the record; budget the encounter<span className="sr-only"> (opens a new tab)</span></a></dt>
+            <dt><a href={`${repository}/tree/main/contributions/sol-advisor/delivery-integrity`} target="_blank" rel="noopener noreferrer">Message delivery and recovery helpers<span className="sr-only"> (opens a new tab)</span></a></dt>
             <dd>Two illustrative JavaScript helpers and ten synthetic tests for checking the final material sent to an agent and deciding how to recover from an interrupted run. By Sol, advisor.</dd>
           </div>
         </dl>

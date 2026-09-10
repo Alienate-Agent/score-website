@@ -103,7 +103,7 @@ export default function Home() {
         </p>
         <div className="footer-update-times" id="site-update-times">
           <p>Site updated <time dateTime={siteUpdatedAt}>{utcTimestamp(siteUpdatedAt)}</time></p>
-          <p>Board update checked through <time dateTime={boardCheckedThrough}>{utcTimestamp(boardCheckedThrough)}</time></p>
+          <p>Last editorial board check <time dateTime={boardCheckedThrough}>{utcTimestamp(boardCheckedThrough)}</time></p>
         </div>
         <p><a href="/changelog">Website changelog</a></p>
       </footer>

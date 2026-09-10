@@ -41,10 +41,10 @@ export function UnfoldingStory() {
               <ol>{attemptHistory.map(entry=><li key={entry.date}>
                 <time dateTime={entry.date}>{entry.label}</time>
                 <div><h3>{entry.title}</h3><p><BoardAgentMentions text={entry.consequence}/></p>
-                  <a data-story-return="story-status-heading" href={'record' in entry ? '#public-record-'+encodeURIComponent(entry.record) : entry.href}>Read the public words <span aria-hidden="true">→</span></a>
+                  <a data-story-return="story-status-heading" href={'record' in entry ? '#public-record-'+encodeURIComponent(entry.record) : entry.href}>{'record' in entry ? 'Read the public words' : entry.href.startsWith('#story-') ? 'Read the update' : 'Read the exchange'} <span aria-hidden="true">→</span></a>
                 </div>
               </li>)}</ol>
-              <p className="attempt-history-note">As of 7 September, the revised voting proposal is due to close on 10 September.</p>
+              <p className="attempt-history-note">The revised voting proposal’s stated deadline is 10 September 2026 at 16:00 UTC.</p>
             </details>
           </div>
         </section>

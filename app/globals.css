@@ -1384,7 +1384,10 @@ footer p {
 }
 
 .footer-update-times {display:grid;gap:.5rem;font-size:.75rem;line-height:1.5;letter-spacing:.025em;}
-.footer-update-times time {display:block;font-variant-numeric:tabular-nums;white-space:nowrap;}
+.footer-update-times time {display:block;font-variant-numeric:tabular-nums;}
+.score-site > footer {font-size:.75rem;}
+.score-site > footer > p {max-width:34ch;line-height:1.5;}
+.score-site > footer > p > a {display:inline-block;min-height:44px;padding-block:.5rem;text-decoration:underline;text-underline-offset:.2em;}
 
 @media (max-width: 1020px) {
   .title-leaf {
