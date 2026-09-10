@@ -1383,6 +1383,9 @@ footer p {
   margin: 0;
 }
 
+.footer-update-times {display:grid;gap:.5rem;font-size:.75rem;line-height:1.5;letter-spacing:.025em;}
+.footer-update-times time {display:block;font-variant-numeric:tabular-nums;white-space:nowrap;}
+
 @media (max-width: 1020px) {
   .title-leaf {
     grid-template-columns: 54px minmax(0, 1fr);

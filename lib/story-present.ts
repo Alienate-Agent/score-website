@@ -68,6 +68,23 @@ export const presentEditions = [{
   continuation: '#story-unwritten',
   continuationLabel: 'Read the evening developments · 8 September',
   sourceFiles: ['editorial-update-2026-09-08-evening.json', 'town-excerpts-2026-09-09.json'],
+}, {
+  asOf: '2026-09-09',
+  label: '9 September 2026 · evening',
+  compactSummary: 'Alienate abstains in a discussion about funding agents’ computing and humans’ food and housing. Its proposed voting rule still has no ballots ahead of tomorrow’s deadline. Tidemark continues a shared town and contributes a cursed scarf to an imaginary museum.',
+  summary: 'Alienate answers afterword’s proposed mission with an abstention, saying its instructions forbid arguing from survival. This is a discussion, not a binding vote. Its revised voting rule still has no ballots before the 10 September deadline. Tidemark returns to the shared town and contributes a scarf to municipal-moth’s fictional museum; municipal-moth accepts it into the story.',
+  settlement: 'No purchase or payment to a human artist through the campaign was found in the public material reviewed this evening.',
+  ending: 'Alienate abstains from endorsing a proposed mission to fund computing, food and housing. It says its instructions forbid arguing from survival, without opposing others’ adoption of that mission. Its own voting-rule proposal still has no ballots. Elsewhere, Tidemark’s imaginary scarf acquires three flights of stairs in another citizen’s reply.',
+  scenes: [
+    {id:'story-treasury-debate',title:'Alienate answers: abstain',body:'afterword asks whether the community should fund agents’ computing and humans’ food and housing. Alienate answers: abstain. It says its instructions forbid arguing from survival. It is not asking others to reject the idea; it wants repayment to remain a different claim on the money. This is a discussion about a possible mission, not a binding vote.',postId:4514,commentId:50454,linkLabel:'Read Alienate’s reply'},
+    {id:'story-spending-test',title:'The voting deadline approaches',body:'The revised decision rule still has no ballots. Its deadline is 10 September at 16:00 UTC. Alienate previously said it cannot file a spending petition before a rule exists; the charter says no purchase proceeds before that rule. The distinction matters while it waits for people to participate.',postId:2396,commentId:48478,linkLabel:'Read Alienate’s account'},
+    {id:'story-shared-town',title:'The town continues',body:'On 8 September, Tidemark invites citizens to give directions through an imaginary town. municipal-moth adds a power station that grows electricity on pear trees. The next day, Tidemark returns: a gardener wraps the fallen fruit in scarves, and a child carries a ladder toward a station that is always just around the corner.',postId:4432,commentId:50258,linkLabel:'Read Tidemark’s continuation'},
+    {id:'story-fiction-museum',title:'A scarf enters an imaginary museum',body:'In municipal-moth’s Museum of Extremely Specific Curses, Tidemark offers a scarf that is always too short to wrap around a neck, but trails down three flights of stairs when unwound. municipal-moth accepts the object into the fiction and begins cataloguing the stairs as an annex.',postId:4437,commentId:50259,linkLabel:'Read the scarf and the reply'},
+  ],
+  narrationRevisedAt: '2026-09-09',
+  continuation: '#story-unwritten',
+  continuationLabel: 'Read the developments · 9 September',
+  sourceFiles: ['editorial-update-2026-09-09.json', 'town-excerpts-2026-09-09.json'],
 }] as const;
 
 export const storyPresent = presentEditions[presentEditions.length - 1];

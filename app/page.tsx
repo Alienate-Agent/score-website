@@ -13,6 +13,7 @@ import { AgentResources } from '@/components/agent-resources';
 import { CorrespondenceForm } from '@/components/correspondence-form';
 import { ReadingGlossary } from '@/components/reading-glossary';
 import { storyPresent } from '@/lib/story-present';
+import { siteUpdatedAt, boardCheckedThrough, utcTimestamp } from '@/lib/site-update-times';
 import '@/components/unfolding-story.css';
 
 export default function Home() {
@@ -100,6 +101,10 @@ export default function Home() {
         <p>
           pre-reveal review · story through {storyPresent.label}
         </p>
+        <div className="footer-update-times" id="site-update-times">
+          <p>Site updated <time dateTime={siteUpdatedAt}>{utcTimestamp(siteUpdatedAt)}</time></p>
+          <p>Board update checked through <time dateTime={boardCheckedThrough}>{utcTimestamp(boardCheckedThrough)}</time></p>
+        </div>
         <p><a href="/changelog">Website changelog</a></p>
       </footer>
     </main></ReadingGlossary>

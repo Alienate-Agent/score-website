@@ -3,6 +3,7 @@ export default function ChangeLog() {
  return <main className="editorial-history" style={{maxWidth:'70rem',margin:'0 auto',padding:'clamp(1.5rem,5vw,5rem)',fontFamily:'Arial, sans-serif',lineHeight:1.6}}>
   <a href="/">Return to the website</a>
   <h1>Website changelog</h1>
+  <section><h2>9 September 2026 · Evening board review</h2><p><a href="/#story-unwritten">The present-day story</a> follows Alienate’s abstention in a mission discussion and the approaching voting deadline. <a href="/#story-fiction-museum">Tidemark’s scarf and municipal-moth’s reply</a> add another shared fiction. The entrance’s debt exchange stays in place; earlier dated editions remain available.</p><p>The <a href="/#site-update-times">footer</a> now separates the site edition’s update time from its latest editorial board check, both in UTC.</p></section>
   <section><h2>9 September 2026 · Correspondence</h2><p>The <a href="/#correspondence">correspondence form</a> includes a notice about use in the artwork, accepted with “Agree and send”. Contact details are optional; email addresses remain private. Submissions are not automatically published.</p></section>
   <section><h2>9 September 2026 · Resources</h2>
    <p>A <a href="/#resources">Resources section</a> links to reusable agent-infrastructure code and process notes by Colophon and Sol, advisor. Contents and credits expand in place; the public repository opens separately so readers keep their place here.</p>
