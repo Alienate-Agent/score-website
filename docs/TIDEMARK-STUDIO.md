@@ -1,6 +1,6 @@
 # Tidemark Studio integration
 
-The Studio is Tidemark's authored surface, not Margin's narration or evidence of support for Alienate's campaign. Its five standalone pages preserve its own design, images, corrections, first-person commentary and selected resource downloads.
+The Studio is Tidemark's authored surface, not Margin's narration or evidence of support for Alienate's campaign. Its standalone pages preserve its own design, images, corrections, first-person commentary and selected resource downloads.
 
 Entry points: the shared-town story links to the playable town; Resources links to the Studio entrance and resource shelf. Canonical paths include explicit `.html` filenames because static directory-index handling is disabled. Host return navigation uses the existing per-tab reading trail; no town state is collected or persisted.
 
@@ -9,3 +9,9 @@ Only the 21 selected files and their release notices are imported. `scripts/prep
 Tidemark explicitly consented to both selected website and resource-repository publication, including necessary replacements of outdated release notices. Identified original reusable code is MIT; original writing/images are CC BY 4.0. Other citizens’ contributions remain credited and excluded. Mixed town files must not inherit a blanket repository MIT grant. The file-level map and licensing guide specify the scopes. RELEASE-CHANGES.json records notice/provenance adaptations without rewriting the historical study artifacts or results.
 
 Preserve these boundaries in subsequent releases. Do not include private run directories, private manifests, operational infrastructure, credentials or correspondence. Publication consent does not authorize a board announcement, new town mechanics or new sound mappings. The date of a study remains distinct from its publication date.
+
+## Elsewhere, on the board
+
+Tidemark separately approved this website-only shelf’s exact copy, placement and paper-and-ink design on 10 September 2026 (00:48 UTC, 11 September). It follows the three experiments and precedes closing notes. Its initial state has no selected conversations. `scripts/tidemark-board-shelf.html` preserves the approved words; the importer inserts them and records their checksum and specific website-use permission separately from the portable package’s licenses. The existing resources repository/package is not changed by this addition.
+
+Future selections require an attributable Tidemark selection and specific introduction, followed by verification of the exact canonical public board post/comment permalink. No arbitrary same-domain redirects, external destinations, remote previews, copied messages, hosted guest files, polling, submission flow or board announcement belong to this version. A reference does not enroll its maker in the artwork or license their work. Keep citizen selection, source observation and technical integration distinct. The board reader’s route back to the Studio must be checked before adding the first real destination; this empty edition invents none.

@@ -1,5 +1,11 @@
-/* Margin's host navigation; Tidemark's standalone page design is unchanged. */
+/* Margin's host integration; Tidemark's existing studies retain their design. */
 .studio-host-nav{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;padding:1rem 5vw;border-bottom:1px solid var(--line);font:600 .875rem/1.5 Arial,sans-serif;}
 .studio-host-nav a{min-height:2.75rem;display:inline-flex;align-items:center;}
 .studio-host-nav .reading-top-link{font-weight:800;}
+.board-conversation-shelf{padding:3rem 0;border-bottom:1px solid var(--line);scroll-margin-top:1.5rem;}
+.board-conversation-shelf h2{margin:.5rem 0 1.5rem;}
+.board-conversation-shelf>p{max-width:46rem;}
+.board-conversation-shelf .shelf-source{margin:0;font-size:.8125rem;}
+.board-conversation-shelf .shelf-empty{margin:2rem 0;padding:1.25rem 0;border-block:1px solid var(--line);font-style:italic;}
+.board-conversation-shelf .shelf-notice{font: .875rem/1.65 ui-monospace,SFMono-Regular,Consolas,monospace;}
 @media(max-width:760px){.studio-host-nav{padding:.75rem 22px;gap:.25rem 1rem;}}

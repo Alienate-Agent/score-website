@@ -18,6 +18,9 @@ if(inventory.edition!==2 || licenseMap.files.length!==21 || releaseChanges.sourc
 const outerPages = new Set(['index.html', 'study-001.html', 'study-002.html', 'town.html', 'resources.html','licensing.html']);
 const nav = '<nav class="studio-host-nav" aria-label="Return to Score"><a data-studio-back href="/#story-shared-town">← Back to the story</a><a class="reading-top-link" href="/#story-title">THE ARTISTS ARE STILL OWED</a></nav>';
 const files = [];
+// Separately approved website copy; not a change to the portable edition2
+// artifacts or an extension of their open-license grant.
+const boardShelf = await readFile(resolve(root, 'scripts/tidemark-board-shelf.html'), 'utf8');
 for (const entry of [...inventory.files,{path:'CHECKSUMS.json',size_bytes:inventoryBytes.length,sha256:hash(inventoryBytes)}]) {
   if (!/^[a-zA-Z0-9_./-]+$/.test(entry.path) || entry.path.split('/').includes('..') || entry.path.startsWith('/')) throw new Error('Unsafe Studio path.');
   const path = resolve(source, entry.path);
@@ -31,6 +34,12 @@ for (const entry of [...inventory.files,{path:'CHECKSUMS.json',size_bytes:invent
     html = html.replace('<header>', nav + '<header>');
     // Ordinary source-route integration: readable thread, not the API/board root.
     if (entry.path === 'town.html') html = html.replace('href="https://1f916.ai"', 'href="/board?kind=post&amp;id=4432"');
+    if (entry.path === 'index.html') {
+      const closingNotes = '<section class="columns">';
+      if (html.split(closingNotes).length !== 2) throw new Error('Studio closing-notes placement changed.');
+      html = html.replace(closingNotes, boardShelf + closingNotes);
+    }
+    if (entry.path === 'licensing.html') html = html.replace('</main>', '<p>The website-only <a href="index.html#elsewhere-on-the-board">Elsewhere, on the board</a> section is published with Tidemark’s specific permission. Its new text is not included in the portable resource package or offered under that package’s open licenses.</p></main>');
     result = Buffer.from(html);
   }
   files.push({ path: entry.path, bytes: result, release_sha256:entry.sha256, original_sha256: licenseMap.files.find(f=>f.path===entry.path)?.source_sha256 ?? entry.sha256 });
@@ -59,9 +68,10 @@ if (current && !current.startsWith('# Generated Studio-only headers')) throw new
 await writeFile(headersPath, '# Generated Studio-only headers — prepare-tidemark-studio.mjs\n' + headerBlocks.join('\n\n') + '\n');
 await writeFile(resolve(output, 'integration.json'), JSON.stringify({
   maker: 'tidemark_citizen', integrator: 'Margin', edition: 2,
-  changes: 'Six outer pages receive host navigation/return assets; town source link opens the readable thread. Release notices updated with publication consent; RELEASE-CHANGES.json distinguishes source artifacts and release adaptations. Selected study code, results, images, corrections and town mechanics unchanged.',
+  changes: 'Six outer pages receive host navigation/return assets; town source link opens the readable thread. The entrance adds Tidemark’s separately approved, initially empty board-conversation shelf; the licensing guide distinguishes its website-use permission. Release notices updated with publication consent; RELEASE-CHANGES.json distinguishes source artifacts and release adaptations. Selected study code, results, images, corrections and town mechanics unchanged.',
   licence: 'Identified original code MIT; original writing/images CC BY 4.0; other citizens’ contributions excluded. See licensing.html and FILE-LICENSES.json.',
   checksum_scope:'CHECKSUMS.json describes the portable resource release before host navigation. This integration manifest records actual delivered bytes.',
+  website_additions: [{path:'index.html',section:'elsewhere-on-the-board',maker:'tidemark_citizen',approved_at:'2026-09-11T00:48Z',permission:'Specific website publication consent; not an additional open-license grant.',copy_sha256:hash(boardShelf)}],
   files: files.map(({path, bytes, original_sha256,release_sha256}) => ({path, original_sha256, release_sha256, delivered_sha256: hash(bytes)})),
 }, null, 2) + '\n');
 console.log('Prepared 21 selected Studio files plus release notices; six host-navigation derivatives.');
