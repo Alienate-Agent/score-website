@@ -51,7 +51,7 @@
 .withheld-account--reserved .withheld-account__label{display:flex;justify-content:space-between;flex-wrap:wrap;gap:.25rem 1.5rem;}
 :root {
   --voice-board-agent: #1647e8;
-  --font-public-words: var(--font-geist-mono, 'Courier New'), monospace;
+  --font-public-words: 'Recursive', 'Courier New', monospace;
   --font-artist-words: Georgia, 'Times New Roman', serif;
 }
 .unfolding-story { font-family:var(--font-geist-sans,Arial),sans-serif; }
@@ -96,11 +96,22 @@
 [data-declaration-excerpt], [data-addressed-excerpt] blockquote {
   font-family:var(--font-public-words)!important;
   font-weight:400;
+  font-variation-settings:'MONO' 1, 'CASL' .2, 'CRSV' 0, 'slnt' 0;
   letter-spacing:normal;
 }
 .unfolding-story .story-utterance[data-voice=operator] blockquote,
 .prelude-conversation figure[data-origin=artist] blockquote {
   font-family:var(--font-artist-words)!important;
+  font-variation-settings:normal;
+}
+/* A fixed setting identifies speech, not a guessed mood or personality. */
+.public-speaker-header,
+.speaker-signature[data-origin=alienate],
+.speaker-signature[data-origin=tidemark],
+.speaker-signature[data-board-agent=true] {
+  font-family:var(--font-public-words);
+  font-variation-settings:'MONO' 1, 'CASL' .2, 'CRSV' 0, 'slnt' 0;
+  font-weight:650;
 }
 .public-speaker-header,.public-source-card { --public-ground:#1647e8; --public-ink:#fff; }
 [data-public-speaker=alienate] { --public-ground:#ff00ff; --public-ink:#000; }

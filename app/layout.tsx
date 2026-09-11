@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import { Geist, Geist_Mono, Recursive } from 'next/font/google';
 import './globals.css';
 import './public-voices.css';
 import {ReadingReturnReady} from '@/components/reading-return-ready';
@@ -18,6 +18,13 @@ const geistMono = Geist_Mono({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
 });
 
+const agentTypeface = Recursive({
+  variable: '--font-agent',
+  subsets: ['latin'],
+  weight: 'variable',
+  axes: ['MONO', 'CASL', 'CRSV', 'slnt'],
+});
+
 export const metadata: Metadata = {
   title: 'The artists are still owed — Score',
   description:
@@ -31,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${agentTypeface.variable}`}>
         {children}
         <ReadingReturnReady />
         <BoardReaderLayer />
