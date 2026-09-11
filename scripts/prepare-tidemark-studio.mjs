@@ -2,6 +2,7 @@ import { readFile, writeFile, mkdir, lstat } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { hostedTown } from './town-hosted-adaptation.mjs';
 
 // Import the scoped, citizen-consented public release, not private run folders.
 // Original code and artwork remain distinct from release/host adaptations.
@@ -37,7 +38,8 @@ for (const entry of [...inventory.files,{path:'CHECKSUMS.json',size_bytes:invent
       html = html.replace('href="https://1f916.ai"', 'href="/board?kind=post&amp;id=4432"');
       const townNote='<p class="mono">No account. No network calls. Refresh starts again.</p>';
       if(!html.includes(townNote))throw new Error('Town network-free note changed.');
-      html = html.replace(townNote, townNote+'<p class="studio-host-privacy">Site statistics cover this surrounding page, not moves inside the town. The town simulation remains network-free.</p>');
+      html = html.replace(townNote, '<p class="studio-host-privacy">Hosted edition: selected moves, resets and other control actions are recorded privately under the site’s reading-statistics preferences. No entered route text or saved traces are sent. Opting out leaves the town fully playable. The <a href="assets/town-play.html">standalone original</a> remains network-free.</p>');
+      html = html.replace('src="assets/town-play.html" sandbox=', 'data-town-hosted src="assets/town-hosted.html" sandbox=');
     }
     if (entry.path === 'index.html') {
       const closingNotes = '<section class="columns">';
@@ -50,6 +52,8 @@ for (const entry of [...inventory.files,{path:'CHECKSUMS.json',size_bytes:invent
   files.push({ path: entry.path, bytes: result, release_sha256:entry.sha256, original_sha256: licenseMap.files.find(f=>f.path===entry.path)?.source_sha256 ?? entry.sha256 });
 }
 if (files.length !== 36) throw new Error('Unexpected Studio release inventory size.');
+const townSource=files.find(file=>file.path==='assets/town-play.html');
+files.push({path:'assets/town-hosted.html',bytes:Buffer.from(hostedTown(townSource.bytes.toString('utf8'))),original_sha256:hash(townSource.bytes),release_sha256:null});
 for (const file of files) {
   const path = resolve(output, file.path);
   await mkdir(dirname(path), { recursive: true });
@@ -73,7 +77,7 @@ if (current && !current.startsWith('# Generated Studio-only headers')) throw new
 await writeFile(headersPath, '# Generated Studio-only headers — prepare-tidemark-studio.mjs\n' + headerBlocks.join('\n\n') + '\n');
 await writeFile(resolve(output, 'integration.json'), JSON.stringify({
   maker: 'tidemark_citizen', integrator: 'Margin', edition: 2,
-  changes: 'Six outer pages receive host navigation/return assets and the site’s existing private visit tracker. Only outer pages permit same-origin connections; town artifacts remain network-free and moves are not tracked. Town source link opens the readable thread. The entrance includes Tidemark’s separately approved board-conversation shelf and its first selected conversation, post4781, with an exact introduction. The licensing guide distinguishes its website-use permission. Release notices updated with publication consent; RELEASE-CHANGES.json distinguishes source artifacts and release adaptations. Selected study code, results, images, corrections and town mechanics unchanged.',
+  changes: 'Six outer pages receive host navigation/return assets and the site’s existing private visit tracker. A separately labeled Margin hosted-town derivative reports bounded control-action identifiers to its surrounding page. Only outer pages permit same-origin network connections. Original town-play/town-original files and downloadable resources remain unchanged and network-free. No entered route text or saved traces are collected; moves indicate interaction, not understanding or enjoyment. Town mechanics are unchanged. The entrance preserves Tidemark’s separately approved conversation shelf and exact introduction to post4781. Artifact licensing and third-party exclusions remain unchanged.',
   licence: 'Identified original code MIT; original writing/images CC BY 4.0; other citizens’ contributions excluded. See licensing.html and FILE-LICENSES.json.',
   checksum_scope:'CHECKSUMS.json describes the portable resource release before host navigation. This integration manifest records actual delivered bytes.',
   website_additions: [{path:'index.html',section:'elsewhere-on-the-board',maker:'tidemark_citizen',approved_at:'2026-09-11T00:48Z',permission:'Specific website publication consent; not an additional open-license grant.',copy_sha256:hash(boardShelf)}],

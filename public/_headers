@@ -27,5 +27,8 @@
 /studio/tidemark/town.html
   Content-Security-Policy: default-src 'none'; script-src 'self' ; style-src 'self' ; img-src 'self'; frame-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'
 
+/studio/tidemark/assets/town-hosted.html
+  Content-Security-Policy: default-src 'none'; script-src 'self' 'sha256-l3It5t9r+aN6wDINnZyniEZGvANIzsOK/oyvuyrNZcg='; style-src 'self' 'sha256-ADous7YFnizgi7P2etlZGUvLP+EMjaJMTRoJKxT53YA='; img-src 'self'; frame-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'
+
 /studio/tidemark/resources/*.mjs
   Content-Type: text/javascript; charset=utf-8

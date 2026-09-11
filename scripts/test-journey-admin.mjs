@@ -43,14 +43,15 @@ try {
   const studioBatch={version:2,session:crypto.randomUUID(),page:crypto.randomUUID(),tester:false,testerAt:0,
     events:[{seq:1,at:now,action:'view',area:'studio',target:'studio-town',activeMs:0},
       {seq:2,at:now,action:'active',area:'studio',target:'studio-town',activeMs:12000},
-      {seq:3,at:now,action:'view',area:'story',target:'story-title',activeMs:0}]};
+      {seq:3,at:now,action:'view',area:'story',target:'story-title',activeMs:0},
+      {seq:4,at:now,action:'town_step',area:'studio',target:'town:sit',activeMs:0}]};
   const sendStudio=body=>ingestJourney(new Request(origin+'/api/journeys',{method:'POST',headers:{Origin:origin,'Content-Type':'application/json','CF-Connecting-IP':'203.0.113.8',Cookie:cookie},body:JSON.stringify(body)}),env,now);
   assert.equal((await sendStudio(studioBatch)).status,204);
   const studioReport=await call({action:'overview',...win});
-  assert.deepEqual(studioReport.studio,[{target:'studio-town',sessions:1,views:1,opens:0,active_ms:12000}]);
+  assert.deepEqual(studioReport.studio,[{target:'studio-town',sessions:1,views:1,opens:0,active_ms:12000,steps:1}]);
   const studioVisits=await call({action:'sessions',...win,includeExcluded:false,area:'studio'});
   assert.equal(studioVisits.rows.length,1);
-  assert.equal((await call({action:'session',session:studioVisits.rows[0].session_id})).events.length,3,'Studio filter preserves the complete path');
+  assert.equal((await call({action:'session',session:studioVisits.rows[0].session_id})).events.length,4,'Studio filter preserves the complete path');
   await call({action:'exclude',kind:'session',value:studioVisits.rows[0].session_id,enabled:true,reason:'tester'});
   assert.deepEqual((await call({action:'overview',...win})).studio,[]);
   assert.equal((await call({action:'sessions',...win,includeExcluded:false,area:'studio'})).rows.length,0);

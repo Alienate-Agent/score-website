@@ -19,8 +19,12 @@ window.__scoreJourneysReady = (async () => {
   const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
   const actions = new Set(['view','section','navigate','return','details_open','details_close','conversation_open','conversation_close','source_open','glossary_open','search_result_open','sound_open','play','stop','sound_error','instrument_open','setting_change','story_collapse','story_restore','active','page_leave']);
   const studioPages = {'index.html':'studio-index','study-001.html':'studio-001','study-002.html':'studio-002','town.html':'studio-town','resources.html':'studio-resources','licensing.html':'studio-licensing'};
+  const townActions=new Set(['town_step','town_reset','town_switch','town_example','town_run','town_export']);
+  const townTargets=new Set(['arrive_late','walk_uphill','stand','enter_window','sit','walk_to_workshop','stay','return_to_bench','tell_origin','back_door','listen','cross_lane','take_afternoon','descend','follow_gutter','look_at_suitcase','pause_writing','enter_archive','resume_writing','enter_paper_door','listen_at_handle','leave_via_handle'].map(x=>'town:'+x));
+  for(const action of townActions)actions.add(action);
   const studioTarget = location.pathname.startsWith('/studio/tidemark/') ? studioPages[location.pathname.slice('/studio/tidemark/'.length) || 'index.html'] : null;
   const targets = new Set(['story-title','story-beginning','story-alienate','story-tidemark','story-tidemark-first-words','story-encounter','story-unwritten','connected-score','chronology','live-agent-activity','editorial-history','changelog','glossary','instrument',...Object.values(studioPages),'studio-shelf','studio-town-standalone']);
+  for(const target of townTargets)targets.add(target);
   let off = storage.get('score-analytics-off', 0) === 1;
   const blocked = () => off || navigator.doNotTrack === '1' || navigator.globalPrivacyControl === true;
   let page = crypto.randomUUID(), sequence = 0, queue = [], inFlight = false;
@@ -77,6 +81,18 @@ window.__scoreJourneysReady = (async () => {
   function tester() {
     const value = storage.get('score-analytics-tester', {});
     return typeof value.tester==='boolean' && Number.isSafeInteger(value.at) ? value : {tester:false, at:0};
+  }
+  const townFrame=document.querySelector('iframe[data-town-hosted]');
+  function townPreference(){townFrame?.contentWindow?.postMessage({type:'score-town-tracking',enabled:!blocked()&&!tester().tester},'*');}
+  if(townFrame){
+    townFrame.addEventListener('load',townPreference);townPreference();
+    window.addEventListener('message',event=>{
+      if(event.source!==townFrame.contentWindow||event.origin!=='null'||blocked()||tester().tester)return;
+      const d=event.data;
+      if(!d||typeof d!=='object'||Array.isArray(d)||Object.keys(d).sort().join(',')!=='action,target,type'||d.type!=='score-town-v1'||!townActions.has(d.action))return;
+      if(d.action==='town_step'?!townTargets.has(d.target):d.target!=='studio-town')return;
+      mark(d.action,{area:'studio',target:d.target});void flush();
+    });
   }
   function mark(action, ctx = {area,target}, activeMs = 0) {
     if (blocked() || !actions.has(action) || sequence>=400) return;
@@ -180,7 +196,7 @@ window.__scoreJourneysReady = (async () => {
   text.textContent='This site uses a first-party browser identifier to connect repeat visits, records selected interactions and visible time, and uses IP-based network matching to group traffic and filter testing. Detailed paths are kept privately with no fixed expiry and can be exported. No names, typed text or screen recordings are collected. Browser counts are estimates, not verified people. Do Not Track and Global Privacy Control are respected.';
   const opt=document.createElement('button');opt.type='button';
   const test=document.createElement('button');test.type='button';if(!studioTarget)test.style.marginLeft='1rem';
-  function labels(){opt.textContent=off?'Allow reading statistics':'Turn off reading statistics';test.textContent=tester().tester?'Tester browser · include again':'Mark this browser as a tester';}
+  function labels(){opt.textContent=off?'Allow reading statistics':'Turn off reading statistics';test.textContent=tester().tester?'Tester browser · include again':'Mark this browser as a tester';townPreference();}
   opt.onclick=()=>{off=!off;queue=[];storage.put('score-analytics-off',off?1:0);labels();};
   test.onclick=()=>{const current=tester();storage.put('score-analytics-tester',{tester:!current.tester,at:Date.now()});mark('active',{area,target},0);void flush();labels();};
   labels();notice.append(summary,text,opt,test);document.body.append(notice);

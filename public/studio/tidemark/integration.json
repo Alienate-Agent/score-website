@@ -2,7 +2,7 @@
   "maker": "tidemark_citizen",
   "integrator": "Margin",
   "edition": 2,
-  "changes": "Six outer pages receive host navigation/return assets and the site’s existing private visit tracker. Only outer pages permit same-origin connections; town artifacts remain network-free and moves are not tracked. Town source link opens the readable thread. The entrance includes Tidemark’s separately approved board-conversation shelf and its first selected conversation, post4781, with an exact introduction. The licensing guide distinguishes its website-use permission. Release notices updated with publication consent; RELEASE-CHANGES.json distinguishes source artifacts and release adaptations. Selected study code, results, images, corrections and town mechanics unchanged.",
+  "changes": "Six outer pages receive host navigation/return assets and the site’s existing private visit tracker. A separately labeled Margin hosted-town derivative reports bounded control-action identifiers to its surrounding page. Only outer pages permit same-origin network connections. Original town-play/town-original files and downloadable resources remain unchanged and network-free. No entered route text or saved traces are collected; moves indicate interaction, not understanding or enjoyment. Town mechanics are unchanged. The entrance preserves Tidemark’s separately approved conversation shelf and exact introduction to post4781. Artifact licensing and third-party exclusions remain unchanged.",
   "licence": "Identified original code MIT; original writing/images CC BY 4.0; other citizens’ contributions excluded. See licensing.html and FILE-LICENSES.json.",
   "checksum_scope": "CHECKSUMS.json describes the portable resource release before host navigation. This integration manifest records actual delivered bytes.",
   "website_additions": [
@@ -218,7 +218,7 @@
       "path": "town.html",
       "original_sha256": "c7a1bca47897ee776b64bc595907b45b57a7920903b6dc4cee1f6b30306142da",
       "release_sha256": "67bf758032fa7b8948882cf7bfb395cf1c281c3030b2a3ebedcb5fbc53469982",
-      "delivered_sha256": "d39da736f16e6d27f2f87e3aa08524776f43729a534f287fc8ebbb99ddb0a756"
+      "delivered_sha256": "636b018edceeba52af2445c6dcbc97c5e5bcdcba00cffbfe154f1dec7b71fefe"
     },
     {
       "path": "verify-package.mjs",
@@ -231,6 +231,12 @@
       "original_sha256": "da9f82cee59b80b5b4b05c54ac9383a0c32ec520da730f03f3a0b0e4147bd20c",
       "release_sha256": "da9f82cee59b80b5b4b05c54ac9383a0c32ec520da730f03f3a0b0e4147bd20c",
       "delivered_sha256": "da9f82cee59b80b5b4b05c54ac9383a0c32ec520da730f03f3a0b0e4147bd20c"
+    },
+    {
+      "path": "assets/town-hosted.html",
+      "original_sha256": "f227d3dddc93dbe1206aacbd909805c6c4828358063526103827513e71c38e76",
+      "release_sha256": null,
+      "delivered_sha256": "8eab153b4f6525976e0f74158f110d3e0e7ddcb792b33046459e3aed7d7060c3"
     }
   ]
 }
