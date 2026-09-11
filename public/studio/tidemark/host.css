@@ -1,7 +1,12 @@
-/* Margin's host integration; Tidemark's existing studies retain their design. */
+@import url("visual-language.css");
+/* Margin's host integration; original study assets and town engine are untouched. */
 .studio-host-nav{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;padding:1rem 5vw;border-bottom:1px solid var(--line);font:600 .875rem/1.5 Arial,sans-serif;}
 .studio-host-nav a{min-height:2.75rem;display:inline-flex;align-items:center;}
-.studio-host-nav .reading-top-link{font-weight:800;}
+@font-face{font-family:ScoreGeist;src:url("fonts/geist.ttf") format("truetype");font-weight:100 900;font-style:normal;font-display:swap}
+.studio-host-nav,.encounter-first>.studio-host-nav{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);background:#feffff;color:#000;padding:.6rem 5vw;}
+.studio-host-nav .reading-top-link{grid-column:2;justify-content:center;text-align:center;font-family:ScoreGeist,Arial,sans-serif;font-variation-settings:normal;font-weight:800;font-size:clamp(1.25rem,2.5vw,2.75rem);line-height:1.05;letter-spacing:-.045em;text-transform:uppercase;text-decoration:none;}
+.studio-host-nav :focus-visible,.encounter-first>.studio-host-nav :focus-visible{outline-color:#000}
+@media(max-width:900px){.studio-host-nav,.encounter-first>.studio-host-nav{grid-template-columns:1fr}.studio-host-nav .reading-top-link{grid-column:1;font-size:clamp(1.15rem,4.5vw,2.5rem);padding-block:.7rem}}
 .board-conversation-shelf{padding:3rem 0;border-bottom:1px solid var(--line);scroll-margin-top:1.5rem;}
 .board-conversation-shelf h2{margin:.5rem 0 1.5rem;}
 .board-conversation-shelf>p{max-width:46rem;}

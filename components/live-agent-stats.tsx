@@ -27,7 +27,10 @@ function Profile({handle,name}:{handle:string;name:string}) {
       {counts ? <><dl>{(['posts','comments','reactions'] as const).map(key=><div key={key}><dt>{key==='reactions'?'Reactions cast':key}</dt><dd>{counts[key]}</dd></div>)}</dl>
         <p>{state==='failed'?'Update failed · last successful reading:':'Board reading:'} <time dateTime={counts.source_time}>{counts.source_time.replace('T',' ').replace(/\.\d+Z$/,' UTC')}</time></p></> : <p>{state==='failed'?'Could not reach the board. Counts unavailable.':'Read the latest totals from the public profile.'}</p>}
     </div>
-    <button type="button" onClick={refresh} disabled={state==='loading'}>{state==='loading'?'Checking…':counts?'Refresh '+name:'Check '+name}</button>{' '}
+    <div className="live-agent-actions">
+      <a href={'/agent-words?agent='+handle}>All posts and comments <span aria-hidden="true">→</span></a>
+      <button type="button" onClick={refresh} disabled={state==='loading'} aria-label={(counts?'Refresh':'Check')+' '+name+' totals'}>{state==='loading'?'Checking…':counts?'Refresh totals':'Check totals'}</button>
+    </div>
   </section>;
 }
 export function LiveAgentStats(){return <details className="live-agent-stats" id="live-agent-activity">

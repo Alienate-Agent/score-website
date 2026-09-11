@@ -30,7 +30,8 @@
 .live-agent-stats button:disabled{opacity:.6;cursor:wait;}
 .live-agent-stats summary{cursor:pointer;font-weight:600;}
 .live-agent-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,20rem),1fr));gap:1rem;margin-block:1rem;}
-.live-agent-profile{border:1px solid var(--rule);padding:1rem;min-width:0;}
+.live-agent-profile{--activity-color:#ff00ff;border:1px solid var(--activity-color);padding:1rem;min-width:0;}
+.live-agent-profile[data-public-speaker=tidemark]{--activity-color:#00ffff;}
 .live-agent-profile h3{margin:0 0 1rem;}
 .live-agent-profile dl{display:flex;gap:1.5rem;flex-wrap:wrap;}
 .live-agent-profile dt{text-transform:capitalize;font-size:.85rem;}
@@ -38,8 +39,13 @@
 .live-agent-profile p,.live-agent-stats>p{font-size:.9rem;line-height:1.5;}
 .live-agent-profile button{border:1px solid currentColor;padding:.5rem .75rem;cursor:pointer;}
 .live-agent-profile a{text-decoration:underline;}
-.withheld-credit{display:inline-flex;align-items:center;gap:.6em;}
-.withheld-credit__bar{display:inline-block;width:8rem;height:.9em;background:var(--ink);}
+.live-agent-actions{display:flex;flex-direction:column;align-items:stretch;gap:.5rem;margin-top:1rem;border-top:1px solid var(--rule);padding-top:.75rem;}
+.live-agent-actions>a{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:52px;padding:.65rem .85rem;border:2px solid var(--activity-color);font-size:1rem;text-decoration:none;}
+.live-agent-profile .live-agent-actions>button{align-self:flex-start;border:2px solid var(--activity-color);padding:.6rem .85rem;min-height:48px;font-size:1rem;text-decoration:none;}
+.live-agent-actions>:is(a,button):hover{background:var(--activity-color);color:#000;}
+.live-agent-actions>:is(a,button):focus-visible{outline:2px solid var(--activity-color);outline-offset:4px;}
+.withheld-credit{display:inline-flex;align-items:center;gap:.6em;max-width:100%;white-space:nowrap;}
+.withheld-credit__bar{display:inline-block;width:8rem;flex:0 1 8rem;min-width:0;height:.9em;background:var(--ink);}
 .unfolding-story .withheld-account{display:block;margin:1.75rem 0 2rem;}
 .unfolding-story .withheld-account__label{font:500 .75rem/1.5 var(--font-geist-sans,Arial),sans-serif;margin:0;}
 /* The solid field is an interruption, not a facsimile of concealed typesetting.
@@ -52,7 +58,11 @@
 :root {
   --voice-board-agent: #1647e8;
   --font-public-words: 'Recursive', 'Courier New', monospace;
-  --font-artist-words: Georgia, 'Times New Roman', serif;
+  --font-story: 'adobe-jenson-pro', Georgia, serif;
+  --font-story-subhead: 'adobe-jenson-pro-subhead', 'adobe-jenson-pro', Georgia, serif;
+  --font-story-display: 'adobe-jenson-pro-display', 'adobe-jenson-pro', Georgia, serif;
+  --font-story-caption: 'adobe-jenson-pro-caption', 'adobe-jenson-pro', Georgia, serif;
+  --font-artist-words: var(--font-story);
 }
 .unfolding-story { font-family:var(--font-geist-sans,Arial),sans-serif; }
 /* The unfinished phrase is cropped by the story's edge, never scrollable.
@@ -70,9 +80,16 @@
 .unfolding-story [data-reading-mode=narrative] {
   background:#f5f0e6;
   --paper:#f5f0e6;
-  font-family:Georgia,'Times New Roman',serif;
+  font-family:var(--font-story);
 }
-.unfolding-story .story-passage :is(h2,h3) {font-family:Georgia,'Times New Roman',serif;}
+/* Optical families follow reading scale, not speaker identity. */
+.unfolding-story .story-passage h2 {font-family:var(--font-story-display);letter-spacing:normal;}
+.unfolding-story .story-passage h3,
+.prelude-conversation h3 {font-family:var(--font-story-subhead);}
+.unfolding-story .story-archive__note {font-family:var(--font-story-caption);}
+@media(max-width:700px){
+  .unfolding-story .story-passage h2 {font-family:var(--font-story-subhead);}
+}
 .unfolding-story [data-reading-mode=narrative]>details {
   background:var(--paper-raised);padding:1rem;border:1px solid var(--rule);
   font-family:var(--font-geist-sans,Arial),sans-serif;
@@ -83,7 +100,7 @@
 }
 /* Direct headings orient; the retained poetic line supplies a second register. */
 .unfolding-story .story-subheading {
-  font-family:Georgia,'Times New Roman',serif;
+  font-family:var(--font-story-subhead);
   font-size:clamp(1.2rem,2vw,1.65rem);
   font-style:italic; font-weight:400; line-height:1.35;
   letter-spacing:normal; margin-top:.5rem; margin-bottom:1.75rem;
@@ -103,6 +120,7 @@
 .prelude-conversation figure[data-origin=artist] blockquote {
   font-family:var(--font-artist-words)!important;
   font-variation-settings:normal;
+  font-style:italic;
 }
 /* A fixed setting identifies speech, not a guessed mood or personality. */
 .public-speaker-header,
@@ -145,6 +163,8 @@
 .speaker-signature[data-compact=true] { padding:.2em .3em; }
 [data-exact-public-text], [data-two-reading-exact], [data-window-exact=window] {
   font-family:var(--font-public-words)!important;
+  font-variation-settings:'MONO' 1, 'CASL' .2, 'CRSV' 0, 'slnt' 0;
+  letter-spacing:normal;
 }
 [data-addressed-excerpt] {
   background:#00ffff!important; color:#000!important;

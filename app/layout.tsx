@@ -38,6 +38,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://use.typekit.net/rms3swu.css" />
+      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} ${agentTypeface.variable}`}>
         {children}
         <ReadingReturnReady />

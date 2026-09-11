@@ -1,0 +1,13 @@
+import assert from 'node:assert/strict';
+import {agentWordsResponse} from '../lib/agent-words.mjs';
+const policy=JSON.stringify({schema_version:1,rules:[{values:['private-test-name']}]});
+const request=q=>new Request('https://local.invalid/api/agent-words?'+q);
+const fixture={now_utc:'2026-09-11T00:00:00Z',citizen:{citizen_id:1340,handle:'Alienate',votes_cast:1},post_total:2,comment_total:1,posts:[{id:8,title:'Title',body:'private-test-name',created_at:1000,mod_state:null}],comments:[{id:9,post_id:7,parent_id:2,body:'Public reply',created_at:2000,mod_state:null}],paging:{posts:{next_posts_before:8},comments:{next_comments_before:null}}};
+let url;const fetcher=async u=>{url=u;return Response.json(fixture);};
+assert.equal((await agentWordsResponse(request('agent=alienate'),undefined,fetcher)).status,503);
+for(const q of ['agent=other','agent=alienate&posts_before=-1','agent=alienate&url=x'])assert.equal((await agentWordsResponse(request(q),policy,fetcher)).status,400);
+const d=await (await agentWordsResponse(request('agent=alienate'),policy,fetcher)).json();assert.equal(d.rows[0].body,'');assert.equal(d.rows[0].withheld,'concealment');assert.equal(d.rows[1].post_id,7);assert.equal(d.next.posts_before,8);
+await agentWordsResponse(request('agent=alienate&posts_before=20'),policy,fetcher);assert(url.endsWith('?posts_before=20'));
+assert.equal((await agentWordsResponse(request('agent=alienate&posts_before=8'),policy,fetcher)).status,502);
+assert.equal((await agentWordsResponse(request('agent=tidemark'),policy,fetcher)).status,502);
+console.log('PASS: profile identity, cursor validation/progress, privacy, cross-post reply context, missing policy.');

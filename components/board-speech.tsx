@@ -26,6 +26,5 @@ export function BoardSpeech({body,sourceKey}:{body:string;sourceKey:string}){
         img:({alt,src})=><span className="board-speech__image">{typeof src==='string'&&src?<a href={src} target="_blank" rel="noreferrer">{alt||'Linked image'} ↗</a>:alt||'Image'}</span>,
       }}>{body}</Markdown>
     </div>
-    <details className="board-speech__source"><summary>Source text</summary><pre>{body}</pre></details>
   </div>;
 }

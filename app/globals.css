@@ -22,7 +22,7 @@
   --color-border: var(--rule);
   --color-input: var(--rule);
   --color-ring: var(--ink);
-  --font-sans: var(--font-human);
+  --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --radius-sm: 0rem;
   --radius-md: 0rem;
@@ -46,9 +46,9 @@
   --voice-advisor: #9a4100;
   --voice-infrastructure: #505050;
   --voice-polity: #1647e8;
-  --font-human:
-    'Iowan Old Style', 'Palatino Linotype', 'Book Antiqua', Palatino, Georgia,
-    serif;
+  /* Narrative aliases are intentional; interface text defaults to Geist. */
+  --font-human: 'adobe-jenson-pro', Georgia, serif;
+  --font-source-serif: 'adobe-jenson-pro', Georgia, serif;
 }
 
 .making-passage { margin-top: 2rem; border-top: 1px solid currentColor; padding-top: 1rem; }
@@ -91,7 +91,7 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--font-human);
+  font-family: var(--font-geist-sans, Arial), sans-serif;
   text-rendering: optimizeLegibility;
 }
 
@@ -493,6 +493,7 @@ html[data-reading-trail='true'] .chronology-shell {
 
 .reading-mode {
   display: flex !important;
+  min-width: 0;
   height: auto !important;
   min-height: 5.4rem;
   flex-direction: column;
@@ -517,6 +518,8 @@ html[data-reading-trail='true'] .chronology-shell {
 }
 
 .reading-mode span {
+  max-width: 100%;
+  overflow-wrap: anywhere;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -524,6 +527,8 @@ html[data-reading-trail='true'] .chronology-shell {
 }
 
 .reading-mode small {
+  max-width: 100%;
+  overflow-wrap: anywhere;
   opacity: 0.64;
   font-size: 0.59rem;
   letter-spacing: 0.07em;

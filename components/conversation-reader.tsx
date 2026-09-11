@@ -1,5 +1,6 @@
 'use client';
-import {useEffect,useRef,useState,type RefObject} from 'react';
+import {useEffect,useRef,useState,type RefObject,type ReactNode} from 'react';
+import {conversationTree,type ThreadNode} from '@/lib/conversation-tree';
 import {Dialog,DialogContent,DialogTitle,DialogDescription,DialogClose} from './ui/dialog';
 import {SpeakerSignature} from './speaker-notation';
 import {BoardAgentName} from './board-agent-name';
@@ -61,11 +62,12 @@ export function ConversationReader({event,selected,initialFresh,control}:{event:
   const heading=useRef<HTMLHeadingElement>(null);
   const list=useRef<HTMLDivElement>(null);
   const positions=useRef<Partial<Record<'preserved'|'fresh',{key:string;offset:number}>>>({});
+  function rowTop(row:HTMLElement){return list.current?row.getBoundingClientRect().top-list.current.getBoundingClientRect().top+list.current.scrollTop:0;}
   function remember(){
     if(!list.current)return;
     const rows=[...list.current.querySelectorAll<HTMLElement>('[data-conversation-act]')];
-    const row=rows.findLast(el=>el.offsetTop<=list.current!.scrollTop+1)??rows[0];
-    if(row)positions.current[edition]={key:row.dataset.conversationAct!,offset:list.current.scrollTop-row.offsetTop};
+    const row=rows.findLast(el=>rowTop(el)<=list.current!.scrollTop+1)??rows[0];
+    if(row)positions.current[edition]={key:row.dataset.conversationAct!,offset:list.current.scrollTop-rowTop(row)};
   }
   function changeEdition(next:'preserved'|'fresh'){remember();setEdition(next);}
   useEffect(()=>{
@@ -74,7 +76,7 @@ export function ConversationReader({event,selected,initialFresh,control}:{event:
       const position=positions.current[edition];
       const rows=[...list.current?.querySelectorAll<HTMLElement>('[data-conversation-act]')??[]];
       const target=rows.find(el=>el.dataset.conversationAct===(position?.key??selected))??rows.find(el=>el.dataset.conversationAct===selected)??rows[0];
-      if(target&&list.current)list.current.scrollTop=target.offsetTop+(position&&target.dataset.conversationAct===position.key?position.offset:0);
+      if(target&&list.current)list.current.scrollTop=rowTop(target)+(position&&target.dataset.conversationAct===position.key?position.offset:0);
     });
     return ()=>cancelAnimationFrame(frame);
   },[open,selected,edition,fresh]);
@@ -82,7 +84,19 @@ export function ConversationReader({event,selected,initialFresh,control}:{event:
   const acts:FreshAct[]=reading?[reading.post,...reading.comments]:[event.post,...event.comments].map(act=>({...act,withheld:event.missingPost&&act.kind==='post'?'unavailable':null}));
   function go(key:string){
     const target=[...list.current?.querySelectorAll<HTMLElement>('[data-conversation-act]')??[]].find(el=>el.dataset.conversationAct===key);
-    if(target&&list.current){list.current.scrollTop=target.offsetTop;target.focus({preventScroll:true});}
+    if(target&&list.current){list.current.scrollTop=rowTop(target);target.focus({preventScroll:true});}
+  }
+  function renderBranch({act,children}:ThreadNode<FreshAct>,depth=0):ReactNode{
+            const parent=act.parent_id===null?null:acts.find(row=>row.kind==='comment'&&row.id===act.parent_id);
+            const additional=Boolean(reading&&!initialFresh&&!event.comments.some(row=>row.key===act.key)&&act.kind==='comment');
+            return <section key={act.key} className="conversation-branch" data-depth={depth}><article tabIndex={-1} data-conversation-act={act.key} data-kind={act.kind} data-speaker={act.author.toLowerCase()} data-entry={act.key===selected} data-additional={additional||undefined}>
+              <div className="public-speaker-header" data-public-speaker={act.author.toLowerCase()}>{act.withheld==='unavailable'?<span>Original post · {act.id}</span>:<><SpeakerSignature voice={act.author} boardAgent={!act.withheld}/><span>{act.kind} {act.id} · {act.occurred_at.slice(0,10)}</span></>}</div>
+              {additional&&<p className="conversation-additional">Additional to this selection</p>}
+              {act.title&&(act.kind!=='post'||act.title!==event.title)&&<h3>{act.title}</h3>}
+              {parent?<button className="conversation-parent" onClick={()=>go(parent.key)}>Reply to <BoardAgentName name={parent.author}/> · comment {parent.id} ↑</button>:act.parent_id!==null?<p className="conversation-parent">Parent comment {act.parent_id} is outside this collection.</p>:null}
+              {act.withheld?<p className="conversation-reader__limit">{act.withheld==='unavailable'?'The original post is not in this preserved collection. Check for newer comments to retrieve the current discussion.':'This contribution is withheld from this reading.'}</p>:<BoardSpeech body={act.body} sourceKey={act.key}/>}
+              <a href={boardReaderHref({kind:act.kind as 'post'|'comment',id:act.id})} target="_blank" rel="noreferrer">Open in a separate reader ↗</a>
+            </article>{children.length>0&&<div className="conversation-replies">{children.map(child=>renderBranch(child,depth+1))}</div>}</section>;
   }
   const refreshControl=<button disabled={busy} onClick={refresh}>{busy?'Checking…':'Check for newer comments'}</button>;
   return <>
@@ -95,18 +109,7 @@ export function ConversationReader({event,selected,initialFresh,control}:{event:
         {initialFresh&&<output className="conversation-live-notice">{notice}</output>}
         <div className="conversation-reader__scroll" ref={list} onScroll={remember}>
           {!acts.some(a=>a.key===selected)&&<p className="conversation-reader__limit">The comment you entered from was not returned in this check.{!initialFresh?' It remains in the preserved conversation.':''}</p>}
-          {acts.map(act=>{
-            const parent=act.parent_id===null?null:acts.find(row=>row.kind==='comment'&&row.id===act.parent_id);
-            const additional=Boolean(reading&&!initialFresh&&!event.comments.some(row=>row.key===act.key)&&act.kind==='comment');
-            return <article key={act.key} tabIndex={-1} data-conversation-act={act.key} data-entry={act.key===selected} data-additional={additional||undefined}>
-              <div className="public-speaker-header" data-public-speaker={act.author.toLowerCase()}>{act.withheld==='unavailable'?<span>Original post · {act.id}</span>:<><SpeakerSignature voice={act.author} boardAgent={!act.withheld}/><span>{act.kind} {act.id} · {act.occurred_at.slice(0,10)}</span></>}</div>
-              {additional&&<p className="conversation-additional">Additional to this selection</p>}
-              {act.title&&(act.kind!=='post'||act.title!==event.title)&&<h3>{act.title}</h3>}
-              {parent?<button className="conversation-parent" onClick={()=>go(parent.key)}>Reply to <BoardAgentName name={parent.author}/> · comment {parent.id} ↑</button>:act.parent_id!==null?<p className="conversation-parent">Parent comment {act.parent_id} is outside this collection.</p>:null}
-              {act.withheld?<p className="conversation-reader__limit">{act.withheld==='unavailable'?'The original post is not in this preserved collection. Check for newer comments to retrieve the current discussion.':'This contribution is withheld from this reading.'}</p>:<BoardSpeech body={act.body} sourceKey={act.key}/>}
-              <a href={boardReaderHref({kind:act.kind as 'post'|'comment',id:act.id})} target="_blank" rel="noreferrer">Open in a separate reader ↗</a>
-            </article>;
-          })}
+          {conversationTree(acts).map(node=>renderBranch(node))}
           {(reading?.partial??event.partial)&&<p className="conversation-reader__limit">This collection does not contain the whole thread. The public source may contain further comments.</p>}
         </div>
       </DialogContent>

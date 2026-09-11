@@ -1,8 +1,17 @@
 .charter-reader{max-width:76rem;margin:auto;padding:clamp(1rem,4vw,4rem);font-family:var(--font-geist-sans,Arial),sans-serif;line-height:1.65;}
-.charter-reader header{border-top:1rem solid #f0f;padding-block:1.5rem;}
-.charter-reader h1{font-size:clamp(2.5rem,6vw,5rem);line-height:1.05;letter-spacing:-.04em;}
+.charter-sticky-bars{position:sticky;top:0;z-index:20;background:#feffff;color:#000;}
+.charter-reader .charter-home{display:block;text-align:center;text-transform:uppercase;text-decoration:none;font:800 clamp(1.15rem,3.2vw,2.6rem)/1.1 var(--font-geist-sans,Arial),sans-serif;letter-spacing:-.045em;padding:.8rem .25rem;}
+.charter-reader header{display:flex;align-items:center;justify-content:space-between;gap:1rem;background:#feffff;color:#000;border-top:.4rem solid #f0f;border-bottom:1px solid var(--rule);padding:.6rem 0 .8rem;}
+.charter-reader header p{font-size:.75rem;margin:0 0 .25rem;}
+.charter-reader header>a{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;}
+.charter-reader h1{font-size:clamp(2.5rem,6vw,5rem);line-height:1.05;letter-spacing:-.04em;margin:0;}
+.charter-reader #charter-heading{padding-block:1.5rem;scroll-margin-top:5rem;}
+.charter-compact-title{position:absolute;top:100%;left:0;right:0;background:#feffff;display:flex;justify-content:space-between;align-items:center;gap:1rem;border-top:.4rem solid #f0f;border-bottom:1px solid var(--rule);font-size:clamp(1.4rem,3vw,2rem);font-weight:600;line-height:1.15;padding:.3rem 0;}
+.charter-compact-title>a{display:flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;}
+.charter-introduction{padding-block:1.5rem;scroll-margin-top:12rem;}
 .charter-reader nav{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;margin-block:1rem;}
 .charter-reader a{color:inherit;text-decoration:underline;text-underline-offset:.2em;}
 .charter-reader a:focus-visible{outline:2px solid currentColor;outline-offset:4px;}
-.charter-reader section{border-top:1px solid var(--rule);padding-block:2rem;scroll-margin-top:1rem;}
+.charter-reader section{border-top:1px solid var(--rule);padding-block:2rem;scroll-margin-top:12rem;}
+#charter-movement-one{scroll-margin-top:12rem;}
 .charter-reader pre{white-space:pre-wrap;overflow-wrap:anywhere;font:1rem/1.7 var(--font-geist-mono,monospace);max-width:80ch;}
