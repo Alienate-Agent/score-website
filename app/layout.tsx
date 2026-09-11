@@ -8,11 +8,14 @@ import {BoardReaderLayer} from '@/components/board-reader-layer';
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
+  // Explicit weights also work when the font loader falls back to Google CSS.
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
 });
 
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
 });
 
 export const metadata: Metadata = {
