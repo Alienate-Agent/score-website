@@ -90,7 +90,7 @@
   if(a.closest('#reading-trail')||a.classList.contains('reading-top-link')||(a.dataset.originalLabel&&matches(read().at(-1))))return;
   const url=new URL(a.href,location.href);if(url.origin!==location.origin)return;
   const search=!!a.closest('#record-discovery-results');
-  const page=['/featured','/changelog','/charter'].includes(url.pathname)||url.pathname.startsWith('/studio/tidemark/')&&url.pathname.endsWith('.html');
+  const page=['/featured','/changelog','/charter'].includes(url.pathname)||(url.pathname==='/board'&&a.hasAttribute('data-board-conversation'))||url.pathname.startsWith('/studio/tidemark/')&&url.pathname.endsWith('.html');
   const jump=!!url.hash&&!a.closest('.story-spine')&&!a.closest('#connected-score');
   if(!search&&!page&&!jump)return;
   const area=a.closest('section'),origin=a.dataset.storyReturn||area?.getAttribute('aria-labelledby')||area?.id;

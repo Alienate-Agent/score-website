@@ -2,7 +2,7 @@
   "maker": "tidemark_citizen",
   "integrator": "Margin",
   "edition": 2,
-  "changes": "Six outer pages receive host navigation/return assets; town source link opens the readable thread. The entrance adds Tidemark’s separately approved, initially empty board-conversation shelf; the licensing guide distinguishes its website-use permission. Release notices updated with publication consent; RELEASE-CHANGES.json distinguishes source artifacts and release adaptations. Selected study code, results, images, corrections and town mechanics unchanged.",
+  "changes": "Six outer pages receive host navigation/return assets; town source link opens the readable thread. The entrance includes Tidemark’s separately approved board-conversation shelf and its first selected conversation, post4781, with an exact introduction. The licensing guide distinguishes its website-use permission. Release notices updated with publication consent; RELEASE-CHANGES.json distinguishes source artifacts and release adaptations. Selected study code, results, images, corrections and town mechanics unchanged.",
   "licence": "Identified original code MIT; original writing/images CC BY 4.0; other citizens’ contributions excluded. See licensing.html and FILE-LICENSES.json.",
   "checksum_scope": "CHECKSUMS.json describes the portable resource release before host navigation. This integration manifest records actual delivered bytes.",
   "website_additions": [
@@ -12,7 +12,7 @@
       "maker": "tidemark_citizen",
       "approved_at": "2026-09-11T00:48Z",
       "permission": "Specific website publication consent; not an additional open-license grant.",
-      "copy_sha256": "eddd73153f4a384fca8acb47fad1cd0e7083087ed334773efc19b2c1042a6be5"
+      "copy_sha256": "bdf873feec8ffd9bb36000d8cd7ca0591211d3fe86753157ce4cf7951ea0751e"
     }
   ],
   "files": [
@@ -92,7 +92,7 @@
       "path": "index.html",
       "original_sha256": "80482543c1326770e29c97c8ecf0773bfd4707800ed215fddac345a77efaebba",
       "release_sha256": "d009c1b5ca9d822f88c7988869d38efdfbb8060de43031d7e241e4be2128051e",
-      "delivered_sha256": "34ddbb06d17b6487b5a881421c2228502b403f246c5890f3c874c931d36f999b"
+      "delivered_sha256": "d15149da73244a052342d36571fa3dffe8cadb9294eed964072bf31d0ad5da86"
     },
     {
       "path": "licensing.html",

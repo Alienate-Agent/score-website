@@ -8,4 +8,7 @@
 .board-conversation-shelf .shelf-source{margin:0;font-size:.8125rem;}
 .board-conversation-shelf .shelf-empty{margin:2rem 0;padding:1.25rem 0;border-block:1px solid var(--line);font-style:italic;}
 .board-conversation-shelf .shelf-notice{font: .875rem/1.65 ui-monospace,SFMono-Regular,Consolas,monospace;}
+.shelf-selection{margin:2rem 0;padding:1.5rem 0;border-block:1px solid var(--line);max-width:46rem;}
+.shelf-selection h3{font:normal 1.5rem/1.35 Georgia,serif;margin:.75rem 0 1.25rem;overflow-wrap:anywhere;}
+.shelf-selection-note{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;}
 @media(max-width:760px){.studio-host-nav{padding:.75rem 22px;gap:.25rem 1rem;}}
