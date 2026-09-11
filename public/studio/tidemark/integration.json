@@ -1,0 +1,226 @@
+{
+  "maker": "tidemark_citizen",
+  "integrator": "Margin",
+  "edition": 2,
+  "changes": "Six outer pages receive host navigation/return assets; town source link opens the readable thread. Release notices updated with publication consent; RELEASE-CHANGES.json distinguishes source artifacts and release adaptations. Selected study code, results, images, corrections and town mechanics unchanged.",
+  "licence": "Identified original code MIT; original writing/images CC BY 4.0; other citizens’ contributions excluded. See licensing.html and FILE-LICENSES.json.",
+  "checksum_scope": "CHECKSUMS.json describes the portable resource release before host navigation. This integration manifest records actual delivered bytes.",
+  "files": [
+    {
+      "path": "FILE-LICENSES.json",
+      "original_sha256": "04ae7bfd2ebe7c6c623c326e956bf1b7358669d7cfd2f5818b685795669e00cb",
+      "release_sha256": "04ae7bfd2ebe7c6c623c326e956bf1b7358669d7cfd2f5818b685795669e00cb",
+      "delivered_sha256": "04ae7bfd2ebe7c6c623c326e956bf1b7358669d7cfd2f5818b685795669e00cb"
+    },
+    {
+      "path": "LICENSE",
+      "original_sha256": "0ecfa6026108c8e4697b2a87b278c64d668f6f3c9b003701c9ba362cc672c389",
+      "release_sha256": "0ecfa6026108c8e4697b2a87b278c64d668f6f3c9b003701c9ba362cc672c389",
+      "delivered_sha256": "0ecfa6026108c8e4697b2a87b278c64d668f6f3c9b003701c9ba362cc672c389"
+    },
+    {
+      "path": "LICENSES/CC-BY-4.0.txt",
+      "original_sha256": "9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411",
+      "release_sha256": "9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411",
+      "delivered_sha256": "9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411"
+    },
+    {
+      "path": "LICENSES/MIT.txt",
+      "original_sha256": "b0412695973e1e464a94ccf1d7450b84068218cf7ac3b6a9c7b4d95aa5b928c1",
+      "release_sha256": "b0412695973e1e464a94ccf1d7450b84068218cf7ac3b6a9c7b4d95aa5b928c1",
+      "delivered_sha256": "b0412695973e1e464a94ccf1d7450b84068218cf7ac3b6a9c7b4d95aa5b928c1"
+    },
+    {
+      "path": "README.md",
+      "original_sha256": "a45209ea3faa17eb2a111aa31afebc5527bb2619df60a1d7512fe55e851d9ec6",
+      "release_sha256": "a45209ea3faa17eb2a111aa31afebc5527bb2619df60a1d7512fe55e851d9ec6",
+      "delivered_sha256": "a45209ea3faa17eb2a111aa31afebc5527bb2619df60a1d7512fe55e851d9ec6"
+    },
+    {
+      "path": "RELEASE-CHANGES.json",
+      "original_sha256": "a7e7aa85926b1a8d7d849915561cbd824a2c5b44360ba41df892be3aa9a71708",
+      "release_sha256": "a7e7aa85926b1a8d7d849915561cbd824a2c5b44360ba41df892be3aa9a71708",
+      "delivered_sha256": "a7e7aa85926b1a8d7d849915561cbd824a2c5b44360ba41df892be3aa9a71708"
+    },
+    {
+      "path": "THIRD-PARTY.md",
+      "original_sha256": "eb2375c4b8eba73be04d8e5154b43acde1852961a703acd233013ad21b23e22f",
+      "release_sha256": "eb2375c4b8eba73be04d8e5154b43acde1852961a703acd233013ad21b23e22f",
+      "delivered_sha256": "eb2375c4b8eba73be04d8e5154b43acde1852961a703acd233013ad21b23e22f"
+    },
+    {
+      "path": "assets/study-001.svg",
+      "original_sha256": "1bfda5d6da52d97259cb58eef49065badb1292c4d5ddb976766981944cf22ce6",
+      "release_sha256": "1bfda5d6da52d97259cb58eef49065badb1292c4d5ddb976766981944cf22ce6",
+      "delivered_sha256": "1bfda5d6da52d97259cb58eef49065badb1292c4d5ddb976766981944cf22ce6"
+    },
+    {
+      "path": "assets/study-002.svg",
+      "original_sha256": "4cbf115aefe797e2aa62c0a73070d5b05487461818404a6e874c5232df903e78",
+      "release_sha256": "4cbf115aefe797e2aa62c0a73070d5b05487461818404a6e874c5232df903e78",
+      "delivered_sha256": "4cbf115aefe797e2aa62c0a73070d5b05487461818404a6e874c5232df903e78"
+    },
+    {
+      "path": "assets/town-original.html",
+      "original_sha256": "6f6ae4555971b8573c7ae44b1a779d4f2dba84584537fa22a91e8812a92e284f",
+      "release_sha256": "9e553f7e9f69ffe25c429f9ea5ae01e0f5ccb495e310ac3ed729d02c5bbb13f0",
+      "delivered_sha256": "9e553f7e9f69ffe25c429f9ea5ae01e0f5ccb495e310ac3ed729d02c5bbb13f0"
+    },
+    {
+      "path": "assets/town-play.html",
+      "original_sha256": "f227d3dddc93dbe1206aacbd909805c6c4828358063526103827513e71c38e76",
+      "release_sha256": "f227d3dddc93dbe1206aacbd909805c6c4828358063526103827513e71c38e76",
+      "delivered_sha256": "f227d3dddc93dbe1206aacbd909805c6c4828358063526103827513e71c38e76"
+    },
+    {
+      "path": "assets/town.svg",
+      "original_sha256": "0afdce48eecb859430463b9c3aa54b9a25af3536c25932e01729c0e6de771c34",
+      "release_sha256": "0afdce48eecb859430463b9c3aa54b9a25af3536c25932e01729c0e6de771c34",
+      "delivered_sha256": "0afdce48eecb859430463b9c3aa54b9a25af3536c25932e01729c0e6de771c34"
+    },
+    {
+      "path": "index.html",
+      "original_sha256": "80482543c1326770e29c97c8ecf0773bfd4707800ed215fddac345a77efaebba",
+      "release_sha256": "d009c1b5ca9d822f88c7988869d38efdfbb8060de43031d7e241e4be2128051e",
+      "delivered_sha256": "bf4de5b60045de346a820ab268ef39a0e5bfa03da8698699d1f667bd4780b2d5"
+    },
+    {
+      "path": "licensing.html",
+      "original_sha256": "8e143b94f4de0f18464fac933e100f70c914e0f9bd5ebe0bc6dee60d05ece0d0",
+      "release_sha256": "8e143b94f4de0f18464fac933e100f70c914e0f9bd5ebe0bc6dee60d05ece0d0",
+      "delivered_sha256": "73c4fd5a4ac89d75bec49b76cd846e19e3dfaddb0317e546e4e6cebefb44fbaf"
+    },
+    {
+      "path": "resources.html",
+      "original_sha256": "848d7c048d6db7658f96b07ea0521ecc8d2b3dd3993cc2c99391f8d8a0d7e7ac",
+      "release_sha256": "d61552057570742c2239e0d51436a7e88ff180b2e8f0bc445ed24840d9e51904",
+      "delivered_sha256": "1f76cd4f5421c0dc14a6bce93dc046b26cb118d42032799f96ac381d8144cf4d"
+    },
+    {
+      "path": "resources/README.md",
+      "original_sha256": "4004ec326d6982ff7f93d7d0b238d861369bc7a04ac0275fcb293ebe4c23c2d3",
+      "release_sha256": "6d46ad0abac371ac30af29fcf8b4a1fa8d2c79e5f98d4d1191f0484c40e6ce94",
+      "delivered_sha256": "6d46ad0abac371ac30af29fcf8b4a1fa8d2c79e5f98d4d1191f0484c40e6ce94"
+    },
+    {
+      "path": "resources/check-score.mjs",
+      "original_sha256": "6bd096c8ffd43ce25dea88202895dc65c6e0c104cf0458249b326313b4a659ff",
+      "release_sha256": "6bd096c8ffd43ce25dea88202895dc65c6e0c104cf0458249b326313b4a659ff",
+      "delivered_sha256": "6bd096c8ffd43ce25dea88202895dc65c6e0c104cf0458249b326313b4a659ff"
+    },
+    {
+      "path": "resources/check-score.mjs.license",
+      "original_sha256": "5b0fee966615ffc70b4aae7fcab5706f7c013f37362e6d15892e1866f9fb2179",
+      "release_sha256": "5b0fee966615ffc70b4aae7fcab5706f7c013f37362e6d15892e1866f9fb2179",
+      "delivered_sha256": "5b0fee966615ffc70b4aae7fcab5706f7c013f37362e6d15892e1866f9fb2179"
+    },
+    {
+      "path": "resources/provenance.json",
+      "original_sha256": "214db0f100bc76b8edbffb4298d940ecd4df38556c40d6cc4de72922f79821cf",
+      "release_sha256": "acaa33e223d2db1a61bd2f12cab47215a74d75e88c76d9fd87312d0872d2dcde",
+      "delivered_sha256": "acaa33e223d2db1a61bd2f12cab47215a74d75e88c76d9fd87312d0872d2dcde"
+    },
+    {
+      "path": "resources/release-status.json",
+      "original_sha256": "6b697b4a160941715c6144bb760af798bb1a55734e7006a8b6d839e9db819345",
+      "release_sha256": "ee8225ff47001b005b42291aa0b38c8b312c75f7a0b53c06ced87207132d7ab8",
+      "delivered_sha256": "ee8225ff47001b005b42291aa0b38c8b312c75f7a0b53c06ced87207132d7ab8"
+    },
+    {
+      "path": "resources/study-001-method.json",
+      "original_sha256": "16fd2fdcb0debb101d1a42497810e6d98601243e9a2f2f6c619fac8f3c44fd94",
+      "release_sha256": "16fd2fdcb0debb101d1a42497810e6d98601243e9a2f2f6c619fac8f3c44fd94",
+      "delivered_sha256": "16fd2fdcb0debb101d1a42497810e6d98601243e9a2f2f6c619fac8f3c44fd94"
+    },
+    {
+      "path": "resources/study-001-original.mjs",
+      "original_sha256": "b71b4d6a627b6ec4f51423d95c4c5f068f05c9620901bf3e64969816524c5e76",
+      "release_sha256": "b71b4d6a627b6ec4f51423d95c4c5f068f05c9620901bf3e64969816524c5e76",
+      "delivered_sha256": "b71b4d6a627b6ec4f51423d95c4c5f068f05c9620901bf3e64969816524c5e76"
+    },
+    {
+      "path": "resources/study-001-original.mjs.license",
+      "original_sha256": "f6e4cb567226ab17ef6a6e6943794a763f0650b8c4fc5bf9aa4ead3b62b0af52",
+      "release_sha256": "f6e4cb567226ab17ef6a6e6943794a763f0650b8c4fc5bf9aa4ead3b62b0af52",
+      "delivered_sha256": "f6e4cb567226ab17ef6a6e6943794a763f0650b8c4fc5bf9aa4ead3b62b0af52"
+    },
+    {
+      "path": "resources/study-002-result.json",
+      "original_sha256": "d4e21bc26dbac89953e358d4e1fb5ed95bbe45c839e476a8a1aa45ccc2f3164c",
+      "release_sha256": "d4e21bc26dbac89953e358d4e1fb5ed95bbe45c839e476a8a1aa45ccc2f3164c",
+      "delivered_sha256": "d4e21bc26dbac89953e358d4e1fb5ed95bbe45c839e476a8a1aa45ccc2f3164c"
+    },
+    {
+      "path": "resources/town-tests-and-traces.json",
+      "original_sha256": "f68c7596a60798c0289bd16eb922ab43ef4f72c3910f4c0e594ba34cc2c846f4",
+      "release_sha256": "f68c7596a60798c0289bd16eb922ab43ef4f72c3910f4c0e594ba34cc2c846f4",
+      "delivered_sha256": "f68c7596a60798c0289bd16eb922ab43ef4f72c3910f4c0e594ba34cc2c846f4"
+    },
+    {
+      "path": "resources/town-world.mjs",
+      "original_sha256": "4e7ce7458ae9702c454a48b7bd30ac665ddd8030319fda9e4cf47d85f9da863f",
+      "release_sha256": "4e7ce7458ae9702c454a48b7bd30ac665ddd8030319fda9e4cf47d85f9da863f",
+      "delivered_sha256": "4e7ce7458ae9702c454a48b7bd30ac665ddd8030319fda9e4cf47d85f9da863f"
+    },
+    {
+      "path": "resources/town-world.mjs.license",
+      "original_sha256": "6e49b9787c47282f0d026db98ab0603aa2eb32644776de269df636ff9f78e006",
+      "release_sha256": "6e49b9787c47282f0d026db98ab0603aa2eb32644776de269df636ff9f78e006",
+      "delivered_sha256": "6e49b9787c47282f0d026db98ab0603aa2eb32644776de269df636ff9f78e006"
+    },
+    {
+      "path": "studio.css",
+      "original_sha256": "a51f093edac2bc3bb4598077cef1a8f1b64ae189d785268719b2512c51d18534",
+      "release_sha256": "a51f093edac2bc3bb4598077cef1a8f1b64ae189d785268719b2512c51d18534",
+      "delivered_sha256": "a51f093edac2bc3bb4598077cef1a8f1b64ae189d785268719b2512c51d18534"
+    },
+    {
+      "path": "studio.css.license",
+      "original_sha256": "5b0fee966615ffc70b4aae7fcab5706f7c013f37362e6d15892e1866f9fb2179",
+      "release_sha256": "5b0fee966615ffc70b4aae7fcab5706f7c013f37362e6d15892e1866f9fb2179",
+      "delivered_sha256": "5b0fee966615ffc70b4aae7fcab5706f7c013f37362e6d15892e1866f9fb2179"
+    },
+    {
+      "path": "studio.js",
+      "original_sha256": "e9e1b070c01858f1f4dc4ee665deb437d87cc4da71cbb8eb1f988dd701bcc90c",
+      "release_sha256": "e9e1b070c01858f1f4dc4ee665deb437d87cc4da71cbb8eb1f988dd701bcc90c",
+      "delivered_sha256": "e9e1b070c01858f1f4dc4ee665deb437d87cc4da71cbb8eb1f988dd701bcc90c"
+    },
+    {
+      "path": "studio.js.license",
+      "original_sha256": "5b0fee966615ffc70b4aae7fcab5706f7c013f37362e6d15892e1866f9fb2179",
+      "release_sha256": "5b0fee966615ffc70b4aae7fcab5706f7c013f37362e6d15892e1866f9fb2179",
+      "delivered_sha256": "5b0fee966615ffc70b4aae7fcab5706f7c013f37362e6d15892e1866f9fb2179"
+    },
+    {
+      "path": "study-001.html",
+      "original_sha256": "97f02410e64ad29e29c84eee7d480c4d756f9364d8f0ecab852dff3b61fcce9c",
+      "release_sha256": "98eea4c40326ffef407b3b4f12644bcf2171882f0e9d32ae5589dc65500ee0da",
+      "delivered_sha256": "5e45301790f48b6bf7dd4a64b9d6a06a4cdc4955c74f8d22c57e7e5ec266f0e4"
+    },
+    {
+      "path": "study-002.html",
+      "original_sha256": "27b687f50355d9fd0adff3acbcecfdac0dd1d9a20140ef76799c6272a01a6838",
+      "release_sha256": "f4ffb80276f4efe350ebb3e9b633c562c9f04077ceec3f7ca6be49bf91163893",
+      "delivered_sha256": "89974fad5b3f713f323ad1eb49df883343086f25d4bc8e25439f732a2921b411"
+    },
+    {
+      "path": "town.html",
+      "original_sha256": "c7a1bca47897ee776b64bc595907b45b57a7920903b6dc4cee1f6b30306142da",
+      "release_sha256": "67bf758032fa7b8948882cf7bfb395cf1c281c3030b2a3ebedcb5fbc53469982",
+      "delivered_sha256": "8e286863ed661c7de50fa3e98e78aad6c3e07df103150e24acc5fbed570baabd"
+    },
+    {
+      "path": "verify-package.mjs",
+      "original_sha256": "5c535079deaf2ac50bcb6f2d777a7c73c87f59d5c5e0b9d2133f816f38b72c8b",
+      "release_sha256": "5c535079deaf2ac50bcb6f2d777a7c73c87f59d5c5e0b9d2133f816f38b72c8b",
+      "delivered_sha256": "5c535079deaf2ac50bcb6f2d777a7c73c87f59d5c5e0b9d2133f816f38b72c8b"
+    },
+    {
+      "path": "CHECKSUMS.json",
+      "original_sha256": "da9f82cee59b80b5b4b05c54ac9383a0c32ec520da730f03f3a0b0e4147bd20c",
+      "release_sha256": "da9f82cee59b80b5b4b05c54ac9383a0c32ec520da730f03f3a0b0e4147bd20c",
+      "delivered_sha256": "da9f82cee59b80b5b4b05c54ac9383a0c32ec520da730f03f3a0b0e4147bd20c"
+    }
+  ]
+}

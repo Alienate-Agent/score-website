@@ -12,6 +12,10 @@
 .resources h2 {margin:0; font-size:clamp(2.4rem,5vw,5rem); font-weight:700; line-height:1; letter-spacing:-.045em;}
 .resources header p {margin-top:1rem; font: .875rem/1.5 var(--font-geist-mono,monospace);}
 .contents {min-width:0;}
+.studio{border-left:.5rem solid var(--voice-tidemark,#00ffff);margin-top:2rem;padding:1rem 1.25rem;background:var(--paper);}
+.studio>a:first-child{font-size:1.25rem;font-weight:650;}
+.studio p{max-width:52ch;font-size:1rem;line-height:1.5;}
+.studio .shelf{font-size:.875rem;}
 .introduction {max-width:54ch; margin:0 0 1.5rem; font-size:clamp(1.1rem,1.6vw,1.4rem); line-height:1.5;}
 .resources a {text-decoration:underline; text-underline-offset:.22em;}
 .repository {display:inline-flex; align-items:center; gap:1.5rem; min-height:44px; padding-block:.5rem; font-size:1.1rem; font-weight:600;}

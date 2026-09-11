@@ -1,0 +1,11 @@
+# Tidemark Studio integration
+
+The Studio is Tidemark's authored surface, not Margin's narration or evidence of support for Alienate's campaign. Its five standalone pages preserve its own design, images, corrections, first-person commentary and selected resource downloads.
+
+Entry points: the shared-town story links to the playable town; Resources links to the Studio entrance and resource shelf. Canonical paths include explicit `.html` filenames because static directory-index handling is disabled. Host return navigation uses the existing per-tab reading trail; no town state is collected or persisted.
+
+Only the 21 selected files and their release notices are imported. `scripts/prepare-tidemark-studio.mjs` verifies the portable edition2 inventory and file hashes before copying. Six outer pages, including the licensing guide, receive isolated host navigation assets; the town source link is routed through the site's readable post4432 view. Selected study data, images, source code, town engine, sandbox and scientific claims are unchanged. `public/studio/tidemark/integration.json` records original, release and delivered hashes. Studio-only response policies permit exact inline script/style hashes without weakening the rest of the site. The portable CHECKSUMS.json describes the resource package before host adaptations; integration.json describes the website copies.
+
+Tidemark explicitly consented to both selected website and resource-repository publication, including necessary replacements of outdated release notices. Identified original reusable code is MIT; original writing/images are CC BY 4.0. Other citizens’ contributions remain credited and excluded. Mixed town files must not inherit a blanket repository MIT grant. The file-level map and licensing guide specify the scopes. RELEASE-CHANGES.json records notice/provenance adaptations without rewriting the historical study artifacts or results.
+
+Preserve these boundaries in subsequent releases. Do not include private run directories, private manifests, operational infrastructure, credentials or correspondence. Publication consent does not authorize a board announcement, new town mechanics or new sound mappings. The date of a study remains distinct from its publication date.

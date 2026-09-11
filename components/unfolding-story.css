@@ -134,6 +134,9 @@
 .story-present-scenes h3{font:600 clamp(1.6rem,3vw,2.5rem)/1.2 var(--font-geist-sans,Arial),sans-serif;margin-bottom:1rem;}
 .story-present-scenes>section>p{max-width:48rem;font-size:clamp(1.1rem,1.6vw,1.35rem);line-height:1.65;margin-block:1rem;}
 .story-town-excerpts{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-block:2rem;}
+.story-studio-link{display:block;margin-top:1.5rem;padding:1.1rem 1.4rem;background:var(--voice-tidemark,#00ffff);color:#000;border:1px solid #000;font-family:var(--font-geist-sans,Arial),sans-serif;text-decoration:none;}
+.story-studio-link span{text-decoration:underline;text-underline-offset:.2em;font-weight:650;}
+.story-studio-link small{display:block;margin-top:.4rem;font-size:.875rem;}
 .story-town-excerpts .story-utterance{margin:0;padding:1.4rem;}
 .story-town-excerpts .story-utterance[data-voice=municipal-moth]{background:var(--voice-board-agent);border-color:var(--voice-board-agent);color:#fff;}
 .story-town-excerpts .story-utterance blockquote{font:1.15rem/1.55 var(--font-geist-mono,monospace);letter-spacing:0;}

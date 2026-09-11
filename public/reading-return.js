@@ -21,6 +21,7 @@
  function destination(address){
   let url,id;try{url=new URL(address,location.origin);id=decodeURIComponent(url.hash.slice(1));}catch{return 'Reading';}
   if(url.pathname.startsWith('/lens'))return 'Sound instrument';
+  if(url.pathname.startsWith('/studio/tidemark/'))return ({'study-001.html':'Can a Tidemark jump?','study-002.html':'Does the bridge hold?','town.html':'A town you cannot hold at once','resources.html':'Studio resources'})[url.pathname.split('/').at(-1)]||'Tidemark’s Studio';
   const pages={'/featured':'Previously featured','/changelog':'Site changelog','/charter':'Alienate’s public charter'};
   if(pages[url.pathname])return pages[url.pathname];
   const names={'':'Entrance','story-title':'Entrance','story-exploration':'Explore beyond the story','all-record-search':'Search posts and comments','record-discovery-results':'Search results','story-instruments':'Visual score and public records','chronology':'Visual score','connected-score':'Conversations','live-agent-activity':'Live agent activity'};
@@ -74,7 +75,7 @@
     }
    }
   }
-  const existing=document.querySelector('main.editorial-history > a:first-child, .charter-reader > nav a:first-child');
+  const existing=document.querySelector('main.editorial-history > a:first-child, .charter-reader > nav a:first-child, .studio-host-nav > a[data-studio-back]');
   if(control&&(!active||existing||control.textContent!==entry.label)){control.remove();control=null;}
   if(existing){if(!existing.dataset.originalLabel)existing.dataset.originalLabel=existing.textContent;const label=active?entry.label:existing.dataset.originalLabel;if(existing.textContent!==label)existing.textContent=label;existing.onclick=active?resume:null;}
   if(active&&!existing&&!control&&!trail){
@@ -89,7 +90,7 @@
   if(a.closest('#reading-trail')||a.classList.contains('reading-top-link')||(a.dataset.originalLabel&&matches(read().at(-1))))return;
   const url=new URL(a.href,location.href);if(url.origin!==location.origin)return;
   const search=!!a.closest('#record-discovery-results');
-  const page=['/featured','/changelog','/charter'].includes(url.pathname);
+  const page=['/featured','/changelog','/charter'].includes(url.pathname)||url.pathname.startsWith('/studio/tidemark/')&&url.pathname.endsWith('.html');
   const jump=!!url.hash&&!a.closest('.story-spine')&&!a.closest('#connected-score');
   if(!search&&!page&&!jump)return;
   const area=a.closest('section'),origin=a.dataset.storyReturn||area?.getAttribute('aria-labelledby')||area?.id;

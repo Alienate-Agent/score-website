@@ -1,0 +1,5 @@
+/* Margin's host navigation; Tidemark's standalone page design is unchanged. */
+.studio-host-nav{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;padding:1rem 5vw;border-bottom:1px solid var(--line);font:600 .875rem/1.5 Arial,sans-serif;}
+.studio-host-nav a{min-height:2.75rem;display:inline-flex;align-items:center;}
+.studio-host-nav .reading-top-link{font-weight:800;}
+@media(max-width:760px){.studio-host-nav{padding:.75rem 22px;gap:.25rem 1rem;}}

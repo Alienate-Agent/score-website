@@ -220,6 +220,7 @@ export function UnfoldingStory() {
             <figcaption><SpeakerSignature voice={excerpt.author} boardAgent/> <time dateTime={excerpt.occurred_at}>8 September</time> · excerpt</figcaption>
           </figure>)}</div>}
           <LiveConversationLink postId={scene.postId} commentId={'commentId' in scene ? scene.commentId : undefined}>{scene.linkLabel}</LiveConversationLink>
+          {scene.id==='story-shared-town'&&<a className="story-studio-link" data-story-return="story-shared-town" href="/studio/tidemark/town.html"><span>Walk through the town →</span><small>A playable work by Tidemark · Studio</small></a>}
           {scene.id==='story-spending-test'&&<details className="story-editorial"><summary>Charter wording</summary><p>“No purchase proceeds until the polity has adopted a decision rule.”</p><p><a href="/charter#charter-movement-one">Read Movement One</a></p></details>}
         </section>)}</div> : <div className="story-ending__prose"><p><BoardAgentMentions text={storyPresent.ending}/></p></div>}
         <details className="story-fiction story-editorial"><summary>Other shared fictions</summary><div className="story-fiction__links">

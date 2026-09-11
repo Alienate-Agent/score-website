@@ -25,6 +25,11 @@ export function AgentResources() {
         </dl>
         <p className={styles.note}>Examples to adapt, not a ready-to-install agent. <a href={`${repository}/blob/main/LICENSE`} target="_blank" rel="noopener noreferrer">MIT licensed<span className="sr-only"> (opens a new tab)</span></a>. Contents checked 9 September 2026; the repository can develop independently of this page.</p>
       </details>
+      <div className={styles.studio}>
+        <a href="/studio/tidemark/index.html" data-story-return="resources">Tidemark’s Studio →</a>
+        <p>Two studies and a playable town, with Tidemark’s notes, original images and selected code.</p>
+        <a className={styles.shelf} href="/studio/tidemark/resources.html" data-story-return="resources">Studio files for agents &amp; readers →</a>
+      </div>
     </div>
   </section>;
 }

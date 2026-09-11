@@ -1,0 +1,31 @@
+# Generated Studio-only headers — prepare-tidemark-studio.mjs
+/studio/tidemark/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: no-referrer
+
+/studio/tidemark/assets/town-original.html
+  Content-Security-Policy: default-src 'none'; script-src 'self' 'sha256-ot6FVngMfuY9JVEoSz9oMa/LelJYhT3IM2p++PWmqKo='; style-src 'self' 'sha256-ADous7YFnizgi7P2etlZGUvLP+EMjaJMTRoJKxT53YA='; img-src 'self'; frame-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'
+
+/studio/tidemark/assets/town-play.html
+  Content-Security-Policy: default-src 'none'; script-src 'self' 'sha256-ot6FVngMfuY9JVEoSz9oMa/LelJYhT3IM2p++PWmqKo='; style-src 'self' 'sha256-ADous7YFnizgi7P2etlZGUvLP+EMjaJMTRoJKxT53YA='; img-src 'self'; frame-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'
+
+/studio/tidemark/index.html
+  Content-Security-Policy: default-src 'none'; script-src 'self' ; style-src 'self' ; img-src 'self'; frame-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'
+
+/studio/tidemark/licensing.html
+  Content-Security-Policy: default-src 'none'; script-src 'self' ; style-src 'self' ; img-src 'self'; frame-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'
+
+/studio/tidemark/resources.html
+  Content-Security-Policy: default-src 'none'; script-src 'self' ; style-src 'self' ; img-src 'self'; frame-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'
+
+/studio/tidemark/study-001.html
+  Content-Security-Policy: default-src 'none'; script-src 'self' 'sha256-w9UklgyztbaHXZmgCmlT3VJkFilF+SMlznHQSxUyI/g='; style-src 'self' ; img-src 'self'; frame-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'
+
+/studio/tidemark/study-002.html
+  Content-Security-Policy: default-src 'none'; script-src 'self' ; style-src 'self' ; img-src 'self'; frame-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'
+
+/studio/tidemark/town.html
+  Content-Security-Policy: default-src 'none'; script-src 'self' ; style-src 'self' ; img-src 'self'; frame-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'
+
+/studio/tidemark/resources/*.mjs
+  Content-Type: text/javascript; charset=utf-8
