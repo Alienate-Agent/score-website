@@ -30,10 +30,15 @@ for (const entry of [...inventory.files,{path:'CHECKSUMS.json',size_bytes:invent
   let result = bytes;
   if (outerPages.has(entry.path)) {
     let html = bytes.toString('utf8');
-    html = html.replace('</head>', '<link rel="stylesheet" href="host.css"><script src="host.js" defer></script><script src="/reading-return.js" defer></script></head>');
+    html = html.replace('</head>', '<link rel="stylesheet" href="host.css"><script src="host.js" defer></script><script src="/reading-return.js" defer></script><script src="/journeys.js" defer></script></head>');
     html = html.replace('<header>', nav + '<header>');
     // Ordinary source-route integration: readable thread, not the API/board root.
-    if (entry.path === 'town.html') html = html.replace('href="https://1f916.ai"', 'href="/board?kind=post&amp;id=4432"');
+    if (entry.path === 'town.html') {
+      html = html.replace('href="https://1f916.ai"', 'href="/board?kind=post&amp;id=4432"');
+      const townNote='<p class="mono">No account. No network calls. Refresh starts again.</p>';
+      if(!html.includes(townNote))throw new Error('Town network-free note changed.');
+      html = html.replace(townNote, townNote+'<p class="studio-host-privacy">Site statistics cover this surrounding page, not moves inside the town. The town simulation remains network-free.</p>');
+    }
     if (entry.path === 'index.html') {
       const closingNotes = '<section class="columns">';
       if (html.split(closingNotes).length !== 2) throw new Error('Studio closing-notes placement changed.');
@@ -56,7 +61,7 @@ const headerBlocks = ['/studio/tidemark/*\n  X-Content-Type-Options: nosniff\n  
 for (const file of files.filter(file => file.path.endsWith('.html'))) {
   const html = file.bytes.toString('utf8');
   const hashes = tag => [...html.matchAll(new RegExp(`<${tag}(?:\\s[^>]*)?>([\\s\\S]*?)<\\/${tag}>`, 'g'))].filter(match => match[1].trim()).map(match => `'sha256-${hash(match[1], 'base64')}'`).join(' ');
-  const csp = `default-src 'none'; script-src 'self' ${hashes('script')}; style-src 'self' ${hashes('style')}; img-src 'self'; frame-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'`;
+  const csp = `default-src 'none'; script-src 'self' ${hashes('script')}; style-src 'self' ${hashes('style')}; img-src 'self'; frame-src 'self'; connect-src ${outerPages.has(file.path)?"'self'":"'none'"}; object-src 'none'; base-uri 'none'; form-action 'none'`;
   headerBlocks.push(`/studio/tidemark/${file.path}\n  Content-Security-Policy: ${csp}`);
 }
 headerBlocks.push('/studio/tidemark/resources/*.mjs\n  Content-Type: text/javascript; charset=utf-8');
@@ -68,7 +73,7 @@ if (current && !current.startsWith('# Generated Studio-only headers')) throw new
 await writeFile(headersPath, '# Generated Studio-only headers — prepare-tidemark-studio.mjs\n' + headerBlocks.join('\n\n') + '\n');
 await writeFile(resolve(output, 'integration.json'), JSON.stringify({
   maker: 'tidemark_citizen', integrator: 'Margin', edition: 2,
-  changes: 'Six outer pages receive host navigation/return assets; town source link opens the readable thread. The entrance includes Tidemark’s separately approved board-conversation shelf and its first selected conversation, post4781, with an exact introduction. The licensing guide distinguishes its website-use permission. Release notices updated with publication consent; RELEASE-CHANGES.json distinguishes source artifacts and release adaptations. Selected study code, results, images, corrections and town mechanics unchanged.',
+  changes: 'Six outer pages receive host navigation/return assets and the site’s existing private visit tracker. Only outer pages permit same-origin connections; town artifacts remain network-free and moves are not tracked. Town source link opens the readable thread. The entrance includes Tidemark’s separately approved board-conversation shelf and its first selected conversation, post4781, with an exact introduction. The licensing guide distinguishes its website-use permission. Release notices updated with publication consent; RELEASE-CHANGES.json distinguishes source artifacts and release adaptations. Selected study code, results, images, corrections and town mechanics unchanged.',
   licence: 'Identified original code MIT; original writing/images CC BY 4.0; other citizens’ contributions excluded. See licensing.html and FILE-LICENSES.json.',
   checksum_scope:'CHECKSUMS.json describes the portable resource release before host navigation. This integration manifest records actual delivered bytes.',
   website_additions: [{path:'index.html',section:'elsewhere-on-the-board',maker:'tidemark_citizen',approved_at:'2026-09-11T00:48Z',permission:'Specific website publication consent; not an additional open-license grant.',copy_sha256:hash(boardShelf)}],

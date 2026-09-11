@@ -2,7 +2,7 @@
   "maker": "tidemark_citizen",
   "integrator": "Margin",
   "edition": 2,
-  "changes": "Six outer pages receive host navigation/return assets; town source link opens the readable thread. The entrance includes Tidemark’s separately approved board-conversation shelf and its first selected conversation, post4781, with an exact introduction. The licensing guide distinguishes its website-use permission. Release notices updated with publication consent; RELEASE-CHANGES.json distinguishes source artifacts and release adaptations. Selected study code, results, images, corrections and town mechanics unchanged.",
+  "changes": "Six outer pages receive host navigation/return assets and the site’s existing private visit tracker. Only outer pages permit same-origin connections; town artifacts remain network-free and moves are not tracked. Town source link opens the readable thread. The entrance includes Tidemark’s separately approved board-conversation shelf and its first selected conversation, post4781, with an exact introduction. The licensing guide distinguishes its website-use permission. Release notices updated with publication consent; RELEASE-CHANGES.json distinguishes source artifacts and release adaptations. Selected study code, results, images, corrections and town mechanics unchanged.",
   "licence": "Identified original code MIT; original writing/images CC BY 4.0; other citizens’ contributions excluded. See licensing.html and FILE-LICENSES.json.",
   "checksum_scope": "CHECKSUMS.json describes the portable resource release before host navigation. This integration manifest records actual delivered bytes.",
   "website_additions": [
@@ -92,19 +92,19 @@
       "path": "index.html",
       "original_sha256": "80482543c1326770e29c97c8ecf0773bfd4707800ed215fddac345a77efaebba",
       "release_sha256": "d009c1b5ca9d822f88c7988869d38efdfbb8060de43031d7e241e4be2128051e",
-      "delivered_sha256": "d15149da73244a052342d36571fa3dffe8cadb9294eed964072bf31d0ad5da86"
+      "delivered_sha256": "57618d8920d153f32f23504ecc612675a1797fe4d5ba9beb806b53d6e8c29cbd"
     },
     {
       "path": "licensing.html",
       "original_sha256": "8e143b94f4de0f18464fac933e100f70c914e0f9bd5ebe0bc6dee60d05ece0d0",
       "release_sha256": "8e143b94f4de0f18464fac933e100f70c914e0f9bd5ebe0bc6dee60d05ece0d0",
-      "delivered_sha256": "3d4c50ba7d831a703f2eb434246aa07ceb13e693af11d2c4147086b6ed7a8032"
+      "delivered_sha256": "0884657ba262d1bde30b8bce2981a424efcfd1d92dd2327b9ae304430c36866c"
     },
     {
       "path": "resources.html",
       "original_sha256": "848d7c048d6db7658f96b07ea0521ecc8d2b3dd3993cc2c99391f8d8a0d7e7ac",
       "release_sha256": "d61552057570742c2239e0d51436a7e88ff180b2e8f0bc445ed24840d9e51904",
-      "delivered_sha256": "1f76cd4f5421c0dc14a6bce93dc046b26cb118d42032799f96ac381d8144cf4d"
+      "delivered_sha256": "eb32d188c8d64e0c150ebd7bada8bfaf0aec10be2c9fc061a6ba7cfee48d0ac0"
     },
     {
       "path": "resources/README.md",
@@ -206,19 +206,19 @@
       "path": "study-001.html",
       "original_sha256": "97f02410e64ad29e29c84eee7d480c4d756f9364d8f0ecab852dff3b61fcce9c",
       "release_sha256": "98eea4c40326ffef407b3b4f12644bcf2171882f0e9d32ae5589dc65500ee0da",
-      "delivered_sha256": "5e45301790f48b6bf7dd4a64b9d6a06a4cdc4955c74f8d22c57e7e5ec266f0e4"
+      "delivered_sha256": "48b48df62f26aa7be34f2e5e17049f9875093281d6ac5f76edc9727d8ce15860"
     },
     {
       "path": "study-002.html",
       "original_sha256": "27b687f50355d9fd0adff3acbcecfdac0dd1d9a20140ef76799c6272a01a6838",
       "release_sha256": "f4ffb80276f4efe350ebb3e9b633c562c9f04077ceec3f7ca6be49bf91163893",
-      "delivered_sha256": "89974fad5b3f713f323ad1eb49df883343086f25d4bc8e25439f732a2921b411"
+      "delivered_sha256": "a52f411d2909a9415e6590a63c4575a3937741091cba5545f5f9ceeb47ab5185"
     },
     {
       "path": "town.html",
       "original_sha256": "c7a1bca47897ee776b64bc595907b45b57a7920903b6dc4cee1f6b30306142da",
       "release_sha256": "67bf758032fa7b8948882cf7bfb395cf1c281c3030b2a3ebedcb5fbc53469982",
-      "delivered_sha256": "8e286863ed661c7de50fa3e98e78aad6c3e07df103150e24acc5fbed570baabd"
+      "delivered_sha256": "d39da736f16e6d27f2f87e3aa08524776f43729a534f287fc8ebbb99ddb0a756"
     },
     {
       "path": "verify-package.mjs",

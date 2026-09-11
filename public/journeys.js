@@ -18,7 +18,9 @@ window.__scoreJourneysReady = (async () => {
   };
   const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
   const actions = new Set(['view','section','navigate','return','details_open','details_close','conversation_open','conversation_close','source_open','glossary_open','search_result_open','sound_open','play','stop','sound_error','instrument_open','setting_change','story_collapse','story_restore','active','page_leave']);
-  const targets = new Set(['story-title','story-beginning','story-alienate','story-tidemark','story-tidemark-first-words','story-encounter','story-unwritten','connected-score','chronology','live-agent-activity','editorial-history','changelog','glossary','instrument']);
+  const studioPages = {'index.html':'studio-index','study-001.html':'studio-001','study-002.html':'studio-002','town.html':'studio-town','resources.html':'studio-resources','licensing.html':'studio-licensing'};
+  const studioTarget = location.pathname.startsWith('/studio/tidemark/') ? studioPages[location.pathname.slice('/studio/tidemark/'.length) || 'index.html'] : null;
+  const targets = new Set(['story-title','story-beginning','story-alienate','story-tidemark','story-tidemark-first-words','story-encounter','story-unwritten','connected-score','chronology','live-agent-activity','editorial-history','changelog','glossary','instrument',...Object.values(studioPages),'studio-shelf','studio-town-standalone']);
   let off = storage.get('score-analytics-off', 0) === 1;
   const blocked = () => off || navigator.doNotTrack === '1' || navigator.globalPrivacyControl === true;
   let page = crypto.randomUUID(), sequence = 0, queue = [], inFlight = false;
@@ -30,6 +32,7 @@ window.__scoreJourneysReady = (async () => {
     return value.match(/(?:^|[:~])((?:post|comment):[1-9][0-9]{0,9})$/)?.[1] || '';
   }
   function context(node) {
+    if (studioTarget) return {area:'studio',target:node?.closest?.('#elsewhere-on-the-board')?'studio-shelf':studioTarget};
     if (instrument) return {area:'instrument', target:'instrument'};
     const id = node?.closest?.('[aria-labelledby]')?.getAttribute('aria-labelledby') || '';
     const act = node?.closest?.('[data-conversation-act],[data-mini-reading],[data-mini-act]');
@@ -45,6 +48,7 @@ window.__scoreJourneysReady = (async () => {
     return {area, target};
   }
   function addressContext() {
+    if (studioTarget) return {area:'studio',target:location.hash==='#elsewhere-on-the-board'?'studio-shelf':studioTarget};
     if (instrument) return {area:'instrument', target:'instrument'};
     if (location.pathname === '/board') {
       const params = new URLSearchParams(location.search);
@@ -119,6 +123,8 @@ window.__scoreJourneysReady = (async () => {
       if(url.pathname.startsWith('/lens/'))mark('instrument_open',ctx);
       else if(url.pathname==='/board'||url.hostname==='1f916.ai')mark('source_open',ctx);
       else if(url.pathname.startsWith('/records/'))mark('source_open',ctx);
+      else if(studioTarget&&url.origin===location.origin&&url.pathname==='/studio/tidemark/assets/town-play.html')mark('source_open',{area:'studio',target:'studio-town-standalone'});
+      else if(studioTarget&&url.origin===location.origin&&url.pathname.startsWith('/studio/tidemark/resources/'))mark('source_open',ctx);
     }
     if(node.closest('[class*="reading-term"],[data-glossary-selected]'))mark('glossary_open',ctx);
     if(node.closest('[aria-controls="story-narrative"]'))mark(node.closest('button')?.getAttribute('aria-expanded')==='true'?'story_collapse':'story_restore',ctx);
@@ -168,12 +174,12 @@ window.__scoreJourneysReady = (async () => {
   window.addEventListener('storage',()=>{off=storage.get('score-analytics-off',0)===1;if(off)queue=[];labels();});
 
   const notice=document.createElement('details');notice.id='score-privacy';
-  notice.style.cssText='margin:2rem 1rem;padding:1rem;border-top:1px solid currentColor;font:14px/1.5 system-ui;position:relative';
+  if(!studioTarget)notice.style.cssText='margin:2rem 1rem;padding:1rem;border-top:1px solid currentColor;font:14px/1.5 system-ui;position:relative';
   const summary=document.createElement('summary');summary.textContent='Reading statistics & privacy';
   const text=document.createElement('p');
   text.textContent='This site uses a first-party browser identifier to connect repeat visits, records selected interactions and visible time, and uses IP-based network matching to group traffic and filter testing. Detailed paths are kept privately with no fixed expiry and can be exported. No names, typed text or screen recordings are collected. Browser counts are estimates, not verified people. Do Not Track and Global Privacy Control are respected.';
   const opt=document.createElement('button');opt.type='button';
-  const test=document.createElement('button');test.type='button';test.style.marginLeft='1rem';
+  const test=document.createElement('button');test.type='button';if(!studioTarget)test.style.marginLeft='1rem';
   function labels(){opt.textContent=off?'Allow reading statistics':'Turn off reading statistics';test.textContent=tester().tester?'Tester browser · include again':'Mark this browser as a tester';}
   opt.onclick=()=>{off=!off;queue=[];storage.put('score-analytics-off',off?1:0);labels();};
   test.onclick=()=>{const current=tester();storage.put('score-analytics-tester',{tester:!current.tester,at:Date.now()});mark('active',{area,target},0);void flush();labels();};
