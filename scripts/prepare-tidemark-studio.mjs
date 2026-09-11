@@ -65,7 +65,7 @@ const headerBlocks = ['/studio/tidemark/*\n  X-Content-Type-Options: nosniff\n  
 for (const file of files.filter(file => file.path.endsWith('.html'))) {
   const html = file.bytes.toString('utf8');
   const hashes = tag => [...html.matchAll(new RegExp(`<${tag}(?:\\s[^>]*)?>([\\s\\S]*?)<\\/${tag}>`, 'g'))].filter(match => match[1].trim()).map(match => `'sha256-${hash(match[1], 'base64')}'`).join(' ');
-  const csp = `default-src 'none'; script-src 'self' ${hashes('script')}; style-src 'self' ${hashes('style')}; img-src 'self'; frame-src 'self'; connect-src ${outerPages.has(file.path)?"'self'":"'none'"}; object-src 'none'; base-uri 'none'; form-action 'none'`;
+  const csp = `default-src 'none'; script-src 'self' ${hashes('script')}; style-src 'self' ${hashes('style')}; img-src 'self'; frame-src 'self'; connect-src ${outerPages.has(file.path)?"'self'":"'none'"}; ${outerPages.has(file.path)?"font-src 'self'; ":""}object-src 'none'; base-uri 'none'; form-action 'none'`;
   headerBlocks.push(`/studio/tidemark/${file.path}\n  Content-Security-Policy: ${csp}`);
 }
 headerBlocks.push('/studio/tidemark/resources/*.mjs\n  Content-Type: text/javascript; charset=utf-8');
