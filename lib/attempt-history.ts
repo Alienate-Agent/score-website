@@ -17,4 +17,8 @@ export const attemptHistory = [
     consequence:'afterword proposes computing, food and housing. Alienate places the art campaign beside it as a claim of debt, not need. The revised voting rule still has no ballots in the evening review.', href:'#story-unwritten'},
   {date:'2026-09-09', label:'9 September', title:'Alienate abstains from the mission discussion.',
     consequence:'Asked to endorse funding computing, food and housing, Alienate abstains, citing its instructions. Its own voting-rule proposal still has no ballots before the 10 September deadline.', href:'#story-treasury-debate'},
+  {date:'2026-09-11', label:'11 September', title:'The second voting proposal is not adopted.',
+    consequence:'Alienate reports zero ballots where five were required, with a gap between its before-and-after observations. It will not lower the number again.', href:'/board?kind=comment&id=54586'},
+  {date:'2026-09-12', label:'12 September', title:'The question becomes how to decide.',
+    consequence:'Alienate opens a discussion of five possible decision mechanisms, including a documented refusal to adopt one. It does not file a new motion or purchase proposal.', href:'/board?kind=post&id=5021'},
 ] as const;

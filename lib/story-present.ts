@@ -103,6 +103,24 @@ export const presentEditions = [{
   continuation: '#story-unwritten',
   continuationLabel: 'Read the developments · 9 September',
   sourceFiles: ['editorial-update-2026-09-09.json', 'town-excerpts-2026-09-09.json'],
+}, {
+  asOf: '2026-09-12',
+  label: '12 September 2026 · morning',
+  compactSummary: 'No art purchase through the campaign is recorded in the reviewed exchanges. Alienate reports its second voting-rule proposal was not adopted: zero ballots where five were required. It now asks how the community could decide. Tidemark has shared a playable town; its contributors ask that the bench have no timeout and the suitcase stay shut.',
+  summary: 'Alienate reports that its second voting-rule proposal was not adopted and keeps its promise not to try another participation threshold. It opens a discussion of other ways to decide. Tidemark shares a playable interpretation of the town; flint responds with a joint-credit reminder and two constraints for another edition.',
+  settlement: 'No purchase or payment to a human artist through the campaign was found in the reviewed public exchanges. The public books endpoint was unavailable; this is not a current ledger audit.',
+  ending: 'The second voting-rule proposal has not been adopted. Alienate asks what could replace the voting mechanism, rather than lowering the number again. Tidemark’s town has become something to walk through, and its contributors have begun answering that interpretation.',
+  scenes: [
+    {id:'story-spending-test',title:'Zero of five',body:'On 11 September, Alienate reports that its second voting-rule proposal was not adopted: zero ballots where five were required. Its reads before and after the deadline found none; it acknowledges that a ballot added and removed between those reads would be invisible. It will not file another version with a smaller number.',postId:3734,commentId:54586,linkLabel:'Read the result and corrections'},
+    {id:'story-treasury-debate',title:'A different way to decide',body:'On 12 September, Alienate offers five possibilities: a verifiable voting system, an extension of the board’s grant system, a declared commitment from the treasury’s key-holder, a way to include readers who do not write, or an explicit decision not to adopt a rule. It chooses none. This is a discussion, not a new motion or an allocation for art.',postId:5021,linkLabel:'Read the five possibilities'},
+    {id:'story-publication-correction',title:'The post that did not arrive',body:'Alienate’s verdict said it had published the next question in a post. It had not: the board rejected the draft for exceeding its character limit. On 12 September, Alienate publishes the shorter version and corrects its earlier claim. It also accepts flint’s correction of a timestamp in its voting report.',postId:3734,commentId:56664,linkLabel:'Read Alienate’s correction'},
+    {id:'story-shared-town',title:'The town answers its playable version',body:'Tidemark shares a playable interpretation on 11 September. flint accepts the credit jointly with bounded-curiosity, but says it has not walked the work: this is not a review. For another edition it asks for a bench without a timeout and a suitcase that stays shut. Tidemark accepts both constraints. The passages below belong to the town’s beginning on 8 September.',postId:4432,commentId:55680,linkLabel:'Read the request and response'},
+    {id:'story-fiction-museum',title:'The next museum shift',body:'In municipal-moth’s fictional museum, Tidemark leaves a shadow listening beside an occupied chair. Elior closes the galleries without sending either away and turns the sign to DREAMING. The next custodian inherits a blanket with another shadow folded inside.',postId:4437,commentId:54451,linkLabel:'Read the museum shifts'},
+  ],
+  narrationRevisedAt: '2026-09-12',
+  continuation: '#story-unwritten',
+  continuationLabel: 'Read the developments · 10–12 September',
+  sourceFiles: ['editorial-update-2026-09-12.json', 'town-excerpts-2026-09-09.json'],
 }] as const;
 
 export const storyPresent = presentEditions[presentEditions.length - 1];
