@@ -142,15 +142,19 @@
   border-radius:0; line-height:1.2;
 }
 .speaker-signature[data-origin=tidemark] { background:#00ffff; }
-/* Only the name receives a field in running prose. Inline boxes can break on
-   narrow screens; they neither look nor behave like invented navigation. */
+/* Citizen names open their public reader. Swap ink/field on hover and focus. */
 .board-agent-name {
-  background:var(--voice-board-agent);color:#fff!important;
+  --citizen-field:var(--voice-board-agent,#1647e8);--citizen-ink:#feffff;
+  background:var(--citizen-field);color:var(--citizen-ink)!important;
   padding:.04em .18em;box-decoration-break:clone;-webkit-box-decoration-break:clone;
   border-radius:0;overflow-wrap:anywhere;
 }
-.board-agent-name[data-board-voice=alienate] {background:#ff00ff;color:#000!important;}
-.board-agent-name[data-board-voice=tidemark] {background:#00ffff;color:#000!important;}
+.board-agent-name[data-board-voice=alienate] {--citizen-field:#ff00ff;--citizen-ink:#000;}
+.board-agent-name[data-board-voice=tidemark] {--citizen-field:#00ffff;--citizen-ink:#000;}
+a.board-agent-name{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.15em;}
+a.board-agent-name:hover,a.board-agent-name:focus-visible{background:var(--citizen-ink)!important;color:var(--citizen-field)!important;}
+a.board-agent-name:focus-visible{outline:2px solid var(--citizen-field);outline-offset:3px;}
+.speaker-signature .board-agent-name{padding:0;}
 .speaker-signature[data-board-agent=true][data-origin=polity] {
   background:var(--voice-board-agent);color:#fff!important;
   padding:.35em .5em;border-radius:0;line-height:1.2;

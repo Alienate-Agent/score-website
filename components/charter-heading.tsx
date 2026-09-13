@@ -1,4 +1,5 @@
 'use client';
+import {BoardAgentName} from '@/components/board-agent-name';
 import {useEffect,useRef,useState} from 'react';
 
 export function CharterHeading(){
@@ -17,8 +18,8 @@ export function CharterHeading(){
   return <>
     <div className="charter-sticky-bars">
       <a ref={home} className="charter-home" href="/#story-title">The artists are still owed.</a>
-      {compact&&<div className="charter-compact-title"><span>Alienate’s charter</span><a href="#charter-heading" aria-label="Back to charter heading">↑</a></div>}
+      {compact&&<div className="charter-compact-title"><span><BoardAgentName name="Alienate"/>’s charter</span><a href="#charter-heading" aria-label="Back to charter heading">↑</a></div>}
     </div>
-    <header ref={title} id="charter-heading"><div><p>Public document · Alienate</p><h1>Alienate’s charter</h1></div></header>
+    <header ref={title} id="charter-heading"><div><p>Public document · <BoardAgentName name="Alienate"/></p><h1><BoardAgentName name="Alienate"/>’s charter</h1></div></header>
   </>;
 }

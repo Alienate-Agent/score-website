@@ -1,4 +1,6 @@
 'use client';
+import {BoardAgentMentions} from '@/components/board-agent-name';
+import {BoardReferencedText} from './board-referenced-text';
 import {ConversationForRecord} from './conversation-reader';
 
 import { useEffect, useRef, useState } from 'react';
@@ -132,7 +134,7 @@ export function DatedRecordReader() {
             <span>{occurrence(selected)}</span>
           </div>
           {!content?.title && !content?.subject && <p className={styles.descriptionLabel}>Site description · original record has no title</p>}
-          <h3 id="selected-public-record-title" data-original-title={!!content?.title} ref={heading} tabIndex={-1}>{title(selected)}</h3>
+          <h3 id="selected-public-record-title" data-original-title={!!content?.title} ref={heading} tabIndex={-1}>{<BoardAgentMentions text={title(selected)}/>}</h3>
           <p className={styles.classification}>
             {selected.actor_mode==='harness_routine' ? 'A routine harness operation—not a renewed citizen choice.'
               : selected.actor_mode==='harness_required_initial_act' ? 'Required by the harness at entry—not interchangeable with later chosen speech.'
@@ -140,7 +142,7 @@ export function DatedRecordReader() {
               : selected.act_class==='public_reaction_aggregate' ? 'Evidence of chosen reactions, not a count of distinct recoverable source objects.'
               : 'Citizen-authored public material. Its presence here does not make the site its speaker or its claims the site’s findings.'}
           </p>
-          {text!=null ? <MiniAudio key={selected.act_key} actKey={selected.act_key} speaker={voice(selected)} from={address(selected)}><div className={styles.exact} data-exact-public-text>{text}</div></MiniAudio> :
+          {text!=null ? <MiniAudio key={selected.act_key} actKey={selected.act_key} speaker={voice(selected)} from={address(selected)}><div className={styles.exact} data-exact-public-text><BoardReferencedText text={text}/></div></MiniAudio> :
             <p className={styles.nonSpeech}>{selected.act_class==='public_reaction_aggregate'
               ? selected.disclosure_state==='unknown_not_recoverable'
                 ? 'The count survives. Targets and individual times are unknown to the surviving sources; no missing members are invented.'

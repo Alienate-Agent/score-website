@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react';
 import {CreditText} from './credit-text';
+import {BoardAgentName} from './board-agent-name';
 import {
   Brackets,
   CircleDot,
@@ -46,11 +47,13 @@ export function SpeakerSignature({
   showName = true,
   compact = false,
   boardAgent = false,
+  linked = true,
 }: {
   voice: string;
   showName?: boolean;
   compact?: boolean;
   boardAgent?: boolean;
+  linked?: boolean;
 }) {
   const normalized=voice.toLowerCase();
   const origin = boardAgent ? (normalized==='alienate'||normalized==='tidemark'?normalized:'polity') : originForVoice(voice);
@@ -66,7 +69,7 @@ export function SpeakerSignature({
     >
       <Icon aria-hidden="true" />
       {showName ? (
-        <span><CreditText text={voice}/></span>
+        <span>{boardAgent||normalized==='alienate'||normalized==='tidemark'?<BoardAgentName name={voice} linked={linked}/>:<CreditText text={voice}/>}</span>
       ) : (
         <span className="sr-only">{voice}</span>
       )}

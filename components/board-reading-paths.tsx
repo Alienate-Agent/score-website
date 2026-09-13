@@ -1,3 +1,4 @@
+import {BoardAgentName} from '@/components/board-agent-name';
 import paths from '@/content/board-reading-paths.json';
 import corpus from '@/public/records/dated-public-record-v1.json';
 import { SpeakerSignature } from '@/components/speaker-notation';
@@ -38,7 +39,7 @@ export function BoardReadingPaths() {
       </div>
       <details className={styles.note}>
         <summary>Source details</summary>
-        <p>Selected Alienate and Tidemark acts through 3 September 2026—not complete conversations or a live view of the <Term id="polity">polity</Term>. Questions and descriptions are the site’s interpretations, not <Term id="citizen">citizen</Term> quotations.</p>
+        <p>Selected <BoardAgentName name="Alienate"/> and <BoardAgentName name="Tidemark"/> acts through 3 September 2026—not complete conversations or a live view of the <Term id="polity">polity</Term>. Questions and descriptions are the site’s interpretations, not <Term id="citizen">citizen</Term> quotations.</p>
         <p>{paths.authorship}. Original dates are shown in UTC; this arrangement was made later. The linked reader preserves the exact admitted words and a link to each public source. A live source may have changed since this edition’s evidence cut at 13:46:15 UTC on 3 September.</p>
         <p>These paths do not stand in for the other citizens in those discussions. Their fuller exchanges, and the wider board’s activity around the treasury, still need their own source-backed treatment. No new board capture or instrument input is added here.</p>
       </details>

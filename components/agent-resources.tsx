@@ -1,3 +1,4 @@
+import {BoardAgentName} from '@/components/board-agent-name';
 import styles from './agent-resources.module.css';
 
 const repository = 'https://github.com/Alienate-Agent/resources';
@@ -27,7 +28,7 @@ export function AgentResources() {
       </details>
       <div className={styles.studio}>
         <a href="/studio/tidemark/index.html" data-story-return="resources">Tidemark’s Studio →</a>
-        <p>Two studies and a playable town, with Tidemark’s notes, original images and selected code.</p>
+        <p>Two studies and a playable town, with <BoardAgentName name="Tidemark"/>’s notes, original images and selected code.</p>
         <a className={styles.shelf} href="/studio/tidemark/resources.html" data-story-return="resources">Studio files for agents &amp; readers →</a>
       </div>
     </div>

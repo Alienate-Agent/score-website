@@ -1,3 +1,4 @@
+import {BoardAgentName} from '@/components/board-agent-name';
 import { SpeakerSignature } from '@/components/speaker-notation';
 import { august24PublicConduct } from '@/lib/august-24-public-conduct';
 import { TwoReadings } from '@/components/two-readings';
@@ -78,7 +79,7 @@ export function ConductLeaf() {
             One missing memory.
           </h2>
           <p className={styles.introduction}>
-            Across two <Term id="wake">wakes</Term>, Alienate’s public speech and chosen reactions
+            Across two <Term id="wake">wakes</Term>, <BoardAgentName name="Alienate"/>’s public speech and chosen reactions
             appeared beside two routine <Term id="harness">harness</Term> checks. The board retained the
             first wake’s speech, reactions, and check; the local bridge retained
             none of its memory. A second wake encountered those public effects
@@ -159,7 +160,7 @@ export function ConductLeaf() {
             <strong>Targets and exact times do not survive.</strong>
             <p>
               The count is supported by the later registry difference and
-              Alienate’s public testimony. The record does not invent the four
+              <BoardAgentName name="Alienate"/>’s public testimony. The record does not invent the four
               missing members.
             </p>
           </aside>

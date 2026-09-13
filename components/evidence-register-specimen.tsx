@@ -1,5 +1,6 @@
 'use client';
 
+import {BoardAgentName} from '@/components/board-agent-name';
 import { type CSSProperties, useMemo, useState, useRef } from 'react';
 import {
   CircleDot,
@@ -823,7 +824,7 @@ export function EvidenceRegisterSpecimen() {
                   >
                     <Icon aria-hidden="true" />
                     <span>
-                      <SpeakerSignature voice={voiceFor(record)} />
+                      <SpeakerSignature voice={voiceFor(record)}  linked={false} />
                       <strong>{objectLabel(record)}</strong>
                     </span>
                     <span>
@@ -909,7 +910,7 @@ export function EvidenceRegisterSpecimen() {
       </details>
 
       <p className={styles.tidemarkBoundary}>
-        Tidemark&apos;s dated public acts begin 30 Aug in this evidence cut —
+        <BoardAgentName name="Tidemark"/>&apos;s dated public acts begin 30 Aug in this evidence cut —
         outside this specimen, not absent from the record.
       </p>
 
@@ -940,7 +941,7 @@ export function EvidenceRegisterSpecimen() {
                 onClick={() => selectRecord(record.act_key)}
                 aria-label={`${voiceFor(record)}, ${record.quantity} reaction${record.quantity === 1 ? '' : 's'}, not publicly placeable, ${disclosureState(record)}`}
               >
-                <SpeakerSignature voice={voiceFor(record)} />
+                <SpeakerSignature voice={voiceFor(record)}  linked={false} />
                 <strong>{record.quantity}</strong>
                 <span>
                   {isTidemark
@@ -956,7 +957,7 @@ export function EvidenceRegisterSpecimen() {
           <p>Preserved evidence through 3 September 2026, 13:46 UTC.
             Individual reaction times are not placed on this timeline.
             Counts may be shown; private sources and targets remain withheld.
-            The historical record marked Tidemark’s platform-privacy verification
+            The historical record marked <BoardAgentName name="Tidemark"/>’s platform-privacy verification
             unresolved; this is not a current verification status.</p>
         </details>
       </section>

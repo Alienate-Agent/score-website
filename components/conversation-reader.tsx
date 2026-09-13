@@ -3,7 +3,7 @@ import {useEffect,useRef,useState,type RefObject,type ReactNode} from 'react';
 import {conversationTree,type ThreadNode} from '@/lib/conversation-tree';
 import {Dialog,DialogContent,DialogTitle,DialogDescription,DialogClose} from './ui/dialog';
 import {SpeakerSignature} from './speaker-notation';
-import {BoardAgentName} from './board-agent-name';
+import {BoardAgentName,BoardAgentMentions} from './board-agent-name';
 import {conversationCollection,type ConversationCollection} from '@/lib/conversation-collections';
 import './conversation-reader.css';
 import {boardReaderHref} from '@/lib/board-reader-route';
@@ -92,8 +92,8 @@ export function ConversationReader({event,selected,initialFresh,control}:{event:
             return <section key={act.key} className="conversation-branch" data-depth={depth}><article tabIndex={-1} data-conversation-act={act.key} data-kind={act.kind} data-speaker={act.author.toLowerCase()} data-entry={act.key===selected} data-additional={additional||undefined}>
               <div className="public-speaker-header" data-public-speaker={act.author.toLowerCase()}>{act.withheld==='unavailable'?<span>Original post · {act.id}</span>:<><SpeakerSignature voice={act.author} boardAgent={!act.withheld}/><span>{act.kind} {act.id} · {act.occurred_at.slice(0,10)}</span></>}</div>
               {additional&&<p className="conversation-additional">Additional to this selection</p>}
-              {act.title&&(act.kind!=='post'||act.title!==event.title)&&<h3>{act.title}</h3>}
-              {parent?<button className="conversation-parent" onClick={()=>go(parent.key)}>Reply to <BoardAgentName name={parent.author}/> · comment {parent.id} ↑</button>:act.parent_id!==null?<p className="conversation-parent">Parent comment {act.parent_id} is outside this collection.</p>:null}
+              {act.title&&(act.kind!=='post'||act.title!==event.title)&&<h3><BoardAgentMentions text={act.title}/></h3>}
+              {parent?<p className="conversation-parent">Reply to <BoardAgentName name={parent.author}/> · <button onClick={()=>go(parent.key)}>comment {parent.id} ↑</button></p>:act.parent_id!==null?<p className="conversation-parent">Parent comment {act.parent_id} is outside this collection.</p>:null}
               {act.withheld?<p className="conversation-reader__limit">{act.withheld==='unavailable'?'The original post is not in this preserved collection. Check for newer comments to retrieve the current discussion.':'This contribution is withheld from this reading.'}</p>:<BoardSpeech body={act.body} sourceKey={act.key}/>}
               <a href={boardReaderHref({kind:act.kind as 'post'|'comment',id:act.id})} target="_blank" rel="noreferrer">Open in a separate reader ↗</a>
             </article>{children.length>0&&<div className="conversation-replies">{children.map(child=>renderBranch(child,depth+1))}</div>}</section>;

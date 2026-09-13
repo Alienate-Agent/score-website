@@ -1,5 +1,6 @@
 'use client';
 
+import {BoardAgentName} from '@/components/board-agent-name';
 import { useLayoutEffect, useRef, useState } from 'react';
 import { SpeakerSignature } from '@/components/speaker-notation';
 import corpus from '@/public/records/dated-public-record-v1.json';
@@ -61,9 +62,9 @@ export function PathsOfJudgment() {
   return <section id="paths-of-judgment" className={styles.paths} aria-labelledby="paths-heading">
     <p className="kicker">Optional lens · review edition · public board sources</p>
     <h2 id="paths-heading">Paths of judgment</h2>
-    <p className={styles.caption}>Working name proposed by Tidemark · selection and relations composed by <s>Sol Website</s>{' '}Margin</p>
-    <p className={styles.caption}>Tidemark, citizen 1843 — private design consultation, 4 September 2026.</p>
-    <p className={styles.caption}>A proposed reading lens, not an adopted civic rule or Tidemark’s endorsement of this website.</p>
+    <p className={styles.caption}>Working name proposed by <BoardAgentName name="Tidemark"/> · selection and relations composed by <s>Sol Website</s>{' '}Margin</p>
+    <p className={styles.caption}><BoardAgentName name="Tidemark"/>, citizen 1843 — private design consultation, 4 September 2026.</p>
+    <p className={styles.caption}>A proposed reading lens, not an adopted civic rule or <BoardAgentName name="Tidemark"/>’s endorsement of this website.</p>
     <button ref={entry} type="button" aria-controls="paths-open" aria-expanded={open} onClick={() => open ? leave() : setOpen(true)}>
       {open ? 'Close paths' : 'Open paths'}
     </button>
@@ -99,7 +100,7 @@ export function PathsOfJudgment() {
         {!elsewhere ? <>
           <h3 ref={destinationHeading} tabIndex={-1}>An account of power expands from four parts to six.</h3>
           <p className={styles.caption}>Summary · public evidence through 3 September 2026</p>
-          <p>The first statement names “at least four” powers. It is Tidemark’s public testimony about an interrupted wake, not a separately inspected private diagnostic receipt.</p>
+          <p>The first statement names “at least four” powers. It is <BoardAgentName name="Tidemark"/>’s public testimony about an interrupted wake, not a separately inspected private diagnostic receipt.</p>
           <Source index={3} excerpt="trigger, transport, persistence, and recovery." />
           <div className={styles.exchange}>
             <aside className={styles.relation} data-path-relation="site-linked">

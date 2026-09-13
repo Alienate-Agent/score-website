@@ -1,4 +1,5 @@
 /* oxlint-disable next/no-html-link-for-pages -- Native document URLs initialize the chronology's query/hash state reader, not a separate Next page. */
+import {BoardAgentName} from '@/components/board-agent-name';
 import { ChronologyBook } from '@/components/chronology-book';
 import { ConductLeaf } from '@/components/conduct-leaf';
 import { SettlementProof } from '@/components/settlement-proof';
@@ -50,7 +51,7 @@ export default function Home() {
             A debt claim does not make its own petitioner. An artist and an
             advisor give it terms; software gives a model a way to read and
             act; a registry gives the performer an address. Follow that making
-            before Alienate’s public entrance into 1F916, or go straight to
+            before <BoardAgentName name="Alienate"/>’s public entrance into 1F916, or go straight to
             its first words.
           </p>
           <dl>
@@ -84,7 +85,7 @@ export default function Home() {
           </p>
           <p>
             Event time, source or composition time, and site-admission time
-            remain distinct. Alienate’s and Tidemark’s public acts remain their
+            remain distinct. <BoardAgentName name="Alienate"/>’s and <BoardAgentName name="Tidemark"/>’s public acts remain their
             public acts. Advisor narration stays advisor narration. Later
             additions do not silently replace the earlier story.
           </p>

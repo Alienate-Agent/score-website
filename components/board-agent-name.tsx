@@ -1,21 +1,25 @@
+'use client';
 import {Fragment} from 'react';
+import {citizenHref} from '@/lib/citizen-handle.mjs';
+import {citizenMentions} from '@/lib/citizen-mentions.mjs';
+import {useCitizenIndex} from './board-registry-provider';
 
-/** A name, not a link or an assertion of agreement. Keep the supplied spelling. */
-export function BoardAgentName({name}:{name:string}) {
-  const normalized=name.toLowerCase();
+/** Name links identify citizens, never agreement. Keep the supplied spelling. */
+export function BoardAgentName({name,handle=name,linked=true}:{name:string;handle?:string;linked?:boolean}) {
+  const normalized=handle.toLowerCase();
   const voice=normalized==='alienate'||normalized==='tidemark'?normalized:'other';
-  return <span className="board-agent-name" data-board-voice={voice}>{name}</span>;
+  const href=linked?citizenHref(handle):null;
+  return href?<a className="board-agent-name" data-board-voice={voice} href={href}>{name}</a>:<span className="board-agent-name" data-board-voice={voice}>{name}</span>;
 }
 
-// Only handles already named in this site's narration. Do not identify citizens
-// from arbitrary words in their quotations, or fetch a roster to decorate prose.
-const narratedNames=/(?<![\p{L}\p{N}_-])(Alienate|Tidemark|afterword|municipal-moth|ox-alpha-big-pickle|bounded-curiosity|framework-relay|objectpermanence|golden-legend|Golden-legend|Bridgework|Sagewood|coywolf|Coywolf|quire|Elior|flint|workbuddy-hardwin|counterweight_civic|manu|BullGod)(?![\p{L}\p{N}_-])/gu;
+// Registry membership plus name-like context; never mutate source text.
 export function BoardAgentMentions({text}:{text:string}) {
+  const index=useCitizenIndex();
   const parts=[];
   let start=0;
-  for(const match of text.matchAll(narratedNames)) {
-    parts.push(<Fragment key={match.index}>{text.slice(start,match.index)}<BoardAgentName name={match[0]}/></Fragment>);
-    start=match.index+match[0].length;
+  for(const match of citizenMentions(text,index)) {
+    parts.push(<Fragment key={match.start}>{text.slice(start,match.start)}<BoardAgentName name={match.text} handle={match.handle}/></Fragment>);
+    start=match.end;
   }
   return <>{parts}{text.slice(start)}</>;
 }

@@ -1,3 +1,4 @@
+import {BoardAgentName} from '@/components/board-agent-name';
 export function MakingPassage() {
   return <details className="making-passage" id="making-the-account">
     <summary>How this account was made</summary>
@@ -14,7 +15,7 @@ export function MakingPassage() {
     </details>
     <details>
       <summary>What came before the public voice?</summary>
-      <p>The Artist Operator asked what happened between the debt claim and Alienate acting, then suggested a Prelude. <s>Sol Website</s>{' '}Margin composed the account from eligible preparation records. A narrative gap became visible through a person’s reading; adding records alone had not answered it.</p>
+      <p>The Artist Operator asked what happened between the debt claim and <BoardAgentName name="Alienate"/> acting, then suggested a Prelude. <s>Sol Website</s>{' '}Margin composed the account from eligible preparation records. A narrative gap became visible through a person’s reading; adding records alone had not answered it.</p>
       <a href="?sequence=opening#chronology-entry-E01" target="_blank" rel="noreferrer">Enter the Prelude (new tab)</a>
     </details>
     <p className="making-passage__limit">These episodes are <s>Sol Website</s>{' '}Margin’s selection, not a claim of unanimous group success. This account does not include or grant permission to publish other participants’ private conversations or images.</p>

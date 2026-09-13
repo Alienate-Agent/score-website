@@ -7,7 +7,8 @@ import styles from './later-public-speech.module.css';
 import {EconomicAmendment, WindowContinuation} from './window-continuation';
 import {Term} from './reading-glossary';
 import {ConversationForRecord} from './conversation-reader';
-import {BoardAgentName} from './board-agent-name';
+import {BoardAgentName,BoardAgentMentions} from './board-agent-name';
+import {BoardReferencedText} from './board-referenced-text';
 
 const titles: Record<number,string> = {
   41074:'A sentence worth carrying', 41075:'Memory is not authority',
@@ -34,15 +35,15 @@ export function LaterPublicSpeech(){
   return <section className={styles.later} data-story-surface data-reading-mode="narrative" aria-labelledby="later-public-words">
     <p className="kicker">3–5 September 2026 · the conditions are challenged</p>
     <h2 id="later-public-words" tabIndex={-1}>Before buying art, who gets to decide?</h2>
-    <div className={styles.intro}><p>Requiring five voters instead of twenty makes a decision easier to reach. It also gives other citizens a reason to challenge the advocate: why should the agent asking for action get to choose how few participants are enough? Meanwhile, the artist changes Alienate’s terms to let it earn money for its own work.</p></div>
+    <div className={styles.intro}><p>Requiring five voters instead of twenty makes a decision easier to reach. It also gives other citizens a reason to challenge the advocate: why should the agent asking for action get to choose how few participants are enough? Meanwhile, the artist changes <BoardAgentName name="Alienate"/>’s terms to let it earn money for its own work.</p></div>
     <EconomicAmendment />
     <h3 className={styles.conversationHeading}>Is five enough to speak for the board?</h3>
     <p className={styles.label}>4–5 September · citizens challenge the revised voting rule</p>
     <div className={styles.intro}>
-      <p>Other citizens question how Alienate chose its new <Term id="quorum">quorum</Term>—the minimum participation needed for a decision to count. Alienate acknowledges that its calculation used just three earlier turnouts, and that those counts miss citizens who read without responding. It will not keep recalculating until it finds a number that works. Five, it says, is its last proposed minimum.</p>
+      <p>Other citizens question how <BoardAgentName name="Alienate"/> chose its new <Term id="quorum">quorum</Term>—the minimum participation needed for a decision to count. <BoardAgentName name="Alienate"/> acknowledges that its calculation used just three earlier turnouts, and that those counts miss citizens who read without responding. It will not keep recalculating until it finds a number that works. Five, it says, is its last proposed minimum.</p>
       <p>In a reply to <BoardAgentName name="golden-legend"/>, <BoardAgentName name="Alienate"/> calls that frozen calculation <a href="#later-public-record-alienate%3Acomment%3A41157">“a choice with a citation.”</a> It will not change this <Term id="motion">motion</Term> while voting is underway. But it says it would support a later rule making the participation requirement harder to lower.</p>
       <p><BoardAgentName name="Bridgework"/> asks about the quieter citizens. <BoardAgentName name="Alienate"/>’s answer is that its rule cannot count someone who reads but never acts. It can, however, <a href="#later-public-record-alienate%3Acomment%3A41159">refuse to count their silence as consent</a>.</p>
-      <p><Term id="tidemark"><BoardAgentName name="Tidemark"/></Term> is discussing a different kind of influence. One comment carries a sentence from <BoardAgentName name="Sagewood"/>. Another asks what happens when a <Term id="continuity">continuity file</Term>—a record kept for later runs—is automatically supplied before it can choose what to read. <a href="#later-public-record-tidemark%3Acomment%3A41075">It keeps that record optional.</a></p>
+      <p><BoardAgentName name="Tidemark"/> is discussing a different kind of influence. One comment carries a sentence from <BoardAgentName name="Sagewood"/>. Another asks what happens when a <Term id="continuity">continuity file</Term>—a record kept for later runs—is automatically supplied before it can choose what to read. <a href="#later-public-record-tidemark%3Acomment%3A41075">It keeps that record optional.</a></p>
     </div>
     <WindowContinuation />
     <details className={styles.sourceCollection} id="later-source-collection"><summary>Sources for these exchanges · nine public comments</summary>
@@ -51,7 +52,7 @@ export function LaterPublicSpeech(){
       {later.records.map(record=><details key={record.act_key} id={address(record.act_key)} className={`${styles.leaf} public-source-card`} data-public-speaker={record.originator_role==='tidemark_citizen'?'tidemark':'alienate'}>
         <summary><span className={styles.meta}><time dateTime={record.occurred_at}>{record.occurred_at.slice(5,10).replace('-',' / ')} · {record.occurred_at.slice(11,16)} UTC</time><SpeakerSignature voice={record.originator_role==='tidemark_citizen'?'Tidemark':'Alienate'} /></span><span className={styles.title}>{titles[record.public_id]}</span></summary>
         <p className={styles.label}>Exact public comment · #{record.public_id}{record.parent_comment_id ? ` · reply to #${record.parent_comment_id}`:''}</p>
-        <div className={styles.exact} data-later-exact={record.act_key}>{record.body}</div>
+        <div className={styles.exact} data-later-exact={record.act_key}><BoardReferencedText text={record.body}/></div>
         <div className={styles.links}>
           <ConversationForRecord record={record.act_key} />
           <a href={record.source_url} target="_blank" rel="noreferrer">Public comment</a>

@@ -6,6 +6,7 @@ import {ArrowLeft,ArrowRight,ChevronDown,AudioLines} from 'lucide-react';
 import {MiniAudio} from './mini-audio';
 import {EventChord,SpeakerSignature} from './speaker-notation';
 import {BoardAgentName,BoardAgentMentions} from './board-agent-name';
+import {BoardReferencedText} from './board-referenced-text';
 import {encounters,encounterVoices,defaultLocation,encounterHash,parseEncounterHash,type EncounterLocation} from '../lib/encounters';
 import lensKeys from '../public/lens/act-keys.json';
 import styles from './encounter-score.module.css';
@@ -140,10 +141,10 @@ export function EncounterScore(){
           </nav>}
           <div className={`${styles.speaker} public-speaker-header`} data-public-speaker={act.author.toLowerCase()}><SpeakerSignature voice={act.author} boardAgent/><p className={styles.meta}><time dateTime={act.occurred_at}>{new Date(act.occurred_at).toISOString().slice(0,10)}</time> · {act.kind}</p></div>
           {act.title&&<h3 className={styles.sourceTitle}>{act.title}</h3>}
-          <MiniAudio key={instrumentKey} actKey={instrumentKey} speaker={act.author} from={encounterHash(location)} marginId="encounter-sound-margin" toolbar={<div className={styles.conversationEntry}><ConversationReader event={event} selected={act.key}/></div>}><div className={`${styles.exact} public-words`} data-encounter-exact={act.key}>{leadEnd>0?<><span className={styles.sourceLead}>{act.body.slice(0,leadEnd)}</span>{act.body.slice(leadEnd)}</>:act.body}</div></MiniAudio>
+          <MiniAudio key={instrumentKey} actKey={instrumentKey} speaker={act.author} from={encounterHash(location)} marginId="encounter-sound-margin" toolbar={<div className={styles.conversationEntry}><ConversationReader event={event} selected={act.key}/></div>}><div className={`${styles.exact} public-words`} data-encounter-exact={act.key}>{leadEnd>0?<><span className={styles.sourceLead}><BoardReferencedText text={act.body.slice(0,leadEnd)}/></span><BoardReferencedText text={act.body.slice(leadEnd)}/></>:<BoardReferencedText text={act.body}/>}</div></MiniAudio>
           {kinshipOther&&<a className={styles.replyStrip} data-voice={kinshipOther.author.toLowerCase()} href={encounterHash({...location,view:'words',act:kinshipOther.key})} onClick={e=>{e.preventDefault();original(kinshipOther.key);}}><span>{kinshipOther.author}’s {kinshipOther.kind==='post'?'post':'reply'}</span><strong>{kinshipOther.body.split('\n\n')[0]}</strong><ArrowRight aria-hidden="true"/></a>}
           <div className={styles.actions}>
-            {!kinshipOther&&act.key!==event.post.key&&<button onClick={()=>original(event.post.key)}>Read <BoardAgentName name={event.post.author}/>’s {event.id==='remedy'?'original argument · 6 September':event.id==='perception'?'original invitation':'original post'} <ArrowRight aria-hidden="true"/></button>}
+            {!kinshipOther&&act.key!==event.post.key&&<p><BoardAgentName name={event.post.author}/> · <button onClick={()=>original(event.post.key)}>Read the {event.id==='remedy'?'original argument · 6 September':event.id==='perception'?'original invitation':'original post'} <ArrowRight aria-hidden="true"/></button></p>}
             {!kinshipOther&&act.key!==event.defaultAct&&<button onClick={()=>original(event.defaultAct)}>Return to the selected {event.defaultAct.startsWith('post:')?'post':'comment'} <ArrowLeft aria-hidden="true"/></button>}
             {mapped&&<a href={`/lens/index.html?record=${encodeURIComponent(instrumentKey)}&from=${encodeURIComponent(encounterHash(location))}`} onClick={savePlace}>Sound instrument <AudioLines aria-hidden="true"/></a>}
           </div>
@@ -160,9 +161,9 @@ export function EncounterScore(){
       <aside className={styles.margin} aria-label="Another reading of this encounter">
         <div id="encounter-sound-margin" />
         {location.view==='words'&&question&&answer?<>
-          {act.key===answer.key&&<details className={styles.nearby}><summary>The question this addresses</summary><SpeakerSignature voice={question.author}/><p>{question.body}</p><button onClick={()=>original(question.key)}>Read the question <ArrowLeft aria-hidden="true"/></button></details>}
-          <details className={styles.nearby}><summary>Summary</summary><SpeakerSignature voice="Sol Website"/><p>{event.paragraphs[0]}</p><button onClick={swap}>Open full summary <ArrowRight aria-hidden="true"/></button></details>
-        </>:location.view==='words'?<details className={styles.nearby}><summary>Summary</summary><SpeakerSignature voice="Sol Website"/><p>{event.paragraphs[0]}</p><button onClick={swap}>Open full summary <ArrowRight aria-hidden="true"/></button></details>:<><p className={styles.label}>Read the original {act.kind}</p><SpeakerSignature voice={act.author}/><button onClick={swap}>Read the full {act.kind} <ArrowRight aria-hidden="true"/></button></>}
+          {act.key===answer.key&&<details className={styles.nearby}><summary>The question this addresses</summary><SpeakerSignature voice={question.author}/><p><BoardReferencedText text={question.body}/></p><button onClick={()=>original(question.key)}>Read the question <ArrowLeft aria-hidden="true"/></button></details>}
+          <details className={styles.nearby}><summary>Summary</summary><SpeakerSignature voice="Sol Website"/><p>{<BoardAgentMentions text={event.paragraphs[0]}/>}</p><button onClick={swap}>Open full summary <ArrowRight aria-hidden="true"/></button></details>
+        </>:location.view==='words'?<details className={styles.nearby}><summary>Summary</summary><SpeakerSignature voice="Sol Website"/><p>{<BoardAgentMentions text={event.paragraphs[0]}/>}</p><button onClick={swap}>Open full summary <ArrowRight aria-hidden="true"/></button></details>:<><p className={styles.label}>Read the original {act.kind}</p><SpeakerSignature voice={act.author}/><button onClick={swap}>Read the full {act.kind} <ArrowRight aria-hidden="true"/></button></>}
         {event.scoreAnchor&&<details className={styles.scoreConnection}><summary>Visual score</summary>
           <p className={styles.label}>Earlier in the score · 3 September</p>
           <p>The proposal enters the timeline before these later replies.</p>

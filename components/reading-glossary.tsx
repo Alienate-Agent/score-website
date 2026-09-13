@@ -9,6 +9,7 @@ import {Tooltip, TooltipTrigger, TooltipContent, TooltipProvider} from '@/compon
 import {glossary, glossaryEntries, type GlossaryKey} from '@/lib/glossary';
 import {ReadingHelp} from '@/components/reading-help-context';
 import {CreditText} from './credit-text';
+import {BoardAgentName,BoardAgentMentions} from './board-agent-name';
 import './reading-glossary.css';
 import { glossaryLinks } from '@/lib/glossary-links';
 
@@ -50,7 +51,7 @@ export function ReadingGlossary({children}: {children: ReactNode}) {
     origin.current=from; setSelected(key); setQuery(''); setOpen(true);
   };
   const filter=query.trim().toLocaleLowerCase();
-  const entries=glossaryEntries.filter(([,entry])=>!filter || `${entry.label} ${entry.aliases} ${entry.definition}`.toLocaleLowerCase().includes(filter));
+  const entries=glossaryEntries.filter(([,entry])=>!filter || `${entry.label} ${entry.aliases} ${<BoardAgentMentions text={entry.definition}/>}`.toLocaleLowerCase().includes(filter));
   return <ReadingHelp.Provider value={{open,ready,show}}><TooltipProvider delay={350}>
     <div className="reading-help-bar" data-claim-passed={claimPassed} ref={readingBar}>
       <a href="#story-title" className="reading-top-link" data-claim-passed={claimPassed} aria-label={claimPassed?'The artists are still owed. — Back to the entrance':'Score for the reconciliation of debt between an artificial polity and human artists — Back to the entrance'}>
@@ -70,7 +71,7 @@ export function ReadingGlossary({children}: {children: ReactNode}) {
         <DialogDescription>Short explanations by this site. Closing returns you to your reading.</DialogDescription>
         <label className="reading-glossary-search">Find a word<input type="search" value={query} placeholder="Try quorum, wake, or money" onChange={event=>{setQuery(event.target.value);setSelected(null);}} /></label>
         <div className="reading-glossary-entries" tabIndex={0} aria-label="Definitions">
-          {selected && !filter && <section className="reading-glossary-selected" aria-label="Selected definition" data-glossary-selected={selected}><h3>{glossary[selected].label}</h3><p>{glossary[selected].definition}</p><p>{<CreditText text={glossary[selected].detail}/>}</p>{<FurtherLinks term={selected} />}</section>}
+          {selected && !filter && <section className="reading-glossary-selected" aria-label="Selected definition" data-glossary-selected={selected}><h3>{glossary[selected].label}</h3><p>{<BoardAgentMentions text={glossary[selected].definition}/>}</p><p>{<CreditText text={glossary[selected].detail}/>}</p>{<FurtherLinks term={selected} />}</section>}
           <p className="reading-glossary-count" role="status">{filter ? `${entries.length} matching ${entries.length===1?'entry':'entries'}` : 'All terms · alphabetical'}</p>
           {!entries.length && <p>No matching term yet. Try another word, or clear the search to browse.</p>}
           <dl>{entries.map(([key,entry])=><div key={key} data-glossary-entry={key}><dt>{entry.label}</dt><dd><p>{entry.definition}</p><p>{<CreditText text={entry.detail}/>}</p>{<FurtherLinks term={key as GlossaryKey} />}</dd></div>)}</dl>
@@ -85,6 +86,7 @@ export function Term({id,children}: {id: GlossaryKey; children: ReactNode}) {
   const help=useContext(ReadingHelp);
   const tipId=useId();
   const [tipOpen,setTipOpen]=useState(false);
+  if(String(id)==='alienate'||String(id)==='tidemark')return <BoardAgentName name={id==='tidemark'?'Tidemark':'Alienate'}/>;
   if(!help)throw new Error('Term needs the reading glossary provider');
   const visible=tipOpen && help.ready && !help.open;
   return <Tooltip disabled={!help.ready || help.open} open={visible} onOpenChange={setTipOpen}>

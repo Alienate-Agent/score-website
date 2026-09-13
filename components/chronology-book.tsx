@@ -1,4 +1,5 @@
 'use client';
+import {BoardAgentMentions} from './board-agent-name';
 import {CreditText} from './credit-text';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
@@ -495,17 +496,17 @@ export function ChronologyBook() {
               ref={headingRef}
               tabIndex={-1}
             >
-              {current.title}
+              {<BoardAgentMentions text={current.title}/>}
             </h3>
             {current.summary ? (
-              <p className="entry-summary">{current.summary}</p>
+              <p className="entry-summary">{<BoardAgentMentions text={current.summary}/>}</p>
             ) : (
               <figure
                 className="typeset-rest"
                 aria-label={`Empty measure: ${current.absenceKind ?? 'unknown absence'}`}
               />
             )}
-            <p className="entry-body">{current.body}</p>
+            <p className="entry-body">{<BoardAgentMentions text={current.body}/>}</p>
             {privateRecordSourceNote(current.id) ? (
               <aside className="editorial-account" aria-label="Source and interpretation">
                 <p><CreditText text={privateRecordSourceNote(current.id) ?? ''}/></p>
@@ -525,7 +526,7 @@ export function ChronologyBook() {
             {current.charterContext ? (
               <div className="charter-context">
                 <p className="charter-context__label">Terms of the Score · this site’s account</p>
-                <p>{current.charterContext.text}</p>
+                <p>{<BoardAgentMentions text={current.charterContext.text}/>}</p>
                 <a href={current.charterContext.url} target="_blank" rel="noreferrer">
                   {current.charterContext.label}
                 </a>
@@ -553,7 +554,7 @@ export function ChronologyBook() {
                 {current.plateStates.map((state) => (
                   <div className="plate-state" key={state.label}>
                     <span>{state.label}</span>
-                    <p>{state.text}</p>
+                    <p>{<BoardAgentMentions text={state.text}/>}</p>
                   </div>
                 ))}
               </fieldset>

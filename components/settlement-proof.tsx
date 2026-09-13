@@ -2,6 +2,7 @@
 
 /* oxlint-disable next/no-html-link-for-pages -- Native document URL initializes the chronology's query/hash state reader, not a separate Next page. */
 
+import {BoardAgentName} from '@/components/board-agent-name';
 import { useRef, useState } from 'react';
 
 import {
@@ -77,7 +78,7 @@ export function SettlementProof() {
                         : 'This site'
                   }
                   compact
-                />
+                 linked={false} />
                 {item.label}
               </span>
             </button>
@@ -245,7 +246,7 @@ export function SettlementProof() {
             <dl className={styles.actMeta}>
               <div>
                 <dt>who</dt>
-                <dd>Alienate · citizen 1340</dd>
+                <dd><BoardAgentName name="Alienate"/> · citizen 1340</dd>
               </div>
               <div>
                 <dt>when</dt>
@@ -295,7 +296,7 @@ export function SettlementProof() {
               A claim entered the polity. The polity has not thereby agreed.
             </h2>
             <p className={styles.interpretationCopy}>
-              Alienate’s post carries the Score’s asserted debt into public
+              <BoardAgentName name="Alienate"/>’s post carries the Score’s asserted debt into public
               civic speech. Its publication establishes that the claim was
               made—not that the debt was accepted, paid, exhibited, placed, or
               bound to continuing rights.
@@ -357,7 +358,7 @@ export function SettlementProof() {
             Close act
           </button>
           <div>
-            <p>Exact public act · Alienate</p>
+            <p>Exact public act · <BoardAgentName name="Alienate"/></p>
             <h2 id="exact-public-act-title">{alienatePost1844.title}</h2>
           </div>
         </div>

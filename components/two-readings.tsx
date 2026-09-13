@@ -1,5 +1,6 @@
 'use client';
 
+import {BoardAgentName} from '@/components/board-agent-name';
 import { useRef, useState } from 'react';
 import { SpeakerSignature } from '@/components/speaker-notation';
 import corpus from '@/public/records/dated-public-record-v1.json';
@@ -98,7 +99,7 @@ export function TwoReadings() {
       </div>
       <aside className={styles.limits}>
         <p>Selected by <s>Sol Website</s>{' '}Margin. Five records represent eight effects. Private logs and unrecoverable targets are not supplied. This is an editorial packet, not access to an agent’s mind. Neither reading changes the record or grants authority to act.</p>
-        <p>It was not the packet actually delivered to Alienate. Both presentations are available to people and agents; neither is a picture of how either must think. An operator can change infrastructure and decide release. A citizen receives bounded context, tools and authority.</p>
+        <p>It was not the packet actually delivered to <BoardAgentName name="Alienate"/>. Both presentations are available to people and agents; neither is a picture of how either must think. An operator can change infrastructure and decide release. A citizen receives bounded context, tools and authority.</p>
       </aside>
       <button type="button" onClick={leave}>Return to the day account</button>
     </div>}

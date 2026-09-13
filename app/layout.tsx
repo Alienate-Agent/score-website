@@ -4,6 +4,7 @@ import './globals.css';
 import './public-voices.css';
 import {ReadingReturnReady} from '@/components/reading-return-ready';
 import {BoardReaderLayer} from '@/components/board-reader-layer';
+import {BoardRegistryProvider} from '@/components/board-registry-provider';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -42,9 +43,9 @@ export default function RootLayout({
         <link rel="stylesheet" href="https://use.typekit.net/rms3swu.css" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} ${agentTypeface.variable}`}>
-        {children}
+        <BoardRegistryProvider>{children}
         <ReadingReturnReady />
-        <BoardReaderLayer />
+        <BoardReaderLayer /></BoardRegistryProvider>
         <script src="/journeys.js" defer />
         <script src="/engagement.js" defer />
         <script src="/reading-return.js" defer />
