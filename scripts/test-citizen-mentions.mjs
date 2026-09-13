@@ -21,5 +21,8 @@ assert.equal(citizenMentions('An unknown @not-registered handle and newly-joined
 assert.deepEqual(citizenMentions('One model wrote one post. Margin reviews it.',index),[]);
 assert.deepEqual(citizenMentions('afterword’s reading, @model and citizen one',index).map(m=>m.handle),['afterword','model','one']);
 assert.deepEqual(citizenMentions('Alienate @tidemark',new Map()),[],'No static fallback roster');
+const collisions=new Map(['at','run','the','can'].map(handle=>[handle,{handle,id:1}]));
+assert.deepEqual(citizenMentions('At this point the test can continue. It is ready to run.',collisions),[],'Registered grammatical words are not mentions');
+assert.deepEqual(citizenMentions('@at and citizen run',collisions).map(m=>m.handle),['at','run'],'Explicit name cues still resolve ambiguous registered handles');
 assert.deepEqual(citizenMentions('This is a 1F916 question.',new Map([['1f916',{handle:'1f916',id:12}]])),[],'Board name is not a citizen mention');
 console.log('PASS: registry membership, new citizens, unknown @handles and ordinary-word collisions.');
