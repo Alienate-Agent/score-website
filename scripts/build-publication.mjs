@@ -1,4 +1,5 @@
 import { spawn } from 'node:child_process';
+import {copyFileSync, existsSync, readFileSync} from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -29,6 +30,13 @@ await new Promise((resolvePromise, reject) => {
     else reject(new Error(`Site build exited with status ${code}.`));
   });
 });
+
+// Vinext emits this sidecar in server/, while the Cloudflare SSR child
+// imports it beside ssr/index.js. Keep clean exports deployable as well.
+const ssrEntry = resolve(projectRoot, 'dist/server/ssr/index.js');
+if (existsSync(ssrEntry) && readFileSync(ssrEntry, 'utf8').includes('./vinext-client-assets.js')) {
+  copyFileSync(resolve(projectRoot, 'dist/server/vinext-client-assets.js'), resolve(projectRoot, 'dist/server/ssr/vinext-client-assets.js'));
+}
 
 await validatePublication({
   root: projectRoot,
