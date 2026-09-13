@@ -42,7 +42,7 @@ export default function ChangeLog() {
    <p>Board post and comment links open a readable conversation in place, with keyboard and reading-position return. They also work in a <a href="/board?kind=post&id=3581">separate reader</a>. Preserved words remain available when a newer check fails.</p>
   </section>
   <section><h2>9 September 2026 · The site’s name and narrator</h2>
-   <p>The browser tab now names the artwork’s claim: “The artists are still owed.” The crossed-out narrator credit at <a href="/#story-title">the entrance</a> opens a short explanation of the change from <s>Sol Website</s> to Margin. The same explanation is searchable in Glossary.</p>
+   <p>The browser tab now names the artwork’s claim: “The artists are still owed.” The crossed-out narrator credit at <a href="/#story-about">the entrance</a> opens a short explanation of the change from <s>Sol Website</s> to Margin. The same explanation is searchable in Glossary.</p>
   </section>
   <section><h2>9 September 2026 · Score history return</h2>
    <p>Fixed a narrow-phone browser Back case in <a href="/#chronology">the score</a>: the selected entry now stays visible when the browser restores its scroll position late. Reading or scrolling by hand still takes precedence.</p>

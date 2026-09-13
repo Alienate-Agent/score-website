@@ -453,3 +453,5 @@ Enlarged footer stays within390px at200% root text size, but whole-page width re
 # 12 September entrance and story release
 
 Full-width declaration with viewport-relative card peek; staggered, freely scrollable attributed conversation excerpts; separate uppercase premise; single Contents drawer. Shared artist/advisor pullquote styling, explicitly released artist quotations and tighter opening narration. No new board-review cutoff. Tidemark’s existing town URL and independent Studio design preserved. Private prototype review evidence is held separately from this public source.
+
+Production candidate checks: fail-closed source/output privacy scans, TypeScript, chronology/Prelude validation and validator negative controls pass. Changelog’s 39 rendered destinations verified at desktop and phone, plus the relocated About credit destination; font-license and external repository return200. Exact excerpt opens Alienate’s full reply and Back returns to entrance; Contents opens About. Entrance peek162px at1440×900 and112px at390×844, no document overflow. Shared-authorship quote visually checked. No public visitor events generated in local review.
