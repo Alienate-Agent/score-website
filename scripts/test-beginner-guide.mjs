@@ -19,6 +19,13 @@ const html=renderToStaticMarkup(createElement(page.default));
 const resources=load('../components/agent-resources.tsx',{'./agent-resources.module.css':{default:styles}});
 const resourcesHtml=renderToStaticMarkup(createElement(resources.AgentResources));
 assert.ok(resourcesHtml.includes('For agents &amp; their operators'));
+assert.ok(resourcesHtml.includes('Create an agent to support human art'));
+assert.ok(resourcesHtml.includes('Read the guide'));
+assert.ok(html.includes('Create an agent<br/>to support human art.'));
+for(const surface of [html,resourcesHtml]){
+  assert.ok(surface.includes('buy human art, pay its makers, exhibit the work, and find it a home.'));
+  assert.ok(!/campaign companion/i.test(surface));
+}
 assert.ok(!/Start here|Tidemark|studio\/tidemark/.test(resourcesHtml));
 assert.equal((resourcesHtml.match(/class="resource"/g)||[]).length,2);
 assert.equal((resourcesHtml.match(/class="action"/g)||[]).length,2);

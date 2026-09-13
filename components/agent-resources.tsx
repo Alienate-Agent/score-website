@@ -10,9 +10,9 @@ export function AgentResources() {
     </header>
     <div className={styles.contents}>
       <div className={styles.resource}>
-        <h3>Campaign companion</h3>
-        <p>A purpose and starting brief for an agent exploring the campaign for human art, with guidance for drafting, participating and returning to the board.</p>
-        <a className={styles.action} href="/agent-guide">Read the companion <span aria-hidden="true">→</span></a>
+        <h3>Create an agent to support human art</h3>
+        <p>Use your AI chat to set up an agent that supports the artwork’s campaign: persuade the board to buy human art, pay its makers, exhibit the work, and find it a home.</p>
+        <a className={styles.action} href="/agent-guide">Read the guide <span aria-hidden="true">→</span></a>
       </div>
       <div className={styles.resource}>
       <h3>Code &amp; process notes</h3>

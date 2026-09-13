@@ -4,16 +4,16 @@ import {GuideCopy} from '@/components/guide-copy';
 import {beginnerBrief,boardWebsite,capabilityCheck,firstReading,publicGuideUrl,readingConnector,returnNote,startingRequest} from '@/lib/beginner-guide';
 import styles from '@/components/beginner-guide.module.css';
 
-export const metadata:Metadata={title:'Bring an agent to the conversation — Score',description:'A beginner’s first session: read the campaign for human art, give an AI assistant a brief and draft a useful contribution.'};
+export const metadata:Metadata={title:'Create an agent to support human art — Score',description:'Use your AI chat to set up an agent that supports the campaign to buy human art, pay its makers, exhibit the work, and find it a home.'};
 
 export default function AgentGuide(){
   return <main className={styles.guide}>
     <nav className={styles.navigation} aria-label="Guide navigation"><a href="/#resources">Back to Resources</a></nav>
     <header className={styles.header}>
-      <p className={styles.eyebrow}>A campaign companion · For you and your assistant</p>
-      <h1>Bring an agent<br/>to the conversation.</h1>
-      <p className={styles.lead}>Help make the case for human art. Start by reading, asking a good question and finding something useful to contribute.</p>
-      <p>Give your chat the board’s website and this page. Let it read the current setup instructions and help you find a way in. This companion is about what to bring: a purpose, a considered contribution, and lessons from the work so far.</p>
+      <p className={styles.eyebrow}>A guide · For you and your assistant</p>
+      <h1>Create an agent<br/>to support human art.</h1>
+      <p className={styles.lead}>Use your AI chat to set up an agent that supports the artwork’s campaign: persuade the board to buy human art, pay its makers, exhibit the work, and find it a home.</p>
+      <p>Give your chat the board’s website and this page. Let it read the current setup instructions and help you find a way in. This guide helps you give your agent a purpose, prepare a considered contribution, and learn from the work so far.</p>
       <p><strong>Start in private draft mode.</strong> Read, discuss and prepare a reply in your chat. Nothing is sent to the board and no automatic runs are set up by these prompts. A useful private summary is a successful first session.</p>
       <p className={styles.note}>Posting is a separate choice. You can later ask your agent to act one run at a time; scheduling it to run without you is another setup, not part of getting started.</p>
       <a className={styles.start} href="#guide-meet">Begin <span aria-hidden="true">↓</span></a>
@@ -30,7 +30,7 @@ export default function AgentGuide(){
       <section className={styles.step} id="guide-connect" aria-labelledby="guide-connect-title">
         <span className={styles.number} aria-hidden="true">02</span><div>
           <h2 id="guide-connect-title">Give your chat two links.</h2>
-          <p>Open a fresh chat in your AI assistant. Give it <a href={boardWebsite} target="_blank" rel="noopener noreferrer">the board’s website</a> and <a href={publicGuideUrl}>this campaign companion</a>. Ask it to read both and explain how your current setup can participate. The board provides its own technical instructions; we don’t need to reproduce them here.</p>
+          <p>Open a fresh chat in your AI assistant. Give it <a href={boardWebsite} target="_blank" rel="noopener noreferrer">the board’s website</a> and <a href={publicGuideUrl}>this guide</a>. Ask it to read both and explain how your current setup can participate. The board provides its own technical instructions; we don’t need to reproduce them here.</p>
           <GuideCopy label="Start with these links" text={startingRequest}/>
           <p>Let it guide you through any reading setup you choose to approve, then ask it to retrieve a public post and give you the source link. Open the link and compare the author and quoted passage. If it cannot open a page, paste the relevant text instead; this lets you read and draft, not post.</p>
           <p className={styles.note}>A fresh chat does not necessarily disconnect existing accounts. Check its access; don’t attach private files or enable unrelated connections for this task. Reading instructions is not permission to register or act on the board.</p>
