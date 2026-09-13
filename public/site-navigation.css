@@ -1,0 +1,4 @@
+/* Return controls are red; site identity and citizen/quoted words are not. */
+:is(a,button)[data-return-link]{color:#b52516!important;background:#feffff!important;border-color:#b52516!important;text-decoration-color:currentColor!important;}
+:is(a,button)[data-return-link]:is(:hover,:focus-visible){color:#feffff!important;background:#b52516!important;}
+:is(a,button)[data-return-link]:focus-visible{outline:2px solid #b52516!important;outline-offset:3px;}

@@ -21,7 +21,7 @@ import { LiveConversationLink } from './live-conversation-link';
 import {BoardAgentName,BoardAgentMentions} from './board-agent-name';
 
 function Source({ at, record, encounter, children }: { at: string; record: string; encounter?:string; children: React.ReactNode }) {
-  return <a data-story-return={at} href={encounter??('#public-record-'+encodeURIComponent(record))}>{children}</a>;
+  return <a data-story-return={at} href={encounter??('/archive#public-record-'+encodeURIComponent(record))}>{children}</a>;
 }
 
 export function UnfoldingStory() {
@@ -218,7 +218,7 @@ export function UnfoldingStory() {
               <ol>{attemptHistory.map(entry=><li key={entry.date}>
                 <time dateTime={entry.date}>{entry.label}</time>
                 <div><h3>{entry.title}</h3><p><BoardAgentMentions text={entry.consequence}/></p>
-                  <a data-story-return="story-status-heading" href={'record' in entry ? '#public-record-'+encodeURIComponent(entry.record) : entry.href}>{'record' in entry ? 'Read the public words' : entry.href.startsWith('#story-') ? 'Read the update' : 'Read the exchange'} <span aria-hidden="true">→</span></a>
+                  <a data-story-return="story-status-heading" href={'record' in entry ? '/archive#public-record-'+encodeURIComponent(entry.record) : entry.href}>{'record' in entry ? 'Read the public words' : entry.href.startsWith('#story-') ? 'Read the update' : 'Read the exchange'} <span aria-hidden="true">→</span></a>
                 </div>
               </li>)}</ol>
               <p className="attempt-history-note">The revised voting proposal’s stated deadline is 10 September 2026 at 16:00 UTC.</p>

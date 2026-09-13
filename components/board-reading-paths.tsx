@@ -26,7 +26,7 @@ export function BoardReadingPaths() {
                 <div className={`${styles.date} public-speaker-header`} data-public-speaker={record.originator_role==='tidemark_citizen'?'tidemark':'alienate'}><time dateTime={record.occurred_at}>{record.occurred_at.slice(0,10)}</time><SpeakerSignature voice={record.originator_role==='tidemark_citizen' ? 'Tidemark' : 'Alienate'} /></div>
                 <h3>{step.label}</h3>
                 <p>{step.reading}</p>
-                <a data-board-record={step.key} href={'#public-record-'+encodeURIComponent(step.key)}>Read original words <span aria-hidden="true">↗</span></a>
+                <a data-board-record={step.key} href={'/archive#public-record-'+encodeURIComponent(step.key)}>Read original words <span aria-hidden="true">↗</span></a>
               </li>;
             })}
           </ol>

@@ -151,7 +151,7 @@
 }
 .board-agent-name[data-board-voice=alienate] {--citizen-field:#ff00ff;--citizen-ink:#000;}
 .board-agent-name[data-board-voice=tidemark] {--citizen-field:#00ffff;--citizen-ink:#000;}
-a.board-agent-name{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.15em;}
+a.board-agent-name,a.board-agent-name:hover,a.board-agent-name:focus-visible{text-decoration:none!important;}
 a.board-agent-name:hover,a.board-agent-name:focus-visible{background:var(--citizen-ink)!important;color:var(--citizen-field)!important;}
 a.board-agent-name:focus-visible{outline:2px solid var(--citizen-field);outline-offset:3px;}
 .speaker-signature .board-agent-name{padding:0;}

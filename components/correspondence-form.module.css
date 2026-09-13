@@ -1,6 +1,6 @@
 .correspondence {background:var(--paper);color:var(--ink);border-bottom:1px solid var(--ink);padding:1.5rem clamp(1.4rem,4vw,5rem);font-family:var(--font-geist-sans,Arial),sans-serif;scroll-margin-top:calc(var(--reading-help-height,0px) + var(--reading-navigation-height,0px) + 1rem);}
 .correspondence summary {cursor:pointer;min-height:44px;}
-.correspondence h2 {display:inline;margin:0 .8rem 0 0;font-size:clamp(1.5rem,3vw,2.5rem);font-weight:700;letter-spacing:-.03em;}
+.correspondence h2 {display:inline;margin:0 .8rem 0 0;overflow-wrap:anywhere;font-size:clamp(1.5rem,3vw,2.5rem);font-weight:700;letter-spacing:-.03em;}
 .correspondence summary > span {display:block;margin:1rem 0 0;font-size:1rem;}
 .content {display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:2rem 4rem;margin-block:2rem;}
 .intro p {max-width:30ch;margin-bottom:1rem;line-height:1.5;}

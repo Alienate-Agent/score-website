@@ -1,7 +1,17 @@
-.search { font-family:var(--font-geist-sans,Arial),sans-serif; margin:2rem 0 3rem; border-block:1px solid var(--rule); padding:1.5rem 0; scroll-margin-top:calc(var(--story-return-height,4rem) + 1rem); }
+.search { font-family:var(--font-geist-sans,Arial),sans-serif; margin:3rem auto; max-width:96rem; border-block:1px solid var(--rule); padding:2rem 3.5%; scroll-margin-top:calc(var(--story-return-height,4rem) + 1rem); }
 .search h3 { font-family:inherit; font-size:1.5rem; line-height:1.2; margin-bottom:1rem; }
 .search p { max-width:65ch; line-height:1.5; margin:.6rem 0; }
-.fields { display:grid; grid-template-columns:2fr 1fr; gap:1rem; margin:1.5rem 0; }
+.search h4 {font:650 1.15rem/1.3 var(--font-geist-sans,Arial),sans-serif;margin:1.75rem 0 .75rem;}
+.siteExcerpt {font:1rem/1.5 var(--font-geist-sans,Arial),sans-serif;overflow-wrap:anywhere;}
+.siteExcerpt mark {background:#ffec00;color:#000;}
+.fields { display:grid; grid-template-columns:minmax(0,1fr); gap:1rem; margin:1.5rem 0; }
+.columns {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.5rem;align-items:start;scroll-margin-top:calc(var(--story-return-height,4rem) + 1rem);}
+.column {min-width:0;border:1px solid var(--rule);}
+.column>summary {cursor:pointer;font-size:1.25rem;font-weight:650;padding:1rem;min-height:44px;}
+.column>summary:focus-visible {outline:2px solid var(--ink);outline-offset:3px;}
+.column[open]>summary {border-bottom:1px solid var(--rule);}
+.columnBody {padding:0 1rem 1rem;overflow-wrap:anywhere;}
+.search .visuallyHidden {position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0;}
 .fields label { min-width:0; }
 .fields input,.fields select { display:block; width:100%; min-height:44px; font:inherit; border:1px solid var(--ink); background:var(--paper-raised); color:var(--ink); padding:.6rem; margin-top:.5rem; }
 .results { scroll-margin-top:calc(var(--story-return-height,4rem) + 1rem); }
@@ -17,4 +27,4 @@
 .results .matchReason { font-size:.8rem; color:var(--ink-soft); }
 .results summary,.results button { min-height:44px; cursor:pointer; padding:.6rem 0; }
 .results button { text-decoration:underline; }
-@media(max-width:600px){.fields{grid-template-columns:1fr;}}
+@media(max-width:700px){.columns{grid-template-columns:minmax(0,1fr);}}

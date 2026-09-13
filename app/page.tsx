@@ -3,7 +3,8 @@ import {BoardAgentName} from '@/components/board-agent-name';
 import { ChronologyBook } from '@/components/chronology-book';
 import { ConductLeaf } from '@/components/conduct-leaf';
 import { SettlementProof } from '@/components/settlement-proof';
-import { DatedRecordReader } from '@/components/dated-record-reader';
+import { CrossRecordSearch } from '@/components/cross-record-search';
+import { LegacyArchiveLinks } from '@/components/legacy-archive-links';
 import { BoardReadingPaths } from '@/components/board-reading-paths';
 import { EarlierStoryEnding } from '@/components/earlier-story-ending';
 import { MakingPassage } from '@/components/making-passage';
@@ -20,11 +21,12 @@ import '@/components/unfolding-story.css';
 export default function Home() {
   return (
     <ReadingGlossary><main className="score-site">
+      <LegacyArchiveLinks />
       <UnfoldingStory />
       <StoryLayers>
       <ChronologyBook />
 
-      <DatedRecordReader />
+      <CrossRecordSearch />
 
       <details className="story-archive" id="question-paths"><summary>Debates behind the campaign</summary><BoardReadingPaths /></details>
 

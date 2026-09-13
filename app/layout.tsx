@@ -2,6 +2,9 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono, Recursive } from 'next/font/google';
 import './globals.css';
 import './public-voices.css';
+import './site-masthead.css';
+import '../public/site-navigation.css';
+import {SiteMasthead} from '@/components/site-masthead';
 import {ReadingReturnReady} from '@/components/reading-return-ready';
 import {BoardReaderLayer} from '@/components/board-reader-layer';
 import {BoardRegistryProvider} from '@/components/board-registry-provider';
@@ -43,11 +46,12 @@ export default function RootLayout({
         <link rel="stylesheet" href="https://use.typekit.net/rms3swu.css" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} ${agentTypeface.variable}`}>
-        <BoardRegistryProvider>{children}
+        <BoardRegistryProvider><SiteMasthead />{children}
         <ReadingReturnReady />
         <BoardReaderLayer /></BoardRegistryProvider>
         <script src="/journeys.js" defer />
         <script src="/engagement.js" defer />
+        <script src="/site-navigation.js" defer />
         <script src="/reading-return.js" defer />
       </body>
     </html>

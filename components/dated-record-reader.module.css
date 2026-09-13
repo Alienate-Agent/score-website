@@ -6,7 +6,7 @@
   color: var(--ink);
   font-family:var(--font-geist-sans,Arial),sans-serif;
 }
-.reader h2 { font-family:inherit; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 700; line-height: 1.08; margin: 1rem 0; }
+.reader h1 { font-family:inherit; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 700; line-height: 1.08; margin: 1rem 0; }
 .intro { max-width: 43rem; font-size: 1.25rem; line-height: 1.5; }
 .disclosure > summary { padding: 1.25rem 0; border-block: 1px solid var(--ink); cursor: pointer; font-size: 1.15rem; }
 .boundary { max-width: 58rem; font-size: .8rem; line-height: 1.55; margin: 1.5rem 0; color: var(--ink-soft); }

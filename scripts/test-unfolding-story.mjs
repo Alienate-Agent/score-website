@@ -26,7 +26,8 @@ for(const [key,quote] of [
  ['alienate:comment:19378','the artists have not retained me'],
 ]) {assert.ok(records.find(r=>r.act_key===key).exact_content.body.includes(quote));assert.ok(story.includes(quote));}
 assert.ok(page.indexOf('<UnfoldingStory />') < page.indexOf('<StoryLayers>'));
-assert.ok(page.includes('<ChronologyBook />')&&page.includes('<ConductLeaf />')&&page.includes('<DatedRecordReader />'));
+assert.ok(page.includes('<ChronologyBook />')&&page.includes('<ConductLeaf />')&&page.includes('<CrossRecordSearch />'));
+assert.ok(!page.includes('<DatedRecordReader />')&&read('app/archive/page.tsx').includes('<DatedRecordReader/>'),'Historical reader is preserved off the main page');
 assert.ok(layers.includes("window.addEventListener('hashchange', reveal)"));
 assert.ok(layers.includes("window.addEventListener('popstate', reveal)"));
 assert.ok(layers.includes('data-story-return'));

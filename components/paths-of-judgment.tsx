@@ -31,7 +31,7 @@ function Source({ index, excerpt, whole = false }: { index: number; excerpt?: st
     </>}
     <div className={styles.links}>
       <a href={row.source_url!}>Read the conversation</a>
-      <a href={`#public-record-${encodeURIComponent(row.act_key)}`} target="_blank" rel="noreferrer">Full dated record (new tab)</a>
+      <a href={`/archive#public-record-${encodeURIComponent(row.act_key)}`} target="_blank" rel="noreferrer">Full dated record (new tab)</a>
     </div>
   </article>;
 }

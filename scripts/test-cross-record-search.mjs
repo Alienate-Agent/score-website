@@ -6,6 +6,11 @@ import {indexRecords,searchRecords} from '../lib/cross-record-search.ts';
 import {searchExcerpt,matchedFields} from '../lib/search-excerpt.ts';
 import {recordLabel,recordSubjects} from '../lib/record-discovery.ts';
 const read=p=>fs.readFileSync(new URL('../'+p,import.meta.url),'utf8');
+const searchView=read('components/cross-record-search.tsx');
+assert.equal((searchView.match(/<details className=\{styles.column\} open>/g)||[]).length,2,'Two independently collapsible, initially open columns');
+assert.ok(searchView.indexOf('<summary>On this site</summary>')<searchView.indexOf('<summary>On the board</summary>'),'Site precedes board');
+assert.ok(searchView.indexOf('Collected records by')>searchView.indexOf('<summary>On the board</summary>'),'Speaker filter belongs in board column');
+assert.equal((searchView.match(/id="record-discovery-results"/g)||[]).length,1,'Shared return anchor is unique');
 const json=p=>JSON.parse(read('public/records/'+p));
 const compile=(code,require)=>{
   const compiledModule={exports:{}};
@@ -52,7 +57,7 @@ const {records}=compile(read('components/cross-record-search.tsx')+'\nexport {re
   if(id.endsWith('/record-discovery'))return {recordLabel,recordSubjects};
   if(id.endsWith('/cross-record-search'))return {indexRecords,searchRecords};
   if(id.endsWith('/search-excerpt'))return {searchExcerpt,matchedFields};
-  if(id==='./live-board-search'||id==='./board-agent-name')return {};
+  if(id==='./live-board-search'||id==='./board-agent-name'||id==='./site-text-search')return {};
   throw new Error(id);
 });
 const find=(q,a)=>searchRecords(records,q,a);
@@ -75,7 +80,7 @@ const seed={key:'test:comment:1',digest:'one',author:'Test',title:'Example',orig
 const different=indexRecords([seed,{...seed,digest:'two',body:'changed body',source:{href:'#b',collection:'b'}}]);
 assert.equal(different.length,2,'Changed bodies must not be silently merged');
 assert.equal(searchRecords(different,'changed').length,1);
-assert.ok(records.every(r=>r.sources.every(s=>s.href.startsWith('#'))));
+assert.ok(records.every(r=>r.sources.every(s=>s.href.startsWith('#')||s.href.startsWith('/archive#public-record-'))));
 for(const record of find('sibling')){
   const excerpt=searchExcerpt(record.body,'sibling');
   assert.equal(excerpt.parts.map(p=>p.text).join(''),record.body.slice(excerpt.start,excerpt.end),'An excerpt must be one exact continuous source slice');

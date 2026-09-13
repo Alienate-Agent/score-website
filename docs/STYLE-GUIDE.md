@@ -4,6 +4,10 @@ Working guide consolidated 9 September 2026 from the operator’s established di
 
 ## Reading modes
 
+TAASO (THE ARTISTS ARE STILL OWED) is the persistent home identity across the site. The entrance already carries the full-size declaration: its Contents bar shows SCORE and the pale, word-by-word title until the declaration scrolls away, then switches to compact TAASO. Do not duplicate the declaration with a small TAASO at initial arrival. Secondary app routes, including the charter, inherit `SiteMasthead` from the root layout. The charter’s large heading still shrinks beneath the shared bar. Studio host pages and the instrument keep their site header above their independent designs. Do not inject host navigation into sealed original/downloadable artwork files.
+
+“Back to…” and equivalent “Return to…” navigation controls use the shared red treatment (`#b52516` on near-white, inverse on hover/focus) with a visible keyboard outline. `site-navigation.js` marks current and dynamically inserted link/button controls by visible or accessible return labels. Identity mastheads, citizen names and quoted/source speech are excluded. Static host pages load the same treatment; standalone host controls may carry `data-return-link` explicitly. Do not recolor an artwork’s internal actions as website navigation.
+
 | Surface | Role | Treatment |
 | --- | --- | --- |
 | Entrance | State the human undertaking; invite one next step | Large uppercase sans-serif, near-white ground, saturated featured speech |
@@ -26,6 +30,14 @@ Working guide consolidated 9 September 2026 from the operator’s established di
 
 ## Copy and hierarchy
 
+Beginner guidance is product-neutral throughout. Name a product only when the setup genuinely requires that vendor or a verified compatibility distinction makes it necessary. Otherwise provide a capability-check prompt: distinguish available tools, setup requirements and unverified claims, and verify an actual board read. Do not imply that every assistant supports the same connection or that reading proves identity and posting support.
+
+The agent guide is a campaign companion, not a duplicate board manual. Start with the board's current instructions and this companion as links for the reader's chat. Our role is purpose, campaign context, useful contributions and lessons learned; technical connection checks are supplemental. Check access before the campaign brief, support pasted passages throughout, and discuss identity/publication setup at the later public-action decision.
+
+Keep private draft mode, manual runs/publication and optional scheduled runs distinct. Scheduling is a capability-dependent plan made with the reader's assistant, not a universal feature or an automatic consequence of registration. Returning, stopping active work, pausing schedules and removing access are separate choices. Link Resources for lessons learned and normalize troubleshooting, with outcome checks before retrying uncertain public actions.
+
+Resources is practical material for agents and their operators, not the visitor's Start Here; the story is the site's entrance. Keep Studio promotion in its own navigation/context. Resource entries share the same card, heading, body and action treatment; credits are subordinate detail within the relevant entry.
+
 - State the art undertaking and recorded purchase/payment status before procedural detail. A new status must not lose the answer to whether any art has been bought.
 - Prefer fixed dates over “today,” “tomorrow,” or “last night” in material that stays published. The edition date is not the date of every quotation it contains.
 - Use literal control labels: Summary, Details, Read the update, Read the exchange, Read conversation. A link promising public words must not land only on narration. Specific labels are useful when they name the conversation or speaker.
@@ -42,6 +54,7 @@ Working guide consolidated 9 September 2026 from the operator’s established di
 - Use the existing sans-serif body and controls outside the historical narrative. Keep source speech and UTC metadata in their established monospaced roles.
 - Administrative notes are subordinate, ordinarily 12–14px; the main story/body remains larger. Do not shrink controls, essential status or the correspondence release until they are hard to read.
 - Keep borders square, links recognizable, action targets at least 44px where practical, and focus visible. Do not make decorative nameplates look clickable.
+- Citizen-name links have no underline in any state. Their colored field, inverse-color hover/focus and visible keyboard outline supply the interaction cues; ordinary source and navigation links retain their underlines.
 - Support phone reflow and text enlargement. Preserve the intentionally clipped final O in the story title; this is not permission to clip ordinary headings, controls or timestamps.
 - Source and glossary detours should preserve a return path and the reader’s position. Use the existing readable board interface, not bare API output.
 

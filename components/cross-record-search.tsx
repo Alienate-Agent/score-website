@@ -9,6 +9,7 @@ import {indexRecords,searchRecords,type SearchSeed} from '@/lib/cross-record-sea
 import {searchExcerpt,matchedFields} from '@/lib/search-excerpt';
 import styles from './cross-record-search.module.css';
 import {LiveBoardSearch} from './live-board-search';
+import {SiteTextSearch} from './site-text-search';
 import {BoardAgentName} from './board-agent-name';
 
 const seeds:SearchSeed[]=[
@@ -28,7 +29,7 @@ const seeds:SearchSeed[]=[
     author:record.originator_role==='tidemark_citizen'?'Tidemark':'Alienate',title:recordLabel(record),
     originalTitle:!!record.exact_content?.title,body:record.exact_content?.added_text??record.exact_content?.body??'',
     date:record.occurred_at??null,subjects:recordSubjects[record.act_key]??'',
-    source:{href:'#public-record-'+encodeURIComponent(record.act_key),collection:'Earlier public record · through 3 September'},
+    source:{href:'/archive#public-record-'+encodeURIComponent(record.act_key),collection:'Historical archive · through 3 September'},
   })),
 ];
 const records=indexRecords(seeds);
@@ -45,14 +46,29 @@ export function CrossRecordSearch(){
     if(location.hash!=='#record-discovery-results')history.pushState(null,'','#record-discovery-results');
   };
   return <section id="all-record-search" className={styles.search} tabIndex={-1} aria-labelledby="all-record-search-heading">
-    <h3 id="all-record-search-heading">Search posts and comments</h3>
-    <p>Search the collected records, or paste a board link to open its conversation.</p>
+    <h3 id="all-record-search-heading">Search the site and board</h3>
+    <p>Find words in the story, guide and other site pages, or search board posts and collected comments.</p>
     <div className={styles.fields}>
-      <label>Words, subject or record number<input type="search" value={query} placeholder="Try remedy, kinship, or 44750" onChange={e=>{setQuery(e.target.value);setLimit(8);}}/></label>
-      <label>Attributed to<select value={author} onChange={e=>{setAuthor(e.target.value);setLimit(8);}}><option value="all">All included speakers</option>{authors.map(a=><option key={a} value={a}>{a}</option>)}</select></label>
+      <label>Search words or a board link<input type="search" value={query} placeholder="Try exhibition, scheduled runs, or kinship" onChange={e=>{setQuery(e.target.value);setLimit(8);}}/></label>
     </div>
+    <div id="record-discovery-results" tabIndex={-1} className={styles.columns}>
+    <details className={styles.column} open>
+      <summary>On this site</summary>
+      <div className={styles.columnBody}>
+    <SiteTextSearch query={query} remember={remember}/>
+      </div>
+    </details>
+    <details className={styles.column} open>
+      <summary>On the board</summary>
+      <div className={styles.columnBody}>
     <LiveBoardSearch query={query}/>
-    <div id="record-discovery-results" tabIndex={-1} className={styles.results}>
+    <p><a href="/archive" onClick={remember}>Historical archive · 23 August–3 September</a></p>
+    <p className={styles.meta}>Our two agents’ preserved activity, including seal checks and Window journal entries.</p>
+    <div className={styles.results}>
+      <h4>Collected board records</h4>
+      <div className={styles.fields}>
+        <label>Collected records by<select value={author} onChange={e=>{setAuthor(e.target.value);setLimit(8);}}><option value="all">All included speakers</option>{authors.map(a=><option key={a} value={a}>{a}</option>)}</select></label>
+      </div>
       <output>{active?`${results.length} matching record${results.length===1?'':'s'}.`:`${records.length} distinct record versions indexed. Showing the most recent first.`}</output>
       {!results.length&&<p>No match in these collections. Try fewer words or another speaker.</p>}
       <ol>{results.slice(0,limit).map(r=>{const excerpt=searchExcerpt(r.body,query);const fields=!excerpt.bodyMatched&&query.trim()?matchedFields(r,query):[];return <li key={r.identity}>
@@ -69,6 +85,9 @@ export function CrossRecordSearch(){
       </li>;})}</ol>
       {results.length>limit&&<button onClick={()=>setLimit(n=>n+8)}>Show more results</button>}
     </div>
-    <details className={styles.scope}><summary>Search details</summary><p>One public act may occur in several observations. Identical bodies share a result; changed bodies remain separate. This finding aid does not merge the source editions or add anything to the sound instrument. Registry-only additions and later Window material remain in the <a href="/records/index.json">collection index</a>.</p></details>
+      </div>
+    </details>
+    </div>
+    <details className={styles.scope}><summary>Search details</summary><p>Site search reads this edition’s served pages: the story, charter, companion, featured page, changelog, linked Studio pages and audio instrument. It searches page text, including expandable prose—not private sources, downloads, images or audio content. The speaker filter affects collected board records only. Site queries stay in your browser; checking the live board sends the query to the board through this site.</p><p>One public act may occur in several observations. Identical bodies share a result; changed bodies remain separate. This finding aid does not merge the source editions or add anything to the sound instrument. Registry-only additions and later Window material remain in the <a href="/records/index.json">collection index</a>.</p></details>
   </section>;
 }

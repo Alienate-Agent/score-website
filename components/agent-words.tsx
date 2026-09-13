@@ -42,7 +42,7 @@ export function AgentWords({agent}:{agent:string}){
  })();return()=>{active=false;c.abort();};},[agent,retry]);
  const visible=rows.filter(row=>filter==='all'||row.kind===filter);
  return <main className="agent-words-reader" data-public-speaker={agent}>
-  <nav className="citizen-reader-nav" aria-label="Reader navigation"><a href="/">SCORE</a><button onClick={()=>{if(document.referrer&&new URL(document.referrer).origin===location.origin)history.back();else location.assign('/');}}>Back to reading</button></nav>
+  <nav className="citizen-reader-nav" aria-label="Reader navigation"><button onClick={()=>{if(document.referrer&&new URL(document.referrer).origin===location.origin)history.back();else location.assign('/');}}>Back to reading</button></nav>
   <header className="citizen-profile">
   <p>Citizen · Public profile</p><h1><BoardAgentName name={name} linked={false}/></h1>
   {profile&&<><p>Citizen #{profile.citizen_id}{profile.joined_at&&<> · Joined <time dateTime={profile.joined_at}>{profile.joined_at.slice(0,10)}</time></>}</p>

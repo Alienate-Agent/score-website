@@ -1,0 +1,22 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import {archiveDestination} from '../lib/archive-location.ts';
+const read=p=>fs.readFileSync(new URL('../'+p,import.meta.url),'utf8');
+const raw=read('public/records/dated-public-record-v1.json');
+const data=JSON.parse(raw);
+assert.equal(crypto.createHash('sha256').update(raw).digest('hex'),'cf99b13a62e8c1dc10635bf6359e0e69a517a7ed2ac1d2ba26bf9c46c8c85cbd');
+assert.equal(data.records.length,57);
+for(const record of data.records){const hash='#public-record-'+encodeURIComponent(record.act_key);assert.equal(archiveDestination(hash),'/archive'+hash);}
+assert.equal(archiveDestination('#dated-record-reader-title'),'/archive');
+for(const hash of ['','#all-record-search','#record-discovery-results','#later-public-record-alienate%3Acomment%3A41157','#chronology-entry-E09','#story-title'])assert.equal(archiveDestination(hash),null);
+const home=read('app/page.tsx');
+assert.ok(!home.includes('DatedRecordReader'));
+assert.ok(home.includes('<CrossRecordSearch />')&&home.includes('<LegacyArchiveLinks />'));
+assert.ok(read('app/archive/page.tsx').includes('<DatedRecordReader/>'));
+const reader=read('components/dated-record-reader.tsx');
+assert.ok(!reader.includes('CrossRecordSearch'));
+assert.ok(reader.includes('kept as a fixed edition')&&reader.includes('href="/#all-record-search"'));
+assert.ok(read('components/cross-record-search.tsx').includes('href="/archive"'));
+assert.ok(read('components/legacy-archive-links.tsx').includes('location.replace(target)'));
+console.log('PASS: all57 historical keys retain destinations; corpus unchanged; archive off homepage, discoverable in board search, fixed-edition copy and unrelated anchors preserved.');

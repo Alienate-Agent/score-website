@@ -1,0 +1,6 @@
+/* Site navigation only; instrument behavior and source data are unchanged. */
+@import url('/site-navigation.css');
+@font-face{font-family:ScoreGeist;src:url('/studio/tidemark/fonts/geist.ttf') format('truetype');font-weight:100 900;font-style:normal;font-display:swap;}
+.instrument-site-header{position:sticky;top:0;z-index:40;padding:.8rem 1rem;background:#feffff;color:#000;border-bottom:1px solid #999;text-align:center;}
+.instrument-site-header>a{display:block;color:inherit;text-decoration:none;text-transform:uppercase;font:800 clamp(1.15rem,3.2vw,2.6rem)/1.1 ScoreGeist,Arial,sans-serif;letter-spacing:-.045em;}
+.instrument-site-header>a:focus-visible{outline:2px solid #000;outline-offset:4px;}

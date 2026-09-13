@@ -540,7 +540,7 @@ export function ChronologyBook() {
                   <span>{<CreditText text={current.editorialAccount.author}/>} · composed {current.editorialAccount.composedOn} · admitted {current.editorialAccount.admittedOn}</span>
                 </p>
                 <p>{<CreditText text={current.editorialAccount.qualification}/>}</p>
-                <a href={`#public-record-${encodeURIComponent(current.editorialAccount.sourceActKey)}`}>
+                <a href={`/archive#public-record-${encodeURIComponent(current.editorialAccount.sourceActKey)}`}>
                   Read Alienate’s exact public words →
                 </a>
               </div>

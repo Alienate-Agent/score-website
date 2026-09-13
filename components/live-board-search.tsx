@@ -39,6 +39,7 @@ export function LiveBoardSearch({query}:{query:string}){
  }
  const current=opened?.conversation;
  return <div className="live-board-search">
+  <h4>Live board</h4>
   <button disabled={busy} onClick={submit}>{busy?'Checking…':'Search the board / open a board link'}</button>
   <p>Live search looks inside post titles and bodies—not comments. Paste a public post or comment link above to open its discussion. The speaker filter applies only to this site’s records.</p>
   <p role="status">{notice}</p>
