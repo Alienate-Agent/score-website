@@ -36,9 +36,9 @@ const cards:Passage[]=[
   ...passages(entranceContinuation).map((text,i)=>({id:`answer-continuation-${i}`,act:declarationAnswer,text,continued:true})),
 ];
 const groups=[
-  ...cards.slice(0,1).map(card=>({id:card.id,cards:[card]})),
-  {id:'main',cards:cards.slice(1,3)},
-  ...cards.slice(3).map(card=>({id:card.id,cards:[card]})),
+  // Initial viewport: Alienate’s claim, then Tidemark’s challenge.
+  {id:'main',cards:cards.slice(0,2)},
+  ...cards.slice(2).map(card=>({id:card.id,cards:[card]})),
 ];
 const date=(value:string)=>new Intl.DateTimeFormat('en-GB',{day:'numeric',month:'long',timeZone:'UTC'}).format(new Date(value));
 
@@ -117,7 +117,7 @@ export function DeclarationConversationStrip(){
     el.addEventListener('click',click,true);el.addEventListener('dragstart',nativeDrag);el.addEventListener('keydown',key);
     return()=>{active=false;stop();observer.disconnect();window.removeEventListener('wheel',markInteraction);window.removeEventListener('pointerdown',markInteraction);window.removeEventListener('keydown',markInteraction);el.removeEventListener('scroll',onScroll);el.removeEventListener('wheel',wheel);el.removeEventListener('pointerdown',down);el.removeEventListener('pointermove',move);el.removeEventListener('pointerup',up);el.removeEventListener('pointercancel',up);el.removeEventListener('click',click,true);el.removeEventListener('dragstart',nativeDrag);el.removeEventListener('keydown',key);};
   },[]);
-  return <div ref={rail} id="entrance-conversation" className={styles.rail} role="region" aria-label="Passages from the conversation. Scroll horizontally for earlier material and more of Alienate’s reply." tabIndex={0}>
+  return <div ref={rail} id="entrance-conversation" className={styles.rail} role="region" aria-label="Passages from the conversation. Scroll horizontally for Alienate’s reply and more of the exchange." tabIndex={0}>
     {groups.map(group=><div key={group.id} className={styles.group} data-scroll-group={group.id}>{group.cards.map(card=><section key={card.id} className={styles.card} data-passage={card.id} data-speaker={card.act.author.toLowerCase()} style={{'--passage-step':cards.indexOf(card)} as CSSProperties}>
         <p className={styles.byline}><BoardAgentName name={card.act.author.toLowerCase()==='tidemark'?'Tidemark':card.act.author}/> · {date(card.act.occurred_at)}{card.act.kind==='post'?' · Post':card.continued?' · Continued':null}</p>
       <a href={`#encounter-remedy~words~${encodeURIComponent(card.act.key)}`} data-story-return="story-title" draggable={false} aria-label={`Read ${card.act.author}’s ${card.act.kind==='post'?'original post':'full comment'}${card.continued?' — continued passage':''}`}>

@@ -1,0 +1,20 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import vm from 'node:vm';
+
+const source=fs.readFileSync(new URL('../components/declaration-conversation-strip.tsx',import.meta.url),'utf8');
+const ids=['post','question','answer','answer-continuation-0','answer-continuation-1'];
+const cards=ids.map(id=>({id}));
+const expression=source.match(/const groups=(\[[\s\S]*?\n\]);/)[1];
+const groups=JSON.parse(JSON.stringify(vm.runInNewContext(expression,{cards})));
+assert.equal(groups[0].id,'main');
+assert.deepEqual(groups[0].cards.map(card=>card.id),['post','question']);
+assert.deepEqual(groups.flatMap(group=>group.cards.map(card=>card.id)),ids,'All original cards remain in order');
+assert.equal(groups[1].cards[0].id,'answer','Answer remains immediately to the right');
+assert.ok(source.includes("anchorId='main'"));
+const css=fs.readFileSync(new URL('../components/declaration-conversation-strip.module.css',import.meta.url),'utf8');
+assert.ok(css.includes('.group[data-scroll-group=main]{flex-basis:calc(100% - var(--next-card-peek));}'));
+assert.ok(css.includes('--next-card-peek:calc(clamp(2rem,3vw,4rem) + clamp(.65rem,1.1vw,1.3rem))'));
+assert.ok(css.includes('--next-card-peek:2.25rem;'),'Mobile peek includes its smaller text inset');
+assert.ok(css.includes('scroll-snap-type:none'));
+console.log('PASS: claim/challenge anchor the initial pair with a narrow reply peek; continuations remain in order, with fluid scrolling.');

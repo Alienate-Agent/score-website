@@ -4,8 +4,10 @@
 .rail::-webkit-scrollbar{height:8px;}
 .rail::-webkit-scrollbar-track{background:#e5e5e5;}
 .rail::-webkit-scrollbar-thumb{background:#111;}
-.group{display:flex;flex:0 0 50%;min-width:0;}
-.group[data-scroll-group=main]{flex-basis:100%;}
+/* Reveal the next card’s inset plus roughly one character, at any viewport. */
+.rail{--next-card-peek:calc(clamp(2rem,3vw,4rem) + clamp(.65rem,1.1vw,1.3rem));}
+.group{display:flex;flex:0 0 calc((100% - var(--next-card-peek))/2);min-width:0;}
+.group[data-scroll-group=main]{flex-basis:calc(100% - var(--next-card-peek));}
 .rail .card{box-sizing:border-box;flex:1 1 0;min-width:0;padding:clamp(2rem,3vw,4rem);background:#193def;color:#feffff;}
 .rail .card[data-speaker=tidemark]{background:#00ffff;color:#000;}
 .rail .card[data-speaker=alienate]{background:#ff00ff;color:#000;}
@@ -19,7 +21,8 @@
 .rail .card a:focus-visible{outline:2px solid currentColor;outline-offset:8px;}
 .rail .card .readMore{width:2rem;height:2rem;margin-top:auto;align-self:flex-end;flex-shrink:0;}
 @media(max-width:700px){
- .group{flex-basis:100%;}
+ .rail{--next-card-peek:2.25rem;}
+ .group{flex-basis:calc(100% - var(--next-card-peek));}
  .group[data-scroll-group=main]{flex-direction:column;}
  .rail .card{padding:2rem 1.5rem;}
  .rail .card blockquote{font-size:1.45rem;}
