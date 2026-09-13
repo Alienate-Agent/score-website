@@ -1,0 +1,26 @@
+.rail{grid-column:1/-1;display:flex;position:relative;width:100%;min-width:0;overflow-x:auto;overflow-y:hidden;scroll-snap-type:none;scroll-behavior:auto;overscroll-behavior-x:contain;touch-action:pan-x pan-y;cursor:grab;scrollbar-width:thin;scrollbar-color:#111 #e5e5e5;padding-bottom:.75rem;scroll-margin-top:64px;}
+.rail:focus-visible{outline:2px solid #000;outline-offset:-2px;}
+.rail[data-dragging=true],.rail[data-dragging=true] a{cursor:grabbing;user-select:none;}
+.rail::-webkit-scrollbar{height:8px;}
+.rail::-webkit-scrollbar-track{background:#e5e5e5;}
+.rail::-webkit-scrollbar-thumb{background:#111;}
+.group{display:flex;flex:0 0 50%;min-width:0;}
+.group[data-scroll-group=main]{flex-basis:100%;}
+.rail .card{box-sizing:border-box;flex:1 1 0;min-width:0;padding:clamp(2rem,3vw,4rem);background:#193def;color:#feffff;}
+.rail .card[data-speaker=tidemark]{background:#00ffff;color:#000;}
+.rail .card[data-speaker=alienate]{background:#ff00ff;color:#000;}
+.rail .card{margin-top:calc(var(--passage-step) * clamp(1rem,2vw,2rem));}
+.rail .card[data-passage^=answer-continuation]{border-left:1px solid #0005;}
+.rail .card a{height:100%;display:flex;flex-direction:column;align-items:stretch;gap:0;min-height:44px;padding:0;text-decoration:none;color:inherit;cursor:grab;}
+.rail .card .byline{font:450 clamp(.8rem,1.15vw,1.15rem)/1.5 var(--font-agent);font-variation-settings:"MONO" 1,"CASL" 0;margin:0;}
+.rail .card blockquote{font:450 clamp(1.35rem,2.1vw,2.5rem)/1.3 var(--font-agent);font-variation-settings:"MONO" 1,"CASL" 0;letter-spacing:-.02em;margin:2rem 0;overflow-wrap:anywhere;}
+.rail .card a:hover blockquote{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.18em;}
+.rail .card a:focus-visible{outline:2px solid currentColor;outline-offset:8px;}
+.rail .card .readMore{width:2rem;height:2rem;margin-top:auto;align-self:flex-end;flex-shrink:0;}
+@media(max-width:700px){
+ .group{flex-basis:100%;}
+ .group[data-scroll-group=main]{flex-direction:column;}
+ .rail .card{padding:2rem 1.5rem;}
+ .rail .card blockquote{font-size:1.45rem;}
+ .rail .card .byline{font-size:.85rem;}
+}

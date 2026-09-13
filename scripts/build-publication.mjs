@@ -3,9 +3,12 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 import { validatePublication } from './validate-publication.mjs';
+import { validateStudioEntry } from './validate-studio-entry.mjs';
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const denyListPath = process.env.PUBLICATION_DENY_LIST_PATH;
+
+await validateStudioEntry(projectRoot);
 
 await validatePublication({
   root: projectRoot,

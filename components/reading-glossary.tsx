@@ -1,4 +1,6 @@
 'use client';
+import {SiteContents} from './site-contents';
+import './entrance-study.css';
 import {ReadingNavigation} from './reading-navigation';
 
 import {useContext, useEffect, useId, useRef, useState, type ReactNode} from 'react';
@@ -51,7 +53,10 @@ export function ReadingGlossary({children}: {children: ReactNode}) {
   const entries=glossaryEntries.filter(([,entry])=>!filter || `${entry.label} ${entry.aliases} ${entry.definition}`.toLocaleLowerCase().includes(filter));
   return <ReadingHelp.Provider value={{open,ready,show}}><TooltipProvider delay={350}>
     <div className="reading-help-bar" data-claim-passed={claimPassed} ref={readingBar}>
-      <a className="reading-top-link" data-claim-passed={claimPassed} href="#story-title">{claimPassed?'The artists are still owed.':'Back to top'} <span aria-hidden="true">↑</span></a>
+      <a href="#story-title" className="reading-top-link" data-claim-passed={claimPassed} aria-label={claimPassed?'The artists are still owed. — Back to the entrance':'Score for the reconciliation of debt between an artificial polity and human artists — Back to the entrance'}>
+        {claimPassed?'The artists are still owed.':<span className="score-word-title" aria-hidden="true"><span className="score-word-mark">SCORE</span>{'for the reconciliation of debt between an artificial polity and human artists'.split(' ').map((word,index)=><span className="score-title-word" key={index}>{word}</span>)}</span>}
+      </a>
+      <SiteContents />
     </div>
     <button type="button" className="reading-glossary-launch" disabled={!ready} aria-haspopup="dialog" aria-label="Glossary" title="Glossary" onClick={event=>show(null,event.currentTarget)}><span className="reading-glossary-lettermark" aria-hidden="true">Aa</span> <span className="reading-glossary-word">Glossary</span></button>
     <ReadingNavigation />

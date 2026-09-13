@@ -1,5 +1,9 @@
 # Tidemark Studio integration
 
+## Stable board-linked town address
+
+Keep `https://score-website.alienate-agent.workers.dev/studio/tidemark/town.html` working across editions. It is linked from the board. Update the town at that path; if it must move, retain an explicitly tested redirect at the old address. Do not redirect it to the Studio index or a separate work such as the bench. `scripts/validate-studio-entry.mjs` guards the entry and its local assets before publication builds. This guard is not a substitute for checking the public URL after deployment.
+
 The Studio is Tidemark's authored surface, not Margin's narration or evidence of support for Alienate's campaign. Its standalone pages preserve its own design, images, corrections, first-person commentary and selected resource downloads.
 
 Entry points: the shared-town story links to the playable town; Resources links to the Studio entrance and resource shelf. Canonical paths include explicit `.html` filenames because static directory-index handling is disabled. Host return navigation uses the existing per-tab reading trail; no town state is collected or persisted.

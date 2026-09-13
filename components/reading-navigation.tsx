@@ -14,9 +14,9 @@ export function ReadingNavigation(){
    const edge=bar.current?.getBoundingClientRect().bottom||limit;
    const heading=[...document.querySelectorAll<HTMLElement>('[data-story-fold] h2[id]')].filter(h=>h.getClientRects().length&&h.getBoundingClientRect().bottom<edge&&((h.closest('section')?.getBoundingClientRect().bottom||0)>edge)).at(-1);
    setEntry(heading?{id:heading.id,text:heading.textContent||''}:null);
-   if(!title||title.getBoundingClientRect().top>limit){setSection('');return;}
+   if(!title||title.getBoundingClientRect().top>limit){document.documentElement.dataset.readingSurface='entrance';setSection('');return;}
    const areas=[...document.querySelectorAll<HTMLElement>('[data-story-fold],#connected-score,#story-exploration,#story-instruments,#resources,#correspondence')].filter(e=>e.getClientRects().length&&e.getBoundingClientRect().top<=limit+120&&e.getBoundingClientRect().bottom>limit);
-   const area=areas.at(-1);setSection(area?.id==='connected-score'?'CONVERSATIONS':area?.id==='story-instruments'?'SCORE & PUBLIC RECORDS':area?.id==='story-exploration'?'EXPLORE':area?.id==='resources'?'RESOURCES':area?.id==='correspondence'?'CORRESPONDENCE':'THE STORY SO FAR S…');
+   const area=areas.at(-1);document.documentElement.dataset.readingSurface=area?.id==='connected-score'?'conversation':area?.hasAttribute('data-story-fold')?'story':'other';setSection(area?.id==='connected-score'?'CONVERSATIONS':area?.id==='story-instruments'?'SCORE & PUBLIC RECORDS':area?.id==='story-exploration'?'EXPLORE':area?.id==='resources'?'RESOURCES':area?.id==='correspondence'?'CORRESPONDENCE':area?.hasAttribute('data-story-fold')?'THE STORY SO FAR S…':'');
   };
   const schedule=()=>{if(!frame)frame=requestAnimationFrame(update);};
   const reveal=()=>{let target:Element|null=null;try{target=document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch{}if(target?.closest('[data-story-fold]'))setCollapsed(false);for(let node:Element|null=target;node;node=node.parentElement)if(node instanceof HTMLDetailsElement)node.open=true;schedule();};
@@ -31,9 +31,9 @@ export function ReadingNavigation(){
  }
  return <div className="reading-navigation" ref={bar}>
   <div className="reading-trail-row"><nav id="reading-trail" aria-label="Your reading trail" />
-   {section&&!section.startsWith('THE STORY')&&!collapsed&&<button className="reading-collapse-inline" type="button" onClick={toggle} aria-expanded="true" aria-controls="story-narrative" title="Collapse story" aria-label="Collapse story"><ChevronUp size={20}/></button>}
+   {section.startsWith('THE STORY')&&!collapsed&&<button className="reading-collapse-inline" type="button" onClick={toggle} aria-expanded="true" aria-controls="story-narrative" title="Collapse story" aria-label="Collapse story"><ChevronUp size={20}/></button>}
   </div>
-  {(section.startsWith('THE STORY')||collapsed)&&<div className="reading-section-bar" data-story-title={true}>
+  {(section.startsWith('THE STORY'))&&<div className="reading-section-bar" data-story-title={true}>
    <button type="button" onClick={toggle} aria-expanded={!collapsed} aria-controls="story-narrative" title={collapsed?'Expand story':'Collapse story'} aria-label={collapsed?'Expand story':'Collapse story'}>{collapsed?<ChevronDown size={20}/>:<ChevronUp size={20}/>}</button>
    {!collapsed&&section.startsWith('THE STORY')&&entry&&<a className="reading-entry-headline" href={'#'+entry.id} title={'Back to '+entry.text}>{entry.text}</a>}
    {collapsed||section.startsWith('THE STORY')?<span className="reading-section-title" aria-label="The story so far"><StoryTitleMark compact /></span>:<span>{section}</span>}

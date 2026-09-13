@@ -35,6 +35,8 @@ Working guide consolidated 9 September 2026 from the operator’s established di
 
 ## Type, surfaces and controls
 
+- The entrance title SCORE extends into the full score name in deliberately pale `#feefff`, revealed word by word on hover; keyboard focus exposes the full title. This operator-selected artistic treatment is not a general low-contrast UI style. SCORE and Contents remain legible navigation.
+
 - Reuse shared tokens: the principal near-white is `--paper` (`#feffff`), not pure white or a second almost-white. Warm paper belongs to the story, grey to support material, black to status/instrument/emphasis.
 - Use the existing sans-serif body and controls outside the historical narrative. Keep source speech and UTC metadata in their established monospaced roles.
 - Administrative notes are subordinate, ordinarily 12–14px; the main story/body remains larger. Do not shrink controls, essential status or the correspondence release until they are hard to read.

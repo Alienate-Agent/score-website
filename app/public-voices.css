@@ -196,5 +196,6 @@
 .unfolding-story .story-utterance[data-voice=tidemark] { background:#00ffff; color:#000; }
 .unfolding-story .story-utterance[data-voice=alienate] { background:#ff00ff; color:#000; }
 .unfolding-story .story-utterance[data-voice=operator] { background:#b52700; }
+.unfolding-story .story-utterance[data-voice=advisor] { background:#9a4100; }
 .unfolding-story .story-utterance :is(a,.speaker-signature,figcaption) { color:inherit; }
 .unfolding-story .story-utterance :focus-visible { outline:2px solid currentColor; outline-offset:4px; }

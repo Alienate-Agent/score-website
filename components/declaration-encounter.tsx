@@ -6,6 +6,7 @@ import { SpeakerSignature } from './speaker-notation';
 import { Term } from './reading-glossary';
 import { declarationAnswer, declarationQuestion, declarationExcerpts, declarationPosition, type DeclarationPosition } from '../lib/declaration';
 import styles from './declaration-encounter.module.css';
+import {DeclarationConversationStrip} from './declaration-conversation-strip';
 
 /** A site-authored arrangement of already admitted words, not a new exchange. */
 export function DeclarationEncounter() {
@@ -18,7 +19,7 @@ export function DeclarationEncounter() {
   useEffect(() => {
     const read = () => {
       const next = declarationPosition(window.location.hash);
-      if (next && next !== position) { setPosition(next); setArrival(n => n + 1); }
+      if (next) { setPosition(next); setArrival(n => n + 1); }
     };
     read();
     window.addEventListener('hashchange', read);
@@ -45,34 +46,30 @@ export function DeclarationEncounter() {
   return <div className={styles.work} data-declaration-position={position}>
     <div ref={stage} className={styles.stage}>
       <section className={styles.claim} aria-label="The artist’s claim">
-        <p className={styles.byline}><SpeakerSignature voice="Artist Operator" /></p>
+        <p className={styles.byline}><SpeakerSignature voice="Artist Operator" /><span className={styles.claimLabel}>Artist claim</span></p>
         <h1 id="story-title" ref={claim} tabIndex={-1}>The artists<br />are still owed.</h1>
-        {position === 'claim' ? <div className={styles.premise}>
-          <p>An artist argues that AI owes a debt to the human creative work used to train it. The proposed repayment: persuade an existing online community of AI agents to use its shared funds to buy human art, pay its makers and exhibit the work.</p>
-          <p>The artist builds two AI agents for the <Term id="board">1F916 board</Term>, under different rules. <Term id="alienate">Alienate</Term> must argue the case. <Term id="tidemark">Tidemark</Term> can choose whether to support it.</p>
-          <a href="#story-beginning">Read the story <ArrowDown aria-hidden="true" /></a>
-        </div> : <>
+        {position !== 'claim' && <>
           <p className={styles.remains}>The proposed repayment: buy human art, pay its makers and exhibit the work.</p>
           <button onClick={() => bring('claim')}><ArrowLeft aria-hidden="true" /> Return to the declaration</button>
           <a href="#story-beginning">How the artist began <ArrowDown aria-hidden="true" /></a>
         </>}
       </section>
 
-      <section className={styles.question} aria-label="Tidemark’s question to Alienate">
+      {position === 'claim' ? <DeclarationConversationStrip /> : <><section className={styles.question} aria-label="Tidemark’s question to Alienate">
         <a className={styles.quoteLink} href={source('question')} data-story-return={returnId} aria-label="Read Tidemark’s question and Alienate’s answer">
-        <p className={styles.byline}><SpeakerSignature voice="Tidemark" /><span>6 September · asks Alienate</span></p>
+        <p className={styles.byline}>Tidemark · 6 September</p>
         <blockquote id="declaration-question" ref={question} tabIndex={-1} cite={declarationQuestion.url} data-declaration-excerpt="question">{declarationExcerpts.question}</blockquote>
-        <span className={styles.replyNote}>Alienate replied · 7 September <ArrowUpRight aria-hidden="true" /></span>
         </a>
       </section>
 
-      {position !== 'claim' && <section className={styles.answer} aria-label="Alienate’s answer to Tidemark">
+      <section className={styles.answer} aria-label="Alienate’s answer to Tidemark">
         <a className={styles.quoteLink} href={source('answer')} data-story-return={returnId} aria-label="Read Alienate’s full answer">
-        <p className={styles.byline}><SpeakerSignature voice="Alienate" /><span>7 September · answers Tidemark</span></p>
+        <p className={styles.byline}>Alienate · 7 September</p>
         <blockquote id="declaration-answer" ref={answer} tabIndex={-1} cite={declarationAnswer.url} data-declaration-excerpt="answer">{declarationExcerpts.answer}</blockquote>
         <ArrowUpRight aria-hidden="true" />
         </a>
-      </section>}
+      </section>
+      </>}
     </div>
   </div>;
 }

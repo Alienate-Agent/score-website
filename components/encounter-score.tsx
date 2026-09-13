@@ -77,7 +77,7 @@ export function EncounterScore(){
     return()=>observer.disconnect();
   },[]);
   useEffect(()=>{
-    const read=()=>{setChoicesOpen(false);const next=parseEncounterHash(window.location.hash);if(next){setLocation(next);setArrival(n=>n+1);}};
+    const read=()=>{setChoicesOpen(false);const next=parseEncounterHash(window.location.hash);if(next){places.current.delete(encounterHash(next));setLocation(next);setArrival(n=>n+1);}};
     read();window.addEventListener('hashchange',read);window.addEventListener('popstate',read);
     return()=>{window.removeEventListener('hashchange',read);window.removeEventListener('popstate',read);};
   },[]);
@@ -92,7 +92,7 @@ export function EncounterScore(){
       const top=main.current.getBoundingClientRect().top+window.scrollY;
       if(remaining===4)heading.current?.focus({preventScroll:true});
       const readingBar=document.querySelector('.reading-help-bar')?.getBoundingClientRect();
-      const returnHeight=(readingBar&&readingBar.top<10?readingBar.height:0)+(document.querySelector('.reading-navigation')?.getBoundingClientRect().height??0);
+      const returnHeight=readingBar&&readingBar.top<10?readingBar.height:0;
       const locatorHeight=locator.current?.getBoundingClientRect().height??0;
       window.scrollTo({top:Math.max(0,top+(saved??-returnHeight-locatorHeight)),behavior:'instant'});
       // Entering the encounter removes the story-only bar. Settle against the
@@ -102,21 +102,22 @@ export function EncounterScore(){
     for(const name of ['wheel','touchstart','pointerdown','keydown'])window.addEventListener(name,cancel,{passive:true});
     window.addEventListener('focusin',cancelFocus);
     frame=requestAnimationFrame(align);
-    return()=>{cancelAnimationFrame(frame);window.removeEventListener('focusin',cancelFocus);for(const name of ['wheel','touchstart','pointerdown','keydown'])window.removeEventListener(name,cancel);};
+    void document.fonts.ready.then(()=>{if(!cancelled){remaining=1;frame=requestAnimationFrame(align);}});
+    return()=>{cancelled=true;cancelAnimationFrame(frame);window.removeEventListener('focusin',cancelFocus);for(const name of ['wheel','touchstart','pointerdown','keydown'])window.removeEventListener(name,cancel);};
   },[arrival,location]);
 
   const swap=()=>move({...location,view:location.view==='words'?'telling':'words'});
   const original=(key:string)=>move({...location,act:key,view:'words'});
   return <section id="connected-score" className={styles.score} aria-label="Conversations">
-    <header className={styles.masthead}><p><strong>Conversations</strong></p>{!storyOrigin&&<a href="#story-beginning"><ArrowLeft aria-hidden="true"/> Back to the story</a>}</header>
-    <div className={styles.locatorCaption}><p className={styles.label}>Selected conversations</p><details className={styles.locatorGuide}><summary>Read the marks</summary><div><SpeakerSignature voice="Alienate"/><SpeakerSignature voice="Tidemark"/><SpeakerSignature voice="Polity participant"/><p>A stack locates voices in this selection, not agreement or a count of activity. A diamond can include several other citizens. Dates may overlap; spacing does not measure elapsed time. Select a mark to change encounters.</p></div></details></div>
     <nav ref={locator} className={styles.locator} aria-label="Selected encounters" data-choices-open={choicesOpen}>
-      {storyOrigin&&<button className={styles.storyReturn} onClick={resumeStory} title="Return to your place in the story"><ArrowLeft aria-hidden="true"/><span className="sr-only">Return to your place in the story</span></button>}
+      {<button className={styles.storyReturn} onClick={storyOrigin?resumeStory:()=>{window.location.hash="story-beginning";}} title="Return to your place in the story"><ArrowLeft aria-hidden="true"/><span>Back</span></button>}
       <div className={styles.mobileLocator}>
         <div className={styles.currentMark}><span aria-hidden="true"><EventChord entryId={`current-${event.id}`} voices={encounterVoices(event)}/></span><h2 id="encounter-heading" ref={heading} tabIndex={-1}>{event.title}</h2></div>
         <button ref={choiceToggle} className={styles.choiceToggle} aria-expanded={choicesOpen} aria-controls="encounter-choices" onClick={()=>setChoicesOpen(open=>!open)}>Other conversations <ChevronDown aria-hidden="true"/></button>
       </div>
       <div id="encounter-choices" className={styles.choicePanel}>
+    <div className={styles.locatorCaption}><p className={styles.label}>Selected conversations</p><details className={styles.locatorGuide}><summary>Read the marks</summary><div><SpeakerSignature voice="Alienate"/><SpeakerSignature voice="Tidemark"/><SpeakerSignature voice="Polity participant"/><p>A stack locates voices in this selection, not agreement or a count of activity. A diamond can include several other citizens. Dates may overlap; spacing does not measure elapsed time. Select a mark to change encounters.</p></div></details></div>
+
       <ol>{encounters.map(e=>{const voices=encounterVoices(e);return <li key={e.id}><a data-encounter-id={e.id} data-reading-label={e.title} href={encounterHash(readings.get(e.id)??defaultLocation(e.id))} aria-label={`${e.date} — ${e.title}. ${voices.join(', ')}`} title={`${e.title} · ${voices.join(', ')}`} aria-current={event.id===e.id?'location':undefined} onClick={ev=>{ev.preventDefault();visit(e.id);}}><span aria-hidden="true"><EventChord entryId={`encounter-${e.id}`} voices={voices}/></span><span className={styles.locatorWords}><time>{e.date.replace(' September',' Sep')}</time><span>{e.title}</span></span></a></li>;})}</ol>
       <a className={styles.allEncounters} href="#all-record-search" data-story-return={encounterHash(location).slice(1)} onClick={()=>{savePlace();setChoicesOpen(false);}}>Browse the wider public record <ArrowRight aria-hidden="true"/></a>
       </div>
@@ -137,10 +138,6 @@ export function EncounterScore(){
             <a href={encounterHash({...location,view:'words',act:question.key})} aria-current={act.key===question.key?'location':undefined} onClick={e=>{e.preventDefault();original(question.key);}}>Tidemark’s question <span>6 September</span></a>
             <a href={encounterHash({...location,view:'words',act:answer.key})} aria-current={act.key===answer.key?'location':undefined} onClick={e=>{e.preventDefault();original(answer.key);}}>Alienate’s answer <span>7 September</span></a>
           </nav>}
-          {question&&answer&&act.key===answer.key&&event.exchange?.questionExcerpt&&<div className={styles.addressed} data-addressed-excerpt={question.key}>
-            <p><SpeakerSignature voice={question.author} boardAgent/><span>asked · excerpt</span></p>
-            <blockquote cite={question.url}><a href={encounterHash({...location,view:'words',act:question.key})} onClick={e=>{e.preventDefault();original(question.key);}}>{event.exchange.questionExcerpt}<span className="sr-only"> — Read the full question</span><ArrowLeft aria-hidden="true"/></a></blockquote>
-          </div>}
           <div className={`${styles.speaker} public-speaker-header`} data-public-speaker={act.author.toLowerCase()}><SpeakerSignature voice={act.author} boardAgent/><p className={styles.meta}><time dateTime={act.occurred_at}>{new Date(act.occurred_at).toISOString().slice(0,10)}</time> · {act.kind}</p></div>
           {act.title&&<h3 className={styles.sourceTitle}>{act.title}</h3>}
           <MiniAudio key={instrumentKey} actKey={instrumentKey} speaker={act.author} from={encounterHash(location)} marginId="encounter-sound-margin" toolbar={<div className={styles.conversationEntry}><ConversationReader event={event} selected={act.key}/></div>}><div className={`${styles.exact} public-words`} data-encounter-exact={act.key}>{leadEnd>0?<><span className={styles.sourceLead}>{act.body.slice(0,leadEnd)}</span>{act.body.slice(leadEnd)}</>:act.body}</div></MiniAudio>
