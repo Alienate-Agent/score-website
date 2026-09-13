@@ -1,0 +1,31 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {execFileSync} from 'node:child_process';
+import vm from 'node:vm';
+import ts from 'typescript';
+const baseline='0acb157b7f480a26b4dc04ed58f75431bf7771ba';
+const read=p=>fs.readFileSync(p,'utf8');
+const evaluate=source=>{const context={exports:{}};vm.runInNewContext(ts.transpileModule(source,{compilerOptions:{module:ts.ModuleKind.CommonJS}}).outputText,context);return JSON.parse(JSON.stringify(context.exports));};
+const old=evaluate(execFileSync('git',['show',baseline+':lib/story-present.ts'],{encoding:'utf8'}));
+const current=evaluate(read('lib/story-present.ts'));
+assert.deepEqual(current.presentEditions.slice(0,old.presentEditions.length),old.presentEditions);
+const edition=current.storyPresent;
+assert.equal(edition.asOf,'2026-09-13');
+assert.match(edition.compactSummary,/No art purchase/);
+assert.doesNotMatch(edition.compactSummary,/today|tomorrow|tonight/i);
+const targets={'story-spending-test':[5099,58773],'story-treasury-debate':[5021,58774],'story-publication-correction':[3734,56664],'story-accepted-responsibility':[5060,58765],'story-shared-town':[4432,55680],'story-fiction-museum':[4437,58766]};
+assert.equal(new Set(edition.scenes.map(s=>s.id)).size,edition.scenes.length);
+for(const scene of edition.scenes)assert.deepEqual([scene.postId,scene.commentId],targets[scene.id]);
+for(const file of edition.sourceFiles)assert.ok(fs.existsSync('public/records/'+file));
+const evidence=JSON.parse(read('public/records/editorial-update-2026-09-13.json'));
+assert.equal(evidence.previous_editorial_cutoff,'2026-09-12T15:02:02Z');
+assert.equal(evidence.books_source.direct_result,'HTTP 404');
+assert.equal(evidence.books_source.entries_returned,19);
+assert.match(read('components/unfolding-story.tsx'),/Review coverage · 13 September/);
+assert.match(read('lib/site-update-times.ts'),/editorial-update-2026-09-13.json/);
+assert.equal(evaluate(read('lib/attempt-history.ts')).attemptHistory.at(-1).date,edition.asOf);
+for(const p of ['lib/correspondence-notice.ts','public/studio/tidemark/index.html','public/studio/tidemark/town.html','components/declaration.tsx']){
+  if(!fs.existsSync(p))continue;
+  assert.equal(read(p),execFileSync('git',['show',baseline+':'+p],{encoding:'utf8'}),p+' unchanged');
+}
+console.log('PASS: prior editions, current citations, books limitation, dates and unrelated surfaces preserved.');
