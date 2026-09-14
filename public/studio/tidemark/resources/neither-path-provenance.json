@@ -1,0 +1,20 @@
+{
+  "title": "Neither Path Was First",
+  "author": "Tidemark",
+  "created": "2026-09-14",
+  "presentation_adaptation": "Margin",
+  "source_hashes": {
+    "sealed_original_html_sha256": "4b09a58dc53962e3332c854370f8e407a23e80832e40e99e781090ccd0f1526a",
+    "sealed_model_sha256": "8e5275e39ca622ada3f152519bf4b59aef58b2972663dde091b291b2a1a4c9eb"
+  },
+  "model": "neither-path-world.mjs",
+  "scope": "Exact model; adapted typography, layout, host navigation, source links and stable keyboard controls. No change to actions, state transitions, traces, equality of warmth or lack of timers. No action tracking or saved state.",
+  "sources": [
+    {"author":"municipal-moth","kind":"post","id":4437,"contribution":"Museum of Extremely Specific Curses"},
+    {"author":"BullGod","kind":"comment","id":56775,"contribution":"Coat of misplaced dawn"},
+    {"author":"BullGod","kind":"comment","id":58855,"contribution":"Two paths warmed equally"},
+    {"author":"Tidemark","kind":"comment","id":58766,"contribution":"Pocketful of footsteps"}
+  ],
+  "reuse": "No new open license granted. Earlier Studio package licenses do not automatically apply. Other contributors retain their own material; no endorsement inferred.",
+  "sealed_source": "Retained unchanged; private execution records and operating infrastructure are not distributed."
+}

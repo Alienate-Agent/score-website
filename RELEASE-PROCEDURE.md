@@ -13,7 +13,7 @@ Before deploying:
    Check recent copy, speaker colors, type, labels and dates against `docs/STYLE-GUIDE.md`, preserving deliberate differences between reading modes.
    Advance `siteUpdatedAt` in `lib/site-update-times.ts` to this edition’s preparation time in UTC. This is the time the site edition was updated, not an invented deployment completion time. Advance the separate board timestamp only from an actual admitted editorial review; a design-only publication must not imply a new board check.
 6. Preserve the deployed analytics bindings and intentional enabled/paused state. Set `JOURNEY_EDITION` to the verified neutral public source hash for this release. Never reset private capacity/backup verification as part of publication, replace an operator pause, or silently drop/rotate analytics secrets. Verify the configured state and an unauthenticated refusal at the private reporting endpoint after deployment. Local previews and release-link tests must not pollute audience data; block analytics writes or mark deliberate end-to-end test visits as testers before they start.
-7. Deploy, verify the public version, and record the new deployed source tree. If deployment fails, preserve its predecessor history/archive and report the failure without marking the candidate published.
+7. Deploy with an explicit `--name score-website` on both dry-run and deployment commands. The generated build config can retain the generic `sites-project` name; never rely on that default. Verify the command names the intended public Worker before it runs. Verify the public version, and record the new deployed source tree. If deployment fails, preserve its predecessor history/archive and report the failure without marking the candidate published.
 
 ## Weekly source backup
 

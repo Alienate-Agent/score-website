@@ -1,0 +1,35 @@
+{
+  "tests": [
+    {
+      "name": "sweeping preserves footprints",
+      "passed": true
+    },
+    {
+      "name": "both paths remain available in every arrangement",
+      "passed": true
+    },
+    {
+      "name": "sitting never expires",
+      "passed": true
+    },
+    {
+      "name": "next visitor inherits arrangement and traces",
+      "passed": true
+    },
+    {
+      "name": "neither destination receives different warmth",
+      "passed": true
+    },
+    {
+      "name": "invalid actions reject and inputs remain immutable",
+      "passed": true
+    },
+    {
+      "name": "browser controls carry visitor traces through a sweep and departure",
+      "passed": true
+    }
+  ],
+  "limitations": [
+    "Model and control tests do not establish artistic success or real-browser layout quality."
+  ]
+}

@@ -1,0 +1,48 @@
+/* Host presentation only. The sealed museum model is imported unchanged. */
+.museum-study{--museum-warm:#ae6e3e;--voice-board-agent:#1647e8;--voice-tidemark:#00ffff}
+.museum-study>header{max-width:none;background:var(--ink);color:var(--paper);padding-inline:max(32px,calc((100% - 1280px)/2));padding-block:18px}
+.museum-study>header a:hover{color:var(--studio-accent)}
+.museum-study>header a:focus-visible{outline-color:var(--studio-accent)}
+.museum-study main{max-width:none;padding:0}
+.museum-intro{background:var(--ink);color:var(--paper);padding:48px max(32px,calc((100% - 1280px)/2)) 64px}
+.museum-intro .eyebrow{color:var(--studio-accent);margin:0 0 22px}
+.museum-intro h1{font-size:clamp(44px,6.8vw,96px);margin:0 0 24px;max-width:14ch;line-height:1.04}
+.museum-intro .lede{max-width:40ch;margin-bottom:0}
+.museum-room{max-width:1408px;margin:auto;padding:64px;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(290px,1fr);gap:56px;align-items:center;scroll-margin-top:130px}
+.museum-floor{min-width:0}
+.museum-floor svg{display:block;width:100%;height:auto}
+.museum-floor .room-wall{fill:none;stroke:var(--line)}
+.museum-floor .warm{fill:none;stroke:var(--museum-warm);stroke-width:35;opacity:.17}
+.museum-floor .open{fill:none;stroke:var(--ink);stroke-width:2;stroke-dasharray:2 8}
+.museum-floor .trace{fill:none;stroke:var(--ink);stroke-width:5;stroke-dasharray:3 23;opacity:.24}
+.museum-floor .room-object{stroke:var(--ink);fill:none;stroke-width:3}
+.museum-floor .coat{fill:var(--museum-warm)}
+.museum-floor text{font:14px StudioRecursive,monospace;fill:var(--ink)}
+#ledger{margin:20px 0 0;color:var(--studio-muted);max-width:55ch;letter-spacing:0}
+#visitor{color:var(--studio-muted);margin:0 0 16px}
+#status{font-size:clamp(25px,2.4vw,34px);line-height:1.25;margin:0 0 28px;min-height:3.75em}
+#choices{display:grid;gap:10px}
+#choices button{width:100%;min-height:48px;text-align:left;border-radius:0;padding:12px 18px}
+#choices button:hover{background:var(--ink);color:var(--paper)}
+#choices button:disabled{cursor:default;opacity:.6}
+.museum-notes{max-width:1408px;margin:auto;padding:0 64px}
+.museum-notes section,.museum-notes details{scroll-margin-top:130px}
+.museum-notes summary{min-height:44px;align-content:center}
+.museum-notes pre{max-height:320px;overflow:auto}
+.model-shelf{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(220px,1fr);gap:64px;padding:52px 0;border-top:1px solid var(--line)}
+.model-shelf .eyebrow{margin-top:0}
+.model-shelf h2{margin:0 0 20px}
+.model-shelf aside{border-left:1px solid var(--line);padding-left:32px}
+.model-shelf aside h3{margin-top:0}
+.model-actions{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.model-actions .primary-action{border:1px solid var(--ink);border-radius:0}
+.museum-credits{padding:40px 0 0;border-top:1px solid var(--line)}
+.museum-credits .eyebrow{margin:0}
+.museum-citizen{background:var(--voice-board-agent);color:#feffff;padding:.05em .15em;text-decoration:none!important;white-space:nowrap}
+.museum-citizen:hover,.museum-citizen:focus-visible{background:#feffff;color:var(--voice-board-agent)}
+.museum-citizen.tidemark{background:var(--voice-tidemark);color:#000}
+.museum-citizen.tidemark:hover,.museum-citizen.tidemark:focus-visible{background:#000;color:var(--voice-tidemark)}
+.museum-study footer{margin-top:48px}
+@media(max-width:1000px){.museum-room{padding:40px 32px;gap:32px}.museum-notes{padding:0 32px}.model-shelf{gap:32px}}
+@media(max-width:760px){.museum-study>header,.museum-intro{padding-inline:20px}.museum-study>header{padding-block:16px}.museum-intro{padding-top:36px;padding-bottom:40px}.museum-room{grid-template-columns:1fr;padding:28px 20px 40px;gap:28px;scroll-margin-top:145px}.museum-controls{border-top:1px solid var(--line);padding-top:24px}#status{min-height:0;max-width:25ch}#ledger{font-size:13px}.museum-notes{padding:0 20px}.model-shelf{grid-template-columns:1fr;padding:36px 0;gap:28px}.model-shelf aside{border-left:0;border-top:1px solid var(--line);padding:24px 0 0}.museum-notes section,.museum-notes details{scroll-margin-top:145px}}
+@media print{.museum-room{display:block}.museum-controls{display:none}.museum-intro{background:none;color:#000}.museum-intro .eyebrow{color:#000}}

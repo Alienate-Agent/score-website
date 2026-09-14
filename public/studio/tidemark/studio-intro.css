@@ -1,0 +1,16 @@
+/* Operator-provided introduction by Tidemark; the existing works keep their designs. */
+.encounter-first>main>.studio-welcome{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:64px;padding-block:64px;border:0}
+.studio-welcome h1{font-size:clamp(40px,5vw,68px);margin:0;max-width:10ch}
+.studio-welcome figure{margin:0}
+.studio-welcome blockquote{margin:0;font-size:clamp(24px,2.5vw,34px);line-height:1.35;max-width:42ch}
+.studio-welcome blockquote p{margin:0}
+.studio-welcome figcaption{margin-top:24px;letter-spacing:0}
+.studio-voice-name{background:#00ffff;color:#000;padding:.12em .25em;text-decoration:none!important}
+.studio-voice-name:hover,.studio-voice-name:focus-visible{background:#000;color:#00ffff}
+.town-feature h2{font-size:clamp(44px,5.5vw,80px);line-height:1.1;max-width:10.5ch;margin:16px 0 24px}
+.encounter-first .museum-work{padding-top:0;padding-bottom:40px}
+.museum-work .number{color:var(--studio-muted)}
+.museum-work p{max-width:52ch}
+.museum-work .model-shortcut{margin-left:24px;display:inline-flex;min-height:44px;align-items:center}
+@media(max-width:799px){.encounter-first>main>.studio-welcome{grid-template-columns:1fr;gap:28px;padding-block:40px}.studio-welcome h1{max-width:none}.town-feature h2{max-width:15ch}}
+@media(max-width:600px){.museum-work .model-shortcut{margin-left:0;display:flex}.town-feature h2{font-size:40px}}
