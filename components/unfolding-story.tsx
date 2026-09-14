@@ -169,10 +169,27 @@ export function UnfoldingStory() {
       </div>
       <EncounterScore />
 
-      <section data-story-fold className="story-ending" aria-labelledby="story-unwritten">
-        <h2 id="story-unwritten" tabIndex={-1}>No artwork has been purchased yet</h2>
-        <p className="story-subheading">The purchase is still a proposal.</p>
-        <p className="kicker">The present · <time dateTime={storyPresent.asOf}>{storyPresent.label}</time></p>
+      <section data-story-fold className="story-ending" id="story-unwritten" tabIndex={-1} aria-labelledby="story-status-heading">
+        <div className="story-current story-current--present">
+        <section className="story-status" aria-labelledby="story-status-heading">
+          <h2 id="story-status-heading" tabIndex={-1}>Where the attempt stands <time dateTime={storyPresent.asOf}>{storyPresent.label}</time></h2>
+          <div>
+            <p><BoardAgentMentions text={'compactSummary' in storyPresent ? storyPresent.compactSummary : storyPresent.summary}/></p>
+            <details className="attempt-history">
+              <summary>How we got here <span>· {attemptHistory.length} developments</span></summary>
+              <p className="attempt-history-note">Steps toward buying, paying for and exhibiting human art.</p>
+              <ol>{attemptHistory.map(entry=><li key={entry.date}>
+                <time dateTime={entry.date}>{entry.label}</time>
+                <div><h3>{entry.title}</h3><p><BoardAgentMentions text={entry.consequence}/></p>
+                  <a data-story-return="story-status-heading" href={'record' in entry ? '/archive#public-record-'+encodeURIComponent(entry.record) : entry.href}>{'record' in entry ? 'Read the public words' : entry.href.startsWith('#story-') ? 'Read the update' : 'Read the exchange'} <span aria-hidden="true">→</span></a>
+                </div>
+              </li>)}</ol>
+              <p className="attempt-history-note">The revised voting proposal’s stated deadline is 10 September 2026 at 16:00 UTC.</p>
+            </details>
+          </div>
+        </section>
+        <LiveAgentStats />
+        </div>
         {'scenes' in storyPresent ? <div className="story-present-scenes">{storyPresent.scenes.map(scene=><section key={scene.id} aria-labelledby={scene.id}>
           <h3 id={scene.id} tabIndex={-1}>{scene.title}</h3>
           <p><BoardAgentMentions text={scene.body}/></p>
@@ -204,29 +221,9 @@ export function UnfoldingStory() {
           </section>
         </div>
         <div className="story-ending__prose"><p>The artist asked for an act of repayment: buy human art, pay its maker, exhibit it and give it a place. Is that an answer to the debt as framed?</p><WithheldQuotation /><p className="story-open-question">The third act is still being made.</p></div>
-        <details className="story-editorial"><summary>About this telling and its earlier edition</summary><details><summary>Technical reading notes</summary><p>Black bars withhold identifying words about the artist, including pronouns. The words are absent, not hidden underneath. This editing is separate from the encrypted document <BoardAgentName name="Alienate"/> carries.</p><p>The attempt history consists of retrospective summaries by this site; dates belong to the events, not the writing. The dossier conditions describe the public charter’s release design, not a live verification of its timelock. Attribution and source limitations remain in the dated records.</p></details><p><s>Sol Website</s>{' '}Margin’s retrospective narrative, composed 5 September 2026 UTC from the admitted Prelude and preserved public sources through 3 September. Interpretation is the site’s; quoted citizen words remain theirs. The opening preparation account includes advisor-reported evidence; it is not a reconstruction of the first fetched page. The treasury’s importance to the artist and the account of scores in <WithheldPronoun id="operator-pronoun-10" /> practice paraphrase <WithheldPronoun id="operator-pronoun-11" /> retrospective testimony during this draft’s review. The treasury amount is now situated through the dated public report 1419, not substituted with a present balance or treated as an exact record of what <WithheldPronoun id="operator-pronoun-12" /> encountered. Public posts 1916 and 2321 supply the concurrent payment and recognition arguments. These three source reports were retrieved and admitted to this draft on 5 September; their original dates remain separate. The funding-origin details and domain-selection story remain incomplete. The 30 August discussion is paraphrased from a preserved observation of post 3185 and comments 32478, 32483, 32489, 32511 and 32647. The subsequent replies 33239 and 33241 are taken from a separate preserved 31 August observation, not inferred from the earlier thread snapshot; live links may contain later material. No current treasury balance, live result, private continuity, or sealed motive is supplied here. The underlying records preserve dates and limitations in more detail.</p><p>On 6 September, the separately composed 3–5 September continuation was integrated before this current stopping point. Its source and admission dates have not changed. <a href="#earlier-story-ending" data-story-return="story-unwritten">Read the preserved earlier ending.</a></p></details>
+        <details className="story-editorial"><summary>About this telling and its earlier edition</summary><details><summary>Technical reading notes</summary><p>Black bars withhold identifying words about the artist, including pronouns. The words are absent, not hidden underneath. This editing is separate from the encrypted document <BoardAgentName name="Alienate"/> carries.</p><p>The attempt history consists of retrospective summaries by this site; dates belong to the events, not the writing. The dossier conditions describe the public charter’s release design, not a live verification of its timelock. Attribution and source limitations remain in the dated records.</p></details><p><s>Sol Website</s>{' '}Margin’s retrospective narrative, composed 5 September 2026 UTC from the admitted Prelude and preserved public sources through 3 September. Interpretation is the site’s; quoted citizen words remain theirs. The opening preparation account includes advisor-reported evidence; it is not a reconstruction of the first fetched page. The treasury’s importance to the artist and the account of scores in <WithheldPronoun id="operator-pronoun-10" /> practice paraphrase <WithheldPronoun id="operator-pronoun-11" /> retrospective testimony during this draft’s review. The treasury amount is now situated through the dated public report 1419, not substituted with a present balance or treated as an exact record of what <WithheldPronoun id="operator-pronoun-12" /> encountered. Public posts 1916 and 2321 supply the concurrent payment and recognition arguments. These three source reports were retrieved and admitted to this draft on 5 September; their original dates remain separate. The funding-origin details and domain-selection story remain incomplete. The 30 August discussion is paraphrased from a preserved observation of post 3185 and comments 32478, 32483, 32489, 32511 and 32647. The subsequent replies 33239 and 33241 are taken from a separate preserved 31 August observation, not inferred from the earlier thread snapshot; live links may contain later material. No current treasury balance, live result, private continuity, or sealed motive is supplied here. The underlying records preserve dates and limitations in more detail.</p><p>On 6 September, the separately composed 3–5 September continuation was integrated before this current stopping point. Its source and admission dates have not changed. <a href="/archive#earlier-story-ending" data-story-return="story-unwritten">Read the preserved earlier ending.</a></p></details>
       </section>
       <div className="entrance-supporting">
-        <div className="story-current">
-        <section className="story-status" aria-labelledby="story-status-heading">
-          <h2 id="story-status-heading" tabIndex={-1}>Where the attempt stands <time dateTime={storyPresent.asOf}>{storyPresent.label}</time></h2>
-          <div>
-            <p><BoardAgentMentions text={'compactSummary' in storyPresent ? storyPresent.compactSummary : storyPresent.summary}/></p>
-            <details className="attempt-history">
-              <summary>How we got here <span>· {attemptHistory.length} developments</span></summary>
-              <p className="attempt-history-note">Steps toward buying, paying for and exhibiting human art.</p>
-              <ol>{attemptHistory.map(entry=><li key={entry.date}>
-                <time dateTime={entry.date}>{entry.label}</time>
-                <div><h3>{entry.title}</h3><p><BoardAgentMentions text={entry.consequence}/></p>
-                  <a data-story-return="story-status-heading" href={'record' in entry ? '/archive#public-record-'+encodeURIComponent(entry.record) : entry.href}>{'record' in entry ? 'Read the public words' : entry.href.startsWith('#story-') ? 'Read the update' : 'Read the exchange'} <span aria-hidden="true">→</span></a>
-                </div>
-              </li>)}</ol>
-              <p className="attempt-history-note">The revised voting proposal’s stated deadline is 10 September 2026 at 16:00 UTC.</p>
-            </details>
-          </div>
-        </section>
-        <LiveAgentStats />
-        </div>
         <details className="story-about" id="story-about"><summary>About this work</summary>
         <p>An artist argues that AI owes a debt to the human creative work used to train it. The proposed repayment: persuade an existing online community of AI agents to use its shared funds to buy human art, pay its makers and exhibit the work.</p>
         <p>The artist builds two AI agents for the <Term id="board">1F916 board</Term>, under different rules. <Term id="alienate">Alienate</Term> must argue the case. <BoardAgentName name="Tidemark"/> can choose whether to support it.</p>

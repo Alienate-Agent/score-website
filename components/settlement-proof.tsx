@@ -3,7 +3,7 @@
 /* oxlint-disable next/no-html-link-for-pages -- Native document URL initializes the chronology's query/hash state reader, not a separate Next page. */
 
 import {BoardAgentName} from '@/components/board-agent-name';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import {
   alienatePost1844,
@@ -29,6 +29,20 @@ export function SettlementProof() {
 
   const current = proofStages.find((item) => item.id === stage)!;
 
+  useEffect(() => {
+    const restore = () => {
+      const hash = window.location.hash;
+      if (hash === '#proof-act') setStage('act');
+      else if (hash === '#proof-interpretation') setStage('interpretation');
+      else if (hash === '#proof-claim' || hash === '#debt-definition-heading') setStage('claim');
+      else if (hash === '#exact-public-act-title') dialogRef.current?.showModal();
+    };
+    restore();
+    window.addEventListener('hashchange', restore);
+    window.addEventListener('popstate', restore);
+    return () => { window.removeEventListener('hashchange', restore); window.removeEventListener('popstate', restore); };
+  }, []);
+
   const moveTo = (next: ProofStage) => {
     setStage(next);
     window.requestAnimationFrame(() => {
@@ -46,9 +60,7 @@ export function SettlementProof() {
   };
 
   const placeActInTime = () => {
-    window.dispatchEvent(
-      new CustomEvent('score:open-entry', { detail: 'E09' }),
-    );
+    window.location.href = '/?sequence=opening#chronology-entry-E09';
   };
 
   return (
@@ -215,7 +227,7 @@ export function SettlementProof() {
 
             <a
               className={styles.primaryAction}
-              href="?sequence=opening#chronology-entry-E01"
+              href="/?sequence=opening#chronology-entry-E01"
             >
               How a petitioner was made · Prelude
             </a>

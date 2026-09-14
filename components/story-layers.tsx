@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 
-/** The original reading instruments stay mounted, with their URLs intact. */
-export function StoryLayers({ children }: { children: ReactNode }) {
+/** Independent destinations retain the readers' existing fragment URLs. */
+function ReadingLayer({ id, label, children }: { id: string; label: string; children: ReactNode }) {
   const disclosure = useRef<HTMLDetailsElement>(null);
   const returnBar = useRef<HTMLDivElement>(null);
   const [returnTo, setReturnTo] = useState('story-beginning');
@@ -36,10 +36,10 @@ export function StoryLayers({ children }: { children: ReactNode }) {
         setReturnTo(storyTarget.id);
         return;
       }
-      if (event?.type !== 'score:open-entry' && (!hash || hash.startsWith('#story-'))) return;
+      if (!hash && event?.type !== 'score:open-entry') return;
       // Selected records may mount only after their own location reader runs.
       // Keep their established routes; unrelated hashes do not open the archive.
-      const selectedRecord = /^#(?:chronology-entry-|public-record-)/.test(hash);
+      const selectedRecord = /^#chronology-entry-/.test(hash);
       // A direct source URL, or a link followed before hydration, has no
       // captured click origin. Offer its first explicit narrative context
       // rather than pretending that the reader started at the Prelude.
@@ -48,7 +48,14 @@ export function StoryLayers({ children }: { children: ReactNode }) {
           .find(link => link.hash === hash);
         if (citation?.dataset.storyReturn) setReturnTo(citation.dataset.storyReturn);
       }
-      if (event?.type !== 'score:open-entry' && !selectedRecord && !disclosure.current?.contains(storyTarget)) return;
+      const selectedScore = selectedRecord || event?.type === 'score:open-entry';
+      const ownsTarget = selectedScore ? id === 'story-instruments' : disclosure.current?.contains(storyTarget);
+      if (!ownsTarget) {
+        if (selectedScore || storyTarget?.closest('[data-reading-layer]')) {
+          if (disclosure.current) disclosure.current.open = false;
+        }
+        return;
+      }
       if (disclosure.current) disclosure.current.open = true;
       // Older introductions are preserved behind their own disclosure, but
       // their exact anchors must remain usable from existing links/history.
@@ -103,7 +110,7 @@ export function StoryLayers({ children }: { children: ReactNode }) {
       window.removeEventListener('popstate', reveal);
       window.removeEventListener('score:open-entry', reveal);
     };
-  }, []);
+  }, [id]);
 
   function resume() {
     if (disclosure.current) disclosure.current.open = false;
@@ -121,22 +128,26 @@ export function StoryLayers({ children }: { children: ReactNode }) {
 
   const returnLabel=returnTo.startsWith('encounter-')?'Back to the conversation':'Back to the story';
 
-  return (
-    <>
+  return <details ref={disclosure} className="story-records" id={id} data-reading-layer>
+    <summary><span>{label}</span></summary>
+    <div ref={returnBar} className="story-records__return"><button type="button" onClick={resume}>{returnLabel}</button><span>{label}</span></div>
+    {children}
+    <button className="story-records__end" type="button" onClick={resume}>{returnLabel}</button>
+  </details>;
+}
+
+export function StoryLayers({ score, search, children }: { score: ReactNode; search: ReactNode; children: ReactNode }) {
+  return <>
     <nav className="story-layer-choices" id="story-exploration" data-story-surface tabIndex={-1} aria-label="Explore beyond the story">
       <h2>Explore beyond the story</h2>
       <div>
-        <a href="#all-record-search" data-story-return="story-exploration"><strong>Search conversations <span aria-hidden="true">↗</span></strong><span>Posts, comments and the threads around them.</span></a>
+        <a href="#all-record-search" data-story-return="story-exploration"><strong>Search the site and board <span aria-hidden="true">↓</span></strong><span>Find site pages, posts, comments and conversations.</span></a>
         <a href="#chronology" data-story-return="story-exploration"><strong>Visual score <span aria-hidden="true">↓</span></strong><span>Arrange events by date, voice or movement.</span></a>
         <a href="/lens/?from=%23story-exploration"><strong>Sound instrument <span aria-hidden="true">↗</span></strong><span>Play an act. Change the mapping. Listen again.</span></a>
       </div>
     </nav>
-    <details ref={disclosure} className="story-records" id="story-instruments">
-      <summary><span>Visual score and public records</span></summary>
-      <div ref={returnBar} className="story-records__return"><button type="button" onClick={resume}>{returnLabel}</button><span>Visual score and public records</span></div>
-      {children}
-      <button className="story-records__end" type="button" onClick={resume}>{returnLabel}</button>
-    </details>
-    </>
-  );
+    <ReadingLayer id="story-search" label="Search the site and board">{search}</ReadingLayer>
+    <ReadingLayer id="story-instruments" label="Visual score">{score}</ReadingLayer>
+    <ReadingLayer id="story-reading-notes" label="Reading notes and context">{children}</ReadingLayer>
+  </>;
 }

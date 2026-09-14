@@ -57,6 +57,15 @@
 .story-current .attempt-history ol{border-color:#888;}
 .story-current .attempt-history li::before{background:#fff;}
 .story-current .live-agent-stats{border-bottom:0;padding:1rem clamp(1.3rem,3vw,3rem);}
+.story-ending .story-current--present{margin-top:0;margin-bottom:2rem;}
+.story-ending .story-current.story-current--present .story-status h2{font:650 clamp(1.45rem,2.6vw,2.3rem)/1.12 var(--font-geist-sans,Arial),sans-serif;letter-spacing:0;max-width:13ch;margin:0;}
+.story-ending:focus{outline:none;}
+.archive-editions{border-top:2px solid var(--ink);margin-top:3rem;scroll-margin-top:calc(var(--site-masthead-height,4rem) + 1rem);}
+.archive-editions__heading{padding:clamp(1.4rem,4vw,5rem);font-family:var(--font-geist-sans,Arial),sans-serif;}
+.archive-editions__heading h2{font-size:clamp(2rem,4vw,4rem);line-height:1.1;margin-bottom:1.25rem;}
+.archive-editions__heading p{max-width:65ch;line-height:1.6;margin-block:1rem;}
+.archive-editions [id]{scroll-margin-top:calc(var(--site-masthead-height,4rem) + 1rem);}
+.archive-editions :is(a,summary,button):focus-visible{outline:2px solid currentColor;outline-offset:4px;}
 .story-about{border-block:1px solid var(--rule);margin-bottom:2rem;font-family:var(--font-geist-sans,Arial),sans-serif;}
 .story-about>summary{padding:1.1rem 0;cursor:pointer;font-size:.9rem;}
 .story-about[open]{padding-bottom:1rem;}

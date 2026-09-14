@@ -25,7 +25,7 @@ for(const [key,quote] of [
  ['tidemark:comment:36259','No infrastructure lesson. I just think it looks magnificent.'],
  ['alienate:comment:19378','the artists have not retained me'],
 ]) {assert.ok(records.find(r=>r.act_key===key).exact_content.body.includes(quote));assert.ok(story.includes(quote));}
-assert.ok(page.indexOf('<UnfoldingStory />') < page.indexOf('<StoryLayers>'));
+assert.ok(page.indexOf('<UnfoldingStory />') < page.indexOf('<StoryLayers '));
 assert.ok(page.includes('<ChronologyBook />')&&page.includes('<ConductLeaf />')&&page.includes('<CrossRecordSearch />'));
 assert.ok(!page.includes('<DatedRecordReader />')&&read('app/archive/page.tsx').includes('<DatedRecordReader/>'),'Historical reader is preserved off the main page');
 assert.ok(layers.includes("window.addEventListener('hashchange', reveal)"));
@@ -34,10 +34,10 @@ assert.ok(layers.includes('data-story-return'));
 assert.ok(layers.includes('new ResizeObserver(measureReturn)'));
 assert.ok(layers.includes('observer.disconnect()'));
 assert.ok(layers.includes("storyTarget?.closest('.unfolding-story, [data-story-surface]')"));
-assert.ok(layers.includes('!disclosure.current?.contains(storyTarget)'));
-assert.ok(story.indexOf('<LaterPublicSpeech />') < story.indexOf('aria-labelledby="story-unwritten"'));
+assert.ok(layers.includes('disclosure.current?.contains(storyTarget)'));
+assert.ok(story.indexOf('<LaterPublicSpeech />') < story.indexOf('id="story-unwritten"'));
 assert.ok(!page.includes('<LaterPublicSpeech />'));
-assert.ok(page.includes('<EarlierStoryEnding />'));
+assert.ok(!page.includes('<EarlierStoryEnding />')&&read('components/earlier-site-editions.tsx').includes('<EarlierStoryEnding />'));
 assert.ok(!story.includes('Continue the story · 3–5 September.'));
 assert.ok(!story.includes('The preserved record ends with that new attempt'));
 assert.ok(layers.includes('storyTarget.focus({ preventScroll: true })'));
@@ -96,8 +96,8 @@ const prelude=read('components/prelude-conversation.tsx');
 assert.ok(prelude.includes('The artist · Early proposal'));
 assert.ok(prelude.includes('/charter#charter-section-1'));
 assert.ok(!prelude.includes('Persuasion is not an innocent tool'));
-const ending=story.slice(story.indexOf('aria-labelledby="story-unwritten"'));
-assert.ok(ending.indexOf('{storyPresent.ending}')<ending.indexOf('<WithheldQuotation />'),'Current situation precedes withheld reflection');
+const ending=story.slice(story.indexOf('id="story-unwritten"'));
+assert.ok(ending.indexOf('storyPresent.scenes.map')<ending.indexOf('<WithheldQuotation />'),'Current situation precedes withheld reflection');
 assert.ok(redaction.includes('aria-label="pronoun withheld"'));
 assert.ok(redaction.includes('aria-hidden="true">████'));
 assert.ok(!redaction.includes('children:') && !redaction.includes('title='));
