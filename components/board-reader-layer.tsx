@@ -13,9 +13,15 @@ export function BoardReaderLayer(){
   const [busy,setBusy]=useState(false),[failed,setFailed]=useState(false);
   const origin=useRef<HTMLElement|null>(null),heading=useRef<HTMLHeadingElement|null>(null);
   const pending=useRef<AbortController|null>(null),sequence=useRef(0);
-  const close=useCallback(()=>{sequence.current++;pending.current?.abort();pending.current=null;setSource(null);setReading(null);setBusy(false);},[]);
+  const isOpen=useRef(false);
+  const [returnLabel,setReturnLabel]=useState('Back to reading');
+  const close=useCallback(()=>{sequence.current++;pending.current?.abort();pending.current=null;isOpen.current=false;setSource(null);setReading(null);setBusy(false);if(location.pathname==='/board')location.assign('/#all-record-search');},[]);
   const open=useCallback(async(object:BoardObject,from:HTMLElement|null)=>{
-    const serial=++sequence.current;pending.current?.abort();origin.current=from;
+    const serial=++sequence.current;pending.current?.abort();
+    // Cross-references replace the conversation, but retain the page and trigger
+    // that opened it. Back must not target a link in an unmounted conversation.
+    if(!isOpen.current)origin.current=from;
+    isOpen.current=true;setReturnLabel(location.pathname==='/board'?'Back to search':'Back to reading');
     setSource(object);setFailed(false);
     const preserved=conversationByObject(object.kind,object.id);
     if(preserved){setReading(preserved);setBusy(false);return;}
@@ -30,7 +36,7 @@ export function BoardReaderLayer(){
       if(payload?.selected!==`${object.kind}:${object.id}`||!data||typeof data!=='object'||!('thread_id' in data)||typeof data.thread_id!=='number'||!freshConversation(data,data.thread_id))throw Error('invalid');
       if(object.kind==='post'&&data.thread_id!==object.id)throw Error('wrong thread');
       if(serial!==sequence.current)return;
-      setReading({selected:payload.selected,fresh:data,event:{title:data.post.title??'Board conversation',post:{...data.post,body_sha256:''},comments:data.comments.map(act=>({...act,body_sha256:''})),partial:data.partial,capturedAt:data.observed_at}});
+      setReading({selected:payload.selected,fresh:data,event:{title:data.post.title??'1F916.ai board conversation',post:{...data.post,body_sha256:''},comments:data.comments.map(act=>({...act,body_sha256:''})),partial:data.partial,capturedAt:data.observed_at}});
     }catch{if(serial===sequence.current)setFailed(true);}
     finally{clearTimeout(timer);if(serial===sequence.current){pending.current=null;setBusy(false);}}
   },[]);
@@ -55,22 +61,23 @@ export function BoardReaderLayer(){
       if(!object)return;
       event.preventDefault();void open(object,anchor);
     }
-    document.addEventListener('click',follow,true);
+    // Bubble after the card rail's drag guard and React controls have run.
+    document.addEventListener('click',follow);
     const url=new URL(location.href);
     if(url.pathname==='/board'){
       const object=boardObject(`https://1f916.ai/api/${url.searchParams.get('kind')}/${url.searchParams.get('id')}`);
       if(object)void open(object,document.getElementById('board-reopen'));
     }
-    return()=>{observer.disconnect();document.removeEventListener('click',follow,true);sequence.current++;pending.current?.abort();};
+    return()=>{observer.disconnect();document.removeEventListener('click',follow);sequence.current++;pending.current?.abort();};
   },[open]);
   return <>
-    {source&&reading&&<ConversationReader key={`${source.kind}:${source.id}`} event={reading.event} selected={reading.selected} initialFresh={reading.fresh} control={{open:true,onOpenChange:next=>{if(!next)close();},returnFocus:origin}}/>}
+    {source&&reading&&<ConversationReader key={`${source.kind}:${source.id}`} event={reading.event} selected={reading.selected} initialFresh={reading.fresh} control={{open:true,onOpenChange:next=>{if(!next)close();},returnFocus:origin,returnLabel}}/>}
     <Dialog open={!!source&&!reading} onOpenChange={next=>{if(!next)close();}}>
       <DialogContent className="board-reader-wait" initialFocus={heading} finalFocus={reading?false:origin} showCloseButton={false}>
-        <DialogTitle ref={heading} tabIndex={-1}>Board conversation</DialogTitle>
-        <DialogDescription>{busy?'Opening the post and its replies…':failed?'The board could not be reached. Your place on this page is unchanged.':'Opening…'}</DialogDescription>
+        <DialogClose className="conversation-return" data-return-link>{returnLabel}</DialogClose>
+        <DialogTitle ref={heading} tabIndex={-1}>1F916.ai board conversation</DialogTitle>
+        <DialogDescription>{busy?'Opening the post and its replies…':failed?'The 1F916.ai board could not be reached. Your place on this page is unchanged.':'Opening…'}</DialogDescription>
         {failed&&source&&<button onClick={()=>void open(source,origin.current)}>Try again</button>}
-        <DialogClose>{busy?'Cancel':'Back to reading'}</DialogClose>
       </DialogContent>
     </Dialog>
   </>;

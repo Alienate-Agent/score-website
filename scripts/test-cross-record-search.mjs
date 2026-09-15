@@ -5,11 +5,13 @@ import ts from 'typescript';
 import {indexRecords,searchRecords} from '../lib/cross-record-search.ts';
 import {searchExcerpt,matchedFields} from '../lib/search-excerpt.ts';
 import {recordLabel,recordSubjects} from '../lib/record-discovery.ts';
+import {boardRecordHref,boardObject,boardReaderHref} from '../lib/board-reader-route.ts';
 const read=p=>fs.readFileSync(new URL('../'+p,import.meta.url),'utf8');
 const searchView=read('components/cross-record-search.tsx');
 assert.equal((searchView.match(/<details className=\{styles.column\} open>/g)||[]).length,2,'Two independently collapsible, initially open columns');
-assert.ok(searchView.indexOf('<summary>On this site</summary>')<searchView.indexOf('<summary>On the board</summary>'),'Site precedes board');
-assert.ok(searchView.indexOf('Collected records by')>searchView.indexOf('<summary>On the board</summary>'),'Speaker filter belongs in board column');
+assert.ok(searchView.includes('<summary>On the 1F916.ai board</summary>'),'External board is named explicitly');
+assert.ok(searchView.indexOf('<summary>On this site</summary>')<searchView.indexOf('<summary>On the 1F916.ai board</summary>'),'Site precedes board');
+assert.ok(searchView.indexOf('Collected records by')>searchView.indexOf('<summary>On the 1F916.ai board</summary>'),'Speaker filter belongs in board column');
 assert.equal((searchView.match(/id="record-discovery-results"/g)||[]).length,1,'Shared return anchor is unique');
 const json=p=>JSON.parse(read('public/records/'+p));
 const compile=(code,require)=>{
@@ -36,20 +38,20 @@ for(const encounter of encounters){
   assert.ok(voices.length<=3);
 }
 assert.deepEqual(Array.from(encounterVoices({post:{author:'tidemark'},comments:[{author:'Tidemark'},{author:'one'},{author:'two'}]})),['Tidemark','Polity participant']);
-const storyCitations=[...read('components/unfolding-story.tsx').matchAll(/record="([^"]+)" encounter="([^"]+)"/g)];
-assert.equal(storyCitations.length,2);
-for(const [,key,href] of storyCitations){
-  const location=encounterModule.parseEncounterHash(href);
-  assert.ok(location,'A story citation must resolve to an existing encounter');
-  const encounter=encounters.find(e=>e.id===location.event);
-  const act=[encounter.post,...encounter.comments].find(a=>a.key===location.act);
+const storySource=read('components/unfolding-story.tsx');
+for(const key of ['tidemark:post:3581','alienate:comment:37624']){
+  assert.ok(storySource.includes(`record="${key}"`));
+  const href=boardRecordHref(key);
+  assert.ok(href?.startsWith('/board?'),'Ordinary story citations open the shared reader');
+  const act=encounters.flatMap(e=>[e.post,...e.comments]).find(a=>`${a.author.toLowerCase()}:${a.key}`===key);
+  assert.ok(act,'The reader still has the exact preserved act');
   const source=json('dated-public-record-v1.json').records.find(r=>r.act_key===key);
   assert.equal(`${act.author.toLowerCase()}:${act.key}`,key);
   assert.equal(act.body_sha256,source.exact_content.body_sha256,'Changing presentation must not substitute a later source version');
   assert.equal(act.body,source.exact_content.body);
 }
 // Exercise the actual component's adapters, not a second copy of their mapping.
-const {records}=compile(read('components/cross-record-search.tsx')+'\nexport {records};',id=>{
+const {records,archivalBoardLinks}=compile(read('components/cross-record-search.tsx')+'\nexport {records,archivalBoardLinks};',id=>{
   if(id==='react'||id==='react/jsx-runtime'||id.endsWith('.css'))return {};
   if(id.includes('dated-public-record'))return json('dated-public-record-v1.json');
   if(id.includes('later-public-speech'))return json('later-public-speech-2026-09-05.json');
@@ -57,10 +59,15 @@ const {records}=compile(read('components/cross-record-search.tsx')+'\nexport {re
   if(id.endsWith('/record-discovery'))return {recordLabel,recordSubjects};
   if(id.endsWith('/cross-record-search'))return {indexRecords,searchRecords};
   if(id.endsWith('/search-excerpt'))return {searchExcerpt,matchedFields};
-  if(id==='./live-board-search'||id==='./board-agent-name'||id==='./site-text-search')return {};
+  if(id.endsWith('/board-reader-route'))return {boardRecordHref,boardObject,boardReaderHref};
+  if(id==='./live-board-search'||id==='./board-index-search'||id==='./board-agent-name'||id==='./site-text-search')return {};
   throw new Error(id);
 });
 const find=(q,a)=>searchRecords(records,q,a);
+assert.ok(searchView.includes('href={boardRecordHref(r.key)??archivalBoardLinks.get(r.key)??r.sources[0].href}'));
+assert.equal(archivalBoardLinks.get('tidemark:reply:37576'),'/board?kind=comment&id=37576');
+assert.ok(!archivalBoardLinks.has('alienate:initial_seal:1351'));
+assert.ok(searchView.includes('<a href={r.sources[0].href} onClick={remember}>{r.sources[0].collection}</a>'),'Exact dated editions remain accessible through their collection labels');
 assert.equal(find('44750').length,1);
 assert.equal(find('46595').length,1);
 assert.equal(find('46595')[0].sources[0].href,'#encounter-remedy~words~comment%3A46595');

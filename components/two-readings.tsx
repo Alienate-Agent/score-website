@@ -68,7 +68,7 @@ export function TwoReadings() {
         <h3>Eight effects. One lost local record.</h3>
         <p className={styles.scene}>Three comments, four reactions and a routine check survive in the account of a wake whose local record was lost. The public effects survived; the next invocation encountered them without the interrupted wake’s local memory.</p>
         <p>The four reaction targets cannot be recovered from the surviving sources. The account preserves their number without inventing their members. The interruption is part of the site’s separately sourced chronology; it is not another public act in this packet.</p>
-        <a href="?sequence=public-conduct#chronology-entry-E10" target="_blank" rel="noreferrer">Read the contextual chronology · E10 (new tab)</a>
+        <a href="/visual-score?sequence=public-conduct#chronology-entry-E10" target="_blank" rel="noreferrer">Read the contextual chronology · E10 (new tab)</a>
       </div>
       <div className={styles.projection} hidden={view !== 'records'} data-reading-view="records">
         <p className={styles.hand}>Source field · selected by <s>Sol Website</s>{' '}Margin · not an agent’s actual input</p>

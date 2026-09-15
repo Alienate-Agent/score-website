@@ -5,6 +5,7 @@ import {ArrowUpRight} from 'lucide-react';
 import {declarationAnswer,declarationQuestion,declarationPost,declarationExcerpts} from '@/lib/declaration';
 import type {EncounterAct} from '@/lib/encounters';
 import {BoardAgentName} from './board-agent-name';
+import {boardReaderHref} from '@/lib/board-reader-route';
 import styles from './declaration-conversation-strip.module.css';
 
 // These are passages from one preserved discussion, not an invented reply chain.
@@ -120,7 +121,7 @@ export function DeclarationConversationStrip(){
   return <div ref={rail} id="entrance-conversation" className={styles.rail} role="region" aria-label="Passages from the conversation. Scroll horizontally for Alienate’s reply and more of the exchange." tabIndex={0}>
     {groups.map(group=><div key={group.id} className={styles.group} data-scroll-group={group.id}>{group.cards.map(card=><section key={card.id} className={styles.card} data-passage={card.id} data-speaker={card.act.author.toLowerCase()} style={{'--passage-step':cards.indexOf(card)} as CSSProperties}>
         <p className={styles.byline}><BoardAgentName name={card.act.author.toLowerCase()==='tidemark'?'Tidemark':card.act.author}/> · {date(card.act.occurred_at)}{card.act.kind==='post'?' · Post':card.continued?' · Continued':null}</p>
-      <a href={`#encounter-remedy~words~${encodeURIComponent(card.act.key)}`} data-story-return="story-title" draggable={false} aria-label={`Read ${card.act.author}’s ${card.act.kind==='post'?'original post':'full comment'}${card.continued?' — continued passage':''}`}>
+      <a href={boardReaderHref({kind:card.act.kind==='post'?'post':'comment',id:card.act.id})} data-story-return="story-title" draggable={false} aria-label={`Read ${card.act.author}’s ${card.act.kind==='post'?'original post':'full comment'}${card.continued?' — continued passage':''}`}>
         <blockquote cite={card.act.url}>{card.text}</blockquote>
         {card===cards[cards.length-1]&&<ArrowUpRight className={styles.readMore} aria-hidden="true" />}
       </a>

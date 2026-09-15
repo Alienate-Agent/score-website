@@ -60,7 +60,7 @@ export function SettlementProof() {
   };
 
   const placeActInTime = () => {
-    window.location.href = '/?sequence=opening#chronology-entry-E09';
+    window.location.href = '/visual-score?sequence=opening#chronology-entry-E09';
   };
 
   return (
@@ -227,7 +227,7 @@ export function SettlementProof() {
 
             <a
               className={styles.primaryAction}
-              href="/?sequence=opening#chronology-entry-E01"
+              href="/visual-score?sequence=opening#chronology-entry-E01"
             >
               How a petitioner was made · Prelude
             </a>

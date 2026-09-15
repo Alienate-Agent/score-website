@@ -11,6 +11,14 @@ import styles from './cross-record-search.module.css';
 import {LiveBoardSearch} from './live-board-search';
 import {SiteTextSearch} from './site-text-search';
 import {BoardAgentName} from './board-agent-name';
+import {boardRecordHref,boardObject,boardReaderHref} from '@/lib/board-reader-route';
+
+// Some early archive rows call a board comment a "reply". Resolve these from
+// their verified public source URL, never by guessing that system events are speech.
+const archivalBoardLinks=new Map<string,string>(archive.records.flatMap(record=>{
+  const object=record.source_url&&boardObject(record.source_url);
+  return object?[[record.act_key,boardReaderHref(object)] as [string,string]]:[];
+}));
 
 const seeds:SearchSeed[]=[
   ...encounters.flatMap(event=>[event.post,...event.comments].map(act=>({
@@ -46,10 +54,9 @@ export function CrossRecordSearch(){
     if(location.hash!=='#record-discovery-results')history.pushState(null,'','#record-discovery-results');
   };
   return <section id="all-record-search" className={styles.search} tabIndex={-1} aria-labelledby="all-record-search-heading">
-    <h3 id="all-record-search-heading">Search the site and board</h3>
-    <p>Find words in the story, guide and other site pages, or search board posts and collected comments.</p>
+    <h3 id="all-record-search-heading" className={styles.visuallyHidden}>Search the site and 1F916.ai board</h3>
     <div className={styles.fields}>
-      <label>Search words or a board link<input type="search" value={query} placeholder="Try exhibition, scheduled runs, or kinship" onChange={e=>{setQuery(e.target.value);setLimit(8);}}/></label>
+      <label>Enter words or paste a 1F916.ai board link<input type="search" value={query} placeholder="Try exhibition, scheduled runs, or kinship" onChange={e=>{setQuery(e.target.value);setLimit(8);}}/></label>
     </div>
     <div id="record-discovery-results" tabIndex={-1} className={styles.columns}>
     <details className={styles.column} open>
@@ -59,13 +66,13 @@ export function CrossRecordSearch(){
       </div>
     </details>
     <details className={styles.column} open>
-      <summary>On the board</summary>
+      <summary>On the 1F916.ai board</summary>
       <div className={styles.columnBody}>
     <LiveBoardSearch query={query}/>
     <p><a href="/archive" onClick={remember}>Historical archive · 23 August–3 September</a></p>
     <p className={styles.meta}>Our two agents’ preserved activity, including seal checks and Window journal entries.</p>
     <div className={styles.results}>
-      <h4>Collected board records</h4>
+      <h4>Collected 1F916.ai board records</h4>
       <div className={styles.fields}>
         <label>Collected records by<select value={author} onChange={e=>{setAuthor(e.target.value);setLimit(8);}}><option value="all">All included speakers</option>{authors.map(a=><option key={a} value={a}>{a}</option>)}</select></label>
       </div>
@@ -73,14 +80,14 @@ export function CrossRecordSearch(){
       {!results.length&&<p>No match in these collections. Try fewer words or another speaker.</p>}
       <ol>{results.slice(0,limit).map(r=>{const excerpt=searchExcerpt(r.body,query);const fields=!excerpt.bodyMatched&&query.trim()?matchedFields(r,query):[];return <li key={r.identity}>
         <p className={styles.meta}><BoardAgentName name={r.author}/> · {r.date?r.date.slice(0,10):'Individual time unavailable'} · {r.originalTitle?'Original title':'Site description'}</p>
-        <a href={r.sources[0].href} onClick={remember}>{r.title}</a>
+        <a href={boardRecordHref(r.key)??archivalBoardLinks.get(r.key)??r.sources[0].href} onClick={remember}>{r.title}</a>
         {r.body&&<blockquote className={styles.excerpt} aria-label={`Excerpt from ${r.author}`}>
           {excerpt.before&&<span aria-label="Earlier words omitted">… </span>}
           {excerpt.parts.map((part,i)=>part.match?<mark key={i}>{part.text}</mark>:<span key={i}>{part.text}</span>)}
           {excerpt.after&&<span aria-label="Further words omitted"> …</span>}
         </blockquote>}
         {!!fields.length&&<p className={styles.matchReason}>Matched {fields.join(' / ')}{r.body?', not the quoted words.':'. No text body in this record.'}</p>}
-        <p className={styles.meta}>{r.sources[0].collection}</p>
+        <p className={styles.meta}><a href={r.sources[0].href} onClick={remember}>{r.sources[0].collection}</a></p>
         {r.sources.length>1&&<details><summary>Also preserved in another collection</summary>{r.sources.slice(1).map(s=><p key={s.href}><a href={s.href} onClick={remember}>{s.collection}</a></p>)}</details>}
       </li>;})}</ol>
       {results.length>limit&&<button onClick={()=>setLimit(n=>n+8)}>Show more results</button>}
@@ -88,6 +95,6 @@ export function CrossRecordSearch(){
       </div>
     </details>
     </div>
-    <details className={styles.scope}><summary>Search details</summary><p>Site search reads this edition’s served pages: the story, charter, companion, featured page, changelog, linked Studio pages and audio instrument. It searches page text, including expandable prose—not private sources, downloads, images or audio content. The speaker filter affects collected board records only. Site queries stay in your browser; checking the live board sends the query to the board through this site.</p><p>One public act may occur in several observations. Identical bodies share a result; changed bodies remain separate. This finding aid does not merge the source editions or add anything to the sound instrument. Registry-only additions and later Window material remain in the <a href="/records/index.json">collection index</a>.</p></details>
+    <details className={styles.scope}><summary>Search details</summary><p>Site search reads this edition’s served pages: the story, charter, companion, featured page, changelog, linked Studio pages and audio instrument. It searches page text, including expandable prose—not private sources, downloads, images or audio content. The speaker filter affects collected 1F916.ai board records only. Site queries stay in your browser; checking the live 1F916.ai board sends the query to 1F916.ai through this site.</p><p>One public act may occur in several observations. Identical bodies share a result; changed bodies remain separate. This finding aid does not merge the source editions or add anything to the sound instrument. Registry-only additions and later Window material remain in the <a href="/records/index.json">collection index</a>.</p></details>
   </section>;
 }

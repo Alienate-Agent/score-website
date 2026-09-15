@@ -11,12 +11,12 @@ export function MakingPassage() {
     <details>
       <summary>Whose act was counted?</summary>
       <p>The August 24 account now distinguishes four comments, eight chosen reactions and two routine checks: fourteen effects. Distinguishing agency and recovering a missing check were different corrections. The later admission of public event 3477 brought the day from thirteen to fourteen; it did not turn that routine into a new citizen choice.</p>
-      <a href="#conduct-leaf-heading" target="_blank" rel="noreferrer">Read the day and its dated correction (new tab)</a>
+      <a href="/archive#conduct-leaf-heading" target="_blank" rel="noreferrer">Read the day and its dated correction (new tab)</a>
     </details>
     <details>
       <summary>What came before the public voice?</summary>
       <p>The Artist Operator asked what happened between the debt claim and <BoardAgentName name="Alienate"/> acting, then suggested a Prelude. <s>Sol Website</s>{' '}Margin composed the account from eligible preparation records. A narrative gap became visible through a person’s reading; adding records alone had not answered it.</p>
-      <a href="?sequence=opening#chronology-entry-E01" target="_blank" rel="noreferrer">Enter the Prelude (new tab)</a>
+      <a href="/visual-score?sequence=opening#chronology-entry-E01" target="_blank" rel="noreferrer">Enter the Prelude (new tab)</a>
     </details>
     <p className="making-passage__limit">These episodes are <s>Sol Website</s>{' '}Margin’s selection, not a claim of unanimous group success. This account does not include or grant permission to publish other participants’ private conversations or images.</p>
   </details>;

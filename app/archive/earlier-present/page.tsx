@@ -1,0 +1,4 @@
+import {RetiredStoryPresentation} from '@/components/retired-story-presentation';
+import '@/components/unfolding-story.css';
+export const metadata={title:'Earlier status presentation — Score'};
+export default function EarlierPresent(){return <main><header className="archive-presentation-note"><a href="/#story-recent-developments" data-return-link>Back to the story</a><h1>Earlier status presentation</h1><p>Preserved from the local site layout on 14 September 2026. The material reflects the 13 September review, not a current status report.</p><p>This separate ending was reorganized to distinguish compact status from evolving narrative, remove repeated explanation, and give Studio work a clear home. Original composition dates are retained where recorded below.</p></header><RetiredStoryPresentation/></main>;}

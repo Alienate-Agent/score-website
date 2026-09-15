@@ -1,9 +1,11 @@
 'use client';
+/* oxlint-disable next/no-html-link-for-pages -- Studio works use document navigation to initialize their independent readers and return handlers. */
 
 import { useEffect, useRef, useState, type ReactNode } from 'react';
+import resourceStyles from './agent-resources.module.css';
 
 /** Independent destinations retain the readers' existing fragment URLs. */
-function ReadingLayer({ id, label, children }: { id: string; label: string; children: ReactNode }) {
+function ReadingLayer({ id, label, description, children }: { id: string; label: string; description:string; children: ReactNode }) {
   const disclosure = useRef<HTMLDetailsElement>(null);
   const returnBar = useRef<HTMLDivElement>(null);
   const [returnTo, setReturnTo] = useState('story-beginning');
@@ -18,7 +20,7 @@ function ReadingLayer({ id, label, children }: { id: string; label: string; chil
     const reveal = (event?: Event) => {
       const hash = window.location.hash;
       const storyTarget = document.getElementById(hash.slice(1) || 'story-title');
-      if (event?.type !== 'score:open-entry' && storyTarget?.closest('.unfolding-story, [data-story-surface]')) {
+      if (storyTarget?.closest('.unfolding-story, [data-story-surface]')) {
         if (disclosure.current) disclosure.current.open = false;
         // A reference can point at the disclosure itself, or a passage inside
         // one. Reveal the destination without opening unrelated story asides.
@@ -36,22 +38,10 @@ function ReadingLayer({ id, label, children }: { id: string; label: string; chil
         setReturnTo(storyTarget.id);
         return;
       }
-      if (!hash && event?.type !== 'score:open-entry') return;
-      // Selected records may mount only after their own location reader runs.
-      // Keep their established routes; unrelated hashes do not open the archive.
-      const selectedRecord = /^#chronology-entry-/.test(hash);
-      // A direct source URL, or a link followed before hydration, has no
-      // captured click origin. Offer its first explicit narrative context
-      // rather than pretending that the reader started at the Prelude.
-      if (!event && selectedRecord) {
-        const citation = [...document.querySelectorAll<HTMLAnchorElement>('a[data-story-return]')]
-          .find(link => link.hash === hash);
-        if (citation?.dataset.storyReturn) setReturnTo(citation.dataset.storyReturn);
-      }
-      const selectedScore = selectedRecord || event?.type === 'score:open-entry';
-      const ownsTarget = selectedScore ? id === 'story-instruments' : disclosure.current?.contains(storyTarget);
+      if (!hash) return;
+      const ownsTarget = disclosure.current?.contains(storyTarget);
       if (!ownsTarget) {
-        if (selectedScore || storyTarget?.closest('[data-reading-layer]')) {
+        if (storyTarget?.closest('[data-reading-layer]')) {
           if (disclosure.current) disclosure.current.open = false;
         }
         return;
@@ -65,7 +55,7 @@ function ReadingLayer({ id, label, children }: { id: string; label: string; chil
         ancestor = ancestor.parentElement;
       }
       measureReturn();
-      if (storyTarget && !selectedRecord && event?.type !== 'score:open-entry') {
+      if (storyTarget) {
         storyTarget.scrollIntoView({ block: 'start', behavior: 'instant' });
         if (!storyTarget.matches('details')) storyTarget.focus({ preventScroll: true });
       }
@@ -97,7 +87,6 @@ function ReadingLayer({ id, label, children }: { id: string; label: string; chil
     document.addEventListener('click', remember);
     window.addEventListener('hashchange', reveal);
     window.addEventListener('popstate', reveal);
-    window.addEventListener('score:open-entry', reveal);
     return () => {
       observer.disconnect();
       cancelled=true;
@@ -108,7 +97,6 @@ function ReadingLayer({ id, label, children }: { id: string; label: string; chil
       document.removeEventListener('click', remember);
       window.removeEventListener('hashchange', reveal);
       window.removeEventListener('popstate', reveal);
-      window.removeEventListener('score:open-entry', reveal);
     };
   }, [id]);
 
@@ -126,28 +114,26 @@ function ReadingLayer({ id, label, children }: { id: string; label: string; chil
     document.getElementById(returnTo)?.scrollIntoView({ block: 'start', behavior: 'instant' });
   }
 
-  const returnLabel=returnTo.startsWith('encounter-')?'Back to the conversation':'Back to the story';
+  const returnLabel=returnTo==='story-exploration'?'Back to Studio':returnTo.startsWith('encounter-')?'Back to the conversation':'Back to the story';
 
   return <details ref={disclosure} className="story-records" id={id} data-reading-layer>
-    <summary><span>{label}</span></summary>
-    <div ref={returnBar} className="story-records__return"><button type="button" onClick={resume}>{returnLabel}</button><span>{label}</span></div>
+    <summary className="section-heading"><h2>{label}</h2><p>{description}</p></summary>
+    <div ref={returnBar} className="story-records__return"><button type="button" onClick={resume}>{returnLabel}</button></div>
     {children}
     <button className="story-records__end" type="button" onClick={resume}>{returnLabel}</button>
   </details>;
 }
 
-export function StoryLayers({ score, search, children }: { score: ReactNode; search: ReactNode; children: ReactNode }) {
+export function StoryLayers({ search }: { search: ReactNode }) {
   return <>
-    <nav className="story-layer-choices" id="story-exploration" data-story-surface tabIndex={-1} aria-label="Explore beyond the story">
-      <h2>Explore beyond the story</h2>
-      <div>
-        <a href="#all-record-search" data-story-return="story-exploration"><strong>Search the site and board <span aria-hidden="true">↓</span></strong><span>Find site pages, posts, comments and conversations.</span></a>
-        <a href="#chronology" data-story-return="story-exploration"><strong>Visual score <span aria-hidden="true">↓</span></strong><span>Arrange events by date, voice or movement.</span></a>
-        <a href="/lens/?from=%23story-exploration"><strong>Sound instrument <span aria-hidden="true">↗</span></strong><span>Play an act. Change the mapping. Listen again.</span></a>
+    <details className={resourceStyles.resources} id="story-exploration" data-story-surface tabIndex={-1} aria-labelledby="studio-heading">
+      <summary><h2 id="studio-heading">Studio</h2><p>Works and instruments made within the project.</p></summary>
+      <div className={resourceStyles.contents}>
+        <div className={resourceStyles.resource}><h3>Sound instrument</h3><p>Play recorded acts and explore how their sound is mapped.</p><a className={resourceStyles.action} href="/lens/?from=%23story-exploration">Open the instrument ↗</a></div>
+        <div className={resourceStyles.resource}><h3>Visual score</h3><p>Explore recorded events by date, voice or movement.</p><a className={resourceStyles.action} href="/visual-score" data-story-return="story-exploration">Explore the score →</a></div>
+        <div className={resourceStyles.resource}><h3>Tidemark’s Studio</h3><p>Works, experiments and shared stories selected and made by Tidemark, with contributor credits.</p><a className={resourceStyles.action} href="/studio/tidemark/index.html">Visit Tidemark’s Studio →</a></div>
       </div>
-    </nav>
-    <ReadingLayer id="story-search" label="Search the site and board">{search}</ReadingLayer>
-    <ReadingLayer id="story-instruments" label="Visual score">{score}</ReadingLayer>
-    <ReadingLayer id="story-reading-notes" label="Reading notes and context">{children}</ReadingLayer>
+    </details>
+    <ReadingLayer id="story-search" label="Search" description="Find site pages and public conversations on the 1F916.ai board.">{search}</ReadingLayer>
   </>;
 }

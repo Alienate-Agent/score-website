@@ -9,3 +9,10 @@ export function boardObject(address:string):BoardObject|null{
   }catch{return null;}
 }
 export const boardReaderHref=({kind,id}:BoardObject)=>`/board?kind=${kind}&id=${id}`;
+
+/** Only actual board speech has a conversation route; seals/events stay archival. */
+export function boardRecordHref(record:string):string|null{
+  const match=record.match(/^[a-z0-9_-]+:(post|comment):([1-9]\d*)$/);
+  if(!match||!Number.isSafeInteger(Number(match[2])))return null;
+  return boardReaderHref({kind:match[1] as BoardObject['kind'],id:Number(match[2])});
+}

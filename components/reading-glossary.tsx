@@ -17,13 +17,14 @@ function FurtherLinks({term}:{term:GlossaryKey}) {
   return <>{glossaryLinks[term]?.map(link=><p key={link.href}><a href={link.href} target="_blank" rel="noopener noreferrer">{link.label} ↗</a></p>)}</>;
 }
 
-export function ReadingGlossary({children}: {children: ReactNode}) {
+export function ReadingGlossary({children, navigation=true}: {children: ReactNode; navigation?: boolean}) {
   const [open,setOpen] = useState(false);
   const [ready,setReady] = useState(false);
   useEffect(()=>setReady(true),[]);
   const readingBar = useRef<HTMLDivElement>(null);
   const [claimPassed,setClaimPassed] = useState(false);
   useEffect(()=>{
+    if(!navigation)return;
     const claim=document.getElementById('story-title');
     if(!claim)return;
     const update=()=>setClaimPassed(claim.getBoundingClientRect().bottom <= (readingBar.current?.getBoundingClientRect().height ?? 0));
@@ -33,8 +34,9 @@ export function ReadingGlossary({children}: {children: ReactNode}) {
     window.addEventListener('resize',update);
     update();
     return ()=>{observer.disconnect();window.removeEventListener('scroll',update);window.removeEventListener('resize',update);};
-  },[]);
+  },[navigation]);
   useEffect(()=>{
+    if(!navigation)return;
     const root=document.documentElement;
     const previous=root.style.getPropertyValue('--reading-help-height');
     const measure=()=>root.style.setProperty('--reading-help-height',`${readingBar.current?.getBoundingClientRect().height ?? 0}px`);
@@ -42,7 +44,7 @@ export function ReadingGlossary({children}: {children: ReactNode}) {
     if(readingBar.current)observer.observe(readingBar.current);
     measure();
     return ()=>{observer.disconnect();if(previous)root.style.setProperty('--reading-help-height',previous);else root.style.removeProperty('--reading-help-height');};
-  },[]);
+  },[navigation]);
   const [selected,setSelected] = useState<GlossaryKey | null>(null);
   const [query,setQuery] = useState('');
   const origin = useRef<HTMLElement | null>(null);
@@ -53,14 +55,14 @@ export function ReadingGlossary({children}: {children: ReactNode}) {
   const filter=query.trim().toLocaleLowerCase();
   const entries=glossaryEntries.filter(([,entry])=>!filter || `${entry.label} ${entry.aliases} ${<BoardAgentMentions text={entry.definition}/>}`.toLocaleLowerCase().includes(filter));
   return <ReadingHelp.Provider value={{open,ready,show}}><TooltipProvider delay={350}>
-    <div className="reading-help-bar" data-claim-passed={claimPassed} ref={readingBar}>
+    {navigation&&<div className="reading-help-bar" data-claim-passed={claimPassed} ref={readingBar}>
       <a href="#story-title" className="reading-top-link" data-claim-passed={claimPassed} aria-label={claimPassed?'The artists are still owed. — Back to the entrance':'Score for the reconciliation of debt between an artificial polity and human artists — Back to the entrance'}>
         {claimPassed?'The artists are still owed.':<span className="score-word-title" aria-hidden="true"><span className="score-word-mark">SCORE</span>{'for the reconciliation of debt between an artificial polity and human artists'.split(' ').map((word,index)=><span className="score-title-word" key={index}>{word}</span>)}</span>}
       </a>
       <SiteContents />
-    </div>
+    </div>}
     <button type="button" className="reading-glossary-launch" disabled={!ready} aria-haspopup="dialog" aria-label="Glossary" title="Glossary" onClick={event=>show(null,event.currentTarget)}><span className="reading-glossary-lettermark" aria-hidden="true">Aa</span> <span className="reading-glossary-word">Glossary</span></button>
-    <ReadingNavigation />
+    {navigation&&<ReadingNavigation />}
     {children}
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="reading-glossary" showCloseButton={false} initialFocus={heading} finalFocus={origin}>

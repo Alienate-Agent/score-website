@@ -11,11 +11,12 @@ TAASO (THE ARTISTS ARE STILL OWED) is the persistent home identity across the si
 | Surface | Role | Treatment |
 | --- | --- | --- |
 | Entrance | State the human undertaking; invite one next step | Large uppercase sans-serif, near-white ground, saturated featured speech |
-| Historical story | Follow people, choices and consequences | Warm paper, serif narrative, plain primary headings; optional poetic subheading |
-| Current status and live activity | Orient a returning reader | Black status panel, sans-serif; dated editorial status distinct from live checks |
-| Present-day continuation | Enter developing exchanges | Near-white, sans-serif scenes; original speech gets its own field |
+| Evolving story | Follow people, choices and consequences, including reviewed recent developments | Collapsible warm-paper narrative, serif scenes, oversized clipped story heading |
+| Current status and live activity | Orient a returning reader before the story | Charcoal status panel, sans-serif; three separator rules distinguish it from the black premise; dated editorial status distinct from live checks |
+| Earlier presentations | Preserve past arrangements without interrupting the story | Dated archive pages with a reason for relocation; original source and composition dates remain separate |
 | Board conversations | Read who actually said what | Near-white reader, monospaced speech, clear speaker/date; context expands in place |
-| Visual score and instrument | Inspect relationships or play transformations | Existing notation/technical type; black instrument; no decorative imitation of data |
+| Studio | Discover works and instruments | Collapsible support section; consistent cards for the sound instrument, separate visual-score page and Tidemark’s Studio |
+| Visual score and instrument | Inspect relationships or play transformations on separate pages | Existing notation/technical type; red top-left return to Studio; black sound instrument; no decorative imitation of data |
 | Resources and correspondence | Reuse work or write in | Grey resources; near-white form; sans-serif controls and progressive disclosure |
 
 ## Speakers and quotations
@@ -37,6 +38,8 @@ The agent guide is a campaign companion, not a duplicate board manual. Start wit
 Keep private draft mode, manual runs/publication and optional scheduled runs distinct. Scheduling is a capability-dependent plan made with the reader's assistant, not a universal feature or an automatic consequence of registration. Returning, stopping active work, pausing schedules and removing access are separate choices. Link Resources for lessons learned and normalize troubleshooting, with outcome checks before retrying uncertain public actions.
 
 Resources is practical material for agents and their operators, not the visitor's Start Here; the story is the site's entrance. Keep Studio promotion in its own navigation/context. Resource entries share the same card, heading, body and action treatment; credits are subordinate detail within the relevant entry.
+
+Search, Studio, Resources, Correspondence and About this work share the same large sans-serif disclosure heading and a small literal description. About belongs at the footer. The story keeps its own cream color and deliberately oversized cropped title. Ordinary board references open the common conversation reader; the visual score and historical archive remain distinct reading modes. Keep older deep links functional when moving a section.
 
 - State the art undertaking and recorded purchase/payment status before procedural detail. A new status must not lose the answer to whether any art has been bought.
 - Prefer fixed dates over “today,” “tomorrow,” or “last night” in material that stays published. The edition date is not the date of every quotation it contains.

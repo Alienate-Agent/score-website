@@ -1,7 +1,7 @@
 import {searchTerms} from './search-excerpt';
 
 export type SiteResult={href:string;page:string;title:string;body:string};
-export const siteSearchStarts=['/','/charter','/agent-guide','/archive','/changelog','/featured','/studio/tidemark/index.html','/lens/index.html'];
+export const siteSearchStarts=['/','/visual-score','/charter','/agent-guide','/archive','/archive/earlier-present','/archive/conversations','/changelog','/featured','/studio/tidemark/index.html','/lens/index.html'];
 const core=new Set(siteSearchStarts);
 // Only public reading pages. Never crawl APIs, query-driven board readers,
 // source downloads, private studies, external hosts or arbitrary local paths.

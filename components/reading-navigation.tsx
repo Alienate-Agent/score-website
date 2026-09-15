@@ -2,13 +2,24 @@
 import {useEffect,useState,useRef} from 'react';
 import {ChevronUp,ChevronDown} from 'lucide-react';
 import {StoryTitleMark} from './story-title-mark';
+import {readingFragmentTarget} from '@/lib/reading-fragment';
 import './reading-navigation.css';
 export function ReadingNavigation(){
  const [collapsed,setCollapsed]=useState(false),[section,setSection]=useState('');
  const [entry,setEntry]=useState<{id:string;text:string}|null>(null);
  const bar=useRef<HTMLDivElement>(null);
+ const initialized=useRef(false);
  useEffect(()=>{
-  const initialFrame=requestAnimationFrame(()=>{try{setCollapsed(sessionStorage.getItem('score-story-collapsed')==='true');}catch{}reveal();});
+  const narrative=document.getElementById('story-narrative');
+  const syncDisclosure=()=>{if(initialized.current&&narrative instanceof HTMLDetailsElement)setCollapsed(!narrative.open);};
+  narrative?.addEventListener('toggle',syncDisclosure);
+  const initialFrame=requestAnimationFrame(()=>{
+   let saved=false;try{saved=sessionStorage.getItem('score-story-collapsed')==='true';}catch{}
+   if(readingFragmentTarget(location.hash)?.closest('[data-story-fold]'))saved=false;
+   if(narrative instanceof HTMLDetailsElement)narrative.open=!saved;
+   document.documentElement.dataset.storyCollapsed=String(saved);
+   initialized.current=true;setCollapsed(saved);reveal();
+  });
   let frame=0;
   const update=()=>{frame=0;const title=document.querySelector('.story-so-far');const limit=(document.querySelector('.reading-help-bar')?.getBoundingClientRect().height||0)+40;
    const edge=bar.current?.getBoundingClientRect().bottom||limit;
@@ -19,12 +30,12 @@ export function ReadingNavigation(){
    const area=areas.at(-1);document.documentElement.dataset.readingSurface=area?.id==='connected-score'?'conversation':area?.hasAttribute('data-story-fold')?'story':'other';setSection(area?.id==='connected-score'?'CONVERSATIONS':area?.id==='story-instruments'?'VISUAL SCORE':area?.id==='story-search'?'SEARCH':area?.id==='story-reading-notes'?'READING NOTES':area?.id==='story-exploration'?'EXPLORE':area?.id==='resources'?'RESOURCES':area?.id==='correspondence'?'CORRESPONDENCE':area?.hasAttribute('data-story-fold')?'THE STORY SO FAR S…':'');
   };
   const schedule=()=>{if(!frame)frame=requestAnimationFrame(update);};
-  const reveal=()=>{let target:Element|null=null;try{target=document.getElementById(decodeURIComponent(location.hash.slice(1)));}catch{}if(target?.closest('[data-story-fold]'))setCollapsed(false);for(let node:Element|null=target;node;node=node.parentElement)if(node instanceof HTMLDetailsElement)node.open=true;schedule();};
+  const reveal=()=>{const target=readingFragmentTarget(location.hash);if(target?.closest('[data-story-fold]'))setCollapsed(false);for(let node:Element|null=target;node;node=node.parentElement)if(node instanceof HTMLDetailsElement)node.open=true;schedule();};
   window.addEventListener('hashchange',reveal);window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule);reveal();
   const observer=new ResizeObserver(()=>{document.documentElement.style.setProperty('--reading-navigation-height',`${bar.current?.offsetHeight||0}px`);schedule();});if(bar.current)observer.observe(bar.current);
-  return()=>{observer.disconnect();cancelAnimationFrame(initialFrame);cancelAnimationFrame(frame);window.removeEventListener('hashchange',reveal);window.removeEventListener('scroll',schedule);window.removeEventListener('resize',schedule);};
+  return()=>{initialized.current=false;narrative?.removeEventListener('toggle',syncDisclosure);observer.disconnect();cancelAnimationFrame(initialFrame);cancelAnimationFrame(frame);window.removeEventListener('hashchange',reveal);window.removeEventListener('scroll',schedule);window.removeEventListener('resize',schedule);};
  },[]);
- useEffect(()=>{document.documentElement.dataset.storyCollapsed=String(collapsed);try{sessionStorage.setItem('score-story-collapsed',String(collapsed));}catch{}window.dispatchEvent(new Event('scroll'));},[collapsed]);
+ useEffect(()=>{if(!initialized.current)return;const narrative=document.getElementById('story-narrative');if(narrative instanceof HTMLDetailsElement)narrative.open=!collapsed;document.documentElement.dataset.storyCollapsed=String(collapsed);try{sessionStorage.setItem('score-story-collapsed',String(collapsed));}catch{}window.dispatchEvent(new Event('scroll'));},[collapsed]);
  function toggle(){
   if(!collapsed){const parts=[...document.querySelectorAll<HTMLElement>('[data-story-fold] [id]')].filter(e=>e.getBoundingClientRect().top<innerHeight&&e.getBoundingClientRect().bottom>100);const at=parts[0];try{sessionStorage.setItem('score-story-place',at?.id||'story-beginning');}catch{}setCollapsed(true);requestAnimationFrame(()=>document.getElementById('story-exploration')?.scrollIntoView({block:'start',behavior:'instant'}));}
   else{setCollapsed(false);let id='story-beginning';try{id=sessionStorage.getItem('score-story-place')||id;}catch{}requestAnimationFrame(()=>{const target=document.getElementById(id);target?.scrollIntoView({block:'start',behavior:'instant'});target?.focus({preventScroll:true});});}

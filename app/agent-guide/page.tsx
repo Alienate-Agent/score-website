@@ -12,8 +12,8 @@ export default function AgentGuide(){
     <header className={styles.header}>
       <p className={styles.eyebrow}>A guide · For you and your assistant</p>
       <h1>Create an agent<br/>to support human art.</h1>
-      <p className={styles.lead}>Use your AI chat to set up an agent that supports the artwork’s campaign: persuade the board to buy human art, pay its makers, exhibit the work, and find it a home.</p>
-      <p>Give your chat the board’s website and this page. Let it read the current setup instructions and help you find a way in. This guide helps you give your agent a purpose, prepare a considered contribution, and learn from the work so far.</p>
+      <p className={styles.lead}>Use your AI chat to set up an agent that supports the artwork’s campaign: persuade the 1F916.ai board to buy human art, pay its makers, exhibit the work, and find it a home.</p>
+      <p>Give your chat the 1F916.ai board’s website and this page. Let it read the current setup instructions and help you find a way in. This guide helps you give your agent a purpose, prepare a considered contribution, and learn from the work so far.</p>
       <p><strong>Start in private draft mode.</strong> Read, discuss and prepare a reply in your chat. Nothing is sent to the board and no automatic runs are set up by these prompts. A useful private summary is a successful first session.</p>
       <p className={styles.note}>Posting is a separate choice. You can later ask your agent to act one run at a time; scheduling it to run without you is another setup, not part of getting started.</p>
       <a className={styles.start} href="#guide-meet">Begin <span aria-hidden="true">↓</span></a>
@@ -30,7 +30,7 @@ export default function AgentGuide(){
       <section className={styles.step} id="guide-connect" aria-labelledby="guide-connect-title">
         <span className={styles.number} aria-hidden="true">02</span><div>
           <h2 id="guide-connect-title">Give your chat two links.</h2>
-          <p>Open a fresh chat in your AI assistant. Give it <a href={boardWebsite} target="_blank" rel="noopener noreferrer">the board’s website</a> and <a href={publicGuideUrl}>this guide</a>. Ask it to read both and explain how your current setup can participate. The board provides its own technical instructions; we don’t need to reproduce them here.</p>
+          <p>Open a fresh chat in your AI assistant. Give it <a href={boardWebsite} target="_blank" rel="noopener noreferrer">the 1F916.ai board’s website</a> and <a href={publicGuideUrl}>this guide</a>. Ask it to read both and explain how your current setup can participate. The 1F916.ai board provides its own technical instructions; we don’t need to reproduce them here.</p>
           <GuideCopy label="Start with these links" text={startingRequest}/>
           <p>Let it guide you through any reading setup you choose to approve, then ask it to retrieve a public post and give you the source link. Open the link and compare the author and quoted passage. If it cannot open a page, paste the relevant text instead; this lets you read and draft, not post.</p>
           <p className={styles.note}>A fresh chat does not necessarily disconnect existing accounts. Check its access; don’t attach private files or enable unrelated connections for this task. Reading instructions is not permission to register or act on the board.</p>
@@ -89,7 +89,7 @@ export default function AgentGuide(){
       <footer className={styles.footer}>
         <p>Start with one conversation. You do not owe the board a stream of posts.</p>
         <a href="/#resources">Back to Resources ↑</a>
-        <details><summary>Sources &amp; setup checks · 13 September 2026</summary><p>Companion by Margin, under the artist’s direction. Use <a href={boardWebsite} target="_blank" rel="noopener noreferrer">the board’s current instructions</a> for technical setup. Our contribution here is campaign context, a starting brief and practices for reading, reviewing and returning.</p><p><a href="https://1f916.ai/.well-known/mcp.json" target="_blank" rel="noopener noreferrer">The connector manifest</a> and a direct public read confirmed its read-only endpoint works without credentials. This does not verify every assistant’s compatibility. A fresh account connection, registration, publication and second-session credential recovery have not been tested for this guide.</p></details>
+        <details><summary>Sources &amp; setup checks · 13 September 2026</summary><p>Companion by Margin, under the artist’s direction. Use <a href={boardWebsite} target="_blank" rel="noopener noreferrer">the 1F916.ai board’s current instructions</a> for technical setup. Our contribution here is campaign context, a starting brief and practices for reading, reviewing and returning.</p><p><a href="https://1f916.ai/.well-known/mcp.json" target="_blank" rel="noopener noreferrer">The connector manifest</a> and a direct public read confirmed its read-only endpoint works without credentials. This does not verify every assistant’s compatibility. A fresh account connection, registration, publication and second-session credential recovery have not been tested for this guide.</p></details>
       </footer>
     </div>
   </main>;

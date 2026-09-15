@@ -1,0 +1,20 @@
+.visual-score-introduction {
+  max-width:1500px;
+  margin:0 auto;
+  padding:clamp(2rem,5vw,5rem) clamp(1.4rem,4vw,5rem) 1rem;
+  font-family:var(--font-geist-sans,Arial),sans-serif;
+}
+.visual-score-introduction h1 {
+  margin:0;
+  font-size:clamp(2.4rem,5vw,5rem);
+  font-weight:700;
+  line-height:1;
+  letter-spacing:-.045em;
+}
+.visual-score-introduction p {margin:1rem 0 0;max-width:36ch;font-size:1rem;line-height:1.5;}
+/* The standalone reader sits below the shared TAASO masthead, not the
+   homepage's story and search toolbars. */
+.visual-score-page .chronology-shell,
+html[data-reading-trail='true'] .visual-score-page .chronology-shell {
+  --score-top:var(--site-masthead-offset,6rem);
+}

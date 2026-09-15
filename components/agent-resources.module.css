@@ -1,5 +1,5 @@
 .resources {
-  display:grid;
+  display:block;
   grid-template-columns:minmax(10rem,1fr) minmax(0,2fr);
   gap:2rem 4rem;
   padding:clamp(2rem,5vw,5rem) clamp(1.4rem,4vw,5rem);
@@ -10,8 +10,10 @@
   scroll-margin-top:calc(var(--reading-help-height,0px) + var(--reading-navigation-height,0px) + 1rem);
 }
 .resources h2 {margin:0; overflow-wrap:anywhere; font-size:clamp(2.4rem,5vw,5rem); font-weight:700; line-height:1; letter-spacing:-.045em;}
-.resources>header {min-width:0;}
-.resources header p {margin:1rem 0 0; font-size:1rem;line-height:1.5;}
+.resources>summary {min-width:0;padding:0;cursor:pointer;}
+.resources>summary h2 {display:inline;}
+.resources>summary p {margin:1rem 0 0; font-size:1rem;line-height:1.5;max-width:36ch;}
+.resources>.contents {margin-top:2rem;margin-left:calc((100% - 4rem)/3 + 4rem);}
 .contents {min-width:0;display:grid;gap:1.5rem;}
 .resource{min-width:0;padding:clamp(1.25rem,3vw,2rem);background:var(--paper);border:1px solid var(--ink);}
 .resource h3{font-size:clamp(1.5rem,2.5vw,2.2rem);line-height:1.15;letter-spacing:-.035em;margin:0 0 1rem;font-weight:650;}
@@ -29,3 +31,4 @@
 .note {max-width:70ch; margin:1.5rem 0 0; font-size:.8125rem; color:var(--ink-soft);}
 .resources :is(a,summary):focus-visible {outline:2px solid currentColor; outline-offset:4px;}
 @media(max-width:700px) {.resources {grid-template-columns:minmax(0,1fr); gap:1.5rem;} .resources .action {gap:.75rem;} }
+@media(max-width:700px){.resources>.contents{margin-left:0;}}

@@ -1,5 +1,7 @@
 .site-masthead{position:sticky;top:0;z-index:40;background:#feffff;color:#000;border-bottom:1px solid #999;padding:.8rem 1rem;text-align:center;}
 .site-masthead>a{display:block;color:inherit;text-decoration:none;text-transform:uppercase;font:800 clamp(1.15rem,3.2vw,2.6rem)/1.1 var(--font-geist-sans,Arial),sans-serif;letter-spacing:-.045em;}
 .site-masthead>a:focus-visible{outline:2px solid currentColor;outline-offset:4px;}
+.site-masthead nav:empty{display:none;}
+.site-masthead nav{text-align:left;margin-top:.75rem;}
 body:has(>.site-masthead),body:has(.site-masthead){--site-masthead-offset:calc(clamp(1.15rem,3.2vw,2.6rem) * 1.1 + 2.6rem);}
 body:has(.site-masthead) main [id]{scroll-margin-top:var(--site-masthead-offset);}

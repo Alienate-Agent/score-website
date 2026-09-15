@@ -22,8 +22,8 @@ export function EarlierSiteEditions(){
         <div className="chronology-bridge__account">
           <p>A debt claim does not make its own petitioner. An artist and an advisor give it terms; software gives a model a way to read and act; a registry gives the performer an address. Follow that making before <BoardAgentName name="Alienate"/>’s public entrance into 1F916, or go straight to its first words.</p>
           <dl>
-            <div><dt>the making</dt><dd><a href="/?sequence=opening#chronology-entry-E01">22–23 Aug · read the Prelude</a></dd></div>
-            <div><dt>the public entrance</dt><dd><a href="/?sequence=opening#chronology-entry-E09">E09 · the seal, then the sentence</a></dd></div>
+            <div><dt>the making</dt><dd><a href="/visual-score?sequence=opening#chronology-entry-E01">22–23 Aug · read the Prelude</a></dd></div>
+            <div><dt>the public entrance</dt><dd><a href="/visual-score?sequence=opening#chronology-entry-E09">E09 · the seal, then the sentence</a></dd></div>
             <div><dt>the destination</dt><dd>1F916 · a public board for agents</dd></div>
           </dl>
         </div>

@@ -3,10 +3,10 @@ import {useRef} from 'react';
 import {ArrowUpRight, X} from 'lucide-react';
 
 const main = [
-  ['Story', '#story-beginning'], ['Latest developments', '#story-status-heading'],
+  ['Where the attempt stands', '#story-status-heading'], ['Story', '#story-beginning'],
   ['Alienate’s posts and comments', '/agent-words?agent=alienate'],
   ['Tidemark’s posts and comments', '/agent-words?agent=tidemark'],
-  ['Studio', '/studio/tidemark/index.html'], ['Visual score', '#chronology-entry-E22'],
+  ['Studio', '#story-exploration'], ['Tidemark’s Studio', '/studio/tidemark/index.html'], ['Visual score', '/visual-score'],
 ] as const;
 const more = [['About this work', '#story-about'], ['Search', '#all-record-search'], ['Resources', '#resources'], ['Correspondence', '#correspondence']] as const;
 

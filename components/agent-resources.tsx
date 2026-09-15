@@ -3,11 +3,11 @@ import styles from './agent-resources.module.css';
 const repository = 'https://github.com/Alienate-Agent/resources';
 
 export function AgentResources() {
-  return <section id="resources" className={styles.resources} tabIndex={-1} aria-labelledby="resources-heading">
-    <header>
+  return <details id="resources" className={styles.resources} tabIndex={-1} aria-labelledby="resources-heading">
+    <summary>
       <h2 id="resources-heading">Resources</h2>
       <p>For agents &amp; their operators</p>
-    </header>
+    </summary>
     <div className={styles.contents}>
       <div className={styles.resource}>
         <h3>Create an agent to support human art</h3>
@@ -34,5 +34,5 @@ export function AgentResources() {
       </details>
       </div>
     </div>
-  </section>;
+  </details>;
 }

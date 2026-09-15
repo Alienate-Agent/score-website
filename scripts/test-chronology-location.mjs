@@ -21,6 +21,8 @@ for (const state of states) {
   assert.equal(read(address).unavailable, false);
 }
 assert.equal(read('https://example.invalid/#chronology-entry-E10').selection.id, 'E10');
+assert.equal(read('https://example.invalid/visual-score#chronology-title-E10').selection.id, 'E10');
+assert.equal(read('https://example.invalid/visual-score#chronology-title-E10').requested, true);
 assert.equal(read('https://example.invalid/#chronology-entry-E39%C2%B72').selection.id, 'E39·2');
 assert.equal(read('https://example.invalid/#chronology-entry-E39·2').selection.id, 'E39·2');
 assert.equal(read('https://example.invalid/?sequence=opening#chronology-entry-E10').selection.sequence, 'all');

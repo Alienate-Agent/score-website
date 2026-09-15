@@ -27,8 +27,8 @@ assert.ok(component.replace(/<\/?Term\b[^>]*>/g,'').includes('not complete conve
 assert.ok(component.replace(/<\/?Term\b[^>]*>/g,'').includes('not citizen quotations'));
 assert.ok(component.includes('encodeURIComponent(step.key)'));
 assert.ok(!/fetch\(|useEffect|localStorage|AudioContext/.test(component));
-assert.ok(read('app/page.tsx').includes('id="question-paths"') && read('app/page.tsx').includes('<BoardReadingPaths />'), 'The older reading paths remain reachable behind their named disclosure');
-assert.ok(read('components/earlier-story-ending.tsx').includes('href="/#board-questions" data-story-return="archived-story-unwritten"'), 'The archived ending links back to the working home-page reader');
-assert.ok(read('components/dated-record-reader.tsx').includes('href="/#board-questions"'));
+assert.ok(read('components/archived-reading-notes.tsx').includes('id="question-paths"') && read('components/archived-reading-notes.tsx').includes('<BoardReadingPaths />'), 'The earlier reading arrangements remain in the archive');
+assert.ok(read('components/earlier-story-ending.tsx').includes('href="/archive#board-questions" data-story-return="archived-story-unwritten"'), 'The archived ending links to its preserved reading arrangement');
+assert.ok(read('components/dated-record-reader.tsx').includes('href="/archive#board-questions"'));
 assert.ok(!/\b(?:he|him|his|himself)\b/i.test(JSON.stringify(paths)), 'Do not add operator-identifying pronouns');
 console.log('PASS: three editorial paths, seven chronological source links, unchanged corpus, visible scope/provenance and two-way navigation. Optional current-thread checks are tested separately; no new audio input.');

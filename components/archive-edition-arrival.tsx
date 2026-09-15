@@ -7,9 +7,9 @@ export function ArchiveEditionArrival(){
     const reveal=()=>{
       let id='';try{id=decodeURIComponent(location.hash.slice(1));}catch{return;}
       const target=document.getElementById(id);
-      if(!target?.closest('#earlier-site-editions'))return;
+      if(!target?.closest('#earlier-site-editions, [data-archive-disclosures]'))return;
       let ancestor:Element|null=target;
-      while(ancestor?.closest('#earlier-site-editions')){
+      while(ancestor?.closest('#earlier-site-editions, [data-archive-disclosures]')){
         if(ancestor instanceof HTMLDetailsElement)ancestor.open=true;
         ancestor=ancestor.parentElement;
       }

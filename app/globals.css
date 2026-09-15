@@ -389,7 +389,7 @@ footer {
   --score-top: calc(var(--reading-help-height, 0px) + var(--reading-navigation-height, 0px) + var(--story-return-height, 0px));
   max-width: 1500px;
   margin: 0 auto;
-  padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 4vw, 4rem);
+  padding: 1.5rem clamp(1.4rem, 4vw, 5rem) clamp(3rem, 6vw, 6rem);
   scroll-margin-top: var(--score-top);
 }
 
@@ -398,21 +398,19 @@ html[data-reading-trail='true'] .chronology-shell {
 }
 
 .score-arrangement { border-bottom: 1px solid var(--ink); font-family: var(--font-geist-mono), ui-monospace, monospace; }
-.score-arrangement > summary { display:flex; flex-wrap:wrap; align-items:center; gap:.35rem 1rem; min-height:44px; padding:.75rem 0; cursor:pointer; font-size:.875rem; }
-.score-arrangement > summary::before { content:'+'; color:var(--reveal); }
-.score-arrangement[open] > summary::before { content:'−'; }
+.score-arrangement > summary { display:flex; flex-wrap:wrap; align-items:center; gap:.35rem .5rem; min-height:44px; padding:1rem 0; cursor:pointer; list-style:none;font:600 .95rem/1.5 var(--font-geist-sans,Arial),sans-serif; }
+.score-arrangement > summary::-webkit-details-marker {display:none;}
+.score-arrangement > summary::before { content:'▶'; width:.75rem;flex:0 0 .75rem;font-size:.75rem; }
+.score-arrangement[open] > summary::before { content:'▼'; }
 .score-arrangement > summary span { margin-left:auto; color:var(--ink-soft); font-size:.75rem; }
 .score-arrangement .reading-mode { min-height:4.5rem; padding:1rem !important; }
 .score-arrangement .reading-mode small { font-size:.75rem; }
 .score-arrangement > summary:focus-visible { outline:2px solid var(--ink); outline-offset:3px; }
 
 .score-frontmatter {
-  display: grid;
-  grid-template-columns: 1fr minmax(18rem, 30rem);
-  gap: 3rem;
-  align-items: end;
+  display: block;
   border-bottom: 1px solid var(--ink);
-  padding-bottom: 2.25rem;
+  padding-bottom: 1.25rem;
 }
 
 .score-frontmatter > *,
@@ -436,14 +434,13 @@ html[data-reading-trail='true'] .chronology-shell {
 .notation-guide summary {
   display: flex;
   align-items: center;
-  min-height: 2.8rem;
+  min-height: 44px;
+  gap:.5rem;
+  padding:1rem 0;
   cursor: pointer;
   list-style: none;
-  color: var(--ink-soft);
-  font-size: 0.58rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  color: var(--ink);
+  font:600 .95rem/1.5 var(--font-geist-sans,Arial),sans-serif;
 }
 
 .notation-guide summary::-webkit-details-marker {
@@ -451,13 +448,12 @@ html[data-reading-trail='true'] .chronology-shell {
 }
 
 .notation-guide summary::before {
-  width: 1.5rem;
-  content: '+';
-  color: var(--reveal);
+  width:.75rem;flex:0 0 .75rem;font-size:.75rem;
+  content: '▶';
 }
 
 .notation-guide[open] summary::before {
-  content: '−';
+  content: '▼';
 }
 
 .notation-guide__content {

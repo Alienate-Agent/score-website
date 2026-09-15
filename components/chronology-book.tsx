@@ -180,7 +180,7 @@ export function ChronologyBook() {
   useEffect(() => {
     const readLocation = () => {
       const hash = window.location.hash;
-      if (hash && hash !== '#chronology' && !hash.startsWith('#chronology-entry-')) {
+      if (hash && !['#chronology','#chronology-heading','#story-instruments'].includes(hash) && !/^#chronology-(entry|title)-/.test(hash)) {
         cancelArrivalRef.current?.();
         return;
       }
@@ -312,13 +312,9 @@ export function ChronologyBook() {
       aria-labelledby="chronology-heading"
     >
       <div className="score-frontmatter">
-        <div>
-          <p className="kicker">Chronology</p>
-          <h2 id="chronology-heading">Visual score</h2>
-        </div>
+        <h2 id="chronology-heading" className="sr-only">Recorded events</h2>
         <p className="frontmatter-note">
-          Each mark opens a passage in the story. Change the order to follow
-          dates, events, voices, or movements; the selected passage stays yours.
+          Select a mark to read an event. Use “Arrange the score” to change the order.
         </p>
       </div>
 
@@ -682,7 +678,7 @@ export function ChronologyBook() {
           </p>
           <EvidenceRegisterSpecimen />
         </details>
-        <a className="experiment-bypass" href="#conduct-leaf-heading">
+        <a className="experiment-bypass" href="/archive#conduct-leaf-heading">
           Continue to August 24: one day in detail
         </a>
       </aside>

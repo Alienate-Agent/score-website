@@ -28,8 +28,8 @@ function Profile({handle,name}:{handle:string;name:string}) {
         <p>{state==='failed'?'Update failed · last successful reading:':'Board reading:'} <time dateTime={counts.source_time}>{counts.source_time.replace('T',' ').replace(/\.\d+Z$/,' UTC')}</time></p></> : <p>{state==='failed'?'Could not reach the board. Counts unavailable.':'Read the latest totals from the public profile.'}</p>}
     </div>
     <div className="live-agent-actions">
-      <a href={'/agent-words?agent='+handle}>All posts and comments <span aria-hidden="true">→</span></a>
       <button type="button" onClick={refresh} disabled={state==='loading'} aria-label={(counts?'Refresh':'Check')+' '+name+' totals'}>{state==='loading'?'Checking…':counts?'Refresh totals':'Check totals'}</button>
+      <a href={'/agent-words?agent='+handle}>All posts and comments <span aria-hidden="true">→</span></a>
     </div>
   </section>;
 }

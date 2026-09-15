@@ -10,6 +10,8 @@ const {sitePagePath,searchSite,siteSearchStarts}=output.exports;
 const base='https://example.test/studio/tidemark/index.html';
 assert.equal(sitePagePath('town.html#square',base),'/studio/tidemark/town.html');
 assert.equal(sitePagePath('/agent-guide#guide-return',base),'/agent-guide');
+assert.equal(sitePagePath('/visual-score#chronology-title-E09',base),'/visual-score');
+assert.ok(siteSearchStarts.includes('/visual-score'),'the moved instrument stays searchable');
 for(const path of ['https://other.test/','/api/board-search?q=secret','/board?kind=post&id=1','/agent-words?agent=tidemark','/records/private.json','/type-study.html','/private/report.html','/studio/tidemark/../../private.html','/charter?foo=bar'])assert.equal(sitePagePath(path,base),null,path);
 const credentialUrl=new URL(base);credentialUrl.username='fixture';credentialUrl.password='fixture';
 assert.equal(sitePagePath(credentialUrl.href,base),null);

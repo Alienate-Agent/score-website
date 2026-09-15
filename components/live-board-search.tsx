@@ -1,5 +1,7 @@
 'use client';
 import {BoardAgentName} from './board-agent-name';
+import {SearchHighlight} from './search-highlight';
+import styles from './cross-record-search.module.css';
 import {useRef,useState,useEffect} from 'react';
 import {ConversationReader,freshConversation,type FreshConversation} from './conversation-reader';
 type Result={id:number;author:string;title:string|null;snippet:string;date:string;withheld:string|null};
@@ -12,7 +14,7 @@ export function LiveBoardSearch({query}:{query:string}){
  useEffect(()=>()=>request.current?.abort(),[]);
  async function retrieve(params:URLSearchParams){
   if(request.current)return;
-  const controller=new AbortController();request.current=controller;setBusy(true);setNotice('Checking the public board…');
+  const controller=new AbortController();request.current=controller;setBusy(true);setNotice('Checking the 1F916.ai board…');
   const timer=setTimeout(()=>controller.abort(),25000);
   try{
    const r=await fetch('/api/board-search?'+params,{credentials:'omit',cache:'no-store',signal:controller.signal});
@@ -23,7 +25,7 @@ export function LiveBoardSearch({query}:{query:string}){
    }else if(d.mode==='search'&&Array.isArray(d.results)&&d.results.length<=20&&d.results.every(result)&&typeof d.observed_at==='string'&&Number.isFinite(Date.parse(d.observed_at))&&typeof d.has_more==='boolean'){
     setRows(d.results);setNotice(`${d.results.length} posts returned · checked ${new Date(d.observed_at).toLocaleTimeString()}${d.has_more?' · more matches exist; narrow your words to find them.':''}`);
    }else throw Error('shape');
-  }catch{setNotice('The board could not be checked. Any earlier results remain available.');}
+  }catch{setNotice('The 1F916.ai board could not be checked. Any earlier results remain available.');}
   finally{clearTimeout(timer);request.current=null;setBusy(false);}
  }
  function submit(){
@@ -38,12 +40,11 @@ export function LiveBoardSearch({query}:{query:string}){
   void retrieve(new URLSearchParams({q:text}));
  }
  const current=opened?.conversation;
- return <div className="live-board-search">
-  <h4>Live board</h4>
-  <button disabled={busy} onClick={submit}>{busy?'Checking…':'Search the board / open a board link'}</button>
-  <p>Live search looks inside post titles and bodies—not comments. Paste a public post or comment link above to open its discussion. The speaker filter applies only to this site’s records.</p>
+ return <div className={styles.results}>
+  <button className={styles.searchButton} disabled={busy} onClick={submit}>{busy?'Checking…':/^https?:/i.test(query.trim())?'Open the 1F916.ai board link':'Search the 1F916.ai board'}</button>
+  <p className={styles.meta}>{/^https?:/i.test(query.trim())?'Open this post or comment in the discussion reader.':'Live search covers posts. Collected comments remain searchable below.'}</p>
   <p role="status">{notice}</p>
-  <ol>{rows.map(r=><li key={r.id}><p>{r.withheld?r.author:<BoardAgentName name={r.author}/>} · {r.date.slice(0,10)}</p><button disabled={busy||!!r.withheld} onClick={()=>retrieve(new URLSearchParams({kind:'post',id:String(r.id)}))}>{r.withheld?'Contribution withheld':r.title}</button>{!r.withheld&&<p>{r.snippet}</p>}</li>)}</ol>
-  {opened&&current&&<ConversationReader key={opened.serial} selected={opened.selected} initialFresh={current} event={{title:current.post.title??'Public board conversation',post:{...current.post,body_sha256:''},comments:current.comments.map(r=>({...r,body_sha256:''})),partial:current.partial,capturedAt:current.observed_at}}/>}
+  <ol>{rows.map(r=><li key={r.id}><p>{r.withheld?r.author:<BoardAgentName name={r.author}/>} · {r.date.slice(0,10)}</p><button disabled={busy||!!r.withheld} onClick={()=>retrieve(new URLSearchParams({kind:'post',id:String(r.id)}))}>{r.withheld?'Contribution withheld':<SearchHighlight text={r.title??''} query={query}/>}</button>{!r.withheld&&<p><SearchHighlight text={r.snippet} query={query}/></p>}</li>)}</ol>
+  {opened&&current&&<ConversationReader key={opened.serial} selected={opened.selected} initialFresh={current} event={{title:current.post.title??'1F916.ai board conversation',post:{...current.post,body_sha256:''},comments:current.comments.map(r=>({...r,body_sha256:''})),partial:current.partial,capturedAt:current.observed_at}}/>}
  </div>;
 }

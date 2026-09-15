@@ -15,10 +15,12 @@ export function readChronologyLocation(
   entries: readonly EntryIdentity[],
   fallbackId: string,
 ): { selection: ReadingLocation; requested: boolean; unavailable: boolean } {
-  const requested = url.hash.startsWith(prefix);
+  // Site search may link to the leaf heading rather than its notation strip.
+  const identityPrefix = url.hash.startsWith('#chronology-title-') ? '#chronology-title-' : prefix;
+  const requested = url.hash.startsWith(identityPrefix);
   let requestedId = '';
   try {
-    requestedId = requested ? decodeURIComponent(url.hash.slice(prefix.length)) : '';
+    requestedId = requested ? decodeURIComponent(url.hash.slice(identityPrefix.length)) : '';
   } catch {
     // A malformed link must not crash the reader or imply a matching entry.
   }

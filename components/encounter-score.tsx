@@ -10,8 +10,9 @@ import {BoardReferencedText} from './board-referenced-text';
 import {encounters,encounterVoices,defaultLocation,encounterHash,parseEncounterHash,type EncounterLocation} from '../lib/encounters';
 import lensKeys from '../public/lens/act-keys.json';
 import styles from './encounter-score.module.css';
+import {ConversationBackground} from './conversation-background';
 
-export function EncounterScore(){
+export function EncounterScore({archived=false}:{archived?:boolean}={}){
   const [location,setLocation]=useState<EncounterLocation>(defaultLocation);
   const main=useRef<HTMLElement>(null);
   const locator=useRef<HTMLElement>(null);
@@ -111,7 +112,7 @@ export function EncounterScore(){
   const original=(key:string)=>move({...location,act:key,view:'words'});
   return <section id="connected-score" className={styles.score} aria-label="Conversations">
     <nav ref={locator} className={styles.locator} aria-label="Selected encounters" data-choices-open={choicesOpen}>
-      {<button className={styles.storyReturn} onClick={storyOrigin?resumeStory:()=>{window.location.hash="story-beginning";}} title="Return to your place in the story"><ArrowLeft aria-hidden="true"/><span>Back</span></button>}
+      {<button className={styles.storyReturn} onClick={archived?()=>window.location.assign('/#story-recent-developments'):storyOrigin?resumeStory:()=>{window.location.hash="story-beginning";}} title="Return to your place in the story"><ArrowLeft aria-hidden="true"/><span>Back</span></button>}
       <div className={styles.mobileLocator}>
         <div className={styles.currentMark}><span aria-hidden="true"><EventChord entryId={`current-${event.id}`} voices={encounterVoices(event)}/></span><h2 id="encounter-heading" ref={heading} tabIndex={-1}>{event.title}</h2></div>
         <button ref={choiceToggle} className={styles.choiceToggle} aria-expanded={choicesOpen} aria-controls="encounter-choices" onClick={()=>setChoicesOpen(open=>!open)}>Other conversations <ChevronDown aria-hidden="true"/></button>
@@ -120,7 +121,7 @@ export function EncounterScore(){
     <div className={styles.locatorCaption}><p className={styles.label}>Selected conversations</p><details className={styles.locatorGuide}><summary>Read the marks</summary><div><SpeakerSignature voice="Alienate"/><SpeakerSignature voice="Tidemark"/><SpeakerSignature voice="Polity participant"/><p>A stack locates voices in this selection, not agreement or a count of activity. A diamond can include several other citizens. Dates may overlap; spacing does not measure elapsed time. Select a mark to change encounters.</p></div></details></div>
 
       <ol>{encounters.map(e=>{const voices=encounterVoices(e);return <li key={e.id}><a data-encounter-id={e.id} data-reading-label={e.title} href={encounterHash(readings.get(e.id)??defaultLocation(e.id))} aria-label={`${e.date} — ${e.title}. ${voices.join(', ')}`} title={`${e.title} · ${voices.join(', ')}`} aria-current={event.id===e.id?'location':undefined} onClick={ev=>{ev.preventDefault();visit(e.id);}}><span aria-hidden="true"><EventChord entryId={`encounter-${e.id}`} voices={voices}/></span><span className={styles.locatorWords}><time>{e.date.replace(' September',' Sep')}</time><span>{e.title}</span></span></a></li>;})}</ol>
-      <a className={styles.allEncounters} href="#all-record-search" data-story-return={encounterHash(location).slice(1)} onClick={()=>{savePlace();setChoicesOpen(false);}}>Browse the wider public record <ArrowRight aria-hidden="true"/></a>
+      <a className={styles.allEncounters} href={archived?'/#all-record-search':'#all-record-search'} data-story-return={encounterHash(location).slice(1)} onClick={()=>{savePlace();setChoicesOpen(false);}}>Browse the wider public record <ArrowRight aria-hidden="true"/></a>
       </div>
     </nav>
     <div className={styles.layout}>
@@ -157,6 +158,7 @@ export function EncounterScore(){
           <ConversationReader event={event} selected={act.key}/>
         </details>
         <details className={styles.details}><summary>Dates and sources</summary><p>Original speech: {act.occurred_at}. Observation: {supplement?.observedAt??event.capturedAt}. This selection and retrospective account were composed and added to the local site on 7 September 2026. Earlier source admissions remain unchanged.</p><p>Body SHA-256: <code>{act.body_sha256}</code>. The narrator’s title is not the source title. Reading and switching views do not act on the board.</p>{event.exchange&&<p>{event.exchange.basis}</p>}<a href={supplement?`/records/${supplement.sourceFile}`:event.id==='kinship'?'/records/dated-public-record-v1.json':'/records/connected-encounters-2026-09-07.json'}>Dated source collection</a>{event.id==='kinship'&&<p><a href={'/archive#public-record-'+encodeURIComponent(instrumentKey)} data-story-return={encounterHash(location).slice(1)} onClick={savePlace}>This act in the preserved public record</a></p>}</details>
+        {(event.id==='rule'||event.id==='kinship')&&<ConversationBackground key={event.id} topic={event.id}/>}
       </article>
       <aside className={styles.margin} aria-label="Another reading of this encounter">
         <div id="encounter-sound-margin" />
@@ -171,6 +173,6 @@ export function EncounterScore(){
         </details>}
       </aside>
     </div>
-    <footer className={styles.foot}><a href="#story-alienate">How the agents were made <ArrowLeft aria-hidden="true"/></a><a href="#all-record-search" data-story-return={encounterHash(location).slice(1)} onClick={savePlace}>Find public words across the collections</a><a href="#story-unwritten">Where the attempt stands <ArrowRight aria-hidden="true"/></a></footer>
+    <footer className={styles.foot}><a href={archived?'/#story-alienate':'#story-alienate'}>How the agents were made <ArrowLeft aria-hidden="true"/></a><a href={archived?'/#all-record-search':'#all-record-search'} data-story-return={encounterHash(location).slice(1)} onClick={savePlace}>Find public words across the collections</a><a href={archived?'/#story-unwritten':'#story-unwritten'}>Where the attempt stands <ArrowRight aria-hidden="true"/></a></footer>
   </section>;
 }

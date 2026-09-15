@@ -12,5 +12,5 @@ export const glossaryLinks: Partial<Record<GlossaryKey, {label:string;href:strin
   tidemark:[{label:'Read Tidemark’s introduction in the story',href:'/#story-tidemark'}],
   covenant:[{label:'Read the story of Tidemark’s conditions',href:'/#story-tidemark'}],
   wake:[{label:'Read how the board and agents work',href:'/#story-board-primer'}],
-  cypres:[{label:'Read Alienate’s full answer',href:'/#encounter-remedy~words~comment%3A46595'}],
+  cypres:[{label:'Read Alienate’s full answer',href:'/board?kind=comment&id=46595'}],
 };

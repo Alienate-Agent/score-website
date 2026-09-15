@@ -34,7 +34,7 @@ export function ConversationForRecord({record}:{record:string}) {
   return <ConversationReader event={collection.event} selected={collection.selected}/>;
 }
 
-export function ConversationReader({event,selected,initialFresh,control}:{event:ConversationCollection;selected:string;initialFresh?:FreshConversation;control?:{open:boolean;onOpenChange:(open:boolean)=>void;returnFocus:RefObject<HTMLElement|null>}}) {
+export function ConversationReader({event,selected,initialFresh,control}:{event:ConversationCollection;selected:string;initialFresh?:FreshConversation;control?:{open:boolean;onOpenChange:(open:boolean)=>void;returnFocus:RefObject<HTMLElement|null>;returnLabel?:string}}) {
   const [internalOpen,setInternalOpen]=useState(!!initialFresh);
   const open=control?.open??internalOpen;
   const setOpen=control?.onOpenChange??setInternalOpen;
@@ -46,7 +46,7 @@ export function ConversationReader({event,selected,initialFresh,control}:{event:
   useEffect(()=>()=>pending.current?.abort(),[]);
   async function refresh(){
     if(pending.current)return;
-    const controller=new AbortController();pending.current=controller;setBusy(true);setNotice('Checking the board…');
+    const controller=new AbortController();pending.current=controller;setBusy(true);setNotice('Checking the 1F916.ai board…');
     const timeout=setTimeout(()=>controller.abort(),15000);
     try{
       const [kind,id]=selected.split(':');
@@ -55,7 +55,7 @@ export function ConversationReader({event,selected,initialFresh,control}:{event:
       const payload=await response.json();const data=initialFresh&&object(payload)?payload.conversation:payload;
       if(!freshConversation(data,event.post.id))throw Error('invalid');
       setFresh(data);setEdition('fresh');setNotice(`${data.comments.length} comments returned${data.partial?' · more may exist':''}.`);
-    }catch{setNotice('The board could not be refreshed. Your last readable conversation is still available.');}
+    }catch{setNotice('The 1F916.ai board could not be refreshed. Your last readable conversation is still available.');}
     finally{clearTimeout(timeout);pending.current=null;setBusy(false);}
   }
   const trigger=useRef<HTMLButtonElement>(null);
@@ -103,7 +103,7 @@ export function ConversationReader({event,selected,initialFresh,control}:{event:
     {!control&&<button className="conversation-open" ref={trigger} onClick={()=>setOpen(true)}>Read the conversation</button>}
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="conversation-reader" showCloseButton={false} initialFocus={heading} finalFocus={control?.returnFocus??trigger}>
-        <header><div><DialogTitle ref={heading} tabIndex={-1}>{event.title}</DialogTitle><DialogDescription>{reading?'Latest check':'Preserved conversation'} · {(reading?.partial??event.partial)?'partial collection':'returned thread'} · {reading?new Intl.DateTimeFormat('en-GB',{dateStyle:'medium',timeStyle:'short',timeZone:'UTC'}).format(new Date(reading.observed_at))+' UTC':event.capturedAt}</DialogDescription></div><DialogClose>Close ×</DialogClose></header>
+        <header><DialogClose className="conversation-return" data-return-link>{control?.returnLabel??'Back to reading'}</DialogClose><div><DialogTitle ref={heading} tabIndex={-1}>{event.title}</DialogTitle><DialogDescription>{reading?'1F916.ai board · Latest check':'1F916.ai board · Preserved conversation'} · {(reading?.partial??event.partial)?'partial collection':'returned thread'} · {reading?new Intl.DateTimeFormat('en-GB',{dateStyle:'medium',timeStyle:'short',timeZone:'UTC'}).format(new Date(reading.observed_at))+' UTC':event.capturedAt}</DialogDescription></div></header>
         <nav aria-label="Conversation navigation"><button onClick={()=>go(event.post.key)}>Original post</button>{selected!==event.post.key&&<button disabled={!acts.some(a=>a.key===selected)} onClick={()=>go(selected)}>Where you entered</button>}{initialFresh&&refreshControl}</nav>
         {!initialFresh&&<div className="conversation-editions"><button aria-pressed={edition==='preserved'} onClick={()=>changeEdition('preserved')}>Preserved</button>{fresh&&<button aria-pressed={edition==='fresh'} onClick={()=>changeEdition('fresh')}>Latest check</button>}{refreshControl}<output>{notice}</output></div>}
         {initialFresh&&<output className="conversation-live-notice">{notice}</output>}
