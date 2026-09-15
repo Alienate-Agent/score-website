@@ -6,13 +6,16 @@ const read=file=>readFileSync(new URL('../'+file,import.meta.url),'utf8');
 const module={exports:{}};
 vm.runInNewContext(ts.transpileModule(read('lib/story-present.ts'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText,{module,exports:module.exports});
 const {storyPresent,presentEditions}=module.exports;
-const scenes=storyPresent.scenes;
+// Preserve the approved 14 September reading fixes in their original edition;
+// later admitted reviews may add scenes without rewriting this historical cut.
+const readingEdition=presentEditions[9];
+const scenes=readingEdition.scenes;
 assert.equal(new Set(scenes.map(s=>s.id)).size,scenes.length);
 assert.deepEqual(Array.from(scenes,s=>s.id),['story-shared-town','story-publication-correction','story-accepted-responsibility','story-spending-test','story-treasury-debate','story-fiction-museum']);
 assert.ok(scenes.every((s,i)=>Number.isFinite(Date.parse(s.occurredAt))&&(!i||s.occurredAt>=scenes[i-1].occurredAt)),'Scenes progress by latest narrated public action');
 for(const scene of scenes){assert.ok(scene.dateLabel.includes('2026'));assert.ok(Number.isSafeInteger(scene.dateSourceId));assert.ok(!scene.body.includes('passages below'));}
-assert.equal(storyPresent.asOf,'2026-09-13','Presentation edits do not advance the editorial cutoff');
-assert.equal(presentEditions.length,10,'No fictitious new editorial review');
+assert.equal(readingEdition.asOf,'2026-09-13','The original reading edition keeps its editorial cutoff');
+assert.ok(presentEditions.length>=10,'The original editions remain available');
 const story=read('components/unfolding-story.tsx');
 assert.ok(story.indexOf('A different interest · 1 September 2026')<story.indexOf('id="story-tidemark-sibling"'));
 assert.ok(story.includes('id="story-charter-wording"'));

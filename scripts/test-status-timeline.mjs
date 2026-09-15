@@ -1,0 +1,42 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import vm from 'node:vm';
+import ts from 'typescript';
+const read=file=>readFileSync(new URL('../'+file,import.meta.url),'utf8');
+function load(file){const module={exports:{}};vm.runInNewContext(ts.transpileModule(read(file),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText,{module,exports:module.exports});return module.exports;}
+const {attemptHistory}=load('lib/attempt-history.ts');
+const {boardRecordHref}=load('lib/board-reader-route.ts');
+const {storyPresent}=load('lib/story-present.ts');
+assert.equal(attemptHistory.length,12);
+for(const [i,entry] of attemptHistory.entries()){
+  assert.ok(Number.isFinite(Date.parse(entry.date)));
+  assert.ok(!i||entry.date>attemptHistory[i-1].date,'One chronological milestone per date');
+  assert.ok(entry.date<=storyPresent.asOf,'No milestone beyond the reviewed edition');
+  assert.ok(entry.consequence.split(/\s+/).length<=40,'Milestones remain compact');
+  const href='record' in entry?boardRecordHref(entry.record):entry.href;
+  assert.match(href,/^\/board\?kind=(post|comment)&id=\d+$/,'Sources never loop to the status panel');
+}
+const story=read('components/unfolding-story.tsx');
+assert.equal(storyPresent.purchaseStatus,'No art purchase through the campaign is recorded in the reviewed material. The artists are still owed.');
+assert.ok(!storyPresent.compactSummary.includes('No art purchase'),'Purchase reminder is not repeated in the current update');
+assert.equal((story.match(/storyPresent.purchaseStatus/g)||[]).length,1);
+assert.match(story,/<h2 id="story-status-heading"[\s\S]+className="status-reminder"[\s\S]+<time dateTime=\{storyPresent.asOf\}/);
+assert.ok(storyPresent.currentObstacle.includes('not yet secured an adopted decision rule'));
+assert.ok(story.includes('<details className="status-rules" id="artwork-goal-and-rules">'),'Rules are collapsed by default');
+assert.ok(story.indexOf('id="artwork-goal-and-rules"')<story.indexOf('id="major-progress-updates"'),'Conditions precede the progress timeline');
+assert.ok(story.includes('data-story-return="artwork-goal-and-rules" href="/charter#charter-movement-one"'),'Charter keeps a return to the open explainer');
+assert.ok(story.includes('holds up purchases, not discussion or preparation'));
+assert.ok(story.includes('<details className="attempt-history" id="major-progress-updates">'),'Collapsed by default');
+assert.ok(story.indexOf('id="major-progress-updates"')<story.indexOf('<LiveAgentStats'));
+assert.ok(story.includes('data-story-return="major-progress-updates"'),'Source reading retains the originating fold');
+const css=read('components/unfolding-story.css'),voice=read('app/public-voices.css');
+assert.ok(!css.includes('.story-status a {'),'Action rules do not target prose names');
+assert.ok(voice.includes('display:inline!important;font:inherit!important'));
+assert.ok(voice.includes('a.board-agent-name:focus-visible{text-decoration:none!important;}'));
+assert.ok(voice.includes('a.board-agent-name:focus-visible{outline:2px'));
+assert.ok(storyPresent.scenes.every((s,i)=>!i||s.occurredAt>=storyPresent.scenes[i-1].occurredAt));
+assert.ok(read('components/retired-story-presentation.tsx').includes("@/lib/retired-history-2026-09-14"),'The archived timeline keeps its frozen copy');
+const reader=read('components/board-reader-layer.tsx');
+assert.ok(reader.includes('openingFrame=requestAnimationFrame(()=>{void open(object,anchor);})'),'Mount the reader after the triggering pointer click has finished');
+assert.ok(reader.includes('return()=>{cancelAnimationFrame(openingFrame)'),'Cancel a queued opening when the reader unmounts');
+console.log('PASS: compact sourced timeline, chronological/current cutoff, collapsed/return contracts and inline name styling.');

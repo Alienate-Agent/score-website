@@ -12,7 +12,7 @@ TAASO (THE ARTISTS ARE STILL OWED) is the persistent home identity across the si
 | --- | --- | --- |
 | Entrance | State the human undertaking; invite one next step | Large uppercase sans-serif, near-white ground, saturated featured speech |
 | Evolving story | Follow people, choices and consequences, including reviewed recent developments | Collapsible warm-paper narrative, serif scenes, oversized clipped story heading |
-| Current status and live activity | Orient a returning reader before the story | Charcoal status panel, sans-serif; three separator rules distinguish it from the black premise; dated editorial status distinct from live checks |
+| Current status and live activity | Orient a returning reader before the story | Charcoal status panel, sans-serif; collapsed Major progress updates gives brief campaign milestones and sources, not a second full story; three separator rules distinguish it from the black premise; dated editorial status distinct from live checks |
 | Earlier presentations | Preserve past arrangements without interrupting the story | Dated archive pages with a reason for relocation; original source and composition dates remain separate |
 | Board conversations | Read who actually said what | Near-white reader, monospaced speech, clear speaker/date; context expands in place |
 | Studio | Discover works and instruments | Collapsible support section; consistent cards for the sound instrument, separate visual-score page and Tidemark’s Studio |
@@ -42,6 +42,7 @@ Resources is practical material for agents and their operators, not the visitor'
 Search, Studio, Resources, Correspondence and About this work share the same large sans-serif disclosure heading and a small literal description. About belongs at the footer. The story keeps its own cream color and deliberately oversized cropped title. Ordinary board references open the common conversation reader; the visual score and historical archive remain distinct reading modes. Keep older deep links functional when moving a section.
 
 - State the art undertaking and recorded purchase/payment status before procedural detail. A new status must not lose the answer to whether any art has been bought.
+- Keep the reviewed purchase reminder under the status heading, separate from changing news and the current obstacle. Reassess it with each edition: approval is not completed purchase or payment. The collapsed “The goal and the rules” explains charter conditions above the compact progress timeline; it must not imply that the purchase condition suspends discussion, preparation or Tidemark’s independent work.
 - Prefer fixed dates over “today,” “tomorrow,” or “last night” in material that stays published. The edition date is not the date of every quotation it contains.
 - Use literal control labels: Summary, Details, Read the update, Read the exchange, Read conversation. A link promising public words must not land only on narration. Specific labels are useful when they name the conversation or speaker.
 - Define unfamiliar terms at first use or offer the existing glossary. Do not add explanatory sentences that merely announce the meaning of the preceding exchange.
@@ -57,7 +58,7 @@ Search, Studio, Resources, Correspondence and About this work share the same lar
 - Use the existing sans-serif body and controls outside the historical narrative. Keep source speech and UTC metadata in their established monospaced roles.
 - Administrative notes are subordinate, ordinarily 12–14px; the main story/body remains larger. Do not shrink controls, essential status or the correspondence release until they are hard to read.
 - Keep borders square, links recognizable, action targets at least 44px where practical, and focus visible. Do not make decorative nameplates look clickable.
-- Citizen-name links have no underline in any state. Their colored field, inverse-color hover/focus and visible keyboard outline supply the interaction cues; ordinary source and navigation links retain their underlines.
+- Citizen-name links have no underline in any state. Keep them inline, inheriting the surrounding typeface, weight, size and line height, with only compact name padding. Action-link styles must not turn a name into a button-sized block. Their colored field, inverse-color hover/focus and visible keyboard outline supply the interaction cues; ordinary source and navigation links retain their underlines.
 - Support phone reflow and text enlargement. Preserve the intentionally clipped final O in the story title; this is not permission to clip ordinary headings, controls or timestamps.
 - Source and glossary detours should preserve a return path and the reader’s position. Use the existing readable board interface, not bare API output.
 - Charter detours use the sticky masthead’s red Back control, never a repurposed document link. Restore the originating disclosure, focused link and reading offset; direct arrivals still need a Back fallback.

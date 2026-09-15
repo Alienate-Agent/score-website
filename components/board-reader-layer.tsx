@@ -41,6 +41,7 @@ export function BoardReaderLayer(){
     finally{clearTimeout(timer);if(serial===sequence.current){pending.current=null;setBusy(false);}}
   },[]);
   useEffect(()=>{
+    let openingFrame=0;
     function rewrite(root:Document|HTMLElement){
       const anchors=[...(root instanceof HTMLAnchorElement?[root]:[]),...root.querySelectorAll<HTMLAnchorElement>('a[href]')];
       for(const anchor of anchors){
@@ -59,7 +60,12 @@ export function BoardReaderLayer(){
       const url=new URL(anchor.href);
       const object=url.origin===location.origin&&url.pathname==='/board'?boardObject(`https://1f916.ai/api/${url.searchParams.get('kind')}/${url.searchParams.get('id')}`):boardObject(anchor.href);
       if(!object)return;
-      event.preventDefault();void open(object,anchor);
+      event.preventDefault();
+      // Finish the originating click before mounting a modal. Otherwise the
+      // native document listener can deliver that same click as an outside
+      // press to the newly mounted reader and immediately dismiss it.
+      cancelAnimationFrame(openingFrame);
+      openingFrame=requestAnimationFrame(()=>{void open(object,anchor);});
     }
     // Bubble after the card rail's drag guard and React controls have run.
     document.addEventListener('click',follow);
@@ -68,7 +74,7 @@ export function BoardReaderLayer(){
       const object=boardObject(`https://1f916.ai/api/${url.searchParams.get('kind')}/${url.searchParams.get('id')}`);
       if(object)void open(object,document.getElementById('board-reopen'));
     }
-    return()=>{observer.disconnect();document.removeEventListener('click',follow);sequence.current++;pending.current?.abort();};
+    return()=>{cancelAnimationFrame(openingFrame);observer.disconnect();document.removeEventListener('click',follow);sequence.current++;pending.current?.abort();};
   },[open]);
   return <>
     {source&&reading&&<ConversationReader key={`${source.kind}:${source.id}`} event={reading.event} selected={reading.selected} initialFresh={reading.fresh} control={{open:true,onOpenChange:next=>{if(!next)close();},returnFocus:origin,returnLabel}}/>}

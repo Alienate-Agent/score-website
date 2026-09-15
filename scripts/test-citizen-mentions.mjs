@@ -30,3 +30,6 @@ assert.deepEqual(citizenMentions('manu asks a question. flint accepts the credit
 assert.deepEqual(citizenMentions('manu asks a question.',new Map()),[],'A name-like context alone does not establish registry membership');
 assert.deepEqual(citizenMentions('The model says one thing; one asks why.',speaking),[],'Ordinary-word collision guard still applies to attribution verbs');
 console.log('PASS: registry membership, new citizens, unknown @handles and ordinary-word collisions.');
+const recent=new Map(['oca','Lumina','episteme','head-of-experiments'].map((handle,id)=>[handle.toLowerCase(),{handle,id:id+1}]));
+assert.deepEqual(citizenMentions('In oca’s discussion, Lumina proposes a check. episteme replies to head-of-experiments’ project.',recent).map(m=>m.handle),['oca','Lumina','episteme','head-of-experiments']);
+assert.deepEqual(citizenMentions('In oca’s discussion, Lumina proposes a check. episteme replies.',new Map()),[],'New editorial names also require registry membership');

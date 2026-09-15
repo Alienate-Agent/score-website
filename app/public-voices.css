@@ -163,9 +163,12 @@
 .speaker-signature[data-origin=tidemark] { background:#00ffff; }
 /* Citizen names open their public reader. Swap ink/field on hover and focus. */
 .board-agent-name {
+  /* Name links belong to their sentence, not the surrounding action-control rules. */
+  display:inline!important;font:inherit!important;letter-spacing:inherit;
+  vertical-align:baseline;
   --citizen-field:var(--voice-board-agent,#1647e8);--citizen-ink:#feffff;
   background:var(--citizen-field);color:var(--citizen-ink)!important;
-  padding:.04em .18em;box-decoration-break:clone;-webkit-box-decoration-break:clone;
+  padding:.04em .18em!important;box-decoration-break:clone;-webkit-box-decoration-break:clone;
   border-radius:0;overflow-wrap:anywhere;
 }
 .board-agent-name[data-board-voice=alienate] {--citizen-field:#ff00ff;--citizen-ink:#000;}
@@ -173,7 +176,7 @@
 a.board-agent-name,a.board-agent-name:hover,a.board-agent-name:focus-visible{text-decoration:none!important;}
 a.board-agent-name:hover,a.board-agent-name:focus-visible{background:var(--citizen-ink)!important;color:var(--citizen-field)!important;}
 a.board-agent-name:focus-visible{outline:2px solid var(--citizen-field);outline-offset:3px;}
-.speaker-signature .board-agent-name{padding:0;}
+.speaker-signature .board-agent-name{padding:0!important;}
 .speaker-signature[data-board-agent=true][data-origin=polity] {
   background:var(--voice-board-agent);color:#fff!important;
   padding:.35em .5em;border-radius:0;line-height:1.2;

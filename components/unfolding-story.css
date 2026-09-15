@@ -46,14 +46,29 @@
 .story-status h2 { font:1rem/1.5 var(--font-geist-sans, Arial),sans-serif; letter-spacing:0; font-weight:500; margin:0; }
 .story-status time { display:block; color:var(--ink-soft); font-weight:400; }
 .story-status p { max-width:55ch; font:1.1rem/1.55 var(--font-human); margin:0 0 .65rem; }
-.story-status a { display:inline-block; padding-block:.5rem; font:1rem/1.5 var(--font-geist-sans, Arial),sans-serif; }
+.story-status-chapter { display:inline-block; padding-block:.5rem; font:1rem/1.5 var(--font-geist-sans, Arial),sans-serif; }
 .story-status p { font-family:var(--font-geist-sans,Arial),sans-serif; }
 .story-current{background:#000;color:#fff;margin-block:2rem;--ink-soft:#bbb;--rule:#777;}
 .story-current .story-status{padding:clamp(1.3rem,3vw,3rem);border:0;grid-template-columns:minmax(12rem,1fr) minmax(0,2fr);}
 .story-current .story-status h2{font-size:clamp(1.45rem,2.6vw,2.3rem);font-weight:650;line-height:1.12;max-width:13ch;}
-.story-current .story-status time{font:.75rem/1.5 var(--font-geist-mono),monospace;max-width:26ch;margin-top:1rem;}
+.story-current .story-status time{font:.8rem/1.5 var(--font-geist-mono),monospace;max-width:26ch;}
+.story-current .story-status>header>time{margin-top:1rem;}
 .story-current .story-status>div>p{font-size:clamp(1.15rem,1.75vw,1.65rem);line-height:1.45;}
-.story-current .attempt-history{margin-top:1.2rem;}
+.story-current :is(.attempt-history,.status-rules){margin:1.2rem 0 .5rem;border-block:1px solid var(--rule);}
+.story-current :is(.attempt-history,.status-rules)>summary{padding-block:.9rem;font:500 1rem/1.5 var(--font-geist-sans,Arial),sans-serif;text-decoration:none;cursor:pointer;}
+.story-current :is(.attempt-history,.status-rules)>summary:hover{text-decoration:underline;text-underline-offset:.25em;}
+.story-current .status-rules>summary:focus-visible{outline:2px solid currentColor;outline-offset:4px;}
+.story-current .status-rules+.attempt-history{margin-top:-.5rem;border-top:0;}
+.story-current .story-status>div>.status-obstacle{font-size:1rem;line-height:1.55;margin:1.5rem 0;}
+.status-obstacle>strong{display:block;margin-bottom:.3rem;}
+.story-current .status-rules-content{padding:.5rem 0 1.2rem;}
+.story-current .status-rules-content p{font-size:1rem;line-height:1.55;margin-bottom:1rem;}
+.story-current .status-rules-content .status-rules-note{color:var(--ink-soft);}
+.status-rules-content>a{display:inline-block;padding-block:.5rem;font:1rem/1.5 var(--font-geist-sans,Arial),sans-serif;}
+.story-current .attempt-history li h3{font-size:1rem;}
+.story-current .attempt-history li h3>a{font:inherit;}
+.story-current .attempt-history li p{font:400 .95rem/1.55 var(--font-geist-sans,Arial),sans-serif;margin:0;}
+.story-current .attempt-history li:last-child{padding-bottom:0;}
 .story-current .attempt-history ol{border-color:#888;}
 .story-current .attempt-history li::before{background:#fff;}
 .story-current .live-agent-stats{border-bottom:0;padding:1rem clamp(1.3rem,3vw,3rem);}
@@ -93,7 +108,7 @@
 .attempt-history li::before { content:''; position:absolute; left:-5px; top:.4rem; width:8px; height:8px; background:var(--ink); }
 .attempt-history li h3 { margin:0 0 .4rem; font:600 1.05rem/1.4 var(--font-geist-sans,Arial),sans-serif; }
 .attempt-history li p { font-size:1rem; }
-.attempt-history li a { font-size:.875rem; }
+.attempt-history li a:not(.board-agent-name) { font-size:.875rem; }
 .story-status .attempt-history-note { font-size:.85rem; line-height:1.5; margin-top:1rem; }
 @media(max-width:550px) { .attempt-history li { grid-template-columns:minmax(0,1fr); } }
 .story-cast { border-bottom:1px solid var(--rule); padding-block:1.1rem; }
@@ -198,6 +213,7 @@
 .current-status .story-status {padding:clamp(2rem,5vw,5rem) clamp(1.4rem,4vw,5rem);gap:2rem 4rem;}
 .current-status .story-status h2 {font-size:clamp(2.4rem,5vw,5rem);letter-spacing:-.045em;max-width:none;}
 .current-status .story-status .section-description {font-size:1rem;margin-top:1rem;}
+.current-status .story-status .status-reminder {font-size:1rem;line-height:1.55;margin:1.2rem 0 0;max-width:34ch;}
 .story-continuation .story-present-scenes h3 {font-family:var(--font-human);font-weight:400;}
 .story-continuation .story-present-scenes>section>p {font-family:var(--font-human);}
 .unfolding-story .story-date {font:400 .8rem/1.6 var(--font-geist-mono),monospace!important;letter-spacing:normal;text-transform:none;color:var(--ink-soft);margin:1.5rem 0 .65rem;}
