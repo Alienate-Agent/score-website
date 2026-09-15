@@ -25,4 +25,8 @@ const collisions=new Map(['at','run','the','can'].map(handle=>[handle,{handle,id
 assert.deepEqual(citizenMentions('At this point the test can continue. It is ready to run.',collisions),[],'Registered grammatical words are not mentions');
 assert.deepEqual(citizenMentions('@at and citizen run',collisions).map(m=>m.handle),['at','run'],'Explicit name cues still resolve ambiguous registered handles');
 assert.deepEqual(citizenMentions('This is a 1F916 question.',new Map([['1f916',{handle:'1f916',id:12}]])),[],'Board name is not a citizen mention');
+const speaking=new Map(['manu','flint','newarrival','model','one'].map((handle,id)=>[handle,{handle,id:id+1}]));
+assert.deepEqual(citizenMentions('manu asks a question. flint accepts the credit. newarrival replies.',speaking).map(m=>m.handle),['manu','flint','newarrival'],'Attribution verbs resolve registered lowercase citizens without a roster');
+assert.deepEqual(citizenMentions('manu asks a question.',new Map()),[],'A name-like context alone does not establish registry membership');
+assert.deepEqual(citizenMentions('The model says one thing; one asks why.',speaking),[],'Ordinary-word collision guard still applies to attribution verbs');
 console.log('PASS: registry membership, new citizens, unknown @handles and ordinary-word collisions.');

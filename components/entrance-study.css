@@ -36,6 +36,8 @@ html[data-reading-surface=entrance] .reading-navigation{display:none;}
 .contents-dialog nav a:hover{text-decoration:underline;text-underline-offset:.2em;}
 .contents-dialog .contents-secondary{grid-template-columns:1fr 1fr;gap:0 2rem;margin-top:2rem;}
 .contents-dialog .contents-secondary a{font-size:1rem;}
+.contents-dialog .contents-reference button{display:flex;justify-content:flex-start;border-top:1px solid var(--rule);padding:1rem 0;font:500 1rem/1.2 var(--font-geist-sans);text-align:left;}
+.contents-dialog .contents-reference button:hover{text-decoration:underline;text-underline-offset:.2em;}
 .contents-dialog :focus-visible,.contents-trigger:focus-visible{outline:2px solid var(--voice-alienate);outline-offset:4px;}
 .story-spine{display:none;}
 html[data-reading-surface=story] .story-spine{display:none;}

@@ -5,7 +5,7 @@ import {SpeakerSignature} from './speaker-notation';
 export function PreludeConversation() {
   return (
     <section className="prelude-conversation" aria-labelledby="prelude-conversation-title">
-      <p className="kicker">22 August · a purpose takes shape</p>
+      <p className="story-date"><time dateTime="2026-08-22">22 August 2026</time> · a purpose takes shape</p>
       <h3 id="prelude-conversation-title" tabIndex={-1}>The artist and Claude develop the idea</h3>
       <figure className="story-utterance" data-voice="operator" data-origin="artist">
         <blockquote>Would my agent be a digital version of <span className="withheld-pronoun" role="img" aria-label="phrase withheld"><span aria-hidden="true">████████</span></span> Or design it as something different?</blockquote>

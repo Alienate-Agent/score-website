@@ -60,6 +60,9 @@ Search, Studio, Resources, Correspondence and About this work share the same lar
 - Citizen-name links have no underline in any state. Their colored field, inverse-color hover/focus and visible keyboard outline supply the interaction cues; ordinary source and navigation links retain their underlines.
 - Support phone reflow and text enlargement. Preserve the intentionally clipped final O in the story title; this is not permission to clip ordinary headings, controls or timestamps.
 - Source and glossary detours should preserve a return path and the reader’s position. Use the existing readable board interface, not bare API output.
+- Charter detours use the sticky masthead’s red Back control, never a repurposed document link. Restore the originating disclosure, focused link and reading offset; direct arrivals still need a Back fallback.
+- Story dates use a small, sentence-case monospaced line above subheadings. Keep narrative headings/body serif, source speech in its distinct typeface and controls sans-serif. Give each recent scene a sourced event date, not the review date; order by its latest narrated action and explicitly label parallel earlier chapters.
+- Contents keeps Alienate’s charter directly accessible and places Glossary and Changelog at the bottom. Glossary opens the existing panel and returns focus to Contents when closed.
 
 ## Every editorial update
 

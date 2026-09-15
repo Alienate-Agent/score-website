@@ -31,7 +31,7 @@
   if(url.pathname==='/visual-score')return id.startsWith('chronology-entry-')?'Score · '+id.slice(17):'Visual score';
   const pages={'/featured':'Previously featured','/changelog':'Site changelog','/charter':'Alienate’s public charter','/archive':'Historical archive'};
   if(pages[url.pathname])return pages[url.pathname];
-  const names={'':'Entrance','story-title':'Entrance','story-exploration':'Explore beyond the story','all-record-search':'Search posts and comments','record-discovery-results':'Search results','story-instruments':'Visual score and public records','chronology':'Visual score','connected-score':'Conversations','live-agent-activity':'Live agent activity'};
+  const names={'':'Entrance','story-title':'Entrance','story-exploration':'Studio','all-record-search':'Search posts and comments','record-discovery-results':'Search results','story-instruments':'Visual score and public records','chronology':'Visual score','connected-score':'Conversations','live-agent-activity':'Live agent activity'};
   if(names[id])return names[id];
   if(id.startsWith('encounter-')){
    const [event,view,act]=id.slice(10).split('~');
@@ -58,10 +58,27 @@
   sessionStorage.removeItem(pending);
   // Allow destination readers to reveal their sections before restoring the link.
   setTimeout(()=>{
-   const root=entry.label==='Back to search results'?document.getElementById('record-discovery-results'):document;
-   const link=[...(root?.querySelectorAll('a[href]')||[])].find(a=>a.getAttribute('href')===entry.link&&a.getClientRects().length);
-   if(link&&link.getClientRects().length){link.focus({preventScroll:true});window.scrollTo({top:Math.max(0,scrollY+link.getBoundingClientRect().top-entry.top),behavior:'instant'});}
-   else window.scrollTo({top:entry.y,behavior:'instant'});
+   const origin=fragmentTarget(new URL(entry.from,location.origin).hash);
+   for(const id of entry.disclosures||[]){const detail=document.getElementById(id);if(detail instanceof HTMLDetailsElement)detail.open=true;}
+   for(let node=origin;node;node=node.parentElement)if(node instanceof HTMLDetailsElement)node.open=true;
+   const root=entry.label==='Back to search results'?document.getElementById('record-discovery-results'):origin?.closest('section')||document;
+   const links=[...(root?.querySelectorAll('a[href]')||[])].filter(a=>a.getAttribute('href')===entry.link);
+   const link=links[entry.linkIndex||0];
+   // A source link may be inside an unnamed nested disclosure. Reveal it too.
+   for(let node=link;node;node=node.parentElement)if(node instanceof HTMLDetailsElement)node.open=true;
+   if(link){
+    // Font loading, revealed details and the registry can reflow a long story.
+    // Keep the source anchored briefly, but stop as soon as the reader acts.
+    let stopped=false,frame=0;
+    const stop=()=>{stopped=true;cancelAnimationFrame(frame);observer.disconnect();for(const name of ['wheel','touchstart','pointerdown','keydown'])window.removeEventListener(name,stop);};
+    const align=()=>{if(!stopped&&here()===entry.from&&link.getClientRects().length)window.scrollTo({top:Math.max(0,scrollY+link.getBoundingClientRect().top-entry.top),behavior:'instant'});};
+    const schedule=()=>{cancelAnimationFrame(frame);frame=requestAnimationFrame(()=>{frame=requestAnimationFrame(align);});};
+    const observer=new ResizeObserver(schedule);observer.observe(document.body);
+    for(const name of ['wheel','touchstart','pointerdown','keydown'])window.addEventListener(name,stop,{passive:true});
+    link.focus({preventScroll:true});schedule();
+    void document.fonts.ready.then(()=>{if(!stopped)schedule();});
+    setTimeout(stop,2500);
+   }else window.scrollTo({top:entry.y,behavior:'instant'});
    refresh();
   },450);
  }
@@ -81,7 +98,7 @@
     }
    }
   }
-  const existing=document.querySelector('#contextual-reading-return > a, main.editorial-history > a:first-child, .charter-reader > nav a:first-child, .studio-host-nav > a[data-studio-back]');
+  const existing=document.querySelector('#contextual-reading-return > a, main.editorial-history > a:first-child, .studio-host-nav > a[data-studio-back]');
   if(control&&(!active||existing||control.textContent!==entry.label)){control.remove();control=null;}
   if(existing&&!existing.hasAttribute('data-fixed-reading-return')){if(!existing.dataset.originalLabel)existing.dataset.originalLabel=existing.textContent;const label=active?entry.label:existing.dataset.originalLabel;if(existing.textContent!==label)existing.textContent=label;existing.onclick=active?resume:null;}
   if(active&&!existing&&!control&&!trail){
@@ -104,7 +121,10 @@
   const area=a.closest('section'),origin=a.dataset.storyReturn||area?.getAttribute('aria-labelledby')||area?.id;
   const from=search?location.pathname+location.search+'#record-discovery-results':origin?location.pathname+location.search+'#'+origin:here(),to=url.pathname+url.search+url.hash;if(from===to)return;
   const label=search?'Back to search results':'Back to '+destination(from);
-  save([...read(),{from,to,label,destination:destination(to),link:a.getAttribute('href'),top:a.getBoundingClientRect().top,y:scrollY,at:Date.now()}]);
+  const disclosures=[];for(let node=a.parentElement;node;node=node.parentElement)if(node instanceof HTMLDetailsElement&&node.open&&node.id)disclosures.push(node.id);
+  const root=search?document.getElementById('record-discovery-results'):fragmentTarget(new URL(from,location.origin).hash)?.closest('section')||document;
+  const linkIndex=[...(root?.querySelectorAll('a[href]')||[])].filter(link=>link.getAttribute('href')===a.getAttribute('href')).indexOf(a);
+  save([...read(),{from,to,label,destination:destination(to),link:a.getAttribute('href'),linkIndex:Math.max(0,linkIndex),disclosures,top:a.getBoundingClientRect().top,y:scrollY,at:Date.now()}]);
   setTimeout(refresh,100);
  });
  addEventListener('hashchange',()=>{refresh();restore();});addEventListener('popstate',refresh);addEventListener('score-reading-arrival',refresh);

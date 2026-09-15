@@ -119,7 +119,7 @@
 .story-contents { padding:1.2rem clamp(1.4rem,4vw,5rem); display:flex; flex-wrap:wrap; gap:.5rem 1.5rem; font-size:.875rem; border-bottom:1px solid var(--rule); }
 .story-contents a { padding-block:.5rem; }
 .story-passage { display:grid; grid-template-columns:minmax(7rem,1fr) minmax(0,3fr) minmax(0,.6fr); gap:clamp(1rem,3vw,3rem); padding:clamp(3rem,8vw,8rem) clamp(1.4rem,4vw,5rem); border-bottom:1px solid var(--rule); }
-.story-passage aside { display:flex; flex-direction:column; gap:.5rem; align-items:flex-start; font: .75rem/1.6 var(--font-geist-mono),monospace; color:var(--ink-soft); padding-top:.6rem; }
+.story-passage aside { display:flex; flex-direction:column; gap:.5rem; align-items:flex-start; font: .8rem/1.6 var(--font-geist-mono),monospace; color:var(--ink-soft); padding-top:.6rem; }
 .story-prose { max-width:44rem; }
 .story-prose h2 { font-weight:400; font-size:clamp(2.2rem,4.4vw,4.5rem); line-height:1.08; letter-spacing:-.035em; margin:0 0 2rem; }
 .story-prose > h3 { font:500 1.3rem/1.4 var(--font-geist-sans, Arial),sans-serif; margin:3rem 0 1.25rem; scroll-margin-top:calc(var(--reading-help-height, 0px) + 1rem); }
@@ -200,6 +200,11 @@
 .current-status .story-status .section-description {font-size:1rem;margin-top:1rem;}
 .story-continuation .story-present-scenes h3 {font-family:var(--font-human);font-weight:400;}
 .story-continuation .story-present-scenes>section>p {font-family:var(--font-human);}
+.unfolding-story .story-date {font:400 .8rem/1.6 var(--font-geist-mono),monospace!important;letter-spacing:normal;text-transform:none;color:var(--ink-soft);margin:1.5rem 0 .65rem;}
+.unfolding-story .story-date+h3 {margin-top:0;font:400 clamp(1.6rem,3vw,2.5rem)/1.2 var(--font-story-subhead);}
+.unfolding-story .story-present-scenes .story-date {margin-top:0;}
+.unfolding-story .story-reading-note {font:.875rem/1.6 var(--font-geist-sans,Arial),sans-serif;color:var(--ink-soft);}
+.unfolding-story .story-utterance figcaption time {font:400 .8rem/1.6 var(--font-geist-mono),monospace;}
 .unfolding-story [data-reading-mode=narrative]+.story-continuation {padding-top:clamp(2rem,4vw,3rem);}
 .archive-presentation-note {padding:clamp(2rem,5vw,5rem);font:1rem/1.6 var(--font-geist-sans,Arial),sans-serif;}
 .archive-presentation-note h1 {font-size:clamp(2rem,4vw,4rem);line-height:1.1;margin-block:1rem;}
