@@ -6,6 +6,8 @@ import {boardObject,boardReaderHref,type BoardObject} from '@/lib/board-reader-r
 import {Dialog,DialogContent,DialogTitle,DialogDescription,DialogClose} from './ui/dialog';
 
 type Reading={event:ConversationCollection;selected:string;fresh?:FreshConversation};
+// The shared reading trail owns source position/focus restoration for page detours.
+const pageReturnControl=()=>document.querySelector<HTMLButtonElement>('#contextual-reading-return > button[data-return-link]');
 /** Upgrade source links from every reader, including content revealed after arrival.
  * The rewritten href also works in a new tab. No board request runs before a click. */
 export function BoardReaderLayer(){
@@ -15,13 +17,13 @@ export function BoardReaderLayer(){
   const pending=useRef<AbortController|null>(null),sequence=useRef(0);
   const isOpen=useRef(false);
   const [returnLabel,setReturnLabel]=useState('Back to reading');
-  const close=useCallback(()=>{sequence.current++;pending.current?.abort();pending.current=null;isOpen.current=false;setSource(null);setReading(null);setBusy(false);if(location.pathname==='/board')location.assign('/#all-record-search');},[]);
+  const close=useCallback(()=>{sequence.current++;pending.current?.abort();pending.current=null;isOpen.current=false;setSource(null);setReading(null);setBusy(false);if(location.pathname==='/board'){const back=pageReturnControl();if(back)back.click();else location.assign('/#all-record-search');}},[]);
   const open=useCallback(async(object:BoardObject,from:HTMLElement|null)=>{
     const serial=++sequence.current;pending.current?.abort();
     // Cross-references replace the conversation, but retain the page and trigger
     // that opened it. Back must not target a link in an unmounted conversation.
     if(!isOpen.current)origin.current=from;
-    isOpen.current=true;setReturnLabel(location.pathname==='/board'?'Back to search':'Back to reading');
+    isOpen.current=true;setReturnLabel(location.pathname==='/board'?(pageReturnControl()?.textContent||'Back to search'):'Back to reading');
     setSource(object);setFailed(false);
     const preserved=conversationByObject(object.kind,object.id);
     if(preserved){setReading(preserved);setBusy(false);return;}
@@ -51,7 +53,7 @@ export function BoardReaderLayer(){
       }
     }
     rewrite(document);
-    const observer=new MutationObserver(changes=>{for(const change of changes){if(change.type==='attributes'&&change.target instanceof HTMLElement)rewrite(change.target);else for(const node of change.addedNodes)if(node instanceof HTMLElement)rewrite(node);}});
+    const observer=new MutationObserver(changes=>{for(const change of changes){if(change.type==='attributes'&&change.target instanceof HTMLElement)rewrite(change.target);else for(const node of change.addedNodes)if(node instanceof HTMLElement)rewrite(node);}if(location.pathname==='/board')setReturnLabel(pageReturnControl()?.textContent||'Back to search');});
     observer.observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['href']});
     function follow(event:MouseEvent){
       if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;

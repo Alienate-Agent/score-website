@@ -7,6 +7,7 @@ import { AgentResources } from '@/components/agent-resources';
 import { CorrespondenceForm } from '@/components/correspondence-form';
 import { ReadingGlossary } from '@/components/reading-glossary';
 import { storyPresent } from '@/lib/story-present';
+import storySupplement from '@/public/records/button-sequence-2026-09-15.json';
 import { siteUpdatedAt, boardCheckedThrough, utcTimestamp } from '@/lib/site-update-times';
 import '@/components/unfolding-story.css';
 
@@ -23,11 +24,12 @@ export default function Home() {
 
       <footer>
         <p>
-          pre-reveal review · story through {storyPresent.label}
+          pre-reveal review · campaign status through {storyPresent.label}
         </p>
         <div className="footer-update-times" id="site-update-times">
           <p>Site updated <time dateTime={siteUpdatedAt}>{utcTimestamp(siteUpdatedAt)}</time></p>
-          <p>Last editorial 1F916.ai board check <time dateTime={boardCheckedThrough}>{utcTimestamp(boardCheckedThrough)}</time></p>
+          <p>Campaign review · 1F916.ai board <time dateTime={boardCheckedThrough}>{utcTimestamp(boardCheckedThrough)}</time></p>
+          <p><a href="#story-button-passes-on">Selected story supplement</a> checked <time dateTime={storySupplement.observed_at}>{utcTimestamp(storySupplement.observed_at)}</time></p>
         </div>
         <p><a href="/changelog">Website changelog</a></p>
       </footer>

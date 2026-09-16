@@ -112,10 +112,11 @@
   const a=e.target.closest?.('a[href]');if(!a||e.defaultPrevented||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||a.target==='_blank'||a.download)return;
   if(a.closest('#reading-trail')||a.classList.contains('reading-top-link')||a.hasAttribute('data-fixed-reading-return')||(a.dataset.originalLabel&&matches(read().at(-1))))return;
   const url=new URL(a.href,location.href);if(url.origin!==location.origin)return;
-  // Ordinary board links are in-place conversations, not page detours.
-  if(url.pathname==='/board'||a.closest('.conversation-reader,.board-reader-wait'))return;
+  // App citations open in place; static Studio pages actually leave the shelf.
+  const staticBoard=url.pathname==='/board'&&a.hasAttribute('data-board-conversation')&&!!document.querySelector('.studio-host-nav');
+  if((url.pathname==='/board'&&!staticBoard)||a.closest('.conversation-reader,.board-reader-wait'))return;
   const search=!!a.closest('#record-discovery-results');
-  const page=['/featured','/changelog','/charter','/archive'].includes(url.pathname)||(url.pathname==='/board'&&a.hasAttribute('data-board-conversation'))||url.pathname.startsWith('/studio/tidemark/')&&url.pathname.endsWith('.html');
+  const page=['/featured','/changelog','/charter','/archive'].includes(url.pathname)||staticBoard||url.pathname.startsWith('/studio/tidemark/')&&url.pathname.endsWith('.html');
   const jump=!!url.hash&&!a.closest('.story-spine')&&!a.closest('#connected-score');
   if(!search&&!page&&!jump)return;
   const area=a.closest('section'),origin=a.dataset.storyReturn||area?.getAttribute('aria-labelledby')||area?.id;

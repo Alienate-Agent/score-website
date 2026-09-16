@@ -22,12 +22,14 @@ assert.ok(read('components/declaration-conversation-strip.tsx').includes('href={
 const returns=read('public/reading-return.js');
 assert.ok(!returns.includes("next.textContent='Resume'"));
 assert.ok(returns.includes("getElementById('contextual-reading-return')"));
-assert.ok(returns.includes("if(url.pathname==='/board'||"),'modal detours do not create page trails');
+assert.ok(returns.includes("if((url.pathname==='/board'&&!staticBoard)||"),'modal detours do not create page trails');
+assert.ok(returns.includes("a.hasAttribute('data-board-conversation')&&!!document.querySelector('.studio-host-nav')"),'static Studio board links retain their reading trail');
 assert.ok(!returns.includes("bottom:'1rem'"));
 const layer=read('components/board-reader-layer.tsx');
 assert.ok(layer.includes("document.addEventListener('click',follow);"),'drag suppression runs first');
 assert.ok(layer.includes('if(!isOpen.current)origin.current=from;'),'cross-references preserve the original return target');
-assert.ok(layer.includes("location.pathname==='/board'?'Back to search':'Back to reading'"));
+assert.ok(layer.includes("pageReturnControl()?.textContent||'Back to search'"),'page readers identify their actual return destination');
+assert.ok(layer.includes("if(back)back.click();else location.assign('/#all-record-search')"),'Studio page return uses shared focus/scroll restoration; direct links still reach search');
 const reader=read('components/conversation-reader.tsx');
 assert.ok(reader.includes('<header><DialogClose className="conversation-return"'));
 assert.ok(!reader.includes('Close ×'));

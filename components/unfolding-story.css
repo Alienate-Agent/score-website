@@ -216,6 +216,49 @@
 .current-status .story-status .status-reminder {font-size:1rem;line-height:1.55;margin:1.2rem 0 0;max-width:34ch;}
 .story-continuation .story-present-scenes h3 {font-family:var(--font-human);font-weight:400;}
 .story-continuation .story-present-scenes>section>p {font-family:var(--font-human);}
+.story-consequence-sequence{list-style:none;margin:1.5rem 0 0;padding:0;}
+.story-consequence-sequence>li{padding:1.5rem 0;border-top:1px solid var(--rule);}
+.story-consequence-sequence__byline{display:flex;align-items:baseline;flex-wrap:wrap;gap:.5rem 1rem;font:1rem/1.6 var(--font-geist-sans,Arial),sans-serif;}
+.story-consequence-sequence__byline time{font:.875rem/1.6 var(--font-geist-mono),monospace;color:var(--ink-soft);}
+.story-consequence-sequence li>p{font:clamp(1.1rem,1.6vw,1.35rem)/1.65 var(--font-human);margin:1rem 0;max-width:48rem;}
+.story-consequence-sequence blockquote{margin:1.25rem 0;padding-left:1rem;border-left:2px solid var(--ink);white-space:pre-line;font-size:1rem;line-height:1.6;}
+.story-room-embed{container-type:inline-size;margin:1.5rem 0;padding:1.25rem 0;border-block:1px solid var(--rule);font:1rem/1.5 var(--font-geist-sans,Arial),sans-serif;}
+.story-room-embed p{font:inherit;margin:0 0 1rem;}
+.story-room-embed__actions{display:flex;align-items:center;flex-wrap:wrap;gap:.75rem 1.5rem;}
+.story-room-embed button{padding:.7rem 1rem;min-height:44px;border:1px solid var(--ink);background:var(--paper);color:var(--ink);cursor:pointer;font:inherit;}
+.story-room-embed button:hover{background:var(--ink);color:var(--paper);}
+.story-room-embed button:focus-visible{outline:2px solid var(--ink);outline-offset:4px;}
+.story-room-embed .story-room-embed__invitation{width:100%;padding:1.5rem;border:0;background:#F1EDF5;color:#292033;text-align:center;text-decoration:none;}
+.story-room-embed .story-room-embed__invitation:hover{background:#F1EDF5;color:#292033;}
+.story-room-embed__full-entry{display:block;}
+.story-room-embed__illustration{display:block;margin:0 auto 1rem;}
+.story-room-embed__illustration img{display:block;width:100%;height:280px;object-fit:contain;}
+.story-room-embed__illustration .story-room-embed__coat{display:none;}
+.story-room-embed__title{display:block;font-size:1.3rem;line-height:1.35;}
+.story-room-embed__invitation-label{display:block;margin-top:.5rem;text-decoration:underline;text-underline-offset:.2em;}
+.story-room-embed__invitation:hover .story-room-embed__invitation-label{text-decoration-thickness:2px;}
+.story-room-embed .story-room-embed__attribution{margin:1rem 0 0;}
+.story-room-embed__actions a{padding-block:.65rem;min-height:44px;font:inherit;}
+.story-room-embed__actions a span{font-size:.875rem;}
+.story-room-embed .story-room-embed__credit{margin:.5rem 0 0;color:var(--ink-soft);font-size:.875rem;}
+.story-room-embed__enter,.story-room-embed__inline{display:none;}
+.story-room-embed__inline{margin-top:1.25rem;}
+.story-room-embed .story-room-embed__note{font-size:.875rem;color:var(--ink-soft);}
+.story-room-embed iframe{display:block;width:100%;height:720px;border:1px solid var(--rule);background:var(--paper-raised);margin-bottom:1rem;}
+/* Let the work use the story's spare right column without widening its prose. */
+@media(min-width:1000px){
+  .story-continuation .story-prose{grid-column:2/-1;max-width:none;}
+  .story-continuation .story-prose>:is(h2,p),
+  .story-continuation .story-present-scenes>section>:not(.story-room-embed){max-width:44rem;}
+}
+@media(min-height:640px){@container(min-width:720px){
+  .story-room-embed__enter,.story-room-embed__inline{display:block;}
+  .story-room-embed__full-entry{display:none;}
+}}
+@container(max-width:420px){
+  .story-room-embed__illustration .story-room-embed__paths{display:none;}
+  .story-room-embed__illustration .story-room-embed__coat{display:block;height:150px;}
+}
 .unfolding-story .story-date {font:400 .8rem/1.6 var(--font-geist-mono),monospace!important;letter-spacing:normal;text-transform:none;color:var(--ink-soft);margin:1.5rem 0 .65rem;}
 .unfolding-story .story-date+h3 {margin-top:0;font:400 clamp(1.6rem,3vw,2.5rem)/1.2 var(--font-story-subhead);}
 .unfolding-story .story-present-scenes .story-date {margin-top:0;}

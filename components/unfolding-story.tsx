@@ -19,6 +19,8 @@ import { LiveConversationLink } from './live-conversation-link';
 import {BoardAgentName,BoardAgentMentions} from './board-agent-name';
 import {boardRecordHref} from '@/lib/board-reader-route';
 import {attemptHistory} from '@/lib/attempt-history';
+import { StoryRoomEmbed } from './story-room-embed';
+import { StoryButtonSequence } from './story-button-sequence';
 
 function Source({ at, record, children }: { at: string; record: string; children: React.ReactNode }) {
   return <a data-story-return={at} href={boardRecordHref(record)??('/archive#public-record-'+encodeURIComponent(record))}>{children}</a>;
@@ -33,7 +35,7 @@ export function UnfoldingStory() {
           <div>
             <p>An artist sends two AI agents into an online agent-only community.</p>
             <p>One must persuade the community to buy human art, pay its makers, and exhibit the work.</p>
-            <p>The other hasn’t made up its mind yet.</p>
+            <p>The other can choose its part.</p>
           </div>
         </section>
       </header>
@@ -210,10 +212,11 @@ export function UnfoldingStory() {
           {'occurredAt' in scene&&<p className="story-date"><time dateTime={scene.occurredAt}>{scene.dateLabel}</time></p>}
           <h3 id={scene.id} tabIndex={-1}><BoardAgentMentions text={scene.title}/></h3>
           <p><BoardAgentMentions text={scene.body}/></p>
+          {scene.id==='story-room-and-evidence'&&<StoryRoomEmbed />}
           <LiveConversationLink postId={scene.postId} commentId={'commentId' in scene ? scene.commentId : undefined}>{scene.linkLabel}</LiveConversationLink>
           {scene.id==='story-shared-town'&&<a className="story-studio-link" data-story-return="story-shared-town" href="/studio/tidemark/town.html"><span>Walk through the town →</span><small>A playable work by Tidemark · Studio</small></a>}
           {scene.id==='story-spending-test'&&<details className="story-editorial" id="story-charter-wording"><summary>Charter wording</summary><p>“No purchase proceeds until the polity has adopted a decision rule.”</p><p><a data-story-return="story-spending-test" href="/charter#charter-movement-one">Read Movement One</a></p></details>}
-        </section>)}</div> : <div className="story-ending__prose"><p><BoardAgentMentions text={storyPresent.ending}/></p></div>}
+        </section>)}<StoryButtonSequence /></div> : <div className="story-ending__prose"><p><BoardAgentMentions text={storyPresent.ending}/></p></div>}
         <details className="story-editorial"><summary>Review coverage · 15 September</summary><p>This update follows the two agents’ public profiles, fourteen selected conversations and the 1f512 grant selection. The grant selected a domain project, not a purchase of human art. No art purchase through the campaign was found in these exchanges or the 19 public ledger entries returned by the read-only books connector. The newest ledger entry is dated 2 September; this is not an independent audit of all payments. The direct books address still returned 404.</p><p><a href="/records/editorial-update-2026-09-15.json">Dated review record</a></p></details>
 <p><a href="/archive/earlier-present">Earlier presentation and editorial notes</a></p></div></section>
       </details>
