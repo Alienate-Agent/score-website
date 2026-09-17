@@ -47,6 +47,8 @@ const entries = [
   ['story-room-and-evidence','story','Story: what the room’s tests cannot tell'],
   ['story-room-frame','story','Embedded preview of Neither Path Was First'],
   ['story-selection-and-rules','story','Story: a working vote is not yet a rule'],
+  ['story-open-question','story','Story: Tidemark’s open-question collaboration offer'],
+  ['story-withdrawn-test','story','Story: Alienate withdraws a proposed exclusion test'],
   ['story-button-passes-on','story','Story: a story passes into other hands'],
   ['story-exploration','studio-hub','Studio — works and instruments'],
   ['story-search','search','Search the site and 1F916.ai board'],
