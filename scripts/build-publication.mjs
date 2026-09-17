@@ -5,11 +5,13 @@ import { fileURLToPath } from 'node:url';
 
 import { validatePublication } from './validate-publication.mjs';
 import { validateStudioEntry } from './validate-studio-entry.mjs';
+import { validateJourneyCoverage } from './validate-journey-coverage.mjs';
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const denyListPath = process.env.PUBLICATION_DENY_LIST_PATH;
 
 await validateStudioEntry(projectRoot);
+console.log('Analytics destination coverage:',validateJourneyCoverage(projectRoot));
 
 await validatePublication({
   root: projectRoot,

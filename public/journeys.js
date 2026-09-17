@@ -10,6 +10,8 @@ window.__scoreJourneysReady = (async () => {
     config = await r.json();
   } catch { return false; }
   if (!config.enabled || config.version !== 2) return false;
+  let map;
+  try { map=await import('/journey-map.mjs'); } catch { return false; }
 
   const storage = {
     available:true,
@@ -18,56 +20,29 @@ window.__scoreJourneysReady = (async () => {
   };
   const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/;
   const actions = new Set(['view','section','navigate','return','details_open','details_close','conversation_open','conversation_close','source_open','glossary_open','search_result_open','sound_open','play','stop','sound_error','instrument_open','setting_change','story_collapse','story_restore','active','page_leave']);
-  const studioPages = {'index.html':'studio-index','study-001.html':'studio-001','study-002.html':'studio-002','town.html':'studio-town','resources.html':'studio-resources','licensing.html':'studio-licensing'};
   const townActions=new Set(['town_step','town_reset','town_switch','town_example','town_run','town_export']);
-  const townTargets=new Set(['arrive_late','walk_uphill','stand','enter_window','sit','walk_to_workshop','stay','return_to_bench','tell_origin','back_door','listen','cross_lane','take_afternoon','descend','follow_gutter','look_at_suitcase','pause_writing','enter_archive','resume_writing','enter_paper_door','listen_at_handle','leave_via_handle'].map(x=>'town:'+x));
+  const townTargets=new Set(map.TOWN_TARGETS);
   for(const action of townActions)actions.add(action);
-  const studioTarget = location.pathname.startsWith('/studio/tidemark/') ? studioPages[location.pathname.slice('/studio/tidemark/'.length) || 'index.html'] : null;
-  const targets = new Set(['story-title','story-beginning','story-alienate','story-tidemark','story-tidemark-first-words','story-encounter','story-unwritten','connected-score','chronology','live-agent-activity','editorial-history','changelog','glossary','instrument',...Object.values(studioPages),'studio-shelf','studio-town-standalone']);
-  for(const target of townTargets)targets.add(target);
+  actions.add('link_open');actions.add('contents_open');
+  const studioTarget = map.addressContext(new URL(location.href)).area==='studio';
   let off = storage.get('score-analytics-off', 0) === 1;
   const blocked = () => off || navigator.doNotTrack === '1' || navigator.globalPrivacyControl === true;
-  let page = crypto.randomUUID(), sequence = 0, queue = [], inFlight = false;
+  const page = crypto.randomUUID();
+  let sequence = 0, queue = [], inFlight = false;
   let localSession = null, visibleSince = performance.now(), area = 'entrance', target = '';
   const instrument = location.pathname.startsWith('/lens/');
-  function safeTarget(value = '') {
-    try { value = decodeURIComponent(value); } catch { return ''; }
-    if (targets.has(value)) return value;
-    return value.match(/(?:^|[:~])((?:post|comment):[1-9][0-9]{0,9})$/)?.[1] || '';
-  }
+  const safeTarget=map.safeTarget;
   function context(node) {
-    if (studioTarget) return {area:'studio',target:node?.closest?.('#elsewhere-on-the-board')?'studio-shelf':studioTarget};
-    if (instrument) return {area:'instrument', target:'instrument'};
-    const id = node?.closest?.('[aria-labelledby]')?.getAttribute('aria-labelledby') || '';
-    const act = node?.closest?.('[data-conversation-act],[data-mini-reading],[data-mini-act]');
-    if (act) return {area:'conversations', target:safeTarget(act.dataset.conversationAct || act.dataset.miniReading || act.dataset.miniAct)};
-    if (node?.closest?.('.conversation-reader')) return {area:'conversations', target:''};
-    if (id.includes('story-beginning')) return {area:'prelude', target:'story-beginning'};
-    if (id.includes('story-alienate')) return {area:'alienate', target:'story-alienate'};
-    if (id.includes('story-tidemark')) return {area:'tidemark', target:safeTarget(id)};
-    if (id.includes('story-unwritten')) return {area:'present', target:'story-unwritten'};
-    if (node?.closest?.('[id*="chronology"]')) return {area:'score', target:'chronology'};
-    if (node?.closest?.('[id*="encounter"],.encounter-score')) return {area:'encounters', target:safeTarget(location.hash.slice(1))};
-    if (node?.closest?.('.story-passage,.story-aside')) return {area:'story', target:safeTarget(id)};
-    return {area, target};
+    return map.nodeContext(node,new URL(location.href));
   }
   function addressContext() {
-    if (studioTarget) return {area:'studio',target:location.hash==='#elsewhere-on-the-board'?'studio-shelf':studioTarget};
-    if (instrument) return {area:'instrument', target:'instrument'};
-    if (location.pathname === '/board') {
-      const params = new URLSearchParams(location.search);
-      return {area:'conversations', target:safeTarget(`${params.get('kind')}:${params.get('id')}`)};
+    const url=new URL(location.href);
+    const result=map.addressContext(url);
+    if(url.hash&&!safeTarget(url.hash.slice(1))){
+      let id;try{id=decodeURIComponent(url.hash.slice(1));}catch{return result;}
+      const el=document.getElementById(id);if(el)return context(el);
     }
-    if (location.hash) {
-      let id; try { id = decodeURIComponent(location.hash.slice(1)); } catch { return {area:'other', target:''}; }
-      const named={'story-title':'story','story-beginning':'prelude','story-alienate':'alienate','story-tidemark':'tidemark','story-tidemark-first-words':'tidemark','story-encounter':'encounters','story-unwritten':'present','live-agent-activity':'present','connected-score':'conversations','chronology':'score','editorial-history':'history','changelog':'history','glossary':'glossary'};
-      if(named[id])return {area:named[id],target:id};
-      const el = document.getElementById(id);
-      const result = el ? context(el) : {area:id.startsWith('encounter-')?'encounters':'other', target:''};
-      return {...result, target:safeTarget(id) || result.target};
-    }
-    if (location.pathname.startsWith('/records/')) return {area:'sources', target:''};
-    return {area:'entrance', target:''};
+    return result;
   }
   function session() {
     const now = Date.now();
@@ -127,24 +102,43 @@ window.__scoreJourneysReady = (async () => {
   ({area,target}=addressContext());
   mark('view'); void flush();
   let lastNavigation=location.href, clickedNavigationAt=-Infinity;
-  function navigation(action){if(location.href===lastNavigation)return;lastNavigation=location.href;if(performance.now()-clickedNavigationAt<1000)action='navigate';clickedNavigationAt=-Infinity;place(addressContext());mark(action);void flush();}
+  function navigation(action){
+    if(location.href===lastNavigation)return;
+    const previous=map.addressContext(new URL(lastNavigation));
+    lastNavigation=location.href;
+    const next=addressContext();
+    // Search/filter queries are not destinations and are never collected.
+    if(next.area===previous.area&&next.target===previous.target)return;
+    if(performance.now()-clickedNavigationAt<1000)action='navigate';
+    clickedNavigationAt=-Infinity;place(next);mark(action);void flush();
+  }
   window.addEventListener('hashchange',()=>navigation('navigate'));
   window.addEventListener('popstate',()=>navigation('return'));
+  // pushState/replaceState do not emit hashchange. Preserve native behavior and
+  // observe the resulting safe destination (score selections and search jumps).
+  for(const method of ['pushState','replaceState']){
+    const original=window.history[method];
+    window.history[method]=function(...args){
+      const result=original.apply(this,args);
+      setTimeout(()=>navigation('navigate'),0);
+      return result;
+    };
+  }
   document.addEventListener('click',event=>{
     if (!event.isTrusted || !(event.target instanceof Element) || event.target.closest('#score-privacy')) return;
     const node=event.target;const ctx=context(node);const anchor=node.closest('a[href]');
     if(anchor){
       const url=new URL(anchor.href,location.href);
       if(url.origin===location.origin&&url.hash&&url.href!==location.href&&anchor.target!=='_blank')clickedNavigationAt=performance.now();
-      if(url.pathname.startsWith('/lens/'))mark('instrument_open',ctx);
-      else if(url.pathname==='/board'||url.hostname==='1f916.ai')mark('source_open',ctx);
-      else if(url.pathname.startsWith('/records/'))mark('source_open',ctx);
-      else if(studioTarget&&url.origin===location.origin&&url.pathname==='/studio/tidemark/assets/town-play.html')mark('source_open',{area:'studio',target:'studio-town-standalone'});
-      else if(studioTarget&&url.origin===location.origin&&url.pathname.startsWith('/studio/tidemark/resources/'))mark('source_open',ctx);
+      if(url.origin===location.origin&&(url.pathname!==location.pathname||url.search!==location.search||anchor.target==='_blank'||anchor.hasAttribute('download'))){
+        // Destination, not the source section. Never send the URL or its query.
+        mark('link_open',map.addressContext(url));
+      }else if(url.hostname==='1f916.ai'){
+        const record=url.pathname.match(/^\/api\/(post|comment)\/([1-9][0-9]{0,9})\/?$/);
+        mark('link_open',record?map.targetContext(`${record[1]}:${record[2]}`):{area:'conversations',target:'board-reader'});
+      }
     }
-    if(node.closest('[class*="reading-term"],[data-glossary-selected]'))mark('glossary_open',ctx);
     if(node.closest('[aria-controls="story-narrative"]'))mark(node.closest('button')?.getAttribute('aria-expanded')==='true'?'story_collapse':'story_restore',ctx);
-    if(node.closest('.reading-trail'))mark('return',ctx);
     void flush();
   });
   document.addEventListener('toggle',event=>{
@@ -160,11 +154,21 @@ window.__scoreJourneysReady = (async () => {
     const entry=entries.filter(e=>e.isIntersecting).sort((a,b)=>Math.abs(a.boundingClientRect.top-innerHeight*.35)-Math.abs(b.boundingClientRect.top-innerHeight*.35))[0];
     if(entry){const next=context(entry.target);if(next.area!==area||next.target!==target){place(next);mark('section');}}
   },{rootMargin:'-25% 0px -40% 0px',threshold:0});
-  const panels=new Map();const conversations=new Set();
+  const panels=new Map();const conversations=new Map();
+  const dialogs=new Map();
   let scanPending=false;
   function scan(){
     scanPending=false;
-    document.querySelectorAll('section h2,article h2').forEach(el=>{if(!seen.has(el)){seen.add(el);sections.observe(el);}});
+    document.querySelectorAll('main h1,section h2,article h2,section h3[id],details[id] > summary').forEach(el=>{if(!seen.has(el)){seen.add(el);sections.observe(el);}});
+    document.querySelectorAll('dialog[aria-labelledby],.reading-glossary[role="dialog"]').forEach(el=>{
+      const open=el instanceof HTMLDialogElement?el.open:el.getClientRects().length>0,id=el.getAttribute('aria-labelledby')||'';
+      if(open&&!dialogs.get(el)){
+        if(id==='contents-title')mark('contents_open',{area,target});
+        else if(el.matches('.reading-glossary'))mark('glossary_open',{area:'glossary',target:'glossary'});
+      }
+      dialogs.set(el,open);
+    });
+    for(const el of dialogs.keys())if(!el.isConnected)dialogs.delete(el);
     document.querySelectorAll('[data-mini-panel]').forEach(el=>{
       const state=el.dataset.state;const previous=panels.get(el);
       if(previous===state)return;
@@ -176,12 +180,12 @@ window.__scoreJourneysReady = (async () => {
     });
     for(const el of panels.keys())if(!el.isConnected)panels.delete(el);
     document.querySelectorAll('.conversation-reader').forEach(el=>{
-      if(!conversations.has(el)){conversations.add(el);mark('conversation_open',{area:'conversations',target:safeTarget(el.querySelector('[data-entry="true"]')?.dataset.conversationAct)});}
+      if(!conversations.has(el)){const ctx={area:'conversations',target:safeTarget(el.querySelector('[data-entry="true"]')?.dataset.conversationAct)};conversations.set(el,ctx);mark('conversation_open',ctx);}
     });
-    for(const el of conversations)if(!el.isConnected){mark('conversation_close',{area:'conversations',target:''});conversations.delete(el);}
+    for(const [el,ctx] of conversations)if(!el.isConnected){mark('conversation_close',ctx);conversations.delete(el);}
   }
   new MutationObserver(()=>{if(!scanPending){scanPending=true;setTimeout(scan,150);}})
-    .observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['data-state']});
+    .observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['data-state','open']});
   scan();
   setInterval(()=>{active();void flush();},30000);
   setInterval(()=>void flush(),5000);

@@ -59,13 +59,13 @@ export function CrossRecordSearch(){
       <label>Enter words or paste a 1F916.ai board link<input type="search" value={query} placeholder="Try exhibition, scheduled runs, or kinship" onChange={e=>{setQuery(e.target.value);setLimit(8);}}/></label>
     </div>
     <div id="record-discovery-results" tabIndex={-1} className={styles.columns}>
-    <details className={styles.column} open>
+    <details id="search-site-results" className={styles.column} open>
       <summary>On this site</summary>
       <div className={styles.columnBody}>
     <SiteTextSearch query={query} remember={remember}/>
       </div>
     </details>
-    <details className={styles.column} open>
+    <details id="search-board-results" className={styles.column} open>
       <summary>On the 1F916.ai board</summary>
       <div className={styles.columnBody}>
     <LiveBoardSearch query={query}/>
@@ -95,6 +95,6 @@ export function CrossRecordSearch(){
       </div>
     </details>
     </div>
-    <details className={styles.scope}><summary>Search details</summary><p>Site search reads this edition’s served pages: the story, charter, companion, featured page, changelog, linked Studio pages and audio instrument. It searches page text, including expandable prose—not private sources, downloads, images or audio content. The speaker filter affects collected 1F916.ai board records only. Site queries stay in your browser; checking the live 1F916.ai board sends the query to 1F916.ai through this site.</p><p>One public act may occur in several observations. Identical bodies share a result; changed bodies remain separate. This finding aid does not merge the source editions or add anything to the sound instrument. Registry-only additions and later Window material remain in the <a href="/records/index.json">collection index</a>.</p></details>
+    <details id="search-details" className={styles.scope}><summary>Search details</summary><p>Site search reads this edition’s served pages: the story, charter, companion, featured page, changelog, linked Studio pages and audio instrument. It searches page text, including expandable prose—not private sources, downloads, images or audio content. The speaker filter affects collected 1F916.ai board records only. Site queries stay in your browser; checking the live 1F916.ai board sends the query to 1F916.ai through this site.</p><p>One public act may occur in several observations. Identical bodies share a result; changed bodies remain separate. This finding aid does not merge the source editions or add anything to the sound instrument. Registry-only additions and later Window material remain in the <a href="/records/index.json">collection index</a>.</p></details>
   </section>;
 }

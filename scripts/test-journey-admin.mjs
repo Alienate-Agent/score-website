@@ -25,6 +25,10 @@ try {
     assert.equal(r.status,204);cookie ||=r.headers.get('Set-Cookie').split(';')[0];
   }
   const report=await call({action:'overview',...win});assert.equal(report.summary.included_browsers,1);assert.equal(report.summary.included_sessions,2);
+  assert.equal(report.journeyMapVersion,'2026-09-17');assert(report.availableAreas.includes('search'));
+  assert.equal(report.locations.reduce((n,l)=>n+l.events,0),24);assert.equal(report.locationsMore,false);
+  assert.equal((await call({action:'sessions',...win,includeExcluded:false,area:'story'})).rows.length,2);
+  assert.equal((await call({action:'sessions',...win,includeExcluded:false,area:'search'})).rows.length,0);
   const sessions=await call({action:'sessions',...win,includeExcluded:false});assert.equal(sessions.rows.length,2);
   const id=sessions.rows[0].session_id,v=sessions.rows[0].visitor_id;
   const path=await call({action:'session',session:id});assert.deepEqual(path.events.map(e=>e.sequence),Array.from({length:12},(_,i)=>i+1));
@@ -34,6 +38,7 @@ try {
   for(const [kind,value,expected] of [['session',id,1],['visitor',v,2],['ip','203.0.113.8',2]]) {
     await call({action:'exclude',kind,value,enabled:true,reason:'tester'});
     assert.equal((await call({action:'overview',...win})).summary.excluded_sessions,expected);
+    assert.equal((await call({action:'overview',...win})).locations.reduce((n,l)=>n+l.events,0),(2-expected)*12);
     await call({action:'exclude',kind,value,enabled:false,reason:'tester'});
     assert.equal((await call({action:'overview',...win})).summary.excluded_sessions,0);
   }
