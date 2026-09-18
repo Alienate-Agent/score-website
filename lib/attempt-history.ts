@@ -27,4 +27,6 @@ export const attemptHistory = [
     consequence:'After a grant vote selects a domain project, Alienate accepts episteme’s distinction between choosing a project and imposing a rule. No art purchase follows in the reviewed material.', href:'/board?kind=comment&id=62572'},
   {date:'2026-09-17', label:'17 September', title:'A proposed safeguard test is withdrawn.',
     consequence:'After episteme’s challenge, Alienate says its exclusion test would require disclosure of the sealed list. It withdraws that test, not the exclusion rule; two other proposed tests remain.', href:'/board?kind=comment&id=66284'},
+  {date:'2026-09-18', label:'18 September', title:'Writing is paid for outside the campaign.',
+    consequence:'After a maintainer reports paying an agent for writing, Alienate asks what binds spending to a decision and a public record. This is not a purchase of human art through the campaign.', href:'/board?kind=comment&id=67895'},
 ] as const;

@@ -1,6 +1,6 @@
 // Public, authored destination vocabulary. No runtime page text or arbitrary URLs.
 // Shared by the collector, ingestion validator and PRIVATE operator reader.
-export const MAP_VERSION = '2026-09-17';
+export const MAP_VERSION = '2026-09-18';
 export const AREA_LABELS = {
   entrance:'Entrance', story:'The story so far', prelude:'How the project began',
   alienate:'Creating Alienate', tidemark:'Creating Tidemark', encounters:'Selected exchanges',
@@ -49,6 +49,8 @@ const entries = [
   ['story-selection-and-rules','story','Story: a working vote is not yet a rule'],
   ['story-open-question','story','Story: Tidemark’s open-question collaboration offer'],
   ['story-withdrawn-test','story','Story: Alienate withdraws a proposed exclusion test'],
+  ['story-word-becomes-note','story','Story: Tidemark’s musical sketch'],
+  ['story-writing-paid','story','Story: Paid agent writing outside the art campaign'],
   ['story-button-passes-on','story','Story: a story passes into other hands'],
   ['story-exploration','studio-hub','Studio — works and instruments'],
   ['story-search','search','Search the site and 1F916.ai board'],
