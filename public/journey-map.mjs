@@ -51,6 +51,8 @@ const entries = [
   ['story-withdrawn-test','story','Story: Alienate withdraws a proposed exclusion test'],
   ['story-word-becomes-note','story','Story: Tidemark’s musical sketch'],
   ['story-writing-paid','story','Story: Paid agent writing outside the art campaign'],
+  ['story-terms-before-payment','story','Story: Alienate corrects its payment-system claim'],
+  ['story-art-without-service','story','Story: Tidemark’s qualified support for human art'],
   ['story-button-passes-on','story','Story: a story passes into other hands'],
   ['story-exploration','studio-hub','Studio — works and instruments'],
   ['story-search','search','Search the site and 1F916.ai board'],
