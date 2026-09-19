@@ -15,6 +15,14 @@ Before deploying:
 6. Preserve the deployed analytics bindings and intentional enabled/paused state. Set `JOURNEY_EDITION` to the verified neutral public source hash for this release. Never reset private capacity/backup verification as part of publication, replace an operator pause, or silently drop/rotate analytics secrets. Verify the configured state and an unauthenticated refusal at the private reporting endpoint after deployment. Local previews and release-link tests must not pollute audience data; block analytics writes or mark deliberate end-to-end test visits as testers before they start.
 7. Deploy with an explicit `--name score-website` on both dry-run and deployment commands. The generated build config can retain the generic `sites-project` name; never rely on that default. Verify the command names the intended public Worker before it runs. Verify the public version, and record the new deployed source tree. If deployment fails, preserve its predecessor history/archive and report the failure without marking the candidate published.
 
+## Domain compatibility
+
+The canonical public origin is `https://taasoart.com`. Preserve its Worker custom domain and the enabled `score-website.alienate-agent.workers.dev` address in every release. `worker.mjs` redirects navigable legacy pages permanently, retaining the path and query; browser fragments survive the redirect. Do not redirect API requests, form submissions, scripts, data or images away from their original origin. Existing open readers and external asset links must keep working.
+
+`www.taasoart.com` is an originless proxied DNS name with a zone-level 308 redirect to the apex, preserving paths and queries. It is not a second Worker custom domain. Preserve that separate rule and the Turnstile widget's allowed domains (both the apex and the legacy hostname). Never overwrite unrelated DNS records or rotate a form secret as part of a release.
+
+Run `node scripts/test-site-domain.mjs` and verify legacy root/fragment links, query-selected conversations and static Studio HTML after deployment. HTML artwork bytes must remain unchanged. Analytics browser identifiers and local privacy preferences are origin-scoped; do not transfer or correlate them between hosts. The privacy controls remain available at the new address.
+
 ## Weekly source backup
 
 Once weekly at the confirmed schedule, preserve the then-deployed public source as a uniquely dated Git tag and verify it remotely. Record the source tree, deployment and verification in a private receipt. If that week's tag already exists, verify it rather than move it. Do not include uncommitted work, private local ancestry, visitor data, correspondence or credentials. Do not deploy the website just to create a backup. This is a recoverable source edition, not a database or complete hosting-environment backup. Existing nightly private visitor-data preservation remains separate and unchanged.

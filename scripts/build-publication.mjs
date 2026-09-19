@@ -1,5 +1,5 @@
 import { spawn } from 'node:child_process';
-import {copyFileSync, existsSync, readFileSync} from 'node:fs';
+import {copyFileSync, readFileSync, readdirSync} from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -33,11 +33,16 @@ await new Promise((resolvePromise, reject) => {
   });
 });
 
-// Vinext emits this sidecar in server/, while the Cloudflare SSR child
-// imports it beside ssr/index.js. Keep clean exports deployable as well.
-const ssrEntry = resolve(projectRoot, 'dist/server/ssr/index.js');
-if (existsSync(ssrEntry) && readFileSync(ssrEntry, 'utf8').includes('./vinext-client-assets.js')) {
-  copyFileSync(resolve(projectRoot, 'dist/server/vinext-client-assets.js'), resolve(projectRoot, 'dist/server/ssr/vinext-client-assets.js'));
+// Vinext emits this sidecar in server/, but generated SSR and lazy renderer
+// chunks import it relative to their own directory. Preserve those imports
+// without changing generated rendering code. Check every generated JS chunk.
+const serverRoot = resolve(projectRoot, 'dist/server');
+for (const name of readdirSync(serverRoot,{recursive:true})) {
+  if (typeof name !== 'string' || !name.endsWith('.js')) continue;
+  const entry=resolve(serverRoot,name);
+  if (dirname(entry)!==serverRoot && readFileSync(entry,'utf8').includes('./vinext-client-assets.js')) {
+    copyFileSync(resolve(serverRoot,'vinext-client-assets.js'),resolve(dirname(entry),'vinext-client-assets.js'));
+  }
 }
 
 await validatePublication({

@@ -5,6 +5,7 @@ import { defineConfig } from 'vite';
 import hostingConfig from './.openai/hosting.json';
 import journeyStorage from './wrangler.journeys.json';
 import correspondenceStorage from './wrangler.correspondence.json';
+import {readdirSync} from 'node:fs';
 
 const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
   '00000000-0000-4000-8000-000000000000';
@@ -15,10 +16,20 @@ const { d1, r2 } = hostingConfig;
 const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === 'seatbelt';
 
 const localBindingConfig = {
-  main: 'vinext/server/fetch-handler',
+  main: './worker.mjs',
+  workers_dev: true,
+  routes: [{pattern:'taasoart.com', custom_domain:true}],
   // Keep the explicit instrument file canonical. Otherwise the asset server
   // redirects index.html to /lens/, while the app redirects /lens/ back.
-  assets: { html_handling: 'none' as const },
+  assets: {
+    html_handling: 'none' as const,
+    binding: 'ASSETS',
+    // HTML pages need hostname redirects; images, fonts and data remain served
+    // directly as assets. Discover pages so new Studio pages cannot drift.
+    run_worker_first: readdirSync(new URL('./public/',import.meta.url),{recursive:true})
+      .filter((name): name is string => typeof name === 'string' && name.endsWith('.html'))
+      .map(name => '/'+name),
+  },
   compatibility_flags: ['nodejs_compat'],
   analytics_engine_datasets: [{ binding: 'ENGAGEMENT', dataset: 'score_engagement_v1' }],
   // The real private resources are declared once for both the build and CLI.

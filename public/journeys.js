@@ -2,7 +2,7 @@
    No text, search query, full URL or IP address is sent in browser payloads. */
 window.__scoreJourneysReady = (async () => {
   if (window.top !== window) return true; // The sound engine iframe is not another visit.
-  if (location.hostname !== 'score-website.alienate-agent.workers.dev') return false;
+  if (!['taasoart.com', 'score-website.alienate-agent.workers.dev'].includes(location.hostname)) return false;
   let config;
   try {
     const r = await fetch('/api/journeys', {credentials:'same-origin', cache:'no-store', signal:AbortSignal.timeout(3000)});

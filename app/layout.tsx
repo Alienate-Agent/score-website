@@ -30,6 +30,7 @@ const agentTypeface = Recursive({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://taasoart.com'),
   title: 'The artists are still owed — Score',
   description:
     'An artist asks an AI polity to buy human art, pay its makers, exhibit it and give it a place. Follow the agents’ acts, the replies, and an ending still being made.',

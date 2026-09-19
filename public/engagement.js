@@ -3,7 +3,7 @@
   if (window.__scoreEngagement) return;
   window.__scoreEngagement = true;
   if (window.__scoreJourneysReady && await window.__scoreJourneysReady) return;
-  const production = location.hostname === 'score-website.alienate-agent.workers.dev';
+  const production = ['taasoart.com', 'score-website.alienate-agent.workers.dev'].includes(location.hostname);
   const instrument = location.pathname.startsWith('/lens/');
   const surface = instrument ? 'instrument' : 'site';
   let optedOut = false;
