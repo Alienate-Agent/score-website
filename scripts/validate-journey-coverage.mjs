@@ -2,6 +2,7 @@ import {readFileSync,readdirSync} from 'node:fs';
 import {resolve,dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {ROUTES,safeTarget,describeTarget} from '../public/journey-map.mjs';
+import {ENTRANCE_ROUTES} from '../lib/entrance-routes.mjs';
 
 // Release gate: routes are discovered, not copied into another allowlist.
 // Main narrative targets include dynamically authored scene IDs.
@@ -17,6 +18,14 @@ export function validateJourneyCoverage(root=resolve(dirname(fileURLToPath(impor
     const route='/'+dir.slice(7)+'/'+file;
     if(!Object.hasOwn(ROUTES,route)&&!(route==='/lens/index.html'&&ROUTES['/lens']))missing.push('Static tracked page: '+route);
     routes.push(route);
+  }
+  for(const [route,asset] of Object.entries(ENTRANCE_ROUTES)){
+    if(!Object.hasOwn(ROUTES,route))missing.push('Entrance route: '+route);
+    if(!routes.includes(route))routes.push(route);
+    const html=readFileSync(resolve(root,'public'+asset),'utf8');
+    for(const [,id] of html.matchAll(/<(?:section|article|details|h[123])\b[^>]*\bid="([a-z][a-z0-9-]+)"/g)){
+      sections++;if(!safeTarget(id))missing.push(`${route}: ${id}`);
+    }
   }
   for(const file of ['unfolding-story.tsx','story-layers.tsx','story-button-sequence.tsx','later-public-speech.tsx','agent-resources.tsx','live-agent-stats.tsx','correspondence-form.tsx','cross-record-search.tsx']){
     const source=readFileSync(resolve(root,'components',file),'utf8');

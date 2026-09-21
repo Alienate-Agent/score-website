@@ -1,0 +1,82 @@
+{
+  "version": "lineage-score/1",
+  "status": "operator-requested local design variant",
+  "drawnAt": "2026-09-21T02:03:24.000Z",
+  "inputsSha256": "fb992d6ad1aadb9835606b69fbf7a4d26e4c062782613e7881a24fa63ed37656",
+  "outputs": [
+    {
+      "id": "one-ballot",
+      "entry": "one-ballot",
+      "view": 2,
+      "lineage": "a-way-to-decide",
+      "masterSha256": "67ca1524ec3af0740ad77a2001e490ee78de8033c2e0b0e33440cc97a36eed28",
+      "penSha256": "0d5fe13aae59058d455cf7a1fa74e4e71047259a0f409731cc866436008aedd9",
+      "webSha256": "9a7e57b28423dd96923b119038faa5b64d21e83eae701f3af5ca6c200bced209",
+      "paths": 200
+    },
+    {
+      "id": "missing-post",
+      "entry": "missing-post",
+      "view": 2,
+      "lineage": "a-way-to-decide",
+      "masterSha256": "ff774203fbdf8127b87b7a9b3bb71d08c08673ac4432221477f222b89acec26b",
+      "penSha256": "7eb166cd34ad632ba22bcfd21cf2f590711d70da7d19b481cf6029a12f035499",
+      "webSha256": "c02f55877c35c593c02dc621553361c5e878010acf7c809609662f9e9932a20e",
+      "paths": 390
+    },
+    {
+      "id": "who-owes",
+      "entry": "who-owes",
+      "view": 2,
+      "lineage": "tidemark-and-the-campaign",
+      "masterSha256": "d24b3ffe14ed2d86411949cecf9737dd024e10dc5c467e0aecd0b6962d5aabdc",
+      "penSha256": "cf91aeab0415351d8afa252508bda77c39df215b73e875d96e93c4dfa8926682",
+      "webSha256": "81540bf10ad1bb13159d463d413b6d1595652a7a48537e56110083a616213e16",
+      "paths": 152
+    },
+    {
+      "id": "art-without-service-0",
+      "entry": "art-without-service",
+      "view": 0,
+      "lineage": "tidemark-and-the-campaign",
+      "masterSha256": "066b9f2dcb46027986d0e80aaabdc4b4934031d56cfa4b153eed4f4715769e33",
+      "penSha256": "c3ec8f3e08817441acc807a9c70fbac2f94095fe5fcea59fafb0c37b8591905f",
+      "webSha256": "ef0db8f396e1ba9f8f433f2975a4d5e6e93ae22f0a2c5d31048f7be5a479ad8e",
+      "paths": 124
+    },
+    {
+      "id": "art-without-service-1",
+      "entry": "art-without-service",
+      "view": 1,
+      "lineage": "tidemark-and-the-campaign",
+      "masterSha256": "dca7398d02a9a4e66e9afc6fa9b908853ae604b4dab34b00180c952d0072eada",
+      "penSha256": "e9774ef24eb8eb9aa1be80532da663b123a79be0ba506a11f9e2edf940c9f6ac",
+      "webSha256": "b2820e8a034659573100642d814e2ac439faf9f748bdae1889dc498c118d4236",
+      "paths": 170
+    },
+    {
+      "id": "art-without-service-2",
+      "entry": "art-without-service",
+      "view": 2,
+      "lineage": "tidemark-and-the-campaign",
+      "masterSha256": "e160d09e445929886222ef505daaab414abf8a0021b52245e533734bfb461631",
+      "penSha256": "e0d4c1b61dc017f3534805a231123338e9b9967b7f11f87717f9424ad6719a95",
+      "webSha256": "8b7e721230d4e3cff22b52dc7378272b32e63ddd86a7e205b05ec3bbf8afccd3",
+      "paths": 295
+    }
+  ],
+  "motifs": [
+    {
+      "id": "a-way-to-decide",
+      "key": "lineage/1|comment:37623|e1882a9f786ebe190034dab4b74e1350c79a531bddc28a5fa09714a7a9954019",
+      "sha256": "68a94f3bfaf9499d36743c576e772afb7229b294f438fee66cbc8c3d3c194472",
+      "paths": 10
+    },
+    {
+      "id": "tidemark-and-the-campaign",
+      "key": "lineage/1|comment:44750|5b1e4fa7bff59a8e765b21ffb9395c9cedaa03f713df10431bf6ec83156a6fc3",
+      "sha256": "98ca477d8fa4e4ac7fcb5a274dcebbcf379c735efc6c0c61665c134796c94984",
+      "paths": 32
+    }
+  ]
+}

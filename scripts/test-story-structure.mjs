@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 const read=p=>readFileSync(new URL('../'+p,import.meta.url),'utf8');
-const story=read('components/unfolding-story.tsx'),page=read('app/page.tsx'),layers=read('components/story-layers.tsx'),archive=read('components/retired-story-presentation.tsx');
+const story=read('components/unfolding-story.tsx'),page=read('app/record/page.tsx'),layers=read('components/story-layers.tsx'),archive=read('components/retired-story-presentation.tsx');
 assert.ok(story.indexOf('id="story-unwritten"')<story.indexOf('id="story-narrative"'));
 assert.ok(story.includes('<details id="story-narrative" data-story-fold open>'));
 assert.ok(story.includes('<summary className="story-summary">'));

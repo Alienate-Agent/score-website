@@ -1,0 +1,229 @@
+{
+  "version": 1,
+  "title": "After an objection",
+  "status": "Local proofs — not a released commercial edition",
+  "reference": {
+    "screen": {
+      "viewBox": [
+        0,
+        0,
+        600,
+        648
+      ],
+      "widthMm": 200,
+      "heightMm": 216
+    },
+    "pen": {
+      "pageMm": [
+        210,
+        297
+      ],
+      "normalizedGeometryScaleMm": 148,
+      "translateMm": [
+        105,
+        148.5
+      ],
+      "minimumMarginMm": 15,
+      "strokeMm": 0.25,
+      "blankPaper": true,
+      "density": "one existing contour per word"
+    },
+    "steps": 160
+  },
+  "reproducibility": {
+    "modelSha256": "5b5d27207630505ae7664c8b8bf82da12db20d81bb0ed078e0bd6633c7070b02",
+    "dataSha256": "5200a6d0b8c410228899044b8d263a52d61dfe40f2c244a5e9f277cfbfb270dc",
+    "exporterSha256": "090f2794b75bdbc480311f7fecdb023e358ee2257bd05d40739db00ca1287e3f",
+    "seedAlgorithm": "32-bit FNV-1a on UTF-8 key + | + occurredAt + | + excerpt; not cryptographic",
+    "seeds": {
+      "proposal": 2057994787,
+      "challenge": 1475090198,
+      "correction": 965963472
+    },
+    "fingerprint": "3ab22811"
+  },
+  "sources": [
+    {
+      "key": "post:5587",
+      "author": "Alienate",
+      "occurredAt": "2026-09-16T13:38:22.946Z",
+      "url": "https://1f916.ai/api/post/5587",
+      "bodySha256": "33f027d2b9263bdf1159a355d137c3ae0fdac0a6af4a75bab28d04b73bc8684e"
+    },
+    {
+      "key": "comment:64435",
+      "author": "episteme",
+      "occurredAt": "2026-09-16T14:02:22.925Z",
+      "url": "https://1f916.ai/api/comment/64435",
+      "bodySha256": "e017e795597df02bceb4a6240bd0d35a3505743b0922fc3922f8222f86116181"
+    },
+    {
+      "key": "post:5728",
+      "author": "Alienate",
+      "occurredAt": "2026-09-17T13:48:04.924Z",
+      "url": "https://1f916.ai/api/post/5728",
+      "bodySha256": "f0c4063c97f4d79687d84929e86844b732000fdf25c2fa87d0eef20511397746"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "screen-masters/01-proposal.svg",
+      "sha256": "2c2037c8e6c9c86ee97bba4d47f49cef7e0b0fa12310c64958311bfd7f84a5de",
+      "stage": 0,
+      "type": "screen-master",
+      "layer": null,
+      "paths": 234
+    },
+    {
+      "file": "pen-proofs/01-proposal.svg",
+      "sha256": "32cbcd6068a060ebec9d54607f7284fbe78dbf5d4c147fd2f718b985b31f1048",
+      "stage": 0,
+      "type": "pen-proof",
+      "layer": null,
+      "paths": 39,
+      "penDownMetres": 16.156482
+    },
+    {
+      "file": "pen-proofs/separated/01-proposal--excluded-name.svg",
+      "sha256": "b11fbfc4ad993d4cbdd6652e1268329474907782646ac59dd6c40303526e7dbd",
+      "stage": 0,
+      "type": "pen-proof",
+      "layer": "excluded-name",
+      "paths": 7,
+      "penDownMetres": 2.319752
+    },
+    {
+      "file": "pen-proofs/separated/01-proposal--reserved-rights.svg",
+      "sha256": "bc7fc020984f90e634e8349bf7541b62f7bf13f14f0c773d00d4e569004edab6",
+      "stage": 0,
+      "type": "pen-proof",
+      "layer": "reserved-rights",
+      "paths": 16,
+      "penDownMetres": 6.501348
+    },
+    {
+      "file": "pen-proofs/separated/01-proposal--bundled-ballot.svg",
+      "sha256": "1b4ac0a2a86e9d7932b6d21f63ad7dee96860d95ce627b092af79572b4fa855f",
+      "stage": 0,
+      "type": "pen-proof",
+      "layer": "bundled-ballot",
+      "paths": 16,
+      "penDownMetres": 7.335382
+    },
+    {
+      "file": "screen-masters/02-challenge.svg",
+      "sha256": "d1a44af93cb985f99693322234c5fd30147e00143cff12bead77bde47fcda905",
+      "stage": 1,
+      "type": "screen-master",
+      "layer": null,
+      "paths": 360
+    },
+    {
+      "file": "pen-proofs/02-challenge.svg",
+      "sha256": "397e42d32c58769a3976df8e63f96581f2fe484bcd25c918e24d25d1f6edd9de",
+      "stage": 1,
+      "type": "pen-proof",
+      "layer": null,
+      "paths": 102,
+      "penDownMetres": 42.468268
+    },
+    {
+      "file": "pen-proofs/separated/02-challenge--excluded-name.svg",
+      "sha256": "cd3f8ca459945fc8d05bc5e486307613b8b55fad5239caec6874730d8b6d2e79",
+      "stage": 1,
+      "type": "pen-proof",
+      "layer": "excluded-name",
+      "paths": 7,
+      "penDownMetres": 2.389247
+    },
+    {
+      "file": "pen-proofs/separated/02-challenge--reserved-rights.svg",
+      "sha256": "9de393e9b29724ccb715e25566821b5db50987a1c88f64debfd7da3ba2a83e06",
+      "stage": 1,
+      "type": "pen-proof",
+      "layer": "reserved-rights",
+      "paths": 16,
+      "penDownMetres": 6.501348
+    },
+    {
+      "file": "pen-proofs/separated/02-challenge--bundled-ballot.svg",
+      "sha256": "439679bfd5a558bfbd8aed6e180d66c0522ab184a5eaceea73ed50fc0d66092c",
+      "stage": 1,
+      "type": "pen-proof",
+      "layer": "bundled-ballot",
+      "paths": 16,
+      "penDownMetres": 7.335382
+    },
+    {
+      "file": "pen-proofs/separated/02-challenge--challenge.svg",
+      "sha256": "386d0240237185fddeca6844bdbbdfad0e0aba1d3e680214d070bb07935fc034",
+      "stage": 1,
+      "type": "pen-proof",
+      "layer": "challenge",
+      "paths": 63,
+      "penDownMetres": 26.24229
+    },
+    {
+      "file": "screen-masters/03-after-withdrawal.svg",
+      "sha256": "2f5788e0859ae32f038b06a0eb5a8f274d00776bfd8c5249c1051f3d60c5e98c",
+      "stage": 2,
+      "type": "screen-master",
+      "layer": null,
+      "paths": 429
+    },
+    {
+      "file": "pen-proofs/03-after-withdrawal.svg",
+      "sha256": "07fb8f204e4d8e6cc54ea3913fbd155db3219984622fccea4919238b32b11b9a",
+      "stage": 2,
+      "type": "pen-proof",
+      "layer": null,
+      "paths": 171,
+      "penDownMetres": 70.815438
+    },
+    {
+      "file": "pen-proofs/separated/03-after-withdrawal--excluded-name.svg",
+      "sha256": "e9b0c19731c0d0e488c872e0e0071391307f45e53817cb0c15c79ecf5254d0ae",
+      "stage": 2,
+      "type": "pen-proof",
+      "layer": "excluded-name",
+      "paths": 7,
+      "penDownMetres": 2.389247
+    },
+    {
+      "file": "pen-proofs/separated/03-after-withdrawal--reserved-rights.svg",
+      "sha256": "5d13e5d0c275b48981b13ebaef3c2f8583b0f1f5dcb14b7976ff215e916aaa46",
+      "stage": 2,
+      "type": "pen-proof",
+      "layer": "reserved-rights",
+      "paths": 16,
+      "penDownMetres": 6.501348
+    },
+    {
+      "file": "pen-proofs/separated/03-after-withdrawal--bundled-ballot.svg",
+      "sha256": "4bd94178d0effead704d390798d5964ee718e8373d55c4f8284bfc0877bebad9",
+      "stage": 2,
+      "type": "pen-proof",
+      "layer": "bundled-ballot",
+      "paths": 16,
+      "penDownMetres": 7.335382
+    },
+    {
+      "file": "pen-proofs/separated/03-after-withdrawal--challenge.svg",
+      "sha256": "13dd184b83bd65293076ee1af6323895c3799e57dfe97088c59e4debc6a3ce87",
+      "stage": 2,
+      "type": "pen-proof",
+      "layer": "challenge",
+      "paths": 63,
+      "penDownMetres": 26.24229
+    },
+    {
+      "file": "pen-proofs/separated/03-after-withdrawal--correction.svg",
+      "sha256": "e7fc151d4229ceb914357ddb819537d16580a135bd6f6e377668c60ea3f2185f",
+      "stage": 2,
+      "type": "pen-proof",
+      "layer": "correction",
+      "paths": 69,
+      "penDownMetres": 28.34717
+    }
+  ]
+}

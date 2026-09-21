@@ -1,0 +1,13 @@
+.story-connection{border-top:1px solid var(--rule);margin:22px 0 26px;padding-top:14px}
+.story-connection a{display:flex;gap:13px;align-items:center;text-decoration:none;min-height:58px}
+.story-connection a:hover .connection-title{text-decoration:underline;text-underline-offset:.2em}
+.story-connection img{width:64px;height:58px;aspect-ratio:auto;object-fit:contain;background:var(--ink);flex:none}
+.story-connection small{display:block;color:var(--muted);font-size:11px;line-height:1.5;margin-bottom:3px}
+.story-connection .connection-title{display:block;font-size:14px;line-height:1.35;font-weight:550}
+.story-connection.compact{margin:18px 0 0;padding-top:12px}
+.story-connection.compact img{width:46px;height:44px}
+.story-connection.compact .connection-title{font-size:12px}
+.story-connection.compact small{font-size:10px}
+.episode-page article>.story-connection{width:calc(100% - 8vw);max-width:calc(1200px - 8vw);margin:26px auto 0}
+@media(max-width:650px){.story-connection{margin:20px 0}.story-connection.compact{margin-bottom:0}}
+@media(max-width:650px){.episode-page article>.story-connection{width:calc(100% - 40px);max-width:none}}

@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {archiveDestination} from '../lib/archive-location.ts';
 const read=p=>fs.readFileSync(new URL('../'+p,import.meta.url),'utf8');
-const home=read('app/page.tsx'),story=read('components/unfolding-story.tsx'),layers=read('components/story-layers.tsx');
+const home=read('app/record/page.tsx'),story=read('components/unfolding-story.tsx'),layers=read('components/story-layers.tsx');
 assert.equal((story.match(/id="story-status-heading"/g)||[]).length,1);
 assert.equal((story.match(/id="story-unwritten"/g)||[]).length,1);
 assert.equal((story.match(/<LiveAgentStats \/>/g)||[]).length,1);

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="60 45 480 355">
+  <!-- Existing Tidemark room geometry, cropped for Margin's invitation.
+       Source: /studio/tidemark/neither-path.html. No simulated visitor traces. -->
+  <path fill="none" stroke="#ae6e3e" stroke-width="35" opacity=".17" d="M165 145 Q300 200 435 145"/>
+  <g fill="none" stroke="#292033" stroke-width="2" stroke-dasharray="2 8">
+    <path d="M300 370 Q150 300 165 145"/>
+    <path d="M300 370 Q460 290 435 145"/>
+  </g>
+  <g fill="none" stroke="#292033" stroke-width="3">
+    <path d="M145 130 v30 h40 v-30 M145 160 v20 M185 160 v20 M145 130 v-30 h40 v30"/>
+    <path d="M415 180 v-85 h45 v85 M451 137 h-4"/>
+  </g>
+  <path fill="#ae6e3e" d="M282 80 l18 10 18-10 20 35-18 8v57h-40v-57l-18-8z"/>
+</svg>

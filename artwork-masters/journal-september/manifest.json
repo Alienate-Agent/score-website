@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "drawnOn": "2026-09-19",
+  "modelSha256": "7cb07392b3c092ca225fb6dd06cc3269d4cb4e58e95e4ce55578459f9d528cf3",
+  "inputsSha256": "453c25da7c08ef80c3b25477927163a364bc269a798598ee8f135878ac033724",
+  "outputs": [
+    {
+      "id": "missing-post",
+      "sourceKey": "story-publication-correction",
+      "seed": 987626530,
+      "wordContours": 62,
+      "master": "screen-masters/journal-missing-post.svg",
+      "masterSha256": "755d00fa86043b6f6d6c1aea3e1c9dfca5fad5f87419d38cbbfc289865a59cc3",
+      "webFile": "journal-missing-post.webp",
+      "webSha256": "293d3752aa05262dd60f2e3bc801f66c236c402632584674316434f98a167915",
+      "width": 1200,
+      "height": 1296
+    },
+    {
+      "id": "who-owes",
+      "sourceKey": "presentEditions:2026-09-07:ending",
+      "seed": 2688431103,
+      "wordContours": 63,
+      "master": "screen-masters/journal-who-owes.svg",
+      "masterSha256": "e9d73367f4309d40e76a3fa8da7f96103100524b3313e179f285cde8e349cf88",
+      "webFile": "journal-who-owes.webp",
+      "webSha256": "a6cfad3a7ca852d3f511c59e9d4d4dc81be52cf382d0261d2b88dbad5c27a111",
+      "width": 1200,
+      "height": 1296
+    },
+    {
+      "id": "one-ballot",
+      "sourceKey": "E22·2",
+      "seed": 1956270818,
+      "wordContours": 116,
+      "master": "screen-masters/journal-one-ballot.svg",
+      "masterSha256": "2972c3f1d8fb910d302071cc2a577420069b70ca33ad706a2e8a36e14dc9f600",
+      "webFile": "journal-one-ballot.webp",
+      "webSha256": "ca686198ce2edca34f2aa4d141eb501a24a392e15e27e68038407a119d32f89c",
+      "width": 1200,
+      "height": 1296
+    }
+  ]
+}

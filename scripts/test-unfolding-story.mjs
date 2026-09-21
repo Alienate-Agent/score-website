@@ -4,7 +4,7 @@ import {createHash} from 'node:crypto';
 const read = path => fs.readFileSync(new URL('../'+path,import.meta.url),'utf8');
 const story = read('components/unfolding-story.tsx');
 const layers = read('components/story-layers.tsx');
-const page = read('app/page.tsx');
+const page = read('app/record/page.tsx');
 const raw = read('public/records/dated-public-record-v1.json');
 assert.equal(createHash('sha256').update(raw).digest('hex'),'cf99b13a62e8c1dc10635bf6359e0e69a517a7ed2ac1d2ba26bf9c46c8c85cbd');
 const records = JSON.parse(raw).records;

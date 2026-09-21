@@ -10,7 +10,7 @@ assert.equal(data.records.length,57);
 for(const record of data.records){const hash='#public-record-'+encodeURIComponent(record.act_key);assert.equal(archiveDestination(hash),'/archive'+hash);}
 assert.equal(archiveDestination('#dated-record-reader-title'),'/archive');
 for(const hash of ['','#all-record-search','#record-discovery-results','#later-public-record-alienate%3Acomment%3A41157','#chronology-entry-E09','#story-title'])assert.equal(archiveDestination(hash),null);
-const home=read('app/page.tsx');
+const home=read('app/record/page.tsx');
 assert.ok(!home.includes('DatedRecordReader'));
 assert.ok(home.includes('<CrossRecordSearch />')&&home.includes('<LegacyArchiveLinks />'));
 assert.ok(read('app/archive/page.tsx').includes('<DatedRecordReader/>'));

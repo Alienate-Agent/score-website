@@ -6,6 +6,8 @@ import hostingConfig from './.openai/hosting.json';
 import journeyStorage from './wrangler.journeys.json';
 import correspondenceStorage from './wrangler.correspondence.json';
 import {readdirSync} from 'node:fs';
+import {ENTRANCE_ROUTES, ENTRANCE_ALIASES} from './lib/entrance-routes.mjs';
+import {PREPARED_PAGES} from './lib/prepared-pages.mjs';
 
 const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
   '00000000-0000-4000-8000-000000000000';
@@ -26,9 +28,9 @@ const localBindingConfig = {
     binding: 'ASSETS',
     // HTML pages need hostname redirects; images, fonts and data remain served
     // directly as assets. Discover pages so new Studio pages cannot drift.
-    run_worker_first: readdirSync(new URL('./public/',import.meta.url),{recursive:true})
+    run_worker_first: [...Object.keys(ENTRANCE_ROUTES), ...Object.keys(ENTRANCE_ALIASES), ...PREPARED_PAGES, ...PREPARED_PAGES.map(p=>p+'/'), '/_pages/*', ...readdirSync(new URL('./public/',import.meta.url),{recursive:true})
       .filter((name): name is string => typeof name === 'string' && name.endsWith('.html'))
-      .map(name => '/'+name),
+      .map(name => '/'+name)].filter((value,index,all)=>all.indexOf(value)===index),
   },
   compatibility_flags: ['nodejs_compat'],
   analytics_engine_datasets: [{ binding: 'ENGAGEMENT', dataset: 'score_engagement_v1' }],

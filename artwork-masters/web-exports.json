@@ -1,0 +1,59 @@
+{
+  "format": "lossless WebP",
+  "outputs": [
+    {
+      "source": "after-an-objection/screen-masters/01-proposal.svg",
+      "sourceSha256": "2c2037c8e6c9c86ee97bba4d47f49cef7e0b0fa12310c64958311bfd7f84a5de",
+      "file": "proposal.webp",
+      "sha256": "505060b73c069f4a9d97721f203c2b1778b762682dd778e415cdc3f1aba90b5e",
+      "width": 1200,
+      "height": 1296,
+      "bytes": 671298
+    },
+    {
+      "source": "after-an-objection/screen-masters/02-challenge.svg",
+      "sourceSha256": "d1a44af93cb985f99693322234c5fd30147e00143cff12bead77bde47fcda905",
+      "file": "challenge.webp",
+      "sha256": "76e3c5deea94736625682323995bd51956c7a3477977d17f3aabb5b26131099b",
+      "width": 1200,
+      "height": 1296,
+      "bytes": 1074440
+    },
+    {
+      "source": "after-an-objection/screen-masters/03-after-withdrawal.svg",
+      "sourceSha256": "2f5788e0859ae32f038b06a0eb5a8f274d00776bfd8c5249c1051f3d60c5e98c",
+      "file": "withdrawal.webp",
+      "sha256": "a4902f12b4d5d08f602688e8bd58baf7ff80db5a3c3169c412e1e12a8e787068",
+      "width": 1200,
+      "height": 1296,
+      "bytes": 1172824
+    },
+    {
+      "source": "art-without-service/screen-masters/tidemark-room.svg",
+      "sourceSha256": "876372239f57d94188d79b5449b7e764bf06973a76dee603b83219880baa9a09",
+      "file": "tidemark-room.webp",
+      "sha256": "16a67551a4ec18a8e06556f3d747ff4e21fb6629bf550b95b2aa85135175f041",
+      "width": 1200,
+      "height": 1296,
+      "bytes": 410676
+    },
+    {
+      "source": "art-without-service/screen-masters/tidemark-support.svg",
+      "sourceSha256": "4ee54e4ac58af970c3416ed5cbdeaa2b8d6aad2f48ef8e5dda26c041b1214b24",
+      "file": "tidemark-support.webp",
+      "sha256": "4ea290abf299d02f22949c9262b85df9fc85877044f9b20138efe0d88b8d3f0c",
+      "width": 1200,
+      "height": 1296,
+      "bytes": 616748
+    },
+    {
+      "source": "art-without-service/screen-masters/tidemark-limits.svg",
+      "sourceSha256": "1755a550b9523d0ee71cc99a870a8c1fe1689600e5bf96c24776837ce369d83a",
+      "file": "tidemark-limits.webp",
+      "sha256": "287693110293f57370059909111801282362da0c77968a723ae792b2d0aee3e4",
+      "width": 1200,
+      "height": 1296,
+      "bytes": 805220
+    }
+  ]
+}

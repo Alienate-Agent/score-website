@@ -4,7 +4,7 @@ import {createHash} from 'node:crypto';
 import {presentEditions,storyPresent} from '../lib/story-present.ts';
 const read = name => fs.readFileSync(new URL('../'+name, import.meta.url), 'utf8');
 const story = read('components/unfolding-story.tsx');
-const page = read('app/page.tsx');
+const page = read('app/record/page.tsx');
 const layers = read('components/story-layers.tsx');
 const spine = read('components/story-spine.tsx');
 const cover = story.slice(story.indexOf('<header'), story.indexOf('</header>')) + read('components/declaration-encounter.tsx');

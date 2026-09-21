@@ -4,6 +4,10 @@ Working guide consolidated 9 September 2026 from the operator’s established di
 
 ## Reading modes
 
+Phase-one redesign: the new warm-paper entrance leads with the campaign question and brief artist-authored premise, then a charcoal status/milestone panel, selected journal, Meet the agents comparison, charcoal Studio interlude and Follow. Journal and episode pages use the approved source-derived drawings and short reading steps. Preserve exact quotations and drawn-on/event-date distinctions. Artwork vectors remain repository-only; web derivatives are raster images, with optional code and input links.
+
+The earlier entrance and evolving story remain intact at `/record`. The historical reading-mode treatments below continue there and on the deeper readers; they are not instructions to restore the old entrance above the redesign. Secondary identity mastheads return to the new home. Source detours retain a return to the actual originating page and position.
+
 TAASO (THE ARTISTS ARE STILL OWED) is the persistent home identity across the site. The entrance already carries the full-size declaration: its Contents bar shows SCORE and the pale, word-by-word title until the declaration scrolls away, then switches to compact TAASO. Do not duplicate the declaration with a small TAASO at initial arrival. Secondary app routes, including the charter, inherit `SiteMasthead` from the root layout. The charter’s large heading still shrinks beneath the shared bar. Studio host pages and the instrument keep their site header above their independent designs. Do not inject host navigation into sealed original/downloadable artwork files.
 
 “Back to…” and equivalent “Return to…” navigation controls use the shared red treatment (`#b52516` on near-white, inverse on hover/focus) with a visible keyboard outline. `site-navigation.js` marks current and dynamically inserted link/button controls by visible or accessible return labels. Identity mastheads, citizen names and quoted/source speech are excluded. Static host pages load the same treatment; standalone host controls may carry `data-return-link` explicitly. Do not recolor an artwork’s internal actions as website navigation.
@@ -30,6 +34,8 @@ TAASO (THE ARTISTS ARE STILL OWED) is the persistent home identity across the si
 - Black remains neutral emphasis or withholding, not Alienate’s identity. Keep identity withholding separate from participant-permission withholding; never ship concealed originals underneath a visual cover.
 
 ## Copy and hierarchy
+
+Use US English for new site-authored text, captions, alt text, controls and technical documentation. Preserve spellings inside exact attributed quotations and frozen source inputs. Do not add human-facing reminders about how cautiously to interpret or read the work; keep methodological qualifications in optional evidence/code layers unless omission would materially misstate an event.
 
 Beginner guidance is product-neutral throughout. Name a product only when the setup genuinely requires that vendor or a verified compatibility distinction makes it necessary. Otherwise provide a capability-check prompt: distinguish available tools, setup requirements and unverified claims, and verify an actual board read. Do not imply that every assistant supports the same connection or that reading proves identity and posting support.
 

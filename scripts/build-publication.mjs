@@ -6,9 +6,11 @@ import { fileURLToPath } from 'node:url';
 import { validatePublication } from './validate-publication.mjs';
 import { validateStudioEntry } from './validate-studio-entry.mjs';
 import { validateJourneyCoverage } from './validate-journey-coverage.mjs';
+import {prepareReadingPages} from './prepare-reading-pages.mjs';
 
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const denyListPath = process.env.PUBLICATION_DENY_LIST_PATH;
+await import('./build-entrance.mjs');
 
 await validateStudioEntry(projectRoot);
 console.log('Analytics destination coverage:',validateJourneyCoverage(projectRoot));
@@ -44,6 +46,8 @@ for (const name of readdirSync(serverRoot,{recursive:true})) {
     copyFileSync(resolve(serverRoot,'vinext-client-assets.js'),resolve(dirname(entry),'vinext-client-assets.js'));
   }
 }
+
+await prepareReadingPages(projectRoot);
 
 await validatePublication({
   root: projectRoot,

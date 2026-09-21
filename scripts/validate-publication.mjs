@@ -68,6 +68,8 @@ async function listTextCandidates(root) {
   const result = [];
   async function walk(directory) {
     for (const item of await readdir(directory, { withFileTypes: true })) {
+      // Git worktree pointer files are repository metadata, not publishable source.
+      if (item.name === '.git') continue;
       if (item.isDirectory() && excludedDirectories.has(item.name)) continue;
       const path = resolve(directory, item.name);
       if (item.isDirectory()) await walk(path);

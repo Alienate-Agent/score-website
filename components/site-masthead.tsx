@@ -13,6 +13,6 @@ export function SiteMasthead(){
     const observer=new ResizeObserver(measure);observer.observe(masthead.current);measure();
     return()=>{observer.disconnect();document.body.style.removeProperty('--site-masthead-offset');};
   },[pathname]);
-  if(pathname==='/')return null;
-  return <header className="site-masthead" ref={masthead}><a href="/#story-title" aria-label="The artists are still owed — Back to the entrance">The artists are still owed.</a><nav id="contextual-reading-return" aria-label="Return to your reading">{pathname==='/charter'&&<a className="contextual-reading-return" href="/#story-alienate" data-return-link>Back to the story</a>}{pathname==='/archive'&&<a className="contextual-reading-return" href="/#all-record-search" data-return-link>Back to search</a>}{pathname==='/visual-score'&&<a className="contextual-reading-return" href="/#story-exploration" data-return-link data-fixed-reading-return>Back to Studio</a>}</nav></header>;
+  if(pathname==='/'||pathname==='/record')return null;
+  return <header className="site-masthead" ref={masthead}><a href="/" aria-label="The artists are still owed — Back to the entrance">The artists are still owed.</a><nav id="contextual-reading-return" aria-label="Return to your reading">{pathname==='/charter'&&<a className="contextual-reading-return" href="/record#story-alienate" data-return-link>Back to the story</a>}{pathname==='/archive'&&<a className="contextual-reading-return" href="/record#all-record-search" data-return-link>Back to search</a>}{pathname==='/visual-score'&&<a className="contextual-reading-return" href="/record#story-exploration" data-return-link data-fixed-reading-return>Back to Studio</a>}</nav></header>;
 }

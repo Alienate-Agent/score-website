@@ -29,7 +29,8 @@
   if(url.pathname.startsWith('/lens'))return 'Sound instrument';
   if(url.pathname.startsWith('/studio/tidemark/'))return ({'study-001.html':'Can a Tidemark jump?','study-002.html':'Does the bridge hold?','town.html':'A town you cannot hold at once','resources.html':'Studio resources'})[url.pathname.split('/').at(-1)]||'Tidemark’s Studio';
   if(url.pathname==='/visual-score')return id.startsWith('chronology-entry-')?'Score · '+id.slice(17):'Visual score';
-  const pages={'/featured':'Previously featured','/changelog':'Site changelog','/charter':'Alienate’s public charter','/archive':'Historical archive'};
+  if(url.pathname==='/episode')return /^(tidemark|the-room|the-position|the-limits)/.test(id)?'Does art have to be useful?':'A safeguard nobody could check';
+  const pages={'/journal':'Journal','/journal/missing-post':'The post that did not arrive','/journal/who-owes':'Why should this community pay?','/journal/one-ballot':'One ballot, where twenty were required','/record':'Full record','/featured':'Previously featured','/changelog':'Site changelog','/charter':'Alienate’s public charter','/archive':'Historical archive'};
   if(pages[url.pathname])return pages[url.pathname];
   const names={'':'Entrance','story-title':'Entrance','story-exploration':'Studio','all-record-search':'Search posts and comments','record-discovery-results':'Search results','story-instruments':'Visual score and public records','chronology':'Visual score','connected-score':'Conversations','live-agent-activity':'Live agent activity'};
   if(names[id])return names[id];
@@ -58,6 +59,7 @@
   sessionStorage.removeItem(pending);
   // Allow destination readers to reveal their sections before restoring the link.
   setTimeout(()=>{
+   if(entry.entranceDialog)document.dispatchEvent(new CustomEvent('score-entrance-restore',{detail:entry.entranceDialog}));
    const origin=fragmentTarget(new URL(entry.from,location.origin).hash);
    for(const id of entry.disclosures||[]){const detail=document.getElementById(id);if(detail instanceof HTMLDetailsElement)detail.open=true;}
    for(let node=origin;node;node=node.parentElement)if(node instanceof HTMLDetailsElement)node.open=true;
@@ -112,20 +114,22 @@
   const a=e.target.closest?.('a[href]');if(!a||e.defaultPrevented||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||a.target==='_blank'||a.download)return;
   if(a.closest('#reading-trail')||a.classList.contains('reading-top-link')||a.hasAttribute('data-fixed-reading-return')||(a.dataset.originalLabel&&matches(read().at(-1))))return;
   const url=new URL(a.href,location.href);if(url.origin!==location.origin)return;
-  // App citations open in place; static Studio pages actually leave the shelf.
-  const staticBoard=url.pathname==='/board'&&a.hasAttribute('data-board-conversation')&&!!document.querySelector('.studio-host-nav');
+  // App citations open in place; static reading pages leave for the source reader.
+  const staticBoard=url.pathname==='/board'&&(document.body.dataset.readingMode==='entrance'||a.hasAttribute('data-board-conversation')&&!!document.querySelector('.studio-host-nav'));
   if((url.pathname==='/board'&&!staticBoard)||a.closest('.conversation-reader,.board-reader-wait'))return;
   const search=!!a.closest('#record-discovery-results');
-  const page=['/featured','/changelog','/charter','/archive'].includes(url.pathname)||staticBoard||url.pathname.startsWith('/studio/tidemark/')&&url.pathname.endsWith('.html');
+  const page=['/','/record','/journal','/episode','/featured','/changelog','/charter','/archive'].includes(url.pathname)||url.pathname.startsWith('/journal/')||staticBoard||url.pathname.startsWith('/studio/tidemark/')&&url.pathname.endsWith('.html');
   const jump=!!url.hash&&!a.closest('.story-spine')&&!a.closest('#connected-score');
   if(!search&&!page&&!jump)return;
   const area=a.closest('section'),origin=a.dataset.storyReturn||area?.getAttribute('aria-labelledby')||area?.id;
   const from=search?location.pathname+location.search+'#record-discovery-results':origin?location.pathname+location.search+'#'+origin:here(),to=url.pathname+url.search+url.hash;if(from===to)return;
   const label=search?'Back to search results':'Back to '+destination(from);
+  const dialog=document.body.dataset.readingMode==='entrance'?a.closest('dialog[open]'):null;
+  const entranceDialog=dialog?{id:dialog.id,page:Number(dialog.querySelector('[data-page]:not([hidden])')?.dataset.page),stage:Number(dialog.querySelector('[data-stage][aria-pressed="true"]')?.dataset.stage),scrollTop:dialog.scrollTop}:null;
   const disclosures=[];for(let node=a.parentElement;node;node=node.parentElement)if(node instanceof HTMLDetailsElement&&node.open&&node.id)disclosures.push(node.id);
   const root=search?document.getElementById('record-discovery-results'):fragmentTarget(new URL(from,location.origin).hash)?.closest('section')||document;
   const linkIndex=[...(root?.querySelectorAll('a[href]')||[])].filter(link=>link.getAttribute('href')===a.getAttribute('href')).indexOf(a);
-  save([...read(),{from,to,label,destination:destination(to),link:a.getAttribute('href'),linkIndex:Math.max(0,linkIndex),disclosures,top:a.getBoundingClientRect().top,y:scrollY,at:Date.now()}]);
+  save([...read(),{from,to,label,destination:destination(to),link:a.getAttribute('href'),linkIndex:Math.max(0,linkIndex),disclosures,entranceDialog,top:a.getBoundingClientRect().top,y:scrollY,at:Date.now()}]);
   setTimeout(refresh,100);
  });
  addEventListener('hashchange',()=>{refresh();restore();});addEventListener('popstate',refresh);addEventListener('score-reading-arrival',refresh);

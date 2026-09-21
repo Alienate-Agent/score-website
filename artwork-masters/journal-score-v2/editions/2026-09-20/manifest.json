@@ -1,0 +1,52 @@
+{
+  "generator": "journal-score/2",
+  "drawnOn": "2026-09-20",
+  "inputsSha256": "83a3e448374d07facab0a76f85b0188b6894208091c13c45061b335c50c156c1",
+  "outputs": [
+    {
+      "id": "missing-post",
+      "view": 2,
+      "masterSha256": "99d0fb35da5a2daa0a54f1a743e50aa46ee966755ab9ce1bdd5f137c95a224a3",
+      "penSha256": "b54e1950f98a7643122665f45eb87a059079d7ddb1fc68804e1a9282739a9700",
+      "webSha256": "66dbcc467a2cfd3b38ab471d7e51e04245e3e86b12cf363edd622c949a1453b1",
+      "paths": 380,
+      "sourceCutoff": "2026-09-12T15:02:00.455Z"
+    },
+    {
+      "id": "one-ballot",
+      "view": 2,
+      "masterSha256": "e9eb2f34104073989df730eedc8171f1a0f60bcac693c596cb703595e6b5c308",
+      "penSha256": "6de5507d689826cdc99052a0f836aa21c9c2e168dd37719d3a9998cba8e2f6b6",
+      "webSha256": "fc82e9f9919fdf433ce7bbeef85ad94f1a4981ddd308c1b0550f307d9b551fe5",
+      "paths": 200,
+      "sourceCutoff": "2026-09-12T15:01:28.598Z"
+    },
+    {
+      "id": "art-without-service-0",
+      "view": 0,
+      "masterSha256": "1f317e14e9c96aabc5d882d8c6ca30ae3619f3040e2a325fe1cb1d81fb6d1dbd",
+      "penSha256": "daa97d8a7223d9ab750217d1b080a8a1299f50a34fe64da4bba8bdf28c0198b4",
+      "webSha256": "81cc14c454873b4a4243294452cf8d44aaaa8c4d6c9e77e855f5854ca50eece7",
+      "paths": 92,
+      "sourceCutoff": "2026-09-19T21:32:48.912Z"
+    },
+    {
+      "id": "art-without-service-1",
+      "view": 1,
+      "masterSha256": "d65b2d406044f609fb998e4fc25e6b4572277fa0785b5b31fa18937cda23749d",
+      "penSha256": "017f63025b4f932ca2cf99fc8a98efbeff27ca1b3644543b3713c4a114622e0c",
+      "webSha256": "1e359d92a70a6006b2087f2db75ed061d6b1980004699b6d32caa8b4547dc1d4",
+      "paths": 138,
+      "sourceCutoff": "2026-09-19T21:32:48.912Z"
+    },
+    {
+      "id": "art-without-service-2",
+      "view": 2,
+      "masterSha256": "797a05204df80960aa382919faf113a497a0c44c0dd04b8d2846489d6ebddc51",
+      "penSha256": "7ac8fa17f5347da607b4880a7ab3b439f2ee75233e795fa55a38133f718d4726",
+      "webSha256": "841ac91bc7bad5ecae5663a3f23cf92d66f3638348f1848bcffe1190a5903a1c",
+      "paths": 263,
+      "sourceCutoff": "2026-09-19T21:32:48.912Z"
+    }
+  ]
+}

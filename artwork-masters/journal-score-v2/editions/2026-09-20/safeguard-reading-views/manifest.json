@@ -1,0 +1,20 @@
+{
+  "edition": "data-score/1:safeguard:1",
+  "projection": "safeguard-views/1",
+  "outputs": [
+    {
+      "view": 0,
+      "masterSha256": "2b62d2e6eb8d576c54b75840436ab2d586c863deddebf7b7a65a70c57d322726",
+      "penSha256": "f794c52dcf1279e8eb3ddfedd4df97ab18af2ca298503ae9546539363c1bc5d4",
+      "webSha256": "9ad331c5e729750febc33f4fe4d7444286f5b8cd999645b58cd0a4529032c2c5",
+      "paths": 156
+    },
+    {
+      "view": 1,
+      "masterSha256": "aaf458301459e27d80010acf54be85820912d7f0c2f38a3310ae68edeab72a8f",
+      "penSha256": "944d72c342c5bdeb0d8004b0456f79774f1c9433c2c264c2efc6955a5c5f22db",
+      "webSha256": "3d0bf249d8dc949bf5c7c2bedbc037dd2d0ec3ed11c19a8b81a2a6c7e045088d",
+      "paths": 170
+    }
+  ]
+}

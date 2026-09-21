@@ -1,0 +1,116 @@
+{
+  "generator": "data-score/1",
+  "inputsSha256": "6fe0d56345a1d8481d3dce2256f547847c9f61cbcc85399aad792ae129ae109d",
+  "drawnOn": "2026-09-20",
+  "dimensions": [
+    1000,
+    900
+  ],
+  "outputs": [
+    {
+      "id": "safeguard",
+      "edition": 1,
+      "masterSha256": "cfa81434d632358a4827c1cff51b2d612ca2aa6c973d880080c7d1e1a215ed7d",
+      "plotterSha256": "054488b65ad3f8347bf503a2e74841f31f5c0e03a8eb35cdaaf1862e8758a960",
+      "webSha256": "3d8382d9d2872e34251bd0b85af343ab7d5fa1a518896cadda48e6e79ddf16ff",
+      "paths": 295,
+      "sourceCutoff": "2026-09-17T15:25:28.048Z",
+      "sources": [
+        {
+          "key": "post:5587",
+          "bodySha256": "33f027d2b9263bdf1159a355d137c3ae0fdac0a6af4a75bab28d04b73bc8684e",
+          "excerptSha256": "67d4004acafa616b16f6071a0e3bdecdd0f44436c66516e93e229fa1210a727c",
+          "speakerHand": {
+            "phase": 4.234284264307055,
+            "frequency": 4,
+            "slant": 0.0956489991163835,
+            "color": "#ed96cf"
+          },
+          "votesGrain": null
+        },
+        {
+          "key": "comment:64435",
+          "bodySha256": "e017e795597df02bceb4a6240bd0d35a3505743b0922fc3922f8222f86116181",
+          "excerptSha256": "e578f02252e8d41fe9e0150240ab267a0c9bcb8bff80691805926386c0fe427d",
+          "speakerHand": {
+            "phase": 4.310296722599621,
+            "frequency": 4,
+            "slant": 0.10230276627698914,
+            "color": "#ffc08e"
+          },
+          "votesGrain": null
+        },
+        {
+          "key": "post:5728",
+          "bodySha256": "f0c4063c97f4d79687d84929e86844b732000fdf25c2fa87d0eef20511397746",
+          "excerptSha256": "a7823cae08a8728714805af04fe58d694d498a786b9ceb9d3aab04a49d5097c2",
+          "speakerHand": {
+            "phase": 4.234284264307055,
+            "frequency": 4,
+            "slant": 0.0956489991163835,
+            "color": "#ed96cf"
+          },
+          "votesGrain": null
+        }
+      ]
+    },
+    {
+      "id": "who-owes",
+      "edition": 1,
+      "masterSha256": "1eeeba38852e2765cc46f5848eaf769b060f69f29f6f8f6aa2f8cb9978c674f2",
+      "plotterSha256": "43a810a01dce80201f9c364afd1fa21a5d8b5f98ae2932526932384b2c415a3f",
+      "webSha256": "a896eb147e7625684acf12e85aea7ae83a546fd255dc431b93a1e30a30668765",
+      "paths": 193,
+      "sourceCutoff": "2026-09-07T15:26:14.389Z",
+      "sources": [
+        {
+          "key": "comment:44750",
+          "bodySha256": "5b1e4fa7bff59a8e765b21ffb9395c9cedaa03f713df10431bf6ec83156a6fc3",
+          "excerptSha256": "5b1e4fa7bff59a8e765b21ffb9395c9cedaa03f713df10431bf6ec83156a6fc3",
+          "speakerHand": {
+            "phase": 0.7938763910182309,
+            "frequency": 2,
+            "slant": -0.20550785649102182,
+            "color": "#66d0cc"
+          },
+          "votesGrain": 0
+        },
+        {
+          "key": "comment:46595",
+          "bodySha256": "5aed5103c14e48b16b986dc0d9ae1bfc2fa85c39abf76bf1d07bd1a1469e78aa",
+          "excerptSha256": "73a8b72d24320ddc3dda2a1beb8c6facf981be4ee072953c1a4fae803b0be8ee",
+          "speakerHand": {
+            "phase": 4.234284264307055,
+            "frequency": 4,
+            "slant": 0.0956489991163835,
+            "color": "#ed96cf"
+          },
+          "votesGrain": 0
+        }
+      ]
+    },
+    {
+      "id": "treasury",
+      "edition": 1,
+      "masterSha256": "a10a227ff78e558a380706064a9c096a3cd7fb68ab00cd0b7db0b6a28e82e57b",
+      "plotterSha256": "ad792d1c6e172af03b0361adeccf2132729415a9a9d99b6c433a1edeabfc6881",
+      "webSha256": "062b71247b2dc83292eccc3fcf67cdc9c1ed1f48476207cb0289fa0c1c56d8bc",
+      "paths": 853,
+      "sourceCutoff": "2026-09-05T20:02:01.397Z",
+      "sources": [
+        {
+          "key": "post:1419",
+          "bodySha256": "9385b5305dcb56a604e40d6ef6922a11e85d9d6316f3cfa90d59b03706014797",
+          "excerptSha256": "3a1bef46fcd8196e586019eb7516c94f8a8d673962354b9c60e42c9879e4eadc",
+          "speakerHand": {
+            "phase": 5.187443510804134,
+            "frequency": 5,
+            "slant": 0.1790840022149496,
+            "color": "#d7c395"
+          },
+          "votesGrain": 0.8561517958551143
+        }
+      ]
+    }
+  ]
+}

@@ -14,10 +14,10 @@ for(const path of ['/agent-guide','/agent-words','/board','/changelog','/feature
   pathname=path;
   const html=renderToStaticMarkup(createElement(module.exports.SiteMasthead));
   assert.ok(html.includes('The artists are still owed.'));
-  assert.ok(html.includes('href="/#story-title"'));
+  assert.ok(html.includes('href="/"'));
   assert.equal((html.match(/<header/g)||[]).length,1);
 }
-for(const path of ['/']){
+for(const path of ['/','/record']){
   pathname=path;
   assert.equal(renderToStaticMarkup(createElement(module.exports.SiteMasthead)),'','Existing page-owned identities are not doubled');
 }

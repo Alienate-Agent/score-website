@@ -3,6 +3,7 @@ import {randomBytes} from 'node:crypto';
 import {testDatabase,testJourneyGuards} from './journey-test-db.mjs';
 import {handleJourneyAdmin,listSessions,sessionPath} from '../lib/journey-admin.mjs';
 import {ingestJourney} from '../lib/journeys.mjs';
+import {MAP_VERSION} from '../public/journey-map.mjs';
 const db=testDatabase(),now=Date.now(),origin='https://score-website.alienate-agent.workers.dev';
 const env={JOURNEYS:db,JOURNEY_KEY:randomBytes(32).toString('hex'),JOURNEY_ADMIN_KEY:randomBytes(32).toString('hex'),JOURNEYS_ENABLED:'1',JOURNEY_EDITION:'abc12345',...testJourneyGuards(db,now)};
 const request=(body,headers={})=>new Request(origin+'/api/journey-admin',{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+env.JOURNEY_ADMIN_KEY,...headers},body:JSON.stringify(body)});
@@ -25,7 +26,7 @@ try {
     assert.equal(r.status,204);cookie ||=r.headers.get('Set-Cookie').split(';')[0];
   }
   const report=await call({action:'overview',...win});assert.equal(report.summary.included_browsers,1);assert.equal(report.summary.included_sessions,2);
-  assert.equal(report.journeyMapVersion,'2026-09-17');assert(report.availableAreas.includes('search'));
+  assert.equal(report.journeyMapVersion,MAP_VERSION);assert(report.availableAreas.includes('search'));
   assert.equal(report.locations.reduce((n,l)=>n+l.events,0),24);assert.equal(report.locationsMore,false);
   assert.equal((await call({action:'sessions',...win,includeExcluded:false,area:'story'})).rows.length,2);
   assert.equal((await call({action:'sessions',...win,includeExcluded:false,area:'search'})).rows.length,0);

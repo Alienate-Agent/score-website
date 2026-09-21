@@ -1,0 +1,58 @@
+.agents{padding-block:42px 40px;--comparison-icon-width:88px;--comparison-gap:28px}
+.agents>.eyebrow{font-size:11px;font-weight:600;line-height:1.4;letter-spacing:.07em;margin:0}
+.agents-header h2{font-size:clamp(44px,5.5vw,80px);line-height:1.02;letter-spacing:-.045em;margin:0 0 38px}
+.agent-comparison{width:100%;table-layout:fixed;border-collapse:collapse;margin-top:30px}
+.agent-column{width:calc((100% - var(--comparison-icon-width))/2)}
+.icon-column{width:var(--comparison-icon-width)}
+.agent-comparison th,.agent-comparison td{vertical-align:middle;text-align:left}
+.agent-comparison thead th{padding:0;font-size:32px;font-weight:750;letter-spacing:-.04em;line-height:1.1}
+.agent-comparison thead th:last-child{padding-left:var(--comparison-gap)}
+.agent-comparison thead th{vertical-align:top}
+.agent-comparison p.agent-order{font-size:17px;line-height:1.35;letter-spacing:-.01em;font-weight:650;margin:23px 0 9px}
+.agent-comparison p.agent-intro{font-size:17px;line-height:1.5;letter-spacing:0;font-weight:400;max-width:34ch;padding-right:var(--comparison-gap)}
+.agent-comparison .agent-introductions td{padding:0 0 28px;vertical-align:top}
+.agent-comparison .agent-introductions td:last-child{padding:0 0 28px var(--comparison-gap)}
+.agent-comparison .agent-introductions td:last-child p.agent-intro{padding-right:0}
+.agent-comparison .agent-introductions .agent-shared-icon{vertical-align:middle;text-align:center;padding-top:23px}
+.agent-shared-icon img{display:block;margin:auto;width:40px;height:40px}
+.agent-comparison tbody tr{border-top:1px solid var(--rule)}
+.agent-comparison td{padding:24px var(--comparison-gap) 24px 0}
+.agent-comparison td:last-child{padding:24px 0 24px var(--comparison-gap)}
+.agent-comparison p{font-size:19px;line-height:1.5;max-width:470px;margin:0}
+.agent-comparison p.comparison-detail{font-size:14px;color:var(--muted);margin-top:9px}
+.agent-comparison .comparison-icon{padding:20px 0;text-align:center}
+.comparison-icon img{margin:auto;width:32px;height:32px}
+.agent-comparison-links{display:grid;grid-template-columns:1fr var(--comparison-icon-width) 1fr;border-top:1px solid var(--rule);padding-top:13px}
+.agent-comparison-links a{width:fit-content;min-height:44px;display:flex;align-items:center;font-size:14px}
+.agent-comparison-links a:last-child{grid-column:3;margin-left:var(--comparison-gap)}
+@media(max-width:950px){
+  .agents{--comparison-icon-width:64px;--comparison-gap:20px}
+  .agent-comparison p{font-size:17px}
+  .agent-comparison thead th{font-size:28px}
+}
+@media(max-width:650px){
+  .agents{padding-block:30px;--comparison-icon-width:38px;--comparison-gap:10px}
+  .agents>.eyebrow{font-size:10px}
+  .agent-comparison{margin-top:24px}
+  .agents-header h2{font-size:40px;max-width:10ch;margin-bottom:30px}
+  .agent-comparison p.agent-order{font-size:14px;margin-top:19px;min-height:2.7em}
+  .agent-comparison p.agent-intro{font-size:14px;padding-right:0}
+  .agent-comparison thead th{font-size:23px;letter-spacing:-.045em}
+  .agent-comparison .agent-introductions td,.agent-comparison .agent-introductions td:last-child{padding-bottom:21px}
+  .agent-comparison .agent-introductions .agent-shared-icon{padding-top:19px}
+  .agent-shared-icon img{width:30px;height:30px}
+  .agent-comparison td{padding:19px var(--comparison-gap) 19px 0}
+  .agent-comparison td:last-child{padding:19px 0 19px var(--comparison-gap)}
+  .agent-comparison p{font-size:14px;line-height:1.5}
+  .agent-comparison p.comparison-detail{font-size:12px;line-height:1.45;margin-top:9px}
+  .comparison-icon img{width:26px;height:26px}
+  .agent-comparison-links{padding-top:9px}
+  .agent-comparison-links a{font-size:12px;line-height:1.4}
+}
+@media(max-width:360px){
+  .agents{--comparison-icon-width:32px;--comparison-gap:8px}
+  .agent-comparison thead th{font-size:20px}
+  .agent-comparison p{font-size:13px}
+  .comparison-icon img{width:24px;height:24px}
+  .agent-shared-icon img{width:28px;height:28px}
+}

@@ -1,0 +1,22 @@
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {featuredHistory} from '../lib/featured-history.ts';
+const read=path=>readFileSync(new URL('../'+path,import.meta.url),'utf8');
+const old=featuredHistory.find(e=>e.id==='claim-challenge-2026-09-13'),current=featuredHistory.find(e=>e.status==='Current selection');
+assert.equal(featuredHistory.filter(e=>e.status==='Current selection').length,1);
+assert.equal(old.recorded,'13 September 2026');
+assert.equal(old.excerpts.length,2,'Original selection record remains intact');
+assert.equal(old.supplement.recorded,'21 September 2026');
+const frozen=read('public/records/remedy-answer-2026-09-07.json');
+const body=JSON.parse(frozen).body??JSON.stringify(JSON.parse(frozen));
+// Compare normalized JSON strings as the frozen source has nested fields.
+for(const q of old.supplement.excerpts)assert(body.includes(JSON.stringify(q.text).slice(1,-1))||body.includes(q.text),'Full prior displayed passage retained');
+assert.equal(current.id,'safeguard-2026-09-21');
+assert.equal(current.story,'/episode#safeguard');
+assert(current.featuredDates.includes('21 September'));
+assert(current.context.includes('16–17 September'));
+assert(current.note.includes('20 September'));
+const changelog=read('app/changelog/page.tsx');
+for(const id of [old.id,current.id])assert(changelog.includes('/featured#'+id));
+assert(!changelog.includes('href="/#story-'),'Old story links point directly to /record');
+console.log('PASS: prior feature preserved, dated supplement distinguished, new feature dates and attribution separated, changelog links maintained.');
