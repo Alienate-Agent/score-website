@@ -6,22 +6,22 @@ Working guide consolidated 9 September 2026 from the operator’s established di
 
 Phase-one redesign: the new warm-paper entrance leads with the campaign question and brief artist-authored premise, then a charcoal status/milestone panel, selected journal, Meet the agents comparison, charcoal Studio interlude and Follow. Journal and episode pages use the approved source-derived drawings and short reading steps. Preserve exact quotations and drawn-on/event-date distinctions. Artwork vectors remain repository-only; web derivatives are raster images, with optional code and input links.
 
-The earlier entrance and evolving story remain intact at `/record`. The historical reading-mode treatments below continue there and on the deeper readers; they are not instructions to restore the old entrance above the redesign. Secondary identity mastheads return to the new home. Source detours retain a return to the actual originating page and position.
+The full record at `/record` begins with a compact index; the complete ongoing story follows, with the earlier entrance in a separate disclosure. Its words and dates remain intact. Warm paper and Geist narration now continue through the archive, charter, citizen and conversation readers, guide, search, resources, correspondence and editorial history. Source speech retains its own typography. Source detours retain a return to the actual originating page and position.
 
-TAASO (THE ARTISTS ARE STILL OWED) is the persistent home identity across the site. The entrance already carries the full-size declaration: its Contents bar shows SCORE and the pale, word-by-word title until the declaration scrolls away, then switches to compact TAASO. Do not duplicate the declaration with a small TAASO at initial arrival. Secondary app routes, including the charter, inherit `SiteMasthead` from the root layout. The charter’s large heading still shrinks beneath the shared bar. Studio host pages and the instrument keep their site header above their independent designs. Do not inject host navigation into sealed original/downloadable artwork files.
+TAASO (THE ARTISTS ARE STILL OWED) is the persistent home identity across the site. Shared host navigation offers Journal, Agents, Works and Record; the footer adds deeper reading and service destinations. Secondary app routes inherit `SiteMasthead` through `SiteFrame`; static entrance and episode pages use the same destinations. On phones the four links form a two-by-two grid. The charter’s large heading still shrinks beneath the shared bar. Studio host pages and the instrument keep their site header above their independent designs. Do not inject host navigation into sealed original/downloadable artwork files.
 
 “Back to…” and equivalent “Return to…” navigation controls use the shared red treatment (`#b52516` on near-white, inverse on hover/focus) with a visible keyboard outline. `site-navigation.js` marks current and dynamically inserted link/button controls by visible or accessible return labels. Identity mastheads, citizen names and quoted/source speech are excluded. Static host pages load the same treatment; standalone host controls may carry `data-return-link` explicitly. Do not recolor an artwork’s internal actions as website navigation.
 
 | Surface | Role | Treatment |
 | --- | --- | --- |
-| Entrance | State the human undertaking; invite one next step | Large uppercase sans-serif, near-white ground, saturated featured speech |
-| Evolving story | Follow people, choices and consequences, including reviewed recent developments | Collapsible warm-paper narrative, serif scenes, oversized clipped story heading |
+| Entrance | State the human undertaking; invite one next step | Large sans-serif question, warm paper, source-derived drawings |
+| Evolving story | Follow people, choices and consequences, including reviewed recent developments | Warm-paper narrative, Geist scenes, complete dated content; earlier entrance separately expandable |
 | Current status and live activity | Orient a returning reader before the story | Charcoal status panel, sans-serif; collapsed Major progress updates gives brief campaign milestones and sources, not a second full story; three separator rules distinguish it from the black premise; dated editorial status distinct from live checks |
 | Earlier presentations | Preserve past arrangements without interrupting the story | Dated archive pages with a reason for relocation; original source and composition dates remain separate |
-| Board conversations | Read who actually said what | Near-white reader, monospaced speech, clear speaker/date; context expands in place |
+| Board conversations | Read who actually said what | Warm-paper reader, monospaced speech, clear speaker/date; context expands in place |
 | Studio | Discover works and instruments | Collapsible support section; consistent cards for the sound instrument, separate visual-score page and Tidemark’s Studio |
 | Visual score and instrument | Inspect relationships or play transformations on separate pages | Existing notation/technical type; red top-left return to Studio; black sound instrument; no decorative imitation of data |
-| Resources and correspondence | Reuse work or write in | Grey resources; near-white form; sans-serif controls and progressive disclosure |
+| Resources and correspondence | Reuse work or write in | Shared warm-paper reading context; sans-serif controls and progressive disclosure |
 
 ## Speakers and quotations
 
@@ -58,18 +58,18 @@ Search, Studio, Resources, Correspondence and About this work share the same lar
 
 ## Type, surfaces and controls
 
-- The entrance title SCORE extends into the full score name in deliberately pale `#feefff`, revealed word by word on hover; keyboard focus exposes the full title. This operator-selected artistic treatment is not a general low-contrast UI style. SCORE and Contents remain legible navigation.
+- Earlier archived arrangements can retain their original title treatments. Do not restore their SCORE/Contents navigation over the current shared masthead.
 
-- Reuse shared tokens: the principal near-white is `--paper` (`#feffff`), not pure white or a second almost-white. Warm paper belongs to the story, grey to support material, black to status/instrument/emphasis.
-- Use the existing sans-serif body and controls outside the historical narrative. Keep source speech and UTC metadata in their established monospaced roles.
+- Reuse the shared reading tokens: current host reading surfaces use warm paper `#f4efe4` and Geist. Charcoal separates status and the Studio interlude. Independent works retain their own surfaces.
+- Use the shared sans-serif narration and controls. Keep source speech, artist quotations and UTC metadata in their established roles.
 - Administrative notes are subordinate, ordinarily 12–14px; the main story/body remains larger. Do not shrink controls, essential status or the correspondence release until they are hard to read.
 - Keep borders square, links recognizable, action targets at least 44px where practical, and focus visible. Do not make decorative nameplates look clickable.
 - Citizen-name links have no underline in any state. Keep them inline, inheriting the surrounding typeface, weight, size and line height, with only compact name padding. Action-link styles must not turn a name into a button-sized block. Their colored field, inverse-color hover/focus and visible keyboard outline supply the interaction cues; ordinary source and navigation links retain their underlines.
 - Support phone reflow and text enlargement. Preserve the intentionally clipped final O in the story title; this is not permission to clip ordinary headings, controls or timestamps.
 - Source and glossary detours should preserve a return path and the reader’s position. Use the existing readable board interface, not bare API output.
 - Charter detours use the sticky masthead’s red Back control, never a repurposed document link. Restore the originating disclosure, focused link and reading offset; direct arrivals still need a Back fallback.
-- Story dates use a small, sentence-case monospaced line above subheadings. Keep narrative headings/body serif, source speech in its distinct typeface and controls sans-serif. Give each recent scene a sourced event date, not the review date; order by its latest narrated action and explicitly label parallel earlier chapters.
-- Contents keeps Alienate’s charter directly accessible and places Glossary and Changelog at the bottom. Glossary opens the existing panel and returns focus to Contents when closed.
+- Story dates use a small, sentence-case monospaced line above subheadings. Keep narrative headings/body in Geist and source speech in its distinct typeface. Give each recent scene a sourced event date, not the review date; order by its latest narrated action and explicitly label parallel earlier chapters.
+- The record index and shared footer keep the charter, search and supporting sections directly accessible. Glossary retains its existing panel and keyboard return.
 
 ## Every editorial update
 

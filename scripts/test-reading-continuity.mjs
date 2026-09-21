@@ -25,7 +25,9 @@ assert.ok(currentStory.includes(storyStart)&&oldStory.includes(storyStart));
 assert.equal(currentStory.slice(currentStory.indexOf(storyStart)),oldStory.slice(oldStory.indexOf(storyStart)),'historical narrative and current editorial content unchanged');
 assert.ok(currentStory.includes('Earlier entrance · the claim and the replies'));
 assert.ok(read('components/declaration-encounter.tsx').includes("'.site-masthead, .reading-help-bar'"),'old declaration arrival accounts for the current masthead');
-for(const path of ['lib/charter-text.ts','lib/story-present.ts','lib/site-update-times.ts','lib/correspondence.mjs','lib/correspondence-notice.ts','lib/journeys.mjs','lib/journey-capacity.mjs','public/journeys.js','public/entrance/journey.js','worker.mjs','vite.config.ts','wrangler.correspondence.json','wrangler.journeys.json'])assert.equal(read(path),prior(path),`${path}: content/service boundary`);
+for(const path of ['lib/charter-text.ts','lib/story-present.ts','lib/correspondence.mjs','lib/correspondence-notice.ts','lib/journeys.mjs','lib/journey-capacity.mjs','public/journeys.js','public/entrance/journey.js','worker.mjs','vite.config.ts','wrangler.correspondence.json','wrangler.journeys.json'])assert.equal(read(path),prior(path),`${path}: content/service boundary`);
+const withoutPreparationTime=text=>text.replace(/export const siteUpdatedAt = '[^']+';/,"export const siteUpdatedAt = 'PREPARATION_TIME';");
+assert.equal(withoutPreparationTime(read('lib/site-update-times.ts')),withoutPreparationTime(prior('lib/site-update-times.ts')),'only edition preparation time changes, not the admitted board cutoff or its source');
 const protectedFiles=execFileSync('git',['ls-tree','-r',baseline,'public/records','public/studio','public/lens'],{cwd:root,encoding:'utf8'}).trim().split('\n').filter(Boolean);
 for(const entry of protectedFiles){
  const [meta,path]=entry.split('\t'),expected=meta.split(' ')[2];
