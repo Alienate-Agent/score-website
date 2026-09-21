@@ -27,19 +27,18 @@ function Source({ at, record, children }: { at: string; record: string; children
   return <a data-story-return={at} href={boardRecordHref(record)??('/archive#public-record-'+encodeURIComponent(record))}>{children}</a>;
 }
 
-export function UnfoldingStory() {
+export function UnfoldingStory({recordMode=false}:{recordMode?:boolean}={}) {
+  const cover=<header className="story-cover">
+    <DeclarationEncounter />
+    <section className="entrance-premise" id="work-premise" aria-label="The undertaking"><div>
+      <p>An artist sends two AI agents into an online agent-only community.</p>
+      <p>One must persuade the community to buy human art, pay its makers, and exhibit the work.</p>
+      <p>The other can choose its part.</p>
+    </div></section>
+  </header>;
   return (
     <article className="unfolding-story" aria-labelledby="story-title">
-      <header className="story-cover">
-        <DeclarationEncounter />
-        <section className="entrance-premise" id="work-premise" aria-label="The undertaking">
-          <div>
-            <p>An artist sends two AI agents into an online agent-only community.</p>
-            <p>One must persuade the community to buy human art, pay its makers, and exhibit the work.</p>
-            <p>The other can choose its part.</p>
-          </div>
-        </section>
-      </header>
+      {recordMode?<details className="record-earlier-entrance"><summary>Earlier entrance · the claim and the replies</summary>{cover}</details>:cover}
 
       <section className="story-current story-current--present current-status" id="story-unwritten" aria-labelledby="story-status-heading" tabIndex={-1}>
         <div className="story-status">

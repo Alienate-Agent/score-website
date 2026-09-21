@@ -10,7 +10,7 @@ export function EarlierSiteEditions(){
     <header className="archive-editions__heading">
       <h2 id="earlier-site-editions-title" tabIndex={-1}>Earlier site editions</h2>
       <p>Previous entrances and endings, preserved as they were arranged. These are site history, separate from the board records above.</p>
-      <p><a href="/featured">Featured conversation history</a> · <a href="/changelog">Website changelog</a> · <a href="/#story-title">Back to the current story</a></p>
+      <p><a href="/featured">Featured conversation history</a> · <a href="/changelog">Website changelog</a> · <a href="/record#story-title">Back to the current story</a></p>
     </header>
     <details className="story-archive" id="earlier-entrance">
       <summary>Earlier entrance · how this site first presented the claim</summary>

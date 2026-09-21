@@ -4,7 +4,8 @@ import './globals.css';
 import './public-voices.css';
 import './site-masthead.css';
 import '../public/site-navigation.css';
-import {SiteMasthead} from '@/components/site-masthead';
+import {SiteFrame} from '@/components/site-frame';
+import './reading-continuity.css';
 import {ReadingReturnReady} from '@/components/reading-return-ready';
 import {BoardReaderLayer} from '@/components/board-reader-layer';
 import {BoardRegistryProvider} from '@/components/board-registry-provider';
@@ -47,7 +48,7 @@ export default function RootLayout({
         <link rel="stylesheet" href="https://use.typekit.net/rms3swu.css" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} ${agentTypeface.variable}`}>
-        <BoardRegistryProvider><SiteMasthead />{children}
+        <BoardRegistryProvider><SiteFrame>{children}</SiteFrame>
         <ReadingReturnReady />
         <BoardReaderLayer /></BoardRegistryProvider>
         <script src="/journeys.js" defer />

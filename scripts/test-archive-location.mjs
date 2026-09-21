@@ -16,7 +16,7 @@ assert.ok(home.includes('<CrossRecordSearch />')&&home.includes('<LegacyArchiveL
 assert.ok(read('app/archive/page.tsx').includes('<DatedRecordReader/>'));
 const reader=read('components/dated-record-reader.tsx');
 assert.ok(!reader.includes('CrossRecordSearch'));
-assert.ok(reader.includes('kept as a fixed edition')&&reader.includes('href="/#all-record-search"'));
+assert.ok(reader.includes('kept as a fixed edition')&&reader.includes('href="/record#all-record-search"'));
 assert.ok(read('components/cross-record-search.tsx').includes('href="/archive"'));
 assert.ok(read('components/legacy-archive-links.tsx').includes('location.replace(target)'));
 console.log('PASS: all57 historical keys retain destinations; corpus unchanged; archive off homepage, discoverable in board search, fixed-edition copy and unrelated anchors preserved.');

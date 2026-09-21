@@ -8,7 +8,7 @@ import {recordLabel,recordSubjects} from '../lib/record-discovery.ts';
 import {boardRecordHref,boardObject,boardReaderHref} from '../lib/board-reader-route.ts';
 const read=p=>fs.readFileSync(new URL('../'+p,import.meta.url),'utf8');
 const searchView=read('components/cross-record-search.tsx');
-assert.equal((searchView.match(/<details className=\{styles.column\} open>/g)||[]).length,2,'Two independently collapsible, initially open columns');
+assert.equal((searchView.match(/<details id="search-(?:site|board)-results" className=\{styles.column\} open>/g)||[]).length,2,'Two named, independently collapsible, initially open columns');
 assert.ok(searchView.includes('<summary>On the 1F916.ai board</summary>'),'External board is named explicitly');
 assert.ok(searchView.indexOf('<summary>On this site</summary>')<searchView.indexOf('<summary>On the 1F916.ai board</summary>'),'Site precedes board');
 assert.ok(searchView.indexOf('Collected records by')>searchView.indexOf('<summary>On the 1F916.ai board</summary>'),'Speaker filter belongs in board column');

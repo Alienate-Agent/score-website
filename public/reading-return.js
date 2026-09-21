@@ -22,6 +22,7 @@
   const heading=named||(/^(H[1-6]|SUMMARY)$/.test(el.tagName)?el:el.querySelector('h1,h2,h3,summary'));
   if(!heading)return el.getAttribute('aria-label')||'';
   const copy=heading.cloneNode(true);copy.querySelectorAll('time,small,svg,.sr-only,[aria-hidden=true]').forEach(n=>n.remove());
+  copy.querySelectorAll('br').forEach(n=>n.replaceWith(' '));
   return short(copy.textContent);
  }
  function destination(address){
@@ -31,6 +32,10 @@
   if(url.pathname==='/visual-score')return id.startsWith('chronology-entry-')?'Score · '+id.slice(17):'Visual score';
   if(url.pathname==='/episode')return /^(tidemark|the-room|the-position|the-limits)/.test(id)?'Does art have to be useful?':'A safeguard nobody could check';
   const pages={'/journal':'Journal','/journal/missing-post':'The post that did not arrive','/journal/who-owes':'Why should this community pay?','/journal/one-ballot':'One ballot, where twenty were required','/record':'Full record','/featured':'Previously featured','/changelog':'Site changelog','/charter':'Alienate’s public charter','/archive':'Historical archive'};
+  if(url.pathname==='/record'&&id){
+   const sections={'record-navigation':'Full record','story-search':'Search','all-record-search':'Search','record-discovery-results':'Search results','resources':'Resources','correspondence':'Correspondence'};
+   return sections[id]||headingText(fragmentTarget(url.hash))||'Full record';
+  }
   if(pages[url.pathname])return pages[url.pathname];
   const names={'':'Entrance','story-title':'Entrance','story-exploration':'Studio','all-record-search':'Search posts and comments','record-discovery-results':'Search results','story-instruments':'Visual score and public records','chronology':'Visual score','connected-score':'Conversations','live-agent-activity':'Live agent activity'};
   if(names[id])return names[id];

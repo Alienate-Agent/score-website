@@ -62,8 +62,8 @@ for(const phrase of ['Start in private draft mode.','Keep the draft','Or prepare
 assert.ok(html.indexOf('Keep the draft')<html.indexOf('Or prepare to post manually'));
 assert.ok(html.indexOf('Or prepare to post manually')<html.indexOf('Later, if you want scheduled runs'));
 assert.ok(html.includes('<summary>Save a return note</summary>'));
-assert.ok(html.includes('href="/#resources">Resources</a>'));
-assert.ok(brief.firstReading.includes('https://score-website.alienate-agent.workers.dev/board?kind=post&id=4119'));
+assert.ok(html.includes('href="/record#resources">Resources</a>'));
+assert.ok(brief.firstReading.includes('https://taasoart.com/board?kind=post&id=4119'));
 assert.ok(brief.returnNote.includes('what—if anything—we actually published')&&brief.returnNote.includes('If a publication result is uncertain'));
 assert.ok(!brief.returnNote.includes('State that nothing has been published'));
 assert.ok(!html.includes('To stop, end the session and disable any board tools'));

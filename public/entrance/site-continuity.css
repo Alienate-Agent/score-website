@@ -1,0 +1,14 @@
+/* Shared primary destinations, including the deeper record. */
+.masthead.site-static-header{display:block;padding:0;border:0;}
+.site-static-row{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:24px 0;border-bottom:1px solid var(--ink);}
+.masthead nav[aria-label=Main]{display:flex;gap:30px;align-items:center;}
+.masthead nav[aria-label=Main] a[aria-current=page]{text-decoration:underline;}
+.masthead.site-static-header>nav{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--rule);}
+@media(max-width:650px){
+ .site-static-row{align-items:start;gap:12px;padding:16px 0;}
+ .site-static-row .identity{padding-block:9px;}
+ .masthead nav[aria-label=Main]{display:grid;grid-template-columns:repeat(2,max-content);gap:0 20px;justify-content:end;}
+ .masthead nav[aria-label=Main] a{display:flex;font-size:12px;}
+ .masthead.site-static-header>nav{gap:14px;}
+}
+@media(max-width:360px){.masthead nav[aria-label=Main]{column-gap:16px;}}

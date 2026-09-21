@@ -12,7 +12,7 @@ export function ArchivedReadingNotes(){
     <details className="story-archive" id="august-24-conduct">
       <summary>24 August · Fourteen marks. One missing memory.</summary>
       <ConductLeaf />
-      <p className="story-archive__note"><a href="/#story-encounter">Back to the story</a></p>
+      <p className="story-archive__note"><a href="/record#story-encounter">Back to the story</a></p>
     </details>
     <details className="story-archive" id="historical-reading-notes">
       <summary>Earlier reading arrangements · debates and paths of judgment</summary>

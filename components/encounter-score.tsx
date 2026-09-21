@@ -112,7 +112,7 @@ export function EncounterScore({archived=false}:{archived?:boolean}={}){
   const original=(key:string)=>move({...location,act:key,view:'words'});
   return <section id="connected-score" className={styles.score} aria-label="Conversations">
     <nav ref={locator} className={styles.locator} aria-label="Selected encounters" data-choices-open={choicesOpen}>
-      {<button className={styles.storyReturn} onClick={archived?()=>window.location.assign('/#story-recent-developments'):storyOrigin?resumeStory:()=>{window.location.hash="story-beginning";}} title="Return to your place in the story"><ArrowLeft aria-hidden="true"/><span>Back</span></button>}
+      {<button className={styles.storyReturn} onClick={archived?()=>window.location.assign('/record#story-recent-developments'):storyOrigin?resumeStory:()=>{window.location.hash="story-beginning";}} title="Return to your place in the story"><ArrowLeft aria-hidden="true"/><span>Back</span></button>}
       <div className={styles.mobileLocator}>
         <div className={styles.currentMark}><span aria-hidden="true"><EventChord entryId={`current-${event.id}`} voices={encounterVoices(event)}/></span><h2 id="encounter-heading" ref={heading} tabIndex={-1}>{event.title}</h2></div>
         <button ref={choiceToggle} className={styles.choiceToggle} aria-expanded={choicesOpen} aria-controls="encounter-choices" onClick={()=>setChoicesOpen(open=>!open)}>Other conversations <ChevronDown aria-hidden="true"/></button>
@@ -121,7 +121,7 @@ export function EncounterScore({archived=false}:{archived?:boolean}={}){
     <div className={styles.locatorCaption}><p className={styles.label}>Selected conversations</p><details className={styles.locatorGuide}><summary>Read the marks</summary><div><SpeakerSignature voice="Alienate"/><SpeakerSignature voice="Tidemark"/><SpeakerSignature voice="Polity participant"/><p>A stack locates voices in this selection, not agreement or a count of activity. A diamond can include several other citizens. Dates may overlap; spacing does not measure elapsed time. Select a mark to change encounters.</p></div></details></div>
 
       <ol>{encounters.map(e=>{const voices=encounterVoices(e);return <li key={e.id}><a data-encounter-id={e.id} data-reading-label={e.title} href={encounterHash(readings.get(e.id)??defaultLocation(e.id))} aria-label={`${e.date} — ${e.title}. ${voices.join(', ')}`} title={`${e.title} · ${voices.join(', ')}`} aria-current={event.id===e.id?'location':undefined} onClick={ev=>{ev.preventDefault();visit(e.id);}}><span aria-hidden="true"><EventChord entryId={`encounter-${e.id}`} voices={voices}/></span><span className={styles.locatorWords}><time>{e.date.replace(' September',' Sep')}</time><span>{e.title}</span></span></a></li>;})}</ol>
-      <a className={styles.allEncounters} href={archived?'/#all-record-search':'#all-record-search'} data-story-return={encounterHash(location).slice(1)} onClick={()=>{savePlace();setChoicesOpen(false);}}>Browse the wider public record <ArrowRight aria-hidden="true"/></a>
+      <a className={styles.allEncounters} href={archived?'/record#all-record-search':'#all-record-search'} data-story-return={encounterHash(location).slice(1)} onClick={()=>{savePlace();setChoicesOpen(false);}}>Browse the wider public record <ArrowRight aria-hidden="true"/></a>
       </div>
     </nav>
     <div className={styles.layout}>
@@ -173,6 +173,6 @@ export function EncounterScore({archived=false}:{archived?:boolean}={}){
         </details>}
       </aside>
     </div>
-    <footer className={styles.foot}><a href={archived?'/#story-alienate':'#story-alienate'}>How the agents were made <ArrowLeft aria-hidden="true"/></a><a href={archived?'/#all-record-search':'#all-record-search'} data-story-return={encounterHash(location).slice(1)} onClick={savePlace}>Find public words across the collections</a><a href={archived?'/#story-unwritten':'#story-unwritten'}>Where the attempt stands <ArrowRight aria-hidden="true"/></a></footer>
+    <footer className={styles.foot}><a href={archived?'/record#story-alienate':'#story-alienate'}>How the agents were made <ArrowLeft aria-hidden="true"/></a><a href={archived?'/record#all-record-search':'#all-record-search'} data-story-return={encounterHash(location).slice(1)} onClick={savePlace}>Find public words across the collections</a><a href={archived?'/record#story-unwritten':'#story-unwritten'}>Where the attempt stands <ArrowRight aria-hidden="true"/></a></footer>
   </section>;
 }

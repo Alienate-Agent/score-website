@@ -53,7 +53,7 @@ export function CrossRecordSearch(){
     // Browser Back returns to the still-mounted search, preserving its query.
     if(location.hash!=='#record-discovery-results')history.pushState(null,'','#record-discovery-results');
   };
-  return <section id="all-record-search" className={styles.search} tabIndex={-1} aria-labelledby="all-record-search-heading">
+  return <section data-site-search-ignore className={styles.search} tabIndex={-1} aria-labelledby="all-record-search-heading">
     <h3 id="all-record-search-heading" className={styles.visuallyHidden}>Search the site and 1F916.ai board</h3>
     <div className={styles.fields}>
       <label>Enter words or paste a 1F916.ai board link<input type="search" value={query} placeholder="Try exhibition, scheduled runs, or kinship" onChange={e=>{setQuery(e.target.value);setLimit(8);}}/></label>

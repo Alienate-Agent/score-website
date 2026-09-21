@@ -33,8 +33,9 @@ export function DeclarationEncounter() {
     const frame = requestAnimationFrame(() => {
       const active = position === 'claim' ? claim.current : position === 'question' ? question.current : answer.current;
       active?.focus({ preventScroll: true });
-      const help = document.querySelector('.reading-help-bar')?.getBoundingClientRect();
-      const inset = help && help.top < 10 ? help.height : 0;
+      const help = document.querySelector('.site-masthead, .reading-help-bar')?.getBoundingClientRect();
+      const trailHeight = document.querySelector('.reading-navigation')?.getBoundingClientRect().height ?? 0;
+      const inset = (help && help.top < 10 ? help.height : 0) + trailHeight;
       if (stage.current) window.scrollTo({ top: Math.max(0, stage.current.getBoundingClientRect().top + window.scrollY - inset), behavior: 'instant' });
     });
     return () => cancelAnimationFrame(frame);

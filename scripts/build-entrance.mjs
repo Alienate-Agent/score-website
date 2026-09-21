@@ -38,7 +38,15 @@ for(const [file,route] of Object.entries(routes)){
    html=html.replace(/<div class="status-body">[\s\S]*?<div class="goal-path"/,`<div class="status-body"><p>${summary}</p><p class="reminder">No art purchase through the campaign is recorded in the reviewed material. The artists are still owed.</p><div class="status-bottom"><time datetime="${storyPresent.asOf}">Reviewed ${esc(storyPresent.label)}</time><a href="/record#story-recent-developments">Read the developments</a></div></div>\n<div class="goal-path"`);
    html=html.replace('</head>','<script type="module" src="/entrance/legacy-links.js"></script></head>');
  }
- html=html.replace('</head>',`<link rel="canonical" href="https://taasoart.com${route}"></head>`);
+ html=html.replace('</head>',`<link rel="stylesheet" href="/entrance/site-continuity.css"><link rel="canonical" href="https://taasoart.com${route}"></head>`);
+ const primary=`<nav aria-label="Main"><a href="/journal"${file.startsWith('journal')||file==='episode.html'?' aria-current="page"':''}>Journal</a><a href="/#agents">Agents</a><a href="/#works">Works</a><a href="/record">Record</a></nav>`;
+ html=html.replace(/<header class="masthead">([\s\S]*?)<\/header>/,(_,content)=>{
+   const identity=content.match(/<a[^>]*class="identity"[\s\S]*?<\/a>/)?.[0];
+   if(!identity)throw new Error(`Missing site identity in ${file}`);
+   const local=file==='episode.html'?content.match(/<nav aria-label="Episode navigation">[\s\S]*?<\/nav>/)?.[0]||'':'';
+   return `<header class="masthead site-static-header"><div class="site-static-row">${identity}${primary}</div>${local}</header>`;
+ });
+ html=html.replace('href="/archive">Explore the full record','href="/record">Explore the full record');
  html=html.replace('<body','<body data-reading-mode="entrance" data-reading-return-ready="true"');
  // Same-site sources continue in this tab, retaining a return to the episode.
  html=html.replace(/<a\b[^>]*href="\/(?!\/)[^"]*"[^>]*>[\s\S]*?<\/a>/g,anchor=>anchor

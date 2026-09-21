@@ -117,7 +117,7 @@ function ReadingLayer({ id, label, description, children }: { id: string; label:
   const returnLabel=returnTo==='story-exploration'?'Back to Studio':returnTo.startsWith('encounter-')?'Back to the conversation':'Back to the story';
 
   return <details ref={disclosure} className="story-records" id={id} data-reading-layer>
-    <summary className="section-heading"><h2>{label}</h2><p>{description}</p></summary>
+    <summary className="section-heading"><h2 id={id==='story-search'?'all-record-search':undefined} tabIndex={-1}>{label}</h2><p>{description}</p></summary>
     <div ref={returnBar} className="story-records__return"><button type="button" onClick={resume}>{returnLabel}</button></div>
     {children}
     <button className="story-records__end" type="button" onClick={resume}>{returnLabel}</button>
