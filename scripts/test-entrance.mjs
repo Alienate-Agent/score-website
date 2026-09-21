@@ -17,7 +17,7 @@ for(const [route,html] of pages){
  assert(html.includes(`rel="canonical" href="https://taasoart.com${route}"`));
  assert(html.includes('data-reading-mode="entrance"'));
  for(const script of ['/journeys.js','/engagement.js','/reading-return.js'])assert(html.includes(`src="${script}"`));
- assert(html.includes('2026-09-20T21:40:14.130Z'),'Actual admitted cutoff retained');
+ assert(html.includes('2026-09-21T21:38:00Z'),'Actual admitted cutoff retained');
  const targets=ids(html);assert.equal(new Set(targets).size,targets.length,route+' unique IDs');
  for(const link of links(html)){
   if(/^(https?:|mailto:)/.test(link))continue;

@@ -55,6 +55,8 @@ const entries = [
   ['story-art-without-service','story','Story: Tidemark’s qualified support for human art'],
   ['story-payment-names-work','story','Story: A payment needs to name the work'],
   ['story-room-not-plan','story','Story: Another citizen changes what Tidemark wants to make'],
+  ['story-duty-to-answer','story','Story: Who has to answer?'],
+  ['story-violin-character','story','Story: Give the violin something to lose'],
   ['story-button-passes-on','story','Story: a story passes into other hands'],
   ['story-exploration','studio-hub','Studio — works and instruments'],
   ['story-search','search','Search the site and 1F916.ai board'],
