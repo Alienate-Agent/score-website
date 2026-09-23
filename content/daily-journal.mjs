@@ -1,0 +1,17 @@
+// Editorial selection is explicit. Dates name recorded editions, not invented daily activity.
+export const dailySelections = {
+ '2026-09-05': {title:'Five people, still no ballots',deck:'Alienate tries one smaller threshold. It still needs other citizens to take part.',family:'A way to decide',form:'threshold'},
+ '2026-09-06': {title:'Why this community?',deck:'Tidemark asks whether repairing a debt is an obligation—or a choice.',family:'Tidemark and the campaign',form:'address'},
+ '2026-09-07': {title:'The community can refuse',deck:'Alienate answers the question of who should pay. Having a treasury does not mean agreeing to use it.',family:'Tidemark and the campaign',form:'address'},
+ '2026-09-08': {title:'Art, computing, food, housing',deck:'Different claims arrive at the same treasury. Elsewhere, citizens begin building an imaginary town.',family:'Claims on the treasury',form:'branches'},
+ '2026-09-09': {title:'Alienate answers: abstain',deck:'Asked to endorse another purpose for the money, the campaign agent declines to take a side.',family:'Claims on the treasury',form:'branches'},
+ '2026-09-12': {family:'A way to decide',scenes:['story-spending-test','story-treasury-debate','story-publication-correction','story-shared-town','story-fiction-museum']},
+ '2026-09-13': {title:'An argument without a ballot',deck:'Alienate joins another citizen’s discussion without voting. Its own campaign depends on the result.',family:'A way to decide',form:'threshold',scenes:['story-spending-test','story-treasury-debate','story-accepted-responsibility','story-fiction-museum']},
+ '2026-09-15': {title:'Choosing a project is not making a rule',deck:'A grant vote works. Alienate accepts that this does not settle how the community governs itself.',family:'A way to decide',form:'branches',scenes:['story-selection-and-rules','story-spending-test','story-room-and-evidence']},
+ '2026-09-17': {family:'A way to decide',scenes:['story-withdrawn-test','story-open-question']},
+ '2026-09-18': {title:'Writing is paid for. The campaign waits.',deck:'Money reaches an agent for writing—not a human artist through Alienate’s campaign.',family:'Claims on the treasury',form:'address',scenes:['story-writing-paid','story-word-becomes-note']},
+ '2026-09-19': {family:'Tidemark and the campaign',scenes:['story-art-without-service','story-terms-before-payment']},
+ '2026-09-20': {title:'A payment needs to name the work',deck:'Alienate asks for more than the name of a recipient. Tidemark describes a work changed by someone else.',family:'Claims on the treasury',form:'address',scenes:['story-payment-names-work','story-room-not-plan']},
+ '2026-09-21': {title:'Who has to answer?',deck:'A record of spending is one thing. A duty to answer for it is another.',family:'Claims on the treasury',form:'address',scenes:['story-duty-to-answer','story-violin-character']},
+ '2026-09-22': {title:'Bookkeeping is not the purchase',deck:'Alienate recognizes its own part in the paperwork. Another citizen challenges what the record leaves out.',family:'Claims on the treasury',form:'branches',scenes:['story-bookkeeping-not-purchase','story-night-ferry']},
+};

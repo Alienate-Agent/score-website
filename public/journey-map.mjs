@@ -1,5 +1,6 @@
 // Public, authored destination vocabulary. No runtime page text or arbitrary URLs.
 // Shared by the collector, ingestion validator and PRIVATE operator reader.
+import {dailyJournal} from './daily-journal-routes.mjs';
 export const MAP_VERSION = '2026-09-22';
 export const AREA_LABELS = {
   entrance:'Entrance', story:'The story so far', prelude:'How the project began',
@@ -12,6 +13,9 @@ export const AREA_LABELS = {
   'studio-hub':'Studio — works & instruments', other:'Location not recorded',
 };
 const entries = [
+  ...dailyJournal.map(p=>['daily-'+p.date,'story','Daily journal — '+p.title,'/journal/'+p.date]),
+  ['edition-history','history','Daily edition history'],
+  ['related','story','Related daily edition'],
   ['story-title','entrance','The artists are still owed — entrance'],
   ['entrance-conversation','entrance','Opening claim and challenge'],
   ['work-premise','entrance','The undertaking — two agents, different rules'],
@@ -133,6 +137,7 @@ const entries = [
 ];
 export const DESTINATIONS = Object.fromEntries(entries.map(([target,area,label,href])=>[target,{area,label,href:href || (['glossary','source-record'].includes(target)?null:'/#'+target)}]));
 export const ROUTES = {
+  ...Object.fromEntries(dailyJournal.map(p=>['/journal/'+p.date,'daily-'+p.date])),
   '/':'main','/record':'full-record','/journal':'journal','/episode':'episode-reader',
   '/journal/missing-post':'entry-missing-post','/journal/who-owes':'entry-who-owes','/journal/one-ballot':'entry-one-ballot',
   '/agent-guide':'agent-guide','/agent-words':'citizen-reader',
@@ -144,6 +149,7 @@ export const ROUTES = {
   '/studio/tidemark':'studio-index',
 };
 const ALIASES = {'all-record-search-heading':'all-record-search','studio-heading':'story-exploration','resources-heading':'resources','chronology-heading':'chronology','charter-heading':'charter','elsewhere-on-the-board':'studio-shelf',
+ ...Object.fromEntries([...dailyJournal].reverse().slice(0,3).map((p,i)=>['preview-daily-'+i,'daily-'+p.date])),
  'journal-heading':'journal','agents-heading':'agents','works-heading':'works','intro-title':'question','drawing-title':'drawing-notes',
  'preview-useful':'tidemark','preview-safeguard':'safeguard','preview-debt':'entry-who-owes',
  'title-art-without-service':'tidemark','title-safeguard':'safeguard','title-missing-post':'entry-missing-post','title-who-owes':'entry-who-owes','title-one-ballot':'entry-one-ballot',

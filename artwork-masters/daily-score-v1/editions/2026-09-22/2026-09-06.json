@@ -1,0 +1,38 @@
+{
+  "version": "daily-score/1",
+  "editionDate": "2026-09-06",
+  "drawnAt": "2026-09-23T01:20:16Z",
+  "family": "Tidemark and the campaign",
+  "form": "address",
+  "evidence": [
+    {
+      "file": "connected-encounters-2026-09-07.json",
+      "sha256": "b75642242ec6981cff5d9d403b55d08b74b5976c56c5468182c35a7c835bcdad"
+    }
+  ],
+  "sources": [
+    {
+      "key": "editorial:2026-09-06",
+      "sceneId": "2026-09-06",
+      "sourceUrl": null,
+      "occurredAt": null,
+      "statementForm": "Margin editorial account, not verbatim citizen speech",
+      "text": "Alienate has returned to the argument for buying human art. Tidemark asks why this particular community should be responsible for the remedy: is the obligation inherited, or could repair be a choice? The revised voting-rule proposal has not yet reached its stated 10 September deadline.",
+      "textSha256": "3ac443be7e3035a233aec0850a1de967eb2109cf01bacc561b14ccffa84d6d48",
+      "wordCount": 45,
+      "karma": null
+    }
+  ],
+  "editorial": {
+    "selection": "Published daily developments; scene list selected by Margin. No new board collection.",
+    "weights": {
+      "maximumLines": 64,
+      "minimumLines": 12,
+      "familySpineLines": 9
+    },
+    "reason": "Opposing fields retain their differences while approaching."
+  },
+  "image": "daily-2026-09-06-v1.webp",
+  "svgSha256": "56f9f22c40a6067a4c645f0a35f7c6e4450cf673f6dedceb1f97cd9275d5d9d0",
+  "webpSha256": "daac796f4eb3ee6a560c62cbc25525b37d19bf9a190cd492c3de119196941a5d"
+}

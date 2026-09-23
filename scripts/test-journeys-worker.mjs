@@ -10,7 +10,7 @@ const mf=new Miniflare({
   cf:false, compatibilityDate:'2026-05-15', compatibilityFlags:['nodejs_compat'],
   modules:[
     {type:'ESModule',path:path('journey-test-entry.mjs'),contents:`import {ingestJourney,journeyConfig} from './lib/journeys.mjs';import {handleJourneyAdmin} from './lib/journey-admin.mjs';export default {fetch(request,env){if(new URL(request.url).pathname==='/api/journey-admin')return handleJourneyAdmin(request,env);return request.method==='GET'?journeyConfig(request,env):ingestJourney(request,env);}};`},
-    ...['lib/journeys.mjs','lib/journey-identity.mjs','lib/journey-capacity.mjs','lib/journey-admin.mjs','public/journey-map.mjs'].map(name=>({type:'ESModule',path:path(name),contents:readFileSync(path(name),'utf8')})),
+    ...['lib/journeys.mjs','lib/journey-identity.mjs','lib/journey-capacity.mjs','lib/journey-admin.mjs','public/journey-map.mjs','public/daily-journal-routes.mjs'].map(name=>({type:'ESModule',path:path(name),contents:readFileSync(path(name),'utf8')})),
   ],
   d1Databases:{JOURNEYS:'journey-local-test'},
   r2Buckets:{JOURNEY_ARCHIVE:'journey-local-archive'},

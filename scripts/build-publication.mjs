@@ -11,6 +11,7 @@ import {prepareReadingPages} from './prepare-reading-pages.mjs';
 const projectRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const denyListPath = process.env.PUBLICATION_DENY_LIST_PATH;
 await import('./build-entrance.mjs');
+await import('./build-daily-journal.mjs');
 
 await validateStudioEntry(projectRoot);
 console.log('Analytics destination coverage:',validateJourneyCoverage(projectRoot));

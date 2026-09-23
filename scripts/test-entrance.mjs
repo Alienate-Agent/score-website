@@ -32,8 +32,8 @@ for(const [route,html] of pages){
  assert(html.includes('/record#correspondence')&&html.includes('/record#score-privacy'));
 }
 assert(pages.get('/').includes(storyPresent.compactSummary.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('"','&quot;')));
-assert.equal((pages.get('/journal').match(/class="story-connection compact"/g)||[]).length,4);
-assert.equal((pages.get('/journal').match(/Read (?:entry|episode)/g)||[]).length,5);
+assert.equal((pages.get('/journal').match(/data-topic=/g)||[]).length,14);
+assert.equal((pages.get('/journal').match(/Read the update/g)||[]).length,14);
 for(const route of ['/journal/missing-post','/journal/one-ballot','/journal/who-owes','/episode'])assert(pages.get(route).includes('Drawing history')&&pages.get(route).includes('Drawn on'));
 
 // Exercise actual Worker routing without invoking a renderer or network.

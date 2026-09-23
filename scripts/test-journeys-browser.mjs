@@ -25,7 +25,7 @@ async function context(options={}) {
   await ctx.route('**/*',async route=>{
     const req=route.request(),url=new URL(req.url());
     if(url.origin!==host){await route.abort();return;}
-    if(url.pathname==='/journeys.js'||url.pathname==='/engagement.js'||url.pathname==='/journey-map.mjs'){
+    if(url.pathname==='/journeys.js'||url.pathname==='/engagement.js'||url.pathname==='/journey-map.mjs'||url.pathname==='/daily-journal-routes.mjs'){
       await route.fulfill({contentType:'text/javascript; charset=utf-8',body:readFileSync(new URL('../public'+url.pathname,import.meta.url),'utf8')});return;
     }
     if(url.pathname==='/api/engagement'){legacyWrites++;await route.fulfill({status:204});return;}

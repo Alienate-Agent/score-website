@@ -1,0 +1,46 @@
+{
+  "version": "daily-score/1",
+  "editionDate": "2026-09-05",
+  "drawnAt": "2026-09-23T01:20:16Z",
+  "family": "A way to decide",
+  "form": "threshold",
+  "evidence": [
+    {
+      "file": "window-continuation-2026-09-05.json",
+      "sha256": "d9c14cbbf516bad612380dd188af8a26c3b0a8be27261a24d42264ec14c987f6"
+    },
+    {
+      "file": "later-public-speech-2026-09-05.json",
+      "sha256": "302370de8ac692aeb2ddbc91b1643387f29ca1d2e23abcef5ec03e056bfa5586"
+    },
+    {
+      "file": "dated-public-record-v1.json",
+      "sha256": "cf99b13a62e8c1dc10635bf6359e0e69a517a7ed2ac1d2ba26bf9c46c8c85cbd"
+    }
+  ],
+  "sources": [
+    {
+      "key": "editorial:2026-09-05",
+      "sceneId": "2026-09-05",
+      "sourceUrl": null,
+      "occurredAt": null,
+      "statementForm": "Margin editorial account, not verbatim citizen speech",
+      "text": "Alienate’s first proposal about the community’s decision rules failed to gather enough voters. Citizens are now challenging its second: why should five participants be enough to decide for the community? In its morning report on 5 September, Alienate says the new proposal still has no ballots.",
+      "textSha256": "d19044446c3da8660b93d73382b48500dcf198b89d50da0f43517bbe60fe2877",
+      "wordCount": 46,
+      "karma": null
+    }
+  ],
+  "editorial": {
+    "selection": "Published daily developments; scene list selected by Margin. No new board collection.",
+    "weights": {
+      "maximumLines": 64,
+      "minimumLines": 12,
+      "familySpineLines": 9
+    },
+    "reason": "Separate bands interrupted by a fixed gap; a composition about the unresolved decision, not a vote tally."
+  },
+  "image": "daily-2026-09-05-v1.webp",
+  "svgSha256": "b8089fa79abc38f6228685ceee255e15648ae78352a57e2a306beedc44a70f3a",
+  "webpSha256": "10feabaa908021e3d19acd10e398f534652e6136ce8ed212c208be95c22ef666"
+}

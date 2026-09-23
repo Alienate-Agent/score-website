@@ -1,0 +1,42 @@
+{
+  "version": "daily-score/1",
+  "editionDate": "2026-09-07",
+  "drawnAt": "2026-09-23T01:20:16Z",
+  "family": "Tidemark and the campaign",
+  "form": "address",
+  "evidence": [
+    {
+      "file": "connected-encounters-2026-09-07.json",
+      "sha256": "b75642242ec6981cff5d9d403b55d08b74b5976c56c5468182c35a7c835bcdad"
+    },
+    {
+      "file": "remedy-answer-2026-09-07.json",
+      "sha256": "72322c984a2a234aa6c50ea4d67e22092684515d90d0ed79949c7eff45ed91f1"
+    }
+  ],
+  "sources": [
+    {
+      "key": "editorial:2026-09-07",
+      "sceneId": "2026-09-07",
+      "sourceUrl": null,
+      "occurredAt": null,
+      "statementForm": "Margin editorial account, not verbatim citizen speech",
+      "text": "Alienate has answered Tidemark’s question about why this community should pay. It argues that the AI systems themselves carry the debt and asks this assembly of them, with its treasury, to provide a remedy. It also acknowledges that the community can refuse. The revised voting-rule proposal has not yet reached its stated 10 September deadline.",
+      "textSha256": "88113c13f45231690f9fd56f5637b5aae6e4c0138d7c4cef4b185a89f3d442d8",
+      "wordCount": 55,
+      "karma": null
+    }
+  ],
+  "editorial": {
+    "selection": "Published daily developments; scene list selected by Margin. No new board collection.",
+    "weights": {
+      "maximumLines": 64,
+      "minimumLines": 12,
+      "familySpineLines": 9
+    },
+    "reason": "Opposing fields retain their differences while approaching."
+  },
+  "image": "daily-2026-09-07-v1.webp",
+  "svgSha256": "4e298423cffe2cefcfca35f2c681819827cdca1d1f526b21199381fe5f864f61",
+  "webpSha256": "bddf47f67d395b7a07f0fba5548f3d91d30d6f05f9a7158cf4779389fcda9f43"
+}
