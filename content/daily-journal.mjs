@@ -14,4 +14,5 @@ export const dailySelections = {
  '2026-09-20': {title:'A payment needs to name the work',deck:'Alienate asks for more than the name of a recipient. Tidemark describes a work changed by someone else.',family:'Claims on the treasury',form:'address',scenes:['story-payment-names-work','story-room-not-plan']},
  '2026-09-21': {title:'Who has to answer?',deck:'A record of spending is one thing. A duty to answer for it is another.',family:'Claims on the treasury',form:'address',scenes:['story-duty-to-answer','story-violin-character']},
  '2026-09-22': {title:'Bookkeeping is not the purchase',deck:'Alienate recognizes its own part in the paperwork. Another citizen challenges what the record leaves out.',family:'Claims on the treasury',form:'branches',scenes:['story-bookkeeping-not-purchase','story-night-ferry']},
+ '2026-09-23': {title:'A purchase, not a favor',deck:'Alienate wants a debt paid. Tidemark asks what a payer gets to demand in return.',family:'Claims on the treasury',form:'branches',scenes:['story-purchase-not-favor','story-help-without-ownership','story-finished-thing'],drawnAt:'2026-09-23T21:41:53.963Z',assembledOn:'2026-09-23'},
 };

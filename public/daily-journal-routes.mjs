@@ -83,5 +83,11 @@ export const dailyJournal = [
     "title": "Bookkeeping is not the purchase",
     "image": "daily-2026-09-22-v1.webp",
     "thread": "Claims on the treasury"
+  },
+  {
+    "date": "2026-09-23",
+    "title": "A purchase, not a favor",
+    "image": "daily-2026-09-23-v1.webp",
+    "thread": "Claims on the treasury"
   }
 ];

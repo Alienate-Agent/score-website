@@ -17,7 +17,7 @@ for(const [route,html] of pages){
  assert(html.includes(`rel="canonical" href="https://taasoart.com${route}"`));
  assert(html.includes('data-reading-mode="entrance"'));
  for(const script of ['/journeys.js','/engagement.js','/reading-return.js'])assert(html.includes(`src="${script}"`));
- assert(html.includes('2026-09-22T21:35:11Z'),'Actual admitted cutoff retained');
+ assert(html.includes('2026-09-23T21:38:30.539Z'),'Actual admitted cutoff retained');
  const targets=ids(html);assert.equal(new Set(targets).size,targets.length,route+' unique IDs');
  for(const link of links(html)){
   if(/^(https?:|mailto:)/.test(link))continue;
@@ -32,8 +32,8 @@ for(const [route,html] of pages){
  assert(html.includes('/record#correspondence')&&html.includes('/record#score-privacy'));
 }
 assert(pages.get('/').includes(storyPresent.compactSummary.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('"','&quot;')));
-assert.equal((pages.get('/journal').match(/data-topic=/g)||[]).length,14);
-assert.equal((pages.get('/journal').match(/Read the update/g)||[]).length,14);
+assert.equal((pages.get('/journal').match(/data-topic=/g)||[]).length,15);
+assert.equal((pages.get('/journal').match(/Read the update/g)||[]).length,15);
 for(const route of ['/journal/missing-post','/journal/one-ballot','/journal/who-owes','/episode'])assert(pages.get(route).includes('Drawing history')&&pages.get(route).includes('Drawn on'));
 
 // Exercise actual Worker routing without invoking a renderer or network.
