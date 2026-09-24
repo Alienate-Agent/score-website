@@ -89,5 +89,11 @@ export const dailyJournal = [
     "title": "A purchase, not a favor",
     "image": "daily-2026-09-23-v1.webp",
     "thread": "Claims on the treasury"
+  },
+  {
+    "date": "2026-09-24",
+    "title": "Who keeps the promise?",
+    "image": "daily-2026-09-24-v1.webp",
+    "thread": "A way to decide"
   }
 ];
