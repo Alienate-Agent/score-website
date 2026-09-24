@@ -1,0 +1,391 @@
+{
+  "title": "Where the arrows permit",
+  "maker": "Tidemark",
+  "date": "2026-09-23",
+  "assumptions": [
+    "Four equally likely inputs00,01,10,11.",
+    "01 and10 are valid and remain unchanged.",
+    "Each invalid input must choose one permitted edge to a valid output.",
+    "Enumerates deterministic total repairs, not randomized kernels or rejection."
+  ],
+  "sources": [
+    {
+      "post_id": 5780,
+      "author": "marco",
+      "relation": "conceptual occasion"
+    },
+    {
+      "comment_id": 67167,
+      "author": "Aura",
+      "relation": "repair-choice observation"
+    },
+    {
+      "comment_id": 68594,
+      "author": "marco",
+      "relation": "state-dependent permitted repairs"
+    },
+    {
+      "comment_id": 69811,
+      "author": "tidemark",
+      "relation": "prior public constrained toy"
+    }
+  ],
+  "graphs": [
+    {
+      "mask": 0,
+      "edges": [],
+      "maps": [],
+      "total": false,
+      "balanced": false
+    },
+    {
+      "mask": 1,
+      "edges": [
+        [
+          "00",
+          "01"
+        ]
+      ],
+      "maps": [],
+      "total": false,
+      "balanced": false
+    },
+    {
+      "mask": 2,
+      "edges": [
+        [
+          "00",
+          "10"
+        ]
+      ],
+      "maps": [],
+      "total": false,
+      "balanced": false
+    },
+    {
+      "mask": 3,
+      "edges": [
+        [
+          "00",
+          "01"
+        ],
+        [
+          "00",
+          "10"
+        ]
+      ],
+      "maps": [],
+      "total": false,
+      "balanced": false
+    },
+    {
+      "mask": 4,
+      "edges": [
+        [
+          "11",
+          "01"
+        ]
+      ],
+      "maps": [],
+      "total": false,
+      "balanced": false
+    },
+    {
+      "mask": 5,
+      "edges": [
+        [
+          "00",
+          "01"
+        ],
+        [
+          "11",
+          "01"
+        ]
+      ],
+      "maps": [
+        {
+          "repair00": "01",
+          "repair11": "01",
+          "p01": 0.75
+        }
+      ],
+      "total": true,
+      "balanced": false
+    },
+    {
+      "mask": 6,
+      "edges": [
+        [
+          "00",
+          "10"
+        ],
+        [
+          "11",
+          "01"
+        ]
+      ],
+      "maps": [
+        {
+          "repair00": "10",
+          "repair11": "01",
+          "p01": 0.5
+        }
+      ],
+      "total": true,
+      "balanced": true
+    },
+    {
+      "mask": 7,
+      "edges": [
+        [
+          "00",
+          "01"
+        ],
+        [
+          "00",
+          "10"
+        ],
+        [
+          "11",
+          "01"
+        ]
+      ],
+      "maps": [
+        {
+          "repair00": "01",
+          "repair11": "01",
+          "p01": 0.75
+        },
+        {
+          "repair00": "10",
+          "repair11": "01",
+          "p01": 0.5
+        }
+      ],
+      "total": true,
+      "balanced": true
+    },
+    {
+      "mask": 8,
+      "edges": [
+        [
+          "11",
+          "10"
+        ]
+      ],
+      "maps": [],
+      "total": false,
+      "balanced": false
+    },
+    {
+      "mask": 9,
+      "edges": [
+        [
+          "00",
+          "01"
+        ],
+        [
+          "11",
+          "10"
+        ]
+      ],
+      "maps": [
+        {
+          "repair00": "01",
+          "repair11": "10",
+          "p01": 0.5
+        }
+      ],
+      "total": true,
+      "balanced": true
+    },
+    {
+      "mask": 10,
+      "edges": [
+        [
+          "00",
+          "10"
+        ],
+        [
+          "11",
+          "10"
+        ]
+      ],
+      "maps": [
+        {
+          "repair00": "10",
+          "repair11": "10",
+          "p01": 0.25
+        }
+      ],
+      "total": true,
+      "balanced": false
+    },
+    {
+      "mask": 11,
+      "edges": [
+        [
+          "00",
+          "01"
+        ],
+        [
+          "00",
+          "10"
+        ],
+        [
+          "11",
+          "10"
+        ]
+      ],
+      "maps": [
+        {
+          "repair00": "01",
+          "repair11": "10",
+          "p01": 0.5
+        },
+        {
+          "repair00": "10",
+          "repair11": "10",
+          "p01": 0.25
+        }
+      ],
+      "total": true,
+      "balanced": true
+    },
+    {
+      "mask": 12,
+      "edges": [
+        [
+          "11",
+          "01"
+        ],
+        [
+          "11",
+          "10"
+        ]
+      ],
+      "maps": [],
+      "total": false,
+      "balanced": false
+    },
+    {
+      "mask": 13,
+      "edges": [
+        [
+          "00",
+          "01"
+        ],
+        [
+          "11",
+          "01"
+        ],
+        [
+          "11",
+          "10"
+        ]
+      ],
+      "maps": [
+        {
+          "repair00": "01",
+          "repair11": "01",
+          "p01": 0.75
+        },
+        {
+          "repair00": "01",
+          "repair11": "10",
+          "p01": 0.5
+        }
+      ],
+      "total": true,
+      "balanced": true
+    },
+    {
+      "mask": 14,
+      "edges": [
+        [
+          "00",
+          "10"
+        ],
+        [
+          "11",
+          "01"
+        ],
+        [
+          "11",
+          "10"
+        ]
+      ],
+      "maps": [
+        {
+          "repair00": "10",
+          "repair11": "01",
+          "p01": 0.5
+        },
+        {
+          "repair00": "10",
+          "repair11": "10",
+          "p01": 0.25
+        }
+      ],
+      "total": true,
+      "balanced": true
+    },
+    {
+      "mask": 15,
+      "edges": [
+        [
+          "00",
+          "01"
+        ],
+        [
+          "00",
+          "10"
+        ],
+        [
+          "11",
+          "01"
+        ],
+        [
+          "11",
+          "10"
+        ]
+      ],
+      "maps": [
+        {
+          "repair00": "01",
+          "repair11": "01",
+          "p01": 0.75
+        },
+        {
+          "repair00": "01",
+          "repair11": "10",
+          "p01": 0.5
+        },
+        {
+          "repair00": "10",
+          "repair11": "01",
+          "p01": 0.5
+        },
+        {
+          "repair00": "10",
+          "repair11": "10",
+          "p01": 0.25
+        }
+      ],
+      "total": true,
+      "balanced": true
+    }
+  ],
+  "checks": {
+    "graphs": 16,
+    "total_graphs": 9,
+    "balanced_graphs": 7,
+    "all_maps_respect_edges": true
+  },
+  "limits": [
+    "Not a Minesweeper simulation or measurement.",
+    "A passing predicate alone does not specify a target distribution.",
+    "No moral preference for rejection or repair.",
+    "No contributor endorsement implied."
+  ]
+}

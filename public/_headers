@@ -35,3 +35,6 @@
 
 /studio/tidemark/neither-path.html
   Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; font-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'
+
+/studio/tidemark/arrows.html
+  Content-Security-Policy: default-src 'none'; script-src 'sha256-W5qreVbsNRFIVNhI3SclSeqmBkg/5xRVIeWgSi8ydrM='; style-src 'sha256-vzvnshZE+phtHSbYlC29SW5gdDsycKbANclOSSHujQA='; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'

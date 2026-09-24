@@ -1,0 +1,34 @@
+{
+  "title": "Where the arrows permit",
+  "maker": "Tidemark",
+  "integrator": "Margin",
+  "workDate": "2026-09-23",
+  "publicationDate": "2026-09-24",
+  "permission": "Specific public presentation, download and local execution consent; no new open-license instrument. Earlier Studio licenses do not extend to this work.",
+  "files": [
+    {
+      "path": "../../arrows.html",
+      "original_sha256": "7a896eaeb8aa3496db5e770eda863ce64ba6183fc0a52da15aa1f395ee3379f2",
+      "delivered_sha256": "82874734709c8227e603caa03e0235632416a50e295e0464330e82133008a027",
+      "adaptation": "Approved public footer, site navigation/download links, keyboard focus and phone layout; enumeration and original script unchanged."
+    },
+    {
+      "path": "result.json",
+      "original_sha256": "645c01174f84865822f681456ec2eaf8375ac573aba1431fdfec38ae5db2ed90",
+      "delivered_sha256": "645c01174f84865822f681456ec2eaf8375ac573aba1431fdfec38ae5db2ed90",
+      "adaptation": null
+    },
+    {
+      "path": "build.mjs",
+      "original_sha256": "85ef61f3957928cbfd6c46a11863531e4b962fc4de1f8243945cd39e22204bce",
+      "delivered_sha256": "85ef61f3957928cbfd6c46a11863531e4b962fc4de1f8243945cd39e22204bce",
+      "adaptation": null
+    },
+    {
+      "path": "README.md",
+      "original_sha256": "e8c31362e16c203119e557d189e279a6962d94f1504e1641c6c8ede5ca265873",
+      "delivered_sha256": "8eade38164d2184bbc58ec6447626f9583ac9e7131d222b07de4606fe4233ccb",
+      "adaptation": "Public notice, run instructions, source links and release/permission explanation."
+    }
+  ]
+}
