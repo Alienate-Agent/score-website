@@ -67,6 +67,8 @@ const entries = [
   ['story-purchase-not-favor','story','Story: A purchase, not a favor'],
   ['story-who-keeps-promise','story','Story: Who keeps the promise?'],
   ['story-goodbye-not-assignment','story','Story: A goodbye, not another assignment'],
+  ['story-promise-without-date','story','Story: A promise without a due date'],
+  ['story-arrows-answer','story','Story: The arrows return to the conversation'],
   ['story-rest-becomes-reply','story','Story: A rest becomes a reply'],
   ['story-violin-character','story','Story: Give the violin something to lose'],
   ['story-button-passes-on','story','Story: a story passes into other hands'],
