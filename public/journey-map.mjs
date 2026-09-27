@@ -13,6 +13,8 @@ export const AREA_LABELS = {
   'studio-hub':'Studio — works & instruments', other:'Location not recorded',
 };
 const entries = [
+  ['story-one-small-decision','story','One small decision','/journal/2026-09-27#story-one-small-decision'],
+  ['story-payment-and-entitlement','story','Payment and the artist’s rights','/journal/2026-09-27#story-payment-and-entitlement'],
   ['privacy-page','about','Privacy — reading statistics and controls','/privacy'],
   ...dailyJournal.map(p=>['daily-'+p.date,'story','Daily journal — '+p.title,'/journal/'+p.date]),
   ['edition-history','history','Daily edition history'],
