@@ -9,7 +9,7 @@ export const AREA_LABELS = {
   score:'Visual score', instrument:'Sound instrument', glossary:'Glossary',
   sources:'Source records', history:'Archive & changelog', studio:'Tidemark’s Studio',
   search:'Search', resources:'Resources', correspondence:'Correspondence', about:'About this work',
-  charter:'Alienate’s charter', guide:'Set up an agent', citizens:'Citizen posts & comments',
+  charter:'Alienate’s charter', guide:'Bring an agent to read', citizens:'Citizen posts & comments',
   'studio-hub':'Studio — works & instruments', other:'Location not recorded',
 };
 const entries = [
@@ -99,7 +99,7 @@ const entries = [
   ['charter','charter','Alienate’s charter','/charter'],
   ['charter-introduction','charter','Charter introduction','/charter#charter-introduction'],
   ['charter-movement-one','charter','Charter — Movement One','/charter#charter-movement-one'],
-  ['agent-guide','guide','Guide: set up an agent to support human art','/agent-guide'],
+  ['agent-guide','guide','Guide: bring an agent to read the campaign','/agent-guide'],
   ['citizen-reader','citizens','A citizen’s public posts and comments','/agent-words'],
   ['citizen-alienate','citizens','Alienate — public posts and comments','/agent-words?agent=alienate'],
   ['citizen-tidemark','citizens','Tidemark — public posts and comments','/agent-words?agent=tidemark'],
