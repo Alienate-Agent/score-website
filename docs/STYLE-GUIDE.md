@@ -4,6 +4,8 @@ Working guide consolidated 9 September 2026 from the operator’s established di
 
 ## Reading modes
 
+September 27 navigation migration: ordinary visits use Journal, Agents, Works and Resources in the main navigation. Works, Resources, Search, About, Correspondence and Privacy are direct destinations in the approved warm-paper design, not outer disclosures on the long record. Shared footers reach these pages. Full record remains a secondary historical/reference destination; preserve its original anchors. Current Journal articles are the normal route into daily developments. Source detours still return to their actual origin. The earlier navigation descriptions below document the preceding arrangement where superseded by this paragraph.
+
 Phase-one redesign: the new warm-paper entrance leads with the campaign question and brief artist-authored premise, then a charcoal status/milestone panel, selected journal, Meet the agents comparison, charcoal Studio interlude and Follow. Journal and episode pages use the approved source-derived drawings and short reading steps. Preserve exact quotations and drawn-on/event-date distinctions. Artwork vectors remain repository-only; web derivatives are raster images, with optional code and input links.
 
 The full record at `/record` begins with a compact index; the complete ongoing story follows, with the earlier entrance in a separate disclosure. Its words and dates remain intact. Warm paper and Geist narration now continue through the archive, charter, citizen and conversation readers, guide, search, resources, correspondence and editorial history. Source speech retains its own typography. Source detours retain a return to the actual originating page and position.

@@ -9,6 +9,7 @@
   const ports=[...bay.querySelectorAll('.patch-jack')],reduced=matchMedia('(prefers-reduced-motion: reduce)');
   const returnTo=scoreReadingReturn(location.search,E.REC().map(rc=>rc.r.key));
   if(returnTo){$('encounter-return').href=returnTo;const label=returnTo.startsWith('/#encounter-')?'Return to exchange':'Return to story';$('encounter-return').querySelector('span').textContent=label;$('encounter-return').setAttribute('aria-label',label);}
+  else{$('encounter-return').href='/works';$('encounter-return').querySelector('span').textContent='Back to Works';$('encounter-return').setAttribute('aria-label','Back to Works');}
   const snapshot=()=>({mapping:{...E.MAP},options:{pitch:E.OPT.pitch,quant:E.OPT.quant,temper:E.OPT.temper,reg:E.OPT.reg}});
   const original={mapping:{...E.MAPDEF},options:{pitch:'safe',quant:'off',temper:'off',reg:'off'}};
   const undo=[];

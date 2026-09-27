@@ -28,7 +28,10 @@ const localBindingConfig = {
     binding: 'ASSETS',
     // HTML pages need hostname redirects; images, fonts and data remain served
     // directly as assets. Discover pages so new Studio pages cannot drift.
-    run_worker_first: [...Object.keys(ENTRANCE_ROUTES), ...Object.keys(ENTRANCE_ALIASES), ...PREPARED_PAGES, ...PREPARED_PAGES.map(p=>p+'/'), '/_pages/*', ...readdirSync(new URL('./public/',import.meta.url),{recursive:true})
+    // One bounded Journal prefix also covers future dated entries, keeping the
+    // routing list below the platform's 100-rule limit. The Worker still uses
+    // its explicit public document map and returns 404 for unknown routes.
+    run_worker_first: ['/journal/*', ...Object.keys(ENTRANCE_ROUTES).filter(p=>!p.startsWith('/journal/')), ...Object.keys(ENTRANCE_ALIASES), ...PREPARED_PAGES, ...PREPARED_PAGES.map(p=>p+'/'), '/_pages/*', ...readdirSync(new URL('./public/',import.meta.url),{recursive:true})
       .filter((name): name is string => typeof name === 'string' && name.endsWith('.html'))
       .map(name => '/'+name)].filter((value,index,all)=>all.indexOf(value)===index),
   },

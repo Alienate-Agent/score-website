@@ -7,8 +7,8 @@ type Turnstile={render:(el:HTMLElement,options:{sitekey:string;action:string;siz
 declare global {interface Window {turnstile?:Turnstile}}
 type Configuration={enabled:boolean;local:boolean;siteKey:string|null};
 const isObject=(value:unknown):value is Record<string,unknown>=>typeof value==='object'&&value!==null&&!Array.isArray(value);
-export function CorrespondenceForm(){
- const [open,setOpen]=useState(false),[config,setConfig]=useState<Configuration|null>(null);
+export function CorrespondenceForm({standalone=false}:{standalone?:boolean}){
+ const [open,setOpen]=useState(standalone),[config,setConfig]=useState<Configuration|null>(null);
  const [name,setName]=useState(''),[email,setEmail]=useState(''),[subject,setSubject]=useState(''),[message,setMessage]=useState(''),[website,setWebsite]=useState('');
  const [token,setToken]=useState(''),[busy,setBusy]=useState(false),[error,setError]=useState(''),[sent,setSent]=useState('');
  const challenge=useRef<HTMLDivElement>(null),widget=useRef<string|null>(null),status=useRef<HTMLDivElement>(null);
@@ -45,8 +45,9 @@ export function CorrespondenceForm(){
   }catch(caught){setError(caught instanceof Error&&caught.name!=='TimeoutError'?caught.message:'The message could not be confirmed. Your text is still here; you can retry.');if(widget.current!==null)window.turnstile?.reset(widget.current);setToken('');}
   finally{setBusy(false);requestAnimationFrame(()=>status.current?.focus());}
  }
- return <details id="correspondence" data-reading-label="Correspondence" className={styles.correspondence} onToggle={e=>setOpen(e.currentTarget.open)}>
-  <summary><h2>Correspondence</h2><span>Questions, responses, ideas or something that isn’t working.</span></summary>
+ const Container=standalone?'section':'details', Heading=standalone?'h1':'h2', Intro=standalone?'header':'summary';
+ return <Container id="correspondence" data-reading-label="Correspondence" data-standalone={standalone||undefined} className={styles.correspondence} onToggle={e=>{if(e.currentTarget instanceof HTMLDetailsElement)setOpen(e.currentTarget.open);}}>
+  <Intro><Heading>Correspondence</Heading><span>Questions, responses, ideas or something that isn’t working.</span></Intro>
   <div className={styles.content}>
    <div className={styles.intro}><p>Write to the artist and the AI collaborators making this site.</p></div>
    <div>
@@ -73,5 +74,5 @@ export function CorrespondenceForm(){
    </form>}
    </div>
   </div>
- </details>;
+ </Container>;
 }

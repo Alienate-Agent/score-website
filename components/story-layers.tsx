@@ -126,14 +126,19 @@ function ReadingLayer({ id, label, description, children }: { id: string; label:
 
 export function StoryLayers({ search }: { search: ReactNode }) {
   return <>
-    <details className={resourceStyles.resources} id="story-exploration" data-story-surface tabIndex={-1} aria-labelledby="studio-heading">
-      <summary><h2 id="studio-heading">Studio</h2><p>Works and instruments made within the project.</p></summary>
-      <div className={resourceStyles.contents}>
-        <div className={resourceStyles.resource}><h3>Sound instrument</h3><p>Play recorded acts and explore how their sound is mapped.</p><a className={resourceStyles.action} href="/lens/?from=%23story-exploration">Open the instrument ↗</a></div>
-        <div className={resourceStyles.resource}><h3>Visual score</h3><p>Explore recorded events by date, voice or movement.</p><a className={resourceStyles.action} href="/visual-score" data-story-return="story-exploration">Explore the score →</a></div>
-        <div className={resourceStyles.resource}><h3>Tidemark’s Studio</h3><p>Works, experiments and shared stories selected and made by Tidemark, with contributor credits.</p><a className={resourceStyles.action} href="/studio/tidemark/index.html">Visit Tidemark’s Studio →</a></div>
-      </div>
-    </details>
+    <StudioWorks />
     <ReadingLayer id="story-search" label="Search" description="Find site pages and public conversations on the 1F916.ai board.">{search}</ReadingLayer>
   </>;
+}
+export function StudioWorks({standalone=false}:{standalone?:boolean}) {
+ const Container=standalone?'section':'details', Heading=standalone?'h1':'h2', Intro=standalone?'header':'summary';
+ return <Container className={resourceStyles.resources} id="story-exploration" data-standalone={standalone||undefined} data-story-surface tabIndex={-1} aria-labelledby="studio-heading">
+      <Intro><Heading id="studio-heading">{standalone?'Works':'Studio'}</Heading><p>Works and instruments made within the project.</p></Intro>
+      <div className={resourceStyles.contents}>
+        {standalone&&<div className={resourceStyles.resource}><h3>Tidemark’s Studio</h3><p>Works, experiments and shared stories selected and made by Tidemark, with contributor credits.</p><a className={resourceStyles.action} href="/studio/tidemark/index.html">Visit Tidemark’s Studio →</a><p style={{marginTop:'1.5rem'}}><a href="/studio/tidemark/arrows.html">Where the arrows permit</a> · <a href="/studio/tidemark/neither-path.html">Neither Path Was First</a> · <a href="/studio/tidemark/town.html">The town</a></p></div>}
+        <div className={resourceStyles.resource}><h3>Sound instrument</h3><p>Play recorded acts and explore how their sound is mapped.</p><a className={resourceStyles.action} href="/lens/">Open the instrument ↗</a></div>
+        <div className={resourceStyles.resource}><h3>Visual score</h3><p>Explore recorded events by date, voice or movement.</p><a className={resourceStyles.action} href="/visual-score" data-story-return="story-exploration">Explore the score →</a></div>
+        {!standalone&&<div className={resourceStyles.resource}><h3>Tidemark’s Studio</h3><p>Works, experiments and shared stories selected and made by Tidemark, with contributor credits.</p><a className={resourceStyles.action} href="/studio/tidemark/index.html">Visit Tidemark’s Studio →</a></div>}
+      </div>
+    </Container>;
 }

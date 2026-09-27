@@ -13,7 +13,7 @@ const reviewPath=times.match(/import boardReview from '@\/([^']+)'/)[1];
 const checked=JSON.parse(readFileSync(resolve(root,reviewPath),'utf8')).observed_at;
 const utc=value=>new Date(value).toISOString().replace('T',' ').replace(/\.\d{3}Z$/,' UTC');
 const routes={'index.html':'/','journal.html':'/journal','episode.html':'/episode','journal-missing-post.html':'/journal/missing-post','journal-who-owes.html':'/journal/who-owes','journal-one-ballot.html':'/journal/one-ballot'};
-const footer=`<footer><span>SCORE · An ongoing artwork</span><nav aria-label="More from the artwork"><a href="/record">Full record</a><a href="/record#resources">Resources</a><a href="/record#all-record-search">Search</a><a href="/record#correspondence">Correspondence</a><a href="/record#story-about">About</a><a href="/featured">Previously featured</a><a href="/changelog">Website changelog</a><a href="/record#score-privacy">Privacy</a></nav><div class="footer-update-times"><p>Site updated <time datetime="${updated}">${utc(updated)}</time></p><p>Campaign review · 1F916.ai board <time datetime="${checked}">${utc(checked)}</time></p></div></footer>`;
+const footer=`<footer><span>SCORE · An ongoing artwork</span><nav aria-label="More from the artwork"><a href="/record">Full record</a><a href="/resources">Resources</a><a href="/search">Search</a><a href="/correspondence">Correspondence</a><a href="/about">About</a><a href="/featured">Previously featured</a><a href="/changelog">Website changelog</a><a href="/privacy">Privacy</a></nav><div class="footer-update-times"><p>Site updated <time datetime="${updated}">${utc(updated)}</time></p><p>Campaign review · 1F916.ai board <time datetime="${checked}">${utc(checked)}</time></p></div></footer>`;
 mkdirSync(output,{recursive:true});
 for(const [file,route] of Object.entries(routes)){
  let html=readFileSync(resolve(input,file),'utf8');
@@ -35,11 +35,11 @@ for(const [file,route] of Object.entries(routes)){
  html=html.replace('creative labour behind its training','creative labor behind its training');
  if(file==='index.html'){
    const summary=esc(storyPresent.compactSummary);
-   html=html.replace(/<div class="status-body">[\s\S]*?<div class="goal-path"/,`<div class="status-body"><p>${summary}</p><p class="reminder">No art purchase through the campaign is recorded in the reviewed material. The artists are still owed.</p><div class="status-bottom"><time datetime="${storyPresent.asOf}">Reviewed ${esc(storyPresent.label)}</time><a href="/record#story-recent-developments">Read the developments</a></div></div>\n<div class="goal-path"`);
+   html=html.replace(/<div class="status-body">[\s\S]*?<div class="goal-path"/,`<div class="status-body"><p>${summary}</p><p class="reminder">No art purchase through the campaign is recorded in the reviewed material. The artists are still owed.</p><div class="status-bottom"><time datetime="${storyPresent.asOf}">Reviewed ${esc(storyPresent.label)}</time><a href="/journal/${storyPresent.asOf}">Read the update</a></div></div>\n<div class="goal-path"`);
    html=html.replace('</head>','<script type="module" src="/entrance/legacy-links.js"></script></head>');
  }
  html=html.replace('</head>',`<link rel="stylesheet" href="/entrance/site-continuity.css"><link rel="canonical" href="https://taasoart.com${route}"></head>`);
- const primary=`<nav aria-label="Main"><a href="/journal"${file.startsWith('journal')||file==='episode.html'?' aria-current="page"':''}>Journal</a><a href="/#agents">Agents</a><a href="/#works">Works</a><a href="/record">Record</a></nav>`;
+ const primary=`<nav aria-label="Main"><a href="/journal"${file.startsWith('journal')||file==='episode.html'?' aria-current="page"':''}>Journal</a><a href="/#agents">Agents</a><a href="/works">Works</a><a href="/resources">Resources</a></nav>`;
  html=html.replace(/<header class="masthead">([\s\S]*?)<\/header>/,(_,content)=>{
    const identity=content.match(/<a[^>]*class="identity"[\s\S]*?<\/a>/)?.[0];
    if(!identity)throw new Error(`Missing site identity in ${file}`);

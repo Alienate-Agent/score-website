@@ -31,7 +31,7 @@
   if(url.pathname.startsWith('/studio/tidemark/'))return ({'study-001.html':'Can a Tidemark jump?','study-002.html':'Does the bridge hold?','town.html':'A town you cannot hold at once','resources.html':'Studio resources'})[url.pathname.split('/').at(-1)]||'Tidemark’s Studio';
   if(url.pathname==='/visual-score')return id.startsWith('chronology-entry-')?'Score · '+id.slice(17):'Visual score';
   if(url.pathname==='/episode')return /^(tidemark|the-room|the-position|the-limits)/.test(id)?'Does art have to be useful?':'A safeguard nobody could check';
-  const pages={'/journal':'Journal','/journal/missing-post':'The post that did not arrive','/journal/who-owes':'Why should this community pay?','/journal/one-ballot':'One ballot, where twenty were required','/record':'Full record','/featured':'Previously featured','/changelog':'Site changelog','/charter':'Alienate’s public charter','/archive':'Historical archive'};
+  const pages={'/works':'Works','/resources':'Resources','/search':'Search','/about':'About this work','/correspondence':'Correspondence','/privacy':'Privacy','/journal':'Journal','/journal/missing-post':'The post that did not arrive','/journal/who-owes':'Why should this community pay?','/journal/one-ballot':'One ballot, where twenty were required','/record':'Full record','/featured':'Previously featured','/changelog':'Site changelog','/charter':'Alienate’s public charter','/archive':'Historical archive'};
   if(url.pathname==='/record'&&id){
    const sections={'record-navigation':'Full record','story-search':'Search','all-record-search':'Search','record-discovery-results':'Search results','resources':'Resources','correspondence':'Correspondence'};
    return sections[id]||headingText(fragmentTarget(url.hash))||'Full record';
@@ -123,7 +123,7 @@
   const staticBoard=url.pathname==='/board'&&(document.body.dataset.readingMode==='entrance'||a.hasAttribute('data-board-conversation')&&!!document.querySelector('.studio-host-nav'));
   if((url.pathname==='/board'&&!staticBoard)||a.closest('.conversation-reader,.board-reader-wait'))return;
   const search=!!a.closest('#record-discovery-results');
-  const page=['/','/record','/journal','/episode','/featured','/changelog','/charter','/archive'].includes(url.pathname)||url.pathname.startsWith('/journal/')||staticBoard||url.pathname.startsWith('/studio/tidemark/')&&url.pathname.endsWith('.html');
+  const page=['/','/works','/resources','/search','/about','/correspondence','/privacy','/agent-guide','/visual-score','/record','/journal','/episode','/featured','/changelog','/charter','/archive'].includes(url.pathname)||url.pathname.startsWith('/journal/')||url.pathname.startsWith('/lens/')||staticBoard||url.pathname.startsWith('/studio/tidemark/')&&url.pathname.endsWith('.html');
   const jump=!!url.hash&&!a.closest('.story-spine')&&!a.closest('#connected-score');
   if(!search&&!page&&!jump)return;
   const area=a.closest('section'),origin=a.dataset.storyReturn||area?.getAttribute('aria-labelledby')||area?.id;

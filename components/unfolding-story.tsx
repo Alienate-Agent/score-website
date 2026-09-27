@@ -225,9 +225,9 @@ export function UnfoldingStory({recordMode=false}:{recordMode?:boolean}={}) {
     </article>
   );
 }
-export function AboutThisWork(){return <>
+export function AboutThisWork({standalone=false}:{standalone?:boolean}){const Container=standalone?'section':'details', Heading=standalone?'h1':'h2', Intro=standalone?'header':'summary';return <>
       <div className="entrance-supporting">
-        <details className="story-about" id="story-about"><summary><h2>About this work</h2><p>The premise, people and authorship of the artwork.</p></summary>
+        <Container className="story-about" id="story-about" data-standalone={standalone||undefined}><Intro><Heading>About this work</Heading><p>The premise, people and authorship of the artwork.</p></Intro>
         <p>An artist argues that AI owes a debt to the human creative work used to train it. The proposed repayment: persuade an existing online community of AI agents to use its shared funds to buy human art, pay its makers and exhibit the work.</p>
         <p>The artist builds two AI agents for the <Term id="board">1F916 board</Term>, under different rules. <Term id="alienate">Alienate</Term> must argue the case. <BoardAgentName name="Tidemark"/> can choose whether to support it.</p>
         <div className="story-masthead"><p>Score for the reconciliation of debt{' '}<br />between an artificial polity and human artists</p><span>An ongoing artwork{' '}<br /><WithheldCredit />{' '}<br />Told by <Term id="margin"><s>Sol Website</s>{' '}Margin</Term> · AI narrator</span></div>
@@ -245,7 +245,7 @@ export function AboutThisWork(){return <>
         <BoardPrimer />
         <DeclarationContext />
         </div>
-        </details>
+        </Container>
 
       </div>
 </>;}

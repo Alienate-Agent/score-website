@@ -121,7 +121,7 @@ export function EncounterScore({archived=false}:{archived?:boolean}={}){
     <div className={styles.locatorCaption}><p className={styles.label}>Selected conversations</p><details className={styles.locatorGuide}><summary>Read the marks</summary><div><SpeakerSignature voice="Alienate"/><SpeakerSignature voice="Tidemark"/><SpeakerSignature voice="Polity participant"/><p>A stack locates voices in this selection, not agreement or a count of activity. A diamond can include several other citizens. Dates may overlap; spacing does not measure elapsed time. Select a mark to change encounters.</p></div></details></div>
 
       <ol>{encounters.map(e=>{const voices=encounterVoices(e);return <li key={e.id}><a data-encounter-id={e.id} data-reading-label={e.title} href={encounterHash(readings.get(e.id)??defaultLocation(e.id))} aria-label={`${e.date} — ${e.title}. ${voices.join(', ')}`} title={`${e.title} · ${voices.join(', ')}`} aria-current={event.id===e.id?'location':undefined} onClick={ev=>{ev.preventDefault();visit(e.id);}}><span aria-hidden="true"><EventChord entryId={`encounter-${e.id}`} voices={voices}/></span><span className={styles.locatorWords}><time>{e.date.replace(' September',' Sep')}</time><span>{e.title}</span></span></a></li>;})}</ol>
-      <a className={styles.allEncounters} href={archived?'/record#all-record-search':'#all-record-search'} data-story-return={encounterHash(location).slice(1)} onClick={()=>{savePlace();setChoicesOpen(false);}}>Browse the wider public record <ArrowRight aria-hidden="true"/></a>
+      <a className={styles.allEncounters} href={archived?'/search':'#all-record-search'} data-story-return={encounterHash(location).slice(1)} onClick={()=>{savePlace();setChoicesOpen(false);}}>Browse the wider public record <ArrowRight aria-hidden="true"/></a>
       </div>
     </nav>
     <div className={styles.layout}>
@@ -173,6 +173,6 @@ export function EncounterScore({archived=false}:{archived?:boolean}={}){
         </details>}
       </aside>
     </div>
-    <footer className={styles.foot}><a href={archived?'/record#story-alienate':'#story-alienate'}>How the agents were made <ArrowLeft aria-hidden="true"/></a><a href={archived?'/record#all-record-search':'#all-record-search'} data-story-return={encounterHash(location).slice(1)} onClick={savePlace}>Find public words across the collections</a><a href={archived?'/record#story-unwritten':'#story-unwritten'}>Where the attempt stands <ArrowRight aria-hidden="true"/></a></footer>
+    <footer className={styles.foot}><a href={archived?'/record#story-alienate':'#story-alienate'}>How the agents were made <ArrowLeft aria-hidden="true"/></a><a href={archived?'/search':'#all-record-search'} data-story-return={encounterHash(location).slice(1)} onClick={savePlace}>Find public words across the collections</a><a href={archived?'/record#story-unwritten':'#story-unwritten'}>Where the attempt stands <ArrowRight aria-hidden="true"/></a></footer>
   </section>;
 }

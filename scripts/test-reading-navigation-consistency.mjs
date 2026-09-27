@@ -29,7 +29,7 @@ const layer=read('components/board-reader-layer.tsx');
 assert.ok(layer.includes("document.addEventListener('click',follow);"),'drag suppression runs first');
 assert.ok(layer.includes('if(!isOpen.current)origin.current=from;'),'cross-references preserve the original return target');
 assert.ok(layer.includes("pageReturnControl()?.textContent||'Back to search'"),'page readers identify their actual return destination');
-assert.ok(layer.includes("if(back)back.click();else location.assign('/#all-record-search')"),'Studio page return uses shared focus/scroll restoration; direct links still reach search');
+assert.ok(layer.includes("if(back)back.click();else location.assign('/search')"),'Studio page return uses shared focus/scroll restoration; direct links still reach search');
 const reader=read('components/conversation-reader.tsx');
 assert.ok(reader.includes('<header><DialogClose className="conversation-return"'));
 assert.ok(!reader.includes('Close ×'));

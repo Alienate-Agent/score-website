@@ -203,6 +203,6 @@ window.__scoreJourneysReady = (async () => {
   function labels(){opt.textContent=off?'Allow reading statistics':'Turn off reading statistics';test.textContent=tester().tester?'Tester browser · include again':'Mark this browser as a tester';townPreference();}
   opt.onclick=()=>{off=!off;queue=[];storage.put('score-analytics-off',off?1:0);labels();};
   test.onclick=()=>{const current=tester();storage.put('score-analytics-tester',{tester:!current.tester,at:Date.now()});mark('active',{area,target},0);void flush();labels();};
-  labels();notice.append(summary,text,opt,test);document.body.append(notice);
+  labels();notice.append(summary,text,opt,test);const privacyHost=document.getElementById('privacy-controls');if(privacyHost){const mount=()=>{notice.open=true;privacyHost.replaceChildren(notice);};if(document.body.dataset.readingReturnReady==='true')mount();else window.addEventListener('score-reading-ready',mount,{once:true});}else document.body.append(notice);
   return true;
 })();

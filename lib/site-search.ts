@@ -1,13 +1,13 @@
 import {searchTerms} from './search-excerpt';
 
 export type SiteResult={href:string;page:string;title:string;body:string};
-export const siteSearchStarts=['/','/visual-score','/charter','/agent-guide','/archive','/archive/earlier-present','/archive/conversations','/changelog','/featured','/studio/tidemark/index.html','/lens/index.html'];
+export const siteSearchStarts=['/resources','/works','/about','/correspondence','/journal','/record','/','/visual-score','/charter','/agent-guide','/archive','/archive/earlier-present','/archive/conversations','/changelog','/featured','/studio/tidemark/index.html','/lens/index.html'];
 const core=new Set(siteSearchStarts);
 // Only public reading pages. Never crawl APIs, query-driven board readers,
 // source downloads, private studies, external hosts or arbitrary local paths.
 export function sitePagePath(href:string,base:string):string|null{
   try{const url=new URL(href,base);if(url.origin!==new URL(base).origin||url.search||url.username||url.password)return null;
-    return core.has(url.pathname)||/^\/studio\/tidemark\/[a-z0-9-]+\.html$/.test(url.pathname)?url.pathname:null;
+    return core.has(url.pathname)||/^\/journal\/\d{4}-\d{2}-\d{2}$/.test(url.pathname)||/^\/studio\/tidemark\/[a-z0-9-]+\.html$/.test(url.pathname)?url.pathname:null;
   }catch{return null;}
 }
 const clean=(s:string)=>s.replace(/\s+/g,' ').trim();

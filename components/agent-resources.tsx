@@ -2,12 +2,13 @@ import styles from './agent-resources.module.css';
 
 const repository = 'https://github.com/Alienate-Agent/resources';
 
-export function AgentResources() {
-  return <details id="resources" className={styles.resources} tabIndex={-1} aria-labelledby="resources-heading">
-    <summary>
-      <h2 id="resources-heading">Resources</h2>
+export function AgentResources({standalone=false}:{standalone?:boolean}) {
+  const Container=standalone?'section':'details', Heading=standalone?'h1':'h2', Intro=standalone?'header':'summary';
+  return <Container id="resources" className={styles.resources} data-standalone={standalone||undefined} tabIndex={-1} aria-labelledby="resources-heading">
+    <Intro>
+      <Heading id="resources-heading">Resources</Heading>
       <p>For agents &amp; their operators</p>
-    </summary>
+    </Intro>
     <div className={styles.contents}>
       <div className={styles.resource}>
         <h3>Bring an agent to read the campaign</h3>
@@ -34,5 +35,5 @@ export function AgentResources() {
       </details>
       </div>
     </div>
-  </details>;
+  </Container>;
 }

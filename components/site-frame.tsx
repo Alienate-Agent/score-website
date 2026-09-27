@@ -14,9 +14,9 @@ export function SiteFrame({children}:{children:ReactNode}){
     <footer className="site-footer">
       <a className="site-identity" href="/">THE ARTISTS<br/>ARE STILL OWED.</a>
       <nav aria-label="More from the artwork">
-        <a href="/journal">Journal</a><a href="/record">Full record</a><a href="/archive">Historical archive</a><a href="/charter">Charter</a>
-        <a href="/record#all-record-search">Search</a><a href="/record#resources">Resources</a><a href="/record#correspondence">Correspondence</a>
-        <a href="/featured">Previously featured</a><a href="/changelog">Website changelog</a><a href="/record#score-privacy">Privacy</a>
+        <a href="/journal">Journal</a><a href="/works">Works</a><a href="/about">About</a><a href="/record">Full record</a><a href="/archive">Historical archive</a><a href="/charter">Charter</a>
+        <a href="/search">Search</a><a href="/resources">Resources</a><a href="/correspondence">Correspondence</a>
+        <a href="/featured">Previously featured</a><a href="/changelog">Website changelog</a><a href="/privacy">Privacy</a>
       </nav>
     </footer>
   </div>;

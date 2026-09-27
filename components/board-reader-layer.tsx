@@ -17,7 +17,7 @@ export function BoardReaderLayer(){
   const pending=useRef<AbortController|null>(null),sequence=useRef(0);
   const isOpen=useRef(false);
   const [returnLabel,setReturnLabel]=useState('Back to reading');
-  const close=useCallback(()=>{sequence.current++;pending.current?.abort();pending.current=null;isOpen.current=false;setSource(null);setReading(null);setBusy(false);if(location.pathname==='/board'){const back=pageReturnControl();if(back)back.click();else location.assign('/#all-record-search');}},[]);
+  const close=useCallback(()=>{sequence.current++;pending.current?.abort();pending.current=null;isOpen.current=false;setSource(null);setReading(null);setBusy(false);if(location.pathname==='/board'){const back=pageReturnControl();if(back)back.click();else location.assign('/search');}},[]);
   const open=useCallback(async(object:BoardObject,from:HTMLElement|null)=>{
     const serial=++sequence.current;pending.current?.abort();
     // Cross-references replace the conversation, but retain the page and trigger

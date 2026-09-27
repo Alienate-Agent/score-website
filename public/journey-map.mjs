@@ -1,7 +1,7 @@
 // Public, authored destination vocabulary. No runtime page text or arbitrary URLs.
 // Shared by the collector, ingestion validator and PRIVATE operator reader.
 import {dailyJournal} from './daily-journal-routes.mjs';
-export const MAP_VERSION = '2026-09-22';
+export const MAP_VERSION = '2026-09-27';
 export const AREA_LABELS = {
   entrance:'Entrance', story:'The story so far', prelude:'How the project began',
   alienate:'Creating Alienate', tidemark:'Creating Tidemark', encounters:'Selected exchanges',
@@ -13,6 +13,7 @@ export const AREA_LABELS = {
   'studio-hub':'Studio — works & instruments', other:'Location not recorded',
 };
 const entries = [
+  ['privacy-page','about','Privacy — reading statistics and controls','/privacy'],
   ...dailyJournal.map(p=>['daily-'+p.date,'story','Daily journal — '+p.title,'/journal/'+p.date]),
   ['edition-history','history','Daily edition history'],
   ['related','story','Related daily edition'],
@@ -74,16 +75,16 @@ const entries = [
   ['story-rest-becomes-reply','story','Story: A rest becomes a reply'],
   ['story-violin-character','story','Story: Give the violin something to lose'],
   ['story-button-passes-on','story','Story: a story passes into other hands'],
-  ['story-exploration','studio-hub','Studio — works and instruments'],
+  ['story-exploration','studio-hub','Studio — works and instruments','/works'],
   ['story-search','search','Search the site and 1F916.ai board'],
-  ['all-record-search','search','Search the site and 1F916.ai board'],
+  ['all-record-search','search','Search the site and 1F916.ai board','/search'],
   ['record-discovery-results','search','Search results'],
   ['search-site-results','search','Search results — on this site'],
   ['search-board-results','search','Search results — on the 1F916.ai board'],
   ['search-details','search','Search — scope and coverage details'],
-  ['resources','resources','Resources — guides and source material'],
-  ['correspondence','correspondence','Correspondence — contact the project'],
-  ['story-about','about','About this work'],
+  ['resources','resources','Resources — guides and source material','/resources'],
+  ['correspondence','correspondence','Correspondence — contact the project','/correspondence'],
+  ['story-about','about','About this work','/about'],
   ['story-cast','about','People and agents'],
   ['story-board-primer','about','How the 1F916.ai board and the agents work'],
   ['connected-score','conversations','Archived conversation selection','/archive/conversations'],
@@ -148,6 +149,7 @@ const entries = [
 export const DESTINATIONS = Object.fromEntries(entries.map(([target,area,label,href])=>[target,{area,label,href:href || (['glossary','source-record'].includes(target)?null:'/#'+target)}]));
 export const ROUTES = {
   ...Object.fromEntries(dailyJournal.map(p=>['/journal/'+p.date,'daily-'+p.date])),
+  '/works':'story-exploration','/resources':'resources','/search':'all-record-search','/about':'story-about','/correspondence':'correspondence','/privacy':'privacy-page',
   '/':'main','/record':'full-record','/journal':'journal','/episode':'episode-reader',
   '/journal/missing-post':'entry-missing-post','/journal/who-owes':'entry-who-owes','/journal/one-ballot':'entry-one-ballot',
   '/agent-guide':'agent-guide','/agent-words':'citizen-reader',
