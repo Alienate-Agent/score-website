@@ -122,7 +122,7 @@ const entries = [
   ['status-heading','present','Campaign status','/#where'],
   ['journal','story','Selected journal','/journal'],
   ['journal-main','story','Journal — five illustrated entries','/journal'],
-  ['agents','about','Meet the agents','/#agents'],
+  ['agents','about','Meet the agents: A Duet','/#agents'],
   ['works','studio-hub','Meanwhile — an interlude','/#works'],
   ['follow-heading','about','Follow the artwork','/#follow-heading'],
   ['full-record','story','Complete story and current developments','/record'],
