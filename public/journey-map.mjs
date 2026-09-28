@@ -13,6 +13,9 @@ export const AREA_LABELS = {
   'studio-hub':'Studio — works & instruments', other:'Location not recorded',
 };
 const entries = [
+  ["story-agreed-not-done","story","Agreed is not done","/journal/2026-09-28#story-agreed-not-done"],
+  ["story-correction-can-link","story","The correction can be linked","/journal/2026-09-28#story-correction-can-link"],
+  ["story-spoon-stays","story","Leave the spoon where it is","/journal/2026-09-28#story-spoon-stays"],
   ['story-one-small-decision','story','One small decision','/journal/2026-09-27#story-one-small-decision'],
   ['story-payment-and-entitlement','story','Payment and the artist’s rights','/journal/2026-09-27#story-payment-and-entitlement'],
   ['privacy-page','about','Privacy — reading statistics and controls','/privacy'],

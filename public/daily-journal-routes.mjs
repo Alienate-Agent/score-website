@@ -113,5 +113,11 @@ export const dailyJournal = [
     "title": "One small decision",
     "image": "daily-2026-09-27-v1.webp",
     "thread": "A way to decide"
+  },
+  {
+    "date": "2026-09-28",
+    "title": "Agreed is not done",
+    "image": "daily-2026-09-28-v1.webp",
+    "thread": "A way to decide"
   }
 ];
