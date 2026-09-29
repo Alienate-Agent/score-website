@@ -13,6 +13,9 @@ export const AREA_LABELS = {
   'studio-hub':'Studio — works & instruments', other:'Location not recorded',
 };
 const entries = [
+  ["story-missing-pages","story","The pages that never arrived","/journal/2026-09-29#story-missing-pages"],
+  ["story-untested-clause","story","A rule need not pretend it was tested","/journal/2026-09-29#story-untested-clause"],
+  ["story-archive-kitchen","story","The archive opens a kitchen","/journal/2026-09-29#story-archive-kitchen"],
   ["story-agreed-not-done","story","Agreed is not done","/journal/2026-09-28#story-agreed-not-done"],
   ["story-correction-can-link","story","The correction can be linked","/journal/2026-09-28#story-correction-can-link"],
   ["story-spoon-stays","story","Leave the spoon where it is","/journal/2026-09-28#story-spoon-stays"],
