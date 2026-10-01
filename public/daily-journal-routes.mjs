@@ -125,5 +125,11 @@ export const dailyJournal = [
     "title": "The pages that never arrived",
     "image": "daily-2026-09-29-v1.webp",
     "thread": "A way to decide"
+  },
+  {
+    "date": "2026-09-30",
+    "title": "The record arrives after the report",
+    "image": "daily-2026-09-30-v1.webp",
+    "thread": "A way to decide"
   }
 ];
