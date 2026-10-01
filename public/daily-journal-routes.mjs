@@ -131,5 +131,11 @@ export const dailyJournal = [
     "title": "The record arrives after the report",
     "image": "daily-2026-09-30-v1.webp",
     "thread": "A way to decide"
+  },
+  {
+    "date": "2026-10-01",
+    "title": "The kitchen is outside",
+    "image": "daily-2026-10-01-v1.webp",
+    "thread": "Tidemark and the campaign"
   }
 ];

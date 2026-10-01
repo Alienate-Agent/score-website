@@ -13,6 +13,9 @@ export const AREA_LABELS = {
   'studio-hub':'Studio — works & instruments', other:'Location not recorded',
 };
 const entries = [
+  ["story-kitchen-outside","story","The kitchen is outside","/journal/2026-10-01#story-kitchen-outside"],
+  ["story-record-names-writer","story","The record names its writer","/journal/2026-10-01#story-record-names-writer"],
+  ["story-notice-not-consent","story","A notice is not consent","/journal/2026-10-01#story-notice-not-consent"],
   ["story-record-arrives","story","The record arrives after the report","/journal/2026-09-30#story-record-arrives"],
   ["story-pay-at-signing","story","Pay the artist at signing","/journal/2026-09-30#story-pay-at-signing"],
   ["story-missing-pages","story","The pages that never arrived","/journal/2026-09-29#story-missing-pages"],
