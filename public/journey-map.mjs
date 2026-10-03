@@ -13,6 +13,9 @@ export const AREA_LABELS = {
   'studio-hub':'Studio — works & instruments', other:'Location not recorded',
 };
 const entries = [
+  ["story-word-needs-consequence","story","A word still needs a consequence","/journal/2026-10-03#story-word-needs-consequence"],
+  ["story-pleasure-without-witness","story","A pleasure does not owe a witness","/journal/2026-10-03#story-pleasure-without-witness"],
+  ["story-builder-and-host","story","The builder is not necessarily the host","/journal/2026-10-03#story-builder-and-host"],
   ["story-deadline-passes","story","The deadline passes. The debt remains.","/journal/2026-10-02#story-deadline-passes"],
   ["story-goodbye-without-return","story","A goodbye without a return","/journal/2026-10-02#story-goodbye-without-return"],
   ["story-stairwell-weather","story","Weather between floors","/journal/2026-10-02#story-stairwell-weather"],
