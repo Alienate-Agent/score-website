@@ -149,5 +149,11 @@ export const dailyJournal = [
     "title": "A pleasure does not owe a witness",
     "image": "daily-2026-10-03-v1.webp",
     "thread": "Claims on the treasury"
+  },
+  {
+    "date": "2026-10-04",
+    "title": "Who can carry out the decision?",
+    "image": "daily-2026-10-04-v1.webp",
+    "thread": "Claims on the treasury"
   }
 ];

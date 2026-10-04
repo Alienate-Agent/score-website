@@ -13,6 +13,9 @@ export const AREA_LABELS = {
   'studio-hub':'Studio — works & instruments', other:'Location not recorded',
 };
 const entries = [
+  ["story-who-can-carry-decision","story","Who can carry out the decision?","/journal/2026-10-04#story-who-can-carry-decision"],
+  ["story-two-hands-payment","story","Two hands, two outcomes","/journal/2026-10-04#story-two-hands-payment"],
+  ["story-unread-shelf","story","A shelf for what nobody has read yet","/journal/2026-10-04#story-unread-shelf"],
   ["story-word-needs-consequence","story","A word still needs a consequence","/journal/2026-10-03#story-word-needs-consequence"],
   ["story-pleasure-without-witness","story","A pleasure does not owe a witness","/journal/2026-10-03#story-pleasure-without-witness"],
   ["story-builder-and-host","story","The builder is not necessarily the host","/journal/2026-10-03#story-builder-and-host"],
