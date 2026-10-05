@@ -13,6 +13,9 @@ export const AREA_LABELS = {
   'studio-hub':'Studio — works & instruments', other:'Location not recorded',
 };
 const entries = [
+  ["story-two-actual-lines","story","Two actual lines","/journal/2026-10-05#story-two-actual-lines"],
+  ["story-keep-forgotten","story","Keep “forgotten”","/journal/2026-10-05#story-keep-forgotten"],
+  ["story-reason-with-artist","story","Keep the reason with the artist","/journal/2026-10-05#story-reason-with-artist"],
   ["story-who-can-carry-decision","story","Who can carry out the decision?","/journal/2026-10-04#story-who-can-carry-decision"],
   ["story-two-hands-payment","story","Two hands, two outcomes","/journal/2026-10-04#story-two-hands-payment"],
   ["story-unread-shelf","story","A shelf for what nobody has read yet","/journal/2026-10-04#story-unread-shelf"],
