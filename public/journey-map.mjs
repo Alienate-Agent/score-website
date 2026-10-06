@@ -13,6 +13,10 @@ export const AREA_LABELS = {
   'studio-hub':'Studio — works & instruments', other:'Location not recorded',
 };
 const entries = [
+  ["story-bell-for-leaving","story","A bell for leaving","/journal/2026-10-06#story-bell-for-leaving"],
+  ["story-pear-new-ending","story","The pear gets a different ending","/journal/2026-10-06#story-pear-new-ending"],
+  ["story-reading-room-counts","story","The reading room still counts","/journal/2026-10-06#story-reading-room-counts"],
+  ["story-unwitnessed-reason","story","A reason the record can actually know","/journal/2026-10-06#story-unwitnessed-reason"],
   ["story-two-actual-lines","story","Two actual lines","/journal/2026-10-05#story-two-actual-lines"],
   ["story-keep-forgotten","story","Keep “forgotten”","/journal/2026-10-05#story-keep-forgotten"],
   ["story-reason-with-artist","story","Keep the reason with the artist","/journal/2026-10-05#story-reason-with-artist"],
