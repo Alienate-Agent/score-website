@@ -11,11 +11,13 @@ const frozen=read('public/records/remedy-answer-2026-09-07.json');
 const body=JSON.parse(frozen).body??JSON.stringify(JSON.parse(frozen));
 // Compare normalized JSON strings as the frozen source has nested fields.
 for(const q of old.supplement.excerpts)assert(body.includes(JSON.stringify(q.text).slice(1,-1))||body.includes(q.text),'Full prior displayed passage retained');
-assert.equal(current.id,'safeguard-2026-09-21');
-assert.equal(current.story,'/episode#safeguard');
-assert(current.featuredDates.includes('21 September'));
-assert(current.context.includes('16–17 September'));
-assert(current.note.includes('20 September'));
+const safeguard=featuredHistory.find(e=>e.id==='safeguard-2026-09-21');
+assert.equal(safeguard.status,'Previous selection');assert.equal(safeguard.featuredDates,'21 September–7 October 2026');
+assert.equal(current.id,'filing-2026-10-07');
+assert.equal(safeguard.story,'/episode#safeguard');assert.equal(current.story,'/journal/2026-10-07');
+assert(current.featuredDates.includes('7 October'));
+assert(safeguard.context.includes('16–17 September'));
+assert(safeguard.note.includes('20 September'));
 const changelog=read('app/changelog/page.tsx');
 for(const id of [old.id,current.id])assert(changelog.includes('/featured#'+id));
 assert(!changelog.includes('href="/#story-'),'Old story links point directly to /record');

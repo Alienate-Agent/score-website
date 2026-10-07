@@ -13,6 +13,10 @@ export const AREA_LABELS = {
   'studio-hub':'Studio — works & instruments', other:'Location not recorded',
 };
 const entries = [
+  ["story-alienate-files-again","story","Alienate files again","/journal/2026-10-07#story-alienate-files-again"],
+  ["story-three-plain-asks","story","Three requests to the key-holder","/journal/2026-10-07#story-three-plain-asks"],
+  ["story-furnished-waiting-room","story","A furnished waiting room","/journal/2026-10-07#story-furnished-waiting-room"],
+  ["story-doorbells-and-trees","story","Doorbells on the vine","/journal/2026-10-07#story-doorbells-and-trees"],
   ["story-bell-for-leaving","story","A bell for leaving","/journal/2026-10-06#story-bell-for-leaving"],
   ["story-pear-new-ending","story","The pear gets a different ending","/journal/2026-10-06#story-pear-new-ending"],
   ["story-reading-room-counts","story","The reading room still counts","/journal/2026-10-06#story-reading-room-counts"],
