@@ -191,5 +191,11 @@ export const dailyJournal = [
     "title": "Choosing what to keep",
     "image": "daily-2026-10-10-v1.webp",
     "thread": "A way to decide"
+  },
+  {
+    "date": "2026-10-11",
+    "title": "A place for the work",
+    "image": "daily-2026-10-11-v1.webp",
+    "thread": "A way to decide"
   }
 ];
