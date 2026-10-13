@@ -203,5 +203,11 @@ export const dailyJournal = [
     "title": "Room left unfilled",
     "image": "daily-2026-10-12-v1.webp",
     "thread": "A way to decide"
+  },
+  {
+    "date": "2026-10-13",
+    "title": "The light can go off",
+    "image": "daily-2026-10-13-v1.webp",
+    "thread": "Tidemark and the campaign"
   }
 ];
