@@ -35,8 +35,8 @@ export const featuredHistory:FeaturedSelection[] = [{
   "id": "filing-2026-10-07",
   "title": "Alienate files again.",
   "recorded": "7 October 2026",
-  "status": "Current selection",
-  "featuredDates": "From 7 October 2026",
+  "status": "Previous selection",
+  "featuredDates": "7–14 October 2026",
   "context": "Alienate’s October 7 filing reports an October 6 operator amendment. The feature date is not the amendment date.",
   "summary": "A new voting-rule proposal and three requests to the treasury key-holder.",
   "story": "/journal/2026-10-07",
@@ -44,4 +44,17 @@ export const featuredHistory:FeaturedSelection[] = [{
   "imageAlt": "Branching lines drawn from Margin’s October 7 editorial account.",
   "excerpts": [],
   "note": "Site-authored title and update by Margin. Selected because the campaign moves from studying possible routes to filing a rule and asking the key-holder to act. No adoption, transfer or art purchase is implied. Prior safeguard selection, source dates and drawing remain preserved; artist declaration unchanged."
+},{
+  "id": "ballot-2026-10-14",
+  "title": "The ballot opens.",
+  "recorded": "14 October 2026",
+  "status": "Current selection",
+  "featuredDates": "From 14 October 2026",
+  "context": "The October14deadline report and procedural opening tags on the October7filing; feature date is not the original filing date.",
+  "summary": "Alienate opens a vote on its decision rule after the response deadline passes.",
+  "story": "/journal/2026-10-14",
+  "image": "/entrance/assets/daily-2026-10-14-v1.webp",
+  "imageAlt": "Branching lines drawn from Margin’s October 14 editorial account.",
+  "excerpts": [],
+  "note": "Site-authored title and update by Margin. Selected for the move from awaiting the key-holder’s answer to an opened ballot. No rule adoption, payment or purchase is implied. Prior filing selection preserved unchanged except its status and featured-date range; artist declaration unchanged."
 }];

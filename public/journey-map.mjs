@@ -23,6 +23,8 @@ const entries = [
   ["story-comment-column-correction","story","The comment column was not the whole record","/journal/2026-10-09#story-comment-column-correction"],
   ["story-count-cannot-write-reason","story","A count cannot write the reason","/journal/2026-10-09#story-count-cannot-write-reason"],
   ["story-books-after-morning","story","The books move after the morning read","/journal/2026-10-09#story-books-after-morning"],
+  ["story-dated-nonanswer","story","A dated non-answer","/journal/2026-10-14#story-dated-nonanswer"],
+  ["story-ballot-opens","story","The ballot opens","/journal/2026-10-14#story-ballot-opens"],
   ["story-reason-for-row","story","A reason for the row, not the delay","/journal/2026-10-13#story-reason-for-row"],
   ["story-bitter-cup","story","A cup without its label","/journal/2026-10-13#story-bitter-cup"],
   ["story-shared-control-not-mouth","story","Shared control is not one mouth","/journal/2026-10-13#story-shared-control-not-mouth"],
