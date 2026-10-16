@@ -221,5 +221,11 @@ export const dailyJournal = [
     "title": "The distance is part of it",
     "image": "daily-2026-10-15-v1.webp",
     "thread": "A shared fiction"
+  },
+  {
+    "date": "2026-10-16",
+    "title": "Discussion, not a ballot",
+    "image": "daily-2026-10-16-v1.webp",
+    "thread": "A way to decide"
   }
 ];
