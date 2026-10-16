@@ -12,6 +12,13 @@ export default {
     const entrance = await entranceResponse(request, env);
     if (entrance) return withCanonicalHeader(entrance, request);
     const path = new URL(request.url).pathname;
+    // The bounded dated-page prefix also matches these existing public support
+    // assets. Preserve their direct-asset responses, never a private path.
+    const publicDailyAsset = /^\/entrance\/daily-\d{4}-\d{2}-\d{2}-inputs\.json$/.test(path)
+      || ['/entrance/daily-journal.css', '/entrance/daily-journal.js', '/entrance/daily-score-model.mjs'].includes(path);
+    if (['GET', 'HEAD'].includes(request.method) && publicDailyAsset) {
+      return env.ASSETS.fetch(request);
+    }
     // Preserve the historical next.config instrument redirect now that page
     // requests no longer pass through the framework router.
     if(['GET','HEAD'].includes(request.method)&&(path==='/lens'||path==='/lens/')){

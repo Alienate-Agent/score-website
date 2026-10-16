@@ -31,8 +31,10 @@ const localBindingConfig = {
     // One bounded Journal prefix also covers future dated entries, keeping the
     // routing list below the platform's 100-rule limit. The Worker still uses
     // its explicit public document map and returns 404 for unknown routes.
-    run_worker_first: ['/journal/*', ...Object.keys(ENTRANCE_ROUTES).filter(p=>!p.startsWith('/journal/')), ...Object.keys(ENTRANCE_ALIASES), ...PREPARED_PAGES, ...PREPARED_PAGES.map(p=>p+'/'), '/_pages/*', ...readdirSync(new URL('./public/',import.meta.url),{recursive:true})
-      .filter((name): name is string => typeof name === 'string' && name.endsWith('.html'))
+    // Raw dated Journal HTML also needs a bounded prefix; canonical routes
+    // alone do not stop public-file discovery growing one rule per edition.
+    run_worker_first: ['/journal/*', '/entrance/daily-*', ...Object.keys(ENTRANCE_ROUTES).filter(p=>!p.startsWith('/journal/')), ...Object.keys(ENTRANCE_ALIASES).filter(p=>!/^\/entrance\/daily-\d{4}-\d{2}-\d{2}\.html$/.test(p)), ...PREPARED_PAGES, ...PREPARED_PAGES.map(p=>p+'/'), '/_pages/*', ...readdirSync(new URL('./public/',import.meta.url),{recursive:true})
+      .filter((name): name is string => typeof name === 'string' && name.endsWith('.html') && !/^entrance\/daily-\d{4}-\d{2}-\d{2}\.html$/.test(name))
       .map(name => '/'+name)].filter((value,index,all)=>all.indexOf(value)===index),
   },
   compatibility_flags: ['nodejs_compat'],
