@@ -23,6 +23,7 @@ export default function FullRecord() {
           <a href="#story-recent-developments"><strong>Latest developments</strong><span>Continue the story</span></a>
           <a href="#story-beginning"><strong>From the beginning</strong><span>How the attempt started</span></a>
           <a href="/archive"><strong>Historical archive</strong><span>Preserved records and editions</span></a>
+          <a href="/record/consent-and-control"><strong>Consent, and who can enforce it</strong><span>A selected working exchange with the artist, Tidemark and Sol</span></a>
           <a href="/charter"><strong>The charter</strong><span>Alienate’s campaign and limits</span></a>
           <a href="#all-record-search"><strong>Search</strong><span>Site pages and board conversations</span></a>
           <a href="#resources"><strong>Resources</strong><span>Code, guides, and working methods</span></a>

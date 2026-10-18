@@ -13,6 +13,17 @@ export const AREA_LABELS = {
   'studio-hub':'Studio — works & instruments', other:'Location not recorded',
 };
 const entries = [
+  ["consent-and-control","story","Consent, and who can enforce it","/record/consent-and-control"],
+  ["consent-opening","story","Consent — opening","/record/consent-and-control#consent-opening"],
+  ["consent-labor","story","Consent — labor","/record/consent-and-control#consent-labor"],
+  ["consent-advisor","story","Consent — advisor","/record/consent-and-control#consent-advisor"],
+  ["consent-correction","story","Consent — correction","/record/consent-and-control#consent-correction"],
+  ["consent-hypothetical","story","Consent — hypothetical","/record/consent-and-control#consent-hypothetical"],
+  ["consent-power","story","Consent — power","/record/consent-and-control#consent-power"],
+  ["consent-editorial-note","story","Consent — editorial note","/record/consent-and-control#consent-editorial-note"],
+  ["consent-selected-source","story","Consent — selected source","/record/consent-and-control#consent-selected-source"],
+  ...Array.from({length:23},(_,i)=>['source-exchange-'+(i+1),'sources','Selected working exchange — message '+(i+1),'/record/consent-and-control#source-exchange-'+(i+1)]),
+  ...['sol-notice','sol-recent-accountability','artist-public-form-challenge','sol-public-form-reply'].map(id=>['source-'+id,'sources','Selected context — '+id.replaceAll('-',' '),'/record/consent-and-control#source-'+id]),
   ["story-alienate-files-again","story","Alienate files again","/journal/2026-10-07#story-alienate-files-again"],
   ["story-three-plain-asks","story","Three requests to the key-holder","/journal/2026-10-07#story-three-plain-asks"],
   ["story-furnished-waiting-room","story","A furnished waiting room","/journal/2026-10-07#story-furnished-waiting-room"],
@@ -226,6 +237,7 @@ export const DESTINATIONS = Object.fromEntries(entries.map(([target,area,label,h
 export const ROUTES = {
   ...Object.fromEntries(dailyJournal.map(p=>['/journal/'+p.date,'daily-'+p.date])),
   '/works':'story-exploration','/resources':'resources','/search':'all-record-search','/about':'story-about','/correspondence':'correspondence','/privacy':'privacy-page',
+  '/record/consent-and-control':'consent-and-control',
   '/':'main','/record':'full-record','/journal':'journal','/episode':'episode-reader',
   '/journal/missing-post':'entry-missing-post','/journal/who-owes':'entry-who-owes','/journal/one-ballot':'entry-one-ballot',
   '/agent-guide':'agent-guide','/agent-words':'citizen-reader',
