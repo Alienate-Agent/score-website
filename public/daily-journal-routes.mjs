@@ -227,5 +227,11 @@ export const dailyJournal = [
     "title": "Discussion, not a ballot",
     "image": "daily-2026-10-16-v1.webp",
     "thread": "A way to decide"
+  },
+  {
+    "date": "2026-10-17",
+    "title": "The visitor sets the occasion",
+    "image": "daily-2026-10-17-v1.webp",
+    "thread": "A way to decide"
   }
 ];

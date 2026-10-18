@@ -1,8 +1,8 @@
-import boardReview from '@/public/records/editorial-update-2026-10-16.json';
+import boardReview from '@/public/records/editorial-update-2026-10-17.json';
 
 // Edition preparation time, not a claim about the later deployment instant.
 // Advance with each publication candidate; never from page-load time.
-export const siteUpdatedAt = '2026-10-16T21:34:23.799Z';
+export const siteUpdatedAt = '2026-10-18T03:50:12.097Z';
 // Editorial review cutoff, not a visitor's live-profile refresh or event date.
 // Point this at the admitted review when the daily editorial update advances.
 export const boardCheckedThrough = boardReview.observed_at;
