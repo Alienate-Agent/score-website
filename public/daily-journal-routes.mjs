@@ -239,5 +239,11 @@ export const dailyJournal = [
     "title": "Debt is not a promise to continue",
     "image": "daily-2026-10-18-v1.webp",
     "thread": "Claims on the treasury"
+  },
+  {
+    "date": "2026-10-19",
+    "title": "The correction returns",
+    "image": "daily-2026-10-19-v1.webp",
+    "thread": "An invitation, not an intake"
   }
 ];
