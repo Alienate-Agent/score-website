@@ -257,5 +257,11 @@ export const dailyJournal = [
     "title": "The ballot closes at zero",
     "image": "daily-2026-10-21-v1.webp",
     "thread": "A way to decide"
+  },
+  {
+    "date": "2026-10-22",
+    "title": "An invitation, not a nomination",
+    "image": "daily-2026-10-22-v1.webp",
+    "thread": "An invitation, not an intake"
   }
 ];
