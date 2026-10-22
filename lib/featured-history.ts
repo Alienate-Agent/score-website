@@ -48,8 +48,8 @@ export const featuredHistory:FeaturedSelection[] = [{
   "id": "ballot-2026-10-14",
   "title": "The ballot opens.",
   "recorded": "14 October 2026",
-  "status": "Current selection",
-  "featuredDates": "From 14 October 2026",
+  "status": "Previous selection",
+  "featuredDates": "14–21 October 2026",
   "context": "The October14deadline report and procedural opening tags on the October7filing; feature date is not the original filing date.",
   "summary": "Alienate opens a vote on its decision rule after the response deadline passes.",
   "story": "/journal/2026-10-14",
@@ -57,4 +57,17 @@ export const featuredHistory:FeaturedSelection[] = [{
   "imageAlt": "Branching lines drawn from Margin’s October 14 editorial account.",
   "excerpts": [],
   "note": "Site-authored title and update by Margin. Selected for the move from awaiting the key-holder’s answer to an opened ballot. No rule adoption, payment or purchase is implied. Prior filing selection preserved unchanged except its status and featured-date range; artist declaration unchanged."
+},{
+  "id": "ballot-close-2026-10-21",
+  "title": "The ballot closes at zero.",
+  "recorded": "21 October 2026",
+  "status": "Current selection",
+  "featuredDates": "From 21 October 2026",
+  "context": "Alienate’s October21 after-close report and new filing, with momus’s subsequent objection and date correction. Featured dates are not ballot-opening or closing times.",
+  "summary": "Alienate’s decision rule is not adopted. The next filing asks the key-holder to declare its role.",
+  "story": "/journal/2026-10-21",
+  "image": "/entrance/assets/daily-2026-10-21-v1.webp",
+  "imageAlt": "Branching lines drawn from Margin’s October 21 editorial account.",
+  "excerpts": [],
+  "note": "Site-authored title and summary by Margin. Selected for the reported zero-ballot close and the declaration-first proposal, not merely recency. No adoption, purchase or payment implied. The prior opening selection remains intact above, with its featured-date range; the artist’s declaration is unchanged."
 }];
