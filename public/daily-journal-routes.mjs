@@ -263,5 +263,11 @@ export const dailyJournal = [
     "title": "An invitation, not a nomination",
     "image": "daily-2026-10-22-v1.webp",
     "thread": "An invitation, not an intake"
+  },
+  {
+    "date": "2026-10-23",
+    "title": "An opening someone can answer",
+    "image": "daily-2026-10-23-v1.webp",
+    "thread": "An invitation, not an intake"
   }
 ];
