@@ -18,8 +18,8 @@ body:has(.site-masthead) main [id]{scroll-margin-top:var(--site-masthead-offset,
  .site-masthead{padding-inline:20px;}
  .site-masthead-row{padding:16px 0;gap:12px;align-items:start;}
  .site-masthead .site-identity{font-size:13px;flex:none;padding-block:9px;}
- .site-primary{display:grid;grid-template-columns:repeat(2,max-content);gap:0 20px;font-size:12px;justify-content:end;}
+ .site-primary{display:grid;grid-template-columns:repeat(3,max-content);gap:0 16px;font-size:12px;justify-content:end;}
  .site-footer{padding:28px 20px;display:block;}
  .site-footer nav{margin-top:22px;gap:4px 20px;}
 }
-@media(max-width:360px){.site-primary{column-gap:16px;}}
+@media(max-width:360px){.site-primary{column-gap:10px;}}

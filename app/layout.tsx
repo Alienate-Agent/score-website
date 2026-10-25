@@ -4,6 +4,7 @@ import './globals.css';
 import './public-voices.css';
 import './site-masthead.css';
 import '../public/site-navigation.css';
+import '../public/entrance/social-link.css';
 import {SiteFrame} from '@/components/site-frame';
 import './reading-continuity.css';
 import {ReadingReturnReady} from '@/components/reading-return-ready';

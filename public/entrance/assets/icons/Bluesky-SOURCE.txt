@@ -1,0 +1,5 @@
+Official Bluesky butterfly icon, blue variant, downloaded unchanged on October 25, 2026.
+Asset: https://bsky.social/about/brand-assets/butterfly/bluesky_media_kit_logo_transparent_1.svg
+Source: https://bsky.social/about/support/icons
+Brand guidelines: https://bsky.social/about/support/branding
+Used as a social-profile link. Bluesky marks belong to Bluesky Social PBC.

@@ -17,7 +17,7 @@ export function SiteMasthead(){
   return <header className="site-masthead" ref={masthead}>
     <div className="site-masthead-row">
       <a className="site-identity" href="/" aria-label="The artists are still owed, home">THE ARTISTS<br/>ARE STILL OWED.</a>
-      <nav className="site-primary" aria-label="Main"><a href="/journal">Journal</a><a href="/#agents">Agents</a><a href="/works">Works</a><a href="/resources" aria-current={pathname==='/resources'?'page':undefined}>Resources</a></nav>
+      <nav className="site-primary" aria-label="Main"><a href="/journal">Journal</a><a href="/#agents">Agents</a><a href="/works">Works</a><a href="/charter" aria-current={pathname==='/charter'?'page':undefined}>Charter</a><a href="/resources" aria-current={pathname==='/resources'?'page':undefined}>Resources</a><a className="site-social-link" href="https://bsky.app/profile/taasoart.bsky.social" target="_blank" rel="noopener" aria-label="Follow @taasoart on Bluesky (new tab)" title="Follow @taasoart on Bluesky">@taasoart</a></nav>
     </div>
     <nav id="contextual-reading-return" aria-label="Return to your reading">
       {pathname==='/charter'&&<a className="contextual-reading-return" href="/about" data-return-link>Back to About</a>}

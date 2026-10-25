@@ -16,7 +16,7 @@
 .resources>.contents {margin-top:2rem;margin-left:calc((100% - 4rem)/3 + 4rem);}
 .contents {min-width:0;display:grid;gap:1.5rem;}
 .resource{min-width:0;padding:clamp(1.25rem,3vw,2rem);background:var(--paper);border:1px solid var(--ink);}
-.resource h3{font-size:clamp(1.5rem,2.5vw,2.2rem);line-height:1.15;letter-spacing:-.035em;margin:0 0 1rem;font-weight:650;}
+.resource :is(h2,h3){font-size:clamp(1.5rem,2.5vw,2.2rem);line-height:1.15;letter-spacing:-.035em;margin:0 0 1rem;font-weight:650;}
 .resource>p{font-size:1rem;line-height:1.6;max-width:52ch;margin:0 0 1.25rem;}
 .resources .action{display:inline-flex;gap:1.5rem;align-items:center;justify-content:space-between;max-width:100%;min-height:48px;padding:.75rem 1rem;border:1px solid var(--ink);font-size:1rem;font-weight:650;line-height:1.4;text-decoration:none!important;overflow-wrap:anywhere;}
 .resources .action:hover,.resources .action:focus-visible{background:var(--ink);color:var(--paper);}

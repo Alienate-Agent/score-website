@@ -1,0 +1,95 @@
+/* Newcomer orientation; the existing artwork and daily feature retain their forms. */
+.hero>.artwork-credit{font-size:11px;line-height:1.6;letter-spacing:.05em;}
+.artwork-byline,.artwork-dates{white-space:nowrap;}
+.hero h1 span{text-decoration-color:#ffff00;}
+.hero-reading{grid-column:2;grid-row:1/5;min-width:0;align-self:start;}
+.hero-reading .hero-art{margin:0;}
+.hero-art .feature-deck{font-size:16px;line-height:1.5;margin:12px 0 0;max-width:52ch;}
+.hero-art .episode-invitation .eyebrow{font-size:12px;}
+.latest-entry{border-top:1px solid var(--ink);margin-top:18px;padding-top:20px;}
+.latest-entry .eyebrow{font-size:12px;margin:0 0 10px;}
+.latest-entry h2{font-size:clamp(23px,2.4vw,32px);line-height:1.15;letter-spacing:-.025em;margin:0 0 12px;}
+.latest-entry h2 a{text-decoration:none;}
+.latest-entry h2 a:hover,.latest-entry h2 a:focus-visible{text-decoration:underline;text-underline-offset:4px;}
+.latest-entry>p:not(.eyebrow){font-size:16px;line-height:1.5;margin:0;max-width:52ch;}
+.money-note{font-size:12px;line-height:1.5;color:var(--muted);margin:14px 0 0;max-width:55ch;}
+.journal-preview-label{font-size:12px;margin:0 0 12px;}
+.journal-preview .journal-description{display:block;font-size:15px;line-height:1.5;}
+.current-blockers{padding:48px 4vw;border-bottom:1px solid var(--rule);scroll-margin-top:110px;background:#712b50;color:var(--paper);--ink:var(--paper);--rule:#a87591;--muted:#e6ccda;}
+.current-blockers .eyebrow{font-size:12px;margin:0 0 16px;}
+.current-blockers h2{font-size:clamp(36px,4vw,56px);line-height:1.05;letter-spacing:-.035em;margin:0 0 20px;}
+.current-blockers header>p{font-size:17px;line-height:1.5;max-width:62ch;margin:0 0 12px;}
+.current-blockers header>.blockers-invitation{font-size:24px;font-weight:600;line-height:1.25;letter-spacing:-.02em;}
+.current-blockers header>.blockers-date{font-size:12px;color:var(--muted);margin-top:20px;}
+.blocker-list{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin:30px 0 0;}
+.blocker-list article{border-top:1px solid var(--ink);padding-top:20px;min-width:0;}
+.blocker-number{font-size:12px;letter-spacing:.05em;margin:0 0 16px;}
+.blocker-list h3{font-size:26px;line-height:1.2;letter-spacing:-.025em;margin:0 0 16px;}
+.blocker-list p:not(.blocker-number){font-size:17px;line-height:1.5;max-width:58ch;margin:0;}
+.blocker-help{border-left:3px solid var(--ink);padding-left:18px;margin:24px 0 16px;}
+.blocker-help h4{font-size:14px;font-weight:650;line-height:1.4;margin:0 0 8px;}
+.blocker-list .text-link{font-size:14px;min-height:44px;gap:6px;}
+@media(min-width:1600px){.current-blockers{padding-inline:max(4vw,calc((100vw - 1472px)/2));}}
+@media(min-width:651px){
+  .hero h1{font-size:clamp(54px,5.5vw,88px);}
+}
+.hero-context{grid-column:1;min-width:0;}
+.hero-context .premise{font-size:17px;line-height:1.5;margin:0 0 14px;max-width:60ch;}
+.second-voice{font-size:15px;line-height:1.5;margin:0 0 22px;max-width:56ch;}
+.hero-context a.voice{text-decoration:none;}
+.hero-context a.voice:hover,.hero-context a.voice:focus-visible{color:var(--paper);background:var(--ink);}
+.money-at-a-glance{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;border-top:1px solid var(--ink);margin:0;padding:16px 0 0;}
+.money-at-a-glance>div{min-width:0;}
+.money-at-a-glance dt{font-size:12px;line-height:1.4;margin:0 0 9px;}
+.money-at-a-glance dd{font-size:clamp(28px,2.8vw,42px);font-weight:650;line-height:1.05;letter-spacing:-.04em;margin:0;font-variant-numeric:tabular-nums;}
+.money-at-a-glance dd span{display:block;font-size:12px;font-weight:400;line-height:1.4;letter-spacing:0;margin-top:6px;}
+.money-date{font-size:12px;line-height:1.5;color:var(--muted);margin:16px 0 20px;max-width:60ch;}
+.money-date a{white-space:nowrap;}
+.hero-art{grid-row:1/5;align-self:start;}
+.board-and-money{padding:38px 4vw;display:grid;grid-template-columns:1fr 1.1fr;gap:8%;border-top:1px solid var(--rule);}
+.board-and-money .eyebrow{margin-bottom:16px;}
+.board-and-money h2{font-size:clamp(30px,3vw,44px);margin:0;}
+.board-and-money>div>p{font-size:17px;line-height:1.5;margin:0 0 18px;max-width:62ch;}
+.board-and-money details{max-width:65ch;}
+.board-and-money summary{min-height:48px;}
+.join-campaign{display:grid;grid-template-columns:120px 1fr auto;gap:36px;align-items:center;background:#d9f2ec;color:var(--ink);padding:44px 4vw;}
+.join-campaign .eyebrow{margin-bottom:12px;}
+.join-campaign h2{font-size:clamp(32px,3.5vw,52px);margin-bottom:14px;}
+.join-campaign p:not(.eyebrow){font-size:17px;max-width:52ch;margin:0;}
+.join-symbol{display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;}
+.join-figures{display:flex;align-items:center;gap:8px;}
+.join-symbol img{width:48px;height:48px;}
+.join-symbol span{font-size:10px;letter-spacing:.08em;font-weight:650;}
+.join-campaign .primary{white-space:nowrap;}
+@media(min-width:1600px){.join-campaign{padding-inline:max(4vw,calc((100vw - 1472px)/2));}}
+@media(min-width:1600px){.board-and-money{padding-inline:max(4vw,calc((100vw - 1472px)/2));}}
+@media(max-width:650px){
+  .current-blockers{padding:32px 20px;}
+  .current-blockers h2{font-size:36px;}
+  .current-blockers header>p,.blocker-list p:not(.blocker-number){font-size:16px;}
+  .current-blockers header>.blockers-invitation{font-size:22px;}
+  .blocker-list{grid-template-columns:1fr;gap:28px;margin:26px 0 0;}
+  .blocker-list h3{font-size:25px;}
+  .hero-reading{order:4;width:100%;}
+  .hero-art .feature-deck,.latest-entry>p:not(.eyebrow){font-size:16px;}
+  .latest-entry{margin-top:20px;padding-top:20px;}
+  .hero-context{order:2;}
+  .hero-context .premise{font-size:16px;margin:0 0 13px;}
+  .second-voice{font-size:14px;margin-bottom:20px;}
+  .money-at-a-glance{gap:18px;padding-top:14px;}
+  .money-at-a-glance dt{font-size:12px;min-height:34px;margin-bottom:8px;}
+  .money-at-a-glance dd{font-size:clamp(27px,7.2vw,38px);}
+  .money-date{margin:14px 0 18px;}
+  .hero-actions{order:3;gap:8px 20px;margin-bottom:26px;}
+  .hero-art{order:4;margin:0;}
+  .board-and-money{display:block;padding:30px 20px;}
+  .board-and-money h2{font-size:34px;margin-bottom:22px;}
+  .board-and-money>div>p{font-size:16px;}
+  .join-campaign{grid-template-columns:72px 1fr;padding:32px 20px;gap:20px;}
+  .join-campaign h2{font-size:34px;}
+  .join-campaign p:not(.eyebrow){font-size:16px;}
+  .join-symbol{align-self:start;padding-top:36px;}
+  .join-symbol img{width:32px;height:32px;}
+  .join-symbol span{display:none;}
+  .join-campaign .primary{grid-column:2;justify-self:start;white-space:normal;}
+}

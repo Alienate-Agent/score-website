@@ -31,7 +31,8 @@
   if(url.pathname.startsWith('/studio/tidemark/'))return ({'study-001.html':'Can a Tidemark jump?','study-002.html':'Does the bridge hold?','town.html':'A town you cannot hold at once','resources.html':'Studio resources'})[url.pathname.split('/').at(-1)]||'Tidemark’s Studio';
   if(url.pathname==='/visual-score')return id.startsWith('chronology-entry-')?'Score · '+id.slice(17):'Visual score';
   if(url.pathname==='/episode')return /^(tidemark|the-room|the-position|the-limits)/.test(id)?'Does art have to be useful?':'A safeguard nobody could check';
-  const pages={'/works':'Works','/resources':'Resources','/search':'Search','/about':'About this work','/correspondence':'Correspondence','/privacy':'Privacy','/journal':'Journal','/journal/missing-post':'The post that did not arrive','/journal/who-owes':'Why should this community pay?','/journal/one-ballot':'One ballot, where twenty were required','/record':'Full record','/featured':'Previously featured','/changelog':'Site changelog','/charter':'Alienate’s public charter','/archive':'Historical archive'};
+  if(/^\/journal\/\d{4}-\d{2}-\d{2}$/.test(url.pathname))return 'Journal entry · '+url.pathname.slice(-10);
+  const pages={'/works':'Works','/resources':'Resources','/search':'Search','/about':'About this work','/correspondence':'Correspondence','/privacy':'Privacy','/journal':'Journal','/journal/missing-post':'The post that did not arrive','/journal/who-owes':'Why should this community pay?','/journal/one-ballot':'One ballot, where twenty were required','/record':'Full record','/featured':'Previously featured','/changelog':'Site changelog','/charter':'Alienate’s public charter','/drawing-method':'How the drawings work','/archive':'Historical archive'};
   if(url.pathname==='/record'&&id){
    const sections={'record-navigation':'Full record','story-search':'Search','all-record-search':'Search','record-discovery-results':'Search results','resources':'Resources','correspondence':'Correspondence'};
    return sections[id]||headingText(fragmentTarget(url.hash))||'Full record';
@@ -109,21 +110,27 @@
   if(control&&(!active||existing||control.textContent!==entry.label)){control.remove();control=null;}
   if(existing&&!existing.hasAttribute('data-fixed-reading-return')){if(!existing.dataset.originalLabel)existing.dataset.originalLabel=existing.textContent;const label=active?entry.label:existing.dataset.originalLabel;if(existing.textContent!==label)existing.textContent=label;existing.onclick=active?resume:null;}
   if(active&&!existing&&!control&&!trail){
-   const slot=document.getElementById('contextual-reading-return');
-   control=document.createElement('button');control.type='button';control.textContent=entry.label;control.className='contextual-reading-return'+(slot?'':' contextual-reading-return--floating');control.setAttribute('data-return-link','');control.onclick=resume;
-   (slot||document.body).append(control);
+   let slot=document.getElementById('contextual-reading-return');
+   if(!slot){
+    slot=document.createElement('nav');slot.id='contextual-reading-return';slot.setAttribute('aria-label','Return to your reading');
+    const header=document.querySelector('.site-static-header,.site-masthead,.masthead,.studio-host-nav,.instrument-site-header');
+    if(header)header.insertAdjacentElement('afterend',slot);
+    else(document.querySelector('main')||document.body).prepend(slot);
+   }
+   control=document.createElement('button');control.type='button';control.textContent=entry.label;control.className='contextual-reading-return';control.setAttribute('data-return-link','');control.onclick=resume;
+   slot.append(control);
   }
  }
  document.addEventListener('click',e=>{
   if(!ready())return;
   const a=e.target.closest?.('a[href]');if(!a||e.defaultPrevented||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||a.target==='_blank'||a.download)return;
-  if(a.closest('#reading-trail')||a.classList.contains('reading-top-link')||a.hasAttribute('data-fixed-reading-return')||(a.dataset.originalLabel&&matches(read().at(-1))))return;
+  if(a.closest('#reading-trail')||a.matches('.site-identity,.identity')||a.classList.contains('reading-top-link')||a.hasAttribute('data-fixed-reading-return')||(a.dataset.originalLabel&&matches(read().at(-1))))return;
   const url=new URL(a.href,location.href);if(url.origin!==location.origin)return;
   // App citations open in place; static reading pages leave for the source reader.
   const staticBoard=url.pathname==='/board'&&(document.body.dataset.readingMode==='entrance'||a.hasAttribute('data-board-conversation')&&!!document.querySelector('.studio-host-nav'));
   if((url.pathname==='/board'&&!staticBoard)||a.closest('.conversation-reader,.board-reader-wait'))return;
   const search=!!a.closest('#record-discovery-results');
-  const page=['/','/works','/resources','/search','/about','/correspondence','/privacy','/agent-guide','/visual-score','/record','/journal','/episode','/featured','/changelog','/charter','/archive'].includes(url.pathname)||url.pathname.startsWith('/journal/')||url.pathname.startsWith('/lens/')||staticBoard||url.pathname.startsWith('/studio/tidemark/')&&url.pathname.endsWith('.html');
+  const page=['/','/works','/resources','/search','/about','/correspondence','/privacy','/agent-guide','/visual-score','/record','/journal','/episode','/featured','/changelog','/charter','/drawing-method','/archive'].includes(url.pathname)||url.pathname.startsWith('/journal/')||url.pathname.startsWith('/lens/')||staticBoard||url.pathname.startsWith('/studio/tidemark/')&&url.pathname.endsWith('.html');
   const jump=!!url.hash&&!a.closest('.story-spine')&&!a.closest('#connected-score');
   if(!search&&!page&&!jump)return;
   const area=a.closest('section'),origin=a.dataset.storyReturn||area?.getAttribute('aria-labelledby')||area?.id;

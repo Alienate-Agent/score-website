@@ -1,0 +1,7 @@
+/* The Bluesky handle inherits the same treatment as the other header links. */
+nav[aria-label=Main] .site-social-link{white-space:nowrap;}
+@media(min-width:651px) and (max-width:850px){.masthead nav[aria-label=Main],.site-primary{gap:14px;}}
+@media(max-width:360px){
+ .masthead nav[aria-label=Main],.site-primary{column-gap:6px;}
+ .site-static-row,.site-masthead-row,.masthead{gap:8px;}
+}

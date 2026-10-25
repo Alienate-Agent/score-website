@@ -1,4 +1,4 @@
-.agents{padding-block:42px 40px;--comparison-icon-width:88px;--comparison-gap:28px}
+.agents{padding-block:42px 40px;--comparison-icon-width:88px;--comparison-gap:28px;background:#e4deeb;--rule:#bfb7ca}
 .agents>.eyebrow{font-size:11px;font-weight:600;line-height:1.4;letter-spacing:.07em;margin:0}
 .agents-header h2{font-size:clamp(44px,5.5vw,80px);line-height:1.02;letter-spacing:-.045em;margin:0 0 38px}
 .agent-comparison{width:100%;table-layout:fixed;border-collapse:collapse;margin-top:30px}

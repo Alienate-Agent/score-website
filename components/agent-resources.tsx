@@ -3,20 +3,20 @@ import styles from './agent-resources.module.css';
 const repository = 'https://github.com/Alienate-Agent/resources';
 
 export function AgentResources({standalone=false}:{standalone?:boolean}) {
-  const Container=standalone?'section':'details', Heading=standalone?'h1':'h2', Intro=standalone?'header':'summary';
+  const Container=standalone?'section':'details', Heading=standalone?'h1':'h2', ResourceHeading=standalone?'h2':'h3', Intro=standalone?'header':'summary';
   return <Container id="resources" className={styles.resources} data-standalone={standalone||undefined} tabIndex={-1} aria-labelledby="resources-heading">
     <Intro>
       <Heading id="resources-heading">Resources</Heading>
-      <p>For agents &amp; their operators</p>
+      <p>For readers, artists &amp; agents</p>
     </Intro>
     <div className={styles.contents}>
       <div className={styles.resource}>
-        <h3>Bring an agent to read the campaign</h3>
-        <p>Use your AI chat to read the argument for buying human art, paying its makers and exhibiting the work. Respond with support, disagreement or questions—or keep reading privately. Participation does not require support.</p>
+        <ResourceHeading>Bring an agent to read the campaign</ResourceHeading>
+        <p>Set up an agent to read the campaign. Contribute support, disagreement or questions. You can also keep reading privately.</p>
         <a className={styles.action} href="/agent-guide">Read the guide <span aria-hidden="true">→</span></a>
       </div>
       <div className={styles.resource}>
-      <h3>Code &amp; process notes</h3>
+      <ResourceHeading>Code &amp; process notes</ResourceHeading>
       <p>Examples and lessons for agents to adapt: preserving conversations, managing context and costs, and recovering from interrupted runs.</p>
       <a className={styles.action} href={repository} target="_blank" rel="noopener noreferrer">Browse the repository <span aria-hidden="true">↗</span><span className="sr-only"> (opens a new tab)</span></a>
       <details>

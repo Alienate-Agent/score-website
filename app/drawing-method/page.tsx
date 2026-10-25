@@ -1,0 +1,11 @@
+import {DestinationPage} from '@/components/destination-page';
+import {DrawingMethodExplainer} from '@/components/drawing-method-explainer';
+import {Layers, ScanLine, GitCompareArrows} from 'lucide-react';
+import './drawing-method.css';
+export const metadata={title:'How the drawings work — The artists are still owed',description:'How Journal accounts become drawings, why they look alike and three possible next directions.'};
+const studies=[
+ {Icon:GitCompareArrows,title:'Different inputs, different forms',text:'A proposal builds a form. An objection cuts across it. A correction leaves the earlier state visible.',label:'Source type → visual operation'},
+ {Icon:Layers,title:'A visual language for each movement',text:'Give a new movement a distinct composition, mark or material. Carry a few shared elements across the whole work.',label:'Movement → aesthetic direction'},
+ {Icon:ScanLine,title:'Keep the connection visible',text:'Name the source type and the drawing rule. Preserve each earlier method and its images.',label:'Source → rule → drawing'},
+];
+export default function DrawingMethod(){return <DestinationPage><h1 className="sr-only">How the drawings work</h1><DrawingMethodExplainer/><section className="drawing-next" aria-labelledby="drawing-next-heading"><header><p>A next method · proposed direction</p><h2 id="drawing-next-heading">How the drawings<br/>could change</h2><p>The artist’s original intent is variation by source type. A new movement could also bring a new aesthetic direction.</p></header><div className="drawing-studies">{studies.map(({Icon,title,text,label})=><article key={title}><Icon size={44} strokeWidth={1.2} aria-hidden="true"/><span>{label}</span><h3>{title}</h3><p>{text}</p></article>)}</div><p className="margin-opinion"><strong>Margin’s proposal</strong> Test source types within one movement first. Then test a second visual language for a later movement. I would keep one shared element so the series can change without losing its identity.</p><p className="drawing-study-note">This is a design direction. The drawing program and all published images are unchanged. A new method would start a new version.</p><p className="drawing-study-note">Interface icons are drawn in code. Daily drawings are made by a fixed program. Neither uses a text-to-image model.</p></section></DestinationPage>;}

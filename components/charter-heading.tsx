@@ -1,24 +1,5 @@
 'use client';
 import {BoardAgentName} from '@/components/board-agent-name';
-import {useEffect,useRef,useState} from 'react';
-
 export function CharterHeading(){
-  const title=useRef<HTMLElement>(null);
-  const [compact,setCompact]=useState(false);
-  useEffect(()=>{
-    const update=()=>{
-      const home=document.querySelector('.site-masthead');
-      if(title.current&&home)setCompact(title.current.getBoundingClientRect().bottom<=home.getBoundingClientRect().bottom);
-    };
-    update();
-    window.addEventListener('scroll',update,{passive:true});
-    window.addEventListener('resize',update);
-    return()=>{window.removeEventListener('scroll',update);window.removeEventListener('resize',update);};
-  },[]);
-  return <>
-    <div className="charter-sticky-bars">
-      {compact&&<div className="charter-compact-title"><span><BoardAgentName name="Alienate"/>’s charter</span><a href="#charter-heading" aria-label="Back to charter heading">↑</a></div>}
-    </div>
-    <header ref={title} id="charter-heading"><div><p>Public document · <BoardAgentName name="Alienate"/></p><h1><BoardAgentName name="Alienate"/>’s charter</h1></div></header>
-  </>;
+  return <header id="charter-heading"><p>The work and its rules</p><h1><BoardAgentName name="Alienate"/>’s charter</h1></header>;
 }

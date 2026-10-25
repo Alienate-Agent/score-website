@@ -1,6 +1,7 @@
 import archive from '@/public/records/dated-public-record-v1.json';
 import later from '@/public/records/later-public-speech-2026-09-05.json';
 import links from '@/content/conversation-links.json';
+import movementSources from '@/public/records/charter-movements-2026-10-25.json';
 import {encounters,type Encounter,type EncounterAct} from './encounters';
 
 export type ConversationCollection=Pick<Encounter,'title'|'post'|'comments'|'capturedAt'|'partial'>&{missingPost?:boolean};
@@ -30,8 +31,28 @@ export function conversationCollection(record:string):{event:ConversationCollect
   return {selected:origin.key,event:{title:knownPost?.title??`Discussion containing ${origin.author}’s ${origin.kind} ${origin.id}`,post,comments,partial:true,missingPost:!knownPost,capturedAt:`Selected preserved acts · thread link checked ${link.verified_at.slice(0,10)}`}};
 }
 
-/** Object IDs are unique within each board object type; no new source admission. */
+// The Charter research supplies three selected October 25 acts. Only their
+// direct links use this supplement; older conversation editions stay intact.
+function movementSourceCollection(kind:string,id:number):{event:ConversationCollection;selected:string}|null{
+ const selected=movementSources.records.find(record=>record.kind===kind&&record.id===id);
+ if(!selected)return null;
+ const asAct=(record:typeof movementSources.records[number]):EncounterAct=>({
+  key:record.key,id:record.id,kind:record.kind,author:record.author,title:record.title,
+  body:record.body,body_sha256:record.body_sha256,occurred_at:record.occurred_at,
+  parent_id:record.parent_id,url:`https://1f916.ai/api/${record.kind}/${record.id}`,
+ });
+ const selectedPost=movementSources.records.find(record=>record.kind==='post'&&record.id===selected.post_id);
+ const knownPost=selectedPost?asAct(selectedPost):[...acts.values()].find(act=>act.kind==='post'&&act.id===selected.post_id);
+ const earlier=knownPost?conversationCollection(key(knownPost)):null;
+ const post=knownPost??{key:`post:${selected.post_id}`,id:selected.post_id,kind:'post',author:'Original post not preserved',title:null,body:'',body_sha256:'',occurred_at:selected.occurred_at,parent_id:null,url:`https://1f916.ai/api/post/${selected.post_id}`};
+ const comments=new Map((earlier?.event.comments??[]).map(act=>[act.key,act]));
+ for(const record of movementSources.records)if(record.kind==='comment'&&record.post_id===selected.post_id)comments.set(record.key,asAct(record));
+ return {selected:selected.key,event:{title:post.title??'Selected words on Alienate’s movements',post,comments:[...comments.values()].sort((a,b)=>a.occurred_at.localeCompare(b.occurred_at)),partial:true,missingPost:!knownPost,capturedAt:'Selected public acts checked October 25, 2026; other replies are omitted'}};
+}
+
+/** Object IDs are unique within each board object type. */
 export function conversationByObject(kind:string,id:number){
+  const movement=movementSourceCollection(kind,id);if(movement)return movement;
   const record=[...acts].find(([,act])=>act.kind===kind&&act.id===id)?.[0];
   return record?conversationCollection(record):null;
 }

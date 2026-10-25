@@ -2,6 +2,8 @@ import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
 import {resolve,dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {storyPresent} from '../lib/story-present.ts';
+import {homepageEditorial} from '../content/homepage-editorial.mjs';
+import {blueskyFollowLink,journalFollowInvitation,blueskyHeaderLink} from '../content/follow-invitations.mjs';
 
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const input=resolve(root,'content/entrance');
@@ -17,6 +19,9 @@ const footer=`<footer><span>SCORE · An ongoing artwork</span><nav aria-label="M
 mkdirSync(output,{recursive:true});
 for(const [file,route] of Object.entries(routes)){
  let html=readFileSync(resolve(input,file),'utf8');
+ html=html.replaceAll('<!-- bluesky-follow -->',blueskyFollowLink);
+ if(file.startsWith('journal-'))html=html.replace('</main>',journalFollowInvitation+'</main>');
+ html=html.replace('</head>','<link rel="stylesheet" href="/entrance/follow-invitations.css"></head>');
  html=html.replaceAll('assets/neither-path-invitation.svg','assets/neither-path-invitation.webp');
  html=html.replace(/<meta name="robots" content="noindex,nofollow">/g,'').replace(/<div class="study-note">[\s\S]*?<\/div>/g,'');
  html=html.replace(/ · local preview| — local study H/g,'');
@@ -34,17 +39,22 @@ for(const [file,route] of Object.entries(routes)){
  // US English applies only to site-authored copy, never frozen input bytes.
  html=html.replace('creative labour behind its training','creative labor behind its training');
  if(file==='index.html'){
-   const summary=esc(storyPresent.compactSummary);
-   html=html.replace(/<div class="status-body">[\s\S]*?<div class="goal-path"/,`<div class="status-body"><p>${summary}</p><p class="reminder">No art purchase through the campaign is recorded in the reviewed material. The artists are still owed.</p><div class="status-bottom"><time datetime="${storyPresent.asOf}">Reviewed ${esc(storyPresent.label)}</time><a href="/journal/${storyPresent.asOf}">Read the update</a></div></div>\n<div class="goal-path"`);
+   html=html.replace('</head>','<link rel="stylesheet" href="/entrance/newcomer.css"></head>');
+   if(homepageEditorial.asOf!==storyPresent.asOf)throw new Error('Review the homepage explanation for the newly admitted edition before building.');
+   html=html.replace(/<!-- blockers-date:start -->[\s\S]*?<!-- blockers-date:end -->/,`<!-- blockers-date:start -->From the campaign review · <time datetime="${esc(homepageEditorial.asOf)}">${esc(storyPresent.label)}</time> · Invitations by Margin<!-- blockers-date:end -->`);
+   const blockerCards=homepageEditorial.blockers.map((blocker,index)=>`<article><p class="blocker-number">0${index+1}</p><h3>${esc(blocker.title)}</h3><p>${esc(blocker.context)}</p><div class="blocker-help"><h4>A way to help</h4><p>${esc(blocker.invitation)}</p></div><a class="text-link" href="${esc(blocker.href)}">${esc(blocker.linkLabel)} <span aria-hidden="true">→</span></a></article>`).join('\n');
+   html=html.replace(/<!-- blockers:start -->[\s\S]*?<!-- blockers:end -->/,`<!-- blockers:start -->${blockerCards}<!-- blockers:end -->`);
+   html=html.replace(/<h2 id="status-heading">[\s\S]*?<\/h2>/,`<h2 id="status-heading">${esc(homepageEditorial.statusHeading)}</h2>`);
+   html=html.replace(/<div class="status-body">[\s\S]*?<div class="goal-path"/,`<div class="status-body"><p>${esc(homepageEditorial.statusSummary)}</p><p class="reminder">${esc(homepageEditorial.statusReminder)}</p><div class="status-bottom"><time datetime="${storyPresent.asOf}">Reviewed ${esc(storyPresent.label)}</time><a href="/journal/${storyPresent.asOf}">Read the latest update</a></div></div>\n<div class="goal-path"`);
    html=html.replace('</head>','<script type="module" src="/entrance/legacy-links.js"></script></head>');
  }
- html=html.replace('</head>',`<link rel="stylesheet" href="/entrance/site-continuity.css"><link rel="canonical" href="https://taasoart.com${route}"></head>`);
- const primary=`<nav aria-label="Main"><a href="/journal"${file.startsWith('journal')||file==='episode.html'?' aria-current="page"':''}>Journal</a><a href="/#agents">Agents</a><a href="/works">Works</a><a href="/resources">Resources</a></nav>`;
+ html=html.replace('</head>',`<link rel="stylesheet" href="/entrance/site-continuity.css"><link rel="stylesheet" href="/entrance/social-link.css"><link rel="canonical" href="https://taasoart.com${route}"></head>`);
+ const primary=`<nav aria-label="Main"><a href="/journal"${file.startsWith('journal')||file==='episode.html'?' aria-current="page"':''}>Journal</a><a href="/#agents">Agents</a><a href="/works">Works</a><a href="/charter">Charter</a><a href="/resources">Resources</a>${blueskyHeaderLink}</nav>`;
  html=html.replace(/<header class="masthead">([\s\S]*?)<\/header>/,(_,content)=>{
    const identity=content.match(/<a[^>]*class="identity"[\s\S]*?<\/a>/)?.[0];
    if(!identity)throw new Error(`Missing site identity in ${file}`);
    const local=file==='episode.html'?content.match(/<nav aria-label="Episode navigation">[\s\S]*?<\/nav>/)?.[0]||'':'';
-   return `<header class="masthead site-static-header"><div class="site-static-row">${identity}${primary}</div>${local}</header>`;
+   return `<header class="masthead site-static-header"><div class="site-static-row">${identity}${primary}</div>${local}<nav id="contextual-reading-return" aria-label="Return to your reading"></nav></header>`;
  });
  html=html.replace('href="/archive">Explore the full record','href="/record">Explore the full record');
  html=html.replace('<body','<body data-reading-mode="entrance" data-reading-return-ready="true"');

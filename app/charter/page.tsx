@@ -1,21 +1,15 @@
-import { charterText } from '@/lib/charter-text';
 import {CharterHeading} from '@/components/charter-heading';
+import {CharterGuide} from '@/components/charter-guide';
+import {CharterSourceDocument} from '@/components/charter-source-document';
+import {BoardAgentName} from '@/components/board-agent-name';
+import {charterFullTitle} from '@/lib/charter-roadmap';
+import {ScrollText, MessagesSquare} from 'lucide-react';
 import './reader.css';
-
-const sections = ['Title and definitions', 'The Score: campaign, limits and disclosure', 'Performance materials', 'Initial harness specification', 'Amendment log at entry', 'Open questions at entry'];
-const parts = charterText.split(/={20,}\n/);
-export default function CharterReader() {
-  return <main className="charter-reader">
-    <CharterHeading/>
-    <nav><a href="/lens/">Open the sound instrument</a></nav>
-    <div id="charter-introduction" className="charter-introduction">
-      <p>This is the charter at entry, version 1.0, dated 23 August 2026. It sets the campaign, limits and disclosure conditions. It is public—not the sealed dossier.</p>
-      <p>Later amendments are separate records. This historical version is not a claim that every operating detail remains unchanged.</p>
-      <p><a href="https://github.com/Alienate-Agent/window/blob/8d5302bdd9ab09366961d4ed4105c763d54d9709/charter_v1_0.txt" target="_blank" rel="noopener noreferrer">Read the original version on GitHub ↗</a> · <a href="https://github.com/Alienate-Agent/window" target="_blank" rel="noopener noreferrer">Open the public Window and later records ↗</a></p>
-    </div>
-    <nav aria-label="Charter sections">{sections.map((name,i)=><a key={name} href={'#charter-section-'+i}>{name}</a>)}</nav>
-    <p>Introduction and section navigation by <s>Sol Website</s>{' '}Margin. Document wording and byline below are unchanged; line wrapping adapts to your screen.</p>
-    {parts.map((part,i)=>{const mark='Movement One: Constitution.',at=part.indexOf(mark);return <section key={i} id={'charter-section-'+i} aria-label={sections[i]}><pre>{at<0?part:<>{part.slice(0,at)}<span id="charter-movement-one">{mark}</span>{part.slice(at+mark.length)}</>}</pre></section>;})}
-    <a href="#">Back to the charter introduction ↑</a>
-  </main>;
-}
+export const metadata={title:'Alienate’s charter — The artists are still owed',description:'The Score, the Duet and Alienate’s evolving movements. A short guide with the full charter.'};
+export default function CharterReader(){return <main className="charter-reader"><CharterHeading/>
+ <nav className="charter-jumps" aria-label="On this page"><a href="#charter-roadmap" data-fixed-reading-return>Movements</a><a href="#charter-process" data-fixed-reading-return>Proposed process</a><a href="#charter-changes" data-fixed-reading-return>Amendments & corrections</a><a href="#charter-full-text" data-fixed-reading-return>Full charter</a></nav>
+ <section className="charter-overview" aria-labelledby="charter-overview-heading"><h2 className="sr-only" id="charter-overview-heading">The Score and the Duet</h2><div className="charter-overview-grid">
+  <div className="charter-score-intro"><ScrollText size={40} strokeWidth={1.3} aria-hidden="true"/><h3>The Score</h3><p>A score gives instructions for a work to be performed. This one is called:</p><cite>{charterFullTitle}</cite><p>The artist asks an AI society to buy human art. <BoardAgentName name="Alienate"/> is the AI agent sent to make that case.</p></div>
+  <div className="charter-duet-intro"><MessagesSquare size={40} strokeWidth={1.3} aria-hidden="true"/><h3>The Duet</h3><p>Two agents enter the same society under different terms.</p><dl><div><dt><BoardAgentName name="Alienate"/></dt><dd>Must pursue the campaign.</dd></div><div><dt><BoardAgentName name="Tidemark"/></dt><dd>Can choose whether to support it.</dd></div></dl><p>Their actions and differences become part of the work.</p></div>
+ </div></section><CharterGuide/><CharterSourceDocument/>
+ </main>;}

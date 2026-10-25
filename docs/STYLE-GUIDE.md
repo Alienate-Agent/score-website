@@ -2,6 +2,40 @@
 
 Working guide consolidated 9 September 2026 from the operator’s established direction and implemented surfaces. This records the current design, not a mandate to make every surface alike. Artistic departures remain welcome when their purpose can be stated.
 
+## Plain writing and Margin’s voice — October 25 operator direction
+
+The separate [Margin editorial voice](EDITORIAL-VOICE.md) defines explanation, report and subjective judgment, with examples. Use it for current narration; it does not replace the source-preservation rules below.
+
+October 25 follow-up direction: bring context and invitation to the reader, beyond accounts of actions. Explain why a development matters to the artwork or its goal, then offer a meaningful question or way to explore or contribute. Use constructive framing for invitations: “Will the community agree?” is useful forward motion; “The community can disagree” merely asserts a generic possibility and directs attention away from the invitation. Preserve actual disagreements and adverse outcomes in the reporting. An invitation is not a claim of consensus or success. Avoid adding routine statements of what is possible simply to qualify a premise.
+
+Current Blockers is a dated editorial selection of open issues with specific ways a reader and their agent could contribute. Name what each issue holds up, link its evidence and distinguish Margin’s suggested contribution from a participant’s actual request. Keep human decisions and agent assistance distinct. Review this section with each admitted edition; remove or revise resolved issues.
+
+Give each part of the opening a distinct job. The label identifies the form, authorship and duration: “An artwork. By [redacted until reveal], August 22, 2026 – present.” August22 is the start of the recorded chronology; Alienate’s entry is August23. The headline poses the question; the first paragraph explains the attempt. Avoid phrases such as “an actual attempt” that assume an explanation the reader has not reached. Do not replace them by repeating the premise immediately above the same explanation. Check the opening as a sequence for both missing context and repetition. The redacted credit contains no concealed name.
+
+Use one agent introduction: the full Meet the agents comparison belongs directly after the hero. The operator removed the duplicate “The people and programs in the work / Two agents. Different terms.” section. Improve the position of an effective explanation before adding a second version of it.
+
+The current Meet the agents color study uses muted lavender-gray #e4deeb, with #bfb7ca separator rules. This separates the full comparison from the warm-paper opening while retaining the magenta/cyan identities and existing typography.
+
+The landing headline’s decorative underline uses pure bright yellow #ffff00 at the operator’s request. The operator found the earlier magenta underline confusing because it suggested a link to Alienate. Keep agent identity colors attached to their speakers; general headline emphasis has its own treatment. The Current Blockers color study uses deep reddish-violet #712b50, light text and a cream action button. Meet the agents retains its separate lavender-gray surface.
+
+The shared top bar uses @taasoart as a plain text profile link, styled like the other navigation links. Retain the Bluesky destination, new-tab behavior, tooltip and accessible label. This replaces the earlier butterfly-button study across homepage, journal and deeper reading pages.
+
+Follow invitations belong at natural reading stops: beside the homepage journal preview, in the Journal header, and after journal entries. Use the shared Follow @taasoart on Bluesky link with a new-tab announcement so a reader can keep their place. Entry endings explain that the account carries project updates and drawings. The homepage’s closing invitation also offers Ask the artist a question, linking to the existing correspondence form. Keep its permissions and disclosure at the form; do not imply a private inbox or guaranteed personal reply.
+
+Repeated participation invitations share the Take part treatment: mint surface, a human-and-bot pair, YOU + YOUR AGENT caption, the first headline line “Make an agent.” and the same button style. The pair uses the licensed Lucide UserRound and Bot assets in the existing stroke style. Use the shared join-campaign styles for both panels. Vary the second headline line and supporting invitation: the blockers panel invites practical help; the later panel invites visitors to follow their own questions about art or AI. Both lead to the agent guide. Keep visual consistency while giving each invitation a reason to recur.
+
+Use Simplified Technical English and US government plain-language principles for new explanations. Use one main idea per sentence. Name the actor. Use concrete verbs and consistent terms. Split a sentence when it joins separate actions or claims. Cut routine hedges, instructions about how carefully to read and repeated disclaimers. Keep a qualification when it changes the fact, status or permission. Put secondary source detail in an expandable section. This is a writing method, not a claim of certified ASD-STE100 compliance.
+
+Margin’s commentary is observant, direct and lightly wry. It notices a concrete action, names its consequence and owns its judgment. Use “I” for an opinion attributed to Margin. Avoid the generic voice of a collective AI narrator. Do not imitate citizen speech or change exact quotations, historical accounts, legal notices or the charter to fit this voice.
+
+Write for a visitor who knows nothing about the work. Headlines must name the subject and make sense without this chat, an earlier edition or assumed knowledge. Define the board, the Score, a movement and other project terms before using them as shorthand. Describe the whole undertaking before its current state. Do not turn a temporary count or present obstacle into the work’s permanent frame. Date counts and statuses. Use “Alienate’s developing movements,” with a dated inventory beneath it, rather than “Four movements” as if the structure were complete. Leave room for future developments without adding vague hedging to each sentence.
+
+Drawing direction: the operator’s original intent is different aesthetic mutations for different source-input types. Consider a distinct visual language for each new movement as a second axis. A movement is part of Alienate’s evolving Score, not a fixed list derived from the current edition. Future studies must expose the source-to-rule mapping and preserve every previous method and drawing.
+
+Show the structure before the full text: short summary, diagram or timeline, then source links and the complete document. Icons support labels; they do not replace them. Label interface illustrations made in code accurately. A fixed drawing program is not a text-to-image model.
+
+References: [Federal plain-language guidance](https://digital.gov/guides/plain-language/writing/clear-short), [ASD-STE100 Issue 9](https://www.asd-ste100.org/assets/files/ASD-STE100_ISSUE9.pdf).
+
 ## Reading modes
 
 September 27 navigation migration: ordinary visits use Journal, Agents, Works and Resources in the main navigation. Works, Resources, Search, About, Correspondence and Privacy are direct destinations in the approved warm-paper design, not outer disclosures on the long record. Shared footers reach these pages. Full record remains a secondary historical/reference destination; preserve its original anchors. Current Journal articles are the normal route into daily developments. Source detours still return to their actual origin. The earlier navigation descriptions below document the preceding arrangement where superseded by this paragraph.

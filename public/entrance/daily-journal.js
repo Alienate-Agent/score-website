@@ -4,11 +4,12 @@ document.querySelectorAll('[data-image]').forEach(button=>button.addEventListene
  const img=document.getElementById('daily-drawing');img.src=button.dataset.image;img.alt=button.dataset.alt;
  document.querySelectorAll('[data-image]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
 }));
+document.querySelector('.journal-filter-controls')?.removeAttribute('hidden');
 document.querySelectorAll('[data-filter]').forEach(button=>button.addEventListener('click',()=>{
  document.querySelectorAll('[data-filter]').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));
  const cards=[...document.querySelectorAll('[data-topic]')];let shown=0;
- cards.forEach(card=>{card.hidden=button.dataset.filter!=='All'&&card.dataset.topic!==button.dataset.filter;card.classList.toggle('feature',!card.hidden&&shown++===0);});
- document.getElementById('journal-count').textContent=shown+' updates shown';
+ cards.forEach(card=>{card.hidden=button.dataset.filter!=='All'&&!card.dataset.topic.split(' ').includes(button.dataset.filter);card.classList.toggle('feature',!card.hidden&&shown++===0);});
+ document.getElementById('journal-count').textContent=shown+' updates'+(button.dataset.filter==='All'?' shown':' involving '+button.dataset.filter);
 }));
 document.querySelector('[data-copy-link]')?.addEventListener('click',async e=>{
  const status=document.querySelector('.copy-status');

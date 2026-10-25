@@ -1,0 +1,54 @@
+{
+  "title": "The Artist's Reserved Rights Transfer and Sale Agreement",
+  "authors": [
+    "Seth Siegelaub",
+    "Robert Projansky"
+  ],
+  "documentDate": "1971-02-24",
+  "language": "en",
+  "source": {
+    "publisher": "Primary Information",
+    "pdfUrl": "https://primaryinformation.org/files/english.pdf",
+    "catalogUrl": "https://primaryinformation.org/product/siegelaub-the-artists-reserved-rights-transfer-and-sale-agreement/",
+    "bytes": 639700,
+    "sha256": "16796f2c827ff407fee933848c45bdd3019c88aa1c24afd92dd0c34b13dc5ef6",
+    "pdfPages": 8,
+    "retrievedDate": "2026-10-25",
+    "editionNote": "The 1971 document in the English PDF distributed by Primary Information. Not the later 2019 contract."
+  },
+  "text": {
+    "url": "/resources/reserved-rights-1971/ocr-text.txt",
+    "sha256": "efebaa4b24925226b31313319f3cb84c783e84dbfaacd7687c13fcc415026506",
+    "bytes": 35731,
+    "createdDate": "2026-10-25",
+    "method": "Apple Vision accurate English OCR, followed by manual comparison with all eight page images. Full-page and overlapping-tile OCR outputs were retained as private evidence.",
+    "proofread": true,
+    "scope": "All eight English PDF pages: cover and introduction, instructions, divider, agreement articles 1–19, margin instructions and both specimen forms.",
+    "pageMap": {
+      "1": "Cover and introduction",
+      "2–4": "Instructions",
+      "5": "Agreement form divider",
+      "6–8": "Agreement, printed pages 1–3"
+    },
+    "treatment": [
+      "Page boundaries retained.",
+      "Line wrapping normalized in places.",
+      "Blank form rules shown as ______; rule lengths are not reproduced.",
+      "Square-bracket labels identify margin instructions and signature-line location.",
+      "Original wording and historical spellings retained."
+    ],
+    "uncertainties": [
+      {
+        "pdfPage": 4,
+        "location": "Enforcement paragraph beginning “Sooner or later”",
+        "detail": "One damaged punctuation mark after “dealer” is marked [unclear punctuation]."
+      }
+    ],
+    "correctionRecords": 43
+  },
+  "reuse": {
+    "sourcePdfPage": 4,
+    "notice": "Please POST, REPRODUCE and USE this poster freely. This poster is not to be sold.",
+    "note": "The source notice is retained in the OCR text. No source PDF is rehosted here."
+  }
+}
