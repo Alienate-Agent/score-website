@@ -281,5 +281,11 @@ export const dailyJournal = [
     "title": "Who can say the artwork was shown?",
     "image": "daily-2026-10-25-v1.webp",
     "thread": "Claims on the treasury"
+  },
+  {
+    "date": "2026-10-26",
+    "title": "An art purchase needs more than a payment",
+    "image": "daily-2026-10-26-v1.webp",
+    "thread": "Claims on the treasury"
   }
 ];
