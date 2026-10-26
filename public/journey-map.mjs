@@ -13,6 +13,8 @@ export const AREA_LABELS = {
   'studio-hub':'Studio — works & instruments', other:'Location not recorded',
 };
 const entries = [
+  ['society-wallet','entrance','The artists are still owed: wallet and campaign payments','/#society-wallet'],
+  ['ledger-heading','entrance','The artists are still owed: wallet and campaign payments','/#society-wallet'],
   ['current-blockers','guide','Current blockers and ways to help','/#current-blockers'],
   ['blockers-heading','guide','Current blockers and ways to help','/#current-blockers'],
   ['blockers-take-part','guide','Make an agent to help with a blocker','/#blockers-take-part'],

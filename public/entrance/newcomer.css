@@ -38,21 +38,6 @@
 .second-voice{font-size:15px;line-height:1.5;margin:0 0 22px;max-width:56ch;}
 .hero-context a.voice{text-decoration:none;}
 .hero-context a.voice:hover,.hero-context a.voice:focus-visible{color:var(--paper);background:var(--ink);}
-.money-at-a-glance{display:grid;grid-template-columns:1.1fr 1fr;gap:24px;border-top:1px solid var(--ink);margin:0;padding:16px 0 0;}
-.money-at-a-glance>div{min-width:0;}
-.money-at-a-glance dt{font-size:12px;line-height:1.4;margin:0 0 9px;}
-.money-at-a-glance dd{font-size:clamp(28px,2.8vw,42px);font-weight:650;line-height:1.05;letter-spacing:-.04em;margin:0;font-variant-numeric:tabular-nums;}
-.money-at-a-glance dd span{display:block;font-size:12px;font-weight:400;line-height:1.4;letter-spacing:0;margin-top:6px;}
-.money-date{font-size:12px;line-height:1.5;color:var(--muted);margin:16px 0 20px;max-width:60ch;}
-.money-date a{white-space:nowrap;}
-.money-at-a-glance dd>strong{font:inherit;}
-.wallet-update{margin:12px 0 0;}
-.wallet-update p{font-size:12px;line-height:1.5;color:var(--muted);margin:0;max-width:60ch;}
-.wallet-update button{font:inherit;font-size:13px;font-weight:600;line-height:1.4;color:var(--ink);background:none;border:0;padding:10px 0;min-height:44px;text-decoration:underline;text-underline-offset:.2em;cursor:pointer;}
-.wallet-update button span{display:inline-block;margin-left:6px;font-size:18px;vertical-align:middle;}
-.wallet-update button:focus-visible{outline:3px solid currentColor;outline-offset:4px;}
-.wallet-update button:disabled{cursor:wait;opacity:.6;}
-.wallet-update+.money-date{margin-top:0;}
 .hero-art{grid-row:1/5;align-self:start;}
 .board-and-money{padding:38px 4vw;display:grid;grid-template-columns:1fr 1.1fr;gap:8%;border-top:1px solid var(--rule);}
 .board-and-money .eyebrow{margin-bottom:16px;}
@@ -84,10 +69,6 @@
   .hero-context{order:2;}
   .hero-context .premise{font-size:16px;margin:0 0 13px;}
   .second-voice{font-size:14px;margin-bottom:20px;}
-  .money-at-a-glance{gap:18px;padding-top:14px;}
-  .money-at-a-glance dt{font-size:12px;min-height:34px;margin-bottom:8px;}
-  .money-at-a-glance dd{font-size:clamp(27px,7.2vw,38px);}
-  .money-date{margin:14px 0 18px;}
   .hero-actions{order:3;gap:8px 20px;margin-bottom:26px;}
   .hero-art{order:4;margin:0;}
   .board-and-money{display:block;padding:30px 20px;}
@@ -100,4 +81,46 @@
   .join-symbol img{width:32px;height:32px;}
   .join-symbol span{display:none;}
   .join-campaign .primary{grid-column:2;justify-self:start;white-space:normal;}
+}
+
+/* Approved treasury composition: the unpaid amount follows the opening. */
+.treasury-ledger{background:var(--ink);color:var(--paper);padding:36px 4vw 32px;scroll-margin-top:24px;--rule:#615c54;}
+.ledger-top{display:flex;align-items:baseline;justify-content:space-between;gap:18px;margin-bottom:28px;}
+.ledger-top h2{font-size:clamp(24px,3vw,42px);line-height:1.08;letter-spacing:-.035em;font-weight:750;max-width:23ch;margin:0;}
+.wallet-update{max-width:420px;text-align:right;flex-shrink:0;font-size:12px;color:#c3beb3;}
+.wallet-update .wallet-name{margin:0;font-size:12px;font-weight:650;color:var(--paper);}
+.wallet-controls{display:flex;justify-content:flex-end;align-items:center;gap:10px;flex-wrap:wrap;}
+.wallet-update button{font:inherit;color:inherit;background:none;border:0;min-height:44px;padding:10px 0;text-decoration:underline;text-underline-offset:.2em;}
+.wallet-update button:disabled{cursor:wait;opacity:.6;}
+.wallet-update [data-wallet-status]{font-size:12px;line-height:1.5;margin:0;}
+.wallet-update [data-wallet-status]:empty{display:none;}
+.ledger-balances{display:grid;grid-template-columns:1.15fr 1fr;gap:4.6vw;align-items:center;margin:0;}
+.ledger-balances>div{min-width:0;}
+.ledger-balances dt{font-size:16px;margin-bottom:12px;}
+.ledger-balances dd{margin:0;}
+.ledger-amount{font-size:clamp(32px,3.5vw,54px);font-weight:600;letter-spacing:-.065em;line-height:1.05;font-variant-numeric:tabular-nums;}
+.ledger-paid .ledger-amount{font-size:clamp(90px,11vw,150px);color:#fcff39;line-height:.9;}
+.ledger-currency{font-size:16px;margin-left:8px;}
+.ledger-held{border-left:1px solid var(--rule);padding-left:4.6vw;}
+.ledger-qualifier{font-size:13px;color:#d0cabf;margin:14px 0 0;max-width:38ch;}
+.budget-status{display:block;margin-top:4px;font-weight:750;color:var(--paper);}
+.treasury-ledger details{margin-top:25px;border:0;padding:0;scroll-margin-top:24px;}
+.treasury-ledger summary{display:table;min-height:44px;padding:10px 0;border-bottom:1px solid #b5afa5;font-size:13px;}
+.treasury-ledger summary::after{content:' +';margin-left:8px;}
+.treasury-ledger details[open] summary::after{content:' −';}
+.ledger-provenance{max-width:74ch;padding-top:14px;}
+.ledger-provenance p{margin:0 0 10px;}
+.latest-after-ledger{display:flex;justify-content:space-between;align-items:center;gap:24px;margin:0;padding:28px 4vw 32px;border-top:0;border-bottom:1px solid var(--rule);}
+.latest-after-ledger h2{font-size:26px;margin:0;}
+.latest-after-ledger>div>p:not(.eyebrow){font-size:15px;max-width:68ch;margin:12px 0 0;}
+.latest-after-ledger>.text-link{flex-shrink:0;font-size:13px;}
+@media(min-width:1600px){.treasury-ledger,.latest-after-ledger{padding-inline:max(4vw,calc((100vw - 1472px)/2));}}
+@media(max-width:1000px){.ledger-top{align-items:flex-start;flex-direction:column;gap:14px;}.wallet-update{text-align:left;max-width:100%;}.wallet-controls{justify-content:flex-start;}}
+@media(max-width:650px){
+ .treasury-ledger{padding:30px 20px;}.ledger-balances{grid-template-columns:1fr;gap:30px;}
+ .ledger-balances dt{font-size:14px;margin-bottom:9px;}.ledger-held{border-left:0;border-top:1px solid var(--rule);padding:25px 0 0;}
+ .ledger-paid .ledger-amount{font-size:105px;}.ledger-held .ledger-amount{font-size:clamp(32px,10.7vw,42px);}
+ .ledger-currency{font-size:14px;}.ledger-qualifier{font-size:12px;margin-top:9px;}
+ .latest-after-ledger{padding:28px 20px;flex-direction:column;align-items:flex-start;gap:12px;}
+ .latest-after-ledger h2{font-size:24px;}
 }

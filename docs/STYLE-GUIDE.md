@@ -124,3 +124,9 @@ The homepage wallet is the society’s USDC balance on Base, read from the board
 Run `node scripts/refresh-society-wallet.mjs` in every daily editorial sweep, including a no-new-article day. It saves a dated public source record and updates `content/society-wallet.json`; the entrance builder uses both. Failed or stale reads leave the previous snapshot untouched. Preserve old records. This data-only update does not establish a new campaign review cutoff or a new Journal story.
 
 Resources uses one warm-paper layout with aligned category labels, lavender-backed line icons, a shared heading scale and matching bordered action links. Source credits and code details stay subordinate to their resource. Preserve the original PDF, extracted text and provenance together.
+
+## Treasury composition — October 26 approved study C
+
+The opening question and premise lead directly to their actions. A full-width charcoal treasury section follows the complete opening, then the latest Journal entry and Meet the agents. The heading is “THE ARTISTS ARE STILL OWED.” with a prominent yellow campaign-payment amount and the society’s USDC balance alongside it at a smaller scale. “No art budget has been approved.” is bold on its own line below “Held by the community.”
+
+Use “1f916.ai Wallet” with the balance’s last-updated date and an in-page Refresh control. Keep the last successful date visible during loading and after errors; refreshing the wallet does not refresh the campaign review. Sources & dates expands directly below the amounts and preserves the original wallet and payment source records. Existing homepage anchors remain reachable.

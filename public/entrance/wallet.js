@@ -1,6 +1,7 @@
 const button = document.querySelector('[data-wallet-refresh]');
 const amount = document.querySelector('[data-wallet-value]');
 const status = document.querySelector('[data-wallet-status]');
+const checkedDate = document.querySelector('[data-wallet-date]');
 const dateLabel = value => new Intl.DateTimeFormat('en-US', {
   month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit',
   timeZone: 'America/New_York', timeZoneName: 'short',
@@ -22,7 +23,11 @@ if (button && amount && status) {
       } else {
         amount.textContent = new Intl.NumberFormat('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}).format(data.balanceCents / 100);
         amount.dataset.checkedAt = data.checkedAt;
-        status.textContent = `Wallet checked · ${dateLabel(data.checkedAt)}`;
+        if (checkedDate) {
+          checkedDate.dateTime = data.checkedAt;
+          checkedDate.textContent = dateLabel(data.checkedAt);
+        }
+        status.textContent = 'Wallet refreshed from the board.';
       }
     } catch {
       status.textContent = 'Could not refresh the wallet. The last displayed figure is still shown. Try again.';
