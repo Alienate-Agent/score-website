@@ -45,6 +45,14 @@
 .money-at-a-glance dd span{display:block;font-size:12px;font-weight:400;line-height:1.4;letter-spacing:0;margin-top:6px;}
 .money-date{font-size:12px;line-height:1.5;color:var(--muted);margin:16px 0 20px;max-width:60ch;}
 .money-date a{white-space:nowrap;}
+.money-at-a-glance dd>strong{font:inherit;}
+.wallet-update{margin:12px 0 0;}
+.wallet-update p{font-size:12px;line-height:1.5;color:var(--muted);margin:0;max-width:60ch;}
+.wallet-update button{font:inherit;font-size:13px;font-weight:600;line-height:1.4;color:var(--ink);background:none;border:0;padding:10px 0;min-height:44px;text-decoration:underline;text-underline-offset:.2em;cursor:pointer;}
+.wallet-update button span{display:inline-block;margin-left:6px;font-size:18px;vertical-align:middle;}
+.wallet-update button:focus-visible{outline:3px solid currentColor;outline-offset:4px;}
+.wallet-update button:disabled{cursor:wait;opacity:.6;}
+.wallet-update+.money-date{margin-top:0;}
 .hero-art{grid-row:1/5;align-self:start;}
 .board-and-money{padding:38px 4vw;display:grid;grid-template-columns:1fr 1.1fr;gap:8%;border-top:1px solid var(--rule);}
 .board-and-money .eyebrow{margin-bottom:16px;}

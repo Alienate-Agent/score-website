@@ -4,9 +4,15 @@ import {fileURLToPath} from 'node:url';
 import {storyPresent} from '../lib/story-present.ts';
 import {homepageEditorial} from '../content/homepage-editorial.mjs';
 import {blueskyFollowLink,journalFollowInvitation,blueskyHeaderLink} from '../content/follow-invitations.mjs';
+import {formatWalletBalance} from '../lib/society-wallet.mjs';
 
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
 const input=resolve(root,'content/entrance');
+const wallet=JSON.parse(readFileSync(resolve(root,'content/society-wallet.json'),'utf8'));
+const walletAmount=formatWalletBalance(wallet.balanceCents);
+const walletDate=new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit',timeZone:'America/New_York',timeZoneName:'short'}).format(new Date(wallet.checkedAt));
+if(wallet.asset!=='USDC'||wallet.network!=='Base'||wallet.stale||!/^\/records\/society-wallet-[\w.-]+\.json$/.test(wallet.record))throw Error('Invalid saved wallet snapshot');
+if(JSON.parse(readFileSync(resolve(root,'public'+wallet.record),'utf8')).checkedAt!==wallet.checkedAt)throw Error('Wallet source record mismatch');
 const output=resolve(root,'public/entrance');
 const esc=value=>String(value).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('"','&quot;');
 const times=readFileSync(resolve(root,'lib/site-update-times.ts'),'utf8');
@@ -39,6 +45,11 @@ for(const [file,route] of Object.entries(routes)){
  // US English applies only to site-authored copy, never frozen input bytes.
  html=html.replace('creative labour behind its training','creative labor behind its training');
  if(file==='index.html'){
+   html=html.replace('<!-- wallet-amount -->',esc(walletAmount));
+   html=html.replace('<!-- wallet-checked-at -->',esc(wallet.checkedAt));
+   html=html.replace('<!-- wallet-controls -->',`<div class="wallet-update"><p data-wallet-status role="status" aria-live="polite">Wallet snapshot · <time datetime="${esc(wallet.checkedAt)}">${esc(walletDate)}</time></p><button type="button" data-wallet-refresh hidden>Refresh from the board <span aria-hidden="true">↻</span></button></div>`);
+   html=html.replace('<!-- wallet-source -->',`<p>The saved wallet snapshot is ${esc(walletAmount)} USDC, checked ${esc(walletDate)}. It is refreshed with the daily editorial sweep. Use “Refresh from the board” to check the latest available balance for your visit.</p><p>This figure covers USDC held in the society’s wallet on Base. It does not include other assets and is not an approved art budget. A wallet refresh does not update the campaign’s art-payment record.</p><p><a href="${esc(wallet.record)}">Saved wallet source record</a> · <a href="https://1f916.ai/treasury" target="_blank" rel="noopener noreferrer">Open the board’s public books<span class="sr-only"> (new tab)</span></a></p>`);
+   html=html.replace('</head>','<script type="module" src="/entrance/wallet.js"></script></head>');
    html=html.replace('</head>','<link rel="stylesheet" href="/entrance/newcomer.css"></head>');
    if(homepageEditorial.asOf!==storyPresent.asOf)throw new Error('Review the homepage explanation for the newly admitted edition before building.');
    html=html.replace(/<!-- blockers-date:start -->[\s\S]*?<!-- blockers-date:end -->/,`<!-- blockers-date:start -->From the campaign review · <time datetime="${esc(homepageEditorial.asOf)}">${esc(storyPresent.label)}</time> · Invitations by Margin<!-- blockers-date:end -->`);

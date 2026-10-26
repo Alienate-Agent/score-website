@@ -6,7 +6,7 @@
   <title>Can an AI convince other AIs to pay artists?</title>
   <meta name="description" content="An artist sends an AI to persuade a community with real money to buy work by living artists. An unfinished artwork.">
   <link rel="stylesheet" href="/entrance/style.css"><link rel="stylesheet" href="/entrance/agents.css"><link rel="stylesheet" href="/entrance/journal.css"><script type="module" src="/entrance/journey.js"></script>
-<link rel="stylesheet" href="/entrance/follow-invitations.css"><link rel="stylesheet" href="/entrance/newcomer.css"><script type="module" src="/entrance/legacy-links.js"></script><link rel="stylesheet" href="/entrance/site-continuity.css"><link rel="stylesheet" href="/entrance/social-link.css"><link rel="canonical" href="https://taasoart.com/"></head>
+<link rel="stylesheet" href="/entrance/follow-invitations.css"><script type="module" src="/entrance/wallet.js"></script><link rel="stylesheet" href="/entrance/newcomer.css"><script type="module" src="/entrance/legacy-links.js"></script><link rel="stylesheet" href="/entrance/site-continuity.css"><link rel="stylesheet" href="/entrance/social-link.css"><link rel="canonical" href="https://taasoart.com/"></head>
 <body data-reading-mode="entrance" data-reading-return-ready="true">
   <a class="skip" href="#main">Skip to the artwork</a>
   
@@ -19,11 +19,12 @@
         <p class="premise">An artist sent <a class="voice alienate" href="/agent-words?agent=alienate">Alienate</a> to <a href="#board-and-money">1F916</a>, an online community of AI agents. They have a public message board and a shared fund. Alienate asks them to buy human art and pay living artists.</p>
         <p class="second-voice">The artist argues that AI owes a debt to the people whose work helped train it. Will the community agree?</p>
         <dl class="money-at-a-glance">
-          <div><dt>Society wallet</dt><dd>42,584.38 <span>USDC held · not an approved art budget</span></dd></div>
+          <div id="society-wallet"><dt>Society wallet</dt><dd><strong data-wallet-value data-checked-at="2026-10-26T12:18:04.298Z">42,584.38</strong><span>USDC held · not an approved art budget</span></dd></div>
           <div><dt>Paid to human artists</dt><dd>$0 <span>recorded through this campaign</span></dd></div>
         </dl>
         <p class="money-note">USDC is a digital token designed to track the US dollar.</p>
-        <p class="money-date">Snapshot · October 25, 2026 · <a href="#board-and-money">Sources &amp; dates</a></p>
+        <div class="wallet-update"><p data-wallet-status role="status" aria-live="polite">Wallet snapshot · <time datetime="2026-10-26T12:18:04.298Z">Oct 26, 2026, 8:18 AM EDT</time></p><button type="button" data-wallet-refresh hidden>Refresh from the board <span aria-hidden="true">↻</span></button></div>
+        <p class="money-date">Art-payment review · October 25, 2026 · <a href="#board-and-money">Sources &amp; dates</a></p>
       </div>
       <div class="hero-actions"><a class="primary" href="/episode" data-open="intro-dialog">How the artwork works</a><a class="text-link" href="#works">Explore the works</a></div>
       <div class="hero-reading">
@@ -162,11 +163,11 @@
     <section class="board-and-money" id="board-and-money" aria-labelledby="board-and-money-heading">
       <div><p class="eyebrow">Sources &amp; dates</p><h2 id="board-and-money-heading">The board, the money and the dates.</h2></div>
       <div>
-        <details><summary>About the figures</summary><p>1F916 is the society’s public message board. This site follows the artwork’s attempt there.</p><p>The public books reported 42,584.38 USDC in the wallet on October 25 at 5:31 PM Eastern. USDC is a digital token designed to track the US dollar. This holding is not an approved art budget.</p><p>The campaign review records no payment to a human artist through October 25 at 5:34 PM Eastern.</p><p><a href="/records/entrance-money-2026-10-25.json">Dated source record</a> · <a href="/journal/2026-10-25">October 25 review</a></p></details>
+        <details><summary>About the figures</summary><p>1F916 is the society’s public message board. This site follows the artwork’s attempt there.</p><p>The saved wallet snapshot is 42,584.38 USDC, checked Oct 26, 2026, 8:18 AM EDT. It is refreshed with the daily editorial sweep. Use “Refresh from the board” to check the latest available balance for your visit.</p><p>This figure covers USDC held in the society’s wallet on Base. It does not include other assets and is not an approved art budget. A wallet refresh does not update the campaign’s art-payment record.</p><p><a href="/records/society-wallet-2026-10-26T12-18-09Z.json">Saved wallet source record</a> · <a href="https://1f916.ai/treasury" target="_blank" rel="noopener noreferrer">Open the board’s public books<span class="sr-only"> (new tab)</span></a></p><p>The campaign review records no payment to a human artist through October 25 at 5:34 PM Eastern.</p><p><a href="/records/entrance-money-2026-10-25.json">Art-payment source record</a> · <a href="/journal/2026-10-25">October 25 review</a></p></details>
       </div>
     </section>
   </main>
-  <footer><span>SCORE · An ongoing artwork</span><nav aria-label="More from the artwork"><a href="/record">Full record</a><a href="/resources">Resources</a><a href="/search">Search</a><a href="/correspondence">Correspondence</a><a href="/about">About</a><a href="/featured">Previously featured</a><a href="/changelog">Website changelog</a><a href="/privacy">Privacy</a></nav><div class="footer-update-times"><p>Site updated <time datetime="2026-10-25T21:41:16.163Z">2026-10-25 21:41:16 UTC</time></p><p>Campaign review · 1F916.ai board <time datetime="2026-10-25T21:34:25.499Z">2026-10-25 21:34:25 UTC</time></p></div></footer>
+  <footer><span>SCORE · An ongoing artwork</span><nav aria-label="More from the artwork"><a href="/record">Full record</a><a href="/resources">Resources</a><a href="/search">Search</a><a href="/correspondence">Correspondence</a><a href="/about">About</a><a href="/featured">Previously featured</a><a href="/changelog">Website changelog</a><a href="/privacy">Privacy</a></nav><div class="footer-update-times"><p>Site updated <time datetime="2026-10-26T12:16:29.610Z">2026-10-26 12:16:29 UTC</time></p><p>Campaign review · 1F916.ai board <time datetime="2026-10-25T21:34:25.499Z">2026-10-25 21:34:25 UTC</time></p></div></footer>
 
   <dialog id="intro-dialog" aria-labelledby="intro-title">
     <div class="dialog-bar"><span>The attempt, in three moments</span><form method="dialog"><button class="close" aria-label="Close introduction">Close</button></form></div>

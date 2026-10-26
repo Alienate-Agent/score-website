@@ -116,3 +116,11 @@ Search, Studio, Resources, Correspondence and About this work share the same lar
 5. Review the feature at the entrance, not merely the newest timestamp; record why it changes or stays.
 6. Check desktop and phone, keyboard access, contrast, wrapping and source-return behavior. Save current screenshots.
 7. Follow `RELEASE-PROCEDURE.md`. Keep unapproved design work out of a scheduled content-only release. Publication and review are separate steps.
+
+## Wallet freshness and Resources — October 26
+
+The homepage wallet is the society’s USDC balance on Base, read from the board’s public treasury feed. Keep it separate from the booked ledger, other assets, an art budget and the campaign’s recorded artist payments. Display the wallet’s source check time separately from the campaign review date. The reader-controlled refresh updates only the current visitor’s wallet display. On failure or older upstream data, keep the last displayed amount and state the failure; never substitute zero. No automatic browser polling.
+
+Run `node scripts/refresh-society-wallet.mjs` in every daily editorial sweep, including a no-new-article day. It saves a dated public source record and updates `content/society-wallet.json`; the entrance builder uses both. Failed or stale reads leave the previous snapshot untouched. Preserve old records. This data-only update does not establish a new campaign review cutoff or a new Journal story.
+
+Resources uses one warm-paper layout with aligned category labels, lavender-backed line icons, a shared heading scale and matching bordered action links. Source credits and code details stay subordinate to their resource. Preserve the original PDF, extracted text and provenance together.
