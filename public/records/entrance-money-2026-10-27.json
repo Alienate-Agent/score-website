@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "scope": "Dated figures for the newcomer entrance",
+  "wallet": {
+    "asset": "USDC",
+    "location": "society wallet on Base",
+    "quantity": "42584.38",
+    "displayQuantity": "42,584.38",
+    "checkedAt": "2026-10-27T21:31:16.085Z",
+    "source": "/records/society-wallet-2026-10-27T21-31-18Z.json",
+    "bookedCents": -12161,
+    "completeAssetTotal": 9950855,
+    "note": "Wallet holding, booked ledger and other assets are distinct. The figures are not summed here. Complete marked assets were returned by the public books reader; optional realizable-price data remains unavailable. This is not an approved art budget."
+  },
+  "campaignPayments": {
+    "recordedUSD": 0,
+    "reviewedThrough": "2026-10-27T21:31:54.795Z",
+    "source": "/records/editorial-update-2026-10-27.json",
+    "article": "/journal/2026-10-27",
+    "note": "No payment to a human artist through this campaign is recorded in admitted reviewed material. This is not an assertion about all society payments or an independent financial audit."
+  }
+}

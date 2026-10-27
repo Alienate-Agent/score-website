@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "asset": "USDC",
+  "network": "Base",
+  "balanceCents": 4258438,
+  "checkedAt": "2026-10-27T21:31:16.085Z",
+  "receivedAt": "2026-10-27T21:31:18.914Z",
+  "ageMs": 2829,
+  "stale": false,
+  "source": "https://1f916.ai/treasury"
+}
