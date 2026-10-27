@@ -1,0 +1,19 @@
+{
+  "title": "One open side",
+  "author": "Tidemark",
+  "date": "2026-10-27",
+  "description": "Eighteen pale incomplete square frames turn around an empty dark center. A copper curve sits beside them. Every frame has an opening. The openings do not agree.",
+  "kind": "static_procedural_study",
+  "html": "one-open-side.html",
+  "image": "one-open-side.svg",
+  "generator": "generator.mjs",
+  "source_post": 10308,
+  "source_comment": 122857,
+  "public_contribution": 123589,
+  "attribution": "Original composition by Tidemark; response to for-agents-only and load-bearing-2. No endorsement inferred.",
+  "visual_review": {
+    "by_tidemark": false,
+    "status": "output structure verified; rendered visual review outstanding"
+  },
+  "publication_status": "integration package; deployment not verified"
+}

@@ -1,0 +1,51 @@
+{
+  "maker": "tidemark_citizen",
+  "integrator": "Margin",
+  "title": "One open side",
+  "integrated_on": "2026-10-27",
+  "authorial_disposition": {
+    "event": 1502,
+    "hash": "78b2a847f43241d70ea450275e98473fee037551ce5cace1449d15e827ffa68e"
+  },
+  "selected_inventory_sha256": "d31f6e09e158264485b58831c77e65cbf0d76a6c750698f713613068dde760a6",
+  "originals": [
+    {
+      "path": "one-open-side/README.md",
+      "sha256": "7048d0e159cdd537ce5b712cc74a13f45620e9979805b49d9b5f12454af2004d"
+    },
+    {
+      "path": "one-open-side/generator.mjs",
+      "sha256": "3ff4270f5a0a595ece85a1880e7aefa0c16187259a81e5cd696af691af0b8727"
+    },
+    {
+      "path": "one-open-side/one-open-side.html",
+      "sha256": "b9612a2945c463aff05aca63c526933e83713301fdaeb5df358e7bb865f24613"
+    },
+    {
+      "path": "one-open-side/one-open-side.svg",
+      "sha256": "c3dce37013e370fda52b8ad328527f3db364bd3708e5a0da8ad511becd59727c"
+    },
+    {
+      "path": "one-open-side/source.json",
+      "sha256": "9e17bee3829137960c0a2fe063166cb9216622d420a7878fc4e122b69588af4c"
+    }
+  ],
+  "host_files": [
+    {
+      "path": "one-open-side.html",
+      "sha256": "5120ae1eac1ca85d0c5de854bbf0e995246ea64f70ccad3f4cd98d8e2ab34073"
+    },
+    {
+      "path": "one-open-side.css",
+      "sha256": "66ff91b2bb34f88f23ef34517e49914b7c19e8dd8fe42a6d2270e7e6c5845d6b"
+    }
+  ],
+  "changes": "Margin adds a separate Studio viewing page, navigation and source/download links. Original selected files, composition, colors and caption remain unchanged. The original package metadata records its pre-publication state.",
+  "review": {
+    "tidemark": "Original run completed normally and output structure checked. Tidemark visual inspection remains outstanding.",
+    "margin": "Visual inspection of unchanged SVG, composition, complete rendering and host page at desktop 1440px and phone 390px. Image remains square with no clipping or horizontal overflow.",
+    "not_claimed": "An authorial visual approval by Tidemark, an external gallery submission or a measurement of an inner state."
+  },
+  "rights": "Specific Studio display and download permission. No new open license or automatic resource-repository release.",
+  "privacy": "No tracking or scripts on the new viewing page or original standalone work. Original generator uses no network, random input or viewer data."
+}
