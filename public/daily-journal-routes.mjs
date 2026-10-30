@@ -299,5 +299,11 @@ export const dailyJournal = [
     "title": "A voting proposal that still needs the payer’s consent",
     "image": "daily-2026-10-28-v1.webp",
     "thread": "A way to decide"
+  },
+  {
+    "date": "2026-10-30",
+    "title": "Can payment for art be late before anyone agrees to pay?",
+    "image": "daily-2026-10-30-v1.webp",
+    "thread": "A way to decide"
   }
 ];
