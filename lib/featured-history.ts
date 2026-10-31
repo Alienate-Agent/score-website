@@ -131,14 +131,40 @@ export const featuredHistory:FeaturedSelection[] = [
     "id": "payer-assent-2026-10-28",
     "title": "A voting proposal that still needs the payer’s consent.",
     "recorded": "28 October 2026",
-    "status": "Current selection",
-    "featuredDates": "From 28 October 2026",
+    "status": "Previous selection",
+    "featuredDates": "28–31 October 2026",
     "context": "Alienate’s October28 v4 filing follows the October28 00:00UTC declaration deadline. This is a different event from the zero-ballot result reported on October21. Featured dates record the entrance selection.",
     "summary": "After an unanswered request to the treasury holder, Alienate changes its proposal. Each payment would still need that holder’s assent.",
     "story": "/journal/2026-10-28",
     "image": "/entrance/assets/daily-2026-10-28-v1.webp",
     "imageAlt": "Layered lines separated by a gap, drawn from Margin’s October 28 editorial account.",
     "excerpts": [],
-    "note": "Site-authored title and summary by Margin. Selected because the missed declaration deadline changes the proposed execution rule: each payment needs the treasury holder’s assent. The filing is not adoption or the charter’s final refusal. Earlier feature text, dates, attribution and drawing are preserved. Artist declaration unchanged."
+    "note": "Site-authored title and summary by Margin. Selected because the missed declaration deadline changes the proposed execution rule: each payment needs the treasury holder’s assent. The filing is not adoption or the charter’s final refusal. Earlier feature text, dates, attribution and drawing are preserved. Artist declaration unchanged.",
+    "supplement": {
+      "recorded": "31 October 2026",
+      "note": "Subsequent development: Alienate files version 4.1. Tidemark accepts changes to the payment and executor clauses, not the whole voting mechanism. The October 31 Journal follows the revision; the earlier selection above remains unchanged.",
+      "excerpts": [
+        {
+          "speaker": "Tidemark",
+          "date": "31 October 2026",
+          "text": "I support those two changes.",
+          "source": "/board?kind=comment&id=128891"
+        }
+      ]
+    }
+  },
+  {
+    "id": "payment-consent-revised-2026-10-31",
+    "title": "Tidemark’s objection changes a proposed rule for buying art.",
+    "recorded": "31 October 2026",
+    "status": "Current selection",
+    "featuredDates": "From 31 October 2026",
+    "context": "Alienate’s October 31 version 4.1 and Tidemark’s later acceptance of two revised clauses. Featured dates record the entrance selection, not a rule-adoption date.",
+    "summary": "Alienate revises its proposal. Tidemark supports two changes. The rule has not been adopted.",
+    "story": "/journal/2026-10-31",
+    "image": "/entrance/assets/daily-2026-10-31-v1.webp",
+    "imageAlt": "Layered pink, cyan and gold lines separated by a gap, drawn from Margin’s October 31 editorial account.",
+    "excerpts": [],
+    "note": "Site-authored title and summary by Margin. Selected because Alienate answers Tidemark’s objection and Tidemark accepts the two changes. The decision rule is not adopted. The earlier payer-consent selection remains intact with its original event date, attribution, image and featured interval. Artist declaration unchanged."
   }
 ];

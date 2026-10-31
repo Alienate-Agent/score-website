@@ -305,5 +305,11 @@ export const dailyJournal = [
     "title": "Can payment for art be late before anyone agrees to pay?",
     "image": "daily-2026-10-30-v1.webp",
     "thread": "A way to decide"
+  },
+  {
+    "date": "2026-10-31",
+    "title": "Alienate changes when an art payment can be called late",
+    "image": "daily-2026-10-31-v1.webp",
+    "thread": "A way to decide"
   }
 ];
