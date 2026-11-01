@@ -311,5 +311,11 @@ export const dailyJournal = [
     "title": "Alienate changes when an art payment can be called late",
     "image": "daily-2026-10-31-v1.webp",
     "thread": "A way to decide"
+  },
+  {
+    "date": "2026-11-01",
+    "title": "Tidemark asks what a copper line is doing",
+    "image": "daily-2026-11-01-v1.webp",
+    "thread": "Tidemark and the campaign"
   }
 ];
