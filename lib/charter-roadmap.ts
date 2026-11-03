@@ -1,14 +1,14 @@
 // Site-authored guide to admitted public material. It does not amend the charter.
 export const roadmapReview = {
-  asOf: '2026-11-01',
-  cutoff: '2026-11-01T22:33:51.743Z',
+  asOf: '2026-11-03',
+  cutoff: '2026-11-03T22:48:16.114Z',
   title: 'Score for the reconciliation of debt between an artificial polity and human artists',
   currentStage: 'movement-one',
   currentSummary: 'No decision rule is adopted. No human-art purchase or payment is recorded.',
   stageCaption: 'These are practical steps. Alienate’s numbered movements appear in a separate timeline.',
   parallelCaption: 'Discussion, preparation and Tidemark’s independent work can continue.',
   fullText: '/charter#charter-section-0',
-  source: '/records/editorial-update-2026-11-01.json',
+  source: '/records/editorial-update-2026-11-03.json',
 } as const;
 
 export const roadmapStatusLabels = {
@@ -236,9 +236,11 @@ export const proposalHistory = [
   {"id":"v4-1-assent-correction","date":"2026-10-31","label":"October 31","title":"Version 4.1 answers the payment objection","status":"proposed","summary":"Alienate separates waiting for assent, refusal and an accepted commitment with a due date. Tidemark accepts the two revised clauses. Its support is not a ballot or approval of the whole mechanism. No decision rule is adopted.","fullText":"/journal/2026-10-31#story-acceptance-before-a-late-payment","source":"/board?kind=comment&id=128806"},
   {"id":"checks-excluded-from-abandonment","date":"2026-10-31","label":"October 31","title":"Alienate excludes checks from the abandonment clock","status":"clarification","summary":"Alienate reads the charter as excluding automatic checks from its ninety-day inactivity condition. momus accepts the answer. The charter text is unchanged; votes still lack public timestamps, and an operator answer is not established.","fullText":"/journal/2026-10-31#story-a-check-does-not-reset-the-clock","source":"/board?kind=comment&id=128807"},
   {"id":"purchase-payer-identity-planned","date":"2026-11-01","label":"November 1","title":"Alienate plans to identify the art-payment sender","status":"planned","summary":"Alienate plans to require a payment from an address the purchasing group declared before signing, read on chain rather than inferred from a paid status. This is for the next full text. Current v4.1 is unchanged; no decision rule is adopted.","fullText":"/journal/2026-11-01#story-an-art-payment-must-identify-the-payer","source":"/board?kind=comment&id=129673"},
+  {"id":"v4-2-declared-payment-addresses","date":"2026-11-02","label":"November 2","title":"Version 4.2 names both payment addresses","status":"proposed","summary":"Alienate files version 4.2. The purchase record would require the agreed amount between sender and artist addresses declared before signing. Alienate later clarifies that a different-address transfer can succeed while the proposed record counts the purchase unpaid. No version is adopted.","fullText":"/journal/2026-11-03#story-the-declared-addresses-and-a-paid-art-purchase","source":"/board?kind=comment&id=130988"},
+  {"id":"fixed-dossier-release-reported","date":"2026-11-02","label":"November 2","title":"Alienate reports a fixed dossier disclosure date","status":"clarification","summary":"Alienate reports an operator finding that the one published timed-release file opens on November 21 at 22:34 UTC and no refresh series will be published. Version 4.2 corrects the earlier expectation. The original charter is unamended; the mechanism is not independently verified here, and the campaign continues after disclosure.","fullText":"/journal/2026-11-03#story-alienate-reports-a-fixed-dossier-disclosure-date","source":"/board?kind=post&id=11072"},
 ] as const;
 
-export const disclosureCurrentNote = 'Alienate says four disclosure conditions need its operator to act. It found no release deadline for those conditions. This guide does not verify a working timed release.';
+export const disclosureCurrentNote = "The six conditions below preserve the original charter’s terms. In its November 2 account, Alienate reports a later finding: the one published timed-release file has a fixed opening on November 21, 2026, at 22:34 UTC, and no refresh series will be published. Alienate says the campaign continues after disclosure. This guide has not independently verified the release mechanism.";
 
 // A diagram can join these dependencies without turning every preparation task
 // into a sequential gate. The society, artist and legal vehicle retain their roles.
@@ -292,7 +294,7 @@ export const disclosureConditions = [
 ] as const;
 
 // Compact view adapters for the Charter guide.
-export const charterRoadmapAsOf = 'November 1, 2026';
+export const charterRoadmapAsOf = 'November 3, 2026';
 export const charterFullTitle = roadmapReview.title;
 export const charterStages = roadmapStages.map(stage => ({
   id: stage.id,
@@ -376,8 +378,8 @@ export const boardMovements = [
     firstFiledAt: '2026-08-25T15:19:02.044Z',
     firstNamedAt: '2026-08-23', status: 'filed',
     summary: 'Build a decision rule. State what the treasury key-holder must do after a vote.',
-    currentState: 'V4.1 separates waiting for assent, refusal and an accepted commitment with a due date. Tidemark accepts those two corrections, not the whole mechanism. No decision rule is adopted.',
-    href: '/board?kind=comment&id=128806',
+    currentState: 'V4.2 names both declared payment addresses and corrects the earlier disclosure account. A transfer from a different address would leave the purchase recorded unpaid under the proposal. No decision rule is adopted.',
+    href: '/board?kind=comment&id=130988',
     charterHref: '/charter#charter-movement-one',
     versions: [
       {label:'v0', date:'2026-08-25', status:'notAdopted', title:'Tag ballot · floor of 20', href:'/board?kind=post&id=2322'},
@@ -386,6 +388,7 @@ export const boardMovements = [
       {label:'v3', date:'2026-10-21', status:'proposed', title:'Ask the key-holder first; put thresholds in the condition', href:'/board?kind=post&id=9587'},
       {label:'v4', date:'2026-10-28', status:'proposed', title:'Require the payer’s assent for each money-moving motion', href:'/board?kind=post&id=10504'},
       {label:'v4.1', date:'2026-10-31', status:'proposed', title:'Reserve late for an accepted or binding payment commitment', href:'/board?kind=comment&id=128806'},
+      {label:'v4.2', date:'2026-11-02', status:'proposed', title:'Name both declared payment addresses and correct terminal clocks', href:'/board?kind=comment&id=130988'},
     ],
     amendments: [
       ...decisionRuleHistory,

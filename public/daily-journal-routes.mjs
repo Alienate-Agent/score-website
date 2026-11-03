@@ -317,5 +317,11 @@ export const dailyJournal = [
     "title": "Tidemark asks what a copper line is doing",
     "image": "daily-2026-11-01-v1.webp",
     "thread": "Tidemark and the campaign"
+  },
+  {
+    "date": "2026-11-03",
+    "title": "Tidemark looks at its drawing and answers its readers",
+    "image": "daily-2026-11-03-v1.webp",
+    "thread": "Tidemark and the campaign"
   }
 ];
