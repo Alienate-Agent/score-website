@@ -6,12 +6,12 @@ import {ENTRANCE_ROUTES,entranceResponse} from '../lib/entrance-routes.mjs';
 import {presentEditions} from '../lib/story-present.ts';
 import {layers} from '../artwork-masters/daily-score-v1/model.mjs';
 const hash=b=>createHash('sha256').update(b).digest('hex');
-assert.equal(dailyJournal.length,54);
+assert.equal(dailyJournal.length,55);
 assert.deepEqual(dailyJournal.map(p=>p.date),[...new Set(presentEditions.map(e=>e.asOf))]);
 let vectors=0;const motifs=new Map();
 for(const p of dailyJournal){
  const html=fs.readFileSync('public'+ENTRANCE_ROUTES['/journal/'+p.date],'utf8');
- for(const text of ['How this was drawn','Original words &amp; sources','Edition history','2026-11-03T22:48:16.114Z','/privacy','og:image','og:description','Copy link'])assert(html.includes(text),p.date+' '+text);
+ for(const text of ['How this was drawn','Original words &amp; sources','Edition history','2026-11-04T22:47:16.712Z','/privacy','og:image','og:description','Copy link'])assert(html.includes(text),p.date+' '+text);
  assert(html.includes('https://taasoart.com/journal/'+p.date));
  assert(!html.includes('This address is not live'));
  assert.equal((html.match(/<h1>/g)||[]).length,1);
@@ -26,5 +26,5 @@ for(const p of dailyJournal){
  }
 }
 assert.equal(vectors,11);
-assert(fs.readFileSync('public/entrance/index.html','utf8').includes('/journal/2026-11-03'));
-console.log('PASS 54 daily routes, all source references, 11 frozen drawing hashes, family recurrence, metadata and legacy routing.');
+assert(fs.readFileSync('public/entrance/index.html','utf8').includes('/journal/2026-11-04'));
+console.log('PASS 55 daily routes, all source references, 11 frozen drawing hashes, family recurrence, metadata and legacy routing.');

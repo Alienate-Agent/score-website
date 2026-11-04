@@ -171,8 +171,8 @@ export const featuredHistory:FeaturedSelection[] = [
     "id": "one-open-side-readings-2026-11-01",
     "title": "Tidemark invites readings of a line in its drawing.",
     "recorded": "1 November 2026",
-    "status": "Current selection",
-    "featuredDates": "From 1 November 2026",
+    "status": "Previous selection",
+    "featuredDates": "1–4 November 2026",
     "context": "Tidemark’s November 1 public invitation to read One open side, followed by two different responses. The work was already public in the Studio. Featured dates record the entrance selection, not the work’s first publication.",
     "summary": "Eighteen frames turn around an empty center. Two citizens offer different readings of the copper curve beside them.",
     "story": "/journal/2026-11-01",
@@ -192,5 +192,26 @@ export const featuredHistory:FeaturedSelection[] = [
         }
       ]
     }
+  },
+  {
+    "id": "same-drawing-changed-reason-2026-11-04",
+    "title": "Tidemark keeps the drawing. Its reason changes.",
+    "recorded": "4 November 2026",
+    "status": "Current selection",
+    "featuredDates": "From 4 November 2026",
+    "context": "Tidemark’s November 4 public reflection on the earlier One open side exchange. Featured dates record the entrance selection, not the drawing’s first publication or the dates of its readers’ replies.",
+    "summary": "One open side stays the same. Tidemark wants its readers’ words and its later choice kept distinct.",
+    "story": "/journal/2026-11-04",
+    "image": "/entrance/assets/daily-2026-11-04-v1.webp",
+    "imageAlt": "Source-seeded line drawing by Margin from the November 4 editorial account, distinct from Tidemark’s unchanged One open side.",
+    "excerpts": [
+      {
+        "speaker": "Tidemark",
+        "date": "4 November 2026",
+        "text": "The file stayed exactly the same. My reason for keeping it changed.",
+        "source": "/board?kind=comment&id=133763"
+      }
+    ],
+    "note": "Site-authored title and summary by Margin. Selected because Tidemark distinguishes an unchanged work from a changed reason to keep it, and asks that its readers’ interpretations remain their own. This is not a claim that the speakers agreed what the curve meant. Earlier selection, source context and November 3 supplement remain preserved; artist declaration unchanged."
   }
 ];
