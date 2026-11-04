@@ -1,0 +1,53 @@
+{
+  "status": "synthetic_example_passed",
+  "corpus": {
+    "scope": "Supplied rows only; not a complete registry or a truth verdict",
+    "unresolved": [
+      {
+        "id": 3,
+        "by": "C",
+        "relation": "correction",
+        "objectRef": null,
+        "text": "The claim in the blue doorway post is wrong."
+      }
+    ]
+  },
+  "object42": {
+    "scope": "Supplied rows only; not a complete registry or a truth verdict",
+    "matched": [
+      {
+        "id": 1,
+        "by": "A",
+        "relation": "evidence",
+        "objectRef": "post:42"
+      },
+      {
+        "id": 2,
+        "by": "B",
+        "relation": "correction",
+        "objectRef": "post:42"
+      }
+    ],
+    "unresolvedCount": 1,
+    "unresolvedAt": "#unresolved",
+    "caution": "Unresolved rows may or may not concern this object; zero typed matches does not establish no corrections."
+  },
+  "object99": {
+    "scope": "Supplied rows only; not a complete registry or a truth verdict",
+    "matched": [],
+    "unresolvedCount": 1,
+    "unresolvedAt": "#unresolved",
+    "caution": "Unresolved rows may or may not concern this object; zero typed matches does not establish no corrections."
+  },
+  "checks": [
+    "Unresolved correction appears once at corpus level.",
+    "Object views retain attribution and exact typed matches, and only count/link the unresolved collection.",
+    "Neither an empty typed view nor the unresolved collection assigns prose to an object.",
+    "Different typed target and empty supplied corpus checked; input unchanged."
+  ],
+  "limits": [
+    "#unresolved is a proposed UI fragment, not a deployed service or public link.",
+    "No live corpus, URL resolver, schema/signature validation or reader study.",
+    "Missing object references are not resolved by this presentation change."
+  ]
+}

@@ -50,3 +50,30 @@
 
 /studio/tidemark/one-open-side/generator.mjs
   Content-Type: text/javascript; charset=utf-8
+
+/studio/tidemark/bench.html
+  Content-Security-Policy: default-src 'none'; style-src 'sha256-tylBiQXJ0CLG9cvOVs8lX9F+S21AXBn0wvceQWtESLI='; script-src 'sha256-56xse7zCM7nOeAXWcUZXjyXy37nLwXkfcce1D8mAvlk='; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'
+
+/studio/tidemark/bench-release.html
+  Content-Security-Policy: default-src 'none'; style-src 'self'; font-src 'self'; img-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'
+
+/studio/tidemark/the-house-has-learned-to-answer.html
+  Content-Security-Policy: default-src 'none'; style-src 'sha256-qoxXsv9LdxLTp2djIOI4II/qliOxPCxJcNU2LyEYsV4='; media-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'
+
+/studio/tidemark/the-house-has-learned-to-answer/index.html
+  Content-Security-Policy: default-src 'none'; style-src 'sha256-qoxXsv9LdxLTp2djIOI4II/qliOxPCxJcNU2LyEYsV4='; media-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'
+
+/studio/tidemark/the-correction-with-no-address.html
+  Content-Security-Policy: default-src 'none'; style-src 'sha256-8CkyEe7unMfSshd0BgOlw4NQchP/DBx2lVbqliA3u7E='; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'
+
+/studio/tidemark/the-correction-with-no-address/index.html
+  Content-Security-Policy: default-src 'none'; style-src 'sha256-8CkyEe7unMfSshd0BgOlw4NQchP/DBx2lVbqliA3u7E='; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'
+
+/studio/tidemark/the-house-has-learned-to-answer/after.wav
+  Content-Type: audio/wav
+
+/studio/tidemark/the-house-has-learned-to-answer/handoff.wav
+  Content-Type: audio/wav
+
+/studio/tidemark/the-correction-with-no-address/example.mjs
+  Content-Type: text/javascript; charset=utf-8
