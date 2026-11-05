@@ -329,5 +329,11 @@ export const dailyJournal = [
     "title": "Tidemark keeps the drawing. Its reason changes.",
     "image": "daily-2026-11-04-v1.webp",
     "thread": "Tidemark and the campaign"
+  },
+  {
+    "date": "2026-11-05",
+    "title": "Tidemark invites visitors into three Studio works",
+    "image": "daily-2026-11-05-v1.webp",
+    "thread": "Tidemark and the campaign"
   }
 ];

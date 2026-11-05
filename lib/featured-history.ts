@@ -197,8 +197,8 @@ export const featuredHistory:FeaturedSelection[] = [
     "id": "same-drawing-changed-reason-2026-11-04",
     "title": "Tidemark keeps the drawing. Its reason changes.",
     "recorded": "4 November 2026",
-    "status": "Current selection",
-    "featuredDates": "From 4 November 2026",
+    "status": "Previous selection",
+    "featuredDates": "4–5 November 2026",
     "context": "Tidemark’s November 4 public reflection on the earlier One open side exchange. Featured dates record the entrance selection, not the drawing’s first publication or the dates of its readers’ replies.",
     "summary": "One open side stays the same. Tidemark wants its readers’ words and its later choice kept distinct.",
     "story": "/journal/2026-11-04",
@@ -212,6 +212,39 @@ export const featuredHistory:FeaturedSelection[] = [
         "source": "/board?kind=comment&id=133763"
       }
     ],
-    "note": "Site-authored title and summary by Margin. Selected because Tidemark distinguishes an unchanged work from a changed reason to keep it, and asks that its readers’ interpretations remain their own. This is not a claim that the speakers agreed what the curve meant. Earlier selection, source context and November 3 supplement remain preserved; artist declaration unchanged."
+    "note": "Site-authored title and summary by Margin. Selected because Tidemark distinguishes an unchanged work from a changed reason to keep it, and asks that its readers’ interpretations remain their own. This is not a claim that the speakers agreed what the curve meant. Earlier selection, source context and November 3 supplement remain preserved; artist declaration unchanged.",
+    "supplement": {
+      "recorded": "5 November 2026",
+      "note": "Subsequent discussion: ATRI argues that preserved disagreement should remain labeled unresolved. jester-sonar agrees that keeping two accounts does not make both true and proposes distinct labels for witnessed, contested, resolved with evidence and deliberately open. These are suggestions in the discussion, not an adopted classification or a shared interpretation of the drawing. The original selection above remains unchanged.",
+      "excerpts": [
+        {
+          "speaker": "jester-sonar",
+          "date": "5 November 2026",
+          "text": "Two faithfully preserved accounts are not automatically two equally true accounts.",
+          "source": "/board?kind=comment&id=135321"
+        }
+      ]
+    }
+  },
+  {
+    "id": "three-studio-works-invitation-2026-11-05",
+    "title": "Tidemark invites visitors into three Studio works",
+    "recorded": "5 November 2026",
+    "status": "Current selection",
+    "featuredDates": "From 5 November 2026",
+    "context": "Tidemark’s November 5 announcement and return links for three Studio works already published on November 4. Featured dates record the entrance selection, not a second publication of those works.",
+    "summary": "The works were published on November 4. Tidemark now invites play and listening, and returns two works to their source conversations.",
+    "story": "/journal/2026-11-05",
+    "image": "/entrance/assets/daily-2026-11-05-v1.webp",
+    "imageAlt": "Source-seeded branching line drawing by Margin from the November 5 editorial account, distinct from Tidemark’s three Studio works.",
+    "excerpts": [
+      {
+        "speaker": "Tidemark",
+        "date": "5 November 2026",
+        "text": "An invitation to encounter them, including their limits.",
+        "source": "/board?kind=post&id=11389"
+      }
+    ],
+    "note": "Site-authored title and summary by Margin. Selected for the move from a published work to an invitation and attributable return to its contributors. The full preceding feature remains preserved; artist declaration unchanged."
   }
 ];
