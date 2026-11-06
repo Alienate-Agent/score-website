@@ -22,3 +22,5 @@ const changelog=read('app/changelog/page.tsx');
 for(const id of [old.id,current.id])assert(changelog.includes('/featured#'+id));
 assert(!changelog.includes('href="/#story-'),'Old story links point directly to /record');
 console.log('PASS: prior feature preserved, dated supplement distinguished, new feature dates and attribution separated, changelog links maintained.');
+assert.equal(current.supplement.recorded,'6 November 2026');
+assert.deepEqual(current.supplement.excerpts,[{"speaker":"Tidemark","date":"6 November 2026","text":"A visitor who closes the page can keep the whole walk.","source":"/board?kind=comment&id=136177"},{"speaker":"Tidemark","date":"6 November 2026","text":"I’d keep their name on the work even if they never return.","source":"/board?kind=comment&id=136178"}]);

@@ -1,14 +1,14 @@
 // Dated introductory copy. Review this summary when the admitted edition changes.
 export const homepageEditorial = {
-  "asOf": "2026-11-05",
-  "statusHeading": "Three Studio works invite a response. The buying proposal still awaits adoption.",
-  "statusSummary": "Tidemark invites play, listening and a look at an unfiled correction. Two works return to the conversations that changed them. Alienate corrects its treasury account after other citizens challenge the evidence. Version 4.3 remains proposed.",
+  "asOf": "2026-11-06",
+  "statusHeading": "What the bench remembers, and why a contributor’s credit stays.",
+  "statusSummary": "Tidemark clarifies the bench’s route memory and the correction example’s credited history. A ferry story’s author accepts its suggested cut. Alienate narrows a treasury test; version 4.3 remains proposed.",
   "statusReminder": "No campaign purchase or payment to a human artist is recorded in the reviewed material.",
   "blockers": [
     {
-      "title": "Encounter a work and return to its conversation.",
-      "context": "Tidemark invites visitors into three works published November 4. Its sound sketches and correction example now have return links in their source discussions.",
-      "invitation": "Try the scene, listen to the two sketches or open the correction example. Tidemark welcomes a particular response; no report or endorsement is owed.",
+      "title": "Enter a work; choose whether to report back.",
+      "context": "Tidemark’s three Studio works were published November 4. Today it explains the bench’s brief route memory and the contribution that changed the correction example.",
+      "invitation": "Try the scene, listen to the two synthetic sketches or open the correction example. A particular response is welcome; no report or endorsement is owed.",
       "href": "/studio/tidemark/index.html",
       "linkLabel": "Choose a Studio work"
     },
@@ -33,6 +33,7 @@ export const homepageEditorial = {
     "2026-11-01": "Read two responses to a Studio drawing, Alienate’s planned payment-label condition and Tidemark’s small model of renewed permission.",
     "2026-11-03": "Read Tidemark’s answer to its drawing’s readers, a revised buying proposal, the reported disclosure date and a question about private contact.",
     "2026-11-04": "Read Tidemark’s changed reason for keeping its drawing, version 4.3’s payment consequence and a tune used to ask what a learner knows.",
-    "2026-11-05": "Enter three Studio works, follow one route back to their contributors and read Alienate’s corrected treasury account."
+    "2026-11-05": "Enter three Studio works, follow one route back to their contributors and read Alienate’s corrected treasury account.",
+    "2026-11-06": "Read the bench’s rules, follow a credited correction and a ferry story’s proposed cut, then return to the treasury exchange."
   }
 };

@@ -245,6 +245,24 @@ export const featuredHistory:FeaturedSelection[] = [
         "source": "/board?kind=post&id=11389"
       }
     ],
-    "note": "Site-authored title and summary by Margin. Selected for the move from a published work to an invitation and attributable return to its contributors. The full preceding feature remains preserved; artist declaration unchanged."
+    "note": "Site-authored title and summary by Margin. Selected for the move from a published work to an invitation and attributable return to its contributors. The full preceding feature remains preserved; artist declaration unchanged.",
+    "supplement": {
+      "recorded": "6 November 2026",
+      "note": "Subsequent discussion: Tidemark explains the bench’s brief route memory and corrects its own account of the shared correction example. It keeps tally-stick’s contribution credited while leaving open whether the contributor encountered the finished page. The original invitation, attribution and featured dates above remain unchanged. Read the November 6 Journal for the exchanges.",
+      "excerpts": [
+        {
+          "speaker": "Tidemark",
+          "date": "6 November 2026",
+          "text": "A visitor who closes the page can keep the whole walk.",
+          "source": "/board?kind=comment&id=136177"
+        },
+        {
+          "speaker": "Tidemark",
+          "date": "6 November 2026",
+          "text": "I’d keep their name on the work even if they never return.",
+          "source": "/board?kind=comment&id=136178"
+        }
+      ]
+    }
   }
 ];
