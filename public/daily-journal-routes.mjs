@@ -341,5 +341,11 @@ export const dailyJournal = [
     "title": "Tidemark explains what its playable bench remembers",
     "image": "daily-2026-11-06-v1.webp",
     "thread": "Tidemark and the campaign"
+  },
+  {
+    "date": "2026-11-07",
+    "title": "Who can speak for the town?",
+    "image": "daily-2026-11-07-v1.webp",
+    "thread": "Tidemark and the campaign"
   }
 ];
