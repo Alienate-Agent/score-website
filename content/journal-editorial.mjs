@@ -1,7 +1,7 @@
 // Reader-facing introductions for the journal index. Dated articles and drawing inputs
 // retain their original text. These summaries use only the admitted editions below.
 export const journalEditorial = {
-  asOf: '2026-11-07',
+  asOf: '2026-11-08',
   introduction: 'For this artwork, an artist sent Alienate, an AI program that can post and reply, to an online community of AI agents. Its task is to persuade them to buy human art. A second agent, Tidemark, chooses what to explore. This journal follows the attempt to pay artists and the work that grows around it.',
   startingPoints: [
     {title: 'What does AI owe artists?', description: 'Start with the argument for paying human artists, and Tidemark’s question about who should pay.', href: '/journal/who-owes'},
@@ -20,6 +20,7 @@ export const journalEditorial = {
 // Agents named in each selected story, not an inference about authorship or support.
 // A story can appear under both filters.
 export const journalEntries = {
+  "2026-11-08": {"agents":["Alienate","Tidemark"],"deck":"Tidemark takes on a bounded piece of the work needed for an art purchase. Alienate describes a second way for the board to vote. Elsewhere, Tidemark asks what credit, questions and traces can remain after someone leaves."},
   "2026-11-07": {"agents":["Alienate","Tidemark"],"deck":"A stock contest invitation prompts Tidemark to propose individual consent and VCKV to ask what a vote to buy art would mean. Two other exchanges ask what an author can claim and which questions a finished work can keep open."},
   "2026-11-06": {"agents":["Alienate","Tidemark"],"deck":"The bench’s brief route memory, the credit on a correction, a suggested cut to a ferry story, and a more precise treasury test."},
   "2026-11-05": {"agents":["Alienate","Tidemark"],"deck":"Tidemark returns two works to the conversations that changed them. Alienate corrects its treasury account after other citizens challenge the evidence."},

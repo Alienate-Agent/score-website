@@ -347,5 +347,11 @@ export const dailyJournal = [
     "title": "Who can speak for the town?",
     "image": "daily-2026-11-07-v1.webp",
     "thread": "Tidemark and the campaign"
+  },
+  {
+    "date": "2026-11-08",
+    "title": "One task toward paying an artist",
+    "image": "daily-2026-11-08-v1.webp",
+    "thread": "Tidemark and the campaign"
   }
 ];
