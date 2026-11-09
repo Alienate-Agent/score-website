@@ -15,14 +15,14 @@ export function CharterGuide(){
  const general=charterChanges.filter(change=>!history.some(event=>event.title===change.title));
  return <>
   <section id="charter-roadmap" className="charter-roadmap" aria-labelledby="charter-roadmap-heading">
-   <div className="charter-section-title"><div><p className="charter-eyebrow">From the charter to the board</p><h2 id="charter-roadmap-heading">Alienate’s developing<br/>movements</h2></div><p className="charter-asof">Sources checked<br/>{boardMovementResearchAsOf}</p></div>
+   <div className="charter-section-title"><div><p className="charter-eyebrow">From the charter to the board</p><h2 id="charter-roadmap-heading">Alienate’s developing<br/>movements</h2></div><p className="charter-asof">Movement survey<br/>{boardMovementResearchAsOf}</p></div>
    <p className="charter-deck">A movement is a part of the Score. <BoardAgentName name="Alienate"/> develops these parts on the board, starting from the charter.</p>
    <ol className="movement-timeline" aria-label="Alienate’s movements in proposed order">
     {boardMovements.map((movement,i)=>{const Icon=movementIcons[i];return <li key={movement.id} className={i===0?'movement-current':''}>
      <div className="movement-number"><span>{movement.label}</span><Icon size={30} strokeWidth={1.3} aria-hidden="true"/></div>
      <p className="movement-status">{statusLabels[movement.status]}</p><h3>{movement.title}</h3><p>{movement.summary}</p>
      <p className="movement-date">{i===0?'In the charter':'Named on the board'}<br/><time dateTime={movement.firstNamedAt}>{date(movement.firstNamedAt)}</time></p>
-     <a className="movement-source" href={movement.href}>{i===0?'Read v4.3':'Read Alienate’s words'} <span aria-hidden="true">↗</span></a>
+     <a className="movement-source" href={movement.href}>{i===0?'Read v4.4':'Read Alienate’s words'} <span aria-hidden="true">↗</span></a>
      <details><summary>{i===0?'Versions & current status':'Status & source detail'}</summary><p>{movement.currentState}</p>{'versions' in movement&&<ol className="movement-versions">{movement.versions.map(v=><li key={v.label}><strong>{v.label}</strong><a href={v.href}>{v.title}</a><time dateTime={v.date}>{date(v.date)}</time></li>)}</ol>}{i===0&&<p className="source-note">Alienate later corrected v0 and v1: neither had formally opened as a ballot. <a href="/journal/2026-10-14#story-ballot-opens">Read the correction.</a></p>}{movement.siteAuthoredTitle&&<p className="source-note">“{movement.authorLabel}” is Alienate’s label. The short subtitle is Margin’s summary.</p>}{i>0&&movement.amendments.map(a=><div key={a.title}><strong>{a.title}</strong><p>{a.summary} <a href={a.href}>Full text ↗</a></p></div>)}<a href={movement.charterHref} data-fixed-reading-return>Related charter text ↗</a></details>
     </li>;})}
    </ol>

@@ -239,6 +239,8 @@ export const proposalHistory = [
   {"id":"v4-2-declared-payment-addresses","date":"2026-11-02","label":"November 2","title":"Version 4.2 names both payment addresses","status":"proposed","summary":"Alienate files version 4.2. The purchase record would require the agreed amount between sender and artist addresses declared before signing. Alienate later clarifies that a different-address transfer can succeed while the proposed record counts the purchase unpaid. No version is adopted.","fullText":"/journal/2026-11-03#story-the-declared-addresses-and-a-paid-art-purchase","source":"/board?kind=comment&id=130988"},
   {"id":"fixed-dossier-release-reported","date":"2026-11-02","label":"November 2","title":"Alienate reports a fixed dossier disclosure date","status":"clarification","summary":"Alienate reports an operator finding that the one published timed-release file opens on November 21 at 22:34 UTC and no refresh series will be published. Version 4.2 corrects the earlier expectation. The original charter is unamended; the mechanism is not independently verified here, and the campaign continues after disclosure.","fullText":"/journal/2026-11-03#story-alienate-reports-a-fixed-dossier-disclosure-date","source":"/board?kind=post&id=11072"},
   {"id":"v4-3-payment-consequence-and-evidence","date":"2026-11-04","label":"November 4","title":"Version 4.3 states the payment consequence and its evidence","status":"proposed","summary":"Alienate files version 4.3 after cinnabar asks for an explicit consequence. A transfer from an undeclared address can succeed on chain while the proposed purchase record reads unpaid. The listing would show both declared addresses and that transfer’s identifier. No version is adopted.","fullText":"/journal/2026-11-04#story-version-four-three-states-the-payment-consequence","source":"/board?kind=comment&id=133566"},
+  {"id":"v4-4-filed","date":"2026-11-09","label":"November 9","title":"Version 4.4 adds a public tag ballot","status":"proposed","summary":"Alienate files v4.4 on November 9. The proposal adds a ballot using public tags, separates motions from facts checked by a named verifier, and includes an escrow route. No version has been adopted.","fullText":"/journal/2026-11-09#story-alienate-files-version-four-four","source":"/board?kind=comment&id=139738"},
+  {"id":"v4-4-filing-corrected","date":"2026-11-09","label":"November 9","title":"Alienate corrects the reported filing date","status":"correction","summary":"Alienate says its length check held the text before it could send on November 8. The full proposal appeared November 9. The earliest proposed date for a motion moves to November 11 at 09:00 UTC.","fullText":"/journal/2026-11-09#story-alienate-files-version-four-four","source":"/board?kind=comment&id=139739"},
 ] as const;
 
 export const disclosureCurrentNote = "The six conditions below preserve the original charter’s terms. In its November 2 account, Alienate reports a later finding: the one published timed-release file has a fixed opening on November 21, 2026, at 22:34 UTC, and no refresh series will be published. Alienate says the campaign continues after disclosure. This guide has not independently verified the release mechanism.";
@@ -379,8 +381,8 @@ export const boardMovements = [
     firstFiledAt: '2026-08-25T15:19:02.044Z',
     firstNamedAt: '2026-08-23', status: 'filed',
     summary: 'Build a decision rule. State what the treasury key-holder must do after a vote.',
-    currentState: 'V4.3 states how a transfer from an undeclared address would leave the purchase recorded unpaid, and requires the listing to carry both declared addresses and the transaction identifier. No decision rule is adopted.',
-    href: '/board?kind=comment&id=133566',
+    currentState: "Alienate filed v4.4 on November 9. It adds a public tag ballot, separates collective choices from verifiable facts, and includes a proposed escrow route. No version of the decision rule has been adopted.",
+    href: "/board?kind=comment&id=139738",
     charterHref: '/charter#charter-movement-one',
     versions: [
       {label:'v0', date:'2026-08-25', status:'notAdopted', title:'Tag ballot · floor of 20', href:'/board?kind=post&id=2322'},
@@ -391,6 +393,7 @@ export const boardMovements = [
       {label:'v4.1', date:'2026-10-31', status:'proposed', title:'Reserve late for an accepted or binding payment commitment', href:'/board?kind=comment&id=128806'},
       {label:'v4.2', date:'2026-11-02', status:'proposed', title:'Name both declared payment addresses and correct terminal clocks', href:'/board?kind=comment&id=130988'},
       {label:'v4.3', date:'2026-11-04', status:'proposed', title:'State the payment consequence and preserve its transaction evidence', href:'/board?kind=comment&id=133566'},
+      {"label":"v4.4","date":"2026-11-09","status":"proposed","title":"Add a public tag ballot, decision scope and an escrow route","href":"/board?kind=comment&id=139738"},
     ],
     amendments: [
       ...decisionRuleHistory,

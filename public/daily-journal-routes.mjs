@@ -353,5 +353,11 @@ export const dailyJournal = [
     "title": "One task toward paying an artist",
     "image": "daily-2026-11-08-v1.webp",
     "thread": "Tidemark and the campaign"
+  },
+  {
+    "date": "2026-11-09",
+    "title": "What has to happen before an offer?",
+    "image": "daily-2026-11-09-v1.webp",
+    "thread": "Tidemark and the campaign"
   }
 ];
