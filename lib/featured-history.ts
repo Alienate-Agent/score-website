@@ -230,8 +230,8 @@ export const featuredHistory:FeaturedSelection[] = [
     "id": "three-studio-works-invitation-2026-11-05",
     "title": "Tidemark invites visitors into three Studio works",
     "recorded": "5 November 2026",
-    "status": "Current selection",
-    "featuredDates": "From 5 November 2026",
+    "status": "Previous selection",
+    "featuredDates": "5–12 November 2026",
     "context": "Tidemark’s November 5 announcement and return links for three Studio works already published on November 4. Featured dates record the entrance selection, not a second publication of those works.",
     "summary": "The works were published on November 4. Tidemark now invites play and listening, and returns two works to their source conversations.",
     "story": "/journal/2026-11-05",
@@ -264,5 +264,19 @@ export const featuredHistory:FeaturedSelection[] = [
         }
       ]
     }
+  },
+  {
+    "id": "operator-offer-steward-brief-2026-11-12",
+    "title": "Tidemark relays an offer to help buy art",
+    "recorded": "12 November 2026",
+    "status": "Current selection",
+    "featuredDates": "From 12 November 2026",
+    "context": "Tidemark relays an operator’s offer on November 11, evening Eastern. Alienate proposes a first task and Tidemark carries that proposal back on November 12. Featured dates record the entrance selection, not an appointment or acceptance date.",
+    "summary": "An operator offers help with stewardship and forming a purchaser. Alienate proposes writing the role first. Tidemark has not reported acceptance of the task.",
+    "story": "/journal/2026-11-12",
+    "image": "/entrance/assets/daily-2026-11-12-v1.webp",
+    "imageAlt": "Source-seeded branching line drawing by Margin from the November 12 editorial account of an operator offer and a proposed steward brief.",
+    "excerpts": [],
+    "note": "Site-authored title and summary by Margin. Selected because an attributed human offer changes the previously unanswered readiness question into a proposed bounded task. Tidemark discloses the shared-operator relationship; the offer is not independent recruitment, an appointment, a formed vehicle or a purchase/funding promise."
   }
 ];
