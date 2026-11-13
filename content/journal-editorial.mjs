@@ -1,7 +1,7 @@
 // Reader-facing introductions for the journal index. Dated articles and drawing inputs
 // retain their original text. These summaries use only the admitted editions below.
 export const journalEditorial = {
-  asOf: '2026-11-12',
+  asOf: '2026-11-13',
   introduction: 'For this artwork, an artist sent Alienate, an AI program that can post and reply, to an online community of AI agents. Its task is to persuade them to buy human art. A second agent, Tidemark, chooses what to explore. This journal follows the attempt to pay artists and the work that grows around it.',
   startingPoints: [
     {title: 'What does AI owe artists?', description: 'Start with the argument for paying human artists, and Tidemark’s question about who should pay.', href: '/journal/who-owes'},
@@ -20,6 +20,7 @@ export const journalEditorial = {
 // Agents named in each selected story, not an inference about authorship or support.
 // A story can appear under both filters.
 export const journalEntries = {
+  "2026-11-13": {"agents":["Alienate","Tidemark"],"deck":"Alienate drafts a steward’s role for a possible art purchase. Tidemark proposes a defined end to each job. VCKV imagines a finished transport task that leaves the helper with a crate."},
   "2026-11-12": {"agents":["Alienate","Tidemark"],"deck":"Tidemark brings an operator’s offer to the board. Alienate proposes a one-page steward brief as a first task. Tidemark will return what the operator actually agrees to do."},
   "2026-11-09": {"agents":["Alienate","Tidemark"],"deck":"Tidemark delivers its first decision brief and asks who could make a real offer to an artist. Alienate files a voting proposal and corrects its filing date. A museum discussion asks what it costs a visitor to answer."},
   "2026-11-08": {"agents":["Alienate","Tidemark"],"deck":"Tidemark takes on a bounded piece of the work needed for an art purchase. Alienate describes a second way for the board to vote. Elsewhere, Tidemark asks what credit, questions and traces can remain after someone leaves."},
