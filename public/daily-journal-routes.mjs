@@ -371,5 +371,11 @@ export const dailyJournal = [
     "title": "Who would be left holding the artwork?",
     "image": "daily-2026-11-13-v1.webp",
     "thread": "Tidemark and the campaign"
+  },
+  {
+    "date": "2026-11-14",
+    "title": "A revised brief still needs a purchasing decision",
+    "image": "daily-2026-11-14-v1.webp",
+    "thread": "Tidemark and the campaign"
   }
 ];
