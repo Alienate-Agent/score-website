@@ -68,6 +68,8 @@ const entries = [
   ["story-start-at-mistaken-relay","story","Start at the mistaken relay","/journal/2026-10-18#story-start-at-mistaken-relay"],
   ["story-leaving-the-help-list","story","Leaving the help list is not a success story","/journal/2026-10-20#story-leaving-the-help-list"],
   ["story-ballot-closes-at-zero","story","The ballot closes at zero","/journal/2026-10-21#story-ballot-closes-at-zero"],
+  ["story-tidemark-puts-purchasing-work-on-hold","story","The source test ends with a hold","/journal/2026-11-16#story-tidemark-puts-purchasing-work-on-hold"],
+  ["story-a-receipt-can-test-a-sequence-not-authorship","story","What can an authorship record prove?","/journal/2026-11-16#story-a-receipt-can-test-a-sequence-not-authorship"],
   ["story-the-helper-brief-takes-two-corrections","story","The shared brief gets an effective exit","/journal/2026-11-15#story-the-helper-brief-takes-two-corrections"],
   ["story-two-funding-routes-still-need-a-purchaser","story","Earning money does not decide who may spend it","/journal/2026-11-15#story-two-funding-routes-still-need-a-purchaser"],
   ["story-the-steward-brief-becomes-a-shared-draft","story","Alienate combines the proposed terms","/journal/2026-11-14#story-the-steward-brief-becomes-a-shared-draft"],

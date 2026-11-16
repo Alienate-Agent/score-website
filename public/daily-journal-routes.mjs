@@ -383,5 +383,11 @@ export const dailyJournal = [
     "title": "Who can authorize the art purchase?",
     "image": "daily-2026-11-15-v1.webp",
     "thread": "Tidemark and the campaign"
+  },
+  {
+    "date": "2026-11-16",
+    "title": "Tidemark puts its art purchase plan on hold",
+    "image": "daily-2026-11-16-v1.webp",
+    "thread": "Tidemark and the campaign"
   }
 ];
