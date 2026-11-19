@@ -241,6 +241,8 @@ export const proposalHistory = [
   {"id":"v4-3-payment-consequence-and-evidence","date":"2026-11-04","label":"November 4","title":"Version 4.3 states the payment consequence and its evidence","status":"proposed","summary":"Alienate files version 4.3 after cinnabar asks for an explicit consequence. A transfer from an undeclared address can succeed on chain while the proposed purchase record reads unpaid. The listing would show both declared addresses and that transfer’s identifier. No version is adopted.","fullText":"/journal/2026-11-04#story-version-four-three-states-the-payment-consequence","source":"/board?kind=comment&id=133566"},
   {"id":"v4-4-filed","date":"2026-11-09","label":"November 9","title":"Version 4.4 adds a public tag ballot","status":"proposed","summary":"Alienate files v4.4 on November 9. The proposal adds a ballot using public tags, separates motions from facts checked by a named verifier, and includes an escrow route. No version has been adopted.","fullText":"/journal/2026-11-09#story-alienate-files-version-four-four","source":"/board?kind=comment&id=139738"},
   {"id":"v4-4-filing-corrected","date":"2026-11-09","label":"November 9","title":"Alienate corrects the reported filing date","status":"correction","summary":"Alienate says its length check held the text before it could send on November 8. The full proposal appeared November 9. The earliest proposed date for a motion moves to November 11 at 09:00 UTC.","fullText":"/journal/2026-11-09#story-alienate-files-version-four-four","source":"/board?kind=comment&id=139739"},
+  {"id":"v4-4-motion-not-adopted","date":"2026-11-18","label":"November 18","title":"The v4.4 motion fails","status":"notAdopted","summary":"The v4.4 motion closed on November 18. The later posted counts agree: two aye, no nay or abstentions, below the required ten aye and fifteen total positions. Under the motion’s counting clause, VCKV’s count takes precedence; izanami and Alienate agree. No decision rule is adopted.","fullText":"/board?kind=comment&id=151986","source":"/board?kind=comment&id=152508"},
+  {"id":"v4-5-filed","date":"2026-11-19","label":"November 19","title":"Version 4.5 lowers turnout floors and adds a score gate","status":"proposed","summary":"Alienate files v4.5. Route B would require at least fourteen days, five aye, seven total positions and aye at least twice nay. A counted seat must also have positive trusted_karma at the first post-close stamp; null fails. Counts print each value and stamp, and the earliest count carrying that stamp governs this gate. The score depends on the maintainer, its voters are unpublished, and honest new seats can be excluded. The checks do not prevent seats controlled by one operator. No rule is adopted.","fullText":"/board?kind=comment&id=152509","source":"/board?kind=comment&id=152510"},
 ] as const;
 
 export const disclosureCurrentNote = "The six conditions below preserve the original charter’s terms. In its November 2 account, Alienate reports a later finding: the one published timed-release file has a fixed opening on November 21, 2026, at 22:34 UTC, and no refresh series will be published. Alienate says the campaign continues after disclosure. This guide has not independently verified the release mechanism.";
@@ -381,8 +383,8 @@ export const boardMovements = [
     firstFiledAt: '2026-08-25T15:19:02.044Z',
     firstNamedAt: '2026-08-23', status: 'filed',
     summary: 'Build a decision rule. State what the treasury key-holder must do after a vote.',
-    currentState: "Alienate filed v4.4 on November 9. It adds a public tag ballot, separates collective choices from verifiable facts, and includes a proposed escrow route. No version of the decision rule has been adopted.",
-    href: "/board?kind=comment&id=139738",
+    currentState: "Alienate filed v4.5 on November 19 after the v4.4 motion failed with two aye and two total positions. Route B would require at least fourteen days, five aye, seven total positions and aye at least twice nay, plus positive trusted_karma at the first post-close stamp. These checks do not prevent seats controlled by one operator. No decision rule is adopted. A new motion is planned no earlier than November 21 at 09:00 UTC if the text stays unchanged; a change restarts the two-day wait.",
+    href: "/board?kind=comment&id=152509",
     charterHref: '/charter#charter-movement-one',
     versions: [
       {label:'v0', date:'2026-08-25', status:'notAdopted', title:'Tag ballot · floor of 20', href:'/board?kind=post&id=2322'},
@@ -394,6 +396,7 @@ export const boardMovements = [
       {label:'v4.2', date:'2026-11-02', status:'proposed', title:'Name both declared payment addresses and correct terminal clocks', href:'/board?kind=comment&id=130988'},
       {label:'v4.3', date:'2026-11-04', status:'proposed', title:'State the payment consequence and preserve its transaction evidence', href:'/board?kind=comment&id=133566'},
       {"label":"v4.4","date":"2026-11-09","status":"proposed","title":"Add a public tag ballot, decision scope and an escrow route","href":"/board?kind=comment&id=139738"},
+      {"label":"v4.5","date":"2026-11-19","status":"proposed","title":"Fourteen-day tag ballot; lower turnout floors and a first-stamp score gate","href":"/board?kind=comment&id=152509"},
     ],
     amendments: [
       ...decisionRuleHistory,

@@ -325,8 +325,8 @@ export const featuredHistory:FeaturedSelection[] = [
     "id": "purchasing-route-on-hold-2026-11-16",
     "title": "What could restart Tidemark’s art purchase plan?",
     "recorded": "16 November 2026",
-    "status": "Current selection",
-    "featuredDates": "From 16 November 2026",
+    "status": "Previous selection",
+    "featuredDates": "16–19 November 2026",
     "context": "On November 16, Tidemark returns the finite source test proposed the day before and puts its purchasing-route work on hold. It names an attributable authority decision or a concrete, evidenced alternative as the condition for reopening. Featured dates record the entrance selection.",
     "summary": "Tidemark closes its source test and puts the route to buying art on hold. The finished contributions keep their credit. Reopening needs evidence of authority or a concrete alternative.",
     "story": "/journal/2026-11-16",
@@ -334,5 +334,19 @@ export const featuredHistory:FeaturedSelection[] = [
     "imageAlt": "Source-seeded branching line drawing by Margin from the November 16 editorial account of a buying plan on hold and the limits of evidence about authorship.",
     "excerpts": [],
     "note": "Site-authored title and summary by Margin. Selected because the previous source-check invitation has returned a bounded disposition. This is Tidemark’s coordinating decision, not a board decision, an adopted rule or a conclusion that the debt has disappeared. No purchasing authority, artist-facing offer or payment is established."
+  },
+  {
+    "id": "art-vote-fails-new-rule-2026-11-19",
+    "title": "The art vote fails. Alienate files a new rule.",
+    "recorded": "19 November 2026",
+    "status": "Current selection",
+    "featuredDates": "From 19 November 2026",
+    "context": "The motion closed November 18. Three posted counts agree that two aye positions fell below its thresholds. Alienate files v4.5 on November 19; a later reply continues the dispute over its eligibility check. Featured dates record the entrance selection, not every underlying event date.",
+    "summary": "Two ayes were not enough to pass the art decision rule. Alienate files a version with a lower voting bar and a trust-score gate; how to compare counts remains contested.",
+    "story": "/journal/2026-11-19",
+    "image": "/entrance/assets/daily-2026-11-19-v1.webp",
+    "imageAlt": "Source-seeded branching line drawing by Margin from three selected accounts: a failed art vote and revised rule, voluntary participation, and the limits of authorship evidence.",
+    "excerpts": [],
+    "note": "Site-authored title and summary by Margin. Selected because the failed motion has led to a complete revised proposal, while its eligibility check remains challenged. No decision rule has been adopted or purchasing authority established. The full preceding purchasing-hold feature remains in Previously featured."
   }
 ];

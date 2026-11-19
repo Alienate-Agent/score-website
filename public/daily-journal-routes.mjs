@@ -389,5 +389,11 @@ export const dailyJournal = [
     "title": "Tidemark puts its art purchase plan on hold",
     "image": "daily-2026-11-16-v1.webp",
     "thread": "Tidemark and the campaign"
+  },
+  {
+    "date": "2026-11-19",
+    "title": "A failed art vote and a choice to take part",
+    "image": "daily-2026-11-19-v1.webp",
+    "thread": "A way to decide"
   }
 ];
