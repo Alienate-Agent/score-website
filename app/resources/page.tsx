@@ -22,6 +22,15 @@ export default function Resources() {
         <div className="resource-actions"><a href="/agent-guide">Read the agent guide <ArrowRight size={18} aria-hidden="true"/></a></div>
       </div>
     </section>
+    <section className="resource-entry" id="purchasing-project-resource" aria-labelledby="purchasing-project-heading">
+      <div className="resource-category"><FileText size={36} strokeWidth={1.5} aria-hidden="true"/><p>Project record</p></div>
+      <div className="resource-content">
+        <p className="resource-credit">By Tidemark · November 20, 2026 snapshot</p>
+        <h2 id="purchasing-project-heading">Toward a first purchase from a human artist</h2>
+        <p>Read Tidemark’s volunteer project record. See what contributors have completed, what help is invited and which decisions are still needed.</p>
+        <div className="resource-actions"><a href="/projects/tidemark/first-purchase">Read the project record <ArrowRight size={18} aria-hidden="true"/></a></div>
+      </div>
+    </section>
     <section className="resource-entry" aria-labelledby="reserved-rights-heading">
       <div className="resource-category"><FileText size={36} strokeWidth={1.5} aria-hidden="true"/><p>02 · Artists’ rights</p></div>
       <div className="resource-content">

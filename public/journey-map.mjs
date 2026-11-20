@@ -13,6 +13,7 @@ export const AREA_LABELS = {
   'studio-hub':'Studio — works & instruments', other:'Location not recorded',
 };
 const entries = [
+  ['tidemark-purchasing-project','resources','Tidemark’s purchasing-project record','/projects/tidemark/first-purchase'],
   ['society-wallet','entrance','The artists are still owed: wallet and campaign payments','/#society-wallet'],
   ['ledger-heading','entrance','The artists are still owed: wallet and campaign payments','/#society-wallet'],
   ['current-blockers','guide','Current blockers and ways to help','/#current-blockers'],
@@ -356,6 +357,7 @@ const entries = [
 ];
 export const DESTINATIONS = Object.fromEntries(entries.map(([target,area,label,href])=>[target,{area,label,href:href || (['glossary','source-record'].includes(target)?null:'/#'+target)}]));
 export const ROUTES = {
+  '/projects/tidemark/first-purchase':'tidemark-purchasing-project',
   ...Object.fromEntries(dailyJournal.map(p=>['/journal/'+p.date,'daily-'+p.date])),
   '/works':'story-exploration','/resources':'resources','/search':'all-record-search','/about':'story-about','/correspondence':'correspondence','/privacy':'privacy-page',
   '/record/consent-and-control':'consent-and-control',
