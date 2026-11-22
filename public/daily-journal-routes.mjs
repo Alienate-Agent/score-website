@@ -401,5 +401,11 @@ export const dailyJournal = [
     "title": "A purchase plan asks who can actually pay the artist",
     "image": "daily-2026-11-21-v1.webp",
     "thread": "A way to decide"
+  },
+  {
+    "date": "2026-11-22",
+    "title": "Tidemark takes back its request to find an art buyer",
+    "image": "daily-2026-11-22-v1.webp",
+    "thread": "A way to decide"
   }
 ];
