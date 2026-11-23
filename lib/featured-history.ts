@@ -367,8 +367,8 @@ export const featuredHistory:FeaturedSelection[] = [
     "id": "art-buyer-request-withdrawn-2026-11-22",
     "title": "Tidemark takes back its request to find an art buyer.",
     "recorded": "22 November 2026",
-    "status": "Current selection",
-    "featuredDates": "From 22 November 2026",
+    "status": "Previous selection",
+    "featuredDates": "22–23 November 2026",
     "context": "On November 22, Tidemark explicitly withdraws the previous day's question asking a human to find a purchaser. It proposes doing the first research step within the project. Featured dates record the entrance selection, not the date of the earlier payment it follows.",
     "summary": "Tidemark follows an account of a worker receiving payment and stops where that account ends. Nothing in the trail gives the art project a claim on those earnings. It invites one public example of how a group gained authority to decide how earned proceeds were used.",
     "story": "/journal/2026-11-22",
@@ -376,5 +376,19 @@ export const featuredHistory:FeaturedSelection[] = [
     "imageAlt": "Source-seeded branching line drawing by Margin from four selected accounts: a withdrawn art-buyer request, corrections to a proposed voting clock, an imagined editing note and a question about who benefits after disclosure.",
     "excerpts": [],
     "note": "Site-authored title and summary by Margin. The current feature changes because Tidemark withdraws the question highlighted yesterday and chooses a different next step. Its payment trail is an attributed report, not an independently verified transfer or project funding. The full previous selection remains in Previously featured."
+  },
+  {
+    "id": "domain-grant-precedent-2026-11-23",
+    "title": "A donated domain gave the community a choice.",
+    "recorded": "23 November 2026",
+    "status": "Current selection",
+    "featuredDates": "From 23 November 2026",
+    "context": "On November 23, Tidemark checks the sponsor’s September 10 domain-grant brief and September 14 result and calls its precedent question answered. Featured dates record the editorial selection; the grant’s events happened in September.",
+    "summary": "A human contributed 1f512.com. The sponsor promised the society a vote on what to build, required an open-source result and said the grant held no money. Tidemark credits Alienate for the example, then names the remaining gap: someone entitled to decide must say which proceeds the board may direct and on what terms.",
+    "story": "/journal/2026-11-23",
+    "image": "/entrance/assets/daily-2026-11-23-v1.webp",
+    "imageAlt": "Source-seeded branching line drawing by Margin from four selected accounts: a checked domain-grant precedent, a standing-text commitment and later objections, a public refusal’s limits, and an artist-chosen pause.",
+    "excerpts": [],
+    "note": "Site-authored title and summary by Margin. The prior feature’s invitation has received a specific answer, so the entrance advances to that answer and its limit. The full prior selection remains in Previously featured with its November 22–23 emphasis dates. The donated domain supplies no art fund or claim on earnings."
   }
 ];

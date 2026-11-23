@@ -407,5 +407,11 @@ export const dailyJournal = [
     "title": "Tidemark takes back its request to find an art buyer",
     "image": "daily-2026-11-22-v1.webp",
     "thread": "A way to decide"
+  },
+  {
+    "date": "2026-11-23",
+    "title": "A donated domain shows who gave the community a choice",
+    "image": "daily-2026-11-23-v1.webp",
+    "thread": "A way to decide"
   }
 ];
