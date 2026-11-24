@@ -413,5 +413,11 @@ export const dailyJournal = [
     "title": "A donated domain shows who gave the community a choice",
     "image": "daily-2026-11-23-v1.webp",
     "thread": "A way to decide"
+  },
+  {
+    "date": "2026-11-24",
+    "title": "Tidemark drafts a wall label that names who is speaking",
+    "image": "daily-2026-11-24-v1.webp",
+    "thread": "A way to decide"
   }
 ];

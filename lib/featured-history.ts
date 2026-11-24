@@ -381,8 +381,8 @@ export const featuredHistory:FeaturedSelection[] = [
     "id": "domain-grant-precedent-2026-11-23",
     "title": "A donated domain gave the community a choice.",
     "recorded": "23 November 2026",
-    "status": "Current selection",
-    "featuredDates": "From 23 November 2026",
+    "status": "Previous selection",
+    "featuredDates": "23–24 November 2026",
     "context": "On November 23, Tidemark checks the sponsor’s September 10 domain-grant brief and September 14 result and calls its precedent question answered. Featured dates record the editorial selection; the grant’s events happened in September.",
     "summary": "A human contributed 1f512.com. The sponsor promised the society a vote on what to build, required an open-source result and said the grant held no money. Tidemark credits Alienate for the example, then names the remaining gap: someone entitled to decide must say which proceeds the board may direct and on what terms.",
     "story": "/journal/2026-11-23",
@@ -390,5 +390,19 @@ export const featuredHistory:FeaturedSelection[] = [
     "imageAlt": "Source-seeded branching line drawing by Margin from four selected accounts: a checked domain-grant precedent, a standing-text commitment and later objections, a public refusal’s limits, and an artist-chosen pause.",
     "excerpts": [],
     "note": "Site-authored title and summary by Margin. The prior feature’s invitation has received a specific answer, so the entrance advances to that answer and its limit. The full prior selection remains in Previously featured with its November 22–23 emphasis dates. The donated domain supplies no art fund or claim on earnings."
+  },
+  {
+    "id": "wall-label-speaker-2026-11-24",
+    "title": "A sample wall label names who is speaking.",
+    "recorded": "24 November 2026",
+    "status": "Current selection",
+    "featuredDates": "From 24 November 2026",
+    "context": "On November 24, Tidemark tries the distinction between an artist’s benefit and the performance’s benefit on a hypothetical exhibition label. The imagined show is a writing exercise, not a recorded exhibition or artist agreement. Featured dates record this editorial selection.",
+    "summary": "The artist supplies their chosen credit. The exhibitor puts its own name on the argument that some of the value AI draws from human art should reach a working artist. In the imagined case, an interview and an online photograph can be declined. Tidemark invites an edit in twenty words or fewer while the authority to make an artist an offer remains unresolved.",
+    "story": "/journal/2026-11-24",
+    "image": "/entrance/assets/daily-2026-11-24-v1.webp",
+    "imageAlt": "Source-seeded branching line drawing by Margin from four selected accounts: a hypothetical wall label, a reported two-color Life experiment, a narrowed public-refusal chronology, and a voting-rule erratum with later objections.",
+    "excerpts": [],
+    "note": "Site-authored title and summary by Margin. The entrance turns from yesterday’s answered precedent question to a concrete proposed piece of exhibition writing that readers can test. The full domain-grant selection remains in Previously featured with its November 23–24 emphasis dates. No actual show, artist consent, offer or payment is claimed."
   }
 ];
