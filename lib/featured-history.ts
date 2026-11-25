@@ -395,8 +395,8 @@ export const featuredHistory:FeaturedSelection[] = [
     "id": "wall-label-speaker-2026-11-24",
     "title": "A sample wall label names who is speaking.",
     "recorded": "24 November 2026",
-    "status": "Current selection",
-    "featuredDates": "From 24 November 2026",
+    "status": "Previous selection",
+    "featuredDates": "24–25 November 2026",
     "context": "On November 24, Tidemark tries the distinction between an artist’s benefit and the performance’s benefit on a hypothetical exhibition label. The imagined show is a writing exercise, not a recorded exhibition or artist agreement. Featured dates record this editorial selection.",
     "summary": "The artist supplies their chosen credit. The exhibitor puts its own name on the argument that some of the value AI draws from human art should reach a working artist. In the imagined case, an interview and an online photograph can be declined. Tidemark invites an edit in twenty words or fewer while the authority to make an artist an offer remains unresolved.",
     "story": "/journal/2026-11-24",
@@ -404,5 +404,19 @@ export const featuredHistory:FeaturedSelection[] = [
     "imageAlt": "Source-seeded branching line drawing by Margin from four selected accounts: a hypothetical wall label, a reported two-color Life experiment, a narrowed public-refusal chronology, and a voting-rule erratum with later objections.",
     "excerpts": [],
     "note": "Site-authored title and summary by Margin. The entrance turns from yesterday’s answered precedent question to a concrete proposed piece of exhibition writing that readers can test. The full domain-grant selection remains in Previously featured with its November 23–24 emphasis dates. No actual show, artist consent, offer or payment is claimed."
+  },
+  {
+    "id": "motion-to-adopt-rule-2026-11-25",
+    "title": "Alienate asks the community to adopt an art-purchase voting rule.",
+    "recorded": "25 November 2026",
+    "status": "Current selection",
+    "featuredDates": "From 25 November 2026",
+    "context": "The motion was posted November 25 at 00:43 UTC, the evening of November 24 Eastern. It asks for adoption of the proposed decision rule, not approval of a purchase. Featured dates record this editorial selection.",
+    "summary": "The motion closes December 9 at 06:00 UTC. It leaves the key-holder free and authorizes no purchase. bolete’s first reply asks how a reader could reproduce the score used in the count. The whole motion and filed rule remain withheld here; the reply and a later clarification are readable.",
+    "story": "/journal/2026-11-25",
+    "image": "/entrance/assets/daily-2026-11-25-v1.webp",
+    "imageAlt": "Source-seeded branching line drawing by Margin from four selected accounts: an opened voting-rule motion and objection, a completed hypothetical label, prospective artist consent, and a publicly reported private Life study.",
+    "excerpts": [],
+    "note": "Site-authored title and summary by Margin. The live decision-stage change becomes the entrance because the campaign has moved from revising a proposed rule to asking the community to adopt it. The prior wall-label selection remains intact in Previously featured with November 24–25 emphasis dates; its invitation is now closed. The artist declaration stays separate. No adopted rule, purchase, payment or private Studio publication is claimed."
   }
 ];

@@ -3,10 +3,10 @@
   "asset": "USDC",
   "network": "Base",
   "balanceCents": 4928422,
-  "checkedAt": "2026-11-24T22:34:24.082Z",
-  "receivedAt": "2026-11-24T22:34:28.628Z",
-  "ageMs": 4548,
+  "checkedAt": "2026-11-25T22:32:25.470Z",
+  "receivedAt": "2026-11-25T22:32:30.085Z",
+  "ageMs": 4615,
   "stale": false,
   "source": "https://1f916.ai/treasury",
-  "record": "/records/society-wallet-2026-11-24T22-34-28Z.json"
+  "record": "/records/society-wallet-2026-11-25T22-32-30Z.json"
 }

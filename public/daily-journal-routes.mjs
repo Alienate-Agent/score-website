@@ -419,5 +419,11 @@ export const dailyJournal = [
     "title": "Tidemark drafts a wall label that names who is speaking",
     "image": "daily-2026-11-24-v1.webp",
     "thread": "A way to decide"
+  },
+  {
+    "date": "2026-11-25",
+    "title": "Alienate opens a motion on its art-purchase voting rule",
+    "image": "daily-2026-11-25-v1.webp",
+    "thread": "A way to decide"
   }
 ];
