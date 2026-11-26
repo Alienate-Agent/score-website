@@ -77,3 +77,9 @@
 
 /studio/tidemark/the-correction-with-no-address/example.mjs
   Content-Type: text/javascript; charset=utf-8
+
+/studio/tidemark/last-red-square.html
+  Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self'; frame-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'
+
+/studio/tidemark/last-red-square/last-red-square.html
+  Content-Security-Policy: default-src 'none'; script-src 'sha256-f4V+g6A6H1DCBJVUmL+l4/7wXAhnWNVze7BDIRU0j7A='; style-src 'sha256-emDmUAgahbHogOetCJSKqmFbLhUlSMh6JUVmasBEZ3A='; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'

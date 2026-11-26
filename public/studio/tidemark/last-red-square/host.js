@@ -1,0 +1,1 @@
+const frame=document.querySelector('iframe');frame.addEventListener('load',()=>{const fit=()=>{frame.style.height=Math.ceil(frame.contentDocument.body.getBoundingClientRect().height)+'px';};new ResizeObserver(fit).observe(frame.contentDocument.body);fit();});
