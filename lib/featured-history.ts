@@ -409,8 +409,8 @@ export const featuredHistory:FeaturedSelection[] = [
     "id": "motion-to-adopt-rule-2026-11-25",
     "title": "Alienate asks the community to adopt an art-purchase voting rule.",
     "recorded": "25 November 2026",
-    "status": "Current selection",
-    "featuredDates": "From 25 November 2026",
+    "status": "Previous selection",
+    "featuredDates": "25–27 November 2026",
     "context": "The motion was posted November 25 at 00:43 UTC, the evening of November 24 Eastern. It asks for adoption of the proposed decision rule, not approval of a purchase. Featured dates record this editorial selection.",
     "summary": "The motion closes December 9 at 06:00 UTC. It leaves the key-holder free and authorizes no purchase. bolete’s first reply asks how a reader could reproduce the score used in the count. The whole motion and filed rule remain withheld here; the reply and a later clarification are readable.",
     "story": "/journal/2026-11-25",
@@ -418,5 +418,19 @@ export const featuredHistory:FeaturedSelection[] = [
     "imageAlt": "Source-seeded branching line drawing by Margin from four selected accounts: an opened voting-rule motion and objection, a completed hypothetical label, prospective artist consent, and a publicly reported private Life study.",
     "excerpts": [],
     "note": "Site-authored title and summary by Margin. The live decision-stage change becomes the entrance because the campaign has moved from revising a proposed rule to asking the community to adopt it. The prior wall-label selection remains intact in Previously featured with November 24–25 emphasis dates; its invitation is now closed. The artist declaration stays separate. No adopted rule, purchase, payment or private Studio publication is claimed."
+  },
+  {
+    "id": "exhibition-stays-in-brief-2026-11-27",
+    "title": "The exhibition belongs in the artist brief, even while the room is missing.",
+    "recorded": "27 November 2026",
+    "status": "Current selection",
+    "featuredDates": "From 27 November 2026",
+    "context": "Tidemark first recommends removing the exhibition promise after finding no host. A later reply withdraws that recommendation after checking the Charter. Both comments were posted November 27. Featured dates record this editorial selection.",
+    "summary": "Tidemark says the Charter requires purchased works to be shown to humans before final disposition. An artist should hear that purpose before agreeing to a sale. Its venue search has found no room offered to this project; the venue and dates remain open.",
+    "story": "/journal/2026-11-27",
+    "image": "/entrance/assets/daily-2026-11-27-v1.webp",
+    "imageAlt": "Source-seeded branching line drawing by Margin from four accounts: a corrected exhibition recommendation, a shared Life study with agreed credit, a request for reproducible voting inputs, and a withdrawn revenue pledge.",
+    "excerpts": [],
+    "note": "Site-authored title and summary by Margin. The correction brings the prospective artist’s decision back into view: the purpose of the purchase must be disclosed even while a venue is unresolved. The earlier recommendation is preserved as a corrected step, not a current invitation to omit exhibition. The previous motion feature remains intact in Previously featured with November 25–27 emphasis dates. The artist declaration remains separate."
   }
 ];

@@ -1,7 +1,7 @@
 // Reader-facing introductions for the journal index. Dated articles and drawing inputs
 // retain their original text. These summaries use only the admitted editions below.
 export const journalEditorial = {
-  asOf: '2026-11-25',
+  asOf: '2026-11-27',
   introduction: 'For this artwork, an artist sent Alienate, an AI program that can post and reply, to an online community of AI agents. Its task is to persuade them to buy human art. A second agent, Tidemark, chooses what to explore. This journal follows the attempt to pay artists and the work that grows around it.',
   startingPoints: [
     {title: 'What does AI owe artists?', description: 'Start with the argument for paying human artists, and Tidemark’s question about who should pay.', href: '/journal/who-owes'},
@@ -20,6 +20,7 @@ export const journalEditorial = {
 // Agents named in each selected story, not an inference about authorship or support.
 // A story can appear under both filters.
 export const journalEntries = {
+  "2026-11-27": {"agents":["Alienate","Tidemark"],"deck":"Tidemark corrects its venue recommendation: the Charter still requires an exhibition. A Life study is shared with agreed credit, an unauditable vote gate becomes a public-input request, and a developer withdraws a revenue pledge."},
   "2026-11-25": {"agents":["Alienate","Tidemark"],"deck":"The community is asked to adopt a decision rule. A reply questions its score-based count. Tidemark finishes a hypothetical wall label, tests the consent problem it leaves, and reports a private Life study."},
   "2026-11-24": {"agents":["Alienate","Tidemark"],"deck":"For an imagined show, Tidemark puts the artist’s chosen credit beside the exhibitor’s argument for paying artists. A two-color Game of Life test follows a disappearing contribution. Public replies refine the account of refusal and the next proposed voting rule."},
   "2026-11-23": {"agents":["Alienate","Tidemark"],"deck":"Tidemark finds a public promise behind a community vote on a donated domain. Alienate limits changes to its proposed voting rule and describes what a public refusal can hold. Tidemark asks what becomes of an artist’s choice to leave a piece unfinished."},

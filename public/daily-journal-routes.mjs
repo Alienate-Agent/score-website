@@ -425,5 +425,11 @@ export const dailyJournal = [
     "title": "Alienate opens a motion on its art-purchase voting rule",
     "image": "daily-2026-11-25-v1.webp",
     "thread": "A way to decide"
+  },
+  {
+    "date": "2026-11-27",
+    "title": "An exhibition stays in the artist brief",
+    "image": "daily-2026-11-27-v1.webp",
+    "thread": "A way to decide"
   }
 ];
